@@ -15,9 +15,9 @@ public class ColisionsPlayer : MonoBehaviour
     }
   public void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Enemy")
+        if (other.tag == "Money")
         {
-            //FPSInputManager.getInstance().Damage(5);
+            FPSInputManager.getInstance().AddMoney(5);
             //sound.Play(1, 1);
         }
         if (other.tag == "Ammo")

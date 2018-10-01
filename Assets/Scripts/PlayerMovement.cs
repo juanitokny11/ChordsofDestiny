@@ -7,8 +7,6 @@ public class PlayerMovement : MonoBehaviour {
 	private CharacterController controller;
 	private Vector2 axis;
 	public GameObject personaje;
-    public GameObject cam;
-    public GameObject camPos;
 	public float speed;
     public SoundPlayer sound;
     public Vector3 moveDirection;
@@ -71,8 +69,7 @@ public class PlayerMovement : MonoBehaviour {
         }
             controller.Move(moveDirection * Time.deltaTime);
 			
-        //cam.transform.position = Vector3.Lerp(cam.transform.position, camPos.transform.position, 0.5f);
-		//cam.transform.rotation=newRotation;
+        
 	}
 
 	public void SetAxis(Vector2 inputAxis)

@@ -13,6 +13,8 @@ public class FPSInputManager : MonoBehaviour
     private float sensitivity = 3.0f;
     private LookRotation lookRotation;
     private MouseCursor mouseCursor;
+    public int money;
+    public Text moneyText;
     public Animator pers;
     private bool debil;
     private bool fuerte;
@@ -92,6 +94,15 @@ public class FPSInputManager : MonoBehaviour
     //Cursor del ratón
     // if (Input.GetMouseButtonDown(0)) mouseCursor.HideCursor();
     // else if (Input.GetKeyDown(KeyCode.Escape)) mouseCursor.ShowCursor();
+    public void Damage(float value)
+{
+    //Health -= value;
+   // HealthBar.size = Health / 100f;
+}
+ public void AddMoney(int value){
+      money += value;
+      moneyText.text = money.ToString();
+ }
     void ResetAttack()
     {
         pers.SetTrigger("Reset");
