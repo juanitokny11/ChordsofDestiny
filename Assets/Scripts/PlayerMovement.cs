@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour {
         }
             controller.Move(moveDirection * Time.deltaTime);
 			
-        cam.transform.position = Vector3.Lerp(cam.transform.position, camPos.transform.position, 0.5f);
+        //cam.transform.position = Vector3.Lerp(cam.transform.position, camPos.transform.position, 0.5f);
 		//cam.transform.rotation=newRotation;
 	}
 
