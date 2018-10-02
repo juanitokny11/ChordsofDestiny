@@ -38,9 +38,9 @@ public class PlayerMovement : MonoBehaviour {
 			moveDirection.y += Physics.gravity.y * gravityMagnitude * Time.deltaTime;
         }
 
-      Quaternion newRotation = Quaternion.LookRotation(moveDirection);
-	  Quaternion persrotation=personaje.transform.rotation;
-	  newRotation=persrotation;
+//      Quaternion newRotation = Quaternion.LookRotation(moveDirection);
+	 // Quaternion persrotation=personaje.transform.rotation;
+	 // newRotation=persrotation;
 	    transformDirection = axis.x * transform.right + axis.y * transform.forward;
 		 Vector3 persview;
 		 persview=personaje.transform.forward;
