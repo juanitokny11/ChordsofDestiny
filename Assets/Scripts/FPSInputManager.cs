@@ -40,7 +40,7 @@ public class FPSInputManager : MonoBehaviour
 
         //mouseCursor = new MouseCursor();
         //mouseCursor.HideCursor();
-        Cursor.visible = false;
+        //Cursor.visible = false;
        /* armas = 1;
         ammo = 30;
         totalammo = 180;
@@ -101,7 +101,7 @@ public class FPSInputManager : MonoBehaviour
 }
  public void AddMoney(int value){
       money += value;
-      moneyText.text = money.ToString();
+     moneyText.text = money.ToString();
  }
     void ResetAttack()
     {
