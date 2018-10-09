@@ -5,6 +5,7 @@ using UnityEngine;
 public class HackAndSlashCam : MonoBehaviour {public float RotateAmount = 15f;
 public Transform pers;
 public Transform rotationref;
+    public GameObject camPos;
  public float distance = 10.0f;
      // the height we want the camera to be above the target
      public float height = 5.0f;
@@ -51,7 +52,7 @@ public void OrbitCamera(Vector3 target, float y_rotate, float x_rotate)
  transform.eulerAngles = angles;
  transform.RotateAround(target, Vector3.up, y_rotate);
  transform.RotateAround(target, Vector3.left, x_rotate);
-
+this.transform.position = Vector3.Slerp(this.transform.position, camPos.transform.position, 0.5f);
  transform.LookAt(target);
 }
   

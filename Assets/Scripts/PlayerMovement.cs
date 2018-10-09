@@ -68,9 +68,10 @@ public class PlayerMovement : MonoBehaviour {
             pers.SetBool("Walk", false);
         }
             controller.Move(moveDirection * Time.deltaTime);
-			
-        
-	}
+
+     
+
+    }
 
 	public void SetAxis(Vector2 inputAxis)
 	{
