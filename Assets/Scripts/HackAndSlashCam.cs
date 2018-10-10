@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HackAndSlashCam : MonoBehaviour {public float RotateAmount = 15f;
+public class HackAndSlashCam : MonoBehaviour {
+public float RotateAmount = 10f;
 public Transform pers;
 public Transform rotationref;
     public GameObject camPos;
@@ -51,8 +52,8 @@ public void OrbitCamera(Vector3 target, float y_rotate, float x_rotate)
  angles.z = 0;
  transform.eulerAngles = angles;
  transform.RotateAround(target, Vector3.up, y_rotate);
- transform.RotateAround(target, Vector3.left, x_rotate);
-this.transform.position = Vector3.Slerp(this.transform.position, camPos.transform.position, 0.5f);
+ transform.RotateAround(target, Vector3.zero, x_rotate);
+ //this.transform.position = camPos.transform.position;
  transform.LookAt(target);
 }
   
