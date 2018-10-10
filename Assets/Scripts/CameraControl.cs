@@ -20,13 +20,33 @@ public class CameraControl : MonoBehaviour
     {
         camTransform = transform;
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "edificios")
+        {
+            Debug.Log("colisiona");
+        }
+    }
     private void Update()
     {
         currentX += Input.GetAxis("Mouse X");
         currentY += Input.GetAxis("Mouse Y");
 
         currentY = Mathf.Clamp(currentY, Y_ANGLE_MIN, Y_ANGLE_MAX);
+
+        RaycastHit hit;
+        int layerMask = 1 << 8;
+        // Does the ray intersect any objects excluding the player layer
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
+        {
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+            //Debug.Log("Did Hit");
+        }
+        else
+        {
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
+            //Debug.Log("Did not Hit");
+        }
     }
 
     private void LateUpdate()
