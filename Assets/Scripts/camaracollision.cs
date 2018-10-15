@@ -23,7 +23,7 @@ public class camaracollision : MonoBehaviour {
     [Header("Map coordinate script")]
     //    public worldVectorMap wvm;
     RaycastHit hit;
-    float cameraHeight = 55f;
+    float cameraHeight = 30f;
     float cameraPan = 0f;
     float camRotateSpeed = 180f;
     Vector3 camPosition;
@@ -45,7 +45,7 @@ public class camaracollision : MonoBehaviour {
     void LateUpdate()
     {
 
-        HorizontalAxis = Input.GetAxis("Horizontal");
+        HorizontalAxis = Input.GetAxis("Mouse X");
         VerticalAxis = Input.GetAxis("Mouse Y");
 
         //Offset of the targets transform (Since the pivot point is usually at the feet).
@@ -64,18 +64,17 @@ public class camaracollision : MonoBehaviour {
         transform.LookAt(target);
 
         #region wrap the cam orbit rotation
-        if (rotateAround > 360)
+        if (rotateAround > 20)
         {
-            rotateAround = 0f;
+            rotateAround = 20;
         }
-        else if (rotateAround < 0f)
+        else if (rotateAround < -100f)
         {
-            rotateAround = (rotateAround + 360f);
+            rotateAround = -100f;
         }
-        #endregion
-
+        #endregion 
         rotateAround += HorizontalAxis * camRotateSpeed * Time.deltaTime;
-        //DistanceUp = Mathf.Clamp(DistanceUp += VerticalAxis, -0.79f, 2.3f);
+       // DistanceUp = Mathf.Clamp(DistanceUp += VerticalAxis, -0.79f, 2.3f);
         DistanceAway = Mathf.Clamp(DistanceAway += VerticalAxis, minDistance, maxDistance);
 
     }
