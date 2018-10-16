@@ -5,9 +5,11 @@ using UnityEngine.UI;
 
 public class ColisionsPlayer : MonoBehaviour
 {
-    public CapsuleCollider colider;
-    public SoundPlayer sound;
-
+    private CapsuleCollider colider;
+    //public SoundPlayer sound;
+private void Awake(){
+ colider= GetComponent<CapsuleCollider> ();
+}
   public void OnTriggerEnter(Collider other)
     {
         if (other.tag == "corchera")
@@ -22,6 +24,7 @@ public class ColisionsPlayer : MonoBehaviour
         }
         if (other.tag == "blanca")
         {
+            Debug.Log("CHOCA");
             FPSInputManager.getInstance().AddMoney(20);
             //sound.Play(1, 1);
         }

@@ -10,7 +10,7 @@ public class Deleteojects: MonoBehaviour {
             Explode();
         }
     }
-	
+
 	void Explode() {
 		
 		Destroy(gameObject);

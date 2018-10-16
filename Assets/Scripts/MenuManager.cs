@@ -7,7 +7,7 @@ public class MenuManager : MonoBehaviour {
 
 	public void PlayGame()
     {
-        SceneManager.LoadScene("Prisionescenari");
+        SceneManager.LoadScene("Gameplay");
        
     }
     public void EndGame()
@@ -39,6 +39,6 @@ public class MenuManager : MonoBehaviour {
     }
     public void Pause()
     {
-        //FPSInputManager.getInstance().Pausa();
+        FPSInputManager.getInstance().Pausa();
     }
 }

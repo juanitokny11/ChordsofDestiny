@@ -18,7 +18,7 @@ public class FPSInputManager : MonoBehaviour
     public Animator pers;
     private bool debil;
     private bool fuerte;
-    public bool pause;
+    public bool pause=true;
     public GameObject pausaMenu;
 
    // public Scrollbar HealthBar;
@@ -38,6 +38,7 @@ public class FPSInputManager : MonoBehaviour
         }
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         lookRotation = playerController.GetComponent<LookRotation>();
+        pause=true;
         //laser = playerController.GetComponent<Laser> ();
         //ballShoot = playerController.GetComponent<BallShoot>();
 
@@ -76,6 +77,7 @@ public class FPSInputManager : MonoBehaviour
         // mouseAxis.y = Input.GetAxis("Mouse Y") * sensitivity;
         //Debug.Log("Mouse X = " + mouseAxis.x + " Y = " + mouseAxis.y);
         //lookRotation.SetRotation(mouseAxis);
+        if (pause==true){
         if (Input.GetMouseButtonDown(0))
         {
             pers.Play("atque_debil", -1, 0);
@@ -93,7 +95,8 @@ public class FPSInputManager : MonoBehaviour
             audios.Play(1, 1);
             //Invoke("ResetAttack", 2);
         }
-        if(Input.GetButtonDown("P"))
+        }
+        if(Input.GetKeyDown(KeyCode.P))
     {
         Pausa();
     }
