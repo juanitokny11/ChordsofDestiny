@@ -11,15 +11,19 @@ private void Awake(){
  colider= GetComponent<CapsuleCollider> ();
 }
   public void OnTriggerEnter(Collider other)
-    {
+    { 
+        /*if(other.CompareTag("Ataque")){
+            FPSInputManager.getInstance().curHealth -= FPSInputManager.getInstance().Damage;
+            FPSInputManager.getInstance().HealthBar.fillAmount= FPSInputManager.getInstance().curHealth/ FPSInputManager.getInstance().MaxHealth;
+        }*/
         if (other.tag == "corchera")
         {
-            FPSInputManager.getInstance().AddMoney(5);
+            FPSInputManager.getInstance().AddMoney(1);
             //sound.Play(1, 1);
         }
         if (other.tag == "negra")
         {
-            FPSInputManager.getInstance().AddMoney(10);
+            FPSInputManager.getInstance().AddMoney(5);
             //sound.Play(1, 1);
         }
         if (other.tag == "blanca")

@@ -18,11 +18,16 @@ public class FPSInputManager : MonoBehaviour
     public Animator pers;
     private bool debil;
     private bool fuerte;
+    public float Damage=1f;
+    public float cargasolo=1f;
     public bool pause=true;
     public GameObject pausaMenu;
-
-   // public Scrollbar HealthBar;
-   // public float Health = 100;
+public Image soloBar;
+   public float cursolo;
+   public float Maxsolo = 100;
+   public Image HealthBar;
+   public float curHealth;
+   public float MaxHealth = 100;
     private static FPSInputManager instance;
     public SoundPlayer audios;
 
@@ -39,6 +44,10 @@ public class FPSInputManager : MonoBehaviour
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         lookRotation = playerController.GetComponent<LookRotation>();
         pause=true;
+        cursolo=0;
+        soloBar.fillAmount=cursolo/Maxsolo;
+        curHealth=MaxHealth;
+        HealthBar.fillAmount=curHealth/MaxHealth;
         //laser = playerController.GetComponent<Laser> ();
         //ballShoot = playerController.GetComponent<BallShoot>();
 
@@ -104,11 +113,7 @@ public class FPSInputManager : MonoBehaviour
     //Cursor del ratón
     // if (Input.GetMouseButtonDown(0)) mouseCursor.HideCursor();
     // else if (Input.GetKeyDown(KeyCode.Escape)) mouseCursor.ShowCursor();
-    public void Damage(float value)
-{
-    //Health -= value;
-   // HealthBar.size = Health / 100f;
-}
+
  public void AddMoney(int value){
       money += value;
      moneyText.text = money.ToString();
@@ -121,11 +126,16 @@ public class FPSInputManager : MonoBehaviour
     {
         arma.transform.tag = "arma";
     } 
-/*public void Damage(float value)
+public void Daño()
 {
-    Health -= value;
-    HealthBar.size = Health / 100f;
-}*/
+   curHealth -=Damage;
+   HealthBar.fillAmount= curHealth/MaxHealth;
+}
+public void Carga()
+{
+   cursolo +=cargasolo;
+   soloBar.fillAmount= cursolo/Maxsolo;
+}
 public void Pausa()
 {
     if (!pause)
