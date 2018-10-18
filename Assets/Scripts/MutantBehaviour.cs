@@ -141,8 +141,8 @@ public class MutantBehaviour : MonoBehaviour
     void SetIdle()
     {
         agent.isStopped = true;        
-        anim.SetBool("Walk", false);
-        anim.SetBool("Run", false);
+       // anim.SetBool("Walk", false);
+        //anim.SetBool("Run", false);
         radius = idleRadius;
         timeCounter = 0;
         /*if (manager.pause == true)
@@ -157,8 +157,8 @@ public class MutantBehaviour : MonoBehaviour
         agent.isStopped = false;
         agent.stoppingDistance = 0;
         radius = idleRadius;
-        anim.SetBool("Walk", true);
-        anim.SetBool("Run", false);
+        //anim.SetBool("Walk", true);
+        //anim.SetBool("Run", false);
         /*if (manager.pause == true)
         {
             sound.Play(3, 1);
@@ -170,8 +170,8 @@ public class MutantBehaviour : MonoBehaviour
         agent.isStopped = false;
         agent.SetDestination(targetTransform.position);
         agent.stoppingDistance = 2.0f;
-        anim.SetBool("Run", true);
-        anim.SetBool("Walk", false);
+        //anim.SetBool("Run", true);
+        //anim.SetBool("Walk", false);
         radius = chaseRadius;
        /* if (manager.pause == true)
         {
@@ -188,7 +188,7 @@ public class MutantBehaviour : MonoBehaviour
         agent.isStopped = true;
         transform.tag = "Enemy";
         attackcollider.enabled = true;
-        anim.SetBool("Attack",true);
+       // anim.SetBool("Attack",true);
         Invoke("ResetAttack", 2);
         state = State.Attack;
     }
@@ -200,7 +200,7 @@ public class MutantBehaviour : MonoBehaviour
         }*/
         agent.isStopped = true;
         state = State.Dead;
-        anim.SetTrigger("Die");
+        //anim.SetTrigger("Die");
         Invoke("DestroyEnemy", 3);
     }
 
@@ -263,23 +263,29 @@ public class MutantBehaviour : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "ligero" && metronomo.getInstance().daño==true)
+        /*if (other.tag == "ligero" && metronomo.getInstance().daño==true)
         {
             Damage(3);
             Debug.Log("dañoextra");
-        }
+             FPSInputManager.getInstance().Carga();
+        }*/
        if (other.tag == "ligero")
         {
-            Damage(2);
+            Debug.Log("choca");
+             Damage(2);
+             FPSInputManager.getInstance().Carga();
         }
-            if (other.tag == "pesado" && metronomo.getInstance().daño== true)
+           /* if (other.tag == "pesado" && metronomo.getInstance().daño== true)
         {
             Damage(4);
             Debug.Log("dañoextra");
-        }
+             FPSInputManager.getInstance().Carga();
+        }Ç*/
          if (other.tag == "pesado")
         {
+            Debug.Log("choca");
             Damage(3);
+             FPSInputManager.getInstance().Carga();
         }
     }
     /*void OnCollisionEnter(Collision other) {
@@ -290,9 +296,9 @@ public class MutantBehaviour : MonoBehaviour
     }*/
     void ResetAttack()
     {
-        anim.SetBool("Attack", false);
+        //anim.SetBool("Attack", false);
         agent.isStopped = false;
-        transform.tag = "Passive";
+        //transform.tag = "Passive";
         attackcollider.enabled = false;
         state = State.Patrol;
     }

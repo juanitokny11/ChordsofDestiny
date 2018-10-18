@@ -18,22 +18,27 @@ private void Awake(){
         }
         if (other.tag == "corchera")
         {
+
             FPSInputManager.getInstance().AddMoney(1);
+           FPSInputManager.getInstance().notacogida=true;
             //sound.Play(1, 1);
         }
         if (other.tag == "negra")
         {
             FPSInputManager.getInstance().AddMoney(5);
+            FPSInputManager.getInstance().notacogida=true;
             //sound.Play(1, 1);
         }
         if (other.tag == "blanca")
         {
             FPSInputManager.getInstance().AddMoney(20);
+            FPSInputManager.getInstance().notacogida=true;
             //sound.Play(1, 1);
         }
         if (other.tag == "redonda")
         {
             FPSInputManager.getInstance().AddMoney(40);
+            FPSInputManager.getInstance().notacogida=true;
             //sound.Play(1, 1);
         }
     }

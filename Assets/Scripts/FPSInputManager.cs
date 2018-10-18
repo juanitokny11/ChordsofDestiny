@@ -21,6 +21,9 @@ public class FPSInputManager : MonoBehaviour
     public float Damage=10f;
     public float cargasolo=20f;
     public bool pause=true;
+    public bool notacogida;
+    public float counternotas;
+    public GameObject notas;
     public GameObject pausaMenu;
 public Image soloBar;
    public float cursolo;
@@ -67,6 +70,15 @@ public Image soloBar;
     { 
         if (curHealth<=0){
              Invoke ("Dead",2f);
+        }
+        if(notacogida==true){
+            notas.SetActive(true);
+        counternotas= counternotas +Time.deltaTime;
+        if(counternotas>=10){
+            counternotas=0;
+            notacogida=false;
+            notas.SetActive(false);
+        }
         }
         //El movimiento del player
         Vector2 inputAxis = Vector2.zero;
