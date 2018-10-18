@@ -18,8 +18,8 @@ public class FPSInputManager : MonoBehaviour
     public Animator pers;
     private bool debil;
     private bool fuerte;
-    public float Damage=1f;
-    public float cargasolo=1f;
+    public float Damage=10f;
+    public float cargasolo=20f;
     public bool pause=true;
     public GameObject pausaMenu;
 public Image soloBar;
@@ -64,15 +64,10 @@ public Image soloBar;
     }
 
     void Update()
-    { /*if (pause == true)
-        {
-            Spawners();
-            Addtime();
+    { 
+        if (curHealth<=0){
+             Invoke ("Dead",2f);
         }
-        ammotext.text = ammo.ToString();
-        rocketstext.text = rocket.ToString();
-            totalammotext.text = totalammo.ToString();
-        totalrocketstext.text = totalrocket.ToString();*/
         //El movimiento del player
         Vector2 inputAxis = Vector2.zero;
         inputAxis.x = Input.GetAxis("Horizontal");
@@ -80,12 +75,6 @@ public Image soloBar;
         playerController.SetAxis(inputAxis);
         //El salto del player
         if (Input.GetButton("Jump")) playerController.StartJump();
-        //Rotación de la cámara
-        //Vector2 mouseAxis = Vector2.zero;
-        // mouseAxis.x = Input.GetAxis("Mouse X") * sensitivity;
-        // mouseAxis.y = Input.GetAxis("Mouse Y") * sensitivity;
-        //Debug.Log("Mouse X = " + mouseAxis.x + " Y = " + mouseAxis.y);
-        //lookRotation.SetRotation(mouseAxis);
         if (pause==true){
         if (Input.GetMouseButtonDown(0))
         {
@@ -103,6 +92,13 @@ public Image soloBar;
             Invoke("ResetTag", 1);
             audios.Play(1, 1);
             //Invoke("ResetAttack", 2);
+        }
+         if (Input.GetMouseButtonDown(2))
+        { 
+        if(cursolo>=Maxsolo){
+            cursolo=0;
+            soloBar.fillAmount= cursolo/Maxsolo;
+            }
         }
         }
         if(Input.GetKeyDown(KeyCode.P))
@@ -158,7 +154,11 @@ public void Pausa()
         //music.mute = true;
         sound.enabled = true;
     }
+   
 }
+ public void Dead(){
+        SceneManager.LoadScene("GameOver"); 
+    }
 }
 
 

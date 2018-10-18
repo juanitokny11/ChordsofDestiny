@@ -12,10 +12,10 @@ private void Awake(){
 }
   public void OnTriggerEnter(Collider other)
     { 
-        /*if(other.CompareTag("Ataque")){
+        if(other.CompareTag("Enemy")){
             FPSInputManager.getInstance().curHealth -= FPSInputManager.getInstance().Damage;
             FPSInputManager.getInstance().HealthBar.fillAmount= FPSInputManager.getInstance().curHealth/ FPSInputManager.getInstance().MaxHealth;
-        }*/
+        }
         if (other.tag == "corchera")
         {
             FPSInputManager.getInstance().AddMoney(1);
@@ -28,7 +28,6 @@ private void Awake(){
         }
         if (other.tag == "blanca")
         {
-            Debug.Log("CHOCA");
             FPSInputManager.getInstance().AddMoney(20);
             //sound.Play(1, 1);
         }
@@ -38,5 +37,6 @@ private void Awake(){
             //sound.Play(1, 1);
         }
     }
+  
 
 }
