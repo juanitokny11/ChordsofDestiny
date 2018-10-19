@@ -12,7 +12,7 @@ public class Spawner : MonoBehaviour {
     public float startWait;
     private GameObject randomTarget;
     public bool stop;
-    public FPSInputManager manager;
+    public  MyGameManager manager;
     int randenemy;
     private void Awake()
     {

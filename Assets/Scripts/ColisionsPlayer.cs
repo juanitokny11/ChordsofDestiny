@@ -13,32 +13,32 @@ private void Awake(){
   public void OnTriggerEnter(Collider other)
     { 
         if(other.CompareTag("Enemy")){
-            FPSInputManager.getInstance().curHealth -= FPSInputManager.getInstance().Damage;
-            FPSInputManager.getInstance().HealthBar.fillAmount= FPSInputManager.getInstance().curHealth/ FPSInputManager.getInstance().MaxHealth;
+            MyGameManager.getInstance().curHealth -=  MyGameManager.getInstance().Damage;
+             MyGameManager.getInstance().HealthBar.fillAmount=  MyGameManager.getInstance().curHealth/  MyGameManager.getInstance().MaxHealth;
         }
         if (other.tag == "corchera")
         {
 
-            FPSInputManager.getInstance().AddMoney(1);
-           FPSInputManager.getInstance().notacogida=true;
+             MyGameManager.getInstance().AddMoney(1);
+            MyGameManager.getInstance().notacogida=true;
             //sound.Play(1, 1);
         }
         if (other.tag == "negra")
         {
-            FPSInputManager.getInstance().AddMoney(5);
-            FPSInputManager.getInstance().notacogida=true;
+             MyGameManager.getInstance().AddMoney(5);
+             MyGameManager.getInstance().notacogida=true;
             //sound.Play(1, 1);
         }
         if (other.tag == "blanca")
         {
-            FPSInputManager.getInstance().AddMoney(20);
-            FPSInputManager.getInstance().notacogida=true;
+             MyGameManager.getInstance().AddMoney(20);
+             MyGameManager.getInstance().notacogida=true;
             //sound.Play(1, 1);
         }
         if (other.tag == "redonda")
         {
-            FPSInputManager.getInstance().AddMoney(40);
-            FPSInputManager.getInstance().notacogida=true;
+             MyGameManager.getInstance().AddMoney(40);
+             MyGameManager.getInstance().notacogida=true;
             //sound.Play(1, 1);
         }
     }

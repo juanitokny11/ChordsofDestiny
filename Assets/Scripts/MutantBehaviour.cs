@@ -13,7 +13,7 @@ public class MutantBehaviour : MonoBehaviour
     public SoundPlayer sound;
     private CapsuleCollider colider;
     private BoxCollider attackcollider;
-    public FPSInputManager manager;
+    public  MyGameManager manager;
     public metronomo met;
 
     [Header("Creeper properties")]
@@ -273,7 +273,7 @@ public class MutantBehaviour : MonoBehaviour
         {
             Debug.Log("choca");
              Damage(2);
-             FPSInputManager.getInstance().Carga();
+              MyGameManager.getInstance().Carga();
         }
            /* if (other.tag == "pesado" && metronomo.getInstance().daño== true)
         {
@@ -285,7 +285,7 @@ public class MutantBehaviour : MonoBehaviour
         {
             Debug.Log("choca");
             Damage(3);
-             FPSInputManager.getInstance().Carga();
+              MyGameManager.getInstance().Carga();
         }
     }
     /*void OnCollisionEnter(Collision other) {

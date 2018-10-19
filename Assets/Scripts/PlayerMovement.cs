@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour {
 //      Quaternion newRotation = Quaternion.LookRotation(moveDirection);
 	 // Quaternion persrotation=personaje.transform.rotation;
 	 // newRotation=persrotation;
-	    transformDirection = axis.x * transform.right + axis.y * transform.forward;
+	    transformDirection = axis.x * transform.forward + axis.y * transform.up ;
 		 Vector3 persview;
 		 persview=personaje.transform.forward;
 		moveDirection.x = transformDirection.x * speed;
@@ -68,9 +68,6 @@ public class PlayerMovement : MonoBehaviour {
             pers.SetBool("Walk", false);
         }
             controller.Move(moveDirection * Time.deltaTime);
-
-     
-
     }
 
 	public void SetAxis(Vector2 inputAxis)

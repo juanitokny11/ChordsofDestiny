@@ -39,6 +39,6 @@ public class MenuManager : MonoBehaviour {
     }
     public void Pause()
     {
-        FPSInputManager.getInstance().Pausa();
+         MyGameManager.getInstance().Pausa();
     }
 }

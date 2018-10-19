@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class FPSInputManager : MonoBehaviour
+public class MyGameManager : MonoBehaviour
 {
 
    public SoundPlayer sound;
@@ -31,10 +31,10 @@ public Image soloBar;
    public Image HealthBar;
    public float curHealth;
    public float MaxHealth = 100;
-    private static FPSInputManager instance;
+    private static  MyGameManager instance;
     public SoundPlayer audios;
 
-    public static FPSInputManager getInstance()
+    public static  MyGameManager getInstance()
     {
         return instance;
     }

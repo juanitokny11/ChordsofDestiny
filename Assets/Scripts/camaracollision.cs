@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class camaracollision : MonoBehaviour {
+public class CamaraCollision : MonoBehaviour {
 
     [Header("Camera Properties")]
     private float DistanceAway;                     //how far the camera is from the player.
@@ -64,13 +64,13 @@ public class camaracollision : MonoBehaviour {
         transform.LookAt(target);
 
         #region wrap the cam orbit rotation
-        if (rotateAround > 20)
+        if (rotateAround > 360)
         {
-            rotateAround = 20;
+            rotateAround = 0;
         }
-        else if (rotateAround < -100f)
+        else if (rotateAround < 0)
         {
-            rotateAround = -100f;
+            rotateAround = rotateAround + 360 ;
         }
         #endregion 
         rotateAround += HorizontalAxis * camRotateSpeed * Time.deltaTime;
