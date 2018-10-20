@@ -35,7 +35,7 @@ public class Spawner : MonoBehaviour {
            // }
             if (randenemy == 0)
             {
-                Enemies[0].GetComponent<MutantBehaviour>().pathNodes = points;
+                Enemies[0].GetComponent<EnemyBehaviour>().pathNodes = points;
             }else if (randenemy == 1)
             {
           //      Enemies[1].GetComponent<CreeperBehaviour>().pathNodes = points;

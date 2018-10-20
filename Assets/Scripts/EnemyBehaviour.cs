@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class MutantBehaviour : MonoBehaviour
+public class EnemyBehaviour : MonoBehaviour
 {
     public enum State { Idle, Patrol, Chase, Attack, Dead};
     public State state;
@@ -271,7 +271,6 @@ public class MutantBehaviour : MonoBehaviour
         }*/
        if (other.tag == "ligero")
         {
-            Debug.Log("choca");
              Damage(2);
               MyGameManager.getInstance().Carga();
         }
@@ -283,7 +282,6 @@ public class MutantBehaviour : MonoBehaviour
         }Ç*/
          if (other.tag == "pesado")
         {
-            Debug.Log("choca");
             Damage(3);
               MyGameManager.getInstance().Carga();
         }

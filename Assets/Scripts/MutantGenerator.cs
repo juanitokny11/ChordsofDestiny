@@ -17,7 +17,7 @@ public class MutantGenerator : MonoBehaviour {
             random.y = Random.Range(0, 12);
             random.z = Random.Range(-18, 18);
             icreeper = Instantiate (creeper);
-			MutantBehaviour cb = icreeper.GetComponent<MutantBehaviour> ();
+			EnemyBehaviour cb = icreeper.GetComponent<EnemyBehaviour> ();
             this.transform.position = random;
             cb.pathNodes = points;
 		}

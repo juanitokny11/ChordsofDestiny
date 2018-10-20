@@ -5,10 +5,11 @@ using UnityEngine.UI;
 
 public class ColisionsPlayer : MonoBehaviour
 {
-    private CapsuleCollider colider;
+    //private CapsuleCollider colider;
     //public SoundPlayer sound;
 private void Awake(){
- colider= GetComponent<CapsuleCollider> ();
+
+        //colider = GetComponent<CapsuleCollider> ();
 }
   public void OnTriggerEnter(Collider other)
     { 
