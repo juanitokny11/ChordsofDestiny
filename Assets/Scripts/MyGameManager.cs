@@ -8,10 +8,8 @@ public class MyGameManager : MonoBehaviour
 {
 
    public SoundPlayer sound;
-    private PlayerMovement playerController;
+    private PlayerMovementPrueba playerController;
     public GameObject arma;
-    public float inputV;
-    public float inputH;
     public float jumpInput;
     private LookRotation lookRotation;
     private MouseCursor mouseCursor;
@@ -27,7 +25,8 @@ public class MyGameManager : MonoBehaviour
     public float counternotas;
     public GameObject notas;
     public GameObject pausaMenu;
-public Image soloBar;
+    public Vector2 inputAxis = Vector2.zero;
+    public Image soloBar;
    public float cursolo;
    public float Maxsolo = 100;
    public Image HealthBar;
@@ -46,34 +45,27 @@ public Image soloBar;
         {
             instance = this;
         }
-        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
-        lookRotation = playerController.GetComponent<LookRotation>();
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementPrueba>();
+        //lookRotation = playerController.GetComponent<LookRotation>();
         pause=true;
         cursolo=0;
         soloBar.fillAmount=cursolo/Maxsolo;
         curHealth=MaxHealth;
         HealthBar.fillAmount=curHealth/MaxHealth;
-        //laser = playerController.GetComponent<Laser> ();
-        //ballShoot = playerController.GetComponent<BallShoot>();
 
         //mouseCursor = new MouseCursor();
         //mouseCursor.HideCursor();
         //Cursor.visible = false;
-       /* armas = 1;
-        ammo = 30;
-        totalammo = 180;
-        rocket = 3;
-        totalrocket = 9;
-        min = 5;
-        seg = 0;*/
+       
     }
 
     void Update()
     { 
+        
         if (curHealth<=0){
              Invoke ("Dead",2f);
         }
-        GetInput();
+        
         if(notacogida==true){
             notas.SetActive(true);
         counternotas= counternotas +Time.deltaTime;
@@ -83,14 +75,15 @@ public Image soloBar;
             notas.SetActive(false);
         }
         }
+
         //El movimiento del player
-        /*Vector2 inputAxis = Vector2.zero;
         inputAxis.x = Input.GetAxis("Horizontal");
         inputAxis.y = Input.GetAxis("Vertical");
         playerController.SetAxis(inputAxis);
+
         //El salto del player
 
-        if (Input.GetButton("Jump")) playerController.StartJump();*/
+        //if (Input.GetButton("Jump")) playerController.StartJump();
         if (pause==true){
         if (Input.GetMouseButtonDown(0))
         {
@@ -148,12 +141,7 @@ public void Carga()
    cursolo +=cargasolo;
    soloBar.fillAmount= cursolo/Maxsolo;
 }
-public void GetInput()
-{
-        this.inputH = Input.GetAxis("Horizontal");
-        this.inputV = Input.GetAxis("Vertical");
-        this.jumpInput = Input.GetAxisRaw("Jump");
-    }
+
     public void Pausa()
 {
     if (!pause)
