@@ -7,6 +7,7 @@ public class PlayerMovementPrueba : MonoBehaviour {
 
 	private CharacterController controller;
 
+    public Animator pers;
     public float forwardSpeed;
     private float diagonalForwardSpeed;
     private float backSpeed;
@@ -14,7 +15,7 @@ public class PlayerMovementPrueba : MonoBehaviour {
     public float jumpSpeed;
     public float gravity;
     public Vector2 axis;
-
+    
     public Vector3 moveDirection;
 
     private void Start()
@@ -22,16 +23,18 @@ public class PlayerMovementPrueba : MonoBehaviour {
         controller = GetComponent<CharacterController>();
 
         this.diagonalForwardSpeed = (float)Mathf.Sqrt(this.forwardSpeed * this.forwardSpeed / 2);
-        this.backSpeed = this.forwardSpeed / 2;
+        this.backSpeed = this.forwardSpeed;
         this.diagonalBackSpeed = (float)Mathf.Sqrt(this.backSpeed * this.backSpeed / 2);
 
-        //moveDirection = Vector3.zero;
+        moveDirection = Vector3.zero;
     }
      private void Update()
      {
+         if(moveDirection!= Vector3.zero){
          Rotate();
+         }
          Move();
-        controller.Move(moveDirection);
+        
 
     }
     public void SetAxis(Vector2 inputAxis)
@@ -40,43 +43,53 @@ public class PlayerMovementPrueba : MonoBehaviour {
     }
     public void Move()
     {
-        Debug.Log("MUEVETE JODER");
-        if (Grounded()){
+        
+        //if (Grounded()){
             this.gravity = 0;
-           
+            
             if (MyGameManager.getInstance().inputAxis.x==0 && MyGameManager.getInstance().inputAxis.y== 0){
                 this.moveDirection.Set(0, 0, 0);
+                pers.SetBool("Walk",false);
             }
         else if(MyGameManager.getInstance().inputAxis.x > 0 && MyGameManager.getInstance().inputAxis.y == 0){
                 this.moveDirection.Set(0, 0, MyGameManager.getInstance().inputAxis.x * this.forwardSpeed);
+                pers.SetBool("Walk",true);
             }
         else if(MyGameManager.getInstance().inputAxis.x < 0 && MyGameManager.getInstance().inputAxis.y == 0){
                 this.moveDirection.Set(0, 0, MyGameManager.getInstance().inputAxis.x * this.backSpeed);
+                pers.SetBool("Walk",true);
             }
         else if(MyGameManager.getInstance().inputAxis.y > 0 && MyGameManager.getInstance().inputAxis.x == 0){
                 this.moveDirection.Set(MyGameManager.getInstance().inputAxis.y * this.forwardSpeed, 0, 0);
+                pers.SetBool("Walk",true);
             }
         else if (MyGameManager.getInstance().inputAxis.y < 0 && MyGameManager.getInstance().inputAxis.x == 0){
                 this.moveDirection.Set(MyGameManager.getInstance().inputAxis.y * this.forwardSpeed, 0, 0);
+                pers.SetBool("Walk",true);
             }
             else if (MyGameManager.getInstance().inputAxis.x > 0 && MyGameManager.getInstance().inputAxis.y > 0)
             {
                 this.moveDirection.Set(MyGameManager.getInstance().inputAxis.y * this.diagonalForwardSpeed, 0, MyGameManager.getInstance().inputAxis.x * this.diagonalForwardSpeed);
+                pers.SetBool("Walk",true);
             }
             else if (MyGameManager.getInstance().inputAxis.x > 0 && MyGameManager.getInstance().inputAxis.y < 0)
             {
                 this.moveDirection.Set(MyGameManager.getInstance().inputAxis.y * this.diagonalForwardSpeed, 0, MyGameManager.getInstance().inputAxis.x * this.diagonalForwardSpeed);
+                pers.SetBool("Walk",true);
             }
             else if (MyGameManager.getInstance().inputAxis.x < 0 && MyGameManager.getInstance().inputAxis.y > 0)
             {
                 this.moveDirection.Set(MyGameManager.getInstance().inputAxis.y * this.diagonalBackSpeed, 0, MyGameManager.getInstance().inputAxis.x * this.diagonalBackSpeed);
+                pers.SetBool("Walk",true);
             }
             else if (MyGameManager.getInstance().inputAxis.x < 0 && MyGameManager.getInstance().inputAxis.y < 0)
             {
                 this.moveDirection.Set(MyGameManager.getInstance().inputAxis.y * this.diagonalBackSpeed, 0, MyGameManager.getInstance().inputAxis.x * this.diagonalBackSpeed);
+                pers.SetBool("Walk",true);
             }
+           
             this.moveDirection = transform.TransformDirection(this.moveDirection);
-
+                
             if(MyGameManager.getInstance().jumpInput > 0){
                 this.moveDirection.y = this.jumpSpeed;
             }
@@ -88,13 +101,13 @@ public class PlayerMovementPrueba : MonoBehaviour {
                 }
             }
             
-        }
+        controller.Move(moveDirection);
         this.moveDirection.y -= this.gravity * Time.deltaTime;
-        
+       // }
        
     }
     private void Rotate(){
-        //transform.Rotate()
+        //transform.rotation=Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(moveDirection),0.4f);
     }
     private bool Grounded(){
         return Physics.Raycast(transform.position + this.controller.center, Vector3.down, this.controller.bounds.extents.y + 0.001f);

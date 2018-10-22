@@ -984,6 +984,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1988839890187536, guid: ca39496ca2beca34fb0ec3660d8f7e22, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca39496ca2beca34fb0ec3660d8f7e22, type: 2}
   m_IsPrefabAsset: 0
@@ -1386,6 +1390,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 632164553}
+  - component: {fileID: 567649934}
   m_Layer: 0
   m_Name: targetcam
   m_TagString: Untagged
@@ -1393,6 +1398,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &567649934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 567649933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5cc7629b6371354587f3cbd15ef325e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &597489893
 GameObject:
   m_ObjectHideFlags: 0
@@ -1656,7 +1672,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 035f9a94b9789784db4215020ae84669, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardSpeed: 200
+  pers: {fileID: 1308475207}
+  forwardSpeed: 0.3
   jumpSpeed: 5
   gravity: 0
   axis: {x: 0, y: 0}
@@ -1701,8 +1718,8 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 9.14
-  m_Radius: 1.38
+  m_Height: 10.14
+  m_Radius: 1.36
   m_SlopeLimit: 55
   m_StepOffset: 0.5
   m_SkinWidth: 0.1
@@ -2034,14 +2051,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minDistance: 10
-  maxDistance: 18
-  DistanceUp: 18
+  maxDistance: 20
+  DistanceUp: 20
   smooth: 0
-  rotateAround: 5
+  rotateAround: 70
   target: {fileID: 632164553}
   CamOcclusion:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 0
 --- !u!1 &856684773
 GameObject:
   m_ObjectHideFlags: 0
@@ -3751,7 +3768,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 649823919}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5451095, y: 0.77, z: -65.59}
+  m_LocalPosition: {x: 1.5451095, y: 2.62, z: -65.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 951352199}

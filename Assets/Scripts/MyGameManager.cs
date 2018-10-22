@@ -77,10 +77,11 @@ public class MyGameManager : MonoBehaviour
         }
 
         //El movimiento del player
-        inputAxis.x = Input.GetAxis("Horizontal");
-        inputAxis.y = Input.GetAxis("Vertical");
+        
+        inputAxis.x = Input.GetAxis("Vertical");
+        inputAxis.y = Input.GetAxis("Horizontal");
         playerController.SetAxis(inputAxis);
-
+        
         //El salto del player
 
         //if (Input.GetButton("Jump")) playerController.StartJump();
