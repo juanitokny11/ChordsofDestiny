@@ -15,7 +15,8 @@ public class PlayerMovementPrueba : MonoBehaviour {
     public float jumpSpeed;
     public float gravity;
     public Vector2 axis;
-    
+     private Vector3 persview;
+		 
     public Vector3 moveDirection;
 
     private void Start()
@@ -25,11 +26,11 @@ public class PlayerMovementPrueba : MonoBehaviour {
         this.diagonalForwardSpeed = (float)Mathf.Sqrt(this.forwardSpeed * this.forwardSpeed / 2);
         this.backSpeed = this.forwardSpeed;
         this.diagonalBackSpeed = (float)Mathf.Sqrt(this.backSpeed * this.backSpeed / 2);
-
         moveDirection = Vector3.zero;
     }
      private void Update()
-     {
+     { 
+         
          if(moveDirection!= Vector3.zero){
          Rotate();
          }
@@ -100,14 +101,19 @@ public class PlayerMovementPrueba : MonoBehaviour {
                     this.moveDirection.y = 0;
                 }
             }
-            
+        //moveDirection=transform.forward;
         controller.Move(moveDirection);
         this.moveDirection.y -= this.gravity * Time.deltaTime;
        // }
        
     }
     private void Rotate(){
-        //transform.rotation=Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(moveDirection),0.4f);
+      
+//transform.Rotate(Vector3.up * Time.deltaTime, Space.Self);
+          //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDirection),  Time.deltaTime * 0.4f);
+         //transform.rotation=Quaternion.Euler(0,0,0);
+         transform.Rotate(0,Input.GetAxis("Horizontal"),0);
+       
     }
     private bool Grounded(){
         return Physics.Raycast(transform.position + this.controller.center, Vector3.down, this.controller.bounds.extents.y + 0.001f);
