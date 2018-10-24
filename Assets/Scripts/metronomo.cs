@@ -7,7 +7,7 @@ public class metronomo : MonoBehaviour {
     public Image imag;
     public Sprite metronomo_01;
     public Sprite metronomo_05;
-    private AudioSource audio;
+    //private AudioSource audio;
     public bool daño = false;
     private static metronomo instance;
 
@@ -22,8 +22,8 @@ public class metronomo : MonoBehaviour {
         {
             instance = this;
         }
-        audio = GetComponent<AudioSource>();
-        audio.Play();
+        //audio = GetComponent<AudioSource>();
+        //audio.Play();
     }
 
     void Update () {
