@@ -11,7 +11,7 @@ public class CamaraCollision : MonoBehaviour {
     public float maxDistance = 2;                //max camera distance
 
     public float DistanceUp = -2;                    //how high the camera is above the player
-    public float smooth = 4.0f;                    //how smooth the camera moves into place
+    public float smooth ;                    //how smooth the camera moves into place
     public float rotateAround = 70f;            //the angle at which you will rotate the camera (on an axis)
 
     [Header("Player to follow")]
@@ -46,7 +46,7 @@ public class CamaraCollision : MonoBehaviour {
     {
 
         HorizontalAxis = Input.GetAxis("Mouse X");
-        VerticalAxis = Input.GetAxis("Mouse Y");
+        //VerticalAxis = Input.GetAxis("Mouse Y");
 
         //Offset of the targets transform (Since the pivot point is usually at the feet).
         Vector3 targetOffset = new Vector3(target.position.x, (target.position.y + 2f), target.position.z);
@@ -74,7 +74,7 @@ public class CamaraCollision : MonoBehaviour {
         }
         #endregion 
         rotateAround += HorizontalAxis * camRotateSpeed * Time.deltaTime;
-       // DistanceUp = Mathf.Clamp(DistanceUp += VerticalAxis, -0.79f, 2.3f);
+        //DistanceUp = Mathf.Clamp(DistanceUp += VerticalAxis, -0.79f, 2.3f);
         DistanceAway = Mathf.Clamp(DistanceAway += VerticalAxis, minDistance, maxDistance);
 
     }

@@ -6,7 +6,8 @@ using UnityEngine;
 public class PlayerMovementPrueba : MonoBehaviour {
 
 	private CharacterController controller;
-
+    
+    public GameObject personaje;
     public Animator pers;
     public float forwardSpeed;
     private float diagonalForwardSpeed;
@@ -103,16 +104,14 @@ public class PlayerMovementPrueba : MonoBehaviour {
             }
         //moveDirection=transform.forward;
         controller.Move(moveDirection);
-        this.moveDirection.y -= this.gravity * Time.deltaTime;
+        //this.moveDirection.y -= this.gravity * Time.deltaTime;
        // }
        
     }
     private void Rotate(){
-      
-//transform.Rotate(Vector3.up * Time.deltaTime, Space.Self);
-          //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDirection),  Time.deltaTime * 0.4f);
+      personaje.transform.rotation = Quaternion.Slerp(personaje.transform.rotation, Quaternion.LookRotation(moveDirection), 2f);
          //transform.rotation=Quaternion.Euler(0,0,0);
-         transform.Rotate(0,Input.GetAxis("Horizontal"),0);
+         //personaje.transform.Rotate(0,Input.GetAxis("Horizontal"),0);
        
     }
     private bool Grounded(){
