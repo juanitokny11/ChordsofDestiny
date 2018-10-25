@@ -41,4 +41,6 @@ public class MenuManager : MonoBehaviour {
     {
          MyGameManager.getInstance().Pausa();
     }
+
+   
 }

@@ -38,8 +38,6 @@ public class CamaraCollision : MonoBehaviour {
     {
         //the statement below automatically positions the camera behind the target.
         rotateAround = target.eulerAngles.y - 45f;
-
-
     }
 
     void LateUpdate()
@@ -82,7 +80,7 @@ public class CamaraCollision : MonoBehaviour {
     {
 
         smooth = 4f;
-        transform.position = Vector3.Lerp(transform.position, camPosition, Time.deltaTime * smooth);
+        //transform.position = Vector3.Lerp(transform.position, camPosition, Time.deltaTime * smooth);
     }
     void occludeRay(ref Vector3 targetFollow)
     {
