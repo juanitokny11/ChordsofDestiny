@@ -52,7 +52,8 @@ public class MyGameManager : MonoBehaviour
         soloBar.fillAmount=cursolo/Maxsolo;
         curHealth=MaxHealth;
         HealthBar.fillAmount=curHealth/MaxHealth;
-
+       
+         
         //mouseCursor = new MouseCursor();
         //mouseCursor.HideCursor();
         //Cursor.visible = false;
@@ -75,13 +76,9 @@ public class MyGameManager : MonoBehaviour
             notas.SetActive(false);
         }
         }
-
-        //El movimiento del player
-        
-        inputAxis.x = Input.GetAxis("Vertical");
-        inputAxis.y = Input.GetAxis("Horizontal");
+         inputAxis.x = Input.GetAxis("Horizontal");
+        inputAxis.y = Input.GetAxis("Vertical");
         playerController.SetAxis(inputAxis);
-        
         //El salto del player
 
         //if (Input.GetButton("Jump")) playerController.StartJump();

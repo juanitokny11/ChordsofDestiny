@@ -30,6 +30,8 @@ public class CamaraCollision : MonoBehaviour {
     Vector3 camMask;
     Vector3 followMask;
 
+    RaycastHit wallHit = new RaycastHit();
+
     private float HorizontalAxis;
     private float VerticalAxis;
 
@@ -86,7 +88,7 @@ public class CamaraCollision : MonoBehaviour {
     {
         #region prevent wall clipping
         //declare a new raycast hit.
-        RaycastHit wallHit = new RaycastHit();
+        
         //linecast from your player (targetFollow) to your cameras mask (camMask) to find collisions.
         if (Physics.Linecast(targetFollow, camMask, out wallHit, CamOcclusion))
         {

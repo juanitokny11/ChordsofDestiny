@@ -1887,7 +1887,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  pers: {fileID: 951352198}
+  pers: {fileID: 951352199}
 --- !u!1 &597489893
 GameObject:
   m_ObjectHideFlags: 0
@@ -2131,7 +2131,6 @@ GameObject:
   - component: {fileID: 1601380796}
   - component: {fileID: 649823924}
   - component: {fileID: 649823923}
-  - component: {fileID: 649823921}
   - component: {fileID: 649823920}
   m_Layer: 0
   m_Name: Player
@@ -2158,23 +2157,6 @@ MonoBehaviour:
   gravity: 0
   axis: {x: 0, y: 0}
   moveDirection: {x: 0, y: 0, z: 0}
---- !u!114 &649823921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114510083811554262, guid: 6ed0ef7571c56c14181ca996cc16386c,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 649823919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91c24ed5b53cfd24bbc6032ddb1558a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smooth: 0
-  smoothTime: 0
-  limitCamerRot: 0
-  minAngle: -60
-  maxAngle: 60
 --- !u!114 &649823923
 MonoBehaviour:
   m_ObjectHideFlags: 0

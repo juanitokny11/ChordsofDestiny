@@ -8,6 +8,7 @@ public class MenuManager : MonoBehaviour {
 	public void PlayGame()
     {
         SceneManager.LoadScene("Gameplay");
+        Time.timeScale=1;
        
     }
     public void EndGame()
@@ -20,6 +21,7 @@ public class MenuManager : MonoBehaviour {
     {
         SceneManager.LoadScene("Controles");
         Cursor.visible = true;
+        Time.timeScale=1;
     }
 
     
@@ -32,6 +34,7 @@ public class MenuManager : MonoBehaviour {
     public void Title(){
         SceneManager.LoadScene("MainM");
         Cursor.visible = true;
+        Time.timeScale=1;
     }
 	public void Victory(){
 		SceneManager.LoadScene("Victoria");
