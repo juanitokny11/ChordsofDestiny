@@ -6,15 +6,17 @@ using UnityEngine;
 public class PlayerMovementPrueba : MonoBehaviour {
 
 	private CharacterController controller;
-    
-    public GameObject personaje;
     public Animator pers;
+
+    private Camera cam;
     public float forwardSpeed;
     private float diagonalForwardSpeed;
     private float backSpeed;
     private float diagonalBackSpeed;
     public float jumpSpeed;
     public float gravity;
+
+    public float Speed;
     public Vector2 axis;
      private Vector3 persview;
 		 
@@ -28,13 +30,15 @@ public class PlayerMovementPrueba : MonoBehaviour {
         this.backSpeed = this.forwardSpeed;
         this.diagonalBackSpeed = (float)Mathf.Sqrt(this.backSpeed * this.backSpeed / 2);
         moveDirection = Vector3.zero;
+        cam=Camera.main;
     }
      private void Update()
      { 
          
-         if(moveDirection!= Vector3.zero){
+         
+         //SetRotate(this.gameObject,cam.gameObject);
          Rotate();
-         }
+      
          Move();
         
 
@@ -108,18 +112,28 @@ public class PlayerMovementPrueba : MonoBehaviour {
             }
         //moveDirection=transform.forward;
         controller.Move(moveDirection);
-        //this.moveDirection.y -= this.gravity * Time.deltaTime;
+        moveDirection.y -= gravity * Time.deltaTime;
        // }
        
     }
     private void Rotate(){
-         //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDirection), 2f);
+        
+        if(moveDirection != Vector3.zero){
+       // transform.rotation = Quaternion.Euler(0, Input.GetAxis("Mouse Y"), 0);
+        //transform.Rotate(0,Input.GetAxis("Mouse Y"),0);
+       //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDirection), 0.05f);
+        }
          //transform.rotation=Quaternion.Euler(0,0,0);
-         //personaje.transform.Rotate(0,Input.GetAxis("Horizontal"),0);
+        //transform.Rotate(0,Input.GetAxis("Horizontal"),0);
        
     }
     private bool Grounded(){
         return Physics.Raycast(transform.position + this.controller.center, Vector3.down, this.controller.bounds.extents.y + 0.001f);
+    }
+    void SetRotate(GameObject toRotate, GameObject camera)
+    {
+        //You can call this function for any game object and any camera, just change the parameters when you call this function
+        transform.rotation = Quaternion.Lerp(toRotate.transform.rotation, camera.transform.rotation, Speed * Time.deltaTime);
     }
 }
 
