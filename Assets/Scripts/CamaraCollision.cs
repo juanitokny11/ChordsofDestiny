@@ -29,7 +29,7 @@ public class CamaraCollision : MonoBehaviour {
     Vector3 camPosition;
     Vector3 camMask;
     Vector3 followMask;
-    private GameObject Player;
+   
 
     RaycastHit wallHit = new RaycastHit();
 
@@ -41,7 +41,7 @@ public class CamaraCollision : MonoBehaviour {
     {
         //the statement below automatically positions the camera behind the target.
         rotateAround = target.eulerAngles.y - 45f;
-        Player=GameObject.Find("Player");
+      
     }
 
     void LateUpdate()
@@ -77,7 +77,7 @@ public class CamaraCollision : MonoBehaviour {
         
         }
         #endregion 
-         Player.transform.rotation = Quaternion.Euler(0,transform.eulerAngles.y, 0);
+        
         rotateAround += HorizontalAxis * camRotateSpeed * Time.deltaTime;
         //DistanceUp = Mathf.Clamp(DistanceUp += VerticalAxis, -0.79f, 2.3f);
         DistanceAway = Mathf.Clamp(DistanceAway , minDistance, maxDistance);
@@ -86,7 +86,7 @@ public class CamaraCollision : MonoBehaviour {
     void smoothCamMethod()
     {
 
-        smooth = 4f;
+        smooth = 5f;
         transform.position = Vector3.Lerp(transform.position, camPosition, Time.deltaTime * smooth);
     }
     void occludeRay(ref Vector3 targetFollow)
