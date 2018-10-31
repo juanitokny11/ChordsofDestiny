@@ -21,7 +21,7 @@ public class FollowObject : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		transform.position=Other.position-offset;
-		trans.rotation = Quaternion.RotateTowards(trans.rotation, pers.rotation, speed);
+		//trans.rotation = Quaternion.RotateTowards(trans.rotation, pers.rotation, speed);
 		//transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(pers.transform.forward), 0.4f);
 		//transform.Rotate ( Vector3.up * ( RotationSpeed * Time.deltaTime ) );
 		//transform.rotation=pers.transform.rotation;

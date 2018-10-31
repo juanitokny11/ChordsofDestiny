@@ -15,6 +15,7 @@ public class PlayerMovementPrueba : MonoBehaviour {
     public float jumpSpeed;
     public float gravity;
 
+    private Transform movement; 
     public Transform obj;
     public float Speed;
     public Vector2 axis;
@@ -29,6 +30,7 @@ public class PlayerMovementPrueba : MonoBehaviour {
         this.backSpeed = this.forwardSpeed;
         this.diagonalBackSpeed = (float)Mathf.Sqrt(this.backSpeed * this.backSpeed / 2);
         moveDirection = Vector3.zero;
+        movement=GetComponent<Transform> ();
         cam=Camera.main;
     }
      private void Update()
@@ -52,7 +54,7 @@ public class PlayerMovementPrueba : MonoBehaviour {
         //if (Grounded()){
             gravity = 0;
 
-           desiredDirection = (axis.x * transform.right * diagonalForwardSpeed) + (axis.y * transform.forward * forwardSpeed);
+           desiredDirection = (axis.x * transform.right * forwardSpeed) + (axis.y * transform.forward * forwardSpeed);
 
             if (desiredDirection != Vector3.zero){
                 pers.SetBool("Walk",true);
@@ -122,9 +124,14 @@ public class PlayerMovementPrueba : MonoBehaviour {
     }
     private void Rotate(){
         
-        if(moveDirection != Vector3.zero){
-          //transform.LookAt(obj);
-            }
+        if(moveDirection != Vector3.zero && axis.x!=-1 || axis.x!=1){
+          //movement.rotation = Quaternion.LookRotation(desiredDirection,Vector3.up);
+          //movement.rotation = Quaternion.Lerp( movement.rotation,Quaternion.LookRotation(desiredDirection),0.05f);
+         //movement.rotation=obj.rotation;
+         //movement.forward=obj.forward;
+         }else if (axis.x==-1 || axis.x==1){
+            //movement.rotation= Quaternion.RotateTowards(Vector3.forward, desiredDirection,maxDegreesDelta:0.05f)  ;
+         }
        // transform.rotation = Quaternion.LookRotation(desiredDirection);
         //transform.Rotate(0,desiredDirection.y,0);
        //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDirection,Vector3.up), 0.05f);
