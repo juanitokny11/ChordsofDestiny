@@ -11,7 +11,7 @@ public class MyGameManager : MonoBehaviour
     private PlayerMovementPrueba playerController;
     public GameObject arma;
     public float jumpInput;
-    private LookRotation lookRotation;
+//    private LookRotation lookRotation;
     private MouseCursor mouseCursor;
     public int money;
     public Text moneyText;
