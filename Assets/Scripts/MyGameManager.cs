@@ -8,7 +8,7 @@ public class MyGameManager : MonoBehaviour
 {
 
    public SoundPlayer sound;
-    private PlayerMovementPrueba playerController;
+    private PlayerMovement playerController;
     public GameObject arma;
     public float jumpInput;
 //    private LookRotation lookRotation;
@@ -45,7 +45,7 @@ public class MyGameManager : MonoBehaviour
         {
             instance = this;
         }
-        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementPrueba>();
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         //lookRotation = playerController.GetComponent<LookRotation>();
         pause=true;
         cursolo=0;
@@ -81,7 +81,11 @@ public class MyGameManager : MonoBehaviour
         playerController.SetAxis(inputAxis);
         //El salto del player
 
-        //if (Input.GetButton("Jump")) playerController.StartJump();
+        if (Input.GetButton("Jump")){
+            jumpInput=1;
+            } else{
+                jumpInput=0;
+            }
         if (pause==true){
         if (Input.GetMouseButtonDown(0))
         {

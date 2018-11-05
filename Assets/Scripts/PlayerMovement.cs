@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-public class PlayerMovementPrueba : MonoBehaviour {
+public class PlayerMovement : MonoBehaviour {
 
 	private CharacterController controller;
     public Animator pers;
-    private Camera cam;
+    public LayerMask ground;
     public float forwardSpeed;
     private float diagonalForwardSpeed;
     private float backSpeed;
@@ -15,7 +15,7 @@ public class PlayerMovementPrueba : MonoBehaviour {
     public float jumpSpeed;
     public float gravity;
 
-    private Transform movement; 
+    private Transform player; 
     public Transform obj;
     public float Speed;
     public Vector2 axis;
@@ -30,8 +30,8 @@ public class PlayerMovementPrueba : MonoBehaviour {
         this.backSpeed = this.forwardSpeed;
         this.diagonalBackSpeed = (float)Mathf.Sqrt(this.backSpeed * this.backSpeed / 2);
         moveDirection = Vector3.zero;
-        movement=GetComponent<Transform> ();
-        cam=Camera.main;
+        player=GetComponent<Transform> ();
+        
     }
      private void Update()
      { 
@@ -51,33 +51,33 @@ public class PlayerMovementPrueba : MonoBehaviour {
     public void Move()
     {
         
-        //if (Grounded()){
-            gravity = 0;
+        if (Grounded()){
+            
 
            desiredDirection = (axis.x * transform.right * forwardSpeed) + (axis.y * transform.forward * forwardSpeed);
 
-            if (desiredDirection != Vector3.zero){
-                pers.SetBool("Walk",true);
+            /*if (desiredDirection != Vector3.zero){
+                //pers.SetBool("Walk",true);
             }else{
-                 pers.SetBool("Walk",false);
-            }
+                // pers.SetBool("Walk",false);
+            }*/
            /* if (MyGameManager.getInstance().inputAxis.x==0 && MyGameManager.getInstance().inputAxis.y== 0){
                 moveDirection.Set(0, 0, 0);
                 pers.SetBool("Walk",false);
             }
-        else if(MyGameManager.getInstance().inputAxis.x > 0 && MyGameManager.getInstance().inputAxis.y == 0){
+            else if(MyGameManager.getInstance().inputAxis.x > 0 && MyGameManager.getInstance().inputAxis.y == 0){
                 moveDirection.Set(0, 0, MyGameManager.getInstance().inputAxis.x * this.forwardSpeed);
                 pers.SetBool("Walk",true);
             }
-        else if(MyGameManager.getInstance().inputAxis.x < 0 && MyGameManager.getInstance().inputAxis.y == 0){
+            else if(MyGameManager.getInstance().inputAxis.x < 0 && MyGameManager.getInstance().inputAxis.y == 0){
                 moveDirection.Set(0, 0, MyGameManager.getInstance().inputAxis.x * this.backSpeed);
                 pers.SetBool("Walk",true);
             }
-        else if(MyGameManager.getInstance().inputAxis.y > 0 && MyGameManager.getInstance().inputAxis.x == 0){
+            else if(MyGameManager.getInstance().inputAxis.y > 0 && MyGameManager.getInstance().inputAxis.x == 0){
                 moveDirection.Set(MyGameManager.getInstance().inputAxis.y * this.forwardSpeed, 0, 0);
                 pers.SetBool("Walk",true);
             }
-        else if (MyGameManager.getInstance().inputAxis.y < 0 && MyGameManager.getInstance().inputAxis.x == 0){
+            else if (MyGameManager.getInstance().inputAxis.y < 0 && MyGameManager.getInstance().inputAxis.x == 0){
                 moveDirection.Set(MyGameManager.getInstance().inputAxis.y * this.forwardSpeed, 0, 0);
                 pers.SetBool("Walk",true);
             }
@@ -106,32 +106,38 @@ public class PlayerMovementPrueba : MonoBehaviour {
                 */
 
             moveDirection = desiredDirection;
-            if(MyGameManager.getInstance().jumpInput > 0){
+            if(MyGameManager.getInstance().jumpInput > 0 && Grounded()){
                 moveDirection.y = jumpSpeed;
-            }
-            else{
-                gravity = 25f;
-
+                 gravity=1;
+            }/*else if(MyGameManager.getInstance().jumpInput == 0 && Grounded()){
+                gravity =25f;
+                if(moveDirection.y>0){
+                moveDirection.y -= -gravity;
+                }else{
+                    gravity=0;
+                }
                 if((controller.collisionFlags & CollisionFlags.Above) != 0){
                     moveDirection.y = 0;
                 }
-            }
-        //moveDirection=transform.forward;
+            }*/
+        
+            
+        
+        }else{
+            Invoke("AddGravity",0.01f);
+        }
         controller.Move(moveDirection);
-        moveDirection.y -= gravity * Time.deltaTime;
-       // }
        
     }
     private void Rotate(){
         
-        if(moveDirection != Vector3.zero && axis.x!=-1 || axis.x!=1){
-          //movement.rotation = Quaternion.LookRotation(desiredDirection,Vector3.up);
-          //movement.rotation = Quaternion.Lerp( movement.rotation,Quaternion.LookRotation(desiredDirection),0.05f);
-         //movement.rotation=obj.rotation;
-         //movement.forward=obj.forward;
-         }else if (axis.x==-1 || axis.x==1){
-            //movement.rotation= Quaternion.RotateTowards(Vector3.forward, desiredDirection,maxDegreesDelta:0.05f)  ;
-         }
+        //if(moveDirection != Vector3.zero && axis.x!=-1 || axis.x!=1){
+          //player.rotation = Quaternion.LookRotation(desiredDirection,Vector3.up);
+          //player.rotation = Quaternion.Lerp( player.rotation,Quaternion.LookRotation(desiredDirection),0.05f);
+         //player.rotation=obj.rotation;
+        // }else if (axis.x==-1 || axis.x==1){
+            //player.rotation= Quaternion.RotateTowards(Vector3.forward, desiredDirection,maxDegreesDelta:0.05f)  ;
+        // }
        // transform.rotation = Quaternion.LookRotation(desiredDirection);
         //transform.Rotate(0,desiredDirection.y,0);
        //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDirection,Vector3.up), 0.05f);
@@ -141,12 +147,16 @@ public class PlayerMovementPrueba : MonoBehaviour {
        
     }
     private bool Grounded(){
-        return Physics.Raycast(transform.position + this.controller.center, Vector3.down, this.controller.bounds.extents.y + 0.001f);
+        return Physics.Raycast(transform.position + this.controller.center, Vector3.down, this.controller.bounds.extents.y + 0.01f,ground);
     }
     void SetRotate(GameObject toRotate, GameObject camera)
     {
         //You can call this function for any game object and any camera, just change the parameters when you call this function
         transform.rotation = Quaternion.Lerp(toRotate.transform.rotation, camera.transform.rotation, Speed * Time.deltaTime);
+    }
+    private void AddGravity() {
+       
+    moveDirection.y-= gravity;
     }
 }
 
