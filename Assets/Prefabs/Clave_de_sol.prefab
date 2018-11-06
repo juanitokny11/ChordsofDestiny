@@ -21,9 +21,11 @@ GameObject:
   - component: {fileID: 4045370075279694}
   - component: {fileID: 33171615095706514}
   - component: {fileID: 23808955486393972}
+  - component: {fileID: 114134523111859194}
+  - component: {fileID: 65607301731409094}
   m_Layer: 0
   m_Name: Clave_de_sol
-  m_TagString: Untagged
+  m_TagString: Clavedesol
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1852622971512518}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -7.2559, y: 3.98, z: -11.1303835}
+  m_LocalPosition: {x: -2.421917, y: 5.02, z: -42.76461}
   m_LocalScale: {x: 22.75001, y: 16.680708, z: 22.75001}
   m_Children: []
   m_Father: {fileID: 0}
@@ -56,7 +58,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: a529e79382ef2fa449b3e8027e32eed3, type: 2}
+  - {fileID: 2100000, guid: 03b939a983b962443a61eb1fc3e4f13e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,3 +85,26 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1852622971512518}
   m_Mesh: {fileID: 4300000, guid: f24380b4db207c24889c5cef2fe92028, type: 3}
+--- !u!65 &65607301731409094
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1852622971512518}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.02204156, y: 0.0030078471, z: 0.061763972}
+  m_Center: {x: 0.00000018253922, y: -4.656614e-10, z: 0.00009790251}
+--- !u!114 &114134523111859194
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1852622971512518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f25aeed731075a449a705f84a8454ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

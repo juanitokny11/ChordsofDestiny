@@ -19,7 +19,9 @@ public class MyGameManager : MonoBehaviour
     private bool debil;
     private bool fuerte;
     public float Damage=10f;
-    public float cargasolo=20f;
+    public float cargasolo=15f;
+
+    public float clavecarga=50f;
     public bool pause=true;
     public bool notacogida;
     public float counternotas;
@@ -141,6 +143,11 @@ public void Daño()
 public void Carga()
 {
    cursolo +=cargasolo;
+   soloBar.fillAmount= cursolo/Maxsolo;
+}
+public void CargaClave()
+{
+   cursolo +=clavecarga;
    soloBar.fillAmount= cursolo/Maxsolo;
 }
 
