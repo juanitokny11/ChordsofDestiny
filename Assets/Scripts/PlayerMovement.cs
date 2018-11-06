@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour {
     private float backSpeed;
     private float diagonalBackSpeed;
     public float jumpSpeed;
-    public float gravity=0;
+    public float gravity;
 
     private Transform player; 
     public Transform obj;
@@ -52,10 +52,10 @@ public class PlayerMovement : MonoBehaviour {
     {
         
         if (Grounded()){
-          
+            
+
            desiredDirection = (axis.x * transform.right * forwardSpeed) + (axis.y * transform.forward * forwardSpeed);
 
-           gravity=0;
             /*if (desiredDirection != Vector3.zero){
                 //pers.SetBool("Walk",true);
             }else{
@@ -104,11 +104,11 @@ public class PlayerMovement : MonoBehaviour {
            
             moveDirection = transform.TransformDirection(moveDirection);
                 */
-             
+
             moveDirection = desiredDirection;
             if(MyGameManager.getInstance().jumpInput > 0 && Grounded()){
                 moveDirection.y = jumpSpeed;
-                 gravity=1.5f;
+                 gravity=1;
             }/*else if(MyGameManager.getInstance().jumpInput == 0 && Grounded()){
                 gravity =25f;
                 if(moveDirection.y>0){
@@ -124,7 +124,7 @@ public class PlayerMovement : MonoBehaviour {
             
         
         }else{
-            Invoke("AddGravity",0.05f);
+            Invoke("AddGravity",0.01f);
         }
         controller.Move(moveDirection);
        
@@ -138,14 +138,16 @@ public class PlayerMovement : MonoBehaviour {
         // }else if (axis.x==-1 || axis.x==1){
             //player.rotation= Quaternion.RotateTowards(Vector3.forward, desiredDirection,maxDegreesDelta:0.05f)  ;
         // }
-       //transform.rotation = Quaternion.LookRotation(desiredDirection);
+       // transform.rotation = Quaternion.LookRotation(desiredDirection);
         //transform.Rotate(0,desiredDirection.y,0);
-       transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDirection,Vector3.up), 0.05f);
+       //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDirection,Vector3.up), 0.05f);
+        
+        
         //transform.Rotate(0,Input.GetAxis("Horizontal"),0);
        
     }
     private bool Grounded(){
-        return Physics.Raycast(transform.position + this.controller.center, Vector3.down, this.controller.bounds.extents.y + 0.1f,ground);
+        return Physics.Raycast(transform.position + this.controller.center, Vector3.down, this.controller.bounds.extents.y + 0.01f,ground);
     }
     void SetRotate(GameObject toRotate, GameObject camera)
     {

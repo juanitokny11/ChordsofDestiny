@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class ColisionsPlayer : MonoBehaviour
 {
-    private CharacterController colider;
+    //private CapsuleCollider colider;
     //public SoundPlayer sound;
 private void Awake(){
 
-        colider = GetComponent<CharacterController> ();
+        //colider = GetComponent<CapsuleCollider> ();
 }
   public void OnTriggerEnter(Collider other)
     { 
@@ -40,12 +40,6 @@ private void Awake(){
         {
              MyGameManager.getInstance().AddMoney(40);
              MyGameManager.getInstance().notacogida=true;
-            //sound.Play(1, 1);
-        }
-         if (other.tag == "Clavedesol")
-        {
-             MyGameManager.getInstance().CargaClave();
-            //MyGameManager.getInstance().notacogida=true;
             //sound.Play(1, 1);
         }
     }
