@@ -9,9 +9,9 @@ public class PlayerMovement : MonoBehaviour {
     public Animator pers;
     public LayerMask ground;
     public float forwardSpeed;
-    private float diagonalForwardSpeed;
+    //private float diagonalForwardSpeed;
     private float backSpeed;
-    private float diagonalBackSpeed;
+   // private float diagonalBackSpeed;
     public float jumpSpeed;
     public float gravity=0;
 
@@ -26,9 +26,9 @@ public class PlayerMovement : MonoBehaviour {
     {
         controller = GetComponent<CharacterController>();
         
-        this.diagonalForwardSpeed = (float)Mathf.Sqrt(this.forwardSpeed * this.forwardSpeed / 2);
+       // this.diagonalForwardSpeed = (float)Mathf.Sqrt(this.forwardSpeed * this.forwardSpeed / 2);
         this.backSpeed = this.forwardSpeed;
-        this.diagonalBackSpeed = (float)Mathf.Sqrt(this.backSpeed * this.backSpeed / 2);
+        //this.diagonalBackSpeed = (float)Mathf.Sqrt(this.backSpeed * this.backSpeed / 2);
         moveDirection = Vector3.zero;
         player=GetComponent<Transform> ();
         
@@ -108,7 +108,7 @@ public class PlayerMovement : MonoBehaviour {
             moveDirection = desiredDirection;
             if(MyGameManager.getInstance().jumpInput > 0 && Grounded()){
                 moveDirection.y = jumpSpeed;
-                 gravity=1.5f;
+                 gravity=0.5f;
             }/*else if(MyGameManager.getInstance().jumpInput == 0 && Grounded()){
                 gravity =25f;
                 if(moveDirection.y>0){
@@ -138,9 +138,9 @@ public class PlayerMovement : MonoBehaviour {
         // }else if (axis.x==-1 || axis.x==1){
             //player.rotation= Quaternion.RotateTowards(Vector3.forward, desiredDirection,maxDegreesDelta:0.05f)  ;
         // }
-       //transform.rotation = Quaternion.LookRotation(desiredDirection);
-        //transform.Rotate(0,desiredDirection.y,0);
-       transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDirection,Vector3.up), 0.05f);
+        //transform.rotation = Quaternion.LookRotation(desiredDirection);
+        //transform.Rotate(0,desiredDirection.x,0);
+        //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(moveDirection,Vector3.up), 0.05f);
         //transform.Rotate(0,Input.GetAxis("Horizontal"),0);
        
     }

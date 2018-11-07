@@ -48,7 +48,7 @@ public class CamaraCollision : MonoBehaviour {
     {
 
         HorizontalAxis = Input.GetAxis("Mouse X");
-        VerticalAxis = Input.GetAxis("Mouse Y");
+        //VerticalAxis = Input.GetAxis("Mouse Y");
 
         //Offset of the targets transform (Since the pivot point is usually at the feet).
         Vector3 targetOffset = new Vector3(target.position.x, (target.position.y + 2f), target.position.z);
