@@ -108,7 +108,7 @@ public class PlayerMovement : MonoBehaviour {
             moveDirection = desiredDirection;
             if(MyGameManager.getInstance().jumpInput > 0 && Grounded()){
                 moveDirection.y = jumpSpeed;
-                 gravity=0.5f;
+                 gravity=0.3f;
             }/*else if(MyGameManager.getInstance().jumpInput == 0 && Grounded()){
                 gravity =25f;
                 if(moveDirection.y>0){
@@ -142,6 +142,15 @@ public class PlayerMovement : MonoBehaviour {
         //transform.Rotate(0,desiredDirection.x,0);
         //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(moveDirection,Vector3.up), 0.05f);
         //transform.Rotate(0,Input.GetAxis("Horizontal"),0);
+        /*if (Input.GetKeyDown(KeyCode.A)){
+            transform.Rotate(0,90,0);
+        }else if (Input.GetKeyDown(KeyCode.W)){
+            transform.Rotate(0,0,0);
+        }else if (Input.GetKeyDown(KeyCode.D)){
+            transform.Rotate(0,-90,0);
+        }else if (Input.GetKeyDown(KeyCode.W)){
+            transform.Rotate(0,0,0);
+        }*/
        
     }
     private bool Grounded(){

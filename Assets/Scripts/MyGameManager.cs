@@ -13,6 +13,8 @@ public class MyGameManager : MonoBehaviour
     public float jumpInput;
 //    private LookRotation lookRotation;
     private MouseCursor mouseCursor;
+
+    public GameObject cam;
     public int money;
     public Text moneyText;
     public Animator pers;
@@ -23,6 +25,7 @@ public class MyGameManager : MonoBehaviour
 
     public float clavecarga=50f;
     public bool pause=true;
+    public bool godmode=true;
     public bool notacogida;
     public float counternotas;
     public GameObject notas;
@@ -50,21 +53,22 @@ public class MyGameManager : MonoBehaviour
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         //lookRotation = playerController.GetComponent<LookRotation>();
         pause=true;
+        godmode=true;
         cursolo=0;
         soloBar.fillAmount=cursolo/Maxsolo;
         curHealth=MaxHealth;
         HealthBar.fillAmount=curHealth/MaxHealth;
-       
-         
         //mouseCursor = new MouseCursor();
         //mouseCursor.HideCursor();
         //Cursor.visible = false;
-       
     }
 
     void Update()
     { 
-        
+         if(Input.GetKeyDown(KeyCode.F10)){
+          GodMode();
+        }
+        if (godmode==true){
         if (curHealth<=0){
              Invoke ("Dead",2f);
         }
@@ -82,7 +86,6 @@ public class MyGameManager : MonoBehaviour
         inputAxis.y = Input.GetAxis("Vertical");
         playerController.SetAxis(inputAxis);
         //El salto del player
-
         if (Input.GetButton("Jump")){
             jumpInput=1;
             } else{
@@ -117,6 +120,12 @@ public class MyGameManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.P))
     {
         Pausa();
+    }
+    }else {
+        inputAxis.x = Input.GetAxis("Horizontal");
+        inputAxis.y = Input.GetAxis("Vertical");
+        cam.transform.Translate(inputAxis.x,0, inputAxis.y);
+        cam.transform.Rotate(Input.GetAxis("Mouse Y"),Input.GetAxis("Mouse X"),0);
     }
     }
     //Cursor del ratón
@@ -161,6 +170,7 @@ public void CargaClave()
        Cursor.visible = false;
         AudioListener.pause = false;
         //music.mute = false;
+        notas.SetActive(false);
         sound.enabled = false;
     }
     else if (pause)
@@ -168,10 +178,35 @@ public void CargaClave()
         Time.timeScale = 0;
         pausaMenu.SetActive(true);
         AudioListener.pause = true;
+        notas.SetActive(true);
         pause = false;
         Cursor.visible = true;
         //music.mute = true;
         sound.enabled = true;
+    }
+   
+}
+public void GodMode()
+{
+    if (!godmode)
+    {
+        cam.SetActive(false);
+        godmode = true;
+       Cursor.visible = false;
+        //AudioListener.pause = false;
+        //music.mute = false;
+        //notas.SetActive(false);
+        //sound.enabled = false;
+    }
+    else if (godmode)
+    {
+        cam.SetActive(true);
+        godmode = false;
+        Cursor.visible = true;
+        //AudioListener.pause = true;
+        //notas.SetActive(true);
+        //music.mute = true;
+        //sound.enabled = true;
     }
    
 }
