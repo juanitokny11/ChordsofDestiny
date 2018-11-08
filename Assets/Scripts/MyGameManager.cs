@@ -32,6 +32,7 @@ public class MyGameManager : MonoBehaviour
     public GameObject pausaMenu;
     public Vector2 inputAxis = Vector2.zero;
     public Image soloBar;
+    public GameObject solocollider;
    public float cursolo;
    public float Maxsolo = 100;
    public Image HealthBar;
@@ -72,11 +73,16 @@ public class MyGameManager : MonoBehaviour
         if (curHealth<=0){
              Invoke ("Dead",2f);
         }
-        
+        if(Input.GetKeyDown(KeyCode.G)){
+          Evadir();
+        }
+         if(Input.GetKeyDown(KeyCode.F)){
+          Disparar();
+        }
         if(notacogida==true){
             notas.SetActive(true);
         counternotas= counternotas +Time.deltaTime;
-        if(counternotas>=10){
+        if(counternotas>=4){
             counternotas=0;
             notacogida=false;
             notas.SetActive(false);
@@ -114,10 +120,11 @@ public class MyGameManager : MonoBehaviour
         if(cursolo>=Maxsolo){
             cursolo=0;
             soloBar.fillAmount= cursolo/Maxsolo;
+            solocollider.SetActive(true);
             }
         }
         }
-        if(Input.GetKeyDown(KeyCode.P))
+        if(Input.GetKeyDown(KeyCode.Escape))
     {
         Pausa();
     }
@@ -193,22 +200,22 @@ public void GodMode()
         cam.SetActive(false);
         godmode = true;
        Cursor.visible = false;
-        //AudioListener.pause = false;
-        //music.mute = false;
-        //notas.SetActive(false);
-        //sound.enabled = false;
+      
     }
     else if (godmode)
     {
         cam.SetActive(true);
         godmode = false;
         Cursor.visible = true;
-        //AudioListener.pause = true;
-        //notas.SetActive(true);
-        //music.mute = true;
-        //sound.enabled = true;
+        
     }
    
+}
+public void Evadir(){
+    Debug.Log("esquivo");
+}
+public void Disparar(){
+    Debug.Log("disparo");
 }
  public void Dead(){
         SceneManager.LoadScene("GameOver"); 
