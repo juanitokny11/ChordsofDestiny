@@ -2,24 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class Movie : MonoBehaviour
 {
-    RawImage video;
-
-   
-
-    // Use this for initialization
-    void Start ()
+    public VideoClip videoClip;
+    
+    void Start()
     {
+        var videoPlayer = gameObject.AddComponent<VideoPlayer>();
+        var audioSource = gameObject.AddComponent<AudioSource>();
 
-        video = this.GetComponent<RawImage>();
-        (video.texture as MovieTexture).Play();
-
+        videoPlayer.playOnAwake = false;
+        videoPlayer.clip = videoClip;
+        videoPlayer.renderMode = VideoRenderMode.MaterialOverride;
+        videoPlayer.targetMaterialRenderer = GetComponent<Renderer>();
+        videoPlayer.targetMaterialProperty = "_MainTex";
+        videoPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
+        videoPlayer.SetTargetAudioSource(0, audioSource);
+      
     }
 
-    // Update is called once per frame
-    void Update () {
-		
-	}
+    void Update()
+    {
+
+            VideoPlayer vp = GetComponent<VideoPlayer>();
+            vp.Play();
+            vp.isLooping=true;
+       
+    }
 }
+
