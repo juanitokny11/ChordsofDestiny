@@ -19,8 +19,6 @@ public class PlayerMovement : MonoBehaviour {
     private float verticalVel;
     private Vector3 moveVector;
     private Vector3 moveVector2;
-    public Vector3 nullVector;
-
     private void Start()
     {
         //anim = GetComponent<Animator>();

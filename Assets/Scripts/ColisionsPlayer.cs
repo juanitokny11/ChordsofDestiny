@@ -49,6 +49,4 @@ private void Awake(){
             //sound.Play(1, 1);
         }
     }
-  
-
 }

@@ -8,7 +8,7 @@ public class MyGameManager : MonoBehaviour
 {
 
    public SoundPlayer sound;
-    private PlayerMovement playerController;
+    private GameObject player;
     public GameObject arma;
     public float jumpInput;
 //    private LookRotation lookRotation;
@@ -51,7 +51,7 @@ public class MyGameManager : MonoBehaviour
         {
             instance = this;
         }
-        //playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        player = GameObject.FindGameObjectWithTag("Player");
         //lookRotation = playerController.GetComponent<LookRotation>();
         pause=true;
         godmode=true;
@@ -89,43 +89,43 @@ public class MyGameManager : MonoBehaviour
         }
         }
         
-        if (pause==true){
-        if (Input.GetMouseButtonDown(0))
-        {
-            pers.Play("atque_debil", -1, 0);
-            arma.transform.tag = "ligero";
-            Invoke("ResetTag", 1);
-            audios.Play(0, 1);
-            //debil = true;
-            //Invoke("ResetAttack", 1);
-        }
-        if (Input.GetMouseButtonDown(1))
-        {
-          pers.CrossFade("ataque_fuerte", 0.1f, 0, 0);
-           arma.transform.tag = "pesado";
-            Invoke("ResetTag", 1);
-            audios.Play(1, 1);
-            //Invoke("ResetAttack", 2);
-        }
-         if (Input.GetMouseButtonDown(2))
-        { 
-        if(cursolo>=Maxsolo){
-            cursolo=0;
-            soloBar.fillAmount= cursolo/Maxsolo;
-            solocollider.SetActive(true);
+            if (pause==true){
+                if (Input.GetMouseButtonDown(0))
+                {
+                    pers.Play("atque_debil", -1, 0);
+                    arma.transform.tag = "ligero";
+                    Invoke("ResetTag", 1);
+                    audios.Play(0, 1);
+                    //debil = true;
+                    //Invoke("ResetAttack", 1);
+                }
+                if (Input.GetMouseButtonDown(1))
+                {
+                    pers.CrossFade("ataque_fuerte", 0.1f, 0, 0);
+                    arma.transform.tag = "pesado";
+                    Invoke("ResetTag", 1);
+                    audios.Play(1, 1);
+                    //Invoke("ResetAttack", 2);
+                }
+                if (Input.GetMouseButtonDown(2))
+                { 
+                     if(cursolo>=Maxsolo){
+                     cursolo=0;
+                     soloBar.fillAmount= cursolo/Maxsolo;
+                    solocollider.SetActive(true);
+                }
             }
         }
-        }
         if(Input.GetKeyDown(KeyCode.Escape))
-    {
-        Pausa();
-    }
-    }else {
-        inputAxis.x = Input.GetAxis("Horizontal");
-        inputAxis.y = Input.GetAxis("Vertical");
-        cam.transform.Translate(inputAxis.x,0, inputAxis.y);
-        cam.transform.Rotate(Input.GetAxis("Mouse Y"),Input.GetAxis("Mouse X"),0);
-    }
+        {
+            Pausa();
+        }
+        }else {
+            inputAxis.x = Input.GetAxis("Horizontal");
+            inputAxis.y = Input.GetAxis("Vertical");
+            cam.transform.Translate(inputAxis.x,0, inputAxis.y);
+            cam.transform.Rotate(Input.GetAxis("Mouse Y"),Input.GetAxis("Mouse X"),0);
+        }
     }
     //Cursor del ratón
     // if (Input.GetMouseButtonDown(0)) mouseCursor.HideCursor();
@@ -148,21 +148,21 @@ public void Daño()
    curHealth -=Damage;
    HealthBar.fillAmount= curHealth/MaxHealth;
 }
-public void Carga()
-{
-   cursolo +=cargasolo;
-   soloBar.fillAmount= cursolo/Maxsolo;
-}
-public void CargaClave()
-{
-   cursolo +=clavecarga;
-   soloBar.fillAmount= cursolo/Maxsolo;
-}
-
-    public void Pausa()
-{
-    if (!pause)
+ public void Carga()
     {
+        cursolo +=cargasolo;
+        soloBar.fillAmount= cursolo/Maxsolo;
+    }
+public void CargaClave()
+    {
+        cursolo +=clavecarga;
+        soloBar.fillAmount= cursolo/Maxsolo;
+    }
+
+public void Pausa()
+    {
+    if (!pause)
+        {
         pausaMenu.SetActive(false);
         pause = true;
         Time.timeScale = 1;
@@ -171,46 +171,55 @@ public void CargaClave()
         //music.mute = false;
         notas.SetActive(false);
         sound.enabled = false;
-    }
-    else if (pause)
-    {
-        Time.timeScale = 0;
-        pausaMenu.SetActive(true);
-        AudioListener.pause = true;
-        notas.SetActive(true);
-        pause = false;
-        Cursor.visible = true;
-        //music.mute = true;
-        sound.enabled = true;
-    }
+        }
+        else if (pause)
+        {
+            Time.timeScale = 0;
+            pausaMenu.SetActive(true);
+            AudioListener.pause = true;
+            notas.SetActive(true);
+            pause = false;
+            Cursor.visible = true;
+            //music.mute = true;
+            sound.enabled = true;
+        }
    
-}
+    }
 public void GodMode()
-{
-    if (!godmode)
     {
+        if (!godmode)
+        {
         cam.SetActive(false);
         godmode = true;
        Cursor.visible = false;
       
-    }
-    else if (godmode)
-    {
+        }
+        else if (godmode)
+        {
         cam.SetActive(true);
         godmode = false;
         Cursor.visible = true;
         
-    }
+        }
    
-}
-public void Evadir(){
-    Debug.Log("esquivo");
-}
-public void Disparar(){
-    Debug.Log("disparo");
-}
- public void Dead(){
+    }
+public void Evadir()
+    {
+        Debug.Log("esquivo");
+        player.GetComponent<ColisionsPlayer>().enabled = false;
+        Invoke("ActivarColisiones",0.2f);
+    }
+public void Disparar()
+    {
+        Debug.Log("disparo");
+    }
+public void Dead()
+    {
         SceneManager.LoadScene("GameOver"); 
+    }
+private void ActivarColisiones()
+    {
+        player.GetComponent<ColisionsPlayer>().enabled = true;
     }
 }
 
