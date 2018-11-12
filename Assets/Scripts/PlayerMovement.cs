@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour {
     public bool isGrounded;
     private float verticalVel;
     private Vector3 moveVector;
+    private Vector3 moveVector2;
 
     private void Start()
     {
@@ -42,6 +43,7 @@ public class PlayerMovement : MonoBehaviour {
         moveVector = new Vector3(0, verticalVel, 0);
 
         controller.Move(moveVector);
+        controller.SimpleMove(desiredMoveDirection*speed*15f);
     }
     void PlayerMovementAndRotation()
     {
@@ -58,7 +60,7 @@ public class PlayerMovement : MonoBehaviour {
         right.Normalize();
 
         desiredMoveDirection = forward * inputZ + right * inputX;
-
+        
         if(blockRotationPlayer == false)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(desiredMoveDirection), desiredRotationSpeed);
@@ -78,10 +80,9 @@ public class PlayerMovement : MonoBehaviour {
         if (speed > allowPlayerRotation)
         {
            // anim.SetFloat("InputMagnitude", speed, 0.0f, Time.deltaTime * 2f);
-
             PlayerMovementAndRotation();
         }else if(speed < allowPlayerRotation)
-        {
+        {   
            // anim.SetFloat("InputMagnitude", speed, 0.0f, Time.deltaTime * 2f);
         }
     }
