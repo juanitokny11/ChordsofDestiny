@@ -33,8 +33,8 @@ public class CamaraCollision : MonoBehaviour {
 
     RaycastHit wallHit = new RaycastHit();
 
-    private float HorizontalAxis;
-    private float VerticalAxis;
+    public float HorizontalAxis;
+    public float VerticalAxis;
 
     // Use this for initialization
     void Start()
@@ -48,7 +48,7 @@ public class CamaraCollision : MonoBehaviour {
     {
 
         HorizontalAxis = Input.GetAxis("Mouse X");
-        //VerticalAxis = Input.GetAxis("Mouse Y");
+        VerticalAxis = Input.GetAxis("Mouse Y");
 
         //Offset of the targets transform (Since the pivot point is usually at the feet).
         Vector3 targetOffset = new Vector3(target.position.x, (target.position.y + 2f), target.position.z);
@@ -79,7 +79,7 @@ public class CamaraCollision : MonoBehaviour {
         #endregion 
         
         rotateAround += HorizontalAxis * camRotateSpeed * Time.deltaTime;
-        //DistanceUp = Mathf.Clamp(DistanceUp += VerticalAxis, -0.79f, 2.3f);
+       
         DistanceAway = Mathf.Clamp(DistanceAway , minDistance, maxDistance);
 
     }

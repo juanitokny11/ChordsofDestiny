@@ -2536,17 +2536,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 035f9a94b9789784db4215020ae84669, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pers: {fileID: 1308475207}
-  ground:
-    serializedVersion: 2
-    m_Bits: 0
-  forwardSpeed: 0.5
-  jumpSpeed: 2
-  gravity: 0
-  obj: {fileID: 951352199}
-  Speed: 1
-  axis: {x: 0, y: 0}
-  moveDirection: {x: 0, y: 0, z: 0}
+  inputX: 0
+  inputZ: 0
+  desiredMoveDirection: {x: 0, y: 0, z: 0}
+  desiredRotationSpeed: 0
+  blockRotationPlayer: 0
+  anim: {fileID: 0}
+  speed: 10
+  allowPlayerRotation: 0
+  cam: {fileID: 0}
+  controller: {fileID: 0}
+  isGrounded: 0
 --- !u!54 &649823921
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2923,6 +2923,8 @@ MonoBehaviour:
   CamOcclusion:
     serializedVersion: 2
     m_Bits: 4294967295
+  HorizontalAxis: 0
+  VerticalAxis: 0
 --- !u!1 &856684773
 GameObject:
   m_ObjectHideFlags: 0
@@ -6435,17 +6437,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 035f9a94b9789784db4215020ae84669, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pers: {fileID: 0}
-  ground:
-    serializedVersion: 2
-    m_Bits: 55
-  forwardSpeed: 0.5
-  jumpSpeed: 3
-  gravity: 0
-  obj: {fileID: 992945141}
-  Speed: 1
-  axis: {x: 0, y: 0}
-  moveDirection: {x: 0, y: 0, z: 0}
+  inputX: 0
+  inputZ: 0
+  desiredMoveDirection: {x: 0, y: 0, z: 0}
+  desiredRotationSpeed: 0.1
+  blockRotationPlayer: 0
+  anim: {fileID: 0}
+  speed: 0
+  allowPlayerRotation: 0.3
+  cam: {fileID: 0}
+  controller: {fileID: 0}
+  isGrounded: 0
 --- !u!114 &1916728046
 MonoBehaviour:
   m_ObjectHideFlags: 0

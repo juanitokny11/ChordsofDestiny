@@ -51,7 +51,7 @@ public class MyGameManager : MonoBehaviour
         {
             instance = this;
         }
-        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        //playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         //lookRotation = playerController.GetComponent<LookRotation>();
         pause=true;
         godmode=true;
@@ -90,7 +90,7 @@ public class MyGameManager : MonoBehaviour
         }
          inputAxis.x = Input.GetAxis("Horizontal");
         inputAxis.y = Input.GetAxis("Vertical");
-        playerController.SetAxis(inputAxis);
+       // playerController.SetAxis(inputAxis);
         //El salto del player
         if (Input.GetButton("Jump")){
             jumpInput=1;
