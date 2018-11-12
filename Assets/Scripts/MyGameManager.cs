@@ -88,15 +88,7 @@ public class MyGameManager : MonoBehaviour
             notas.SetActive(false);
         }
         }
-         inputAxis.x = Input.GetAxis("Horizontal");
-        inputAxis.y = Input.GetAxis("Vertical");
-       // playerController.SetAxis(inputAxis);
-        //El salto del player
-        if (Input.GetButton("Jump")){
-            jumpInput=1;
-            } else{
-                jumpInput=0;
-            }
+        
         if (pause==true){
         if (Input.GetMouseButtonDown(0))
         {

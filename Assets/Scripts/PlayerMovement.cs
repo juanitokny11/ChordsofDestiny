@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour {
     private float verticalVel;
     private Vector3 moveVector;
     private Vector3 moveVector2;
+    public Vector3 nullVector;
 
     private void Start()
     {
@@ -32,18 +33,23 @@ public class PlayerMovement : MonoBehaviour {
         InputMagnitude();
 
         isGrounded = controller.isGrounded;
-
+         if (Input.GetButton("Jump")&& isGrounded){
+            verticalVel=4;
+        }
         if (isGrounded){
             verticalVel -= 0;
+           
         }
         else
         {
-            verticalVel -= 2;
+           Invoke("AddGravity",0.1f);
         }
+        
         moveVector = new Vector3(0, verticalVel, 0);
 
         controller.Move(moveVector);
-        controller.SimpleMove(desiredMoveDirection*speed*15f);
+       
+        
     }
     void PlayerMovementAndRotation()
     {
@@ -80,10 +86,14 @@ public class PlayerMovement : MonoBehaviour {
         if (speed > allowPlayerRotation)
         {
            // anim.SetFloat("InputMagnitude", speed, 0.0f, Time.deltaTime * 2f);
+            controller.SimpleMove(desiredMoveDirection*15f);
             PlayerMovementAndRotation();
         }else if(speed < allowPlayerRotation)
         {   
            // anim.SetFloat("InputMagnitude", speed, 0.0f, Time.deltaTime * 2f);
         }
+    }
+    void AddGravity(){
+         verticalVel -= 2;
     }
 }
