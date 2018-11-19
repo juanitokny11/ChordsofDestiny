@@ -143,7 +143,7 @@ public class MyGameManager : MonoBehaviour
     {
         arma.transform.tag = "arma";
     } 
-public void Daño()
+public void Daño(float Damage)
 {
    curHealth -=Damage;
    HealthBar.fillAmount= curHealth/MaxHealth;

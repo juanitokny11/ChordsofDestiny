@@ -10,11 +10,12 @@ public class EnemyBehaviour : MonoBehaviour
 
     private NavMeshAgent agent;
     private Animator anim;
-    public SoundPlayer sound;
+
+    //public SoundPlayer sound;
     private CapsuleCollider colider;
     private BoxCollider attackcollider;
     public  MyGameManager manager;
-    public metronomo met;
+    //public metronomo met;
 
     [Header("Creeper properties")]
     public int life = 10;
@@ -135,8 +136,12 @@ public class EnemyBehaviour : MonoBehaviour
 
 
     }
-    void Explode() { }
-    void Dead() { }
+    void Explode() { 
+        
+    }
+    void Dead() {
+
+     }
 
     void SetIdle()
     {

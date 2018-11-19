@@ -14,8 +14,14 @@ private void Awake(){
   public void OnTriggerEnter(Collider other)
     { 
         if(other.CompareTag("Enemy")){
+
             MyGameManager.getInstance().curHealth -=  MyGameManager.getInstance().Damage;
              MyGameManager.getInstance().HealthBar.fillAmount=  MyGameManager.getInstance().curHealth/  MyGameManager.getInstance().MaxHealth;
+        }
+         if (other.tag == "Enemy")
+        {
+             MyGameManager.getInstance().Daño(15f);
+            //sound.Play(1, 1);
         }
         if (other.tag == "corchera")
         {

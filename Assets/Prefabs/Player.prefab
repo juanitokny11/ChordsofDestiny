@@ -355,8 +355,6 @@ GameObject:
   - component: {fileID: 4683087565755586}
   - component: {fileID: 143128806200363942}
   - component: {fileID: 114417902411267068}
-  - component: {fileID: 114651617309879134}
-  - component: {fileID: 114510083811554262}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2132,43 +2130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad16f53f6ccf4594c8114a2c1b4d4aad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114510083811554262
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1298357407602096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91c24ed5b53cfd24bbc6032ddb1558a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smooth: 0
-  smoothTime: 0
-  limitCamerRot: 0
-  minAngle: -60
-  maxAngle: 60
---- !u!114 &114651617309879134
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1298357407602096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2449470dd136d51408506418bbb4fec0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  personaje: {fileID: 1912545504852406}
-  targetcam: {fileID: 0}
-  speed: 10
-  sound: {fileID: 0}
-  moveDirection: {x: 0, y: 0, z: 0}
-  transformDirection: {x: 0, y: 0, z: 0}
-  nullvector: {x: 0, y: 0, z: 0}
-  pers: {fileID: 95933761043184574}
-  jumpSpeed: 5
-  gravityMagnitude: 1
 --- !u!114 &114988479542403780
 MonoBehaviour:
   m_ObjectHideFlags: 1
