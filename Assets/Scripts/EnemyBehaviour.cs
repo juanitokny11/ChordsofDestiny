@@ -49,7 +49,6 @@ public class EnemyBehaviour : MonoBehaviour
         attackcollider = GetComponent<BoxCollider>();
         colider = GetComponent<CapsuleCollider>();
        // sound = GetComponentInChildren<SoundPlayer>();
-
         nearNode = true;
         SetIdle();        
 	}
@@ -290,13 +289,18 @@ public class EnemyBehaviour : MonoBehaviour
             Damage(3);
               MyGameManager.getInstance().Carga();
         }
+        
     }
-    /*void OnCollisionEnter(Collision other) {
+    void OnCollisionEnter(Collision other) {
 
 		if(other.gameObject.tag == "arma") {
 			Damage (2);	
 		}
-    }*/
+        if (other.gameObject.tag == "Solo")
+        {
+            Damage(7);
+        }
+    }
     void ResetAttack()
     {
         //anim.SetBool("Attack", false);

@@ -101,7 +101,7 @@ public class BossBehaviour : MonoBehaviour
         {
             if(nearNode) GoNearNode();
             else GoNextNode();
-            SetPatrol();
+           
         }
         else timeCounter += Time.deltaTime;
     }
@@ -156,19 +156,6 @@ public class BossBehaviour : MonoBehaviour
         }*/
 
         state = State.Idle;
-    }
-    void SetPatrol()
-    { 
-        agent.isStopped = false;
-        agent.stoppingDistance = 0;
-        radius = idleRadius;
-        //anim.SetBool("Walk", true);
-        //anim.SetBool("Run", false);
-        /*if (manager.pause == true)
-        {
-            sound.Play(3, 1);
-        }*/
-        state = State.Patrol;
     }
     void SetChase()
     {

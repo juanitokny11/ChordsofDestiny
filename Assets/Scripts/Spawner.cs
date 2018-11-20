@@ -16,7 +16,8 @@ public class Spawner : MonoBehaviour {
     int randenemy;
     private void Awake()
     {
-        spawn = GameObject.FindGameObjectsWithTag("Target2");
+        spawn = GameObject.FindGameObjectsWithTag("Spawn");
+
     }
     void Update () {
         timeToSpawn = Random.Range(maxTimeSpawn, minTimeSpawn);
@@ -30,19 +31,12 @@ public class Spawner : MonoBehaviour {
         {
 			randenemy = 0;// Random.Range(0, 2);
             randomTarget = spawn[Random.Range(0, spawn.Length)];
-           // if (manager.pause == true) { 
+            if (manager.pause == true) { 
             Instantiate(Enemies[randenemy], randomTarget.transform.position ,gameObject.transform.rotation);
-           // }
-            if (randenemy == 0)
-            {
-                Enemies[0].GetComponent<EnemyBehaviour>().pathNodes = points;
-            }else if (randenemy == 1)
-            {
-          //      Enemies[1].GetComponent<CreeperBehaviour>().pathNodes = points;
-            }else if (randenemy == 2)
-            {
-            //    Enemies[2].GetComponent<EscupidorBehaviour>().pathNodes = points;
-            }
+           }
+            
+        Enemies[0].GetComponent<EnemyBehaviour>().pathNodes = points;
+           
             yield return new WaitForSeconds(timeToSpawn);
         }
     }

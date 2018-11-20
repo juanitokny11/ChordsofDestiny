@@ -70,24 +70,25 @@ public class MyGameManager : MonoBehaviour
           GodMode();
         }
         if (godmode==true){
-        if (curHealth<=0){
-             Invoke ("Dead",2f);
-        }
-        if(Input.GetKeyDown(KeyCode.G)){
-          Evadir();
-        }
-         if(Input.GetKeyDown(KeyCode.F)){
-          Disparar();
-        }
-        if(notacogida==true){
-            notas.SetActive(true);
-        counternotas= counternotas +Time.deltaTime;
-        if(counternotas>=4){
-            counternotas=0;
-            notacogida=false;
-            notas.SetActive(false);
-        }
-        }
+            if (curHealth<=0){
+                Invoke ("Dead",2f);
+            }
+            if(Input.GetKeyDown(KeyCode.G)){
+                 Evadir();
+            }
+            if(Input.GetKeyDown(KeyCode.F)){
+                Disparar();
+            }
+            if(notacogida==true){
+                notas.SetActive(true);
+                counternotas= counternotas +Time.deltaTime;
+                if(counternotas>=4){
+                    counternotas=0;
+                    notacogida=false;
+                    notas.SetActive(false);
+                }
+            }
+           
         
             if (pause==true){
                 if (Input.GetMouseButtonDown(0))
@@ -110,16 +111,18 @@ public class MyGameManager : MonoBehaviour
                 if (Input.GetMouseButtonDown(2))
                 { 
                      if(cursolo>=Maxsolo){
-                     cursolo=0;
+                     //cursolo=0;
                      soloBar.fillAmount= cursolo/Maxsolo;
-                    solocollider.SetActive(true);
+                    Invoke("DesActivarColisiones", 0.1f);
+                   
+                     }
+                 Invoke("ActivarColisiones", 2f);
                 }
             }
-        }
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            Pausa();
-        }
+            if(Input.GetAxisRaw ("Cancel")!=0)
+            {
+                 Pausa();
+            }
         }else {
             inputAxis.x = Input.GetAxis("Horizontal");
             inputAxis.y = Input.GetAxis("Vertical");
@@ -206,7 +209,7 @@ public void GodMode()
 public void Evadir()
     {
         Debug.Log("esquivo");
-        player.GetComponent<ColisionsPlayer>().enabled = false;
+        DesActivarColisiones();
         Invoke("ActivarColisiones",0.2f);
     }
 public void Disparar()
@@ -220,6 +223,13 @@ public void Dead()
 private void ActivarColisiones()
     {
         player.GetComponent<ColisionsPlayer>().enabled = true;
+         solocollider.SetActive(true);
+    }
+    private void DesActivarColisiones()
+    {
+        player.GetComponent<ColisionsPlayer>().enabled = false;
+         solocollider.SetActive(false);
+
     }
 }
 
