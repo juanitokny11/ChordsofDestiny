@@ -33,7 +33,7 @@ Portfolio: ismael1034.artstation.com
 
 Correo/ e-mail: Juannaur96@gmail.com
 
-Portfolio: 
+Portfolio: juannaur96.artstation.com
 
 **Albert Caminal**
 
