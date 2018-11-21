@@ -26,7 +26,7 @@ Correo/ e-mail:
 Portfolio: 
 
 **Juan Naharro**
-Correo/ e-mail: 
+Correo/ e-mail: Juannaur96@gmail.com
 Portfolio: 
 
 **Albert Caminal**
