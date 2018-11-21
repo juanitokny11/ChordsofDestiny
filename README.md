@@ -18,20 +18,28 @@ Inserte aquí su logo de empresa
 ### **MIEMBROS**
 
 **Paula Ruiz**
-Correo/ e-mail: 
-Portfolio: 
+
+Correo/ e-mail: paularuizluque@gmail.com 
+
+Portfolio: pau_rrrr.artstation.com
 
 **Ismael Moreno**
-Correo/ e-mail: 
-Portfolio: 
+
+Correo/ e-mail: isma1034@gmail.com
+
+Portfolio: ismael1034.artstation.com
 
 **Juan Naharro**
+
 Correo/ e-mail: Juannaur96@gmail.com
+
 Portfolio: 
 
 **Albert Caminal**
-Correo/ e-mail: 
-Portfolio: 
+
+Correo/ e-mail: albertolome1@gmail.com
+
+Portfolio: dickslayer.artstation.com
 
 
 
