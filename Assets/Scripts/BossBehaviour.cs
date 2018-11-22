@@ -10,13 +10,14 @@ public class BossBehaviour : MonoBehaviour
     private NavMeshAgent agent;
     private Animator anim;
     public GameObject [] spawners;
-    private float counter = 0.0f;
-     private float counterInvoke = 0.0f;
+    public float counter = 0.0f;
+     public float counterInvoke = 0.0f;
 
     //public SoundPlayer sound;
     private CapsuleCollider colider;
     private BoxCollider attackcollider;
     public  MyGameManager manager;
+    public bool activarcounter=false;
     //public metronomo met;
 
     [Header("Creeper properties")]
@@ -62,7 +63,10 @@ public class BossBehaviour : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update ()
-    {
+    {   
+         if(activarcounter==true){
+            counter += counter*Time.deltaTime;
+            }
         switch(state)
         {
             case State.Idle:
@@ -134,9 +138,14 @@ public class BossBehaviour : MonoBehaviour
         {
             SetInvocar();
             return;
+        }else {
+             SetChase();
+             return;
         }
     }
     void Explode() { 
+       
+         state=State.Invocar;
         
     }
     void Dead() {
@@ -158,20 +167,21 @@ public class BossBehaviour : MonoBehaviour
         state = State.Idle;
     }
     void SetInvocar()
-    {
-       counter+=counter*Time.deltaTime;
-       if(counter>2){
-        for(int i=0;i<spawners.Length;i++)
-        {
-            spawners[i].SetActive(true);
-        }
-        } else if(counter>=2){
+    {  
+         if(counter>=150){
            for(int i=0;i<spawners.Length;i++)
             {
-                spawners[i].SetActive(false);
-                counter=0;
-                counterInvoke=0;
+                spawners[i].gameObject.SetActive(false);
+                activarcounter=false;
+                //counter=0;
+                
             } 
+        }else{
+            for(int i=0;i<spawners.Length;i++)
+            {   
+                spawners[i].gameObject.SetActive(true);
+            }
+            activarcounter=true;
         }
         state = State.Invocar;
     }
@@ -191,16 +201,12 @@ public class BossBehaviour : MonoBehaviour
     }
     void SetExplode()
     {
-        counterInvoke=counterInvoke*Time.deltaTime;
+        
       /*  if (manager.pause == true)
         {
             sound.Play(4, 1);
         }*/
         agent.isStopped = true;
-        
-        if(counterInvoke>=2){
-         state=State.Invocar;
-        }
         //transform.tag = "Enemy";
         attackcollider.enabled = true;
 

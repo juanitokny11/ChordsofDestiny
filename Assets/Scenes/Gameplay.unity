@@ -1862,10 +1862,10 @@ MonoBehaviour:
   - {fileID: 1345509632}
   spawn:
   - {fileID: 641552961}
-  timeToSpawn: 10
-  maxTimeSpawn: 10
-  minTimeSpawn: 5
-  startWait: 0
+  timeToSpawn: 0.5
+  maxTimeSpawn: 2
+  minTimeSpawn: 1
+  startWait: 0.1
   stop: 0
   manager: {fileID: 712423436}
 --- !u!4 &620131410
@@ -5921,7 +5921,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4816477268313092, guid: d422028980d71464fa9f2976f12f2c25, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -18.225077
+      value: 24.83
       objectReference: {fileID: 0}
     - target: {fileID: 4816477268313092, guid: d422028980d71464fa9f2976f12f2c25, type: 2}
       propertyPath: m_LocalRotation.x
@@ -5971,6 +5971,11 @@ Prefab:
         type: 2}
       propertyPath: m_IsTrigger
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114261536592025438, guid: d422028980d71464fa9f2976f12f2c25,
+        type: 2}
+      propertyPath: counter
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d422028980d71464fa9f2976f12f2c25, type: 2}
