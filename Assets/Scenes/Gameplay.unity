@@ -1843,7 +1843,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &620131409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1865,7 +1865,7 @@ MonoBehaviour:
   timeToSpawn: 10
   maxTimeSpawn: 10
   minTimeSpawn: 5
-  startWait: 2
+  startWait: 0
   stop: 0
   manager: {fileID: 712423436}
 --- !u!4 &620131410
@@ -4317,6 +4317,15 @@ Prefab:
       propertyPath: pathNodes.Array.data[1]
       value: 
       objectReference: {fileID: 641552965}
+    - target: {fileID: 1963633006535794, guid: 8b746f9107fc3d946bdd5a3af336431b, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 65103726793668008, guid: 8b746f9107fc3d946bdd5a3af336431b,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b746f9107fc3d946bdd5a3af336431b, type: 2}
   m_IsPrefabAsset: 0
@@ -5897,6 +5906,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114261536592025438, guid: d422028980d71464fa9f2976f12f2c25,
+        type: 2}
+      propertyPath: spawners.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4816477268313092, guid: d422028980d71464fa9f2976f12f2c25, type: 2}
       propertyPath: m_LocalPosition.x
       value: -4.9000006
@@ -5946,6 +5960,16 @@ Prefab:
       objectReference: {fileID: 1345509632}
     - target: {fileID: 1140915670487566, guid: d422028980d71464fa9f2976f12f2c25, type: 2}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114261536592025438, guid: d422028980d71464fa9f2976f12f2c25,
+        type: 2}
+      propertyPath: spawners.Array.data[0]
+      value: 
+      objectReference: {fileID: 620131408}
+    - target: {fileID: 65205041173026480, guid: d422028980d71464fa9f2976f12f2c25,
+        type: 2}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

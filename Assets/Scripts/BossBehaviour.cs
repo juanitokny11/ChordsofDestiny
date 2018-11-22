@@ -5,11 +5,13 @@ using UnityEngine.AI;
 
 public class BossBehaviour : MonoBehaviour
 {
-    public enum State { Idle, Patrol, Chase, Attack, Dead};
+    public enum State { Idle, Invocar, Chase, Attack, Dead};
     public State state;
-
     private NavMeshAgent agent;
     private Animator anim;
+    public GameObject [] spawners;
+    private float counter = 0.0f;
+     private float counterInvoke = 0.0f;
 
     //public SoundPlayer sound;
     private CapsuleCollider colider;
@@ -48,6 +50,10 @@ public class BossBehaviour : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         attackcollider = GetComponent<BoxCollider>();
         colider = GetComponent<CapsuleCollider>();
+        /*for(int i=0;i<spawners.Length;i++)
+        {
+            spawners[i]= GameObject[i].FindGameObjectsWithTag("Spawn");
+        }*/
        // sound = GetComponentInChildren<SoundPlayer>();
 
         nearNode = true;
@@ -62,8 +68,8 @@ public class BossBehaviour : MonoBehaviour
             case State.Idle:
                 Idle();
                 break;
-            case State.Patrol:
-                Patrol();
+            case State.Invocar:
+                Invocar();
                 break;
             case State.Chase:
                 Chase();
@@ -105,20 +111,6 @@ public class BossBehaviour : MonoBehaviour
         }
         else timeCounter += Time.deltaTime;
     }
-    void Patrol()
-    {
-        if(targetDetected)
-        {
-            SetChase();
-            return;
-        }
-
-        if(agent.remainingDistance <= 0.1f)
-        {
-            if(stopAtEachNode) SetIdle();
-            else GoNextNode();
-        }
-    }
     void Chase()
     {
         if(!targetDetected)
@@ -135,6 +127,14 @@ public class BossBehaviour : MonoBehaviour
         }
 
 
+    }
+     void Invocar()
+    {
+        if(targetDetected)
+        {
+            SetInvocar();
+            return;
+        }
     }
     void Explode() { 
         
@@ -157,6 +157,24 @@ public class BossBehaviour : MonoBehaviour
 
         state = State.Idle;
     }
+    void SetInvocar()
+    {
+       counter+=counter*Time.deltaTime;
+       if(counter>2){
+        for(int i=0;i<spawners.Length;i++)
+        {
+            spawners[i].SetActive(true);
+        }
+        } else if(counter>=2){
+           for(int i=0;i<spawners.Length;i++)
+            {
+                spawners[i].SetActive(false);
+                counter=0;
+                counterInvoke=0;
+            } 
+        }
+        state = State.Invocar;
+    }
     void SetChase()
     {
         agent.isStopped = false;
@@ -173,13 +191,19 @@ public class BossBehaviour : MonoBehaviour
     }
     void SetExplode()
     {
+        counterInvoke=counterInvoke*Time.deltaTime;
       /*  if (manager.pause == true)
         {
             sound.Play(4, 1);
         }*/
         agent.isStopped = true;
-        transform.tag = "Enemy";
+        
+        if(counterInvoke>=2){
+         state=State.Invocar;
+        }
+        //transform.tag = "Enemy";
         attackcollider.enabled = true;
+
        // anim.SetBool("Attack",true);
         Invoke("ResetAttack", 2);
         state = State.Attack;
@@ -290,7 +314,6 @@ public class BossBehaviour : MonoBehaviour
         agent.isStopped = false;
         //transform.tag = "Passive";
         attackcollider.enabled = false;
-        state = State.Patrol;
     }
     void DestroyEnemy()
     {

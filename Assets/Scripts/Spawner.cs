@@ -17,6 +17,7 @@ public class Spawner : MonoBehaviour {
     private void Awake()
     {
         spawn = GameObject.FindGameObjectsWithTag("Spawn");
+        
 
     }
     void Update () {
