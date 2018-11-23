@@ -1843,7 +1843,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &620131409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1866,7 +1866,7 @@ MonoBehaviour:
   maxTimeSpawn: 2
   minTimeSpawn: 1
   startWait: 0.1
-  stop: 0
+  spawning: 0
   manager: {fileID: 712423436}
 --- !u!4 &620131410
 Transform:
@@ -4324,7 +4324,7 @@ Prefab:
     - target: {fileID: 65103726793668008, guid: 8b746f9107fc3d946bdd5a3af336431b,
         type: 2}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b746f9107fc3d946bdd5a3af336431b, type: 2}
@@ -4554,7 +4554,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1513274971}
   - component: {fileID: 1513274972}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Solocollider
   m_TagString: Solo
   m_Icon: {fileID: 0}
@@ -5975,8 +5975,13 @@ Prefab:
     - target: {fileID: 114261536592025438, guid: d422028980d71464fa9f2976f12f2c25,
         type: 2}
       propertyPath: counter
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114261536592025438, guid: d422028980d71464fa9f2976f12f2c25,
+        type: 2}
+      propertyPath: spawn
+      value: 
+      objectReference: {fileID: 620131409}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d422028980d71464fa9f2976f12f2c25, type: 2}
   m_IsPrefabAsset: 0

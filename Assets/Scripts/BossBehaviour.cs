@@ -7,6 +7,8 @@ public class BossBehaviour : MonoBehaviour
 {
     public enum State { Idle, Invocar, Chase, Attack, Dead};
     public State state;
+
+    public Spawner spawn;
     private NavMeshAgent agent;
     private Animator anim;
     public GameObject [] spawners;
@@ -64,9 +66,7 @@ public class BossBehaviour : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {   
-         if(activarcounter==true){
-            counter += counter*Time.deltaTime;
-            }
+        
         switch(state)
         {
             case State.Idle:
@@ -144,9 +144,11 @@ public class BossBehaviour : MonoBehaviour
         }
     }
     void Explode() { 
-       
+        if(counter>=3){
          state=State.Invocar;
-        
+         counter=0;
+         }
+         //state=State.Idle;
     }
     void Dead() {
 
@@ -168,22 +170,9 @@ public class BossBehaviour : MonoBehaviour
     }
     void SetInvocar()
     {  
-         if(counter>=150){
-           for(int i=0;i<spawners.Length;i++)
-            {
-                spawners[i].gameObject.SetActive(false);
-                activarcounter=false;
-                //counter=0;
-                
-            } 
-        }else{
-            for(int i=0;i<spawners.Length;i++)
-            {   
-                spawners[i].gameObject.SetActive(true);
-            }
-            activarcounter=true;
-        }
-        state = State.Invocar;
+        spawn.SetSpawn(2);
+
+        state=State.Attack;
     }
     void SetChase()
     {
@@ -209,7 +198,7 @@ public class BossBehaviour : MonoBehaviour
         agent.isStopped = true;
         //transform.tag = "Enemy";
         attackcollider.enabled = true;
-
+        counter++;
        // anim.SetBool("Attack",true);
         Invoke("ResetAttack", 2);
         state = State.Attack;

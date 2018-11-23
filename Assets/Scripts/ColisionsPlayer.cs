@@ -20,7 +20,7 @@ private void Awake(){
         }*/
          if (other.tag == "Enemy")
         {
-             MyGameManager.getInstance().Daño(15f);
+            // MyGameManager.getInstance().Daño(15f);
             //sound.Play(1, 1);
         }
         if (other.tag == "corchera")

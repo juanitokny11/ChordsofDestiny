@@ -296,9 +296,10 @@ public class EnemyBehaviour : MonoBehaviour
 		if(other.gameObject.tag == "arma") {
 			Damage (2);	
 		}
-        if (other.gameObject.tag == "Solo")
+        if (other.gameObject.tag == "Player")
         {
-            Damage(7);
+            MyGameManager.getInstance().Daño(15f);
+            //Damage(7);
         }
     }
     void ResetAttack()
