@@ -144,9 +144,9 @@ public class BossBehaviour : MonoBehaviour
         }
     }
     void Explode() { 
-        if(counter>=3){
+        if(counterInvoke>=3){
              state=State.Invocar;
-             counter=0;
+             counterInvoke=0;
         }else{
             state = State.Idle;
         }   

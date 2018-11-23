@@ -12,7 +12,7 @@ public class Spawner : MonoBehaviour {
     private GameObject randomTarget;
     public bool spawning=false;
     public  MyGameManager manager;
-    int randenemy;
+    //int randenemy;
     public float counter;
     public int numSpawns;
     private void Awake()
@@ -29,8 +29,9 @@ public class Spawner : MonoBehaviour {
     void Update () {
         //timeToSpawn = Random.Range(maxTimeSpawn, minTimeSpawn);
         counter += Time.deltaTime;
+        Enemies[0].GetComponent<EnemyBehaviour>().pathNodes = points;
         if (manager.pause == true && spawning==true && counter>=5) { 
-            Instantiate(Enemies[randenemy], randomTarget.transform.position ,gameObject.transform.rotation);
+            Instantiate(Enemies[0], randomTarget.transform.position ,gameObject.transform.rotation);
             Spawn();
             counter = 0;
         }
@@ -38,8 +39,6 @@ public class Spawner : MonoBehaviour {
     public void SetSpawn(int numEnemies){
         numEnemies=numSpawns;
         spawning=true;
-        Enemies[0].GetComponent<EnemyBehaviour>().pathNodes = points;
-        
     }
     private void Spawn(){
         numSpawns--;
