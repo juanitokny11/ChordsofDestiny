@@ -169,9 +169,11 @@ public class BossBehaviour : MonoBehaviour
         state = State.Idle;
     }
     void SetInvocar()
-    {  
-        spawn.SetSpawn(2);
-
+    {  if (counterInvoke >= 2)
+        {
+            spawn.SetSpawn(2);
+            counterInvoke = 0;
+        }
         state=State.Attack;
     }
     void SetChase()
@@ -198,7 +200,7 @@ public class BossBehaviour : MonoBehaviour
         agent.isStopped = true;
         //transform.tag = "Enemy";
         attackcollider.enabled = true;
-        counter++;
+        counterInvoke++;
        // anim.SetBool("Attack",true);
         Invoke("ResetAttack", 2);
         state = State.Attack;
@@ -280,6 +282,10 @@ public class BossBehaviour : MonoBehaviour
             Debug.Log("dañoextra");
              FPSInputManager.getInstance().Carga();
         }*/
+        if(other.tag== "Player")
+        {
+            MyGameManager.getInstance().Daño(15f);
+        }
        if (other.tag == "ligero")
         {
              Damage(2);

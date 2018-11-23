@@ -9,11 +9,11 @@ public class Spawner : MonoBehaviour {
     public float timeToSpawn;
     public float maxTimeSpawn;
     public float minTimeSpawn;
-    public float startWait;
     private GameObject randomTarget;
     public bool spawning=false;
     public  MyGameManager manager;
     int randenemy;
+    public float counter;
     public int numSpawns;
     private void Awake()
     {
@@ -22,14 +22,18 @@ public class Spawner : MonoBehaviour {
        
     }
     void Start(){
-         SetSpawn(3);
+        spawning = true;
+        //SetSpawn(2);
+        
     }
     void Update () {
-        timeToSpawn = Random.Range(maxTimeSpawn, minTimeSpawn);
-         Spawn();
-        if (manager.pause == true && spawning==true) { 
+        //timeToSpawn = Random.Range(maxTimeSpawn, minTimeSpawn);
+        counter += Time.deltaTime;
+        if (manager.pause == true && spawning==true && counter>=5) { 
             Instantiate(Enemies[randenemy], randomTarget.transform.position ,gameObject.transform.rotation);
-           }
+            Spawn();
+            counter = 0;
+        }
     }
     public void SetSpawn(int numEnemies){
         numEnemies=numSpawns;

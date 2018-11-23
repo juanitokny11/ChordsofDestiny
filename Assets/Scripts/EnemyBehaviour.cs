@@ -289,18 +289,19 @@ public class EnemyBehaviour : MonoBehaviour
             Damage(3);
               MyGameManager.getInstance().Carga();
         }
-        
+        if (other.tag == "Player")
+        {
+            MyGameManager.getInstance().Daño(15f);
+            //Damage(7);
+        }
+
     }
     void OnCollisionEnter(Collision other) {
 
 		if(other.gameObject.tag == "arma") {
 			Damage (2);	
 		}
-        if (other.gameObject.tag == "Player")
-        {
-            MyGameManager.getInstance().Daño(15f);
-            //Damage(7);
-        }
+        
     }
     void ResetAttack()
     {

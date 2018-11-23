@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ColisionsPlayer : MonoBehaviour
 {
     private CharacterController colider;
+    private EnemyBehaviour enemy;
     //public SoundPlayer sound;
 private void Awake(){
 
@@ -20,12 +21,10 @@ private void Awake(){
         }*/
          if (other.tag == "Enemy")
         {
-            // MyGameManager.getInstance().Daño(15f);
-            //sound.Play(1, 1);
+            //other.GetComponent<EnemyBehaviour>().Damage(15);
         }
         if (other.tag == "corchera")
         {
-
              MyGameManager.getInstance().AddMoney(1);
             MyGameManager.getInstance().notacogida=true;
             //sound.Play(1, 1);
@@ -51,7 +50,6 @@ private void Awake(){
          if (other.tag == "Clavedesol")
         {
              MyGameManager.getInstance().CargaClave();
-            //MyGameManager.getInstance().notacogida=true;
             //sound.Play(1, 1);
         }
     }

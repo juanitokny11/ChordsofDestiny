@@ -1862,12 +1862,13 @@ MonoBehaviour:
   - {fileID: 1345509632}
   spawn:
   - {fileID: 641552961}
-  timeToSpawn: 0.5
-  maxTimeSpawn: 2
-  minTimeSpawn: 1
-  startWait: 0.1
-  spawning: 0
+  timeToSpawn: 0
+  maxTimeSpawn: 10
+  minTimeSpawn: 5
+  spawning: 1
   manager: {fileID: 712423436}
+  counter: 0
+  numSpawns: 0
 --- !u!4 &620131410
 Transform:
   m_ObjectHideFlags: 0
@@ -5982,6 +5983,11 @@ Prefab:
       propertyPath: spawn
       value: 
       objectReference: {fileID: 620131409}
+    - target: {fileID: 114261536592025438, guid: d422028980d71464fa9f2976f12f2c25,
+        type: 2}
+      propertyPath: explodeDistance
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d422028980d71464fa9f2976f12f2c25, type: 2}
   m_IsPrefabAsset: 0
