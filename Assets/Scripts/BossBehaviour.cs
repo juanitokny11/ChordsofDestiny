@@ -145,10 +145,11 @@ public class BossBehaviour : MonoBehaviour
     }
     void Explode() { 
         if(counter>=3){
-         state=State.Invocar;
-         counter=0;
-         }
-         //state=State.Idle;
+             state=State.Invocar;
+             counter=0;
+        }else{
+            state = State.Idle;
+        }   
     }
     void Dead() {
 

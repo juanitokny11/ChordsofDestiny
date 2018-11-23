@@ -294,6 +294,10 @@ public class EnemyBehaviour : MonoBehaviour
             MyGameManager.getInstance().Daño(15f);
             //Damage(7);
         }
+        if (other.tag == "Solo")
+        {
+            Damage(7);
+        }
 
     }
     void OnCollisionEnter(Collision other) {

@@ -6,11 +6,12 @@ using UnityEngine.UI;
 public class ColisionsPlayer : MonoBehaviour
 {
     private CharacterController colider;
-    private EnemyBehaviour enemy;
+    private SphereCollider sphere;
     //public SoundPlayer sound;
 private void Awake(){
 
         colider = GetComponent<CharacterController> ();
+        sphere = GetComponent<SphereCollider>();
 }
   public void OnTriggerEnter(Collider other)
     { 
@@ -20,7 +21,7 @@ private void Awake(){
              MyGameManager.getInstance().HealthBar.fillAmount=  MyGameManager.getInstance().curHealth/  MyGameManager.getInstance().MaxHealth;
         }*/
          if (other.tag == "Enemy")
-        {
+        { 
             //other.GetComponent<EnemyBehaviour>().Damage(15);
         }
         if (other.tag == "corchera")
