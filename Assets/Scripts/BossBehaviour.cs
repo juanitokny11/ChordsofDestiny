@@ -172,7 +172,7 @@ public class BossBehaviour : MonoBehaviour
     void SetInvocar()
     {  if (counterInvoke >= 2)
         {
-            spawn.SetSpawn(2);
+            InvokeRepeating("InvocarEnemigo", 0.1f, 3);
             counterInvoke = 0;
         }
         state=State.Attack;
@@ -320,5 +320,8 @@ public class BossBehaviour : MonoBehaviour
     void DestroyEnemy()
     {
         Destroy(this.gameObject);
+    }
+    void InvocarEnemigo(){
+        spawn.SetSpawn(2);
     }
 }
