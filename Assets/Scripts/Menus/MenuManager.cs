@@ -25,9 +25,9 @@ public class MenuManager : MonoBehaviour {
     }
 
     
-    public void Creditos()
+    public void Options()
     {
-        SceneManager.LoadScene("Credits");
+        SceneManager.LoadScene("options");
         Cursor.visible = true;
     }
 
