@@ -15,6 +15,7 @@ public class Spawner : MonoBehaviour {
     //int randenemy;
     public float counter;
     public int numSpawns;
+    public int enemyCounter;
     private void Awake()
     {
         spawn = GameObject.FindGameObjectsWithTag("Spawn"); 
@@ -23,17 +24,20 @@ public class Spawner : MonoBehaviour {
     }
     void Start(){
         spawning = true;
-        //SetSpawn(2);
-        
     }
     void Update () {
         //timeToSpawn = Random.Range(maxTimeSpawn, minTimeSpawn);
         counter += Time.deltaTime;
         Enemies[0].GetComponent<EnemyBehaviour>().pathNodes = points;
-        if (manager.pause == true && spawning==true && counter>=5) { 
+        if (manager.pause == true && counter>=5) { 
+            if(enemyCounter<=15){
             Instantiate(Enemies[0], randomTarget.transform.position ,gameObject.transform.rotation);
+            Instantiate(Enemies[0], randomTarget.transform.position ,gameObject.transform.rotation);
+            enemyCounter+=2;
+            }
             Spawn();
-            counter = 0;
+            Debug.Log("pasa por aqui");
+            //counter = 0;
         }
     }
     public void SetSpawn(int numEnemies){
@@ -41,10 +45,14 @@ public class Spawner : MonoBehaviour {
         spawning=true;
     }
     private void Spawn(){
+        if(enemyCounter<=15){
         numSpawns--;
+           Debug.Log("spawn");
         if (numSpawns<=0){
             spawning=false;
             numSpawns=0;
+            counter=0;
         }
+     }
     }
 }

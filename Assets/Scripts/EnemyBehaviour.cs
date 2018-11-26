@@ -15,6 +15,7 @@ public class EnemyBehaviour : MonoBehaviour
     private CapsuleCollider colider;
     private BoxCollider attackcollider;
     public  MyGameManager manager;
+    private BossBehaviour boss;
     //public metronomo met;
 
     [Header("Creeper properties")]
@@ -49,6 +50,7 @@ public class EnemyBehaviour : MonoBehaviour
         attackcollider = GetComponent<BoxCollider>();
         colider = GetComponent<CapsuleCollider>();
        // sound = GetComponentInChildren<SoundPlayer>();
+        boss=FindObjectOfType<BossBehaviour>();
         nearNode = true;
         SetIdle();        
 	}
@@ -267,23 +269,23 @@ public class EnemyBehaviour : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        /*if (other.tag == "ligero" && metronomo.getInstance().daño==true)
+       /* if (other.tag == "ligero" && metronomo.getInstance().daño==true)
         {
             Damage(3);
             Debug.Log("dañoextra");
-             FPSInputManager.getInstance().Carga();
+            MyGameManager.getInstance().Carga();
         }*/
        if (other.tag == "ligero")
         {
              Damage(2);
-              MyGameManager.getInstance().Carga();
+             MyGameManager.getInstance().Carga();
         }
-           /* if (other.tag == "pesado" && metronomo.getInstance().daño== true)
+        /*    if (other.tag == "pesado" && metronomo.getInstance().daño== true)
         {
             Damage(4);
             Debug.Log("dañoextra");
-             FPSInputManager.getInstance().Carga();
-        }Ç*/
+             MyGameManager.getInstance().Carga();
+        }*/
          if (other.tag == "pesado")
         {
             Damage(3);
@@ -292,7 +294,6 @@ public class EnemyBehaviour : MonoBehaviour
         if (other.tag == "Player")
         {
             MyGameManager.getInstance().Daño(15f);
-            //Damage(7);
         }
         if (other.tag == "Solo")
         {
@@ -301,11 +302,9 @@ public class EnemyBehaviour : MonoBehaviour
 
     }
     void OnCollisionEnter(Collision other) {
-
 		if(other.gameObject.tag == "arma") {
 			Damage (2);	
 		}
-        
     }
     void ResetAttack()
     {
@@ -318,5 +317,6 @@ public class EnemyBehaviour : MonoBehaviour
     void DestroyEnemy()
     {
         Destroy(this.gameObject);
+        boss.enemyCounter--;
     }
 }

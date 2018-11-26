@@ -98,7 +98,7 @@ public class MyGameManager : MonoBehaviour
                     Invoke("ResetTag", 1);
                     audios.Play(0, 1);
                     //debil = true;
-                    //Invoke("ResetAttack", 1);
+                    Invoke("ResetAttack", 1);
                 }
                 if (Input.GetMouseButtonDown(1))
                 {
@@ -106,7 +106,7 @@ public class MyGameManager : MonoBehaviour
                     arma.transform.tag = "pesado";
                     Invoke("ResetTag", 1);
                     audios.Play(1, 1);
-                    //Invoke("ResetAttack", 2);
+                    Invoke("ResetAttack", 2);
                 }
                 if (Input.GetMouseButtonDown(2))
                 { 

@@ -19,6 +19,8 @@ public class BossBehaviour : MonoBehaviour
     private CapsuleCollider colider;
     private BoxCollider attackcollider;
     public  MyGameManager manager;
+
+    public int enemyCounter;
     public bool activarcounter=false;
     //public metronomo met;
 
@@ -170,10 +172,13 @@ public class BossBehaviour : MonoBehaviour
         state = State.Idle;
     }
     void SetInvocar()
-    {  if (counterInvoke >= 2)
-        {
-            InvokeRepeating("InvocarEnemigo", 0.1f, 3);
+    {  if (counterInvoke >= 30)
+        {   
+            if (enemyCounter<=15){
+            Invoke("InvocarEnemigo", 0.05f);
+            enemyCounter+=2;
             counterInvoke = 0;
+        }
         }
         state=State.Attack;
     }
