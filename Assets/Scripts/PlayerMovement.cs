@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour {
     private float verticalVel;
     private Vector3 moveVector;
     private Vector3 moveVector2;
+    public ParticleSystem particle;
     private void Start()
     {
         //anim = GetComponent<Animator>();
@@ -93,5 +94,6 @@ public class PlayerMovement : MonoBehaviour {
     }
     void AddGravity(){
          verticalVel -= 2;
+         particle.Play();
     }
 }
