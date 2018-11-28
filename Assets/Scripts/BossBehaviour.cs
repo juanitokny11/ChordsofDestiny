@@ -7,7 +7,6 @@ public class BossBehaviour : MonoBehaviour
 {
     public enum State { Idle, Invocar, Chase, Attack, Dead};
     public State state;
-
     public Spawner spawn;
     private NavMeshAgent agent;
     private Animator anim;
@@ -172,12 +171,13 @@ public class BossBehaviour : MonoBehaviour
         state = State.Idle;
     }
     void SetInvocar()
-    {  if (counterInvoke >= 30)
-        {   
+    {  if (counter>= 30)
+        {  
             if (enemyCounter<=15){
-            Invoke("InvocarEnemigo", 0.05f);
+            spawn.SetSpawn(2);
+           // Invoke("InvocarEnemigo", 0.05f);
             enemyCounter+=2;
-            counterInvoke = 0;
+            counter = 0;
         }
         }
         state=State.Attack;
@@ -207,6 +207,7 @@ public class BossBehaviour : MonoBehaviour
         //transform.tag = "Enemy";
         attackcollider.enabled = true;
         counterInvoke++;
+        counter++;
        // anim.SetBool("Attack",true);
         Invoke("ResetAttack", 2);
         state = State.Attack;
@@ -328,5 +329,6 @@ public class BossBehaviour : MonoBehaviour
     }
     void InvocarEnemigo(){
         spawn.SetSpawn(2);
+
     }
 }

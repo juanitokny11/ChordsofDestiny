@@ -25,6 +25,7 @@ public class MyGameManager : MonoBehaviour
     public float cargasolo=15f;
 
     public float clavecarga=50f;
+    public bool look=true;
     public bool pause=true;
     public bool godmode=true;
     public bool notacogida;
@@ -131,9 +132,10 @@ public class MyGameManager : MonoBehaviour
             cam.transform.Rotate(Input.GetAxis("Mouse Y"),Input.GetAxis("Mouse X"),0);
         }
          if (Input.GetKeyDown(KeyCode.C)){
-           col.LookAtEnemy();
-           col.numenemies++;
-    }
+           LookEnemy();
+           
+        }
+        
     }
    
     //Cursor del ratón
@@ -191,6 +193,21 @@ public void Pausa()
             Cursor.visible = true;
             //music.mute = true;
             sound.enabled = true;
+        }
+   
+    }
+    public void LookEnemy()
+    {
+    if (!look)
+        {
+        look = true;
+        col.lookenemy=true;
+        col.numenemies++;
+        }
+        else if (look)
+        {
+            look = false;
+            col.lookenemy=false;
         }
    
     }
