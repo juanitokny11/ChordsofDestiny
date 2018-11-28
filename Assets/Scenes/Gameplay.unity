@@ -2011,7 +2011,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 620131408}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18dfbd2ddf556e48901c23c259e822d, type: 3}
   m_Name: 
@@ -2026,7 +2026,7 @@ MonoBehaviour:
   timeToSpawn: 0
   maxTimeSpawn: 10
   minTimeSpawn: 5
-  spawning: 1
+  spawning: 0
   manager: {fileID: 712423436}
   counter: 0
   numSpawns: 0
@@ -2565,6 +2565,7 @@ MonoBehaviour:
   DistanceUp: 20
   smooth: 0
   rotateAround: 70
+  targets: []
   player: {fileID: 1916728048}
   CamOcclusion:
     serializedVersion: 2
@@ -6087,11 +6088,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114261536592025438, guid: d422028980d71464fa9f2976f12f2c25,
-        type: 2}
-      propertyPath: spawners.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4816477268313092, guid: d422028980d71464fa9f2976f12f2c25, type: 2}
       propertyPath: m_LocalPosition.x
       value: -4.9000006
@@ -6126,6 +6122,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114261536592025438, guid: d422028980d71464fa9f2976f12f2c25,
         type: 2}
+      propertyPath: spawn
+      value: 
+      objectReference: {fileID: 620131409}
+    - target: {fileID: 114261536592025438, guid: d422028980d71464fa9f2976f12f2c25,
+        type: 2}
+      propertyPath: spawners.Array.data[0]
+      value: 
+      objectReference: {fileID: 620131408}
+    - target: {fileID: 114261536592025438, guid: d422028980d71464fa9f2976f12f2c25,
+        type: 2}
       propertyPath: manager
       value: 
       objectReference: {fileID: 712423436}
@@ -6139,35 +6145,6 @@ Prefab:
       propertyPath: pathNodes.Array.data[1]
       value: 
       objectReference: {fileID: 1345509632}
-    - target: {fileID: 1140915670487566, guid: d422028980d71464fa9f2976f12f2c25, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114261536592025438, guid: d422028980d71464fa9f2976f12f2c25,
-        type: 2}
-      propertyPath: spawners.Array.data[0]
-      value: 
-      objectReference: {fileID: 620131408}
-    - target: {fileID: 65205041173026480, guid: d422028980d71464fa9f2976f12f2c25,
-        type: 2}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114261536592025438, guid: d422028980d71464fa9f2976f12f2c25,
-        type: 2}
-      propertyPath: counter
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114261536592025438, guid: d422028980d71464fa9f2976f12f2c25,
-        type: 2}
-      propertyPath: spawn
-      value: 
-      objectReference: {fileID: 620131409}
-    - target: {fileID: 114261536592025438, guid: d422028980d71464fa9f2976f12f2c25,
-        type: 2}
-      propertyPath: explodeDistance
-      value: 8
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d422028980d71464fa9f2976f12f2c25, type: 2}
   m_IsPrefabAsset: 0
