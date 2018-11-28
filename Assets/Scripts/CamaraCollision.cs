@@ -19,6 +19,7 @@ public class CamaraCollision : MonoBehaviour {
 
     [Header("Player to follow")]
     private Transform target;
+    public Transform[] targets;
 public Transform player;                     //the target the camera follows
 
     [Header("Layer(s) to include")]
@@ -45,9 +46,11 @@ public Transform player;                     //the target the camera follows
     {
         //the statement below automatically positions the camera behind the target.
         rotateAround = player.eulerAngles.y - 45f;
+        targets =new Transform[10];
        //player=FindObjectOfType<PlayerMovement>().transform;
     }
-    
+    void Update(){
+    }
     void LateUpdate()
     {
         if(lookenemy==false){
@@ -87,7 +90,10 @@ public Transform player;                     //the target the camera follows
         DistanceAway = Mathf.Clamp(DistanceAway , minDistance, maxDistance);
         }else {
             LookAtEnemy();
-            player.LookAt(target,Vector3.up);
+           for (int i=0;i>10;i++){
+            targets[i]=FindObjectOfType<EnemyBehaviour> ().transform;
+            }
+             player.LookAt(targets[0],Vector3.up);
         }
 
     }
@@ -115,7 +121,7 @@ public Transform player;                     //the target the camera follows
     }
 
     public void LookAtEnemy(){
-        target=FindObjectOfType<EnemyBehaviour> ().transform;
+        //target=FindObjectOfType<EnemyBehaviour> ().transform;
         lookenemy=true;
         //target.rotation = Quaternion.RotateTowards(target.rotation, target.rotation, 0.5f);
             
