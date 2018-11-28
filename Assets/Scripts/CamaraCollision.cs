@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CamaraCollision : MonoBehaviour {
 
+    public bool lookenemy=false;
+    public int numenemies=0;
     [Header("Camera Properties")]
     private float DistanceAway;                     //how far the camera is from the player.
 
@@ -12,10 +14,12 @@ public class CamaraCollision : MonoBehaviour {
 
     public float DistanceUp = -2;                    //how high the camera is above the player
     public float smooth ;                    //how smooth the camera moves into place
-    public float rotateAround = 70f;            //the angle at which you will rotate the camera (on an axis)
+    public float rotateAround = 70f;   
+          //the angle at which you will rotate the camera (on an axis)
 
     [Header("Player to follow")]
-    public Transform target;                    //the target the camera follows
+    private Transform[] targets;
+public Transform player;                     //the target the camera follows
 
     [Header("Layer(s) to include")]
     public LayerMask CamOcclusion;                //the layers that will be affected by collision
@@ -40,18 +44,18 @@ public class CamaraCollision : MonoBehaviour {
     void Start()
     {
         //the statement below automatically positions the camera behind the target.
-        rotateAround = target.eulerAngles.y - 45f;
-      
+        rotateAround = player.eulerAngles.y - 45f;
+       //player=FindObjectOfType<PlayerMovement>().transform;
     }
-
+    
     void LateUpdate()
     {
-
+        if(lookenemy==false){
         HorizontalAxis = Input.GetAxis("Mouse X");
         VerticalAxis = Input.GetAxis("Mouse Y");
 
         //Offset of the targets transform (Since the pivot point is usually at the feet).
-        Vector3 targetOffset = new Vector3(target.position.x, (target.position.y + 2f), target.position.z);
+        Vector3 targetOffset = new Vector3(player.position.x, (player.position.y + 2f), player.position.z);
         Quaternion rotation = Quaternion.Euler(cameraHeight, rotateAround, cameraPan);
         Vector3 vectorMask = Vector3.one;
         Vector3 rotateVector = rotation * vectorMask;
@@ -63,7 +67,7 @@ public class CamaraCollision : MonoBehaviour {
         occludeRay(ref targetOffset);
         smoothCamMethod();
 
-        transform.LookAt(target);
+        transform.LookAt(player);
         #region wrap the cam orbit rotation
         if (rotateAround > 360)
         {
@@ -81,6 +85,10 @@ public class CamaraCollision : MonoBehaviour {
         rotateAround += HorizontalAxis * camRotateSpeed * Time.deltaTime;
        
         DistanceAway = Mathf.Clamp(DistanceAway , minDistance, maxDistance);
+        }else {
+
+            player.LookAt(targets[numenemies],Vector3.up);
+        }
 
     }
     void smoothCamMethod()
@@ -105,4 +113,15 @@ public class CamaraCollision : MonoBehaviour {
         }
         #endregion
     }
+
+    public void LookAtEnemy(){
+
+        for(numenemies=0;numenemies>targets.Length;numenemies++){
+            targets[numenemies]=FindObjectOfType<EnemyBehaviour> ().transform;
+        }
+        lookenemy=true;
+        //target.rotation = Quaternion.RotateTowards(target.rotation, target.rotation, 0.5f);
+            
+    }
+     
 }

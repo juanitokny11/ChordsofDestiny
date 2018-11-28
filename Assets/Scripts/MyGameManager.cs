@@ -9,6 +9,7 @@ public class MyGameManager : MonoBehaviour
 
    public SoundPlayer sound;
     private GameObject player;
+    public CamaraCollision col;
     public GameObject arma;
     public float jumpInput;
 //    private LookRotation lookRotation;
@@ -129,7 +130,12 @@ public class MyGameManager : MonoBehaviour
             cam.transform.Translate(inputAxis.x,0, inputAxis.y);
             cam.transform.Rotate(Input.GetAxis("Mouse Y"),Input.GetAxis("Mouse X"),0);
         }
+         if (Input.GetKeyDown(KeyCode.C)){
+           col.LookAtEnemy();
+           col.numenemies++;
     }
+    }
+   
     //Cursor del ratón
     // if (Input.GetMouseButtonDown(0)) mouseCursor.HideCursor();
     // else if (Input.GetKeyDown(KeyCode.Escape)) mouseCursor.ShowCursor();

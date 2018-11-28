@@ -36,7 +36,6 @@ public class Spawner : MonoBehaviour {
             enemyCounter+=2;
             }
             Spawn();
-            Debug.Log("pasa por aqui");
             //counter = 0;
         }
     }
@@ -47,7 +46,6 @@ public class Spawner : MonoBehaviour {
     private void Spawn(){
         if(enemyCounter<=15){
         numSpawns--;
-           Debug.Log("spawn");
         if (numSpawns<=0){
             spawning=false;
             numSpawns=0;
