@@ -12,6 +12,7 @@ public class MyGameManager : MonoBehaviour
     public CamaraCollision col;
     public GameObject arma;
     public float jumpInput;
+    public CamaraCollision cama;
 //    private LookRotation lookRotation;
     private MouseCursor mouseCursor;
 
@@ -133,9 +134,12 @@ public class MyGameManager : MonoBehaviour
         }
          if (Input.GetKeyDown(KeyCode.C)){
            LookEnemy();
-           
         }
-        
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            cama.numenemies++;
+        }
+
     }
    
     //Cursor del ratón

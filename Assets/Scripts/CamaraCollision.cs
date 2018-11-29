@@ -5,7 +5,9 @@ using UnityEngine;
 public class CamaraCollision : MonoBehaviour {
 
     public bool lookenemy=false;
+    public GameObject[] go;
     public int numenemies=0;
+    public Spawner spawn;
     [Header("Camera Properties")]
     private float DistanceAway;                     //how far the camera is from the player.
 
@@ -19,7 +21,7 @@ public class CamaraCollision : MonoBehaviour {
 
     [Header("Player to follow")]
     private Transform target;
-    public Transform[] targets;
+    //public Transform[] targets;
 public Transform player;                     //the target the camera follows
 
     [Header("Layer(s) to include")]
@@ -46,11 +48,22 @@ public Transform player;                     //the target the camera follows
     {
         //the statement below automatically positions the camera behind the target.
         rotateAround = player.eulerAngles.y - 45f;
-        targets =new Transform[10];
+        go = new GameObject[go.Length];
+       
        //player=FindObjectOfType<PlayerMovement>().transform;
     }
     void Update(){
-    }
+        if (lookenemy == false)
+        {
+        }
+        else
+        {
+            LookAtEnemy();
+            go = GameObject.FindGameObjectsWithTag("Enemy");
+            target = go[0].transform;
+            player.LookAt(target, Vector3.up);
+        }
+        }
     void LateUpdate()
     {
         if(lookenemy==false){
@@ -89,11 +102,7 @@ public Transform player;                     //the target the camera follows
        
         DistanceAway = Mathf.Clamp(DistanceAway , minDistance, maxDistance);
         }else {
-            LookAtEnemy();
-           for (int i=0;i>10;i++){
-            targets[i]=FindObjectOfType<EnemyBehaviour> ().transform;
-            }
-             player.LookAt(targets[0],Vector3.up);
+           
         }
 
     }
@@ -121,7 +130,7 @@ public Transform player;                     //the target the camera follows
     }
 
     public void LookAtEnemy(){
-        //target=FindObjectOfType<EnemyBehaviour> ().transform;
+        
         lookenemy=true;
         //target.rotation = Quaternion.RotateTowards(target.rotation, target.rotation, 0.5f);
             

@@ -16,7 +16,7 @@ public class EnemyBehaviour : MonoBehaviour
     private BoxCollider attackcollider;
     public  MyGameManager manager;
     private BossBehaviour boss;
-    public metronomo met;
+    public GameObject met;
 
     [Header("Creeper properties")]
     public int life = 10;
@@ -52,7 +52,8 @@ public class EnemyBehaviour : MonoBehaviour
        // sound = GetComponentInChildren<SoundPlayer>();
         boss=FindObjectOfType<BossBehaviour>();
         nearNode = true;
-        SetIdle();        
+        SetIdle();
+        met = GameObject.FindGameObjectWithTag("metronomo");
 	}
 	
 	// Update is called once per frame

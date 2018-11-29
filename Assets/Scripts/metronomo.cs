@@ -9,6 +9,7 @@ public class metronomo : MonoBehaviour {
     
     //private AudioSource audio;
     public bool daño = false;
+
     private static metronomo instance;
 
     public static metronomo getInstance()
