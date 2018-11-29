@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class metronomo : MonoBehaviour {
     public Image imag;
     public Sprite metronomo_01;
-    public Sprite metronomo_05;
+    
     //private AudioSource audio;
     public bool daño = false;
     private static metronomo instance;
@@ -28,11 +28,6 @@ public class metronomo : MonoBehaviour {
 
     void Update () {
         if (imag.sprite = metronomo_01)
-        {
-            DañoPlus();
-            Invoke("Dañomenos", 0.01f);
-        }
-        if (imag.sprite = metronomo_05)
         {
             DañoPlus();
             Invoke("Dañomenos", 0.01f);
