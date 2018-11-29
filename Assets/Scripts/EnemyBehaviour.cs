@@ -16,7 +16,7 @@ public class EnemyBehaviour : MonoBehaviour
     private BoxCollider attackcollider;
     public  MyGameManager manager;
     private BossBehaviour boss;
-    //public metronomo met;
+    public metronomo met;
 
     [Header("Creeper properties")]
     public int life = 10;
@@ -269,23 +269,23 @@ public class EnemyBehaviour : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-       /* if (other.tag == "ligero" && metronomo.getInstance().daño==true)
+        if (other.tag == "ligero" && metronomo.getInstance().daño==true)
         {
             Damage(3);
             Debug.Log("dañoextra");
             MyGameManager.getInstance().Carga();
-        }*/
+        }
        if (other.tag == "ligero")
         {
              Damage(2);
              MyGameManager.getInstance().Carga();
         }
-        /*    if (other.tag == "pesado" && metronomo.getInstance().daño== true)
+            if (other.tag == "pesado" && metronomo.getInstance().daño== true)
         {
             Damage(4);
             Debug.Log("dañoextra");
              MyGameManager.getInstance().Carga();
-        }*/
+        }
          if (other.tag == "pesado")
         {
             Damage(3);

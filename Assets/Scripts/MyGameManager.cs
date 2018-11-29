@@ -202,7 +202,6 @@ public void Pausa()
         {
         look = true;
         col.lookenemy=true;
-        col.numenemies++;
         }
         else if (look)
         {
