@@ -37,7 +37,6 @@ public class PlayerMovement : MonoBehaviour {
         }
         if (isGrounded){
             verticalVel -= 0;
-           
         }
         else
         {
@@ -94,6 +93,9 @@ public class PlayerMovement : MonoBehaviour {
     }
     void AddGravity(){
          verticalVel -= 2;
+        Invoke("ParticlePlay",0.2f);
+    }
+    void ParticlePlay(){
          particle.Play();
     }
 }

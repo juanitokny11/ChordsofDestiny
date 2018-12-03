@@ -43,7 +43,6 @@ public class MyGameManager : MonoBehaviour
    public float MaxHealth = 100;
     private static  MyGameManager instance;
     public SoundPlayer audios;
-
     public static  MyGameManager getInstance()
     {
         return instance;
