@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
-public class Deleteojects: MonoBehaviour {
+public class DeleteObjects: MonoBehaviour {
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -10,9 +11,10 @@ public class Deleteojects: MonoBehaviour {
             Explode();
         }
     }
-
-	void Explode() {
+    
+    void Explode() {
 		
 		Destroy(gameObject);
 	}
+   
 }

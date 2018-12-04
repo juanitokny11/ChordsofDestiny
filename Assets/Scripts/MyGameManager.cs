@@ -121,7 +121,7 @@ public class MyGameManager : MonoBehaviour
                  Invoke("ActivarColisiones", 2f);
                 }
             }
-            if(Input.GetAxisRaw ("Cancel")!=0)
+            if(Input.GetKeyDown(KeyCode.Escape))
             {
                  Pausa();
             }
