@@ -31,6 +31,13 @@ public class MenuManager : MonoBehaviour {
         Cursor.visible = true;
     }
 
+    public void Creditos()
+    {
+        SceneManager.LoadScene("Credits");
+        Time.timeScale = 1;
+
+    }
+
     public void Title(){
         SceneManager.LoadScene("MainM");
         Cursor.visible = true;
