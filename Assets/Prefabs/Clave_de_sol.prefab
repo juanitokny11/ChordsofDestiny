@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4045370075279694}
   - component: {fileID: 33171615095706514}
   - component: {fileID: 23808955486393972}
-  - component: {fileID: 114134523111859194}
+  - component: {fileID: 114100273227799674}
   - component: {fileID: 65607301731409094}
   m_Layer: 0
   m_Name: Clave_de_sol
@@ -42,7 +42,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!23 &23808955486393972
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -97,7 +97,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.02204156, y: 0.0030078471, z: 0.061763972}
   m_Center: {x: 0.00000018253922, y: -4.656614e-10, z: 0.00009790251}
---- !u!114 &114134523111859194
+--- !u!114 &114100273227799674
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,6 +105,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1852622971512518}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f25aeed731075a449a705f84a8454ab, type: 3}
+  m_Script: {fileID: 11500000, guid: 36491b9867840274688bd41ce004f4fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CoinRotateSpeed: 2

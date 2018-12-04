@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class Deleteojects: MonoBehaviour {
+public class Deleteojects2: MonoBehaviour {
 
     public float CoinRotateSpeed = 5;
     private GameObject player;
@@ -29,7 +29,7 @@ public class Deleteojects: MonoBehaviour {
     }
     void FixedUpdate()
     {
-        transform.Rotate(Vector3.down * CoinRotateSpeed);
+        transform.Rotate(Vector3.forward * CoinRotateSpeed);
     }
 
     void Explode() {
