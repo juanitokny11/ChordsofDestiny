@@ -55,12 +55,17 @@ public Transform player;                     //the target the camera follows
     void Update(){
         if (lookenemy == false)
         {
+            numenemies = 0;
+            if (numenemies > go.Length)
+            {
+                numenemies = 0;
+            }
         }
         else
         {
             LookAtEnemy();
             go = GameObject.FindGameObjectsWithTag("Enemy");
-            target = go[0].transform;
+            target = go[numenemies].transform;
             player.LookAt(target, Vector3.up);
         }
         }

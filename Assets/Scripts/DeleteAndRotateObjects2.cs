@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class Deleteojects2: MonoBehaviour {
+public class DeleteAndRotateObjects2: MonoBehaviour {
 
     public float CoinRotateSpeed = 5;
     private GameObject player;
