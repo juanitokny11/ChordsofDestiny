@@ -41,7 +41,7 @@ public class DeleteAndRotateObjects:MonoBehaviour {
         float distance = Vector3.Distance(playerTransform.position, transform.position);
         //  float distance = playerTransform.position.y - transform.position.y;
 
-        float maxDistance = 10.0f;
+        float maxDistance = 7.0f;
         // float maxDistance = 0.030f;
         if (distance < maxDistance)
         {

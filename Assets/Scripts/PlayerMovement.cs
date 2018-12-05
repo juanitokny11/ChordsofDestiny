@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour {
     private Vector3 moveVector;
     private Vector3 moveVector2;
     public ParticleSystem particle;
+    public SoundPlayer sound;
     private void Start()
     {
         //anim = GetComponent<Animator>();
@@ -97,5 +98,6 @@ public class PlayerMovement : MonoBehaviour {
     }
     void ParticlePlay(){
          particle.Play();
+         sound.Play(2,1);
     }
 }

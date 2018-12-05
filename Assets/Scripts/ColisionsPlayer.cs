@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ColisionsPlayer : MonoBehaviour
 {
@@ -20,9 +21,9 @@ private void Awake(){
             MyGameManager.getInstance().curHealth -=  MyGameManager.getInstance().Damage;
              MyGameManager.getInstance().HealthBar.fillAmount=  MyGameManager.getInstance().curHealth/  MyGameManager.getInstance().MaxHealth;
         }*/
-         if (other.tag == "Enemy")
-        { 
-            //other.GetComponent<EnemyBehaviour>().Damage(15);
+         if (other.tag == "Scene")
+        {
+            SceneManager.LoadScene("Boss");
         }
         if (other.tag == "corchera")
         {

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4636952941890734}
   - component: {fileID: 33381917457964174}
   - component: {fileID: 23828193450847260}
+  - component: {fileID: 64985686418735122}
   m_Layer: 0
   m_Name: tablon_Banco
   m_TagString: Untagged
@@ -38,6 +39,7 @@ GameObject:
   - component: {fileID: 4855095165574826}
   - component: {fileID: 33834121107542912}
   - component: {fileID: 23490706879240076}
+  - component: {fileID: 64132961985011088}
   m_Layer: 0
   m_Name: Banco_respaldo
   m_TagString: Untagged
@@ -55,6 +57,7 @@ GameObject:
   - component: {fileID: 4385050466557644}
   - component: {fileID: 33906779582959044}
   - component: {fileID: 23444320839284436}
+  - component: {fileID: 64998692058274958}
   m_Layer: 0
   m_Name: Banco_tubos
   m_TagString: Untagged
@@ -72,6 +75,7 @@ GameObject:
   - component: {fileID: 4684643490344262}
   - component: {fileID: 33031664453658952}
   - component: {fileID: 23345928678477260}
+  - component: {fileID: 64903628272266906}
   m_Layer: 0
   m_Name: Banco_pCylinder2
   m_TagString: Untagged
@@ -87,6 +91,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4064726283069890}
+  - component: {fileID: 114128484873052724}
+  - component: {fileID: 65651420898063194}
   m_Layer: 0
   m_Name: banco
   m_TagString: Untagged
@@ -104,6 +110,7 @@ GameObject:
   - component: {fileID: 4969644498082312}
   - component: {fileID: 33718116115583236}
   - component: {fileID: 23496070972280038}
+  - component: {fileID: 64285767492011252}
   m_Layer: 0
   m_Name: Banco_lado
   m_TagString: Untagged
@@ -121,6 +128,7 @@ GameObject:
   - component: {fileID: 4523285340479720}
   - component: {fileID: 33461678171599980}
   - component: {fileID: 23907655225234446}
+  - component: {fileID: 64860375492803696}
   m_Layer: 0
   m_Name: Banco_banco
   m_TagString: Untagged
@@ -134,9 +142,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1795158107140932}
-  m_LocalRotation: {x: -0, y: 0.99667996, z: -0, w: -0.081419446}
-  m_LocalPosition: {x: 5.2, y: 2.17, z: -11.87}
-  m_LocalScale: {x: 0.4551164, y: 0.4551164, z: 0.4551164}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -24.3, y: 0.98, z: -86.3}
+  m_LocalScale: {x: 0.93855995, y: 0.93855995, z: 0.7860815}
   m_Children:
   - {fileID: 4523285340479720}
   - {fileID: 4969644498082312}
@@ -146,7 +154,7 @@ Transform:
   - {fileID: 4636952941890734}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 189.34, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!4 &4385050466557644
 Transform:
   m_ObjectHideFlags: 1
@@ -477,3 +485,117 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1588924440871650}
   m_Mesh: {fileID: 4300008, guid: 98766aa1b70ae2c4785cabbe0585ecdc, type: 3}
+--- !u!64 &64132961985011088
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1257778079433210}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300006, guid: 98766aa1b70ae2c4785cabbe0585ecdc, type: 3}
+--- !u!64 &64285767492011252
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1837302524745032}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300002, guid: 98766aa1b70ae2c4785cabbe0585ecdc, type: 3}
+--- !u!64 &64860375492803696
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1855706167949938}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 98766aa1b70ae2c4785cabbe0585ecdc, type: 3}
+--- !u!64 &64903628272266906
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1676477936489580}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300004, guid: 98766aa1b70ae2c4785cabbe0585ecdc, type: 3}
+--- !u!64 &64985686418735122
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1185273149244888}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300010, guid: 98766aa1b70ae2c4785cabbe0585ecdc, type: 3}
+--- !u!64 &64998692058274958
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1588924440871650}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300008, guid: 98766aa1b70ae2c4785cabbe0585ecdc, type: 3}
+--- !u!65 &65651420898063194
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1795158107140932}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.583228, y: 5.189373, z: 4.3860984}
+  m_Center: {x: 0.37086618, y: 2.0946877, z: -0.50711656}
+--- !u!114 &114128484873052724
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1795158107140932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02a0d87d4896d514ea815304dda62430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vida: 3
+  notas:
+  - {fileID: 1522341174738042, guid: bf960a7fa6017814a8fd9abbd668ccf9, type: 2}
+  - {fileID: 1033675225963266, guid: b7aa7c01209310e4e8e2884e8be6817c, type: 2}
+  - {fileID: 1374882206520882, guid: 76c1991d43475864cb1bcff31f5b5731, type: 2}
+  - {fileID: 1626247155447998, guid: 82f7792c310f4b14093cb612f48db22b, type: 2}
+  random: 0
