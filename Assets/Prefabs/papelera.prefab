@@ -151,6 +151,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4901208837696742}
+  - component: {fileID: 65297823787237508}
+  - component: {fileID: 114225990491559382}
   m_Layer: 0
   m_Name: papelera
   m_TagString: Untagged
@@ -429,8 +431,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1619415043151298}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 77.0339, y: 77.0339, z: 77.0339}
+  m_LocalPosition: {x: -24.5, y: 0.84, z: 9.6}
+  m_LocalScale: {x: 162.55554, y: 162.55554, z: 162.55554}
   m_Children:
   - {fileID: 4105353173795064}
   - {fileID: 4016312917613980}
@@ -900,3 +902,26 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1252764828079086}
   m_Mesh: {fileID: 4300008, guid: a10b50424ce71f4449a2afa80b9bb99e, type: 3}
+--- !u!65 &65297823787237508
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1619415043151298}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.017347211, y: 0.033164125, z: 0.0172765}
+  m_Center: {x: -0.0000690635, y: 0.01850297, z: 0.0002346088}
+--- !u!114 &114225990491559382
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1619415043151298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02a0d87d4896d514ea815304dda62430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -53,6 +53,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4852843204109980}
+  - component: {fileID: 65618915154461100}
+  - component: {fileID: 114768027622270414}
   m_Layer: 0
   m_Name: boca_de_incendios
   m_TagString: Untagged
@@ -80,8 +82,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1829225407671132}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.33592, y: 0.33592, z: 0.33592}
+  m_LocalPosition: {x: 7.95, y: 1.02, z: -41.7}
+  m_LocalScale: {x: 0.36279362, y: 0.36279362, z: 0.36279362}
   m_Children:
   - {fileID: 4195588843927962}
   - {fileID: 4933186197223276}
@@ -185,3 +187,26 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1641541590454244}
   m_Mesh: {fileID: 4300000, guid: 6284dc2dd79fda84b955700f8b300f49, type: 3}
+--- !u!65 &65618915154461100
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1829225407671132}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.3701832, y: 6.323252, z: 3.2095013}
+  m_Center: {x: -0.16542633, y: 2.6616263, z: 0.21795557}
+--- !u!114 &114768027622270414
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1829225407671132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02a0d87d4896d514ea815304dda62430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
