@@ -98,6 +98,6 @@ public class PlayerMovement : MonoBehaviour {
     }
     void ParticlePlay(){
          particle.Play();
-         sound.Play(2,1);
+         //sound.Play(2,1);
     }
 }
