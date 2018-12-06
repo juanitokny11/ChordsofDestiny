@@ -11,7 +11,7 @@ public class Spawner : MonoBehaviour {
     public float timeToSpawn;
     public float maxTimeSpawn;
     public float minTimeSpawn;
-    private GameObject randomTarget;
+    //private GameObject randomTarget;
     public bool spawning=false;
     private  MyGameManager manager;
     //int randenemy;
@@ -24,7 +24,7 @@ public class Spawner : MonoBehaviour {
     private void Awake()
     {
         spawn = GameObject.FindGameObjectsWithTag("Spawn"); 
-        randomTarget = spawn[Random.Range(0, spawn.Length)]; 
+        //randomTarget = spawn[0]; 
         boss=FindObjectOfType<BossBehaviour>();
         manager = FindObjectOfType<MyGameManager>();
     }
@@ -39,7 +39,7 @@ public class Spawner : MonoBehaviour {
             if(enemyCounter<=15 && numSpawns>0){
                 for (int i = 0; i < enemyCache.Length; i++)
                 {
-                    enemyCache[i] = new EnemyCache(Enemies[i], spawn[i].transform.position,cache.transform, 2);
+                    enemyCache[i] = new EnemyCache(Enemies[0], spawn[0].transform.position, cache.transform, Random.Range(1, 3));
                 }
                 enemyCache[Random.Range(0, enemyCache.Length)].GetEnemy();
                 enemyCounter +=2;

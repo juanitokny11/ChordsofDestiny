@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class BossBehaviour : MonoBehaviour
@@ -14,6 +15,8 @@ public class BossBehaviour : MonoBehaviour
     public GameObject [] spawners;
     public float counter = 0.0f;
      public float counterInvoke = 0.0f;
+    public Image HealthBar;
+    public float MaxHealth = 100;
 
     //public SoundPlayer sound;
     private CapsuleCollider colider;
@@ -25,7 +28,7 @@ public class BossBehaviour : MonoBehaviour
     //public metronomo met;
 
     [Header("Creeper properties")]
-    public int life = 30;
+    public float life = 100;
 
     [Header("Target Detection")]
     public float radius;
@@ -55,11 +58,13 @@ public class BossBehaviour : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         attackcollider = GetComponent<BoxCollider>();
         colider = GetComponent<CapsuleCollider>();
+        life = MaxHealth;
+        HealthBar.fillAmount = life / MaxHealth;
         /*for(int i=0;i<spawners.Length;i++)
         {
             spawners[i]= GameObject[i].FindGameObjectsWithTag("Spawn");
         }*/
-       // sound = GetComponentInChildren<SoundPlayer>();
+        // sound = GetComponentInChildren<SoundPlayer>();
 
         nearNode = true;
         SetIdle();        
@@ -222,10 +227,12 @@ public class BossBehaviour : MonoBehaviour
         agent.isStopped = true;
         state = State.Dead;
         //anim.SetTrigger("Die");
+        if (life <= 0) { 
         Invoke("DestroyEnemy", 3);
+        }
     }
-
-    void GoNextNode()
+   
+        void GoNextNode()
     {
         currentNode++;
         if(currentNode >= pathNodes.Length) currentNode = 0;
@@ -279,18 +286,19 @@ public class BossBehaviour : MonoBehaviour
     {
         if(state == State.Dead) return;
         life -= hit;
+        HealthBar.fillAmount = life / MaxHealth;
         //sound.Play(2, 1);
         if (life <= 0) SetDead();
     }
     private void OnTriggerEnter(Collider other)
     {
-        /*if (other.tag == "ligero" && metronomo.getInstance().daño==true)
+        if (other.tag == "ligero" && metronomo.getInstance().daño==true)
         {
             Damage(3);
             Debug.Log("dañoextra");
-             FPSInputManager.getInstance().Carga();
-        }*/
-        if(other.tag== "Player")
+             MyGameManager.getInstance().Carga();
+        }
+        if (other.tag== "Player")
         {
             MyGameManager.getInstance().Daño(15f);
         }
@@ -299,12 +307,12 @@ public class BossBehaviour : MonoBehaviour
              Damage(2);
               MyGameManager.getInstance().Carga();
         }
-           /* if (other.tag == "pesado" && metronomo.getInstance().daño== true)
+            if (other.tag == "pesado" && metronomo.getInstance().daño== true)
         {
             Damage(4);
             Debug.Log("dañoextra");
-             FPSInputManager.getInstance().Carga();
-        }Ç*/
+            MyGameManager.getInstance().Carga();
+        }
          if (other.tag == "pesado")
         {
             Damage(3);
@@ -332,6 +340,5 @@ public class BossBehaviour : MonoBehaviour
     }
     void InvocarEnemigo(){
         spawn.SetSpawn(2);
-
     }
 }

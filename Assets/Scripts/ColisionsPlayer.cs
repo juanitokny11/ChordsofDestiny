@@ -16,11 +16,6 @@ private void Awake(){
 }
   public void OnTriggerEnter(Collider other)
     { 
-        /*if(other.CompareTag("Enemy")){
-
-            MyGameManager.getInstance().curHealth -=  MyGameManager.getInstance().Damage;
-             MyGameManager.getInstance().HealthBar.fillAmount=  MyGameManager.getInstance().curHealth/  MyGameManager.getInstance().MaxHealth;
-        }*/
          if (other.tag == "Scene")
         {
             SceneManager.LoadScene("Boss");
