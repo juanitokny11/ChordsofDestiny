@@ -3,7 +3,7 @@ using System.Collections;
 
 public class DeleteObjects: MonoBehaviour {
 
-    public int vida = 3;
+    public int vida = 2;
     public GameObject[] notas;
     public int random;
     private Vector3 inipos;
