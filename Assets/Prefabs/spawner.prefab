@@ -9,73 +9,61 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1836936698091164}
+  m_RootGameObject: {fileID: 1443426225823024}
   m_IsPrefabAsset: 1
---- !u!1 &1836936698091164
+--- !u!1 &1443426225823024
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4993025775441868}
-  - component: {fileID: 114176658036538312}
+  - component: {fileID: 4757219468921350}
+  - component: {fileID: 114794188680117922}
   m_Layer: 0
-  m_Name: InputManager
+  m_Name: spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4993025775441868
+--- !u!4 &4757219468921350
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1836936698091164}
+  m_GameObject: {fileID: 1443426225823024}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5451095, y: 4.0886106, z: -86.736885}
+  m_LocalPosition: {x: 0, y: 7.28, z: 5.71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114176658036538312
+--- !u!114 &114794188680117922
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1836936698091164}
+  m_GameObject: {fileID: 1443426225823024}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabad8c546ddf4c42a606b4511224cb9, type: 3}
+  m_Script: {fileID: 11500000, guid: c18dfbd2ddf556e48901c23c259e822d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: {fileID: 0}
-  col: {fileID: 0}
-  arma: {fileID: 0}
-  jumpInput: 0
-  cama: {fileID: 0}
-  cam: {fileID: 0}
-  money: 0
-  moneyText: {fileID: 0}
-  pers: {fileID: 0}
-  Damage: 5
-  cargasolo: 7
-  clavecarga: 100
-  look: 1
-  pause: 1
-  godmode: 1
-  notacogida: 0
-  counternotas: 0
-  notas: {fileID: 0}
-  pausaMenu: {fileID: 0}
-  inputAxis: {x: 0, y: 0}
-  soloBar: {fileID: 0}
-  solocollider: {fileID: 0}
-  cursolo: 0
-  Maxsolo: 100
-  HealthBar: {fileID: 0}
-  curHealth: 0
-  MaxHealth: 100
-  audios: {fileID: 0}
+  Enemies:
+  - {fileID: 1963633006535794, guid: 8b746f9107fc3d946bdd5a3af336431b, type: 2}
+  points:
+  - {fileID: 0}
+  - {fileID: 0}
+  spawn:
+  - {fileID: 0}
+  cache: {fileID: 0}
+  timeToSpawn: 0
+  maxTimeSpawn: 10
+  minTimeSpawn: 5
+  spawning: 0
+  manager: {fileID: 0}
+  counter: 0
+  numSpawns: 0
+  enemyCounter: 0

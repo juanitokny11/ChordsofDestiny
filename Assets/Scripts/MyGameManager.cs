@@ -47,6 +47,14 @@ public class MyGameManager : MonoBehaviour
     {
         return instance;
     }
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+        }
+    }
     void Start()
     {
         if (instance == null)

@@ -13,7 +13,7 @@ public class Spawner : MonoBehaviour {
     public float minTimeSpawn;
     private GameObject randomTarget;
     public bool spawning=false;
-    public  MyGameManager manager;
+    private  MyGameManager manager;
     //int randenemy;
     public float counter;
     public int numSpawns;
@@ -26,8 +26,7 @@ public class Spawner : MonoBehaviour {
         spawn = GameObject.FindGameObjectsWithTag("Spawn"); 
         randomTarget = spawn[Random.Range(0, spawn.Length)]; 
         boss=FindObjectOfType<BossBehaviour>();
-        
-       ;
+        manager = FindObjectOfType<MyGameManager>();
     }
     void Start(){
         enemyCache = new EnemyCache[Enemies.Length];
