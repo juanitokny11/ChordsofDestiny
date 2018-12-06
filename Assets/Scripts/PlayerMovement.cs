@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour {
     private Vector3 moveVector2;
     public ParticleSystem particle;
     public SoundPlayer sound;
+    public bool jump=false;
     private void Start()
     {
         //anim = GetComponent<Animator>();
@@ -34,14 +35,17 @@ public class PlayerMovement : MonoBehaviour {
 
         isGrounded = controller.isGrounded;
          if (Input.GetButton("Jump")&& isGrounded){
-            verticalVel=4;
+            verticalVel=2;
+            //jump = true;
         }
         if (isGrounded){
-            verticalVel -= 0;
+            //verticalVel -= 0;
+            
         }
         else
         {
-           Invoke("AddGravity",0.1f);
+            jump = true;
+            Invoke("AddGravity",0.1f);
         }
         
         moveVector = new Vector3(0, verticalVel, 0);
@@ -97,7 +101,11 @@ public class PlayerMovement : MonoBehaviour {
         Invoke("ParticlePlay",0.2f);
     }
     void ParticlePlay(){
-         particle.Play();
-         //sound.Play(2,1);
+        if (jump == true) { 
+        particle.Play();
+        Debug.Log("pasa");
+        sound.Play(2,1);
+        jump = false;
+        }
     }
 }
