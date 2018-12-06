@@ -103,7 +103,6 @@ public class PlayerMovement : MonoBehaviour {
     void ParticlePlay(){
         if (jump == true) { 
         particle.Play();
-        Debug.Log("pasa");
         sound.Play(2,1);
         jump = false;
         }
