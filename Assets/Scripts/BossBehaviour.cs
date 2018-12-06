@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class BossBehaviour : MonoBehaviour
 {
@@ -24,7 +25,7 @@ public class BossBehaviour : MonoBehaviour
     //public metronomo met;
 
     [Header("Creeper properties")]
-    public int life = 10;
+    public int life = 30;
 
     [Header("Target Detection")]
     public float radius;
@@ -326,6 +327,8 @@ public class BossBehaviour : MonoBehaviour
     void DestroyEnemy()
     {
         Destroy(this.gameObject);
+        SceneManager.LoadScene("Victory");
+
     }
     void InvocarEnemigo(){
         spawn.SetSpawn(2);
