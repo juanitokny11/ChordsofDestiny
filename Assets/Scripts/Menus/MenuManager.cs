@@ -9,6 +9,7 @@ public class MenuManager : MonoBehaviour {
     {
         SceneManager.LoadScene("Gameplay");
         Time.timeScale=1;
+        Cursor.visible = false;
        
     }
     public void EndGame()
@@ -50,6 +51,7 @@ public class MenuManager : MonoBehaviour {
     public void Pause()
     {
          MyGameManager.getInstance().Pausa();
+         
     }
 
    

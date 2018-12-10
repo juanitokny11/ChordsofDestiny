@@ -246,6 +246,7 @@ public void Disparar()
 public void Dead()
     {
         SceneManager.LoadScene("GameOver"); 
+        Cursor.visible = true;
     }
 private void ActivarColisiones()
     {
