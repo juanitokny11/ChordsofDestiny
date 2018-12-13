@@ -9,7 +9,8 @@ public class CamaraCollision : MonoBehaviour {
     public int numenemies=0;
     public Spawner spawn;
     [Header("Camera Properties")]
-    private float DistanceAway;                     //how far the camera is from the player.
+    public  float DistanceAway;                     //how far the camera is from the player.
+    public Transform objective;
 
     public float minDistance = 1;                //min camera distance
     public float maxDistance = 2;                //max camera distance
@@ -22,7 +23,7 @@ public class CamaraCollision : MonoBehaviour {
     [Header("Player to follow")]
     private Transform target;
     //public Transform[] targets;
-public Transform player;                     //the target the camera follows
+    public Transform player;                     //the target the camera follows
 
     [Header("Layer(s) to include")]
     public LayerMask CamOcclusion;                //the layers that will be affected by collision

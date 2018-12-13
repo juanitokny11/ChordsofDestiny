@@ -65,7 +65,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1674757178085442}
   m_LocalRotation: {x: -0.078095034, y: -0, z: -0, w: 0.996946}
-  m_LocalPosition: {x: 0, y: 6.5, z: 0}
+  m_LocalPosition: {x: 5.15, y: 3.66, z: -44.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4796481005843350}
@@ -134,12 +134,14 @@ MonoBehaviour:
   go: []
   numenemies: 10
   spawn: {fileID: 0}
+  DistanceAway: 0
+  objective: {fileID: 0}
   minDistance: 10
-  maxDistance: 20
-  DistanceUp: 20
+  maxDistance: 15
+  DistanceUp: 15
   smooth: 0
   rotateAround: 70
-  player: {fileID: 0}
+  player: {fileID: 4944542205855632}
   CamOcclusion:
     serializedVersion: 2
     m_Bits: 4294967295
