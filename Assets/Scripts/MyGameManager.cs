@@ -76,6 +76,7 @@ public class MyGameManager : MonoBehaviour
           GodMode();
         }
         if (godmode==true){
+            Time.timeScale = 1;
             if (curHealth<=0){
                 Invoke ("Dead",2f);
             }
@@ -133,6 +134,7 @@ public class MyGameManager : MonoBehaviour
                  Pausa();
             }
         }else {
+            Time.timeScale = 0;
             inputAxis.x = Input.GetAxis("Horizontal");
             inputAxis.y = Input.GetAxis("Vertical");
             cam.transform.Translate(inputAxis.x,0, inputAxis.y);

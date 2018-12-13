@@ -294,7 +294,7 @@ public class BossBehaviour : MonoBehaviour
     {
         if (other.tag == "ligero" && metronomo.getInstance().daño==true)
         {
-            Damage(3);
+            Damage(10);
             Debug.Log("dañoextra");
              MyGameManager.getInstance().Carga();
         }
@@ -304,18 +304,18 @@ public class BossBehaviour : MonoBehaviour
         }
        if (other.tag == "ligero")
         {
-             Damage(2);
+             Damage(5);
               MyGameManager.getInstance().Carga();
         }
             if (other.tag == "pesado" && metronomo.getInstance().daño== true)
         {
-            Damage(4);
+            Damage(12);
             Debug.Log("dañoextra");
             MyGameManager.getInstance().Carga();
         }
          if (other.tag == "pesado")
         {
-            Damage(3);
+            Damage(7);
               MyGameManager.getInstance().Carga();
         }
     }
