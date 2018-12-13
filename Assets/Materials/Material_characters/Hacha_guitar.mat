@@ -6,9 +6,9 @@ Material:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Carretera
+  m_Name: Hacha_guitar
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
-  m_ShaderKeywords: _EMISSION _METALLICSPECGLOSSMAP _NORMALMAP _SPECGLOSSMAP _SPECULAR_SETUP
+  m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _METALLICSPECGLOSSMAP _NORMALMAP
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -19,7 +19,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 8941a4c64d19f804ab774157b89624f4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2e5130c0ca94cb444aa7ba0a0f130dd2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -35,15 +35,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: d2596fc483a95b74e9405213e904c69b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 97fbe6a1809414040bc89aa52a115077, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 1d574e73b9cb36e4495e3442d1fa4e4a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 12278cb83fc554348ab7501fa9ef4390, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 207645601a823c945a91e5a3db60f7dd, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -55,7 +55,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
-        m_Texture: {fileID: 2800000, guid: c5ffe762e1beeee4db280aa391ccff75, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -77,9 +77,9 @@ Material:
     - _SrcBlend: 1
     - _Surface: 0
     - _UVSec: 0
-    - _WorkflowMode: 0
+    - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
