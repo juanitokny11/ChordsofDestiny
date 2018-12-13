@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour {
     private Vector3 moveVector2;
     public ParticleSystem particle;
     public SoundPlayer sound;
+    private float counter;
     public bool jump=false;
     private void Start()
     {
@@ -97,7 +98,8 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
     void AddGravity(){
-         verticalVel -= 2;
+        counter += Time.deltaTime;
+         verticalVel -= counter;
         Invoke("ParticlePlay",0.2f);
     }
     void ParticlePlay(){
