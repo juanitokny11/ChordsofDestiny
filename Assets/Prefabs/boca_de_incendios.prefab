@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33653095044259030}
   - component: {fileID: 23321954794091960}
   - component: {fileID: 64163686302812358}
+  - component: {fileID: 64577626137409294}
   m_Layer: 0
   m_Name: suelo_group1
   m_TagString: Untagged
@@ -40,6 +41,7 @@ GameObject:
   - component: {fileID: 33938203979788916}
   - component: {fileID: 23623564233849980}
   - component: {fileID: 64764336291687148}
+  - component: {fileID: 64292738191654314}
   m_Layer: 0
   m_Name: group1_estructura
   m_TagString: Untagged
@@ -84,8 +86,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1829225407671132}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.9739, y: 1.05, z: -41.725}
-  m_LocalScale: {x: 0.50729436, y: 0.50729436, z: 0.50729436}
+  m_LocalPosition: {x: -24.5, y: 1.02, z: -20.2}
+  m_LocalScale: {x: 0.5072944, y: 0.5072944, z: 0.5072944}
   m_Children:
   - {fileID: 4195588843927962}
   - {fileID: 4933186197223276}
@@ -190,6 +192,34 @@ MeshFilter:
   m_GameObject: {fileID: 1641541590454244}
   m_Mesh: {fileID: 4300000, guid: 6284dc2dd79fda84b955700f8b300f49, type: 3}
 --- !u!64 &64163686302812358
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1545788562508008}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300002, guid: 6284dc2dd79fda84b955700f8b300f49, type: 3}
+--- !u!64 &64292738191654314
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1641541590454244}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 6284dc2dd79fda84b955700f8b300f49, type: 3}
+--- !u!64 &64577626137409294
 MeshCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
