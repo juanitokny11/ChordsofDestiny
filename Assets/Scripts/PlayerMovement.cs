@@ -99,7 +99,11 @@ public class PlayerMovement : MonoBehaviour {
     }
     void AddGravity(){
         counter += Time.deltaTime;
-         verticalVel -= counter;
+        if (counter >= 1.5f)
+        {
+            verticalVel -= counter;
+        }
+        else verticalVel -= 2;
         Invoke("ParticlePlay",0.2f);
     }
     void ParticlePlay(){
