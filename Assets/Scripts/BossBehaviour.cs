@@ -151,7 +151,7 @@ public class BossBehaviour : MonoBehaviour
         }
     }
     void Explode() { 
-        if(counterInvoke>=3){
+        if(counterInvoke>=2){
              state=State.Invocar;
              counterInvoke=0;
         }else{
@@ -177,14 +177,14 @@ public class BossBehaviour : MonoBehaviour
         state = State.Idle;
     }
     void SetInvocar()
-    {  if (counter>= 30)
+    {  if (counter>= 2)
         {  
-            if (enemyCounter<=15){
+            
             spawn.SetSpawn(2);
            // Invoke("InvocarEnemigo", 0.05f);
             enemyCounter+=2;
             counter = 0;
-        }
+        
         }
         state=State.Attack;
     }
@@ -192,7 +192,7 @@ public class BossBehaviour : MonoBehaviour
     {
         agent.isStopped = false;
         agent.SetDestination(targetTransform.position);
-        agent.stoppingDistance = 2.0f;
+        agent.stoppingDistance = 8.0f;
         //anim.SetBool("Run", true);
         //anim.SetBool("Walk", false);
         radius = chaseRadius;
@@ -300,7 +300,7 @@ public class BossBehaviour : MonoBehaviour
         }
         if (other.tag== "Player")
         {
-            MyGameManager.getInstance().Daño(15f);
+            MyGameManager.getInstance().Daño(10f);
         }
        if (other.tag == "ligero")
         {
@@ -317,6 +317,10 @@ public class BossBehaviour : MonoBehaviour
         {
             Damage(7);
               MyGameManager.getInstance().Carga();
+        }
+        if (other.tag == "enpujar")
+        {
+          
         }
     }
     /*void OnCollisionEnter(Collision other) {
