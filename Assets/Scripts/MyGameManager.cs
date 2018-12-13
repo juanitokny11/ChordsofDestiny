@@ -106,7 +106,7 @@ public class MyGameManager : MonoBehaviour
                 }
                 if (Input.GetMouseButtonDown(1))
                 {
-                    pers.CrossFade("ataque_fuerte", 0.1f, 0, 0);
+                    pers.Play("ataque_fuerte", -1, 0);
                     arma.transform.tag = "pesado";
                     Invoke("ResetTag", 1);
                     audios.Play(1, 1);

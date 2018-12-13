@@ -322,6 +322,6 @@ public class EnemyBehaviour : MonoBehaviour
     void DestroyEnemy()
     {
         Destroy(this.gameObject);
-        boss.enemyCounter--;
+        //boss.enemyCounter--;
     }
 }
