@@ -120,9 +120,9 @@ public class MyGameManager : MonoBehaviour
                         cursolo=0;
                         soloefect.SetActive(true);
                         soloefectanim.Play("soloanim", -1, 0);
-                        Invoke("ResetAnim", 1.5f);
+                        Invoke("ResetAnim", 1f);
                         soloBar.fillAmount= cursolo/Maxsolo;
-                    Invoke("DesActivarColisiones", 0.1f);
+                        Invoke("DesActivarColisiones", 0.1f);
                    
                      }
                  Invoke("ActivarColisiones", 2f);
@@ -258,13 +258,15 @@ public void Dead()
 private void ActivarColisiones()
     {
         player.GetComponent<ColisionsPlayer>().enabled = true;
-        soloefect.SetActive(true);
-        solocollider.SetActive(true);
+        soloefect.SetActive(false);
+        solocollider.SetActive(false);
+
     }
     private void DesActivarColisiones()
     {
         player.GetComponent<ColisionsPlayer>().enabled = false;
-         solocollider.SetActive(false);
+        solocollider.SetActive(true);
+       
 
     }
 }
