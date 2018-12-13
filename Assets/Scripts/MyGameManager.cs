@@ -13,7 +13,8 @@ public class MyGameManager : MonoBehaviour
     public GameObject arma;
     public float jumpInput;
     public CamaraCollision cama;
-//    private LookRotation lookRotation;
+    public GameObject soloefect;
+  //private LookRotation lookRotation;
     private MouseCursor mouseCursor;
 
     public GameObject cam;
@@ -24,6 +25,7 @@ public class MyGameManager : MonoBehaviour
     private bool fuerte;
     public float Damage=10f;
     public float cargasolo=15f;
+    public Animator soloefectanim;
 
     public float clavecarga=50f;
     public bool look=true;
@@ -115,8 +117,11 @@ public class MyGameManager : MonoBehaviour
                 if (Input.GetMouseButtonDown(2))
                 { 
                      if(cursolo>=Maxsolo){
-                     //cursolo=0;
-                     soloBar.fillAmount= cursolo/Maxsolo;
+                        cursolo=0;
+                        soloefect.SetActive(true);
+                        soloefectanim.Play("soloanim", -1, 0);
+                        Invoke("ResetAnim", 1.5f);
+                        soloBar.fillAmount= cursolo/Maxsolo;
                     Invoke("DesActivarColisiones", 0.1f);
                    
                      }
@@ -154,6 +159,10 @@ public class MyGameManager : MonoBehaviour
     void ResetAttack()
     {
         pers.SetTrigger("Reset");
+    }
+    void ResetAnim()
+    {
+        soloefectanim.SetTrigger("Reset");
     }
     void ResetTag()
     {
@@ -229,9 +238,7 @@ public void GodMode()
         cam.SetActive(true);
         godmode = false;
         Cursor.visible = true;
-        
         }
-   
     }
 public void Evadir()
     {
@@ -251,7 +258,8 @@ public void Dead()
 private void ActivarColisiones()
     {
         player.GetComponent<ColisionsPlayer>().enabled = true;
-         solocollider.SetActive(true);
+        soloefect.SetActive(true);
+        solocollider.SetActive(true);
     }
     private void DesActivarColisiones()
     {
