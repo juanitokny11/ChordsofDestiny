@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour {
     public SoundPlayer sound;
     private float counter;
     public bool jump=false;
+    public bool suelo = false;
     private void Start()
     {
         //anim = GetComponent<Animator>();
@@ -35,17 +36,19 @@ public class PlayerMovement : MonoBehaviour {
         InputMagnitude();
 
         isGrounded = controller.isGrounded;
-         if (Input.GetButton("Jump")&& isGrounded){
-            verticalVel=2;
+         if (Input.GetButton("Jump")&& isGrounded && suelo==true){
+            verticalVel=1;
             //jump = true;
         }
         if (isGrounded){
             //verticalVel -= 0;
+            suelo = true;
             
         }
         else
         {
             jump = true;
+            suelo = false;
             Invoke("AddGravity",0.1f);
         }
         
@@ -98,17 +101,14 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
     void AddGravity(){
-        counter += Time.deltaTime;
-        if (counter >= 1.5f)
-        {
-            verticalVel -= counter;
-        }
-        else verticalVel -= 2;
+        counter += 0.05f;
+        verticalVel -= counter;
         Invoke("ParticlePlay",0.2f);
     }
     void ParticlePlay(){
         if (jump == true) { 
         particle.Play();
+        counter = 0;
         sound.Play(2,1);
         jump = false;
         }
