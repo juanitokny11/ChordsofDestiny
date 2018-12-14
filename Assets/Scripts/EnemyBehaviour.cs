@@ -276,25 +276,29 @@ public class EnemyBehaviour : MonoBehaviour
         {
             Damage(3);
             Debug.Log("dañoextra");
+            MyGameManager.getInstance().OnTempo();
             ataque.Play();
             MyGameManager.getInstance().Carga();
         }
        if (other.tag == "ligero")
         {
              Damage(2);
-             MyGameManager.getInstance().Carga();
+            MyGameManager.getInstance().NoTempo();
+            MyGameManager.getInstance().Carga();
         }
             if (other.tag == "pesado" && metronomo.getInstance().daño== true)
         {
             Damage(4);
             Debug.Log("dañoextra");
+            MyGameManager.getInstance().OnTempo();
             ataque.Play();
              MyGameManager.getInstance().Carga();
         }
          if (other.tag == "pesado")
         {
             Damage(3);
-              MyGameManager.getInstance().Carga();
+            MyGameManager.getInstance().NoTempo();
+            MyGameManager.getInstance().Carga();
         }
         if (other.tag == "Player")
         {
@@ -313,15 +317,15 @@ public class EnemyBehaviour : MonoBehaviour
     }
     void ResetAttack()
     {
-        //anim.SetBool("Attack", false);
         agent.isStopped = false;
-        //transform.tag = "Passive";
         attackcollider.enabled = false;
         state = State.Patrol;
     }
     void DestroyEnemy()
     {
         Destroy(this.gameObject);
-        //boss.enemyCounter--;
+        if (boss) { 
+        boss.enemyCounter--;
+        }
     }
 }

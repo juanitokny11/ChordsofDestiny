@@ -14,6 +14,7 @@ public class MyGameManager : MonoBehaviour
     public float jumpInput;
     public CamaraCollision cama;
     public GameObject soloefect;
+    public Text tempo;
   //private LookRotation lookRotation;
     private MouseCursor mouseCursor;
 
@@ -270,6 +271,23 @@ private void ActivarColisiones()
         solocollider.SetActive(true);
        
 
+    }
+    public void OnTempo()
+    {
+        tempo.text="Good";
+        tempo.color = Color.green;
+        Invoke("TextOff", 0.5f);
+
+    }
+    public void NoTempo()
+    {
+        tempo.text = "Wrong";
+        tempo.color = Color.red;
+        Invoke("TextOff", 0.5f);
+    }
+    public void TextOff()
+    {
+        tempo.text = "";
     }
 }
 

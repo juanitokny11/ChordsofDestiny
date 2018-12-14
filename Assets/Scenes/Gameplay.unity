@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -8675,6 +8675,11 @@ Prefab:
       propertyPath: soloefectanim
       value: 
       objectReference: {fileID: 135263487}
+    - target: {fileID: 114176658036538312, guid: c129ee25fef3b8c439e6ee2abe08e434,
+        type: 2}
+      propertyPath: tempo
+      value: 
+      objectReference: {fileID: 1405826730}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c129ee25fef3b8c439e6ee2abe08e434, type: 2}
   m_IsPrefabAsset: 0
@@ -13278,6 +13283,12 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300018, guid: e5dbea413197e71458c58b609d00ae45, type: 3}
+--- !u!114 &1405826730 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114238657561200494, guid: 303c9a61fe9fd4845b7866e88b4417f6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1812183385}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!114 &1409986900 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114663066236026558, guid: 303c9a61fe9fd4845b7866e88b4417f6,
@@ -16956,9 +16967,16 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1086468283897898, guid: 303c9a61fe9fd4845b7866e88b4417f6, type: 2}
+    - target: {fileID: 1539574775729584, guid: 303c9a61fe9fd4845b7866e88b4417f6, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114238657561200494, guid: 303c9a61fe9fd4845b7866e88b4417f6,
+        type: 2}
+      propertyPath: m_Text
+      value: '
+
+'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 303c9a61fe9fd4845b7866e88b4417f6, type: 2}
