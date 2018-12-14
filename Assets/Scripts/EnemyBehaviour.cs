@@ -210,7 +210,7 @@ public class EnemyBehaviour : MonoBehaviour
         agent.isStopped = true;
         state = State.Dead;
         //anim.SetTrigger("Die");
-        Invoke("DestroyEnemy", 3);
+        Invoke("DestroyEnemy", 1);
     }
 
     void GoNextNode()
@@ -267,6 +267,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if(state == State.Dead) return;
         life -= hit;
+        
         //sound.Play(2, 1);
         if (life <= 0) SetDead();
     }
@@ -280,7 +281,7 @@ public class EnemyBehaviour : MonoBehaviour
             ataque.Play();
             MyGameManager.getInstance().Carga();
         }
-       if (other.tag == "ligero")
+       if (other.tag == "ligero"&& metronomo.getInstance().daño== false)
         {
              Damage(2);
             MyGameManager.getInstance().NoTempo();
@@ -294,7 +295,7 @@ public class EnemyBehaviour : MonoBehaviour
             ataque.Play();
              MyGameManager.getInstance().Carga();
         }
-         if (other.tag == "pesado")
+         if (other.tag == "pesado"&& metronomo.getInstance().daño== false)
         {
             Damage(3);
             MyGameManager.getInstance().NoTempo();
@@ -312,7 +313,7 @@ public class EnemyBehaviour : MonoBehaviour
     }
     void OnCollisionEnter(Collision other) {
 		if(other.gameObject.tag == "arma") {
-			Damage (2);	
+			//Damage (2);	
 		}
     }
     void ResetAttack()
