@@ -1299,9 +1299,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 202cf15b97dd87d4196a8e24c353ec4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicslider: {fileID: 621771179}
-  effectsslider: {fileID: 1028780390}
-  generalslider: {fileID: 1907964399}
+  generalVolume: {fileID: 1907964399}
+  musicVolume: {fileID: 621771179}
+  effectsVolume: {fileID: 1028780390}
   mixer: {fileID: 24100000, guid: 2e0442f16d0f9f94e878cc6b67301c55, type: 2}
 --- !u!114 &621771179
 MonoBehaviour:
@@ -2195,9 +2195,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 202cf15b97dd87d4196a8e24c353ec4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicslider: {fileID: 621771179}
-  effectsslider: {fileID: 1028780390}
-  generalslider: {fileID: 1907964399}
+  generalVolume: {fileID: 1907964399}
+  musicVolume: {fileID: 621771179}
+  effectsVolume: {fileID: 1028780390}
   mixer: {fileID: 24100000, guid: 2e0442f16d0f9f94e878cc6b67301c55, type: 2}
 --- !u!114 &1028780390
 MonoBehaviour:
@@ -3330,7 +3330,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1907964398}
-        m_MethodName: SaveVolume
+        m_MethodName: SaveButtons
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4272,9 +4272,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 202cf15b97dd87d4196a8e24c353ec4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicslider: {fileID: 621771179}
-  effectsslider: {fileID: 1028780390}
-  generalslider: {fileID: 1907964399}
+  generalVolume: {fileID: 1907964399}
+  musicVolume: {fileID: 621771179}
+  effectsVolume: {fileID: 1028780390}
   mixer: {fileID: 24100000, guid: 2e0442f16d0f9f94e878cc6b67301c55, type: 2}
 --- !u!114 &1907964399
 MonoBehaviour:
