@@ -340,7 +340,7 @@ public class BossBehaviour : MonoBehaviour
     {
         Destroy(this.gameObject);
         SceneManager.LoadScene("Victory");
-
+        Cursor.visible = true;
     }
     void InvocarEnemigo(){
         spawn.SetSpawn(2);

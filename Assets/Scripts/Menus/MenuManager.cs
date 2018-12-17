@@ -35,6 +35,7 @@ public class MenuManager : MonoBehaviour {
     public void Creditos()
     {
         SceneManager.LoadScene("Credits");
+         Cursor.visible = true;
         Time.timeScale = 1;
 
     }

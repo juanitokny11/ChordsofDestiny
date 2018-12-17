@@ -175,6 +175,7 @@ public void Daño(float Damage)
 {
    curHealth -=Damage;
    HealthBar.fillAmount= curHealth/MaxHealth;
+
 }
  public void Carga()
     {
