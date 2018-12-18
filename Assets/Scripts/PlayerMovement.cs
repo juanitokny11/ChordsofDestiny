@@ -101,14 +101,14 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
     void AddGravity(){
-        counter += 0.05f;
+        counter += 0.1f;
         verticalVel -= counter;
         Invoke("ParticlePlay",0.2f);
+        counter = 0;
     }
     void ParticlePlay(){
-        if (jump == true) { 
+        if (jump == true && isGrounded) { 
         particle.Play();
-        counter = 0;
         sound.Play(2,1);
         jump = false;
         }
