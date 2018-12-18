@@ -17,7 +17,7 @@ public class EnemyBehaviour : MonoBehaviour
     public  MyGameManager manager;
     private BossBehaviour boss;
     public GameObject met;
-    public ParticleSystem ataque;
+    public ParticleSystem[] ataque;
 
     [Header("Creeper properties")]
     public int life = 10;
@@ -55,7 +55,7 @@ public class EnemyBehaviour : MonoBehaviour
         nearNode = true;
         SetIdle();
         met = GameObject.FindGameObjectWithTag("metronomo");
-        ataque = FindObjectOfType<ParticleSystem>();
+        ataque = FindObjectsOfType<ParticleSystem>();
 	}
 	
 	// Update is called once per frame
@@ -278,7 +278,7 @@ public class EnemyBehaviour : MonoBehaviour
             Damage(3);
             Debug.Log("dañoextra");
             MyGameManager.getInstance().OnTempo();
-            ataque.Play();
+            ataque[10].Play();
             MyGameManager.getInstance().Carga();
         }
        if (other.tag == "ligero"&& metronomo.getInstance().daño== false)
@@ -292,7 +292,7 @@ public class EnemyBehaviour : MonoBehaviour
             Damage(4);
             Debug.Log("dañoextra");
             MyGameManager.getInstance().OnTempo();
-            ataque.Play();
+             ataque[10].Play();
              MyGameManager.getInstance().Carga();
         }
          if (other.tag == "pesado"&& metronomo.getInstance().daño== false)
@@ -303,7 +303,7 @@ public class EnemyBehaviour : MonoBehaviour
         }
         if (other.tag == "Player")
         {
-            MyGameManager.getInstance().Daño(15f);
+            MyGameManager.getInstance().Daño(10f);
         }
         if (other.tag == "Solo")
         {

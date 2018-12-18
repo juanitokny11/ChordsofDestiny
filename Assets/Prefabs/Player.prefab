@@ -188,6 +188,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4893814502027412}
+  - component: {fileID: 65458173128902864}
   m_Layer: 0
   m_Name: DustSmoke_A
   m_TagString: Untagged
@@ -807,7 +808,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1172845149703866}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: -0.0023000697, y: -0.07674996, z: -0.009600005}
+  m_LocalPosition: {x: -0.002, y: -0.077, z: 0.0034}
   m_LocalScale: {x: 0.024958836, y: 0.031198572, z: 0.024958842}
   m_Children: []
   m_Father: {fileID: 4807297407727840}
@@ -953,7 +954,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1803133096851480}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.88, z: -0.11}
+  m_LocalPosition: {x: 0, y: 0.88, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 4893814502027412}
@@ -1142,7 +1143,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1225400110839960}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.72, z: 0}
+  m_LocalPosition: {x: 0, y: -0.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4525537934421468}
@@ -2492,6 +2493,18 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: ea70d4e1471d3334c91c7b5f793ec30b, type: 3}
+--- !u!65 &65458173128902864
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1225400110839960}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.1317117, z: 1}
+  m_Center: {x: 0, y: 1.0751147, z: 0}
 --- !u!95 &95158313284819688
 Animator:
   serializedVersion: 3
@@ -2632,7 +2645,7 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 8.29
+  m_Height: 6.78
   m_Radius: 1.79
   m_SlopeLimit: 55
   m_StepOffset: 0.5

@@ -27,8 +27,7 @@ public class MyGameManager : MonoBehaviour
     public float Damage=10f;
     public float cargasolo=15f;
     public Animator soloefectanim;
-
-    public float clavecarga=50f;
+    public float clavecarga=25f;
     public bool look=true;
     public bool pause=true;
     public bool godmode=true;
@@ -175,7 +174,7 @@ public void Daño(float Damage)
 {
    curHealth -=Damage;
    HealthBar.fillAmount= curHealth/MaxHealth;
-
+   //player.gameObject
 }
  public void Carga()
     {
