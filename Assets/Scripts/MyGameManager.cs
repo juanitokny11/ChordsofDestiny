@@ -15,6 +15,8 @@ public class MyGameManager : MonoBehaviour
     public CamaraCollision cama;
     public GameObject soloefect;
     public Text tempo;
+    public GameObject vinillo;
+    public Transform shooterpos;
   //private LookRotation lookRotation;
     private MouseCursor mouseCursor;
 
@@ -252,6 +254,7 @@ public void Evadir()
 public void Disparar()
     {
         Debug.Log("disparo");
+        Instantiate(vinillo,shooterpos.position,vinillo.transform.rotation,null);
     }
 public void Dead()
     {

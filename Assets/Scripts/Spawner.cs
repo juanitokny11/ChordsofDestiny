@@ -39,7 +39,7 @@ public class Spawner : MonoBehaviour {
             if(enemyCounter<=15 && numSpawns>0){
                 for (int i = 0; i < enemyCache.Length; i++)
                 {
-                    enemyCache[i] = new EnemyCache(Enemies[0], spawn[0].transform.position, null, Random.Range(1, 3));
+                    enemyCache[i] = new EnemyCache(Enemies[0], spawn[0].transform.position, cache.transform, Random.Range(1, 3));
                 }
                 enemyCache[Random.Range(0, enemyCache.Length)].GetEnemy();
                 enemyCounter +=2;

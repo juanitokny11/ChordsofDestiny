@@ -55,6 +55,7 @@ public class EnemyBehaviour : MonoBehaviour
         nearNode = true;
         SetIdle();
         met = GameObject.FindGameObjectWithTag("metronomo");
+        ataque= new ParticleSystem[ataque.Length];
         ataque = FindObjectsOfType<ParticleSystem>();
 	}
 	
@@ -278,7 +279,7 @@ public class EnemyBehaviour : MonoBehaviour
             Damage(3);
             Debug.Log("dañoextra");
             MyGameManager.getInstance().OnTempo();
-            ataque[10].Play();
+            ataque[5].Play();
             MyGameManager.getInstance().Carga();
         }
        if (other.tag == "ligero"&& metronomo.getInstance().daño== false)
@@ -292,7 +293,7 @@ public class EnemyBehaviour : MonoBehaviour
             Damage(4);
             Debug.Log("dañoextra");
             MyGameManager.getInstance().OnTempo();
-             ataque[10].Play();
+             ataque[5].Play();
              MyGameManager.getInstance().Carga();
         }
          if (other.tag == "pesado"&& metronomo.getInstance().daño== false)
@@ -308,6 +309,10 @@ public class EnemyBehaviour : MonoBehaviour
         if (other.tag == "Solo")
         {
             Damage(7);
+        }
+        if (other.tag == "vinilo")
+        {
+            Damage(1);
         }
 
     }
