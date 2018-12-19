@@ -34,10 +34,12 @@ public class OptionsManager : MonoBehaviour {
     {
 		Resolution resolution =resolutions[resolutionIndex];
 		Screen.SetResolution(resolution.width,resolution.height,Screen.fullScreen);
+		
 	}
 	 public void ChangeLevel(int qualityIndex)
     {
             QualitySettings.SetQualityLevel(qualityIndex);
+			MyGameSettings.getInstance().drop.value=qualityIndex;
     }
 
 	public void GetFullScreen(bool isFullScreen){
