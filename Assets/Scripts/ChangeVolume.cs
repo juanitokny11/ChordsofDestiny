@@ -10,12 +10,13 @@ public class ChangeVolume : MonoBehaviour {
     public Slider musicVolume;
     
     public Slider effectsVolume;
+
 	public AudioMixer mixer;
 public void Start(){
-   
-}
+        generalVolume.value = PlayerPrefs.GetFloat("soundVol");
+    }
 public void SetLevel(float sliderValue){
-        mixer.SetFloat("soundVol",Mathf.Log10(sliderValue)*20);
+      mixer.SetFloat("soundVol",Mathf.Log10(sliderValue)*20);
     }
 public void SetMusicLevel(float sliderValue)
 {
@@ -25,6 +26,12 @@ public void SetEffectsLevel(float sliderValue)
 {
         mixer.SetFloat("EffectsVol", Mathf.Log10(sliderValue) * 20);
 }
+    public void SaveSound()
+    {
+       // PlayerPrefs.SetFloat("SoundVol",);
+        PlayerPrefs.Save();
+    }
+
 }
 
 
