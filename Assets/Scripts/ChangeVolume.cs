@@ -14,25 +14,17 @@ public class ChangeVolume : MonoBehaviour {
 public void Start(){
    
 }
-public void SetLevel(){
-   // mixer.SetFloat("soundVol",Mathf.Log10(sliderValue)*20);
-     MyGameSettings.getInstance().SetLevel();
-     MyGameSettings.getInstance().generalVol= generalVolume.value;
-}
-public void SetMusicLevel()
+public void SetLevel(float sliderValue){
+        mixer.SetFloat("soundVol",Mathf.Log10(sliderValue)*20);
+    }
+public void SetMusicLevel(float sliderValue)
 {
-        //mixer.SetFloat("MusicVol", Mathf.Log10(sliderValue) * 20);
-        MyGameSettings.getInstance().SetMusicLevel();
-        MyGameSettings.getInstance().musicVol= musicVolume.value;
-       
+        mixer.SetFloat("MusicVol", Mathf.Log10(sliderValue) * 20);
 }
-public void SetEffectsLevel()
+public void SetEffectsLevel(float sliderValue)
 {
-        //mixer.SetFloat("EffectsVol", Mathf.Log10(sliderValue) * 20);
-        MyGameSettings.getInstance().SetEffectsLevel();
-        MyGameSettings.getInstance().effectsVol= effectsVolume.value;
+        mixer.SetFloat("EffectsVol", Mathf.Log10(sliderValue) * 20);
 }
-
 }
 
 

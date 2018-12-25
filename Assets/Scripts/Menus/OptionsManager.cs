@@ -33,8 +33,8 @@ public class OptionsManager : MonoBehaviour {
 	public void SetResolution(int resolutionIndex)
     {
 		Resolution resolution =resolutions[resolutionIndex];
-		Screen.SetResolution(resolution.width,resolution.height,Screen.fullScreen);
-		
+		Screen.SetResolution(resolution.width,resolution.height,Screen.fullScreen);		
+
 	}
 	 public void ChangeLevel(int qualityIndex)
     {

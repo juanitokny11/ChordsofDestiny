@@ -22,20 +22,5 @@ public class MyGameSettings : MonoBehaviour {
 	public static MyGameSettings getInstance(){
 		return instance;
 	}
-
-	public void SetLevel( ){
-    mixer.SetFloat("soundVol",Mathf.Log10(generalVol)*20);
-    
-	}
-	public void SetMusicLevel()
-	{
-        mixer.SetFloat("MusicVol", Mathf.Log10(musicVol) * 20);
-       
-	}
-	public void SetEffectsLevel()
-	{
-        mixer.SetFloat("EffectsVol", Mathf.Log10(effectsVol) * 20);
-	}	
-   
 }
 
