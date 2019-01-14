@@ -82,10 +82,10 @@ public class MyGameManager : MonoBehaviour
             if (curHealth<=0){
                 Invoke ("Dead",2f);
             }
-            if(Input.GetKeyDown(KeyCode.G)){
+            if(Input.GetKeyDown(KeyCode.G)|| Input.GetAxisRaw("Evadir")!=0){
                  Evadir();
             }
-            if(Input.GetKeyDown(KeyCode.F)){
+            if(Input.GetKeyDown(KeyCode.F)|| Input.GetAxisRaw("Disparar")!=0){
                 Disparar();
             }
             if(notacogida==true){
@@ -100,7 +100,7 @@ public class MyGameManager : MonoBehaviour
            
         
             if (pause==true){
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0)|| Input.GetAxisRaw("AtaqueDebil")!=0)
                 {
                     pers.Play("atque_debil", -1, 0);
                     arma.transform.tag = "ligero";
@@ -109,7 +109,7 @@ public class MyGameManager : MonoBehaviour
                     //debil = true;
                     Invoke("ResetAttack", 1);
                 }
-                if (Input.GetMouseButtonDown(1))
+                if (Input.GetMouseButtonDown(1)|| Input.GetAxisRaw("AtaqueFuerte")!=0)
                 {
                     pers.Play("ataque_fuerte", -1, 0);
                     arma.transform.tag = "pesado";
@@ -117,7 +117,7 @@ public class MyGameManager : MonoBehaviour
                     audios.Play(1, 1);
                     Invoke("ResetAttack", 2);
                 }
-                if (Input.GetMouseButtonDown(2))
+                if (Input.GetMouseButtonDown(2)|| Input.GetAxisRaw("Evadir") != 0 && Input.GetAxisRaw("Disparar") != 0)
                 { 
                      if(cursolo>=Maxsolo){
                         cursolo=0;
@@ -131,8 +131,8 @@ public class MyGameManager : MonoBehaviour
                  Invoke("ActivarColisiones", 2f);
                 }
             }
-            if(Input.GetKeyDown(KeyCode.Escape))
-            {
+            if(Input.GetKeyDown(KeyCode.Escape)|| Input.GetAxisRaw("Pause")!=0)
+            { 
                  Pausa();
             }
         }else {
