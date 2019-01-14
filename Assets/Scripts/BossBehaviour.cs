@@ -60,12 +60,6 @@ public class BossBehaviour : MonoBehaviour
         colider = GetComponent<CapsuleCollider>();
         life = MaxHealth;
         HealthBar.fillAmount = life / MaxHealth;
-        /*for(int i=0;i<spawners.Length;i++)
-        {
-            spawners[i]= GameObject[i].FindGameObjectsWithTag("Spawn");
-        }*/
-        // sound = GetComponentInChildren<SoundPlayer>();
-
         nearNode = true;
         SetIdle();        
 	}
@@ -86,7 +80,7 @@ public class BossBehaviour : MonoBehaviour
                 Chase();
                 break;
             case State.Attack:
-                Explode();
+                Atack();
                 break;
             case State.Dead:
                 Dead();
@@ -134,7 +128,7 @@ public class BossBehaviour : MonoBehaviour
 
         if(Vector3.Distance(transform.position, targetTransform.position) <= explodeDistance)
         {
-            SetExplode();
+            SetAtack();
         }
 
 
@@ -150,7 +144,7 @@ public class BossBehaviour : MonoBehaviour
              return;
         }
     }
-    void Explode() { 
+    void Atack() { 
         if(counterInvoke>=2){
              state=State.Invocar;
              counterInvoke=0;
@@ -202,7 +196,7 @@ public class BossBehaviour : MonoBehaviour
         }*/
         state = State.Chase;
     }
-    void SetExplode()
+    void SetAtack()
     {
         
       /*  if (manager.pause == true)

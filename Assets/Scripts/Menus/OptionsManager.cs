@@ -30,7 +30,7 @@ public class OptionsManager : MonoBehaviour {
 		resolutionDropdown.value=currentResolutionIndex;
 		resolutionDropdown.RefreshShownValue();
 	}
-	public void SetResolution(int resolutionIndex)
+    public void SetResolution(int resolutionIndex)
     {
 		Resolution resolution =resolutions[resolutionIndex];
 		Screen.SetResolution(resolution.width,resolution.height,Screen.fullScreen);		
@@ -39,7 +39,7 @@ public class OptionsManager : MonoBehaviour {
 	 public void ChangeLevel(int qualityIndex)
     {
             QualitySettings.SetQualityLevel(qualityIndex);
-			MyGameSettings.getInstance().drop.value=qualityIndex;
+			//MyGameSettings.getInstance().drop.value=qualityIndex;
     }
 
 	public void GetFullScreen(bool isFullScreen){

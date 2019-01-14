@@ -12,7 +12,20 @@ public class ChangeVolume : MonoBehaviour {
     public Slider effectsVolume;
 
 	public AudioMixer mixer;
-public void Start(){
+
+    public Text general;
+
+    public Text music;
+
+    public Text efects;
+
+    private void Update()
+    {
+        general.text = (int) (generalVolume.value*100) + " %";
+        music.text = (int)(musicVolume.value*100) + " %";
+        efects.text =(int) (effectsVolume.value*100) + " %";
+    }
+    public void Start(){
         generalVolume.value = PlayerPrefs.GetFloat("soundVol");
     }
 public void SetLevel(float sliderValue){
@@ -26,11 +39,6 @@ public void SetEffectsLevel(float sliderValue)
 {
         mixer.SetFloat("EffectsVol", Mathf.Log10(sliderValue) * 20);
 }
-    public void SaveSound()
-    {
-       // PlayerPrefs.SetFloat("SoundVol",);
-        PlayerPrefs.Save();
-    }
 
 }
 
