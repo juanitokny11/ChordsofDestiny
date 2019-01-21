@@ -10,9 +10,10 @@ public class MyGameSettings : MonoBehaviour {
 	private static MyGameSettings instance;
     public Dropdown drop;
 	public AudioMixer mixer;
-	public float generalVol;
-	public float musicVol;
-	public float effectsVol;
+	public float generalVol=0.5f;
+	public float musicVol=0.5f;
+	public float effectsVol=0.5f;
+   
     void Awake (){
 		if (instance == null) {
 			instance = this;
@@ -22,5 +23,6 @@ public class MyGameSettings : MonoBehaviour {
 	public static MyGameSettings getInstance(){
 		return instance;
 	}
+
 }
 

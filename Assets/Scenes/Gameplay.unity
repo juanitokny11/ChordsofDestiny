@@ -4299,6 +4299,31 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 114838118}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &367757960 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1240149013996318, guid: 990630ca09588eb4a910f31b28ea9931,
+    type: 3}
+  m_PrefabInstance: {fileID: 737795043}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &367757964
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367757960}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f9d42c45190cc194e986000d2658a48e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &368665925 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100470, guid: 3cbb5aab4b4bcb145b7943e6ff81a0f9,
@@ -7783,6 +7808,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1209111685615322, guid: 990630ca09588eb4a910f31b28ea9931, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 224100343219491854, guid: 990630ca09588eb4a910f31b28ea9931,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7893,6 +7922,32 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2035410825}
+    - target: {fileID: 114569145217150118, guid: 990630ca09588eb4a910f31b28ea9931,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c198082664206364f8c10a4c929fd909,
+        type: 3}
+    - target: {fileID: 114569145217150118, guid: 990630ca09588eb4a910f31b28ea9931,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114569145217150118, guid: 990630ca09588eb4a910f31b28ea9931,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114569145217150118, guid: 990630ca09588eb4a910f31b28ea9931,
+        type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114569145217150118, guid: 990630ca09588eb4a910f31b28ea9931,
+        type: 3}
+      propertyPath: m_PreserveAspect
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 990630ca09588eb4a910f31b28ea9931, type: 3}
 --- !u!1 &740861936 stripped

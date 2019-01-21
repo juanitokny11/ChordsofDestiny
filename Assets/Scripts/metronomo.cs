@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class metronomo : MonoBehaviour {
     public Image imag;
     public Sprite metronomo_01;
-    
     //private AudioSource audio;
     public bool daño = false;
 

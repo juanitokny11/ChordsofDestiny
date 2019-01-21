@@ -1041,6 +1041,7 @@ GameObject:
   - component: {fileID: 510244475}
   - component: {fileID: 510244474}
   - component: {fileID: 510244473}
+  - component: {fileID: 510244477}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1147,6 +1148,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &510244477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510244472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 202cf15b97dd87d4196a8e24c353ec4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generalVolume: {fileID: 1907964399}
+  musicVolume: {fileID: 565083706}
+  effectsVolume: {fileID: 815940513}
+  mixer: {fileID: 24100000, guid: 2e0442f16d0f9f94e878cc6b67301c55, type: 2}
+  general: {fileID: 316872220}
+  music: {fileID: 1888866372}
+  efects: {fileID: 507486681}
+  startValue: 0.5
 --- !u!1 &529999052
 GameObject:
   m_ObjectHideFlags: 0
@@ -1455,7 +1476,6 @@ GameObject:
   m_Component:
   - component: {fileID: 565083704}
   - component: {fileID: 565083706}
-  - component: {fileID: 565083705}
   m_Layer: 5
   m_Name: Music_slider
   m_TagString: Untagged
@@ -1485,25 +1505,6 @@ RectTransform:
   m_AnchoredPosition: {x: 308, y: 194}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &565083705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 565083703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 202cf15b97dd87d4196a8e24c353ec4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  generalVolume: {fileID: 1907964399}
-  musicVolume: {fileID: 565083706}
-  effectsVolume: {fileID: 815940513}
-  mixer: {fileID: 24100000, guid: 2e0442f16d0f9f94e878cc6b67301c55, type: 2}
-  general: {fileID: 316872220}
-  music: {fileID: 1888866372}
-  efects: {fileID: 507486681}
 --- !u!114 &565083706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1551,9 +1552,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 565083705}
+      - m_Target: {fileID: 510244477}
         m_MethodName: SetMusicLevel
-        m_Mode: 0
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2099,7 +2100,6 @@ GameObject:
   m_Component:
   - component: {fileID: 815940511}
   - component: {fileID: 815940513}
-  - component: {fileID: 815940512}
   m_Layer: 5
   m_Name: Effects_slider
   m_TagString: Untagged
@@ -2129,25 +2129,6 @@ RectTransform:
   m_AnchoredPosition: {x: 308, y: 134.9}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &815940512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 815940510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 202cf15b97dd87d4196a8e24c353ec4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  generalVolume: {fileID: 1907964399}
-  musicVolume: {fileID: 565083706}
-  effectsVolume: {fileID: 815940513}
-  mixer: {fileID: 24100000, guid: 2e0442f16d0f9f94e878cc6b67301c55, type: 2}
-  general: {fileID: 316872220}
-  music: {fileID: 1888866372}
-  efects: {fileID: 507486681}
 --- !u!114 &815940513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2195,9 +2176,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 815940512}
+      - m_Target: {fileID: 510244477}
         m_MethodName: SetEffectsLevel
-        m_Mode: 0
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3783,28 +3764,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2005121988}
-        m_MethodName: SaveButtons
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1907964398}
-        m_MethodName: SaveSliders
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1458493779
@@ -5032,7 +4991,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1907964397}
   - component: {fileID: 1907964399}
-  - component: {fileID: 1907964398}
   m_Layer: 5
   m_Name: General_slider
   m_TagString: Untagged
@@ -5062,25 +5020,6 @@ RectTransform:
   m_AnchoredPosition: {x: 308, y: 259}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1907964398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1907964396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 202cf15b97dd87d4196a8e24c353ec4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  generalVolume: {fileID: 1907964399}
-  musicVolume: {fileID: 565083706}
-  effectsVolume: {fileID: 815940513}
-  mixer: {fileID: 24100000, guid: 2e0442f16d0f9f94e878cc6b67301c55, type: 2}
-  general: {fileID: 316872220}
-  music: {fileID: 1888866372}
-  efects: {fileID: 507486681}
 --- !u!114 &1907964399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5128,9 +5067,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1907964398}
+      - m_Target: {fileID: 510244477}
         m_MethodName: SetLevel
-        m_Mode: 0
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
