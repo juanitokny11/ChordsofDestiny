@@ -10,7 +10,8 @@ public class FollowObject : MonoBehaviour {
 	private Transform trans;
 	public Transform pers;
 	private Vector3 offset;
-
+    Vector3 vel = Vector3.zero;
+    public float smoothTime = .1f;
 	// Use this for initialization
 	void Start () {
 		Other=GameObject.Find("Player").transform;
@@ -19,8 +20,10 @@ public class FollowObject : MonoBehaviour {
 		 
 	}
 	// Update is called once per frame
-	void Update () {
-		trans.position=Other.position-offset;
+	void LateUpdate () {
+		//trans.position=Other.position;
+
+        trans.position = Vector3.SmoothDamp(trans.position, Other.position, ref vel, smoothTime);
 		//trans.rotation = Quaternion.RotateTowards(trans.rotation, pers.rotation, speed);
 		//transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(pers.transform.forward), 0.4f);
 		//transform.Rotate ( Vector3.up * ( RotationSpeed * Time.deltaTime ) );

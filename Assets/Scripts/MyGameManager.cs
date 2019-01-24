@@ -52,8 +52,6 @@ public class MyGameManager : MonoBehaviour
     {
         return instance;
     }
-
-
     void Start()
     {
         if (instance == null)
@@ -86,11 +84,11 @@ public class MyGameManager : MonoBehaviour
             {
                 Invoke("Dead", 2f);
             }
-            if (Input.GetKeyDown(KeyCode.G) || Input.GetAxisRaw("Evadir") != 0)
+            if (Input.GetKeyDown(KeyCode.G) || Input.GetAxisRaw("Evadir") != 0 && Input.GetAxisRaw("Disparar") == 0)
             {
                 Evadir();
             }
-            if (Input.GetKeyDown(KeyCode.F) || Input.GetAxisRaw("Disparar") != 0)
+            if (Input.GetKeyDown(KeyCode.F) || Input.GetAxisRaw("Disparar") != 0 && Input.GetAxisRaw("Evadir") == 0)
             {
                 Disparar();
             }
@@ -212,19 +210,19 @@ public class MyGameManager : MonoBehaviour
             Time.timeScale = 1;
             Cursor.visible = false;
             AudioListener.pause = false;
-            //music.mute = false;
-            Invoke("AnimOFF", 10f);
+            //music.mute = false; 
             pausaMenu.SetActive(true);
             notas.SetActive(false);
             sound.enabled = false;
         }
         else if (pause)
         {
-            Time.timeScale = 0;
             pausaMenu.SetActive(true);
+            Time.timeScale = 0;
+
             AudioListener.pause = true;
             notas.SetActive(true);
-            AnimOFF();
+            menuanim.SetTrigger("Close");
             pause = false;
             Cursor.visible = true;
             //music.mute = true;
@@ -309,14 +307,8 @@ public class MyGameManager : MonoBehaviour
     {
         tempo.text = "";
     }
-    public void AnimOFF()
-    {
-        menuanim.enabled = false;
-    }
-    public void AnimON()
-    {
-        menuanim.enabled = true;
-    }
+
+   
 }
 
 
