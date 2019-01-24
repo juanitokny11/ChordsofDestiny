@@ -22,7 +22,6 @@ public class FollowObject : MonoBehaviour {
 	// Update is called once per frame
 	void LateUpdate () {
 		//trans.position=Other.position;
-
         trans.position = Vector3.SmoothDamp(trans.position, Other.position, ref vel, smoothTime);
 		//trans.rotation = Quaternion.RotateTowards(trans.rotation, pers.rotation, speed);
 		//transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(pers.transform.forward), 0.4f);
