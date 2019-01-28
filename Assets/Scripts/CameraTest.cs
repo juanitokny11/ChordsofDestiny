@@ -31,6 +31,8 @@ public class CameraTest : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             target.rotation = Quaternion.Euler(0, Input.mousePosition.x, 0);
+
+            this.transform.position = new Vector3(transform.position.x, Input.mousePosition.y, transform.position.z);
         }
         if (this.transform.position.y<=maxHeight && this.transform.position.y>=0)
         { 
