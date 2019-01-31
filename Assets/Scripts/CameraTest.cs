@@ -11,7 +11,7 @@ public class CameraTest : MonoBehaviour
     float zoom;
     [SerializeField] float minZoom = 2.0f;
     [SerializeField] float maxZoom = 10.0f;
-
+    [SerializeField] float offsetZoom = 4.0f;
     [SerializeField] float smoothZoom = 10.0f;
     [SerializeField] float zoomSensitivity = 5.0f;
     [SerializeField] float rotSensitivity = 5.0f;
@@ -84,7 +84,7 @@ public class CameraTest : MonoBehaviour
         {
             Debug.Log("HIT");
             lastZoom = zoom;
-            zoom = hit.distance;
+            zoom = hit.distance+ offsetZoom;
         }
         else
         {
