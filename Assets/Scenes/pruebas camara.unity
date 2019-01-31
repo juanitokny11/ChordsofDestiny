@@ -324,6 +324,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1526631352}
+  coneDistance: 0.8
+  defaultZoom: 6
   minZoom: 2
   maxZoom: 10
   offsetZoom: 1.5
@@ -331,6 +333,9 @@ MonoBehaviour:
   zoomSensitivity: 5
   rotSensitivity: 5
   vertSensitivity: 5
+  mask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!81 &1346052230
 AudioListener:
   m_ObjectHideFlags: 0
@@ -607,7 +612,7 @@ GameObject:
   - component: {fileID: 2104931282}
   - component: {fileID: 2104931281}
   - component: {fileID: 2104931280}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -680,8 +685,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2104931279}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.59, y: 1.45, z: -1.3109552}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 4.59, y: 3.44, z: -2.85}
+  m_LocalScale: {x: 9.582601, y: 28.738182, z: 1.1851}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4

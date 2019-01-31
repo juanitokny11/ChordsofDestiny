@@ -9,6 +9,9 @@ public class CameraTest : MonoBehaviour
 
     Transform cameraTransform;
     float zoom;
+    float hitZoom;
+    public float coneDistance = 0.8f;
+    [SerializeField] float defaultZoom = 6.0f;
     [SerializeField] float minZoom = 2.0f;
     [SerializeField] float maxZoom = 10.0f;
     [SerializeField] float offsetZoom = 4.0f;
@@ -17,13 +20,17 @@ public class CameraTest : MonoBehaviour
     [SerializeField] float rotSensitivity = 5.0f;
     [SerializeField] float vertSensitivity = 5.0f;
 
-    float lastZoom;
+    Ray[] ray;
+
+    public LayerMask mask; 
     float hitDistance;
 
     void Start()
     {
         cameraTransform = this.transform;
-        zoom = Mathf.Abs(cameraTransform.position.z - target.position.z);
+        zoom = 6;//Mathf.Abs(cameraTransform.position.z - target.position.z);
+
+        ray = new Ray[5];
     }
 
     // Update is called once per frame
@@ -36,10 +43,11 @@ public class CameraTest : MonoBehaviour
     }
     public void Zoom()
     {
-        float newZoom = zoom - Input.GetAxis("Mouse ScrollWheel") * zoomSensitivity;
-        newZoom = Mathf.Clamp(newZoom, minZoom, maxZoom);
+        //float newZoom = zoom - Input.GetAxis("Mouse ScrollWheel") * zoomSensitivity;
+        
 
-        zoom = Mathf.Lerp(zoom, newZoom, Time.deltaTime * smoothZoom);
+        zoom = Mathf.Lerp(zoom, hitZoom, Time.deltaTime * smoothZoom);
+        zoom = Mathf.Clamp(zoom, minZoom, maxZoom);
 
         Vector3 pos = cameraTransform.localPosition;
         pos.z = -zoom;
@@ -77,18 +85,27 @@ public class CameraTest : MonoBehaviour
     }
     public void CameraColisionSimple()
     {
+        hitZoom = defaultZoom;
         RaycastHit hit;
         Vector3 dir = (cameraTransform.position - target.position).normalized;
-        Ray ray = new Ray(target.position, dir);
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+
+        ray[0] = new Ray(target.position, dir);
+        ray[1] = new Ray(target.position, cameraTransform.position + cameraTransform.up * coneDistance + cameraTransform.right * coneDistance);
+        ray[2] = new Ray(target.position, cameraTransform.position + cameraTransform.up * coneDistance + -cameraTransform.right * coneDistance);
+        ray[3] = new Ray(target.position, cameraTransform.position + -cameraTransform.up * coneDistance + cameraTransform.right * coneDistance);
+        ray[4] = new Ray(target.position, cameraTransform.position + -cameraTransform.up * coneDistance + -cameraTransform.right * coneDistance);
+
+        for(int i = 0; i < 5; i++)
         {
-            Debug.Log("HIT");
-            lastZoom = zoom;
-            zoom = hit.distance+ offsetZoom;
-        }
-        else
-        {
-            //zoom = lastZoom;
+            if (Physics.Raycast(ray[i], out hit, defaultZoom, mask))
+            {
+                Debug.Log("Ray: " + i + " hit");
+                
+                //Vector3 DistanceCamera = new Vector3(hit.point.x,hit.point.y,hit.point.z);
+                hitZoom = hit.distance - offsetZoom;
+
+                break;
+            }
         }
     }
 
@@ -98,6 +115,10 @@ public class CameraTest : MonoBehaviour
 
         Gizmos.color = Color.red;
         Gizmos.DrawRay(target.position, cameraTransform.position - target.position);
+        Gizmos.DrawRay(target.position, (cameraTransform.position + cameraTransform.up * coneDistance + cameraTransform.right * coneDistance) - target.position );
+        Gizmos.DrawRay(target.position, (cameraTransform.position + cameraTransform.up * coneDistance + -cameraTransform.right * coneDistance) - target.position );
+        Gizmos.DrawRay(target.position, (cameraTransform.position + -cameraTransform.up * coneDistance + cameraTransform.right * coneDistance) - target.position );
+        Gizmos.DrawRay(target.position, (cameraTransform.position + -cameraTransform.up * coneDistance + -cameraTransform.right * coneDistance) - target.position );
     }
 
 }
