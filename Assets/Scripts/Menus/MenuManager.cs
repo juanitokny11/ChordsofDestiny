@@ -10,6 +10,7 @@ public class MenuManager : MonoBehaviour {
         SceneManager.LoadScene("Gameplay");
         Time.timeScale=1;
         Cursor.visible = false;
+        MyGameSettings.getInstance().gameStarted = true;
        
     }
     public void EndGame()
@@ -53,6 +54,19 @@ public class MenuManager : MonoBehaviour {
     {
          MyGameManager.getInstance().Pausa();
          
+    }
+    public void ChangeScene()
+    {
+        if (MyGameSettings.getInstance().gameStarted == false)
+        {
+            Title();
+        }
+        else
+        {
+            SceneManager.LoadScene("Gameplay");
+            Time.timeScale = 1;
+            Cursor.visible = false;
+        }
     }
 
    

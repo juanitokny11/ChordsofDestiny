@@ -13,6 +13,7 @@ public class MyGameSettings : MonoBehaviour {
 	public float generalVol=0.5f;
 	public float musicVol=0.5f;
 	public float effectsVol=0.5f;
+    public bool gameStarted;
    
     void Awake (){
 		if (instance == null) {
