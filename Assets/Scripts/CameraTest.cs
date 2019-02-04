@@ -6,11 +6,14 @@ public class CameraTest : MonoBehaviour
 {
     // Start is called before the first frame update
     public Transform target;
-
     Transform cameraTransform;
     float zoom;
+    public bool lookToEnemy = false;
     float hitZoom;
+    public Animator ENEMY;
     public float coneDistance = 0.8f;
+    public GameObject[] enemies;
+    public int currentEnemy = 0;
     [SerializeField] float defaultZoom = 6.0f;
     [SerializeField] float minZoom = 2.0f;
     [SerializeField] float maxZoom = 10.0f;
@@ -27,6 +30,7 @@ public class CameraTest : MonoBehaviour
 
     void Start()
     {
+        enemies = new GameObject[20];
         cameraTransform = this.transform;
         zoom = 6;//Mathf.Abs(cameraTransform.position.z - target.position.z);
 
@@ -36,19 +40,23 @@ public class CameraTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Zoom();
+        ENEMY.Play("Take001");
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+       //Zoom();
         RotateAround();
-        VerticalMovement();
+        //VerticalMovement();
+
         CameraColisionSimple();
+        if (Input.GetKeyDown(KeyCode.Q))
+            ChangeEnemyToLook();
+        if (Input.GetKeyDown(KeyCode.A))
+            LookToEnemy();
     }
     public void Zoom()
     {
         //float newZoom = zoom - Input.GetAxis("Mouse ScrollWheel") * zoomSensitivity;
-        
-
         zoom = Mathf.Lerp(zoom, hitZoom, Time.deltaTime * smoothZoom);
         zoom = Mathf.Clamp(zoom, minZoom, maxZoom);
-
         Vector3 pos = cameraTransform.localPosition;
         pos.z = -zoom;
 
@@ -59,8 +67,7 @@ public class CameraTest : MonoBehaviour
     {
         float axisX = Input.GetAxis("Mouse X") * rotSensitivity;
         //float axisY = Input.GetAxis("Mouse Y") * 5;
-
-        Vector3 rot = target.localEulerAngles;
+            Vector3 rot = target.localEulerAngles;
 
         rot.y += axisX;
         //rot.x -= axisY;
@@ -119,6 +126,16 @@ public class CameraTest : MonoBehaviour
         Gizmos.DrawRay(target.position, (cameraTransform.position + cameraTransform.up * coneDistance + -cameraTransform.right * coneDistance) - target.position );
         Gizmos.DrawRay(target.position, (cameraTransform.position + -cameraTransform.up * coneDistance + cameraTransform.right * coneDistance) - target.position );
         Gizmos.DrawRay(target.position, (cameraTransform.position + -cameraTransform.up * coneDistance + -cameraTransform.right * coneDistance) - target.position );
+    }
+    public void LookToEnemy()
+    {
+        //cameraTransform.LookAt(midPoint);
+    }
+    public void ChangeEnemyToLook() 
+    {
+        currentEnemy++;
+        if (currentEnemy > enemies.Length-1)
+            currentEnemy = 0;
     }
 
 }
