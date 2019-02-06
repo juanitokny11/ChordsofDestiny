@@ -1,0 +1,135 @@
+fileFormatVersion: 2
+guid: 92072d29cdbd5ee48bc6cba9aab94d81
+ScriptedImporter:
+  fileIDToRecycleName:
+    2100000: Carretera_piedras
+    2100002: Normal
+    2100004: Rock gen
+    2800000: Carretera_piedras - diffuse
+    2800002: Carretera_piedras - normal
+    2800008: Normal - normal
+    2800010: Carretera_piedras - specular
+    11400000: sbsar
+    11400002: graph1
+    11400004: graph2
+    11400006: graph0
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 232528478, guid: 43a8bbf65be290d44ba52b94476242b9, type: 3}
+  version: 17
+  mGraphInstanceData:
+  - graphLabel: Carretera_piedras
+    prototypeName: Carretera_piedras
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://Carretera_piedras\" label=\"\" >\n </sbspreset>\n"
+    shaderName: Lightweight Render Pipeline/Simple Lit
+    outputNames: diffuse,normal,specular
+    texturePackingList: []
+    textureParameters:
+    - textureName: Carretera_piedras - diffuse
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Carretera_piedras - normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Carretera_piedras - specular
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Carretera_piedras - glossiness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Carretera_piedras - height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Carretera_piedras - ambientOcclusion
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList:
+    - outputName: diffuse
+      bLinear: 0
+    - outputName: normal
+      bLinear: 1
+    - outputName: specular
+      bLinear: 0
+    - outputName: glossiness
+      bLinear: 1
+    - outputName: height
+      bLinear: 1
+    - outputName: ambientOcclusion
+      bLinear: 1
+    inputTextureMap: []
+    targetSettingList:
+    - label: 
+      bLockRatio: 1
+      textureWidth: 4096
+      textureHeight: 4096
+      textureFormat: 0
+      bGenerateOnLoad: 1
+    material: {fileID: 2100000, guid: 92072d29cdbd5ee48bc6cba9aab94d81, type: 3}
+    generatedTextures: []
+  - graphLabel: Normal
+    prototypeName: Normal
+    graphDescIndex: 1
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://Normal\" label=\"\" >\n </sbspreset>\n"
+    shaderName: Lightweight Render Pipeline/Simple Lit
+    outputNames: normal
+    texturePackingList: []
+    textureParameters:
+    - textureName: Normal - normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList:
+    - outputName: normal
+      bLinear: 1
+    inputTextureMap: []
+    targetSettingList:
+    - label: 
+      bLockRatio: 1
+      textureWidth: 0
+      textureHeight: 0
+      textureFormat: 0
+      bGenerateOnLoad: 1
+    material: {fileID: 2100002, guid: 92072d29cdbd5ee48bc6cba9aab94d81, type: 3}
+    generatedTextures: []
+  - graphLabel: Rock gen
+    prototypeName: Rock gen
+    graphDescIndex: 2
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://Rock_gen\" label=\"\" >\n </sbspreset>\n"
+    shaderName: Standard
+    outputNames: 
+    texturePackingList:
+    - outputName: output
+      alphaSource: output
+    textureParameters:
+    - textureName: Rock gen - UNKNOWN
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList:
+    - outputName: output
+      bLinear: 1
+    inputTextureMap: []
+    targetSettingList:
+    - label: 
+      bLockRatio: 1
+      textureWidth: 0
+      textureHeight: 0
+      textureFormat: 0
+      bGenerateOnLoad: 1
+    material: {instanceID: 0}
+    generatedTextures: []
