@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class CameraTest : MonoBehaviour
 {
+    public enum CameraMode { Default, LockEnemy};
+    public CameraMode mode;
+
     // Start is called before the first frame update
     public Transform target;
     Transform cameraTransform;
     float zoom;
     public bool lookToEnemy = false;
+    float lockDistance;
     float hitZoom;
-    public Animator ENEMY;
+    float poscam;
     public float coneDistance = 0.8f;
     public GameObject[] enemies;
     public int currentEnemy = 0;
@@ -19,10 +23,11 @@ public class CameraTest : MonoBehaviour
     [SerializeField] float maxZoom = 10.0f;
     [SerializeField] float offsetZoom = 4.0f;
     [SerializeField] float smoothZoom = 10.0f;
+    [SerializeField] float smoothLockEnemy = 5.0f;
     [SerializeField] float zoomSensitivity = 5.0f;
     [SerializeField] float rotSensitivity = 5.0f;
     [SerializeField] float vertSensitivity = 5.0f;
-
+    Vector3 currentLockPos;
     Ray[] ray;
 
     public LayerMask mask; 
@@ -33,24 +38,40 @@ public class CameraTest : MonoBehaviour
         enemies = new GameObject[20];
         cameraTransform = this.transform;
         zoom = 6;//Mathf.Abs(cameraTransform.position.z - target.position.z);
-
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
         ray = new Ray[5];
     }
 
     // Update is called once per frame
     void Update()
     {
-        ENEMY.Play("Take001");
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
-       //Zoom();
-        RotateAround();
-        //VerticalMovement();
-
-        CameraColisionSimple();
+        switch (mode)
+        {
+            case CameraMode.Default:
+                Zoom();
+                RotateAround();
+                VerticalMovement();
+                CameraColisionSimple();
+                break;
+            case CameraMode.LockEnemy:
+                LookToEnemy();
+                VerticalMovementLockCamera();
+                break;
+            default:
+                break;
+        }
         if (Input.GetKeyDown(KeyCode.Q))
             ChangeEnemyToLook();
         if (Input.GetKeyDown(KeyCode.A))
-            LookToEnemy();
+        {
+            lookToEnemy = !lookToEnemy;
+            if (lookToEnemy) currentLockPos = cameraTransform.localPosition;
+        }
+        if (lookToEnemy == true)
+            mode = CameraMode.LockEnemy;
+        else
+            mode = CameraMode.Default;
+        
     }
     public void Zoom()
     {
@@ -67,7 +88,7 @@ public class CameraTest : MonoBehaviour
     {
         float axisX = Input.GetAxis("Mouse X") * rotSensitivity;
         //float axisY = Input.GetAxis("Mouse Y") * 5;
-            Vector3 rot = target.localEulerAngles;
+          Vector3 rot = target.localEulerAngles;
 
         rot.y += axisX;
         //rot.x -= axisY;
@@ -78,18 +99,39 @@ public class CameraTest : MonoBehaviour
     public void VerticalMovement()
     {
         float axisY = Input.GetAxis("Mouse Y") * vertSensitivity;
+        
+        Vector3 look = target.position;
 
+        cameraTransform.LookAt(look);
         cameraTransform.Translate(Vector3.up * axisY * Time.deltaTime, Space.World);
 
         Vector3 pos = cameraTransform.localPosition;
         pos.y = Mathf.Clamp(pos.y, -1, 3);
         cameraTransform.localPosition = pos;
+    }
+    public void VerticalMovementLockCamera()
+    {
+
+        float axisY = Input.GetAxis("Mouse Y") * vertSensitivity;
 
         Vector3 look = target.position;
 
+        if (lookToEnemy)
+        {
+            if (enemies.Length > 0)
+            {
+                look = enemies[currentEnemy].transform.position;
+            }
+        }
+
         cameraTransform.LookAt(look);
-        
+        cameraTransform.Translate(Vector3.up * axisY * Time.deltaTime, Space.World);
+
+        Vector3 pos = cameraTransform.localPosition;
+        pos.y = Mathf.Clamp(pos.y, -1, 3);
+        cameraTransform.localPosition = pos;
     }
+
     public void CameraColisionSimple()
     {
         hitZoom = defaultZoom;
@@ -129,11 +171,25 @@ public class CameraTest : MonoBehaviour
     }
     public void LookToEnemy()
     {
-        //cameraTransform.LookAt(midPoint);
+        lockDistance = Mathf.Lerp(zoom, hitZoom, Time.deltaTime * smoothZoom);
+        lockDistance = Mathf.Clamp(lockDistance, minZoom, maxZoom);
+
+        Vector3 lockDirection = (enemies[currentEnemy].transform.position - target.transform.position).normalized;
+        Vector3 newLockPos = new Vector3( target.transform.position.x - (lockDirection.x * lockDistance), cameraTransform.position.y, target.transform.position.z - (lockDirection.z * lockDistance));
+
+        currentLockPos = Vector3.Lerp(currentLockPos, newLockPos, Time.deltaTime * smoothLockEnemy);
+
+        
+        cameraTransform.position = currentLockPos;
+
+        Vector3 pos = cameraTransform.position;
+        pos += cameraTransform.right * 1.5f;
+        cameraTransform.position = pos;
     }
     public void ChangeEnemyToLook() 
     {
         currentEnemy++;
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
         if (currentEnemy > enemies.Length-1)
             currentEnemy = 0;
     }
