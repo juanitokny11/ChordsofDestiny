@@ -20,15 +20,15 @@ public class CameraTest : MonoBehaviour
     public int currentEnemy = 0;
     public int previousEnemy;
     [SerializeField] float defaultZoom = 6.0f;
-    [SerializeField] float minZoom = 2.0f;
-    [SerializeField] float maxZoom = 10.0f;
+    [SerializeField] float minZoom = 5.0f;
+    [SerializeField] float maxZoom = 15.0f;
     [SerializeField] float offsetZoom = 4.0f;
-    [SerializeField] float smoothZoom = 10.0f;
+    [SerializeField] float smoothZoom = 2.0f;
     [SerializeField] float smoothLockEnemy = 5.0f;
     [SerializeField] float smoothChangeEnemy = 2.0f;
     [SerializeField] float zoomSensitivity = 5.0f;
     [SerializeField] float rotSensitivity = 5.0f;
-    [SerializeField] float vertSensitivity = 5.0f;
+    [SerializeField] float vertSensitivity = 2.0f;
     Vector3 currentLockPos;
     Ray[] ray;
 
@@ -39,8 +39,8 @@ public class CameraTest : MonoBehaviour
     {
         enemies = new GameObject[20];
         cameraTransform = this.transform;
-        zoom = 6;//Mathf.Abs(cameraTransform.position.z - target.position.z);
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        zoom = 10;
+     
         ray = new Ray[5];
     }
 
@@ -56,16 +56,18 @@ public class CameraTest : MonoBehaviour
                 CameraColisionSimple();
                 break;
             case CameraMode.LockEnemy:
+                enemies = GameObject.FindGameObjectsWithTag("Enemy");
                 LookToEnemy();
                 VerticalMovementLockCamera();
+                VerticalMovement();
                 CameraColisionSimple();
                 break;
             default:
                 break;
         }
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Z))
             ChangeEnemyToLook();
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             lookToEnemy = !lookToEnemy;
             if (lookToEnemy) currentLockPos = cameraTransform.localPosition;
@@ -109,7 +111,7 @@ public class CameraTest : MonoBehaviour
         cameraTransform.Translate(Vector3.up * axisY * Time.deltaTime, Space.World);
 
         Vector3 pos = cameraTransform.localPosition;
-        pos.y = Mathf.Clamp(pos.y, -1, 3);
+        pos.y = Mathf.Clamp(pos.y, 5, 9);
         cameraTransform.localPosition = pos;
     }
     public void VerticalMovementLockCamera()
@@ -117,22 +119,19 @@ public class CameraTest : MonoBehaviour
 
         float axisY = Input.GetAxis("Mouse Y") * vertSensitivity;
 
-        Vector3 look = target.position;
+        Vector3 look = enemies[currentEnemy].transform.position;
 
-        if (lookToEnemy)
+        if (enemies.Length > 0)
         {
-            if (enemies.Length > 0)
-            {
-                look =Vector3.Lerp(enemies[previousEnemy].transform.position, enemies[currentEnemy].transform.position, smoothChangeEnemy);
-            }
+            //look =Vector3.Slerp(enemies[previousEnemy].transform.position, enemies[currentEnemy].transform.position, smoothChangeEnemy);
+
+            cameraTransform.LookAt(look);
+            cameraTransform.Translate(Vector3.up * axisY * Time.deltaTime, Space.World);
+
+            /*Vector3 pos = cameraTransform.localPosition;
+            pos.y = Mathf.Clamp(pos.y, 5, 9);
+            cameraTransform.localPosition = pos;*/
         }
-
-        cameraTransform.LookAt(look);
-        cameraTransform.Translate(Vector3.up * axisY * Time.deltaTime, Space.World);
-
-        Vector3 pos = cameraTransform.localPosition;
-        pos.y = Mathf.Clamp(pos.y, -1, 3);
-        cameraTransform.localPosition = pos;
     }
 
     public void CameraColisionSimple()
@@ -153,7 +152,6 @@ public class CameraTest : MonoBehaviour
             {
                 Debug.Log("Ray: " + i + " hit");
                 
-                //Vector3 DistanceCamera = new Vector3(hit.point.x,hit.point.y,hit.point.z);
                 hitZoom = hit.distance - offsetZoom;
 
                 break;
@@ -182,18 +180,18 @@ public class CameraTest : MonoBehaviour
 
         currentLockPos = Vector3.Lerp(currentLockPos, newLockPos, Time.deltaTime * smoothLockEnemy);
 
-        
         cameraTransform.position = currentLockPos;
 
         Vector3 pos = cameraTransform.position;
         pos += cameraTransform.right * 1.5f;
         cameraTransform.position = pos;
     }
-    public void ChangeEnemyToLook() 
+    public void ChangeEnemyToLook()
     {
-        previousEnemy=currentEnemy;
-        currentEnemy++;
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        previousEnemy =currentEnemy;
+        currentEnemy++;
+
         if (currentEnemy > enemies.Length-1)
             currentEnemy = 0;
     }

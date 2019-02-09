@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -505,23 +505,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1558779916c26a34c8ef7876043bd83e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mode: 0
   target: {fileID: 1526631352}
   lookToEnemy: 0
-  ENEMY: {fileID: 0}
   coneDistance: 0.8
   enemies: []
   currentEnemy: 0
+  previousEnemy: 0
+  maxCamHeight: 0
+  minCamHeight: 0
   defaultZoom: 6
   minZoom: 2
   maxZoom: 10
   offsetZoom: 1.5
   smoothZoom: 10
+  smoothLockEnemy: 5
+  smoothChangeEnemy: 2
   zoomSensitivity: 5
   rotSensitivity: 5
   vertSensitivity: 5
   mask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 0
 --- !u!81 &1346052230
 AudioListener:
   m_ObjectHideFlags: 0
@@ -963,7 +968,7 @@ Transform:
   m_GameObject: {fileID: 2104931279}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.59, y: 3.44, z: -2.85}
-  m_LocalScale: {x: 9.582601, y: 28.738182, z: 1.1851}
+  m_LocalScale: {x: 53.536076, y: 28.738182, z: 1.1851}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
