@@ -5,7 +5,8 @@ ScriptedImporter:
     2100000: Acera
     2800000: Acera - diffuse
     2800002: Acera - normal
-    2800008: Acera - specular
+    2800004: Acera - height
+    2800006: Acera - ambientOcclusion
     11400000: sbsar
     11400002: graph0
   externalObjects: {}
@@ -21,9 +22,21 @@ ScriptedImporter:
     generateAllOutputs: 0
     generateMipMaps: 1
     preset: " <sbspreset pkgurl=\"pkg://Acera\" label=\"\" >\n </sbspreset>\n"
-    shaderName: Lightweight Render Pipeline/Simple Lit
-    outputNames: diffuse,normal,specular
-    texturePackingList: []
+    shaderName: Standard
+    outputNames: diffuse,normal,height,ambientOcclusion
+    texturePackingList:
+    - outputName: diffuse
+      alphaSource: diffuse
+    - outputName: normal
+      alphaSource: normal
+    - outputName: specular
+      alphaSource: specular
+    - outputName: glossiness
+      alphaSource: glossiness
+    - outputName: height
+      alphaSource: height
+    - outputName: ambientOcclusion
+      alphaSource: ambientOcclusion
     textureParameters:
     - textureName: Acera - diffuse
       wrapMode: 0
