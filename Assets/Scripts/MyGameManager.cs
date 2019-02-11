@@ -193,31 +193,38 @@ public class MyGameManager : MonoBehaviour
     {
         if (!pause)
         {
-            pausaMenu.gameObject.SetActive(false);
-            pause = true;
+            pauseMenuPrincial.SetBool("Pausa", true);
             Time.timeScale = 1;
             Cursor.visible = false;
             AudioListener.pause = false;
             //music.mute = false; 
-            pausaMenu.gameObject.SetActive(true);
             notas.SetActive(false);
             sound.enabled = false;
+            Invoke("TakeoFFMenu", 0.3f);
+            pause = true;
         }
         else if (pause)
         {
-            pauseMenuPrincial.SetBool("Pause", false);
-            pause = false;
-            pausaMenu.gameObject.SetActive(true);
+            pauseMenuPrincial.SetBool("Pausa", false);
             Time.timeScale = 0;
             AudioListener.pause = true;
             notas.SetActive(true);
             Cursor.visible = true;
             //music.mute = true;
             sound.enabled = true;
+            Invoke("TakeONMenu", 0.3f);
+            pause = false;
         }
 
     }
-  
+    private void TakeoFFMenu() {
+        pausaMenu.gameObject.SetActive(false);
+    }
+    private void TakeONMenu()
+    {
+        pausaMenu.gameObject.SetActive(true);
+    }
+
     public void GodMode()
     {
         if (!godmode)
