@@ -200,7 +200,7 @@ public class MyGameManager : MonoBehaviour
             //music.mute = false; 
             notas.SetActive(false);
             sound.enabled = false;
-            Invoke("TakeoFFMenu", 0.3f);
+            Invoke("TakeoFFMenu", 0.2f);
             pause = true;
         }
         else if (pause)
@@ -212,7 +212,7 @@ public class MyGameManager : MonoBehaviour
             Cursor.visible = true;
             //music.mute = true;
             sound.enabled = true;
-            Invoke("TakeONMenu", 0.3f);
+            Invoke("TakeONMenu", 0.2f);
             pause = false;
         }
 
