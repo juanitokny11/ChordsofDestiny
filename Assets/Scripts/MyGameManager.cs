@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class MyGameManager : MonoBehaviour
 {
@@ -19,7 +20,6 @@ public class MyGameManager : MonoBehaviour
     public Transform shooterpos;
     //private LookRotation lookRotation;
     private MouseCursor mouseCursor;
-
     public GameObject cam;
     public int money;
     public Text moneyText;
@@ -36,7 +36,8 @@ public class MyGameManager : MonoBehaviour
     public bool notacogida;
     public float counternotas;
     public GameObject notas;
-    public GameObject pausaMenu;
+    public RectTransform pausaMenu;
+    public Animator pauseMenuPrincial;
     public Vector2 inputAxis = Vector2.zero;
     public Image soloBar;
     public GameObject solocollider;
@@ -45,7 +46,6 @@ public class MyGameManager : MonoBehaviour
     public Image HealthBar;
     public float curHealth;
     public float MaxHealth = 100;
-    public Animator menuanim;
     private static MyGameManager instance;
     public SoundPlayer audios;
     public static MyGameManager getInstance()
@@ -59,7 +59,6 @@ public class MyGameManager : MonoBehaviour
             instance = this;
         }
         player = GameObject.FindGameObjectWithTag("Player");
-
         pause = true;
         godmode = true;
         cursolo = 0;
@@ -152,17 +151,7 @@ public class MyGameManager : MonoBehaviour
             cam.transform.Translate(inputAxis.x, 0, inputAxis.y);
             cam.transform.Rotate(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0);
         }
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            LookEnemy();
-        }
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            cama.numenemies++;
-        }
-
     }
-
     //Cursor del ratón
     // if (Input.GetMouseButtonDown(0)) mouseCursor.HideCursor();
     // else if (Input.GetKeyDown(KeyCode.Escape)) mouseCursor.ShowCursor();
@@ -188,7 +177,6 @@ public class MyGameManager : MonoBehaviour
     {
         curHealth -= Damage;
         HealthBar.fillAmount = curHealth / MaxHealth;
-        //player.gameObject
     }
     public void Carga()
     {
@@ -205,45 +193,31 @@ public class MyGameManager : MonoBehaviour
     {
         if (!pause)
         {
-            pausaMenu.SetActive(false);
+            pausaMenu.gameObject.SetActive(false);
             pause = true;
             Time.timeScale = 1;
             Cursor.visible = false;
             AudioListener.pause = false;
             //music.mute = false; 
-            pausaMenu.SetActive(true);
+            pausaMenu.gameObject.SetActive(true);
             notas.SetActive(false);
             sound.enabled = false;
         }
         else if (pause)
         {
-            pausaMenu.SetActive(true);
+            pauseMenuPrincial.SetBool("Pause", false);
+            pause = false;
+            pausaMenu.gameObject.SetActive(true);
             Time.timeScale = 0;
-
             AudioListener.pause = true;
             notas.SetActive(true);
-            menuanim.SetTrigger("Close");
-            pause = false;
             Cursor.visible = true;
             //music.mute = true;
             sound.enabled = true;
         }
 
     }
-    public void LookEnemy()
-    {
-        if (!look)
-        {
-            look = true;
-            col.lookenemy = true;
-        }
-        else if (look)
-        {
-            look = false;
-            col.lookenemy = false;
-        }
-
-    }
+  
     public void GodMode()
     {
         if (!godmode)
