@@ -16,6 +16,8 @@ public class CameraTest : MonoBehaviour
     float hitZoom;
     float poscam;
     public float coneDistance = 0.8f;
+    public float maxHeight;
+    public float minHeight;
     public GameObject[] enemies;
     public int currentEnemy = 0;
     public int previousEnemy;
@@ -25,7 +27,7 @@ public class CameraTest : MonoBehaviour
     [SerializeField] float offsetZoom = 4.0f;
     [SerializeField] float smoothZoom = 2.0f;
     [SerializeField] float smoothLockEnemy = 5.0f;
-    [SerializeField] float smoothChangeEnemy = 2.0f;
+    [SerializeField] float smoothChangeEnemy = 10.0f;
     [SerializeField] float zoomSensitivity = 5.0f;
     [SerializeField] float rotSensitivity = 5.0f;
     [SerializeField] float vertSensitivity = 2.0f;
@@ -39,7 +41,7 @@ public class CameraTest : MonoBehaviour
     {
         enemies = new GameObject[20];
         cameraTransform = this.transform;
-        zoom = 10;
+        //zoom = 10;
      
         ray = new Ray[5];
     }
@@ -59,7 +61,6 @@ public class CameraTest : MonoBehaviour
                 enemies = GameObject.FindGameObjectsWithTag("Enemy");
                 LookToEnemy();
                 VerticalMovementLockCamera();
-                VerticalMovement();
                 CameraColisionSimple();
                 break;
             default:
@@ -111,7 +112,7 @@ public class CameraTest : MonoBehaviour
         cameraTransform.Translate(Vector3.up * axisY * Time.deltaTime, Space.World);
 
         Vector3 pos = cameraTransform.localPosition;
-        pos.y = Mathf.Clamp(pos.y, 5, 9);
+        pos.y = Mathf.Clamp(pos.y, minHeight, maxHeight);
         cameraTransform.localPosition = pos;
     }
     public void VerticalMovementLockCamera()
@@ -119,18 +120,19 @@ public class CameraTest : MonoBehaviour
 
         float axisY = Input.GetAxis("Mouse Y") * vertSensitivity;
 
+        float smoothChangeEnemyFake = smoothChangeEnemy / cameraTransform.rotation.x;
         Vector3 look = enemies[currentEnemy].transform.position;
 
         if (enemies.Length > 0)
         {
-            //look =Vector3.Slerp(enemies[previousEnemy].transform.position, enemies[currentEnemy].transform.position, smoothChangeEnemy);
+            look =Vector3.Slerp(enemies[previousEnemy].transform.position, enemies[currentEnemy].transform.position, smoothChangeEnemy)/ (smoothChangeEnemyFake/2.0f);
 
             cameraTransform.LookAt(look);
             cameraTransform.Translate(Vector3.up * axisY * Time.deltaTime, Space.World);
 
-            /*Vector3 pos = cameraTransform.localPosition;
-            pos.y = Mathf.Clamp(pos.y, 5, 9);
-            cameraTransform.localPosition = pos;*/
+            Vector3 pos = cameraTransform.localPosition;
+            pos.y = Mathf.Clamp(pos.y, minHeight, maxHeight);
+            cameraTransform.localPosition = pos;
         }
     }
 
@@ -191,8 +193,8 @@ public class CameraTest : MonoBehaviour
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         previousEnemy =currentEnemy;
         currentEnemy++;
-
         if (currentEnemy > enemies.Length-1)
+
             currentEnemy = 0;
     }
 

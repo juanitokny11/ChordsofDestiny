@@ -13,11 +13,12 @@ public class MyGameManager : MonoBehaviour
     public CamaraCollision col;
     public GameObject arma;
     public float jumpInput;
-    public CamaraCollision cama;
     public GameObject soloefect;
     public Text tempo;
     public GameObject vinillo;
     public Transform shooterpos;
+    public AudioSource openPause;
+    public AudioSource closePause;
     //private LookRotation lookRotation;
     private MouseCursor mouseCursor;
     public GameObject cam;
@@ -193,6 +194,7 @@ public class MyGameManager : MonoBehaviour
     {
         if (!pause)
         {
+            openPause.Play();
             pauseMenuPrincial.SetBool("Pausa", true);
             Time.timeScale = 1;
             Cursor.visible = false;
@@ -205,6 +207,7 @@ public class MyGameManager : MonoBehaviour
         }
         else if (pause)
         {
+            closePause.Play();
             pauseMenuPrincial.SetBool("Pausa", false);
             Time.timeScale = 0;
             AudioListener.pause = true;

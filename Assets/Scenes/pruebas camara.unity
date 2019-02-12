@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -130,7 +130,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &544844881
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -512,8 +512,6 @@ MonoBehaviour:
   enemies: []
   currentEnemy: 0
   previousEnemy: 0
-  maxCamHeight: 0
-  minCamHeight: 0
   defaultZoom: 6
   minZoom: 2
   maxZoom: 10
@@ -526,7 +524,7 @@ MonoBehaviour:
   vertSensitivity: 5
   mask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
 --- !u!81 &1346052230
 AudioListener:
   m_ObjectHideFlags: 0
@@ -900,7 +898,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &2104931280
 BoxCollider:
   m_ObjectHideFlags: 0
