@@ -115,7 +115,9 @@ public class MyGameManager : MonoBehaviour
                     pers.Play("atque_debil", -1, 0);
                     arma.transform.tag = "ligero";
                     Invoke("ResetTag", 1);
+                    debilSOUND = Random.Range(0, 2);
                     audios.Play(debilSOUND, 1);
+                    Debug.Log("CUANTO PASAS");
                     Invoke("ResetAttack", 1);
                 }
                 if (Input.GetMouseButtonDown(1) || Input.GetAxisRaw("AtaqueFuerte") != 0)
@@ -136,7 +138,6 @@ public class MyGameManager : MonoBehaviour
                         Invoke("ResetAnim", 1f);
                         soloBar.fillAmount = cursolo / Maxsolo;
                         Invoke("DesActivarColisiones", 0.1f);
-
                     }
                     Invoke("ActivarColisiones", 2f);
                 }
@@ -167,6 +168,7 @@ public class MyGameManager : MonoBehaviour
     void ResetAttack()
     {
         pers.SetTrigger("Reset");
+       
     }
     void ResetAnim()
     {

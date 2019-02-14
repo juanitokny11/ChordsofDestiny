@@ -17,7 +17,7 @@ public class SoundPlayer : MonoBehaviour
         source.volume = volume;
         source.clip = clips[numClip];
         source.loop = false;
-
+   
         source.spatialBlend = 0.8f;
         source.playOnAwake = false;
         source.Play();
