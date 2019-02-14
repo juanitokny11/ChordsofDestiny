@@ -18,6 +18,7 @@ public class MyGameSettings : MonoBehaviour {
     void Awake (){
 		if (instance == null) {
 			instance = this;
+
             DontDestroyOnLoad (this);
 		}
 	}

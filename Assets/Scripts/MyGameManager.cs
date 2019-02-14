@@ -194,11 +194,10 @@ public class MyGameManager : MonoBehaviour
     {
         if (!pause)
         {
-            openPause.Play();
+            closePause.Play();
             pauseMenuPrincial.SetBool("Pausa", true);
             Time.timeScale = 1;
             Cursor.visible = false;
-            AudioListener.pause = false;
             //music.mute = false; 
             notas.SetActive(false);
             sound.enabled = false;
@@ -207,10 +206,9 @@ public class MyGameManager : MonoBehaviour
         }
         else if (pause)
         {
-            closePause.Play();
+            openPause.Play();
             pauseMenuPrincial.SetBool("Pausa", false);
             Time.timeScale = 0;
-            AudioListener.pause = true;
             notas.SetActive(true);
             Cursor.visible = true;
             //music.mute = true;
