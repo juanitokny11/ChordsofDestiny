@@ -46,6 +46,7 @@ public class MyGameManager : MonoBehaviour
     public float Maxsolo = 100;
     public Image HealthBar;
     public float curHealth;
+    public int debilSOUND;
     public float MaxHealth = 100;
     private static MyGameManager instance;
     public SoundPlayer audios;
@@ -61,6 +62,7 @@ public class MyGameManager : MonoBehaviour
         }
         player = GameObject.FindGameObjectWithTag("Player");
         pause = true;
+        debilSOUND = Random.Range(0, 2);
         godmode = true;
         cursolo = 0;
         soloBar.fillAmount = cursolo / Maxsolo;
@@ -107,13 +109,13 @@ public class MyGameManager : MonoBehaviour
 
             if (pause == true)
             {
+                
                 if (Input.GetMouseButtonDown(0) || Input.GetAxisRaw("AtaqueDebil") != 0)
                 {
                     pers.Play("atque_debil", -1, 0);
                     arma.transform.tag = "ligero";
                     Invoke("ResetTag", 1);
-                    audios.Play(0, 1);
-                    //debil = true;
+                    audios.Play(debilSOUND, 1);
                     Invoke("ResetAttack", 1);
                 }
                 if (Input.GetMouseButtonDown(1) || Input.GetAxisRaw("AtaqueFuerte") != 0)

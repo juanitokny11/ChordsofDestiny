@@ -18,32 +18,32 @@ public class ChangeVolume : MonoBehaviour {
     public void Start()
     {
         float v;
-        //generalVolume.value = MyGameSettings.getInstance().generalVol;
-        
+        mixer.GetFloat("soundVol", out v);
+        generalVolume.value = v;
         mixer.GetFloat("MusicVol", out v);
         musicVolume.value = v;
-
-       // effectsVolume.value = MyGameSettings.getInstance().effectsVol;
-    }
+        mixer.GetFloat("EffectsVol", out v);
+        effectsVolume.value = v;
+       }
     private void Update()
     {
-        //general.text = (int)(generalVolume.value) + " %";
-       /// music.text = (int)(musicVolume.value * 100) + " %";
-        //efects.text = (int)(effectsVolume.value * 100) + " %";
+        general.text = (int)(generalVolume.value) + "db";
+        music.text = (int)(musicVolume.value) + " db";
+        efects.text = (int)(effectsVolume.value) + " db";
         //MyGameSettings.getInstance().generalVol = generalVolume.value;
         //MyGameSettings.getInstance().musicVol = musicVolume.value;
         //MyGameSettings.getInstance().effectsVol = effectsVolume.value;
     }
     public void SetLevel(){
-        mixer.SetFloat("soundVol",Mathf.Log10(generalVolume.value) *20);
+        mixer.SetFloat("soundVol",generalVolume.value);
     }
     public void SetMusicLevel()
     {
         mixer.SetFloat("MusicVol", musicVolume.value);
     }
-    public void SetEffectsLevel(float sliderValue)
+    public void SetEffectsLevel()
     {
-        mixer.SetFloat("EffectsVol", Mathf.Log10(sliderValue) * 20);
+        mixer.SetFloat("EffectsVol",effectsVolume.value);
     }
 }
 
