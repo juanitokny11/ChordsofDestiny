@@ -109,7 +109,7 @@ public class PlayerMovement : MonoBehaviour {
     void ParticlePlay(){
         if (jump == true && isGrounded) { 
         particle.Play();
-        sound.Play(2,1);
+        sound.Play(4,1);
         jump = false;
         }
     }

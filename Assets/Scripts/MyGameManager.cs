@@ -117,7 +117,6 @@ public class MyGameManager : MonoBehaviour
                     Invoke("ResetTag", 1);
                     debilSOUND = Random.Range(0, 2);
                     audios.Play(debilSOUND, 1);
-                    Debug.Log("CUANTO PASAS");
                     Invoke("ResetAttack", 1);
                 }
                 if (Input.GetMouseButtonDown(1) || Input.GetAxisRaw("AtaqueFuerte") != 0)

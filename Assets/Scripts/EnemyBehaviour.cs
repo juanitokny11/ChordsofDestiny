@@ -9,15 +9,14 @@ public class EnemyBehaviour : MonoBehaviour
     public State state;
 
     private NavMeshAgent agent;
-    private Animator anim;
-
+    public Animator anim;
     //public SoundPlayer sound;
     private CapsuleCollider colider;
     private BoxCollider attackcollider;
     public  MyGameManager manager;
     private BossBehaviour boss;
     public GameObject met;
-    public ParticleSystem[] ataque;
+    //public ParticleSystem[] ataque;
 
     [Header("Creeper properties")]
     public int life = 10;
@@ -32,7 +31,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     [Header("Patrol path")]
     public bool stopAtEachNode = true;
-    public float timeStopped = 1.0f;
+    public float timeStopped = 20.0f;
     private float timeCounter = 0.0f;
     public Transform[] pathNodes;
     private int currentNode = 0;
@@ -47,7 +46,7 @@ public class EnemyBehaviour : MonoBehaviour
     void Start ()
     {
         agent = GetComponent<NavMeshAgent>();
-        anim = GetComponentInChildren<Animator>();
+        //anim =GetComponentInChildren<Animator>();
         attackcollider = GetComponent<BoxCollider>();
         colider = GetComponent<CapsuleCollider>();
        // sound = GetComponentInChildren<SoundPlayer>();
@@ -55,8 +54,8 @@ public class EnemyBehaviour : MonoBehaviour
         nearNode = true;
         SetIdle();
         met = GameObject.FindGameObjectWithTag("metronomo");
-        ataque= new ParticleSystem[ataque.Length];
-        ataque = FindObjectsOfType<ParticleSystem>();
+       /* ataque= new ParticleSystem[ataque.Length];
+        ataque = FindObjectsOfType<ParticleSystem>();*/
 	}
 	
 	// Update is called once per frame
@@ -68,9 +67,11 @@ public class EnemyBehaviour : MonoBehaviour
                 Idle();
                 break;
             case State.Patrol:
+                anim.SetBool("Run", true);
                 Patrol();
                 break;
             case State.Chase:
+                anim.SetBool("Run", true);
                 Chase();
                 break;
             case State.Attack:
@@ -96,6 +97,9 @@ public class EnemyBehaviour : MonoBehaviour
 
     void Idle()
     {
+        if (timeCounter <= 15.0f){
+            anim.SetBool("IdleLong", true);
+        }
         if(targetDetected)
         {
             SetChase();
@@ -151,24 +155,16 @@ public class EnemyBehaviour : MonoBehaviour
     void SetIdle()
     {
         agent.isStopped = true;        
-       // anim.SetBool("Walk", false);
-        //anim.SetBool("Run", false);
         radius = idleRadius;
         timeCounter = 0;
-        /*if (manager.pause == true)
-        {
-            sound.Play(1, 1);
-        }*/
-
         state = State.Idle;
     }
     void SetPatrol()
     { 
         agent.isStopped = false;
+        anim.SetBool("Run", true);
         agent.stoppingDistance = 0;
         radius = idleRadius;
-        //anim.SetBool("Walk", true);
-        //anim.SetBool("Run", false);
         /*if (manager.pause == true)
         {
             sound.Play(3, 1);
@@ -180,8 +176,7 @@ public class EnemyBehaviour : MonoBehaviour
         agent.isStopped = false;
         agent.SetDestination(targetTransform.position);
         agent.stoppingDistance = 2.0f;
-        //anim.SetBool("Run", true);
-        //anim.SetBool("Walk", false);
+        anim.SetBool("Run", true);
         radius = chaseRadius;
        /* if (manager.pause == true)
         {
@@ -198,7 +193,7 @@ public class EnemyBehaviour : MonoBehaviour
         agent.isStopped = true;
         transform.tag = "Enemy";
         attackcollider.enabled = true;
-       // anim.SetBool("Attack",true);
+        anim.SetTrigger("Atack");
         Invoke("ResetAttack", 2);
         state = State.Attack;
     }
@@ -210,7 +205,7 @@ public class EnemyBehaviour : MonoBehaviour
         }*/
         agent.isStopped = true;
         state = State.Dead;
-        //anim.SetTrigger("Die");
+        anim.SetTrigger("Death");
         Invoke("DestroyEnemy", 1);
     }
 
@@ -268,7 +263,6 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if(state == State.Dead) return;
         life -= hit;
-        
         //sound.Play(2, 1);
         if (life <= 0) SetDead();
     }
@@ -279,7 +273,7 @@ public class EnemyBehaviour : MonoBehaviour
             Damage(3);
             Debug.Log("dañoextra");
             MyGameManager.getInstance().OnTempo();
-            ataque[5].Play();
+           // ataque[5].Play();
             MyGameManager.getInstance().Carga();
         }
        if (other.tag == "ligero"&& metronomo.getInstance().daño== false)
@@ -293,7 +287,7 @@ public class EnemyBehaviour : MonoBehaviour
             Damage(4);
             Debug.Log("dañoextra");
             MyGameManager.getInstance().OnTempo();
-             ataque[5].Play();
+            // ataque[5].Play();
              MyGameManager.getInstance().Carga();
         }
          if (other.tag == "pesado"&& metronomo.getInstance().daño== false)
@@ -324,14 +318,12 @@ public class EnemyBehaviour : MonoBehaviour
     void ResetAttack()
     {
         agent.isStopped = false;
+        anim.SetTrigger("Reset");
         attackcollider.enabled = false;
         state = State.Patrol;
     }
     void DestroyEnemy()
     {
         Destroy(this.gameObject);
-        if (boss) { 
-        boss.enemyCounter--;
-        }
     }
 }
