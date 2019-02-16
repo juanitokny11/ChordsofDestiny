@@ -97,9 +97,9 @@ public class EnemyBehaviour : MonoBehaviour
 
     void Idle()
     {
-        /*if (timeCounter <= 15.0f){
+        if (timeCounter <= 15.0f){
             anim.SetBool("IdleLong", true);
-        }*/
+        }
         if(targetDetected)
         {
             SetChase();
