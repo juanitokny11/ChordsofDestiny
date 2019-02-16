@@ -46,7 +46,7 @@ public class EnemyBehaviour : MonoBehaviour
     void Start ()
     {
         agent = GetComponent<NavMeshAgent>();
-        //anim =GetComponentInChildren<Animator>();
+        anim =GetComponentInChildren<Animator>();
         attackcollider = GetComponent<BoxCollider>();
         colider = GetComponent<CapsuleCollider>();
        // sound = GetComponentInChildren<SoundPlayer>();
@@ -97,9 +97,9 @@ public class EnemyBehaviour : MonoBehaviour
 
     void Idle()
     {
-        if (timeCounter <= 15.0f){
+        /*if (timeCounter <= 15.0f){
             anim.SetBool("IdleLong", true);
-        }
+        }*/
         if(targetDetected)
         {
             SetChase();
