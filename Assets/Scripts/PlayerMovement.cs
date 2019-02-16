@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour {
 
         isGrounded = controller.isGrounded;
          if (Input.GetButton("Jump")&& isGrounded && suelo==true){
-            verticalVel=1;
+            verticalVel=0.5f;
             //jump = true;
         }
         if (isGrounded){
