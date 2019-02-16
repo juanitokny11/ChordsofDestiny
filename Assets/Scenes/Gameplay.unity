@@ -6855,7 +6855,7 @@ PrefabInstance:
         type: 3}
       propertyPath: pers
       value: 
-      objectReference: {fileID: 1535003359}
+      objectReference: {fileID: 0}
     - target: {fileID: 114088136241374562, guid: 8b746f9107fc3d946bdd5a3af336431b,
         type: 3}
       propertyPath: anim
@@ -19630,6 +19630,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 114176658036538312, guid: c129ee25fef3b8c439e6ee2abe08e434,
         type: 3}
+      propertyPath: atacksdebil.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114176658036538312, guid: c129ee25fef3b8c439e6ee2abe08e434,
+        type: 3}
       propertyPath: sound
       value: 
       objectReference: {fileID: 1308475206}
@@ -19744,6 +19749,31 @@ PrefabInstance:
       propertyPath: closePause
       value: 
       objectReference: {fileID: 1954778728}
+    - target: {fileID: 114176658036538312, guid: c129ee25fef3b8c439e6ee2abe08e434,
+        type: 3}
+      propertyPath: atacksdebil.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 68afe8872dee33449aa2d50cad7fb160, type: 3}
+    - target: {fileID: 114176658036538312, guid: c129ee25fef3b8c439e6ee2abe08e434,
+        type: 3}
+      propertyPath: atacksdebil.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: d181cab9bf5a7824ca3d15996258eddd, type: 3}
+    - target: {fileID: 114176658036538312, guid: c129ee25fef3b8c439e6ee2abe08e434,
+        type: 3}
+      propertyPath: atacksdebil.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 7f456c7a7844d064c93bd7249b3ed393, type: 3}
+    - target: {fileID: 114176658036538312, guid: c129ee25fef3b8c439e6ee2abe08e434,
+        type: 3}
+      propertyPath: cargasolo
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114176658036538312, guid: c129ee25fef3b8c439e6ee2abe08e434,
+        type: 3}
+      propertyPath: jumpInput
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4993025775441868, guid: c129ee25fef3b8c439e6ee2abe08e434, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.5451095
@@ -28562,31 +28592,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300192, guid: e6064dafc7b935a4dabe9938ea3040fb, type: 3}
---- !u!1 &1535003359 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1005762875271852, guid: 8b746f9107fc3d946bdd5a3af336431b,
-    type: 3}
-  m_PrefabInstance: {fileID: 444767898}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1535003361
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1535003359}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ab502af45e40afc41b205e95324b134c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1540236755
 PrefabInstance:
   m_ObjectHideFlags: 0
