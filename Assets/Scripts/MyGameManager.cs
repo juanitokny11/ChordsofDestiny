@@ -12,6 +12,7 @@ public class MyGameManager : MonoBehaviour
     private GameObject player;
     public CamaraCollision col;
     public GameObject arma;
+    public AudioClip[] atacksdebil;
     public float jumpInput;
     public GameObject soloefect;
     public Text tempo;
@@ -62,7 +63,6 @@ public class MyGameManager : MonoBehaviour
         }
         player = GameObject.FindGameObjectWithTag("Player");
         pause = true;
-        debilSOUND = Random.Range(0, 2);
         godmode = true;
         cursolo = 0;
         soloBar.fillAmount = cursolo / Maxsolo;
@@ -75,6 +75,7 @@ public class MyGameManager : MonoBehaviour
 
     void Update()
     {
+        debilSOUND = Random.Range(0, 2);
         if (Input.GetKeyDown(KeyCode.F10))
         {
             GodMode();
@@ -105,8 +106,6 @@ public class MyGameManager : MonoBehaviour
                     notas.SetActive(false);
                 }
             }
-
-
             if (pause == true)
             {
                 
@@ -115,8 +114,8 @@ public class MyGameManager : MonoBehaviour
                     pers.Play("atque_debil", -1, 0);
                     arma.transform.tag = "ligero";
                     Invoke("ResetTag", 1);
-                    debilSOUND = Random.Range(0, 2);
-                    audios.Play(debilSOUND, 1);
+                    AudioSource sonido =player.AddComponent<AudioSource>();
+                    sonido.PlayOneShot(atacksdebil[debilSOUND]);
                     Invoke("ResetAttack", 1);
                 }
                 if (Input.GetMouseButtonDown(1) || Input.GetAxisRaw("AtaqueFuerte") != 0)
@@ -124,7 +123,7 @@ public class MyGameManager : MonoBehaviour
                     pers.Play("ataque_fuerte", -1, 0);
                     arma.transform.tag = "pesado";
                     Invoke("ResetTag", 1);
-                    audios.Play(1, 1);
+                    //audios.Play(1, 1);
                     Invoke("ResetAttack", 2);
                 }
                 if (Input.GetMouseButtonDown(2) || Input.GetAxisRaw("Evadir") != 0 && Input.GetAxisRaw("Disparar") != 0)
