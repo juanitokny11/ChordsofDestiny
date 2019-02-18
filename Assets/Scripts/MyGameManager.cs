@@ -10,7 +10,7 @@ public class MyGameManager : MonoBehaviour
 
     public SoundPlayer sound;
     private GameObject player;
-    public CamaraCollision col;
+    public GameObject solocarge;
     public GameObject arma;
     public AudioClip[] atacksdebil;
     public float jumpInput;
@@ -82,6 +82,10 @@ public class MyGameManager : MonoBehaviour
         }
         if (godmode == true)
         {
+            if (soloBar.fillAmount >= 1)
+                solocarge.SetActive(true);
+            else
+                solocarge.SetActive(false);
             Time.timeScale = 1;
             if (curHealth <= 0)
             {
@@ -166,7 +170,6 @@ public class MyGameManager : MonoBehaviour
     void ResetAttack()
     {
         pers.SetTrigger("Reset");
-       
     }
     void ResetAnim()
     {
@@ -232,16 +235,17 @@ public class MyGameManager : MonoBehaviour
     {
         if (!godmode)
         {
-            cam.SetActive(false);
+            //cam.SetActive(false);
             godmode = true;
-            Cursor.visible = false;
+            DesActivarColisiones();
+            //Cursor.visible = false;
 
         }
         else if (godmode)
         {
-            cam.SetActive(true);
+            //cam.SetActive(true);
             godmode = false;
-            Cursor.visible = true;
+            //Cursor.visible = true;
         }
     }
     public void Evadir()

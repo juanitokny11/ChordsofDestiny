@@ -67,11 +67,9 @@ public class EnemyBehaviour : MonoBehaviour
                 Idle();
                 break;
             case State.Patrol:
-                anim.SetBool("Run", true);
                 Patrol();
                 break;
             case State.Chase:
-                anim.SetBool("Run", true);
                 Chase();
                 break;
             case State.Attack:

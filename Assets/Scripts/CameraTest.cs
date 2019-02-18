@@ -66,9 +66,9 @@ public class CameraTest : MonoBehaviour
             default:
                 break;
         }
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z)|| Input.GetAxisRaw("ChangeEnemy") != 0)
             ChangeEnemyToLook();
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X) ||Input.GetAxisRaw("CamaraChange") != 0)
         {
             lookToEnemy = !lookToEnemy;
             if (lookToEnemy) currentLockPos = cameraTransform.localPosition;
