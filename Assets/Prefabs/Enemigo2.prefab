@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7552370887067821531}
   - component: {fileID: 5117468769297628539}
   - component: {fileID: 8986208240637763000}
+  - component: {fileID: 649332707}
   m_Layer: 0
   m_Name: Enemigo2
   m_TagString: Untagged
@@ -76,7 +77,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  anim: {fileID: 8228890440842561684}
+  anim: {fileID: 0}
+  attackcollider: {fileID: 3986713370964775499}
   manager: {fileID: 0}
   met: {fileID: 0}
   life: 5
@@ -117,6 +119,25 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!95 &649332707
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3245936757166203218}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: da275eeb5c9ec5b4e888be71e72d0995, type: 3}
+  m_Controller: {fileID: 9100000, guid: 3823ca1acb8bbd64483c8fb0b981ff78, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!65 &3986713370964775499
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -125,7 +146,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8228890440851929896}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.0254695, y: 0.06279443, z: 0.093841955}
@@ -137,9 +158,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 807147325470340280}
     m_Modifications:
-    - target: {fileID: 100062, guid: da275eeb5c9ec5b4e888be71e72d0995, type: 3}
-      propertyPath: m_Name
-      value: Fan
+    - target: {fileID: 9500000, guid: da275eeb5c9ec5b4e888be71e72d0995, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: da275eeb5c9ec5b4e888be71e72d0995, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400062, guid: da275eeb5c9ec5b4e888be71e72d0995, type: 3}
       propertyPath: m_LocalPosition.x
@@ -197,13 +222,13 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2.2
       objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: da275eeb5c9ec5b4e888be71e72d0995, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 3823ca1acb8bbd64483c8fb0b981ff78, type: 2}
-    - target: {fileID: 9500000, guid: da275eeb5c9ec5b4e888be71e72d0995, type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 1
+    - target: {fileID: 100060, guid: da275eeb5c9ec5b4e888be71e72d0995, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 100062, guid: da275eeb5c9ec5b4e888be71e72d0995, type: 3}
+      propertyPath: m_Name
+      value: Fan
       objectReference: {fileID: 0}
     - target: {fileID: 13700000, guid: da275eeb5c9ec5b4e888be71e72d0995, type: 3}
       propertyPath: m_Bones.Array.data[0]
@@ -333,18 +358,8 @@ PrefabInstance:
       propertyPath: m_RootBone
       value: 
       objectReference: {fileID: 8228890440851629940}
-    - target: {fileID: 100060, guid: da275eeb5c9ec5b4e888be71e72d0995, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da275eeb5c9ec5b4e888be71e72d0995, type: 3}
---- !u!4 &8228890440851629940 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400000, guid: da275eeb5c9ec5b4e888be71e72d0995,
-    type: 3}
-  m_PrefabInstance: {fileID: 8228890440852028916}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8228890440851629930 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400030, guid: da275eeb5c9ec5b4e888be71e72d0995,
@@ -531,9 +546,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8228890440852028916}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &8228890440842561684 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 9500000, guid: da275eeb5c9ec5b4e888be71e72d0995,
+--- !u!4 &8228890440851629940 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: da275eeb5c9ec5b4e888be71e72d0995,
     type: 3}
   m_PrefabInstance: {fileID: 8228890440852028916}
   m_PrefabAsset: {fileID: 0}

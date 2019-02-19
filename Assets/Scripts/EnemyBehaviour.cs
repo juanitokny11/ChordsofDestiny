@@ -12,7 +12,7 @@ public class EnemyBehaviour : MonoBehaviour
     public Animator anim;
     //public SoundPlayer sound;
     private CapsuleCollider colider;
-    private BoxCollider attackcollider;
+    public BoxCollider attackcollider;
     public  MyGameManager manager;
     private BossBehaviour boss;
     public GameObject met;
@@ -47,7 +47,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         anim =GetComponentInChildren<Animator>();
-        attackcollider = GetComponent<BoxCollider>();
+        //attackcollider = GetComponent<BoxCollider>();
         colider = GetComponent<CapsuleCollider>();
        // sound = GetComponentInChildren<SoundPlayer>();
         boss=FindObjectOfType<BossBehaviour>();
@@ -95,7 +95,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     void Idle()
     {
-        if (timeCounter <= 15.0f){
+        if (timeCounter <= 60.0f){
             anim.SetBool("IdleLong", true);
         }
         if(targetDetected)
@@ -114,7 +114,8 @@ public class EnemyBehaviour : MonoBehaviour
     }
     void Patrol()
     {
-        if(targetDetected)
+        anim.SetBool("IdleLong", false);
+        if (targetDetected)
         {
             SetChase();
             return;
@@ -140,11 +141,19 @@ public class EnemyBehaviour : MonoBehaviour
         {
             SetExplode();
         }
-
-
     }
-    void Explode() { 
-        
+    void Explode() {
+       /* if (!targetDetected)
+        {
+            nearNode = true;
+            SetIdle();
+            return;
+        }
+        agent.SetDestination(targetTransform.position);
+        if (Vector3.Distance(transform.position, targetTransform.position) <= explodeDistance)
+        {
+            SetExplode();
+        }*/
     }
     void Dead() {
 
@@ -191,7 +200,8 @@ public class EnemyBehaviour : MonoBehaviour
         agent.isStopped = true;
         transform.tag = "Enemy";
         attackcollider.enabled = true;
-        anim.SetTrigger("Atack");
+        anim.SetBool("Run", false);
+        anim.SetBool("Atack",true);
         Invoke("ResetAttack", 2);
         state = State.Attack;
     }
@@ -316,7 +326,8 @@ public class EnemyBehaviour : MonoBehaviour
     void ResetAttack()
     {
         agent.isStopped = false;
-        anim.SetTrigger("Reset");
+        anim.SetBool("Run", true);
+        anim.SetBool("Atack", false);
         attackcollider.enabled = false;
         state = State.Patrol;
     }
