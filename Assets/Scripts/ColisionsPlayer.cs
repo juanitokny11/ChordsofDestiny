@@ -6,14 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class ColisionsPlayer : MonoBehaviour
 {
-    private CharacterController colider;
-    private SphereCollider sphere;
     //public SoundPlayer sound;
 private void Awake(){
 
-        colider = GetComponent<CharacterController> ();
-        sphere = GetComponent<SphereCollider>();
+        
 }
+
   public void OnTriggerEnter(Collider other)
     { 
          if (other.tag == "Scene")
@@ -49,5 +47,6 @@ private void Awake(){
              MyGameManager.getInstance().CargaClave();
             //sound.Play(1, 1);
         }
+       
     }
 }
