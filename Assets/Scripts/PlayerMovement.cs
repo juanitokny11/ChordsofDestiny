@@ -93,7 +93,7 @@ public class PlayerMovement : MonoBehaviour {
         if (speed > allowPlayerRotation)
         {
            // anim.SetFloat("InputMagnitude", speed, 0.0f, Time.deltaTime * 2f);
-            controller.SimpleMove(desiredMoveDirection*15f);
+            controller.SimpleMove(desiredMoveDirection*20f);
             PlayerMovementAndRotation();
         }else if(speed < allowPlayerRotation)
         {   
