@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class ColisionsPlayer : MonoBehaviour
 {
+    public int id;
     //public SoundPlayer sound;
 private void Awake(){
 
@@ -47,6 +48,10 @@ private void Awake(){
              MyGameManager.getInstance().CargaClave();
             //sound.Play(1, 1);
         }
-       
+        if (other.tag == "BattleZone")
+        {
+          
+        }
+
     }
 }

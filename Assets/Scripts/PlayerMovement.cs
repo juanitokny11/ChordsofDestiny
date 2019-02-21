@@ -33,6 +33,9 @@ public class PlayerMovement : MonoBehaviour {
 
     private void Update()
     {
+        if (MyGameManager.getInstance().pause == false)
+            return;
+    
         InputMagnitude();
 
         isGrounded = controller.isGrounded;

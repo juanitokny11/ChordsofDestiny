@@ -61,6 +61,10 @@ public class EnemyBehaviour : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        if (MyGameManager.getInstance().pause == false){
+            state = State.Idle;
+            return;
+        } 
         switch(state)
         {
             case State.Idle:

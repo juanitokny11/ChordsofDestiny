@@ -9,6 +9,7 @@ public class MyGameManager : MonoBehaviour
 {
 
     public SoundPlayer sound;
+    public Animator pivote;
     private GameObject player;
     public GameObject solocarge;
     public GameObject arma;
@@ -71,6 +72,7 @@ public class MyGameManager : MonoBehaviour
         //mouseCursor = new MouseCursor();
         //mouseCursor.HideCursor();
         //Cursor.visible = false;
+        pivote.Play("PivoteAnim", -1, 0);
     }
 
     void Update()
@@ -202,6 +204,7 @@ public class MyGameManager : MonoBehaviour
             closePause.Play();
             pauseMenuPrincial.SetBool("Pausa", true);
             Time.timeScale = 0;
+            Debug.Log(Time.timeScale);
             Cursor.visible = false;
             //music.mute = false; 
             notas.SetActive(false);
@@ -214,6 +217,7 @@ public class MyGameManager : MonoBehaviour
             openPause.Play();
             pauseMenuPrincial.SetBool("Pausa", false);
             Time.timeScale = 1;
+            Debug.Log(Time.timeScale);
             notas.SetActive(true);
             Cursor.visible = true;
             //music.mute = true;
