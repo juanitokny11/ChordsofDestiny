@@ -27,7 +27,7 @@ public class ChangeVolume : MonoBehaviour {
        }
     private void Update()
     {
-        general.text = (int)(generalVolume.value) + "db";
+        general.text = (int)(generalVolume.value) + " db";
         music.text = (int)(musicVolume.value) + " db";
         efects.text = (int)(effectsVolume.value) + " db";
         //MyGameSettings.getInstance().generalVol = generalVolume.value;
