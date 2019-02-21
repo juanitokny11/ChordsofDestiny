@@ -20,7 +20,7 @@ public class LogoManager : MonoBehaviour
         if (MyGameSettings.getInstance().logoPlayed == true)
         {
             video.gameObject.SetActive(false);
-            title.SetActive(true);
+            MainMenu();
             fademusica.SetActive(true);
             musica.Play();
             logo = true;
