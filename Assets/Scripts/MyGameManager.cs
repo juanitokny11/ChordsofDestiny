@@ -9,7 +9,6 @@ public class MyGameManager : MonoBehaviour
 {
 
     public SoundPlayer sound;
-    public Animator pivote;
     private GameObject player;
     public GameObject solocarge;
     public GameObject arma;
@@ -72,7 +71,7 @@ public class MyGameManager : MonoBehaviour
         //mouseCursor = new MouseCursor();
         //mouseCursor.HideCursor();
         //Cursor.visible = false;
-        pivote.Play("PivoteAnim", -1, 0);
+        
     }
 
     void Update()

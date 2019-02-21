@@ -35,7 +35,7 @@ public class BattleZone : MonoBehaviour
             {
                 for (int i = 0; i < pivotesz1.Length- 1; i++)
                 {
-                    pivotesz1[i].SetBool("anim", true);
+                    pivotesz1[i].Play("PivoteAnim", -1, 0);
                 }
             }
             if (id == 2)
@@ -103,7 +103,6 @@ public class BattleZone : MonoBehaviour
             }
         }
     }
-    
     void Update()
     {
          
