@@ -201,7 +201,7 @@ public class EnemyBehaviour : MonoBehaviour
           {
               sound.Play(4, 1);
           }*/
-        GetComponent<NavMeshAgent>().enabled = false;
+        //GetComponent<NavMeshAgent>().enabled = false;
         agent.isStopped = true;
         transform.tag = "Enemy";
         attackcollider.enabled = true;
@@ -329,7 +329,7 @@ public class EnemyBehaviour : MonoBehaviour
         anim.SetBool("Run", true);
         anim.SetBool("Atack", false);
         attackcollider.enabled = false;
-        GetComponent<NavMeshAgent>().enabled = true;
+        //GetComponent<NavMeshAgent>().enabled = true;
         state = State.Patrol;
     }
     void DestroyEnemy()
