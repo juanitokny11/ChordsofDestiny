@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class LogoManager : MonoBehaviour
 {
     public VideoPlayer video;
+    public GameObject titleText;
     public GameObject menu;
     public GameObject fondomenu;
     public GameObject title;
@@ -30,13 +31,14 @@ public class LogoManager : MonoBehaviour
     {
         video.gameObject.SetActive(false);
         title.SetActive(true);
+        titleText.SetActive(true);
         fademusica.SetActive(true);
         musica.Play();
         logo = true;
     }
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape)&& logo==true)
+        if(Input.GetKeyDown(KeyCode.Space)&& logo==true || Input.GetAxisRaw("AtaqueDebil") != 0)
         {
             MainMenu();
             MyGameSettings.getInstance().logoPlayed = true;
@@ -46,6 +48,7 @@ public class LogoManager : MonoBehaviour
     private void MainMenu()
     {
         title.SetActive(false);
+        titleText.SetActive(false);
         fondomenu.SetActive(true);
         menu.SetActive(true);
     }
