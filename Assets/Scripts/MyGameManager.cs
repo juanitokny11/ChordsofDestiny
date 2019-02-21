@@ -100,6 +100,10 @@ public class MyGameManager : MonoBehaviour
             {
                 Disparar();
             }
+            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetAxisRaw("Pause") != 0)
+            {
+                Pausa();
+            }
             if (notacogida == true)
             {
                 notas.SetActive(true);
@@ -144,10 +148,6 @@ public class MyGameManager : MonoBehaviour
                     }
                     Invoke("ActivarColisiones", 2f);
                 }
-            }
-            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetAxisRaw("Pause") != 0)
-            {
-                Pausa();
             }
         }
         else
