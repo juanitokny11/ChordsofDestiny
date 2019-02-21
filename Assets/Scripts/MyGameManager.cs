@@ -198,7 +198,7 @@ public class MyGameManager : MonoBehaviour
         {
             closePause.Play();
             pauseMenuPrincial.SetBool("Pausa", true);
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
             Cursor.visible = false;
             //music.mute = false; 
             notas.SetActive(false);
@@ -210,7 +210,7 @@ public class MyGameManager : MonoBehaviour
         {
             openPause.Play();
             pauseMenuPrincial.SetBool("Pausa", false);
-            Time.timeScale = 1;
+            //Time.timeScale = 1;
             notas.SetActive(true);
             Cursor.visible = true;
             //music.mute = true;
@@ -259,6 +259,7 @@ public class MyGameManager : MonoBehaviour
     public void Dead()
     {
         SceneManager.LoadScene("GameOver");
+        MyGameSettings.getInstance().logoPlayed = true;
         Cursor.visible = true;
     }
     private void ActivarColisiones()
