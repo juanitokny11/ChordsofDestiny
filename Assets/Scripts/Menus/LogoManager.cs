@@ -38,7 +38,7 @@ public class LogoManager : MonoBehaviour
     }
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Backspace)&& logo==true || Input.GetAxisRaw("AtaqueDebil") != 0)
+        if(Input.GetKeyDown(KeyCode.Return) && logo==true || Input.GetAxisRaw("AtaqueDebil") != 0 && logo == true)
         {
             MainMenu();
             MyGameSettings.getInstance().logoPlayed = true;
