@@ -6,7 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class ColisionsPlayer : MonoBehaviour
 {
-     public void OnTriggerEnter(Collider other)
+    public Animator pers;
+    private void Start()
+    {
+        pers = GetComponent<Animator>();
+    }
+    public void OnTriggerEnter(Collider other)
     { 
          if (other.tag == "Scene")
         {
@@ -41,5 +46,10 @@ public class ColisionsPlayer : MonoBehaviour
              MyGameManager.getInstance().CargaClave();
             //sound.Play(1, 1);
         }
+        if (other.tag == "BattleZone")
+        {
+            pers.SetBool("Fight", true);
+        }
+
     }
 }

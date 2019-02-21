@@ -106,7 +106,7 @@ public class PlayerMovement : MonoBehaviour {
     void AddGravity(){
         counter += 0.1f;
         verticalVel -= counter;
-        Invoke("ParticlePlay",0.2f);
+        //Invoke("ParticlePlay",0.2f);
         counter = 0;
     }
     void ParticlePlay(){
