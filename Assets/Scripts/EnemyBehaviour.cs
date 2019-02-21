@@ -7,7 +7,7 @@ public class EnemyBehaviour : MonoBehaviour
 {
     public enum State { Idle, Patrol, Chase, Attack, Dead};
     public State state;
-
+    public BattleZone battleZone;
     private NavMeshAgent agent;
     public Animator anim;
     //public SoundPlayer sound;
@@ -334,5 +334,6 @@ public class EnemyBehaviour : MonoBehaviour
     void DestroyEnemy()
     {
         Destroy(this.gameObject);
+        battleZone.enemiescounter--;
     }
 }

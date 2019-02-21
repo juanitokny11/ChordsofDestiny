@@ -17,6 +17,14 @@ public class LogoManager : MonoBehaviour
     void Start()
     {
         video.loopPointReached += EndVideo;
+        if (MyGameSettings.getInstance().logoPlayed == true)
+        {
+            video.gameObject.SetActive(false);
+            title.SetActive(true);
+            fademusica.SetActive(true);
+            musica.Play();
+            logo = true;
+        }
     }
     private void EndVideo(VideoPlayer source)
     {
@@ -29,7 +37,10 @@ public class LogoManager : MonoBehaviour
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape)&& logo==true)
+        {
             MainMenu();
+            MyGameSettings.getInstance().logoPlayed = true;
+        }
     }
     // Update is called once per frame
     private void MainMenu()

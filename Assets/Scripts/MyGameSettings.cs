@@ -14,6 +14,7 @@ public class MyGameSettings : MonoBehaviour {
 	public float musicVol=0.5f;
 	public float effectsVol=0.5f;
     public bool gameStarted;
+    public bool logoPlayed;
    
     void Awake (){
 		if (instance == null) {
