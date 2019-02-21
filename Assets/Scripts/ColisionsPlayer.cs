@@ -50,6 +50,10 @@ public class ColisionsPlayer : MonoBehaviour
         {
             pers.SetBool("Fight", true);
         }
+        if (other.tag == "cd")
+        {
+            
+        }
 
     }
 }

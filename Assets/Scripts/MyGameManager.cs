@@ -116,7 +116,7 @@ public class MyGameManager : MonoBehaviour
                 
                 if (Input.GetMouseButtonDown(0) || Input.GetAxisRaw("AtaqueDebil") != 0)
                 {
-                    pers.Play("atque_debil", -1, 0);
+                    //pers.Play("atque_debil", -1, 0);
                     arma.transform.tag = "ligero";
                     Invoke("ResetTag", 1);
                     AudioSource sonido =player.AddComponent<AudioSource>();
@@ -125,7 +125,7 @@ public class MyGameManager : MonoBehaviour
                 }
                 if (Input.GetMouseButtonDown(1) || Input.GetAxisRaw("AtaqueFuerte") != 0)
                 {
-                    pers.Play("ataque_fuerte", -1, 0);
+                    //pers.Play("ataque_fuerte", -1, 0);
                     arma.transform.tag = "pesado";
                     Invoke("ResetTag", 1);
                     //audios.Play(1, 1);

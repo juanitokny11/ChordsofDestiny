@@ -6,6 +6,8 @@ public class BattleZone : MonoBehaviour
 {
     private BoxCollider colider;
     public GameObject UI;
+    public GameObject cd;
+    public GameObject cdpoint;
     public AudioSource musica;
     public GameObject Playercam;
     public GameObject camZ1;
@@ -119,6 +121,9 @@ public class BattleZone : MonoBehaviour
         {
             UI.SetActive(false);
             musica.Stop();
+            if (id == 4){
+                Instantiate(cd, cdpoint.transform.position, Quaternion.identity, null);
+            }
         }
     }
 }
