@@ -17,6 +17,7 @@ public class LogoManager : MonoBehaviour
     bool logo = false;
     void Start()
     {
+        Cursor.visible = false;
         video.loopPointReached += EndVideo;
         if (MyGameSettings.getInstance().logoPlayed == true)
         {
@@ -41,6 +42,7 @@ public class LogoManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Return) && logo==true || Input.GetAxisRaw("AtaqueDebil") != 0 && logo == true)
         {
             MainMenu();
+            Cursor.visible = true;
             MyGameSettings.getInstance().logoPlayed = true;
         }
     }
