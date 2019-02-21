@@ -14,7 +14,6 @@ public class ChangeVolume : MonoBehaviour {
     public Text efects;
     public float startValue = 0.5f;
 
-
     public void Start()
     {
         float v;

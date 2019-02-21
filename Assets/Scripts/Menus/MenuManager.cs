@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour {
 
-	public void PlayGame()
+   
+    public void PlayGame()
     {
         SceneManager.LoadScene("LevelDesign");
         Time.timeScale=1;
@@ -68,6 +69,4 @@ public class MenuManager : MonoBehaviour {
             Cursor.visible = false;
         }
     }
-
-   
 }
