@@ -81,7 +81,6 @@ public class AudioManager : MonoBehaviour
     {
         clipTittleText.text = source.clip.name;
         fullLength = (int)source.clip.length;
-
     }
     void ShowPlayTime()
     {
