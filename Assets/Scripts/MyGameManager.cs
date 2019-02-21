@@ -68,9 +68,7 @@ public class MyGameManager : MonoBehaviour
         soloBar.fillAmount = cursolo / Maxsolo;
         curHealth = MaxHealth;
         HealthBar.fillAmount = curHealth / MaxHealth;
-        //mouseCursor = new MouseCursor();
-        //mouseCursor.HideCursor();
-        //Cursor.visible = false;
+        Cursor.visible = false;
         
     }
 
@@ -159,9 +157,7 @@ public class MyGameManager : MonoBehaviour
             cam.transform.Rotate(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0);
         }
     }
-    //Cursor del ratón
-    // if (Input.GetMouseButtonDown(0)) mouseCursor.HideCursor();
-    // else if (Input.GetKeyDown(KeyCode.Escape)) mouseCursor.ShowCursor();
+   
 
     public void AddMoney(int value)
     {
@@ -203,7 +199,6 @@ public class MyGameManager : MonoBehaviour
             closePause.Play();
             pauseMenuPrincial.SetBool("Pausa", true);
             Time.timeScale = 0;
-            Debug.Log(Time.timeScale);
             Cursor.visible = false;
             //music.mute = false; 
             notas.SetActive(false);
@@ -216,7 +211,6 @@ public class MyGameManager : MonoBehaviour
             openPause.Play();
             pauseMenuPrincial.SetBool("Pausa", false);
             Time.timeScale = 1;
-            Debug.Log(Time.timeScale);
             notas.SetActive(true);
             Cursor.visible = true;
             //music.mute = true;

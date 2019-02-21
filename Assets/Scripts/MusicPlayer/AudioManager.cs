@@ -35,7 +35,8 @@ public class AudioManager : MonoBehaviour
     {
         while(source.isPlaying)
         {
-            playTime = (int) source.time;
+            playTime = (int)source.time;
+            ShowPlayTime();
             yield return null;
         }
         NextTrack();

@@ -8,7 +8,7 @@ public class FadeInMusica : MonoBehaviour
     public AudioSource musica;
     void Start()
     {
-        musica.DOFade(0.3f,10f);
+        musica.DOFade(0.4f,10f);
     }
 
 
