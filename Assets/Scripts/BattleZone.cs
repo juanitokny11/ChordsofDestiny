@@ -7,6 +7,17 @@ public class BattleZone : MonoBehaviour
     private BoxCollider colider;
     public GameObject UI;
     public AudioSource musica;
+    public GameObject Playercam;
+    public GameObject camZ1;
+    public GameObject camZ2;
+    public GameObject camZ3;
+    public GameObject camZ4;
+    public GameObject camZ5;
+    public GameObject camZ6;
+    public GameObject camZ7;
+    public GameObject camZ8;
+    public GameObject camZ9;
+    public GameObject camZ10;
     public GameObject[] enemies;
     public Animator[] pivotesz1;
     public Animator[] pivotesz2;
@@ -30,7 +41,6 @@ public class BattleZone : MonoBehaviour
         {
             UI.SetActive(true);
             musica.Play();
-            //id=MyGameSettings.get
             if (id == 1)
             {
                 for (int i = 0; i < pivotesz1.Length- 1; i++)
@@ -105,7 +115,6 @@ public class BattleZone : MonoBehaviour
     }
     void Update()
     {
-         
        if (enemiescounter <= 0)
         {
             UI.SetActive(false);
