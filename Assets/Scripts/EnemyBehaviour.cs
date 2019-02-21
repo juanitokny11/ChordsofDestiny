@@ -61,10 +61,10 @@ public class EnemyBehaviour : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (MyGameManager.getInstance().pause == false){
-            state = State.Idle;
+        /*if (MyGameManager.getInstance().pause == false){
+            //state = State.Idle;
             return;
-        } 
+        } */
         switch(state)
         {
             case State.Idle:
@@ -207,7 +207,7 @@ public class EnemyBehaviour : MonoBehaviour
         attackcollider.enabled = true;
         anim.SetBool("Run", false);
         anim.SetBool("Atack",true);
-        Invoke("ResetAttack", 2);
+        Invoke("ResetAttack", 0.5f);
         state = State.Attack;
     }
     void SetDead()
@@ -322,11 +322,6 @@ public class EnemyBehaviour : MonoBehaviour
             Damage(1);
         }
 
-    }
-    void OnCollisionEnter(Collision other) {
-		if(other.gameObject.tag == "arma") {
-			//Damage (2);	
-		}
     }
     void ResetAttack()
     {
