@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 1639174940046668911}
   - component: {fileID: 1391339609356587093}
   - component: {fileID: 2545436940962888224}
-  m_Layer: 0
+  - component: {fileID: 2210769877143488928}
+  m_Layer: 9
   m_Name: Edificio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1639174940046668911
 Transform:
@@ -77,6 +78,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &2210769877143488928
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304747760696098386}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 24bacdf2f24a50e46bf50249d84c98ae, type: 3}
 --- !u!1 &2948530142362933144
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,12 +101,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5334875552427626184}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Edificio_anuncio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5334875552427626184
 Transform:
@@ -100,9 +115,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2948530142362933144}
-  m_LocalRotation: {x: -0, y: 0.9454965, z: -0, w: 0.32563227}
+  m_LocalRotation: {x: 0, y: 0.9454959, z: 0, w: 0.3256342}
   m_LocalPosition: {x: -52.9, y: 20.5, z: -13.8}
-  m_LocalScale: {x: 130.92966, y: 130.92966, z: 130.92966}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2636844256185668277}
   - {fileID: 1639174940046668911}
@@ -120,12 +135,12 @@ GameObject:
   - component: {fileID: 2636844256185668277}
   - component: {fileID: 4307375695618284310}
   - component: {fileID: 3524486050219716017}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Anuncio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2636844256185668277
 Transform:
