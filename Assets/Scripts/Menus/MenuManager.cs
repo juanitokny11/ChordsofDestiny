@@ -61,7 +61,6 @@ public class MenuManager : MonoBehaviour {
         if (MyGameSettings.getInstance().gameStarted == false)
         {
             Title();
-            Cursor.visible = true;
         }
         else
         {
