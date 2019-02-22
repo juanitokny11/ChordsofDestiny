@@ -26,6 +26,7 @@ public class LogoManager : MonoBehaviour
             video.gameObject.SetActive(false);
             MainMenu();
             musica.volume = 0.3f;
+            Cursor.visible = true;
             //fademusica.SetActive(true);
             musica.Play();
             logo = true;
