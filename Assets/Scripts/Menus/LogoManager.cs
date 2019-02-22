@@ -14,6 +14,8 @@ public class LogoManager : MonoBehaviour
     public GameObject title;
     public AudioSource musica;
     public GameObject fademusica;
+    public GameObject reproductor;
+    public bool extras=false;
     bool logo = false;
     void Start()
     {
@@ -23,7 +25,8 @@ public class LogoManager : MonoBehaviour
         {
             video.gameObject.SetActive(false);
             MainMenu();
-            fademusica.SetActive(true);
+            musica.volume = 0.3f;
+            //fademusica.SetActive(true);
             musica.Play();
             logo = true;
         }
@@ -53,6 +56,20 @@ public class LogoManager : MonoBehaviour
         titleText.SetActive(false);
         fondomenu.SetActive(true);
         menu.SetActive(true);
+    }
+    public void Extras()
+    {
+        extras = !extras;
+        if (!extras)
+        {
+            reproductor.SetActive(false);
+            musica.mute = false;
+        }
+        else if (extras)
+        {
+            reproductor.SetActive(true);
+            musica.mute = true;
+        }
     }
 
 }

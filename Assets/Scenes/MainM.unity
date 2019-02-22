@@ -124,11 +124,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MusicPlayer
       objectReference: {fileID: 0}
-    - target: {fileID: 7737828682834294363, guid: 5fe50378ca2f85e47ac33b72dbbfe2f4,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7737828682834294359, guid: 5fe50378ca2f85e47ac33b72dbbfe2f4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -233,16 +228,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7737828683398050557, guid: 5fe50378ca2f85e47ac33b72dbbfe2f4,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7737828683398050556, guid: 5fe50378ca2f85e47ac33b72dbbfe2f4,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 74
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fe50378ca2f85e47ac33b72dbbfe2f4, type: 3}
@@ -1144,7 +1129,6 @@ MonoBehaviour:
   effectsVol: 0.5
   gameStarted: 0
   logoPlayed: 0
-  idzone: 0
 --- !u!4 &714146343
 Transform:
   m_ObjectHideFlags: 0
@@ -1670,20 +1654,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1696665927}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 871794616}
-        m_MethodName: set_mute
-        m_Mode: 6
+      - m_Target: {fileID: 909290640}
+        m_MethodName: Extras
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1895,6 +1868,8 @@ MonoBehaviour:
   title: {fileID: 1613455605}
   musica: {fileID: 871794616}
   fademusica: {fileID: 182103094}
+  reproductor: {fileID: 1696665927}
+  extras: 0
 --- !u!4 &909290641
 Transform:
   m_ObjectHideFlags: 0
