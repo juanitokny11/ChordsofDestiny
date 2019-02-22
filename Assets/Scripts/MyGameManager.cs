@@ -118,20 +118,22 @@ public class MyGameManager : MonoBehaviour
                 
                 if (Input.GetMouseButtonDown(0) || Input.GetAxisRaw("AtaqueDebil") != 0)
                 {
-                    //pers.Play("atque_debil", -1, 0);
+                    Invoke("FuerteTrue", 1f);
+                  
                     arma.transform.tag = "ligero";
                     Invoke("ResetTag", 1);
                     AudioSource sonido =player.AddComponent<AudioSource>();
                     sonido.PlayOneShot(atacksdebil[debilSOUND]);
-                    Invoke("ResetAttack", 1);
+                    pers.SetBool("Fuerte", false);
                 }
                 if (Input.GetMouseButtonDown(1) || Input.GetAxisRaw("AtaqueFuerte") != 0)
                 {
-                    //pers.Play("ataque_fuerte", -1, 0);
+                    pers.SetBool("Debil", false);
+                    Invoke("DebilTrue", 1f);
                     arma.transform.tag = "pesado";
                     Invoke("ResetTag", 1);
-                    //audios.Play(1, 1);
-                    Invoke("ResetAttack", 2);
+                    audios.Play(3, 1);
+                   
                 }
                 if (Input.GetMouseButtonDown(2) || Input.GetAxisRaw("Evadir") != 0 && Input.GetAxisRaw("Disparar") != 0)
                 {
@@ -157,16 +159,18 @@ public class MyGameManager : MonoBehaviour
             cam.transform.Rotate(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0);
         }
     }
-   
-
+   public void DebilTrue()
+    {
+        pers.SetBool("Debil", true);
+    }
+    public void FuerteTrue()
+    {
+        pers.SetBool("Fuerte", true);
+    }
     public void AddMoney(int value)
     {
         money += value;
         moneyText.text = money.ToString();
-    }
-    void ResetAttack()
-    {
-        pers.SetTrigger("Reset");
     }
     void ResetAnim()
     {
@@ -249,7 +253,7 @@ public class MyGameManager : MonoBehaviour
     {
         Debug.Log("esquivo");
         DesActivarColisiones();
-        //Invoke("ActivarColisiones",0.2f);
+        Invoke("ActivarColisiones",0.2f);
     }
     public void Disparar()
     {

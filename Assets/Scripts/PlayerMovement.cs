@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour {
         //anim = GetComponent<Animator>();
         cam = Camera.main;
         controller = GetComponent<CharacterController>();
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -87,7 +88,7 @@ public class PlayerMovement : MonoBehaviour {
     {
         inputX = Input.GetAxis("Horizontal");
         inputZ = Input.GetAxis("Vertical");
-
+        
         //anim.SetFloat("InputZ", inputZ, 0.0f, Time.deltaTime * 2f);
         //anim.SetFloat("InputX", inputX, 0.0f, Time.deltaTime * 2f);
 
@@ -97,16 +98,18 @@ public class PlayerMovement : MonoBehaviour {
         {
            // anim.SetFloat("InputMagnitude", speed, 0.0f, Time.deltaTime * 2f);
             controller.SimpleMove(desiredMoveDirection*20f);
+            anim.SetBool("Run", true);
             PlayerMovementAndRotation();
         }else if(speed < allowPlayerRotation)
-        {   
-           // anim.SetFloat("InputMagnitude", speed, 0.0f, Time.deltaTime * 2f);
+        {
+            anim.SetBool("Run", false);
+            // anim.SetFloat("InputMagnitude", speed, 0.0f, Time.deltaTime * 2f);
         }
     }
     void AddGravity(){
         counter += 0.1f;
         verticalVel -= counter;
-        Invoke("ParticlePlay",0.2f);
+        //Invoke("ParticlePlay",0.2f);
         counter = 0;
     }
     void ParticlePlay(){
