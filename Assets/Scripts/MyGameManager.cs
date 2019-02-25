@@ -118,18 +118,18 @@ public class MyGameManager : MonoBehaviour
                 
                 if (Input.GetMouseButtonDown(0) || Input.GetAxisRaw("AtaqueDebil") != 0)
                 {
-                    Invoke("FuerteTrue", 1f);
-                  
+                    pers.SetBool("Debil", true);
+                    Invoke("DebilFalse", 1f);
                     arma.transform.tag = "ligero";
                     Invoke("ResetTag", 1);
                     AudioSource sonido =player.AddComponent<AudioSource>();
                     sonido.PlayOneShot(atacksdebil[debilSOUND]);
-                    pers.SetBool("Fuerte", false);
+
                 }
                 if (Input.GetMouseButtonDown(1) || Input.GetAxisRaw("AtaqueFuerte") != 0)
                 {
-                    pers.SetBool("Debil", false);
-                    Invoke("DebilTrue", 1f);
+                    pers.SetBool("Fuerte", true);
+                    Invoke("FuerteFalse", 1f);
                     arma.transform.tag = "pesado";
                     Invoke("ResetTag", 1);
                     audios.Play(3, 1);
@@ -159,13 +159,13 @@ public class MyGameManager : MonoBehaviour
             cam.transform.Rotate(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0);
         }
     }
-   public void DebilTrue()
+   public void DebilFalse()
     {
-        pers.SetBool("Debil", true);
+        pers.SetBool("Debil", false);
     }
-    public void FuerteTrue()
+    public void FuerteFalse()
     {
-        pers.SetBool("Fuerte", true);
+        pers.SetBool("Fuerte", false);
     }
     public void AddMoney(int value)
     {

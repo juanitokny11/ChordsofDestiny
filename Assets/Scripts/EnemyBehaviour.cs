@@ -321,7 +321,6 @@ public class EnemyBehaviour : MonoBehaviour
         {
             Damage(1);
         }
-
     }
     void ResetAttack()
     {

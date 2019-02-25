@@ -12,6 +12,7 @@ public class MenuManager : MonoBehaviour {
         Time.timeScale=1;
         Cursor.visible = false;
         MyGameSettings.getInstance().gameStarted = true;
+        MyGameSettings.getInstance().logoPlayed = true;
     }
     public void EndGame()
     {
@@ -46,6 +47,7 @@ public class MenuManager : MonoBehaviour {
         Cursor.visible = true;
         Time.timeScale=1;
         MyGameSettings.getInstance().gameStarted = true;
+        MyGameSettings.getInstance().logoPlayed = true;
     }
 	public void Victory(){
 		SceneManager.LoadScene("Victoria");
