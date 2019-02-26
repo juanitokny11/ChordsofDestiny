@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 649332707}
   m_Layer: 0
   m_Name: Enemigo2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -245,14 +245,6 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 3823ca1acb8bbd64483c8fb0b981ff78, type: 2}
-    - target: {fileID: 13700002, guid: da275eeb5c9ec5b4e888be71e72d0995, type: 3}
-      propertyPath: m_Bones.Array.data[0]
-      value: 
-      objectReference: {fileID: 1026294154882993562}
-    - target: {fileID: 13700002, guid: da275eeb5c9ec5b4e888be71e72d0995, type: 3}
-      propertyPath: m_RootBone
-      value: 
-      objectReference: {fileID: 1026294154882993562}
     - target: {fileID: 13700000, guid: da275eeb5c9ec5b4e888be71e72d0995, type: 3}
       propertyPath: m_Bones.Array.data[0]
       value: 
@@ -377,6 +369,14 @@ PrefabInstance:
       propertyPath: m_RootBone
       value: 
       objectReference: {fileID: 1026294154882993622}
+    - target: {fileID: 13700002, guid: da275eeb5c9ec5b4e888be71e72d0995, type: 3}
+      propertyPath: m_Bones.Array.data[0]
+      value: 
+      objectReference: {fileID: 1026294154882993562}
+    - target: {fileID: 13700002, guid: da275eeb5c9ec5b4e888be71e72d0995, type: 3}
+      propertyPath: m_RootBone
+      value: 
+      objectReference: {fileID: 1026294154882993562}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da275eeb5c9ec5b4e888be71e72d0995, type: 3}
 --- !u!4 &1026294154882993566 stripped
