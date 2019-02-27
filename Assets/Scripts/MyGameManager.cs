@@ -7,7 +7,6 @@ using DG.Tweening;
 
 public class MyGameManager : MonoBehaviour
 {
-
     public SoundPlayer sound;
     private GameObject player;
     public GameObject solocarge;
@@ -20,7 +19,6 @@ public class MyGameManager : MonoBehaviour
     public Transform shooterpos;
     public AudioSource openPause;
     public AudioSource closePause;
-    //private LookRotation lookRotation;
     private MouseCursor mouseCursor;
     public GameObject cam;
     public int money;
@@ -48,6 +46,7 @@ public class MyGameManager : MonoBehaviour
     public Image HealthBar;
     public float curHealth;
     public int debilSOUND;
+    float verticalVel;
     public float MaxHealth = 100;
     private static MyGameManager instance;
     public SoundPlayer audios;
@@ -69,9 +68,7 @@ public class MyGameManager : MonoBehaviour
         curHealth = MaxHealth;
         HealthBar.fillAmount = curHealth / MaxHealth;
         Cursor.visible = false;
-        
     }
-
     void Update()
     {
         debilSOUND = Random.Range(0, 2);
@@ -155,8 +152,20 @@ public class MyGameManager : MonoBehaviour
             Time.timeScale = 0;
             inputAxis.x = Input.GetAxis("Horizontal");
             inputAxis.y = Input.GetAxis("Vertical");
-            cam.transform.Translate(inputAxis.x, 0, inputAxis.y);
-            cam.transform.Rotate(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0);
+            DesActivarColisiones();
+            Vector3 move = new Vector3(inputAxis.x,0,inputAxis.x);
+            var forward = pers.transform.forward;
+            var right = pers.transform.right;
+            Vector3 desiredMoveDirection = forward * inputAxis.x + right * inputAxis.x;
+            player.GetComponent<CharacterController>().SimpleMove(desiredMoveDirection);
+            if (Input.GetButton("Jump"))
+               verticalVel += 0.5f;
+           
+            Vector3 moveVector = new Vector3(0, verticalVel, 0);
+
+            player.GetComponent<CharacterController>().Move(moveVector);
+            //cam.transform.Translate(inputAxis.x, 0, inputAxis.y);
+            //cam.transform.Rotate(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0);
         }
     }
    public void DebilFalse()
@@ -195,7 +204,6 @@ public class MyGameManager : MonoBehaviour
         cursolo += clavecarga;
         soloBar.fillAmount = cursolo / Maxsolo;
     }
-
     public void Pausa()
     {
         if (!pause)
@@ -222,7 +230,6 @@ public class MyGameManager : MonoBehaviour
             Invoke("TakeONMenu", 0.2f);
             pause = false;
         }
-
     }
     private void TakeoFFMenu() {
         pausaMenu.gameObject.SetActive(false);
@@ -231,20 +238,16 @@ public class MyGameManager : MonoBehaviour
     {
         pausaMenu.gameObject.SetActive(true);
     }
-
     public void GodMode()
     {
         if (!godmode)
         {
             //cam.SetActive(false);
             godmode = true;
-            DesActivarColisiones();
             //Cursor.visible = false;
-
         }
         else if (godmode)
         {
-            //cam.SetActive(true);
             godmode = false;
             //Cursor.visible = true;
         }
@@ -277,15 +280,12 @@ public class MyGameManager : MonoBehaviour
     {
         player.GetComponent<ColisionsPlayer>().enabled = false;
         solocollider.SetActive(true);
-
-
     }
     public void OnTempo()
     {
         tempo.text = "Good";
         tempo.color = Color.green;
         Invoke("TextOff", 0.5f);
-
     }
     public void NoTempo()
     {

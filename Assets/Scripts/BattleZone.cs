@@ -20,6 +20,7 @@ public class BattleZone : MonoBehaviour
     public GameObject camZ8;
     public GameObject camZ9;
     public GameObject camZ10;
+    public GameObject colliders;
     public GameObject[] enemies;
     public Animator[] pivotesz1;
     public Animator[] pivotesz2;
@@ -43,6 +44,7 @@ public class BattleZone : MonoBehaviour
         {
             UI.SetActive(true);
             musica.Play();
+            //colliders.SetActive(true);
             if (id == 1)
             {
                 for (int i = 0; i < pivotesz1.Length- 1; i++)
@@ -119,8 +121,10 @@ public class BattleZone : MonoBehaviour
     {
        if (enemiescounter <= 0)
         {
+            this.gameObject.SetActive(false);
             UI.SetActive(false);
             musica.Stop();
+            colliders.SetActive(false);
             if (id == 4){
                 Instantiate(cd, cdpoint.transform.position, Quaternion.identity, null);
             }

@@ -88,7 +88,6 @@ public class PlayerMovement : MonoBehaviour {
     {
         inputX = Input.GetAxis("Horizontal");
         inputZ = Input.GetAxis("Vertical");
-        
         //anim.SetFloat("InputZ", inputZ, 0.0f, Time.deltaTime * 2f);
         //anim.SetFloat("InputX", inputX, 0.0f, Time.deltaTime * 2f);
 
