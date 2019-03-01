@@ -23,5 +23,34 @@ public class CharacterAnimation : MonoBehaviour
     {
         anim.SetTrigger("Debil");
     }
+    //Enemy Animations
 
+    public void EnemyAttack(int attack)
+    {
+        if (attack == 0)
+            anim.SetTrigger("Attack");
+        if (attack == 1)
+            anim.SetTrigger("Attack2");
+    }
+    public void PlayIdleAnimation()
+    {
+        anim.Play("idlebase");
+    }
+    public void KnockDown()
+    {
+        anim.SetTrigger("");
+    }
+    public void StandUp()
+    {
+        anim.SetTrigger("");
+
+    }
+    public void Death()
+    {
+        anim.SetTrigger("Death");
+    }
+    public void Hit()
+    {
+        anim.SetTrigger("");
+    }
 }

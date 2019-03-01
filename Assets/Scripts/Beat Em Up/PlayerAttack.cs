@@ -39,7 +39,7 @@ public class PlayerAttack : MonoBehaviour
     }
     void ComboAttacks()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             if (current_Combo_State == ComboState.DEBIL3 || current_Combo_State == ComboState.FUERTE || current_Combo_State == ComboState.FUERTE2 || current_Combo_State == ComboState.FUERTE3)
                 return;
@@ -51,9 +51,7 @@ public class PlayerAttack : MonoBehaviour
             if(current_Combo_State == ComboState.DEBIL)
                 player_Anim.Debil();
         }
-           
-
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             if (current_Combo_State == ComboState.FUERTE3 || current_Combo_State == ComboState.DEBIL3)
                 return;
