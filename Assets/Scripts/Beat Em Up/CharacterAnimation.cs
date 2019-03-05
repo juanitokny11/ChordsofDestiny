@@ -23,6 +23,23 @@ public class CharacterAnimation : MonoBehaviour
     {
         anim.SetTrigger("Debil");
     }
+    public void Fuerte2()
+    {
+        anim.SetTrigger("Fuerte2");
+    }
+    public void Debil2()
+    {
+        anim.SetTrigger("Debil2");
+    }
+    public void Fuerte3()
+    {
+        anim.SetTrigger("Fuerte3");
+    }
+    public void Debil3()
+    {
+        anim.SetTrigger("Debil3");
+    }
+
     //Enemy Animations
 
     public void EnemyAttack(int attack)

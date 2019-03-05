@@ -17,7 +17,7 @@ public class PlayerAttack : MonoBehaviour
     private CharacterAnimation player_Anim;
     private bool activateTimerToReset;
 
-    private float default_Combo_Timer=0.4f;
+    private float default_Combo_Timer=0.95f;
     private float current_Combo_Timer;
 
     private ComboState current_Combo_State;
@@ -50,6 +50,11 @@ public class PlayerAttack : MonoBehaviour
 
             if(current_Combo_State == ComboState.DEBIL)
                 player_Anim.Debil();
+            if (current_Combo_State == ComboState.DEBIL2)
+                player_Anim.Debil2();
+            if (current_Combo_State == ComboState.DEBIL3)
+                player_Anim.Debil3();
+
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
@@ -65,6 +70,10 @@ public class PlayerAttack : MonoBehaviour
 
             if (current_Combo_State==ComboState.FUERTE)
                 player_Anim.Fuerte();
+            if (current_Combo_State == ComboState.FUERTE2)
+                player_Anim.Fuerte2();
+            if (current_Combo_State == ComboState.FUERTE3)
+                player_Anim.Fuerte3();
 
         }
 
