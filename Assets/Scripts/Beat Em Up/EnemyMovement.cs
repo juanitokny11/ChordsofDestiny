@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GroupieMovement : MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
     private CharacterAnimation enemyAnim;
     private Rigidbody myBody;

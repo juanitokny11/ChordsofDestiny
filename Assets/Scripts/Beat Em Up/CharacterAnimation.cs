@@ -55,7 +55,7 @@ public class CharacterAnimation : MonoBehaviour
     }
     public void KnockDown()
     {
-        anim.SetTrigger("Knockback");
+        anim.SetTrigger("KnockUp");
     }
     public void StandUp()
     {
