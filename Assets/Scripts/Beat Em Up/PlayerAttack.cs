@@ -58,11 +58,11 @@ public class PlayerAttack : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
-            if (current_Combo_State == ComboState.FUERTE3 || current_Combo_State == ComboState.DEBIL3)
+            if ( current_Combo_State == ComboState.DEBIL3)
                 return;
             if (current_Combo_State == ComboState.NONE || current_Combo_State == ComboState.DEBIL || current_Combo_State == ComboState.DEBIL2)
                 current_Combo_State = ComboState.FUERTE;
-            else if (current_Combo_State == ComboState.FUERTE)
+            else if (current_Combo_State == ComboState.FUERTE || current_Combo_State == ComboState.FUERTE2)
                 current_Combo_State++;
 
             activateTimerToReset = true;
@@ -75,9 +75,7 @@ public class PlayerAttack : MonoBehaviour
             if (current_Combo_State == ComboState.FUERTE3)
                 player_Anim.Fuerte3();
 
-        }
-
-            
+        }    
     }
     void ResetComboState()
     {
