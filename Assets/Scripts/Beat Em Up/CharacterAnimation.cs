@@ -5,12 +5,22 @@ using UnityEngine;
 public class CharacterAnimation : MonoBehaviour
 {
     private Animator anim;
-
+    AnimatorStateInfo stateInfo;
     // Start is called before the first frame update
     void Awake()
     {
         anim = GetComponent<Animator>();
+        
     }
+    /*private void OnAnimatorMove()
+    {
+        stateInfo = anim.GetCurrentAnimatorStateInfo(0);
+        if (!stateInfo.IsTag("Run"))
+        {
+           
+            anim.applyRootMotion = false;
+        }
+    }*/
     public void Run(bool Run)
     {
         anim.SetBool("Run", Run);
