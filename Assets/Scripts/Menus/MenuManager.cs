@@ -8,7 +8,7 @@ public class MenuManager : MonoBehaviour {
    
     public void PlayGame()
     {
-        SceneManager.LoadScene("LevelDesign");
+        SceneManager.LoadScene("Gameplay");
         Time.timeScale=1;
         Cursor.visible = false;
         MyGameSettings.getInstance().gameStarted = true;

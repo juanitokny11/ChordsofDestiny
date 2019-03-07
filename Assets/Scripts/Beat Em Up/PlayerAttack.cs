@@ -25,7 +25,7 @@ public class PlayerAttack : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        player_Anim = GetComponentInChildren<CharacterAnimation>();
+        player_Anim = GetComponent<CharacterAnimation>();
     }
     void Start()
     {
@@ -41,9 +41,11 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            if (current_Combo_State == ComboState.DEBIL3 || current_Combo_State == ComboState.FUERTE || current_Combo_State == ComboState.FUERTE2 || current_Combo_State == ComboState.FUERTE3)
+            if (current_Combo_State == ComboState.DEBIL3 || current_Combo_State == ComboState.FUERTE2 || current_Combo_State == ComboState.FUERTE3)
                 return;
-
+            if (current_Combo_State == ComboState.FUERTE)
+                current_Combo_State = ComboState.DEBIL;
+        
             current_Combo_State++;
             activateTimerToReset = true;
             current_Combo_Timer = default_Combo_Timer;
@@ -58,16 +60,18 @@ public class PlayerAttack : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
-            if ( current_Combo_State == ComboState.DEBIL3)
-                return;
-            if (current_Combo_State == ComboState.NONE || current_Combo_State == ComboState.DEBIL || current_Combo_State == ComboState.DEBIL2)
+            /*if ( current_Combo_State == ComboState.DEBIL3)
+                return;*/
+            if (current_Combo_State == ComboState.NONE)
                 current_Combo_State = ComboState.FUERTE;
             else if (current_Combo_State == ComboState.FUERTE || current_Combo_State == ComboState.FUERTE2)
                 current_Combo_State++;
+            else if (current_Combo_State == ComboState.DEBIL || current_Combo_State == ComboState.DEBIL2)
+                current_Combo_State = ComboState.FUERTE2;
 
             activateTimerToReset = true;
             current_Combo_Timer = default_Combo_Timer;
-
+            
             if (current_Combo_State==ComboState.FUERTE)
                 player_Anim.Fuerte();
             if (current_Combo_State == ComboState.FUERTE2)

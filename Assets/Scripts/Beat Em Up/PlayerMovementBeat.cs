@@ -15,7 +15,7 @@ public class PlayerMovementBeat : MonoBehaviour
     private void Awake()
     {
         myBody = GetComponent<Rigidbody>();
-        player_Anim = GetComponentInChildren<CharacterAnimation>();
+        player_Anim = GetComponent<CharacterAnimation>();
     }
     void Update()
     {
