@@ -28,7 +28,6 @@ public class EnemyMovement : MonoBehaviour
     {
         followPlayer = true;
         current_Attack_Time = default_Attack_Time;
-
     }
     void Update()
     {
@@ -38,7 +37,7 @@ public class EnemyMovement : MonoBehaviour
     {
         FollowTarget();
     }
-        void FollowTarget()
+    void FollowTarget()
     {
         if (!followPlayer)
             return;

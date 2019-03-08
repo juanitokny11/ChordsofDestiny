@@ -24,7 +24,7 @@ public class PlayerMovementBeat : MonoBehaviour
     void Update()
     {
         RotatePlayer();
-        AnimatePlayerRun();
+        AnimatePlayerWalk();
     }
     void FixedUpdate()
     {
@@ -39,23 +39,32 @@ public class PlayerMovementBeat : MonoBehaviour
             Vector3 newPosition = transform.position;
             if (Input.GetAxisRaw("Horizontal") > 0)
             {
-                newPosition.x += animator.GetFloat("Runspeed") * Time.deltaTime;
+                newPosition.x += animator.GetFloat("Walkspeed") * Time.deltaTime;
                 actualrot = Quaternion.Euler(0, 0, 0);
                 lockrotation = false;
             }
             else if (Input.GetAxisRaw("Horizontal") < 0)
             {
                 actualrot = Quaternion.Euler(0,180,0);
-                newPosition.x -= animator.GetFloat("Runspeed") * Time.deltaTime;
+                newPosition.x -= animator.GetFloat("Walkspeed") * Time.deltaTime;
                 lockrotation = true;
             }
             else if (Input.GetAxisRaw("Horizontal") == 0)
             {
-                actualrot = Quaternion.Euler(Vector3.forward);
+                if (lockrotation == true)
+                {
+                    transform.rotation = Quaternion.Euler(0, 180, 0);
+                    transform.rotation = actualrot;
+                }
+                else
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
+                    transform.rotation = actualrot;
+                }
             }
             if (lockrotation == true)
             {
-                transform.rotation= Quaternion.Euler(0, 180, 0);
+                transform.rotation = Quaternion.Euler(0, 180, 0);
                 transform.rotation = actualrot;
             }
             else
@@ -83,5 +92,12 @@ public class PlayerMovementBeat : MonoBehaviour
             player_Anim.Run(true);
         else
             player_Anim.Run(false);
+    }
+    void AnimatePlayerWalk()
+    {
+        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+            player_Anim.Walk(true);
+        else
+            player_Anim.Walk(false);
     }
 }

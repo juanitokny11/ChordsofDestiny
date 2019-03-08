@@ -25,6 +25,10 @@ public class CharacterAnimation : MonoBehaviour
     {
         anim.SetBool("Run", Run);
     }
+    public void Walk(bool walk)
+    {
+        anim.SetBool("Walk", walk);
+    }
     public void Fuerte()
     {
         anim.SetTrigger("Fuerte");
@@ -49,6 +53,17 @@ public class CharacterAnimation : MonoBehaviour
     {
         anim.SetTrigger("Debil3");
     }
+    public void Death()
+    {
+        anim.SetTrigger("Death");
+    }
+    public void Hit(int hit)
+    {
+        if (hit == 0)
+            anim.SetTrigger("Hit");
+        if (hit == 1)
+            anim.SetTrigger("Hit2");
+    }
 
     //Enemy Animations
 
@@ -72,11 +87,11 @@ public class CharacterAnimation : MonoBehaviour
         anim.SetTrigger("");
 
     }
-    public void Death()
+    public void EnemyDeath()
     {
         anim.SetTrigger("Death");
     }
-    public void Hit()
+    public void EnemyHit()
     {
         anim.SetTrigger("");
     }
