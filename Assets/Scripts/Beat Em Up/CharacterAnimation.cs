@@ -87,10 +87,6 @@ public class CharacterAnimation : MonoBehaviour
         anim.SetTrigger("");
 
     }
-    public void EnemyDeath()
-    {
-        anim.SetTrigger("Death");
-    }
     public void EnemyHit()
     {
         anim.SetTrigger("");

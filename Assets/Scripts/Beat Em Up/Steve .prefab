@@ -619,14 +619,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8939311917634563692}
-  m_LocalRotation: {x: -0.17940763, y: -0.05633876, z: 0.89429396, w: -0.40605074}
-  m_LocalPosition: {x: 1.3750337, y: -0.089068435, z: 0.035721246}
+  m_LocalRotation: {x: 0.623004, y: -0.034594145, z: 0.09322404, w: -0.77587277}
+  m_LocalPosition: {x: -0.182, y: 0.06, z: 0.104}
   m_LocalScale: {x: 1.8868563, y: 1.8868527, z: 1.8868556}
   m_Children:
   - {fileID: 8939311919082907253}
   m_Father: {fileID: 8939311917505240303}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -73.8, y: -322.5, z: -42.3}
 --- !u!33 &8939311917634563681
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -6941,13 +6941,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8939311919082907253}
+  - component: {fileID: 1144852704}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Guitar_Atack_Point
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8939311919082907253
 Transform:
   m_ObjectHideFlags: 0
@@ -6962,6 +6963,26 @@ Transform:
   m_Father: {fileID: 8939311917634563695}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1144852704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8939311919082907250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b502ca8614f3e1e458271b420c4f4ac0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colisionLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  radius: 1
+  damage: 2
+  is_Player: 1
+  is_Enemy: 0
+  hit_Fx: {fileID: 0}
 --- !u!1 &8939311919083758573
 GameObject:
   m_ObjectHideFlags: 0
@@ -7071,7 +7092,7 @@ GameObject:
   - component: {fileID: 8939311919185665302}
   m_Layer: 0
   m_Name: 'Steve '
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7171,6 +7192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   run_Speed: 6
   z_Speed: 1.5
+  lockrotation: 0
   rotation_Speed: 15
 --- !u!114 &8939311919185665302
 MonoBehaviour:
