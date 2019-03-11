@@ -22,8 +22,7 @@ public class AttackUniversal : MonoBehaviour
 
         if (hit.Length > 0)
         {
-            print("HIT");
-            /*if (is_Player)
+            if (is_Player)
             {
                 Vector3 hitFx_Pos = hit[0].transform.position;
                 hitFx_Pos.y += 1.3f;
@@ -41,8 +40,7 @@ public class AttackUniversal : MonoBehaviour
                 {
                     hit[0].GetComponent<HealthScript>().ApplyDamage(damage, false);
                 }
-            }*/
-
+            }
             gameObject.SetActive(false);
         }
     }

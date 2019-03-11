@@ -47,8 +47,7 @@ GameObject:
   - component: {fileID: 452187334}
   - component: {fileID: 452187335}
   - component: {fileID: 1391237060}
-  - component: {fileID: 3577242012677209147}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Groupie
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -177,26 +176,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guitar_Attack_Point: {fileID: 0}
   standupTimer: 2
---- !u!114 &3577242012677209147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1563660872938979978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b502ca8614f3e1e458271b420c4f4ac0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colisionLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  radius: 1
-  damage: 2
-  is_Player: 0
-  is_Enemy: 1
-  hit_Fx_Prefab: {fileID: 0}
 --- !u!1 &1563660872965458437
 GameObject:
   m_ObjectHideFlags: 0

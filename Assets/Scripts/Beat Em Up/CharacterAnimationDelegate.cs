@@ -11,7 +11,8 @@ public class CharacterAnimationDelegate : MonoBehaviour
     private void Awake()
     {
         animationScript = GetComponent<CharacterAnimation>();
-        enemy_Movement = GetComponent<EnemyMovement>();
+        if(gameObject.CompareTag("Enemy"))
+            enemy_Movement = GetComponent<EnemyMovement>();
     }
 
     void Guitar_Attack_Point_ON()
@@ -47,5 +48,21 @@ public class CharacterAnimationDelegate : MonoBehaviour
     {
         yield return new WaitForSeconds(standupTimer);
         animationScript.StandUp();
+    }
+    void EnableMovement()
+    {
+        enemy_Movement.enabled = true;
+    }
+    void DisableMovement()
+    {
+        enemy_Movement.enabled = false;
+    }
+    void NodamageforEnemy()
+    {
+        transform.gameObject.layer = 0;
+    }
+    void DamageforEnemy()
+    {
+        transform.gameObject.layer = 11;
     }
 }
