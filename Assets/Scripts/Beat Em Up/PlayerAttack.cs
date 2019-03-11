@@ -60,8 +60,8 @@ public class PlayerAttack : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
-            /*if ( current_Combo_State == ComboState.DEBIL3)
-                return;*/
+            if ( current_Combo_State == ComboState.FUERTE3 || current_Combo_State == ComboState.DEBIL3)
+                return;
             if (current_Combo_State == ComboState.NONE)
                 current_Combo_State = ComboState.FUERTE;
             else if (current_Combo_State == ComboState.FUERTE || current_Combo_State == ComboState.FUERTE2)

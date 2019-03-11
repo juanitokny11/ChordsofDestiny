@@ -7,10 +7,11 @@ public class CharacterAnimationDelegate : MonoBehaviour
     public GameObject guitar_Attack_Point;
     public float standupTimer = 2.0f;
     private CharacterAnimation animationScript;
-
+    private EnemyMovement enemy_Movement;
     private void Awake()
     {
         animationScript = GetComponent<CharacterAnimation>();
+        enemy_Movement = GetComponent<EnemyMovement>();
     }
 
     void Guitar_Attack_Point_ON()
@@ -28,7 +29,7 @@ public class CharacterAnimationDelegate : MonoBehaviour
     }
     void Tag_Fuerte2()
     {
-        guitar_Attack_Point.tag = " Levantar";
+        guitar_Attack_Point.tag = "Levantar";
     }
     void Tag_Debil()
     {

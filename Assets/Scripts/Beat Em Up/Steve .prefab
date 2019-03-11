@@ -7092,6 +7092,7 @@ GameObject:
   - component: {fileID: 8939311919185665302}
   - component: {fileID: 482292428}
   - component: {fileID: 4554496321350749296}
+  - component: {fileID: 412627973516097623}
   m_Layer: 0
   m_Name: 'Steve '
   m_TagString: Player
@@ -7176,10 +7177,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.54
+  m_Radius: 0.6319636
   m_Height: 3.28
   m_Direction: 1
-  m_Center: {x: 0, y: 1.69, z: 0}
+  m_Center: {x: 4.6653114e-16, y: 1.6900002, z: 0.091963515}
 --- !u!114 &8939311919185665385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7236,6 +7237,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   is_Player: 1
+--- !u!114 &412627973516097623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8939311919185665303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b502ca8614f3e1e458271b420c4f4ac0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colisionLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  radius: 1
+  damage: 2
+  is_Player: 1
+  is_Enemy: 0
+  hit_Fx_Prefab: {fileID: 0}
 --- !u!1 &8939311919218741392
 GameObject:
   m_ObjectHideFlags: 0

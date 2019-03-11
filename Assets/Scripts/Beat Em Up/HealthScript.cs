@@ -30,17 +30,15 @@ public class HealthScript : MonoBehaviour
             if (is_Player)
             {
 
-                
             }
             return;
         }
-        
         if (!is_Player)
         {
             if (knockDown)
             {
-                /*if (Random.Range(0, 2) > 0)
-                    animationScript.KnockDown();*/
+                //if (Random.Range(0, 2) > 0)
+                    animationScript.KnockDown();
             }
             else
             {
