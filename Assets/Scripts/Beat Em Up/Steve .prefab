@@ -606,7 +606,7 @@ GameObject:
   - component: {fileID: 8939311917634563681}
   - component: {fileID: 8939311917634563694}
   m_Layer: 0
-  m_Name: Object001
+  m_Name: Hacha_Guitarra
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7092,7 +7092,6 @@ GameObject:
   - component: {fileID: 8939311919185665302}
   - component: {fileID: 482292428}
   - component: {fileID: 4554496321350749296}
-  - component: {fileID: 412627973516097623}
   m_Layer: 0
   m_Name: 'Steve '
   m_TagString: Player
@@ -7237,26 +7236,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   is_Player: 1
---- !u!114 &412627973516097623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8939311919185665303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b502ca8614f3e1e458271b420c4f4ac0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colisionLayer:
-    serializedVersion: 2
-    m_Bits: 2048
-  radius: 1
-  damage: 2
-  is_Player: 1
-  is_Enemy: 0
-  hit_Fx_Prefab: {fileID: 0}
 --- !u!1 &8939311919218741392
 GameObject:
   m_ObjectHideFlags: 0
