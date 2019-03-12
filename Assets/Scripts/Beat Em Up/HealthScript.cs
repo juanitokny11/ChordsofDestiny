@@ -37,13 +37,14 @@ public class HealthScript : MonoBehaviour
         {
             if (knockDown)
             {
-                //if (Random.Range(0, 2) > 0)
-                    animationScript.KnockDown();
+
+                    animationScript.KnockDown(); 
             }
-            else
+            else if (!knockDown)
             {
                     animationScript.Hit(Random.Range(0, 3));
             }
+            
         }
     }
 }

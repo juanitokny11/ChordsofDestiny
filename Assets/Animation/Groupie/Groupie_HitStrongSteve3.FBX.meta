@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 807b65046d5c10c4195633126e42af85
+guid: 013bb53ae1fbbb54081fe308a30a11df
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -83,9 +83,8 @@ ModelImporter:
     400076: "\xD7\xFE\xD7\xFC"
     2100000: 'Material #3'
     4300000: Retopo1
-    7400000: Atack
+    7400000: WakeUp
     9500000: //RootNode
-    11100000: //RootNode
     13700000: Retopo1
   externalObjects: {}
   materials:
@@ -97,7 +96,7 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
-    optimizeGameObjects: 1
+    optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -107,20 +106,19 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
-    extraExposedTransformPaths:
-    - Bip001
+    extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Atack
+      name: WakeUp
       takeName: Take 001
-      firstFrame: 0
-      lastFrame: 52
+      firstFrame: 75
+      lastFrame: 190
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -130,8 +128,8 @@ ModelImporter:
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
-      loopBlendPositionY: 1
-      loopBlendPositionXZ: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
@@ -140,15 +138,15 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.3384224
-        functionName: Groupie_Attack_Point_ON
+      - time: 0.99236643
+        functionName: DamageforEnemy
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.5041176
-        functionName: Groupie_Attack_Point_OFF
+      - time: 1
+        functionName: EnableMovement
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -193,7 +191,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   importAnimation: 1
-  copyAvatar: 0
+  copyAvatar: 1
   humanDescription:
     serializedVersion: 2
     human: []
@@ -209,7 +207,8 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 807b65046d5c10c4195633126e42af85,
+    type: 3}
   animationType: 2
   humanoidOversampling: 1
   additionalBone: 0

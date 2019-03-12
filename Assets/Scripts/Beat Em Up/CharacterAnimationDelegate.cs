@@ -5,12 +5,17 @@ using UnityEngine;
 public class CharacterAnimationDelegate : MonoBehaviour
 {
     public GameObject guitar_Attack_Point;
+    public GameObject groupie_Attack_Point;
     public float standupTimer = 2.0f;
+    public HealthScript damage;
     private CharacterAnimation animationScript;
     private EnemyMovement enemy_Movement;
+    private ShakeCamera shakeCamera;
     private void Awake()
     {
+        damage = GetComponent<HealthScript>();
         animationScript = GetComponent<CharacterAnimation>();
+        shakeCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ShakeCamera>();
         if(gameObject.CompareTag("Enemy"))
             enemy_Movement = GetComponent<EnemyMovement>();
     }
@@ -24,6 +29,19 @@ public class CharacterAnimationDelegate : MonoBehaviour
         if (guitar_Attack_Point.activeInHierarchy)
             guitar_Attack_Point.SetActive(false);
     }
+    void Groupie_Attack_Point_ON()
+    {
+        groupie_Attack_Point.SetActive(true);
+    }
+    void Groupie_Attack_Point_OFF()
+    {
+        if (groupie_Attack_Point.activeInHierarchy)
+            groupie_Attack_Point.SetActive(false);
+    }
+    void Tag_EnemyDamage()
+    {
+        groupie_Attack_Point.tag = "EnemyDamage";
+    }
     void Tag_Fuerte()
     {
         guitar_Attack_Point.tag = "pesado";
@@ -31,6 +49,10 @@ public class CharacterAnimationDelegate : MonoBehaviour
     void Tag_Fuerte2()
     {
         guitar_Attack_Point.tag = "Levantar";
+    }
+    void Nothit()
+    {
+        guitar_Attack_Point.tag = "Tirar";
     }
     void Tag_Debil()
     {
@@ -64,5 +86,9 @@ public class CharacterAnimationDelegate : MonoBehaviour
     void DamageforEnemy()
     {
         transform.gameObject.layer = 11;
+    }
+    void ShakeOnFall()
+    {
+        shakeCamera.ShouldShake=true;
     }
 }

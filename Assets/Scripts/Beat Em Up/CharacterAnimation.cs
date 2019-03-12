@@ -87,7 +87,7 @@ public class CharacterAnimation : MonoBehaviour
     }
     public void StandUp()
     {
-        anim.SetTrigger("");
+        anim.SetTrigger("StandUp");
 
     }
 }

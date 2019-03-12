@@ -25,6 +25,7 @@ public class PlayerMovementBeat : MonoBehaviour
     {
         RotatePlayer();
         AnimatePlayerWalk();
+        //AnimatePlayerJump();
     }
     void FixedUpdate()
     {
@@ -37,10 +38,9 @@ public class PlayerMovementBeat : MonoBehaviour
         if (animator)
         {
             Vector3 newPosition = transform.position;
-            if (Input.GetAxisRaw("Jump") > 0)
+            if (Input.GetAxisRaw("Jump") !=0 )
             {
-                //newPosition.y += animator.GetFloat("Jumpspeed") * Time.deltaTime;
-                player_Anim.Jump();
+                newPosition.y += animator.GetFloat("Jumpspeed") * Time.deltaTime;
             }
             if (Input.GetAxisRaw("Horizontal") > 0)
             {
@@ -83,6 +83,8 @@ public class PlayerMovementBeat : MonoBehaviour
     void DetectMovement()
     {
         myBody.velocity = new Vector3(Input.GetAxisRaw("Horizontal") * (-run_Speed), myBody.velocity.y, Input.GetAxisRaw("Vertical")* (-z_Speed) );
+        if (Input.GetAxisRaw("Jump") != 0)
+            myBody.velocity =new Vector3( myBody.velocity.x, Input.GetAxisRaw("Jump") * newPosition.y, myBody.velocity.z); 
     }
     void RotatePlayer()
     {
@@ -104,5 +106,10 @@ public class PlayerMovementBeat : MonoBehaviour
             player_Anim.Walk(true);
         else
             player_Anim.Walk(false);
+    }
+    void AnimatePlayerJump()
+    {
+        if (Input.GetAxisRaw("Jump") != 0 )
+            player_Anim.Jump();
     }
 }
