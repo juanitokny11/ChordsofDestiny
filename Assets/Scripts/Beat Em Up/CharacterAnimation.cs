@@ -34,6 +34,10 @@ public class CharacterAnimation : MonoBehaviour
     {
         anim.SetTrigger("Fuerte");
     }
+    public void Jump()
+    {
+        anim.SetTrigger("Jump");
+    }
     public void Debil()
     {
         anim.SetTrigger("Debil");
@@ -85,9 +89,5 @@ public class CharacterAnimation : MonoBehaviour
     {
         anim.SetTrigger("");
 
-    }
-    public void EnemyHit()
-    {
-        anim.SetTrigger("");
     }
 }

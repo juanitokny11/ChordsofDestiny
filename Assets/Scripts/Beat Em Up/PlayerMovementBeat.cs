@@ -37,6 +37,11 @@ public class PlayerMovementBeat : MonoBehaviour
         if (animator)
         {
             Vector3 newPosition = transform.position;
+            if (Input.GetAxisRaw("Jump") > 0)
+            {
+                //newPosition.y += animator.GetFloat("Jumpspeed") * Time.deltaTime;
+                player_Anim.Jump();
+            }
             if (Input.GetAxisRaw("Horizontal") > 0)
             {
                 newPosition.x += animator.GetFloat("Walkspeed") * Time.deltaTime;

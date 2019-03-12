@@ -42,8 +42,7 @@ public class HealthScript : MonoBehaviour
             }
             else
             {
-                if (Random.Range(0, 3) > 1)
-                    animationScript.EnemyHit();
+                    animationScript.Hit(Random.Range(0, 3));
             }
         }
     }
