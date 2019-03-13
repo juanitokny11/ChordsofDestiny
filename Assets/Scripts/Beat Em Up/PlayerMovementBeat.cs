@@ -16,6 +16,7 @@ public class PlayerMovementBeat : MonoBehaviour
     public float rotation_Speed = 15f;
     private void Awake()
     {
+        transform.rotation = Quaternion.Euler(0, 0, 0);
         myBody = GetComponent<Rigidbody>();
         player_Anim = GetComponent<CharacterAnimation>();
         actualrot = transform.rotation;
