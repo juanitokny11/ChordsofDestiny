@@ -1089,6 +1089,13 @@ MonoBehaviour:
   power: 0.2
   duration: 0.2
   slownDownAmount: 1
+  player: {fileID: 1139394443}
+--- !u!1 &1139394443 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8939311919185665303, guid: 32d3847095fd90f41bc2db0671913dc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 8939311918030938153}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1264104549
 GameObject:
   m_ObjectHideFlags: 0
@@ -1346,6 +1353,11 @@ PrefabInstance:
     - target: {fileID: 1395639011449946, guid: 303c9a61fe9fd4845b7866e88b4417f6, type: 3}
       propertyPath: m_TagString
       value: HealthUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 224505607706676612, guid: 303c9a61fe9fd4845b7866e88b4417f6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 176.7998
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 303c9a61fe9fd4845b7866e88b4417f6, type: 3}
@@ -1762,18 +1774,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1643978321}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1789898823 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4554496321350749296, guid: 32d3847095fd90f41bc2db0671913dc6,
-    type: 3}
-  m_PrefabInstance: {fileID: 8939311918030938153}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47c91eba892efdd41889830f661e5570, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1863879408
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2614,11 +2614,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Steve '
       objectReference: {fileID: 0}
-    - target: {fileID: 8939311919082907250, guid: 32d3847095fd90f41bc2db0671913dc6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8939311919185665388, guid: 32d3847095fd90f41bc2db0671913dc6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2674,9 +2669,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1144852704, guid: 32d3847095fd90f41bc2db0671913dc6, type: 3}
-      propertyPath: healthScript
-      value: 
-      objectReference: {fileID: 1789898823}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32d3847095fd90f41bc2db0671913dc6, type: 3}

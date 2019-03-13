@@ -7,13 +7,11 @@ public class CharacterAnimationDelegate : MonoBehaviour
     public GameObject guitar_Attack_Point;
     public GameObject groupie_Attack_Point;
     public float standupTimer = 2.0f;
-    public HealthScript damage;
     private CharacterAnimation animationScript;
     private EnemyMovement enemy_Movement;
     private ShakeCamera shakeCamera;
     private void Awake()
     {
-        damage = GetComponent<HealthScript>();
         animationScript = GetComponent<CharacterAnimation>();
         shakeCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ShakeCamera>();
         if(gameObject.CompareTag("Enemy"))

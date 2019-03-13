@@ -6948,7 +6948,7 @@ GameObject:
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8939311919082907253
 Transform:
   m_ObjectHideFlags: 0
@@ -6980,6 +6980,7 @@ MonoBehaviour:
     m_Bits: 2048
   radius: 0.61
   damage: 5
+  healthScript: {fileID: 4554496321350749296}
   is_Player: 1
   is_Enemy: 0
   hit_Fx_Prefab: {fileID: 0}
@@ -7224,7 +7225,6 @@ MonoBehaviour:
   guitar_Attack_Point: {fileID: 8939311919082907250}
   groupie_Attack_Point: {fileID: 0}
   standupTimer: 2
-  damage: {fileID: 0}
 --- !u!114 &4554496321350749296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7238,6 +7238,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  characterDied: 0
+  inAir: 0
   is_Player: 1
 --- !u!114 &2033245223399755795
 MonoBehaviour:
