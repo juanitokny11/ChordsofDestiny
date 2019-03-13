@@ -50,7 +50,7 @@ public class CharacterAnimationDelegate : MonoBehaviour
     {
         guitar_Attack_Point.tag = "Levantar";
     }
-    void Nothit()
+    void Tag_Tirar()
     {
         guitar_Attack_Point.tag = "Tirar";
     }
@@ -91,4 +91,14 @@ public class CharacterAnimationDelegate : MonoBehaviour
     {
         shakeCamera.ShouldShake=true;
     }
+    void CharacterDied()
+    {
+        Invoke("DeleteGameobject", Random.Range(2f, 5f));
+    }
+    void DeleteGameobject()
+    {
+        EnemyManager.instance.SpawnEnemy();
+        Destroy(gameObject);
+    }
+
 }

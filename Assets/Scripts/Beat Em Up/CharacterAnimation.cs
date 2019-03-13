@@ -85,6 +85,10 @@ public class CharacterAnimation : MonoBehaviour
     {
         anim.SetTrigger("KnockUp");
     }
+    public void Tirar()
+    {
+        anim.SetTrigger("Tirar");
+    }
     public void StandUp()
     {
         anim.SetTrigger("StandUp");

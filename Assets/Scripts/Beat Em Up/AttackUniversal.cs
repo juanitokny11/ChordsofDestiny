@@ -9,7 +9,6 @@ public class AttackUniversal : MonoBehaviour
     public float damage = 2f;
 
     public bool is_Player, is_Enemy;
-
     public GameObject hit_Fx_Prefab;
 
     void Update()
@@ -30,20 +29,29 @@ public class AttackUniversal : MonoBehaviour
                     hitFx_Pos.x += 0.3f;
                 else if (hit[0].transform.forward.x < 0)
                     hitFx_Pos.x -= 0.3f;
-               //Instantiate(hit_Fx_Prefab, hitFx_Pos, Quaternion.identity);
-
-                if(gameObject.CompareTag("Levantar"))
+                //Instantiate(hit_Fx_Prefab, hitFx_Pos, Quaternion.identity);
+                if (gameObject.CompareTag("Tirar"))
                 {
+                   
+                }
+                  else if (gameObject.CompareTag("Levantar"))
+                {
+                    damage = 5;
                     hit[0].GetComponent<HealthScript>().ApplyDamage(damage, true);
                 }
                 else
                 {
+                    if (gameObject.CompareTag("pesado"))
+                        damage = 5;
+                    else if (gameObject.CompareTag("ligero"))
+                        damage = 3;
                     hit[0].GetComponent<HealthScript>().ApplyDamage(damage, false);
                 }
             }
             if (is_Enemy)
             {
                 hit[0].GetComponent<HealthScript>().ApplyDamage(damage, false);
+                damage = 2;
             }
             gameObject.SetActive(false);
         }

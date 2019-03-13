@@ -6957,7 +6957,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8939311919082907250}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.014, y: -0.61, z: -0.002}
+  m_LocalPosition: {x: -0.037, y: -0.655, z: 0.003}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 8939311917634563695}
@@ -6978,8 +6978,8 @@ MonoBehaviour:
   colisionLayer:
     serializedVersion: 2
     m_Bits: 2048
-  radius: 1
-  damage: 2
+  radius: 0.61
+  damage: 5
   is_Player: 1
   is_Enemy: 0
   hit_Fx_Prefab: {fileID: 0}
@@ -7092,7 +7092,7 @@ GameObject:
   - component: {fileID: 8939311919185665302}
   - component: {fileID: 482292428}
   - component: {fileID: 4554496321350749296}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 'Steve '
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -7221,7 +7221,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   guitar_Attack_Point: {fileID: 8939311919082907250}
+  groupie_Attack_Point: {fileID: 0}
   standupTimer: 2
+  damage: {fileID: 0}
 --- !u!114 &4554496321350749296
 MonoBehaviour:
   m_ObjectHideFlags: 0
