@@ -9,7 +9,8 @@ public class HealthScript : MonoBehaviour
     private CharacterAnimation animationScript;
     private EnemyMovement enemyMovement;
     private HealthUI health_UI;
-    private bool characterDied;
+    public bool characterDied;
+    public bool inAir=false;
 
     public bool is_Player;
     private void Awake()
@@ -42,7 +43,10 @@ public class HealthScript : MonoBehaviour
         {
             if (knockDown)
             {
-                    animationScript.KnockDown(); 
+                if (inAir)
+                    animationScript.Tirar();
+                else
+                    animationScript.KnockDown();
             }
             else if (!knockDown)
             {

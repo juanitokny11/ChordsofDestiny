@@ -7,7 +7,7 @@ public class AttackUniversal : MonoBehaviour
     public LayerMask colisionLayer;
     public float radius = 1f;
     public float damage = 2f;
-
+    public HealthScript healthScript;
     public bool is_Player, is_Enemy;
     public GameObject hit_Fx_Prefab;
 
@@ -32,12 +32,14 @@ public class AttackUniversal : MonoBehaviour
                 //Instantiate(hit_Fx_Prefab, hitFx_Pos, Quaternion.identity);
                 if (gameObject.CompareTag("Tirar"))
                 {
-                   
+                    healthScript.inAir = false;
+                    damage = 5;
                 }
                   else if (gameObject.CompareTag("Levantar"))
                 {
                     damage = 5;
                     hit[0].GetComponent<HealthScript>().ApplyDamage(damage, true);
+                    healthScript.inAir = true;
                 }
                 else
                 {
