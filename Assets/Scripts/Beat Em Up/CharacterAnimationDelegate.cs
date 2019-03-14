@@ -6,12 +6,20 @@ public class CharacterAnimationDelegate : MonoBehaviour
 {
     public GameObject guitar_Attack_Point;
     public GameObject groupie_Attack_Point;
+    public SkinnedMeshRenderer groupie;
+    public CapsuleCollider groupiecol;
+    public EnemyMovement groupieEnemy;
+    public Rigidbody groupieBody;
     public float standupTimer = 2.0f;
     private CharacterAnimation animationScript;
     private EnemyMovement enemy_Movement;
     private ShakeCamera shakeCamera;
     private void Awake()
     {
+        groupie =GetComponentInChildren<SkinnedMeshRenderer>();
+        groupieEnemy = GetComponent<EnemyMovement>();
+        groupieBody = GetComponent<Rigidbody>();
+        groupiecol = GetComponent<CapsuleCollider>();
         animationScript = GetComponent<CharacterAnimation>();
         shakeCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ShakeCamera>();
         if(gameObject.CompareTag("Enemy"))
@@ -91,12 +99,30 @@ public class CharacterAnimationDelegate : MonoBehaviour
     }
     void CharacterDied()
     {
-        Invoke("DeleteGameobject", Random.Range(2f, 5f));
+        groupiecol.enabled = false;
+        groupieBody.useGravity = false;
+        groupieEnemy.enabled = false;
+        Invoke("DeleteGameobject",3.0f);
     }
     void DeleteGameobject()
     {
-        EnemyManager.instance.SpawnEnemy();
+        InvokeRepeating("Blink", 0f, 0.2f);
+        //EnemyManager.instance.SpawnEnemy();
+        Invoke("DestroyGameobject", 4.0f);
+    }
+     void Blink()
+    {
+        if (Time.fixedTime % .5 < .2)
+        {
+            groupie.enabled = false;
+        }
+        else
+        {
+            groupie.enabled = true;
+        }
+    }
+    void DestroyGameobject()
+    {
         Destroy(gameObject);
     }
-
 }
