@@ -8,12 +8,14 @@ public class EnemyMovement : MonoBehaviour
     private HealthScript healthScript;
     private Rigidbody myBody;
     public float speed = 5.0f;
-
+    public BoxCollider mainCamera_col;
+    public BoxCollider mainCamera_col2;
     private Transform playerTarget;
+    private CapsuleCollider capsuleCollider;
     public float chaseDistance = 20.0f;
     public float attack_Distance = 1.0f;
     public float chase_Player_After_Attack = 1f;
-    public float counter=0f;
+    public float counter = 0f;
     private float current_Attack_Time;
     private float default_Attack_Time = 2.0f;
 
@@ -21,6 +23,9 @@ public class EnemyMovement : MonoBehaviour
 
     void Awake()
     {
+        capsuleCollider = this.GetComponent<CapsuleCollider>();
+        mainCamera_col = GameObject.Find("Col1").GetComponent<BoxCollider>();
+        mainCamera_col2 = GameObject.Find("Col2").GetComponent<BoxCollider>();
         enemyAnim = GetComponent<CharacterAnimation>();
         myBody = GetComponent<Rigidbody>();
         healthScript = GetComponent<HealthScript>();
@@ -43,7 +48,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (!followPlayer || healthScript.characterDied == true)
             return;
-        if(Vector3.Distance(transform.position,playerTarget.position) < chaseDistance && Vector3.Distance(transform.position, playerTarget.position) > attack_Distance)
+        if (Vector3.Distance(transform.position, playerTarget.position) < chaseDistance && Vector3.Distance(transform.position, playerTarget.position) > attack_Distance)
         {
             transform.LookAt(playerTarget);
             myBody.velocity = transform.forward * speed;
@@ -80,7 +85,7 @@ public class EnemyMovement : MonoBehaviour
     }
     void Attack()
     {
-        if (!attackPlayer || healthScript.characterDied==true)
+        if (!attackPlayer || healthScript.characterDied == true)
             return;
         current_Attack_Time += Time.deltaTime;
         if (current_Attack_Time > default_Attack_Time)
@@ -88,10 +93,18 @@ public class EnemyMovement : MonoBehaviour
             enemyAnim.EnemyAttack(Random.Range(0, 2));
             current_Attack_Time = 0;
         }
-        if(Vector3.Distance(transform.position, playerTarget.position) > attack_Distance + chase_Player_After_Attack)
+        if (Vector3.Distance(transform.position, playerTarget.position) > attack_Distance + chase_Player_After_Attack)
         {
             attackPlayer = false;
             followPlayer = true;
+        }
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == 12)
+        {
+            Physics.IgnoreCollision(mainCamera_col, capsuleCollider);
+            Physics.IgnoreCollision(mainCamera_col2, capsuleCollider);
         }
     }
 }

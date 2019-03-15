@@ -6,6 +6,7 @@ public class CharacterAnimationDelegate : MonoBehaviour
 {
     public GameObject guitar_Attack_Point;
     public GameObject groupie_Attack_Point;
+    public SkinnedMeshRenderer bate;
     public SkinnedMeshRenderer groupie;
     public CapsuleCollider groupiecol;
     public EnemyMovement groupieEnemy;
@@ -14,9 +15,17 @@ public class CharacterAnimationDelegate : MonoBehaviour
     private CharacterAnimation animationScript;
     private EnemyMovement enemy_Movement;
     private ShakeCamera shakeCamera;
+    public bool isGroupie;
+    public bool isFan;
     private void Awake()
     {
-        groupie =GetComponentInChildren<SkinnedMeshRenderer>();
+        if (isGroupie)
+            groupie = GetComponentInChildren<SkinnedMeshRenderer>();
+        else if (isFan)
+        {
+            bate = GetComponentInChildren<SkinnedMeshRenderer>();
+            groupie= GameObject.Find("fan_low").GetComponent<SkinnedMeshRenderer>();
+        }
         groupieEnemy = GetComponent<EnemyMovement>();
         groupieBody = GetComponent<Rigidbody>();
         groupiecol = GetComponent<CapsuleCollider>();
@@ -97,6 +106,17 @@ public class CharacterAnimationDelegate : MonoBehaviour
     {
         shakeCamera.ShouldShake=true;
     }
+    void CharacterInFloor()
+    {
+         groupiecol.enabled = false;
+        groupieBody.useGravity = false;
+    }
+    void CharacterUp()
+    {
+        //preguntar a sergio
+        groupiecol.enabled = true;
+        groupieBody.useGravity = true;
+    }
     void CharacterDied()
     {
         groupiecol.enabled = false;
@@ -107,7 +127,6 @@ public class CharacterAnimationDelegate : MonoBehaviour
     void DeleteGameobject()
     {
         InvokeRepeating("Blink", 0f, 0.2f);
-        //EnemyManager.instance.SpawnEnemy();
         Invoke("DestroyGameobject", 4.0f);
     }
      void Blink()
@@ -115,10 +134,18 @@ public class CharacterAnimationDelegate : MonoBehaviour
         if (Time.fixedTime % .5 < .2)
         {
             groupie.enabled = false;
+             if (isFan)
+            {
+                bate.enabled = false;
+            }
         }
         else
         {
             groupie.enabled = true;
+            if (isFan)
+            {
+                bate.enabled = true;
+            }
         }
     }
     void DestroyGameobject()

@@ -190,6 +190,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  mainCamera_col: {fileID: 0}
+  mainCamera_col2: {fileID: 0}
   chaseDistance: 12
   attack_Distance: 2.5
   chase_Player_After_Attack: 1
@@ -220,7 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c91eba892efdd41889830f661e5570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  health: 100
   characterDied: 0
   inAir: 0
   is_Player: 0
@@ -238,11 +240,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guitar_Attack_Point: {fileID: 0}
   groupie_Attack_Point: {fileID: 1695840075}
+  bate: {fileID: 0}
   groupie: {fileID: 0}
   groupiecol: {fileID: 0}
   groupieEnemy: {fileID: 0}
   groupieBody: {fileID: 0}
   standupTimer: 2
+  isGroupie: 1
+  isFan: 0
 --- !u!114 &6945980595191655478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1484,14 +1489,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1563660872938979979}
     m_Modifications:
-    - target: {fileID: 1014226852502504, guid: 303c9a61fe9fd4845b7866e88b4417f6, type: 3}
-      propertyPath: m_Name
-      value: EnemyUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 1014226852502504, guid: 303c9a61fe9fd4845b7866e88b4417f6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 224646032363847510, guid: 303c9a61fe9fd4845b7866e88b4417f6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1597,6 +1594,14 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1014226852502504, guid: 303c9a61fe9fd4845b7866e88b4417f6, type: 3}
+      propertyPath: m_Name
+      value: EnemyUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014226852502504, guid: 303c9a61fe9fd4845b7866e88b4417f6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1539574775729584, guid: 303c9a61fe9fd4845b7866e88b4417f6, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1604,10 +1609,6 @@ PrefabInstance:
     - target: {fileID: 1086468283897898, guid: 303c9a61fe9fd4845b7866e88b4417f6, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1395639011449946, guid: 303c9a61fe9fd4845b7866e88b4417f6, type: 3}
-      propertyPath: m_TagString
-      value: HealthUI
       objectReference: {fileID: 0}
     - target: {fileID: 224505607706676612, guid: 303c9a61fe9fd4845b7866e88b4417f6,
         type: 3}
@@ -1652,6 +1653,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1395639011449946, guid: 303c9a61fe9fd4845b7866e88b4417f6, type: 3}
+      propertyPath: m_TagString
+      value: HealthUI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 303c9a61fe9fd4845b7866e88b4417f6, type: 3}

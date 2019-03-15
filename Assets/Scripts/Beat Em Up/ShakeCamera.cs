@@ -7,6 +7,9 @@ public class ShakeCamera : MonoBehaviour
     public float power = 0.2f;
     public float duration = 0.2f;
     public float slownDownAmount = 1f;
+    public BoxCollider col1;
+    public BoxCollider col2;
+    public bool lockCamera=false;
     private bool shoultShake;
     private float initialDuration;
     private Vector3 startPosition;
@@ -20,7 +23,10 @@ public class ShakeCamera : MonoBehaviour
     }
     void Update()
     {
-        transform.position = new Vector3 (player.transform.position.x + offset.x,transform.position.y,transform.position.z);
+        if (!lockCamera)
+            Unlock();
+        else if (lockCamera)
+            Lock();
         Shake();
     }
     public void Shake()
@@ -37,6 +43,19 @@ public class ShakeCamera : MonoBehaviour
                 duration = initialDuration;
             }
         }
+    }
+    public void Unlock()
+    {
+        transform.position = new Vector3(player.transform.position.x + offset.x, transform.position.y, transform.position.z);
+        col1.enabled = false;
+        col2.enabled = false;
+    }
+    public void Lock()
+    {
+        transform.position = transform.position;
+        col1.enabled = true;
+        col2.enabled = true;
+         
     }
     public bool ShouldShake
     {

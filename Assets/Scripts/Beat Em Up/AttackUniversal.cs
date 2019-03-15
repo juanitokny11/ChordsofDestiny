@@ -33,18 +33,18 @@ public class AttackUniversal : MonoBehaviour
                 if (gameObject.CompareTag("Tirar"))
                 {
                     healthScript.inAir = false;
-                    damage = 5;
+                    damage = 4;
                 }
                   else if (gameObject.CompareTag("Levantar"))
                 {
-                    damage = 5;
+                    damage = 4;
                     hit[0].GetComponent<HealthScript>().ApplyDamage(damage, true);
                     healthScript.inAir = true;
                 }
                 else
                 {
                     if (gameObject.CompareTag("pesado"))
-                        damage = 5;
+                        damage = 4;
                     else if (gameObject.CompareTag("ligero"))
                         damage = 3;
                     hit[0].GetComponent<HealthScript>().ApplyDamage(damage, false);
