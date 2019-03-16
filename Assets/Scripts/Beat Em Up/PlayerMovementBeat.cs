@@ -41,9 +41,11 @@ public class PlayerMovementBeat : MonoBehaviour
             Vector3 newPosition = transform.position;
             if (Input.GetAxisRaw("Jump") !=0 )
             {
-                //newPosition.y += animator.GetFloat("Jumpspeed") * Time.deltaTime;
+                if (BeatEmupManager.instance.godmode == false)
+                newPosition.y += animator.GetFloat("Jumpspeed") * Time.deltaTime;
             }
-            if (Input.GetAxisRaw("Horizontal") > 0)
+            
+            if (Input.GetAxisRaw("Horizontal") > 0 )
             {
                 newPosition.x += animator.GetFloat("Walkspeed") * Time.deltaTime;
                 actualrot = Quaternion.Euler(0, 0, 0);
@@ -57,7 +59,7 @@ public class PlayerMovementBeat : MonoBehaviour
             }
             else if (Input.GetAxisRaw("Horizontal") == 0)
             {
-                if (lockrotation == true)
+                if (lockrotation == true )
                 {
                     transform.rotation = Quaternion.Euler(0, 180, 0);
                     transform.rotation = actualrot;
@@ -68,7 +70,7 @@ public class PlayerMovementBeat : MonoBehaviour
                     transform.rotation = actualrot;
                 }
             }
-            if (lockrotation == true)
+            if (lockrotation == true )
             {
                 transform.rotation = Quaternion.Euler(0, 180, 0);
                 transform.rotation = actualrot;
@@ -82,7 +84,7 @@ public class PlayerMovementBeat : MonoBehaviour
         }
     }
     void DetectMovement()
-    {
+    { 
         myBody.velocity = new Vector3(Input.GetAxisRaw("Horizontal") * (-run_Speed), myBody.velocity.y, Input.GetAxisRaw("Vertical")* (-z_Speed) );
         if (Input.GetAxisRaw("Jump") != 0)
             myBody.velocity =new Vector3( myBody.velocity.x, Input.GetAxisRaw("Jump") * newPosition.y, myBody.velocity.z); 
