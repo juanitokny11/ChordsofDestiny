@@ -26,7 +26,8 @@ public class PlayerMovementBeat : MonoBehaviour
     {
         RotatePlayer();
         AnimatePlayerWalk();
-        AnimatePlayerJump();
+        if (BeatEmupManager.instance.godmode == true)
+            AnimatePlayerJump();
     }
     void FixedUpdate()
     {
@@ -42,9 +43,13 @@ public class PlayerMovementBeat : MonoBehaviour
             if (Input.GetAxisRaw("Jump") !=0 )
             {
                 if (BeatEmupManager.instance.godmode == false)
-                newPosition.y += animator.GetFloat("Jumpspeed") * Time.deltaTime;
+                    newPosition.y += animator.GetFloat("Jumpspeed") * Time.deltaTime;
             }
-            
+            if (Input.GetAxisRaw("Submit") != 0)
+            {
+                if (BeatEmupManager.instance.godmode == false)
+                    myBody.useGravity = true;
+            }
             if (Input.GetAxisRaw("Horizontal") > 0 )
             {
                 newPosition.x += animator.GetFloat("Walkspeed") * Time.deltaTime;

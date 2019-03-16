@@ -906,6 +906,7 @@ GameObject:
   - component: {fileID: 529679432936595976}
   - component: {fileID: 5496447078761424786}
   - component: {fileID: 7006205654256021665}
+  - component: {fileID: 1956698602}
   m_Layer: 11
   m_Name: Fan
   m_TagString: Enemy
@@ -993,6 +994,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6126feaad4cfe794f851753ef07168a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyLife: {fileID: 7612410803267225185}
+  col: {fileID: 0}
   speed: 3
   mainCamera_col: {fileID: 0}
   mainCamera_col2: {fileID: 0}
@@ -1065,6 +1068,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthBar: {fileID: 7043537170913556446}
+--- !u!65 &1956698602
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4495394842458842751}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.6498915, y: 1.7222122, z: 0.61088413}
+  m_Center: {x: -0.0061645345, y: 0.87473226, z: 0.057144918}
 --- !u!1 &4516762632766788851
 GameObject:
   m_ObjectHideFlags: 0
@@ -1881,6 +1897,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66757cdabce719645be5a5c604cd3dfd, type: 3}
+--- !u!1 &7612410803267225185 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3704729243919199352, guid: 66757cdabce719645be5a5c604cd3dfd,
+    type: 3}
+  m_PrefabInstance: {fileID: 6542992303627758105}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6690444319598149902 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 438075652885015319, guid: 66757cdabce719645be5a5c604cd3dfd,

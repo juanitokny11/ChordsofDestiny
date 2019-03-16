@@ -5,6 +5,7 @@ using UnityEngine;
 public class BeatEmupManager : MonoBehaviour
 {
     public static BeatEmupManager instance;
+    public GameObject Player;
     public bool notacogida;
     public float counternotas;
     public GameObject notas;
@@ -19,6 +20,10 @@ public class BeatEmupManager : MonoBehaviour
     {
         if (instance == null)
             instance = this;
+    }
+    private void Start()
+    {
+        Player = GameObject.FindGameObjectWithTag("Player");
     }
     void Update()
     {
@@ -91,11 +96,15 @@ public class BeatEmupManager : MonoBehaviour
         if (!godmode)
         {
             godmode = true;
+            //Player.GetComponent<CapsuleCollider>().enabled = true;
+            Player.gameObject.layer = 0;
             //Cursor.visible = false;
         }
         else if (godmode)
         {
             godmode = false;
+            //Player.GetComponent<CapsuleCollider>().enabled = true;
+            Player.gameObject.layer = 8;
             //Cursor.visible = true;
         }
     }

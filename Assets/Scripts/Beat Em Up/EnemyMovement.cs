@@ -6,6 +6,8 @@ public class EnemyMovement : MonoBehaviour
 {
     private CharacterAnimation enemyAnim;
     private HealthScript healthScript;
+    public GameObject enemyLife;
+    public BoxCollider col;
     private Rigidbody myBody;
     public float speed = 5.0f;
     public BoxCollider mainCamera_col;
@@ -28,6 +30,7 @@ public class EnemyMovement : MonoBehaviour
         mainCamera_col2 = GameObject.Find("Col2").GetComponent<BoxCollider>();
         enemyAnim = GetComponent<CharacterAnimation>();
         myBody = GetComponent<Rigidbody>();
+        col = GetComponent<BoxCollider>();
         healthScript = GetComponent<HealthScript>();
         playerTarget = GameObject.FindWithTag("Player").transform;
     }
@@ -39,6 +42,14 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         Attack();
+        if (col.enabled == true)
+        {
+            enemyLife.SetActive(true);
+        }
+        else
+        {
+            enemyLife.SetActive(false);
+        }
     }
     void FixedUpdate()
     {
@@ -46,7 +57,7 @@ public class EnemyMovement : MonoBehaviour
     }
     void FollowTarget()
     {
-        if (!followPlayer || healthScript.characterDied == true)
+        if (!followPlayer || healthScript.characterDied == true || BeatEmupManager.instance.godmode==false)
             return;
         if (Vector3.Distance(transform.position, playerTarget.position) < chaseDistance && Vector3.Distance(transform.position, playerTarget.position) > attack_Distance)
         {

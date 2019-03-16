@@ -34,12 +34,14 @@ public class AttackUniversal : MonoBehaviour
                 {
                     healthScript.inAir = false;
                     damage = 4;
+                    hit[0].GetComponent<BoxCollider>().enabled = true;
                 }
                   else if (gameObject.CompareTag("Levantar"))
                 {
                     damage = 4;
                     hit[0].GetComponent<HealthScript>().ApplyDamage(damage, true);
                     healthScript.inAir = true;
+                    hit[0].GetComponent<BoxCollider>().enabled = true;
                 }
                 else
                 {
@@ -48,6 +50,8 @@ public class AttackUniversal : MonoBehaviour
                     else if (gameObject.CompareTag("ligero"))
                         damage = 3;
                     hit[0].GetComponent<HealthScript>().ApplyDamage(damage, false);
+                    hit[0].GetComponent<BoxCollider>().enabled=true;
+                    //hit[0].GetComponent<EnemyMovement>.
                 }
             }
             if (is_Enemy)

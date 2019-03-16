@@ -28,7 +28,6 @@ public class HealthScript : MonoBehaviour
     {
         if (characterDied)
             return;
-
         health -= damage;
         if(is_Player)
             health_UI.DisplayHealth(health);

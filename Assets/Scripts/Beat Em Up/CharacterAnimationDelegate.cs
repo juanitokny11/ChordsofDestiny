@@ -108,14 +108,11 @@ public class CharacterAnimationDelegate : MonoBehaviour
     }
     void CharacterInFloor()
     {
-         groupiecol.enabled = false;
-        groupieBody.useGravity = false;
+        groupieBody.isKinematic = true;
     }
     void CharacterUp()
     {
-        //preguntar a sergio
-        groupiecol.enabled = true;
-        groupieBody.useGravity = true;
+        groupieBody.isKinematic = false;
     }
     void CharacterDied()
     {
