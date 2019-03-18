@@ -119,11 +119,11 @@ public class CharacterAnimationDelegate : MonoBehaviour
         groupiecol.enabled = false;
         groupieBody.useGravity = false;
         groupieEnemy.enabled = false;
-        Invoke("DeleteGameobject",3.0f);
+        Invoke("DeleteGameobject", 2.0f);
     }
     void DeleteGameobject()
     {
-        InvokeRepeating("Blink", 0f, 0.2f);
+        InvokeRepeating("Blink", 0f, 0.05f);
         Invoke("DestroyGameobject", 4.0f);
     }
      void Blink()

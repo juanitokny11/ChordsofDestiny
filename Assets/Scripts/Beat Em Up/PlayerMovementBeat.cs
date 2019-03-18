@@ -7,7 +7,7 @@ public class PlayerMovementBeat : MonoBehaviour
     private CharacterAnimation player_Anim;
     private Rigidbody myBody;
 
-    public float run_Speed = 6.0f;
+    public float run_Speed = 8.0f;
     public float z_Speed = 3.0f;
     public bool lockrotation;
     Quaternion actualrot;
@@ -36,7 +36,6 @@ public class PlayerMovementBeat : MonoBehaviour
     void OnAnimatorMove()
     {
         Animator animator = GetComponent<Animator>();
-
         if (animator)
         {
             Vector3 newPosition = transform.position;

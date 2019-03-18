@@ -39,6 +39,7 @@ public class ShakeCamera : MonoBehaviour
             }
             else
             {
+                transform.localPosition = new Vector3(transform.localPosition.x,startPosition.y, transform.localPosition.z);
                 shoultShake = false;
                 duration = initialDuration;
             }
@@ -55,7 +56,7 @@ public class ShakeCamera : MonoBehaviour
         transform.position = transform.position;
         col1.enabled = true;
         col2.enabled = true;
-         
+       // EnemyManager.instance.SpawnEnemy(); 
     }
     public bool ShouldShake
     {

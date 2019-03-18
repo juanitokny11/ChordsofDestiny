@@ -14,11 +14,12 @@ public class EnemyManager : MonoBehaviour
     }
     private void Start()
     {
-        SpawnEnemy();
+        //SpawnEnemy();
     }
     // Update is called once per frame
     public void SpawnEnemy()
     {
+        Instantiate(enemyprefab[Random.Range(0, enemyprefab.Length)], transform.position, Quaternion.identity);
         Instantiate(enemyprefab[Random.Range(0, enemyprefab.Length)], transform.position, Quaternion.identity);
     }
 }

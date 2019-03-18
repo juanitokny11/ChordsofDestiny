@@ -12,7 +12,9 @@ public class PlayerAttack : MonoBehaviour
         DEBIL3,
         FUERTE,
         FUERTE2,
-        FUERTE3
+        FUERTE3,
+        GUARD,
+        AIRCOMBO
     }
     private CharacterAnimation player_Anim;
     private bool activateTimerToReset;
@@ -39,9 +41,9 @@ public class PlayerAttack : MonoBehaviour
     }
     void ComboAttacks()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.A))
         {
-            if (current_Combo_State == ComboState.DEBIL3 || current_Combo_State == ComboState.FUERTE2 || current_Combo_State == ComboState.FUERTE3)
+            if (current_Combo_State == ComboState.DEBIL3 || current_Combo_State == ComboState.FUERTE2 || current_Combo_State == ComboState.FUERTE3 || current_Combo_State ==ComboState.GUARD)
                 return;
             if (current_Combo_State == ComboState.FUERTE)
                 current_Combo_State = ComboState.DEBIL;
@@ -58,9 +60,9 @@ public class PlayerAttack : MonoBehaviour
                 player_Anim.Debil3();
 
         }
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.S))
         {
-            if ( current_Combo_State == ComboState.FUERTE3 || current_Combo_State == ComboState.DEBIL3)
+            if ( current_Combo_State == ComboState.FUERTE3 || current_Combo_State == ComboState.DEBIL3 || current_Combo_State == ComboState.GUARD)
                 return;
             if (current_Combo_State == ComboState.NONE)
                 current_Combo_State = ComboState.FUERTE;
@@ -79,7 +81,15 @@ public class PlayerAttack : MonoBehaviour
             if (current_Combo_State == ComboState.FUERTE3)
                 player_Anim.Fuerte3();
 
-        }    
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+
+        }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            current_Combo_State = ComboState.GUARD;
+        }
     }
     void ResetComboState()
     {
