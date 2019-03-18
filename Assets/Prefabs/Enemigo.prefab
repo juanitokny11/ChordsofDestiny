@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c7a34fd049160145b7020afce630f52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
 --- !u!1001 &4900275332824920203
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -236,6 +237,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2.2
       objectReference: {fileID: 0}
+    - target: {fileID: 100024, guid: 82719cde373da264886a01e2fff87069, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 13700000, guid: 82719cde373da264886a01e2fff87069, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ce055c1b4dd8003468007980c399208d, type: 2}
     - target: {fileID: 13700000, guid: 82719cde373da264886a01e2fff87069, type: 3}
       propertyPath: m_Bones.Array.data[0]
       value: 
@@ -344,10 +353,6 @@ PrefabInstance:
       propertyPath: m_RootBone
       value: 
       objectReference: {fileID: 4900275332825049611}
-    - target: {fileID: 100024, guid: 82719cde373da264886a01e2fff87069, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82719cde373da264886a01e2fff87069, type: 3}
 --- !u!4 &4900275332825049679 stripped
