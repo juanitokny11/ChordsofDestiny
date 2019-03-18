@@ -225,7 +225,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c91eba892efdd41889830f661e5570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 3
+  zone: {fileID: 0}
   characterDied: 0
   inAir: 0
   is_Player: 0
@@ -243,6 +244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guitar_Attack_Point: {fileID: 0}
   groupie_Attack_Point: {fileID: 1695840075}
+  fan: []
   bate: {fileID: 0}
   groupie: {fileID: 0}
   groupiecol: {fileID: 0}
@@ -1673,6 +1675,26 @@ PrefabInstance:
     - target: {fileID: 1395639011449946, guid: 303c9a61fe9fd4845b7866e88b4417f6, type: 3}
       propertyPath: m_TagString
       value: HealthUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 114663066236026558, guid: 303c9a61fe9fd4845b7866e88b4417f6,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114663066236026558, guid: 303c9a61fe9fd4845b7866e88b4417f6,
+        type: 3}
+      propertyPath: m_FillOrigin
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114557879981348290, guid: 303c9a61fe9fd4845b7866e88b4417f6,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114557879981348290, guid: 303c9a61fe9fd4845b7866e88b4417f6,
+        type: 3}
+      propertyPath: m_FillOrigin
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 303c9a61fe9fd4845b7866e88b4417f6, type: 3}

@@ -41,6 +41,10 @@ public class EnemyMovement : MonoBehaviour
     }
     void Update()
     {
+        if(healthScript.characterDied)
+        {
+            this.enabled = false;
+        }
         Attack();
         if (col.enabled == true)
         {
@@ -57,7 +61,7 @@ public class EnemyMovement : MonoBehaviour
     }
     void FollowTarget()
     {
-        if (!followPlayer || healthScript.characterDied == true || BeatEmupManager.instance.godmode==false)
+        if (!followPlayer || healthScript.characterDied  || !BeatEmupManager.instance.godmode)
             return;
         if (Vector3.Distance(transform.position, playerTarget.position) < chaseDistance && Vector3.Distance(transform.position, playerTarget.position) > attack_Distance)
         {

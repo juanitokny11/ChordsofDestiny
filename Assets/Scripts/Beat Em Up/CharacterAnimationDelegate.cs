@@ -6,6 +6,7 @@ public class CharacterAnimationDelegate : MonoBehaviour
 {
     public GameObject guitar_Attack_Point;
     public GameObject groupie_Attack_Point;
+    public SkinnedMeshRenderer[] fan;
     public SkinnedMeshRenderer bate;
     public SkinnedMeshRenderer groupie;
     public CapsuleCollider groupiecol;
@@ -23,8 +24,9 @@ public class CharacterAnimationDelegate : MonoBehaviour
             groupie = GetComponentInChildren<SkinnedMeshRenderer>();
         else if (isFan)
         {
-            bate = GetComponentInChildren<SkinnedMeshRenderer>();
-            groupie= GameObject.Find("fan_low").GetComponent<SkinnedMeshRenderer>();
+            fan = GetComponentsInChildren<SkinnedMeshRenderer>();
+            bate = fan[0];
+            groupie= fan[1];
         }
         groupieEnemy = GetComponent<EnemyMovement>();
         groupieBody = GetComponent<Rigidbody>();

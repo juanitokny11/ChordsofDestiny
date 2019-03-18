@@ -5,7 +5,7 @@ using UnityEngine;
 public class HealthScript : MonoBehaviour
 {
     public float health = 100f;
-
+    public BattleZone zone;
     private CharacterAnimation animationScript;
     private EnemyMovement enemyMovement;
     private HealthUI health_UI;
@@ -37,9 +37,14 @@ public class HealthScript : MonoBehaviour
         {
             animationScript.Death();
             characterDied = true;
+            
             if (is_Player)
             {
                 GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyMovement>().enabled = false;
+            }
+            else
+            {
+               zone.enemiescounter--;
             }
             return;
         }
@@ -56,6 +61,7 @@ public class HealthScript : MonoBehaviour
             {
                     animationScript.Hit(Random.Range(0, 3));
             }
+
         }
     }
 }

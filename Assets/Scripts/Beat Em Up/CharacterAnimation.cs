@@ -38,6 +38,10 @@ public class CharacterAnimation : MonoBehaviour
     {
         anim.SetTrigger("Jump");
     }
+    public void ResetJump()
+    {
+        anim.SetTrigger("ResetJump");
+    }
     public void Debil()
     {
         anim.SetTrigger("Debil");
@@ -61,6 +65,14 @@ public class CharacterAnimation : MonoBehaviour
     public void Death()
     {
         anim.SetTrigger("Death");
+    }
+    public void AirCombo()
+    {
+        anim.SetTrigger("AirCombo");
+    }
+    public void Block()
+    {
+        anim.SetTrigger("Block");
     }
     public void Hit(int hit)
     {
