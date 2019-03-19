@@ -70,6 +70,10 @@ public class CharacterAnimation : MonoBehaviour
     {
         anim.SetTrigger("AirCombo");
     }
+    public void Solo()
+    {
+        anim.SetTrigger("");
+    }
     public void Block()
     {
         anim.SetTrigger("Block");

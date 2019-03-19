@@ -14,11 +14,13 @@ public class PlayerAttack : MonoBehaviour
         FUERTE2,
         FUERTE3,
         GUARD,
-        AIRCOMBO
+        AIRCOMBO,
+        SOLO
     }
     private CharacterAnimation player_Anim;
+    private PlayerMovementBeat player_Move;
     private bool activateTimerToReset;
-
+    public bool is_Player;
     private float default_Combo_Timer=0.95f;
     private float current_Combo_Timer;
 
@@ -28,6 +30,7 @@ public class PlayerAttack : MonoBehaviour
     void Awake()
     {
         player_Anim = GetComponent<CharacterAnimation>();
+        player_Move = GetComponent<PlayerMovementBeat>();
     }
     void Start()
     {
@@ -43,7 +46,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            if (current_Combo_State == ComboState.DEBIL3 || current_Combo_State == ComboState.FUERTE2 || current_Combo_State == ComboState.FUERTE3 || current_Combo_State ==ComboState.GUARD)
+            if (current_Combo_State == ComboState.DEBIL3 || current_Combo_State == ComboState.FUERTE2 || current_Combo_State == ComboState.FUERTE3 || current_Combo_State ==ComboState.GUARD || current_Combo_State == ComboState.SOLO)
                 return;
             if (current_Combo_State == ComboState.FUERTE)
                 current_Combo_State = ComboState.DEBIL;
@@ -56,10 +59,14 @@ public class PlayerAttack : MonoBehaviour
                 player_Anim.Debil2();
             if (current_Combo_State == ComboState.DEBIL3)
                 player_Anim.Debil3();
+            if (player_Move.inAir == true)
+            {
+                player_Move.comboAereo = true;
+            }
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
-            if ( current_Combo_State == ComboState.FUERTE3 || current_Combo_State == ComboState.DEBIL3 || current_Combo_State == ComboState.GUARD)
+            if ( current_Combo_State == ComboState.FUERTE3 || current_Combo_State == ComboState.DEBIL3 || current_Combo_State == ComboState.GUARD || current_Combo_State == ComboState.SOLO)
                 return;
             if (current_Combo_State == ComboState.NONE)
                 current_Combo_State = ComboState.FUERTE;
@@ -75,10 +82,19 @@ public class PlayerAttack : MonoBehaviour
                 player_Anim.Fuerte2();
             if (current_Combo_State == ComboState.FUERTE3)
                 player_Anim.Fuerte3();
+
+            if (player_Move.inAir == true)
+            {
+                player_Move.comboAereo = true;
+            }
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-
+            current_Combo_State = ComboState.SOLO;
+            if (current_Combo_State == ComboState.SOLO && !player_Move.inAir)
+            {
+                player_Anim.Solo();
+            }
         }
         if (Input.GetKeyDown(KeyCode.F))
         {

@@ -11,6 +11,7 @@ public class CharacterAnimationDelegate : MonoBehaviour
     public SkinnedMeshRenderer groupie;
     public CapsuleCollider groupiecol;
     public EnemyMovement groupieEnemy;
+    public PlayerMovementBeat player_Move;
     public Rigidbody groupieBody;
     public float standupTimer = 2.0f;
     private CharacterAnimation animationScript;
@@ -27,6 +28,10 @@ public class CharacterAnimationDelegate : MonoBehaviour
             fan = GetComponentsInChildren<SkinnedMeshRenderer>();
             bate = fan[0];
             groupie= fan[1];
+        }
+        else
+        {
+            player_Move = GetComponent<PlayerMovementBeat>();
         }
         groupieEnemy = GetComponent<EnemyMovement>();
         groupieBody = GetComponent<Rigidbody>();
@@ -54,6 +59,14 @@ public class CharacterAnimationDelegate : MonoBehaviour
     {
         if (groupie_Attack_Point.activeInHierarchy)
             groupie_Attack_Point.SetActive(false);
+    }
+    void In_Air()
+    {
+        player_Move.inAir = true;
+    }
+    void Not_In_Air()
+    {
+        player_Move.inAir = false;
     }
     void Tag_EnemyDamage()
     {

@@ -6,6 +6,7 @@ public class PlayerMovementBeat : MonoBehaviour
 {
     private CharacterAnimation player_Anim;
     private Rigidbody myBody;
+    public bool inAir = false;
     public bool comboAereo = false;
     public float run_Speed = 8.0f;
     public float z_Speed = 3.0f;
@@ -117,7 +118,8 @@ public class PlayerMovementBeat : MonoBehaviour
     void AnimatePlayerJump()
     {
         if (Input.GetAxisRaw("Jump") != 0 )
-            player_Anim.Jump(); 
+            player_Anim.Jump();
+            inAir = true;
     }
     void AnimateResetJump()
     {
@@ -128,6 +130,7 @@ public class PlayerMovementBeat : MonoBehaviour
         else
         {
             player_Anim.ResetJump();
+            inAir = false;
         }
     }
 }
