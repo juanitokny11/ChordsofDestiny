@@ -117,9 +117,11 @@ public class PlayerMovementBeat : MonoBehaviour
     }
     void AnimatePlayerJump()
     {
-        if (Input.GetAxisRaw("Jump") != 0 )
+        if (Input.GetAxisRaw("Jump") != 0)
+        { 
             player_Anim.Jump();
             inAir = true;
+        }
     }
     void AnimateResetJump()
     {

@@ -78,6 +78,10 @@ public class CharacterAnimation : MonoBehaviour
     {
         anim.SetTrigger("Block");
     }
+    public void ResetBlock()
+    {
+        anim.SetTrigger("ResetBlock");
+    }
     public void Hit(int hit)
     {
         if (hit == 0)

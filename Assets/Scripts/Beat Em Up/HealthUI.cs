@@ -10,8 +10,6 @@ public class HealthUI : MonoBehaviour
     {
         HealthBar = GameObject.FindGameObjectWithTag("HealthUI").GetComponent<Image>();
     }
-
-    // Update is called once per frame
     public void DisplayHealth(float value)
     {
         value /= 100;

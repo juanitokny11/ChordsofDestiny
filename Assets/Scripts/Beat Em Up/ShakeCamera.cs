@@ -7,6 +7,7 @@ public class ShakeCamera : MonoBehaviour
     public float power = 0.2f;
     public float duration = 0.2f;
     public float slownDownAmount = 1f;
+    public bool enemiesdied = false;
     public BoxCollider col1;
     public BoxCollider col2;
     public bool lockCamera=false;
@@ -20,13 +21,16 @@ public class ShakeCamera : MonoBehaviour
         offset = transform.position - player.transform.position;
         startPosition = transform.localPosition;
         initialDuration = duration;
+       
     }
     void Update()
     {
-        if (!lockCamera)
+        if (!lockCamera && !enemiesdied)
             Unlock();
         else if (lockCamera)
             Lock();
+        else if (!lockCamera && enemiesdied)
+            ToUnlock();
         Shake();
     }
     public void Shake()
@@ -56,7 +60,11 @@ public class ShakeCamera : MonoBehaviour
         transform.position = transform.position;
         col1.enabled = true;
         col2.enabled = true;
-       // EnemyManager.instance.SpawnEnemy(); 
+    }
+    public void ToUnlock()
+    {
+        transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x + offset.x, transform.position.y, transform.position.z), 0.5f);
+        Invoke("EnemiesDied", 1.5f);
     }
     public bool ShouldShake
     {
@@ -68,5 +76,9 @@ public class ShakeCamera : MonoBehaviour
         {
             shoultShake = value;
         }
+    }
+    public void EnemiesDied()
+    {
+        enemiesdied = false;
     }
 }

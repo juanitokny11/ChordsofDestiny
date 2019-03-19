@@ -6942,7 +6942,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8939311919082907253}
   - component: {fileID: 1144852704}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Guitar_Atack_Point
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
@@ -7092,6 +7092,7 @@ GameObject:
   - component: {fileID: 8939311919185665385}
   - component: {fileID: 8939311919185665302}
   - component: {fileID: 482292428}
+  - component: {fileID: 3422790589632528814}
   - component: {fileID: 4554496321350749296}
   - component: {fileID: 2033245223399755795}
   - component: {fileID: 1139394444}
@@ -7195,8 +7196,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c960e209f6fd7ef4aa71586799bda15a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  run_Speed: 6
-  z_Speed: 1.5
+  inAir: 0
+  comboAereo: 0
+  run_Speed: 10
+  z_Speed: 4
   lockrotation: 0
   rotation_Speed: 15
 --- !u!114 &8939311919185665302
@@ -7211,6 +7214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddc1de573555229459a79c1028bd04be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  is_Player: 0
 --- !u!114 &482292428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7225,14 +7229,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guitar_Attack_Point: {fileID: 8939311919082907250}
   groupie_Attack_Point: {fileID: 0}
+  fan: []
   bate: {fileID: 0}
   groupie: {fileID: 0}
   groupiecol: {fileID: 0}
   groupieEnemy: {fileID: 0}
+  player_Move: {fileID: 0}
   groupieBody: {fileID: 0}
   standupTimer: 2
   isGroupie: 0
   isFan: 0
+--- !u!114 &3422790589632528814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8939311919185665303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b69e63b6ef8fe4544ad08dcf22913248, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attacks: 
+  is_Player: 0
 --- !u!114 &4554496321350749296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7246,6 +7266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  zone: {fileID: 0}
   characterDied: 0
   inAir: 0
   is_Player: 1

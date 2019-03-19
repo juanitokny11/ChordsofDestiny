@@ -127,5 +127,6 @@ public class BattleZone : MonoBehaviour
     void UnlockCamera()
     {
         camera.GetComponent<ShakeCamera>().lockCamera = false;
+        camera.GetComponent<ShakeCamera>().enemiesdied = true;
     }
 }
