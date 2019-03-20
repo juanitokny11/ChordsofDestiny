@@ -127,7 +127,7 @@ public class PlayerMovementBeat : MonoBehaviour
     {
         if (comboAereo)
         {
-            player_Anim.AirCombo();
+           
         }
         else
         {

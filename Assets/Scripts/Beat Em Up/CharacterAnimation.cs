@@ -66,9 +66,25 @@ public class CharacterAnimation : MonoBehaviour
     {
         anim.SetTrigger("Death");
     }
-    public void AirCombo()
+    public void AirCombo1()
     {
         anim.SetTrigger("AirCombo1");
+    }
+    public void AirCombo2()
+    {
+        anim.SetTrigger("AirCombo2");
+    }
+    public void AirCombo3()
+    {
+        anim.SetTrigger("AirCombo3");
+    }
+    public void AirCombo4()
+    {
+        anim.SetTrigger("AirCombo4");
+    }
+    public void AirCombo5()
+    {
+        anim.SetTrigger("AirCombo5");
     }
     public void Solo()
     {

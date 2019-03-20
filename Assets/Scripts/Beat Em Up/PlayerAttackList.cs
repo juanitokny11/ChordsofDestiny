@@ -31,7 +31,6 @@ public class PlayerAttackList : MonoBehaviour
                 player_anim.Debil();
                 Attack = false;
             }
-            DeleteAttacks();
         }
         else if (attacks[0] == PlayerAttack2.ComboState.DEBIL2)
         {
@@ -40,7 +39,6 @@ public class PlayerAttackList : MonoBehaviour
                 player_anim.Debil2();
                 Attack = false;
             }
-            DeleteAttacks();
         }
         else if (attacks[0] == PlayerAttack2.ComboState.DEBIL3)
         {
@@ -49,7 +47,6 @@ public class PlayerAttackList : MonoBehaviour
                 player_anim.Debil3();
                 Attack = false;
             }
-            DeleteAttacks();
         }
         else if (attacks[0] == PlayerAttack2.ComboState.FUERTE)
         {
@@ -58,7 +55,6 @@ public class PlayerAttackList : MonoBehaviour
                 player_anim.Fuerte();
                 Attack = false;
             }
-            DeleteAttacks();
         }
         else if (attacks[0] == PlayerAttack2.ComboState.FUERTE2)
         {
@@ -67,7 +63,6 @@ public class PlayerAttackList : MonoBehaviour
                 player_anim.Fuerte2();
                 Attack = false;
             }
-            DeleteAttacks();
         }
         else if (attacks[0] == PlayerAttack2.ComboState.FUERTE3)
         {
@@ -76,15 +71,55 @@ public class PlayerAttackList : MonoBehaviour
                 player_anim.Fuerte3();
                 Attack = false;
             }
-            DeleteAttacks();
         }
-    }
-    private void DeleteAttacks()
-    {
-        attacks.RemoveAt(0);
+        else if(attacks[0] == PlayerAttack2.ComboState.AIRCOMBO1)
+        {
+            if (Attack)
+            {
+                player_anim.AirCombo1();
+                Attack = false;
+            }
+        }
+        else if(attacks[0] == PlayerAttack2.ComboState.AIRCOMBO2)
+        {
+            if (Attack)
+            {
+                player_anim.AirCombo2();
+                Attack = false;
+            }
+        }
+        else if(attacks[0] == PlayerAttack2.ComboState.AIRCOMBO3)
+        {
+            if (Attack)
+            {
+                player_anim.AirCombo3();
+                Attack = false;
+            }
+        }
+        else if(attacks[0] == PlayerAttack2.ComboState.AIRCOMBO4)
+        {
+            if (Attack)
+            {
+                player_anim.AirCombo4();
+                Attack = false;
+            }
+        }
+        else if(attacks[0] == PlayerAttack2.ComboState.AIRCOMBO5)
+        {
+            if (Attack)
+            {
+                player_anim.AirCombo5();
+                Attack = false;
+            }
+        }
     }
     private void CanAttack()
     {
         Attack = true;
+        attacks.RemoveAt(0);
+    }
+    private void RemoveAllList()
+    {
+        attacks.RemoveRange(0,attacks.Count);
     }
 }

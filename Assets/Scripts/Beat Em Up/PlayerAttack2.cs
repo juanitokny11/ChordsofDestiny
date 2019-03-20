@@ -15,7 +15,11 @@ public class PlayerAttack2 : MonoBehaviour
         FUERTE2,
         FUERTE3,
         GUARD,
-        AIRCOMBO,
+        AIRCOMBO1,
+        AIRCOMBO2,
+        AIRCOMBO3,
+        AIRCOMBO4,
+        AIRCOMBO5,
         SOLO
     }
     public CharacterAnimation player_Anim;
@@ -45,6 +49,7 @@ public class PlayerAttack2 : MonoBehaviour
     }
     void ComboAttacks()
     {
+       
         if (Input.GetKeyDown(KeyCode.A))
         {
             if (current_Combo_State == ComboState.DEBIL3 || current_Combo_State == ComboState.FUERTE2 || current_Combo_State == ComboState.FUERTE3 || current_Combo_State == ComboState.GUARD || current_Combo_State == ComboState.SOLO)
@@ -54,24 +59,46 @@ public class PlayerAttack2 : MonoBehaviour
             current_Combo_State++;
             activateTimerToReset = true;
             current_Combo_Timer = default_Combo_Timer;
-            if (current_Combo_State == ComboState.DEBIL)
-            {
-                //player_Anim.Debil();
-                AddToTheList(ComboState.DEBIL);
+            if (!player_Move.inAir) { 
+                if (current_Combo_State == ComboState.DEBIL)
+                {
+                    //player_Anim.Debil();
+                    AddToTheList(ComboState.DEBIL);
+                }
+                if (current_Combo_State == ComboState.DEBIL2)
+                {
+                    //player_Anim.Debil2();
+                    AddToTheList(ComboState.DEBIL2);
+                }
+                if (current_Combo_State == ComboState.DEBIL3)
+                {
+                    //player_Anim.Debil3();
+                    AddToTheList(ComboState.DEBIL3);
+                }
             }
-            if (current_Combo_State == ComboState.DEBIL2)
-            {
-                //player_Anim.Debil2();
-                AddToTheList(ComboState.DEBIL2);
-            }
-            if (current_Combo_State == ComboState.DEBIL3)
-            {
-                //player_Anim.Debil3();
-                AddToTheList(ComboState.DEBIL3);
-            }
-            if (player_Move.inAir == true)
+            else if (player_Move.inAir)
             {
                 player_Move.comboAereo = true;
+                if (current_Combo_State == ComboState.AIRCOMBO1)
+                {
+                    AddToTheList(ComboState.AIRCOMBO1);
+                }
+                if (current_Combo_State == ComboState.AIRCOMBO2)
+                {
+                    AddToTheList(ComboState.AIRCOMBO2);
+                }
+                if (current_Combo_State == ComboState.AIRCOMBO3)
+                {
+                    AddToTheList(ComboState.AIRCOMBO3);
+                }
+                if (current_Combo_State == ComboState.AIRCOMBO4)
+                {
+                    AddToTheList(ComboState.AIRCOMBO4);
+                }
+                if (current_Combo_State == ComboState.AIRCOMBO5)
+                {
+                    AddToTheList(ComboState.AIRCOMBO5);
+                }
             }
         }
         if (Input.GetKeyDown(KeyCode.S))
