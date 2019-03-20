@@ -18,7 +18,7 @@ public class PlayerAttack2 : MonoBehaviour
         AIRCOMBO,
         SOLO
     }
-    private CharacterAnimation player_Anim;
+    public CharacterAnimation player_Anim;
     private PlayerMovementBeat player_Move;
     private bool activateTimerToReset;
     public bool is_Player;

@@ -68,7 +68,7 @@ public class CharacterAnimation : MonoBehaviour
     }
     public void AirCombo()
     {
-        anim.SetTrigger("AirCombo");
+        anim.SetTrigger("AirCombo1");
     }
     public void Solo()
     {
