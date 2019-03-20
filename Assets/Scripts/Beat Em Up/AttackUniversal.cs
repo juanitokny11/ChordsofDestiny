@@ -51,7 +51,6 @@ public class AttackUniversal : MonoBehaviour
                         damage = 3;
                     hit[0].GetComponent<HealthScript>().ApplyDamage(damage, false);
                     hit[0].GetComponent<BoxCollider>().enabled=true;
-                    //hit[0].GetComponent<EnemyMovement>.
                 }
             }
             if (is_Enemy)
