@@ -19,7 +19,7 @@ public class EnemyMovement : MonoBehaviour
     public float chase_Player_After_Attack = 1f;
     public float counter = 0f;
     private float current_Attack_Time;
-    private float default_Attack_Time = 2.0f;
+    private float default_Attack_Time;
 
     public bool followPlayer, attackPlayer;
 
@@ -31,6 +31,7 @@ public class EnemyMovement : MonoBehaviour
         enemyAnim = GetComponent<CharacterAnimation>();
         myBody = GetComponent<Rigidbody>();
         col = GetComponent<BoxCollider>();
+        default_Attack_Time = Random.Range(4.0f, 7.0f);
         healthScript = GetComponent<HealthScript>();
         playerTarget = GameObject.FindWithTag("Player").transform;
     }
@@ -41,7 +42,8 @@ public class EnemyMovement : MonoBehaviour
     }
     void Update()
     {
-        if(healthScript.characterDied)
+        default_Attack_Time = Random.Range(4.0f, 7.0f);
+        if (healthScript.characterDied)
         {
             this.enabled = false;
         }
