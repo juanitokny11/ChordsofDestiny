@@ -55,8 +55,7 @@ public class MenuManager : MonoBehaviour {
     }
     public void Pause()
     {
-         MyGameManager.getInstance().Pausa();
-         
+        BeatEmupManager.instance.Pausa();
     }
     public void ChangeScene()
     {

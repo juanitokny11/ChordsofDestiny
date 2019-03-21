@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7681250173831088831
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8859295019885353718}
+  - component: {fileID: 4282803218204662193}
+  m_Layer: 8
+  m_Name: Guard
+  m_TagString: Defense
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8859295019885353718
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7681250173831088831}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.06, y: 0, z: -0.78}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8939311919185665388}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4282803218204662193
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7681250173831088831}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.16540867, y: 3.4257457, z: 1.4562293}
+  m_Center: {x: 0.18879235, y: 1.7459582, z: 0.7878681}
 --- !u!1 &8939311917188886940
 GameObject:
   m_ObjectHideFlags: 0
@@ -6525,7 +6569,7 @@ Transform:
   m_Children:
   - {fileID: 8939311918793403839}
   m_Father: {fileID: 8939311919185665388}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &8939311918806736625
 BoxCollider:
@@ -6848,7 +6892,7 @@ Transform:
   m_LocalScale: {x: 0.06481823, y: 0.064818226, z: 0.06481823}
   m_Children: []
   m_Father: {fileID: 8939311919185665388}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8939311918985489738
 MonoBehaviour:
@@ -7119,6 +7163,7 @@ Transform:
   - {fileID: 8939311917866010813}
   - {fileID: 8939311918797009126}
   - {fileID: 8939311918716139941}
+  - {fileID: 8859295019885353718}
   - {fileID: 8939311918806736638}
   - {fileID: 8939311918985489739}
   m_Father: {fileID: 0}
@@ -7253,6 +7298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attacks: 
+  guardCollider: {fileID: 0}
   player_Anim: {fileID: 0}
   is_Player: 0
 --- !u!114 &1642604618997778030
@@ -7269,6 +7315,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attacks: 
   player_anim: {fileID: 0}
+  anim: {fileID: 0}
+  Attack: 1
 --- !u!114 &4554496321350749296
 MonoBehaviour:
   m_ObjectHideFlags: 0

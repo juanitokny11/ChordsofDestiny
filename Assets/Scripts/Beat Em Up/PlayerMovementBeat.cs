@@ -89,10 +89,10 @@ public class PlayerMovementBeat : MonoBehaviour
         }
     }
     void DetectMovement()
-    { 
+    {
         myBody.velocity = new Vector3(Input.GetAxisRaw("Horizontal") * (-run_Speed), myBody.velocity.y, Input.GetAxisRaw("Vertical")* (-z_Speed) );
         if (Input.GetAxisRaw("Jump") != 0)
-            myBody.velocity =new Vector3( myBody.velocity.x, Input.GetAxisRaw("Jump") * newPosition.y, myBody.velocity.z); 
+            myBody.velocity =new Vector3( myBody.velocity.x, Input.GetAxisRaw("Jump") * newPosition.y, myBody.velocity.z);
     }
     void RotatePlayer()
     {

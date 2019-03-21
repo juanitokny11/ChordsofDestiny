@@ -36,16 +36,16 @@ public class HealthScript : MonoBehaviour
         if (health <= 0)
         {
             animationScript.Death();
-            characterDied = true;
-            
             if (is_Player)
             {
                 GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyMovement>().enabled = false;
+                animationScript.Death();
             }
             else
             {
                zone.enemiescounter--;
             }
+            characterDied = true;
             return;
         }
         if (!is_Player)

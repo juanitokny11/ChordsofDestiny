@@ -62,7 +62,10 @@ public class EnemyMovement : MonoBehaviour
     void FollowTarget()
     {
         if (!followPlayer || healthScript.characterDied  || !BeatEmupManager.instance.godmode)
+        {
+            speed = 0;
             return;
+        }
         if (Vector3.Distance(transform.position, playerTarget.position) < chaseDistance && Vector3.Distance(transform.position, playerTarget.position) > attack_Distance)
         {
             transform.LookAt(playerTarget);

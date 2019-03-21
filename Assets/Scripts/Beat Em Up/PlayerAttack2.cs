@@ -22,6 +22,7 @@ public class PlayerAttack2 : MonoBehaviour
         AIRCOMBO5,
         SOLO
     }
+    public BoxCollider guardCollider;
     public CharacterAnimation player_Anim;
     private PlayerMovementBeat player_Move;
     private bool activateTimerToReset;
@@ -29,16 +30,18 @@ public class PlayerAttack2 : MonoBehaviour
     private float default_Combo_Timer = 0.95f;
     private float current_Combo_Timer;
 
-    private ComboState current_Combo_State;
+    public ComboState current_Combo_State;
 
     // Start is called before the first frame update
     void Awake()
     {
+        guardCollider =GetComponentInChildren<BoxCollider>();
         player_Anim = GetComponent<CharacterAnimation>();
         player_Move = GetComponent<PlayerMovementBeat>();
     }
     void Start()
     {
+        guardCollider.enabled = false;
         current_Combo_Timer = default_Combo_Timer;
         current_Combo_State = ComboState.NONE;
     }
@@ -145,13 +148,21 @@ public class PlayerAttack2 : MonoBehaviour
         {
             current_Combo_State = ComboState.GUARD;
             if (current_Combo_State == ComboState.GUARD)
+            {
                 player_Anim.Block();
+                guardCollider.enabled = true;
+                player_Move.enabled = false;
+            } 
         }
         else if (Input.GetKeyUp(KeyCode.F))
         {
             current_Combo_State = ComboState.GUARD;
             if (current_Combo_State == ComboState.GUARD)
+            {
                 player_Anim.ResetBlock();
+                guardCollider.enabled = false;
+                player_Move.enabled = true;
+            }
         }
     }
     void ResetComboState()
