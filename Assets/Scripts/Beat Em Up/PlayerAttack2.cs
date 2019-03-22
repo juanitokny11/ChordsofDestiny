@@ -55,32 +55,37 @@ public class PlayerAttack2 : MonoBehaviour
        
         if (Input.GetKeyDown(KeyCode.A))
         {
-            if (current_Combo_State == ComboState.DEBIL3 || current_Combo_State == ComboState.FUERTE2 || current_Combo_State == ComboState.FUERTE3 || current_Combo_State == ComboState.GUARD || current_Combo_State == ComboState.SOLO)
+            if (current_Combo_State == ComboState.DEBIL3 || current_Combo_State == ComboState.FUERTE2 || current_Combo_State == ComboState.FUERTE3 || current_Combo_State == ComboState.GUARD || current_Combo_State == ComboState.SOLO || current_Combo_State == ComboState.AIRCOMBO5)
                 return;
             if (current_Combo_State == ComboState.FUERTE)
                 current_Combo_State = ComboState.DEBIL;
-            current_Combo_State++;
-            activateTimerToReset = true;
-            current_Combo_Timer = default_Combo_Timer;
-            if (!player_Move.inAir) { 
-                if (current_Combo_State == ComboState.DEBIL)
+            if (!player_Move.inAir) {
+                current_Combo_State++;
+                activateTimerToReset = true;
+                current_Combo_Timer = default_Combo_Timer;
+                if (current_Combo_State == ComboState.DEBIL && !player_Move.inAir)
                 {
-                    //player_Anim.Debil();
                     AddToTheList(ComboState.DEBIL);
                 }
-                if (current_Combo_State == ComboState.DEBIL2)
+                if (current_Combo_State == ComboState.DEBIL2 && !player_Move.inAir)
                 {
-                    //player_Anim.Debil2();
                     AddToTheList(ComboState.DEBIL2);
                 }
-                if (current_Combo_State == ComboState.DEBIL3)
+                if (current_Combo_State == ComboState.DEBIL3 && !player_Move.inAir)
                 {
-                    //player_Anim.Debil3();
                     AddToTheList(ComboState.DEBIL3);
                 }
             }
             else if (player_Move.inAir)
             {
+                if (current_Combo_State == ComboState.NONE)
+                {
+                    current_Combo_State = ComboState.AIRCOMBO1;
+                }
+                else if (current_Combo_State == ComboState.AIRCOMBO1 || current_Combo_State == ComboState.AIRCOMBO2 || current_Combo_State == ComboState.AIRCOMBO3 || current_Combo_State == ComboState.AIRCOMBO4 && player_Move.inAir)
+                    current_Combo_State++;
+                activateTimerToReset = true;
+                current_Combo_Timer = default_Combo_Timer;
                 player_Move.comboAereo = true;
                 if (current_Combo_State == ComboState.AIRCOMBO1)
                 {
@@ -110,30 +115,23 @@ public class PlayerAttack2 : MonoBehaviour
                 return;
             if (current_Combo_State == ComboState.NONE)
                 current_Combo_State = ComboState.FUERTE;
-            else if (current_Combo_State == ComboState.FUERTE || current_Combo_State == ComboState.FUERTE2)
+            else if (current_Combo_State == ComboState.FUERTE || current_Combo_State == ComboState.FUERTE2 && !player_Move.inAir)
                 current_Combo_State++;
-            else if (current_Combo_State == ComboState.DEBIL || current_Combo_State == ComboState.DEBIL2)
+            else if (current_Combo_State == ComboState.DEBIL || current_Combo_State == ComboState.DEBIL2 && !player_Move.inAir)
                 current_Combo_State = ComboState.FUERTE2;
             activateTimerToReset = true;
             current_Combo_Timer = default_Combo_Timer;
             if (current_Combo_State == ComboState.FUERTE)
             {
-                //player_Anim.Fuerte();
                 AddToTheList(ComboState.FUERTE);
             }
             if (current_Combo_State == ComboState.FUERTE2)
             {
-                //player_Anim.Fuerte2();
                 AddToTheList(ComboState.FUERTE2);
             }
             if (current_Combo_State == ComboState.FUERTE3)
             {
-                //player_Anim.Fuerte3();
                 AddToTheList(ComboState.FUERTE3);
-            }
-            if (player_Move.inAir == true)
-            {
-                player_Move.comboAereo = true;
             }
         }
         if (Input.GetKeyDown(KeyCode.D))

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovementBeat : MonoBehaviour
 {
     private CharacterAnimation player_Anim;
+    private Animator anim;
     private Rigidbody myBody;
     public bool inAir = false;
     public bool comboAereo = false;
@@ -17,6 +18,7 @@ public class PlayerMovementBeat : MonoBehaviour
     public float rotation_Speed = 15f;
     private void Awake()
     {
+        anim = GetComponent<Animator>();
         transform.rotation = Quaternion.Euler(0, 0, 0);
         myBody = GetComponent<Rigidbody>();
         player_Anim = GetComponent<CharacterAnimation>();
@@ -29,6 +31,7 @@ public class PlayerMovementBeat : MonoBehaviour
         AnimatePlayerWalk();
         if (BeatEmupManager.instance.godmode == true)
             AnimatePlayerJump();
+        //AnimateResetJump();
     }
     void FixedUpdate()
     {
@@ -91,8 +94,8 @@ public class PlayerMovementBeat : MonoBehaviour
     void DetectMovement()
     {
         myBody.velocity = new Vector3(Input.GetAxisRaw("Horizontal") * (-run_Speed), myBody.velocity.y, Input.GetAxisRaw("Vertical")* (-z_Speed) );
-        if (Input.GetAxisRaw("Jump") != 0)
-            myBody.velocity =new Vector3( myBody.velocity.x, Input.GetAxisRaw("Jump") * newPosition.y, myBody.velocity.z);
+        //if (Input.GetAxisRaw("Jump") != 0)
+            //myBody.velocity =new Vector3( myBody.velocity.x, Input.GetAxisRaw("Jump") * newPosition.y, myBody.velocity.z);
     }
     void RotatePlayer()
     {
@@ -129,10 +132,14 @@ public class PlayerMovementBeat : MonoBehaviour
         {
            
         }
-        else
+        else if (!comboAereo)
         {
             player_Anim.ResetJump();
             inAir = false;
         }
+    }
+    void ComboAereoRealizado()
+    {
+        comboAereo = false;
     }
 }
