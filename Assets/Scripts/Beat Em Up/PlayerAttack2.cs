@@ -22,6 +22,7 @@ public class PlayerAttack2 : MonoBehaviour
         AIRCOMBO5,
         SOLO
     }
+    public PlayerAttackList attackList;
     public BoxCollider guardCollider;
     public CharacterAnimation player_Anim;
     private PlayerMovementBeat player_Move;
@@ -35,7 +36,8 @@ public class PlayerAttack2 : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        guardCollider =GetComponentInChildren<BoxCollider>();
+        attackList = GetComponent<PlayerAttackList>();
+        guardCollider =GameObject.FindGameObjectWithTag("Defense").GetComponent<BoxCollider>();
         player_Anim = GetComponent<CharacterAnimation>();
         player_Move = GetComponent<PlayerMovementBeat>();
     }
@@ -150,6 +152,7 @@ public class PlayerAttack2 : MonoBehaviour
                 player_Anim.Block();
                 guardCollider.enabled = true;
                 player_Move.enabled = false;
+                //attackList.RemoveAllList();
             } 
         }
         else if (Input.GetKeyUp(KeyCode.F))
@@ -160,6 +163,7 @@ public class PlayerAttack2 : MonoBehaviour
                 player_Anim.ResetBlock();
                 guardCollider.enabled = false;
                 player_Move.enabled = true;
+                current_Combo_State = ComboState.NONE;
             }
         }
     }

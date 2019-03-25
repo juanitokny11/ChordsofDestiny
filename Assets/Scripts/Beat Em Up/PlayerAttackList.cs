@@ -118,7 +118,7 @@ public class PlayerAttackList : MonoBehaviour
         Attack = true;
         attacks.RemoveAt(0);
     }
-    private void RemoveAllList()
+    public void RemoveAllList()
     {
         attacks.RemoveRange(0,attacks.Count);
     }

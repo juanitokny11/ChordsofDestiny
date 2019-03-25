@@ -8,9 +8,13 @@ public class AttackUniversal : MonoBehaviour
     public float radius = 1f;
     public float damage = 2f;
     public HealthScript healthScript;
+    public CharacterAnimation enemyAnim;
     public bool is_Player, is_Enemy;
     public GameObject hit_Fx_Prefab;
-
+    private void Start()
+    {
+        enemyAnim = GetComponentInParent<CharacterAnimation>();
+    }
     void Update()
     {
         DetectColision();
@@ -55,7 +59,14 @@ public class AttackUniversal : MonoBehaviour
             }
             if (is_Enemy)
             {
-                hit[0].GetComponent<HealthScript>().ApplyDamage(damage, false);
+                if (hit[0].gameObject.CompareTag("Defense"))
+                {
+                    enemyAnim.Block();
+                }
+                else
+                {
+                    hit[0].GetComponentInParent<HealthScript>().ApplyDamage(damage, false);
+                }
                 damage = 2;
             }
             gameObject.SetActive(false);

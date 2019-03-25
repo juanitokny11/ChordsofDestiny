@@ -117,6 +117,10 @@ public class CharacterAnimationDelegate : MonoBehaviour
     {
         transform.gameObject.layer = 11;
     }
+    void DamageforPlayer()
+    {
+        transform.gameObject.layer = 8;
+    }
     void ShakeOnFall()
     {
         shakeCamera.ShouldShake=true;

@@ -132,6 +132,5 @@ public class CharacterAnimation : MonoBehaviour
     public void StandUp()
     {
         anim.SetTrigger("StandUp");
-
     }
 }
