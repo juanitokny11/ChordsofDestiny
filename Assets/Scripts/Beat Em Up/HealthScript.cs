@@ -5,6 +5,7 @@ using UnityEngine;
 public class HealthScript : MonoBehaviour
 {
     public float health = 100f;
+    public float solo = 0f;
     public BattleZone zone;
     private CharacterAnimation animationScript;
     private EnemyMovement enemyMovement;
@@ -29,8 +30,11 @@ public class HealthScript : MonoBehaviour
         if (characterDied)
             return;
         health -= damage;
-        if(is_Player)
+        if (is_Player)
+        { 
             health_UI.DisplayHealth(health);
+            health_UI.DisplaySolo(solo);
+        }
         else if(!is_Player)
             enemy_Health_UI.DisplayHealth(health);
         if (health <= 0)

@@ -55,7 +55,7 @@ public class PlayerAttack2 : MonoBehaviour
     void ComboAttacks()
     {
        
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetAxisRaw("AtaqueDebil") != 0)
         {
             if (current_Combo_State == ComboState.DEBIL3 || current_Combo_State == ComboState.FUERTE2 || current_Combo_State == ComboState.FUERTE3 || current_Combo_State == ComboState.GUARD || current_Combo_State == ComboState.SOLO || current_Combo_State == ComboState.AIRCOMBO5)
                 return;
@@ -111,7 +111,7 @@ public class PlayerAttack2 : MonoBehaviour
                 }
             }
         }
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetAxisRaw("AtaqueFuerte") != 0)
         {
             if (current_Combo_State == ComboState.FUERTE3 || current_Combo_State == ComboState.DEBIL3 || current_Combo_State == ComboState.GUARD || current_Combo_State == ComboState.SOLO)
                 return;
@@ -136,15 +136,25 @@ public class PlayerAttack2 : MonoBehaviour
                 AddToTheList(ComboState.FUERTE3);
             }
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetAxisRaw("Evadir") != 0 && Input.GetAxisRaw("Disparar") != 0)
         {
             current_Combo_State = ComboState.SOLO;
             if (current_Combo_State == ComboState.SOLO && !player_Move.inAir)
             {
                 player_Anim.Solo();
+                /*if (cursolo >= Maxsolo)
+                {
+                    //cursolo = 0;
+                    soloefect.SetActive(true);
+                    soloefectanim.Play("soloanim", -1, 0);
+                    //Invoke("ResetAnim", 1f);
+                    //soloBar.fillAmount = cursolo / Maxsolo;
+                    Invoke("DesActivarColisiones", 0.1f);
+                }
+                Invoke("ActivarColisiones", 2f);*/
             }
         }
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F)|| Input.GetAxisRaw("Evadir") != 0 && Input.GetAxisRaw("Disparar") == 0)
         {
             current_Combo_State = ComboState.GUARD;
             if (current_Combo_State == ComboState.GUARD)
@@ -152,10 +162,9 @@ public class PlayerAttack2 : MonoBehaviour
                 player_Anim.Block();
                 guardCollider.enabled = true;
                 player_Move.enabled = false;
-                //attackList.RemoveAllList();
             } 
         }
-        else if (Input.GetKeyUp(KeyCode.F))
+        else if (Input.GetKeyUp(KeyCode.F) || Input.GetAxisRaw("Evadir") != 0 && Input.GetAxisRaw("Disparar") == 0)
         {
             current_Combo_State = ComboState.GUARD;
             if (current_Combo_State == ComboState.GUARD)
@@ -164,6 +173,7 @@ public class PlayerAttack2 : MonoBehaviour
                 guardCollider.enabled = false;
                 player_Move.enabled = true;
                 current_Combo_State = ComboState.NONE;
+                //attackList.RemoveAllList();
             }
         }
     }
