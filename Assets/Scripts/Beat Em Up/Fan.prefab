@@ -48,7 +48,9 @@ MonoBehaviour:
     m_Bits: 256
   radius: 0.52
   damage: 2
+  healthUI: {fileID: 0}
   healthScript: {fileID: 529679432936595976}
+  enemyAnim: {fileID: 0}
   is_Player: 0
   is_Enemy: 1
   hit_Fx_Prefab: {fileID: 0}
@@ -1000,7 +1002,7 @@ MonoBehaviour:
   mainCamera_col: {fileID: 0}
   mainCamera_col2: {fileID: 0}
   chaseDistance: 25
-  attack_Distance: 3.5
+  attack_Distance: 4
   chase_Player_After_Attack: 1
   counter: 0
   followPlayer: 0
@@ -1029,8 +1031,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c91eba892efdd41889830f661e5570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 15
+  solo: 0
   zone: {fileID: 0}
+  canDoSolo: 0
   characterDied: 0
   inAir: 0
   is_Player: 0

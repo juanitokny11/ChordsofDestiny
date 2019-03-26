@@ -7,6 +7,7 @@ public class AttackUniversal : MonoBehaviour
     public LayerMask colisionLayer;
     public float radius = 1f;
     public float damage = 2f;
+    public HealthUI healthUI;
     public HealthScript healthScript;
     public CharacterAnimation enemyAnim;
     public bool is_Player, is_Enemy;
@@ -14,6 +15,7 @@ public class AttackUniversal : MonoBehaviour
     private void Start()
     {
         enemyAnim = GetComponentInParent<CharacterAnimation>();
+        healthUI = GetComponentInParent<HealthUI>();
     }
     void Update()
     {
@@ -38,11 +40,14 @@ public class AttackUniversal : MonoBehaviour
                 {
                     healthScript.inAir = false;
                     damage = 4;
+                    healthScript.solo += damage;
+                    healthUI.DisplaySolo(healthScript.solo/2);
                     hit[0].GetComponent<BoxCollider>().enabled = true;
                 }
                   else if (gameObject.CompareTag("Levantar"))
                 {
                     damage = 4;
+                    healthUI.DisplaySolo(healthScript.solo / 2);
                     hit[0].GetComponent<HealthScript>().ApplyDamage(damage, true);
                     healthScript.inAir = true;
                     hit[0].GetComponent<BoxCollider>().enabled = true;
@@ -50,9 +55,15 @@ public class AttackUniversal : MonoBehaviour
                 else
                 {
                     if (gameObject.CompareTag("pesado"))
+                    {
                         damage = 4;
+                    }
                     else if (gameObject.CompareTag("ligero"))
+                    {
                         damage = 3;
+                    }
+                    healthScript.solo += damage;
+                    healthUI.DisplaySolo(healthScript.solo / 2);
                     hit[0].GetComponent<HealthScript>().ApplyDamage(damage, false);
                     hit[0].GetComponent<BoxCollider>().enabled=true;
                 }

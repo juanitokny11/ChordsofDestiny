@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HealthUI : MonoBehaviour
 {
     private Image HealthBar;
-    private Image SoloBar;
+    public Image SoloBar;
     void Awake()
     {
         HealthBar = GameObject.FindGameObjectWithTag("HealthUI").GetComponent<Image>();
@@ -24,6 +24,6 @@ public class HealthUI : MonoBehaviour
         value /= 100;
         if (value < 0)
             value = 0;
-        HealthBar.fillAmount = value;
+        SoloBar.fillAmount = value;
     }
 }

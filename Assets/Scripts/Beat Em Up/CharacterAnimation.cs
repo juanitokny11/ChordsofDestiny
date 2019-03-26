@@ -6,6 +6,7 @@ public class CharacterAnimation : MonoBehaviour
 {
     private Animator anim;
     AnimatorStateInfo stateInfo;
+    public bool is_Groupie;
     void Awake()
     {
         anim = GetComponent<Animator>();
@@ -13,13 +14,24 @@ public class CharacterAnimation : MonoBehaviour
     private void OnAnimatorMove()
     {
         stateInfo = anim.GetCurrentAnimatorStateInfo(0);
-        if (!stateInfo.IsTag("Run"))
+        if (!stateInfo.IsTag("Run") && !is_Groupie)
         {
             anim.applyRootMotion = false;
         }
         else
         {
             anim.applyRootMotion = true;
+        }
+        if (is_Groupie)
+        {
+            if (!stateInfo.IsTag("Atack"))
+            {
+                anim.applyRootMotion = false;
+            }
+            else
+            {
+                anim.applyRootMotion = true;
+            }
         }
     }
     public void Run(bool Run)

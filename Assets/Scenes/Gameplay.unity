@@ -909,6 +909,10 @@ PrefabInstance:
       propertyPath: attack_Distance
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 452187334, guid: 6faa2ed7105ee11409305d53fa85d8e3, type: 3}
+      propertyPath: is_Groupie
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6faa2ed7105ee11409305d53fa85d8e3, type: 3}
 --- !u!1 &496665908 stripped
@@ -1019,7 +1023,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &538773478
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1080,7 +1084,7 @@ MonoBehaviour:
   - {fileID: 667814958}
   - {fileID: 940860613}
   id: 0
-  enemiescounter: 0
+  enemiescounter: 4
 --- !u!1001 &539459423
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2513,6 +2517,16 @@ PrefabInstance:
     - target: {fileID: 224646032363847510, guid: 303c9a61fe9fd4845b7866e88b4417f6,
         type: 3}
       propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839953746862109235, guid: 303c9a61fe9fd4845b7866e88b4417f6,
+        type: 3}
+      propertyPath: m_TagString
+      value: SoloBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 1761482115713080298, guid: 303c9a61fe9fd4845b7866e88b4417f6,
+        type: 3}
+      propertyPath: m_FillAmount
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5383,6 +5397,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fan
       objectReference: {fileID: 0}
+    - target: {fileID: 4495394842458842751, guid: 4d97cb1edb1ab7a46907c64c34c60691,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4667978303675759668, guid: 4d97cb1edb1ab7a46907c64c34c60691,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5440,19 +5459,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 529679432936595976, guid: 4d97cb1edb1ab7a46907c64c34c60691,
         type: 3}
-      propertyPath: health
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 3323991855571280169, guid: 4d97cb1edb1ab7a46907c64c34c60691,
-        type: 3}
-      propertyPath: attack_Distance
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7222944939756551885, guid: 4d97cb1edb1ab7a46907c64c34c60691,
-        type: 3}
-      propertyPath: colisionLayer.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
+      propertyPath: zone
+      value: 
+      objectReference: {fileID: 538773481}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d97cb1edb1ab7a46907c64c34c60691, type: 3}
 --- !u!1001 &8939311918030938153
@@ -5520,6 +5529,16 @@ PrefabInstance:
     - target: {fileID: 8939311919185665388, guid: 32d3847095fd90f41bc2db0671913dc6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4554496321350749296, guid: 32d3847095fd90f41bc2db0671913dc6,
+        type: 3}
+      propertyPath: solo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4554496321350749296, guid: 32d3847095fd90f41bc2db0671913dc6,
+        type: 3}
+      propertyPath: canDoSolo
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

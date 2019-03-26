@@ -11,6 +11,7 @@ public class HealthScript : MonoBehaviour
     private EnemyMovement enemyMovement;
     private HealthUI health_UI;
     private EnemyHealthUI enemy_Health_UI;
+    public bool canDoSolo = false;
     public bool characterDied;
     public bool inAir=false;
 
@@ -25,6 +26,20 @@ public class HealthScript : MonoBehaviour
             enemy_Health_UI = GetComponent<EnemyHealthUI>();
 
     }
+    private void Update()
+    {
+        if (solo >= 100)
+        {
+            if (is_Player)
+            {
+                canDoSolo = true;
+            }
+        }
+        else
+        {
+            canDoSolo = false;
+        }
+    }
     public void ApplyDamage(float damage,bool knockDown)
     {
         if (characterDied)
@@ -33,7 +48,6 @@ public class HealthScript : MonoBehaviour
         if (is_Player)
         { 
             health_UI.DisplayHealth(health);
-            health_UI.DisplaySolo(solo);
         }
         else if(!is_Player)
             enemy_Health_UI.DisplayHealth(health);

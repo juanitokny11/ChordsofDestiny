@@ -22,6 +22,10 @@ public class PlayerAttack2 : MonoBehaviour
         AIRCOMBO5,
         SOLO
     }
+    public bool blockActivated = false;
+    public GameObject Solocol;
+    public HealthScript healthScript;
+    public HealthUI healthUI;
     public PlayerAttackList attackList;
     public BoxCollider guardCollider;
     public CharacterAnimation player_Anim;
@@ -40,9 +44,13 @@ public class PlayerAttack2 : MonoBehaviour
         guardCollider =GameObject.FindGameObjectWithTag("Defense").GetComponent<BoxCollider>();
         player_Anim = GetComponent<CharacterAnimation>();
         player_Move = GetComponent<PlayerMovementBeat>();
+        healthScript = GetComponent<HealthScript>();
+        healthUI = GetComponent<HealthUI>();
     }
     void Start()
     {
+        Solocol = GameObject.FindGameObjectWithTag("Solo");
+        Solocol.SetActive(false);
         guardCollider.enabled = false;
         current_Combo_Timer = default_Combo_Timer;
         current_Combo_State = ComboState.NONE;
@@ -55,7 +63,7 @@ public class PlayerAttack2 : MonoBehaviour
     void ComboAttacks()
     {
        
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetAxisRaw("AtaqueDebil") != 0)
+        if (Input.GetButtonDown("AtaqueDebil"))
         {
             if (current_Combo_State == ComboState.DEBIL3 || current_Combo_State == ComboState.FUERTE2 || current_Combo_State == ComboState.FUERTE3 || current_Combo_State == ComboState.GUARD || current_Combo_State == ComboState.SOLO || current_Combo_State == ComboState.AIRCOMBO5)
                 return;
@@ -111,7 +119,7 @@ public class PlayerAttack2 : MonoBehaviour
                 }
             }
         }
-        if (Input.GetKeyDown(KeyCode.S) || Input.GetAxisRaw("AtaqueFuerte") != 0)
+        if (Input.GetButtonDown("AtaqueFuerte"))
         {
             if (current_Combo_State == ComboState.FUERTE3 || current_Combo_State == ComboState.DEBIL3 || current_Combo_State == ComboState.GUARD || current_Combo_State == ComboState.SOLO)
                 return;
@@ -136,25 +144,22 @@ public class PlayerAttack2 : MonoBehaviour
                 AddToTheList(ComboState.FUERTE3);
             }
         }
-        if (Input.GetKeyDown(KeyCode.D) || Input.GetAxisRaw("Evadir") != 0 && Input.GetAxisRaw("Disparar") != 0)
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetAxisRaw("Evadir") == 1 && Input.GetAxisRaw("Disparar") == 1)
         {
-            current_Combo_State = ComboState.SOLO;
-            if (current_Combo_State == ComboState.SOLO && !player_Move.inAir)
+            if ( !player_Move.inAir && healthScript.canDoSolo==true)
             {
+                current_Combo_State = ComboState.SOLO;
                 player_Anim.Solo();
-                /*if (cursolo >= Maxsolo)
-                {
-                    //cursolo = 0;
-                    soloefect.SetActive(true);
-                    soloefectanim.Play("soloanim", -1, 0);
-                    //Invoke("ResetAnim", 1f);
-                    //soloBar.fillAmount = cursolo / Maxsolo;
-                    Invoke("DesActivarColisiones", 0.1f);
-                }
-                Invoke("ActivarColisiones", 2f);*/
+                //Solocol.SetActive(true);
+                //soloefect.SetActive(true);
+                //soloefectanim.Play("soloanim", -1, 0);
+                healthScript.solo = 0f;
+                healthUI.SoloBar.fillAmount = healthScript.solo / 100;
+                Invoke("DesActivarColisiones", 0.1f);
+                Invoke("ActivarColisiones", 2f);
             }
         }
-        if (Input.GetKeyDown(KeyCode.F)|| Input.GetAxisRaw("Evadir") != 0 && Input.GetAxisRaw("Disparar") == 0)
+        if (Input.GetAxisRaw("Evadir") == 1 && !blockActivated)
         {
             current_Combo_State = ComboState.GUARD;
             if (current_Combo_State == ComboState.GUARD)
@@ -162,9 +167,10 @@ public class PlayerAttack2 : MonoBehaviour
                 player_Anim.Block();
                 guardCollider.enabled = true;
                 player_Move.enabled = false;
+                blockActivated = true;
             } 
         }
-        else if (Input.GetKeyUp(KeyCode.F) || Input.GetAxisRaw("Evadir") != 0 && Input.GetAxisRaw("Disparar") == 0)
+        else if ( Input.GetAxisRaw("Evadir") == 0 && blockActivated)
         {
             current_Combo_State = ComboState.GUARD;
             if (current_Combo_State == ComboState.GUARD)
@@ -172,6 +178,7 @@ public class PlayerAttack2 : MonoBehaviour
                 player_Anim.ResetBlock();
                 guardCollider.enabled = false;
                 player_Move.enabled = true;
+                blockActivated = false;
                 current_Combo_State = ComboState.NONE;
                 //attackList.RemoveAllList();
             }
@@ -195,4 +202,18 @@ public class PlayerAttack2 : MonoBehaviour
     {
         attacks.Add(state);
     }
+    private void ActivarColisiones()
+    {
+        this.gameObject.layer = 8;
+        //soloefect.SetActive(false);
+        current_Combo_State = ComboState.NONE;
+        Solocol.SetActive(false);
+
+    }
+    private void DesActivarColisiones()
+    {
+        this.gameObject.layer = 1;
+        Solocol.SetActive(true);
+    }
 }
+

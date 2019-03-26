@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5388633113527815788
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7838194074370216321}
+  - component: {fileID: 7295175928704558466}
+  m_Layer: 8
+  m_Name: SoloColider
+  m_TagString: Solo
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7838194074370216321
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5388633113527815788}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8939311918716989364}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &7295175928704558466
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5388633113527815788}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3.7471895
+  m_Center: {x: 0, y: 0, z: -2}
 --- !u!1 &7681250173831088831
 GameObject:
   m_ObjectHideFlags: 0
@@ -1691,6 +1735,7 @@ Transform:
   - {fileID: 8939311918114366519}
   - {fileID: 8939311917559612115}
   - {fileID: 8939311918806736638}
+  - {fileID: 7838194074370216321}
   m_Father: {fileID: 8939311919185665388}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -65.45412, y: -3.1332064, z: 94.39156}
@@ -7209,6 +7254,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attacks: 
+  Solocol: {fileID: 0}
+  healthScript: {fileID: 0}
+  healthUI: {fileID: 0}
+  attackList: {fileID: 0}
   guardCollider: {fileID: 0}
   player_Anim: {fileID: 0}
   is_Player: 1
@@ -7242,7 +7291,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  solo: 0
   zone: {fileID: 0}
+  canDoSolo: 0
   characterDied: 0
   inAir: 0
   is_Player: 1
@@ -7258,6 +7309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9f0e8913f3fe8e41a79614d198da59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SoloBar: {fileID: 0}
 --- !u!65 &1139394450
 BoxCollider:
   m_ObjectHideFlags: 0
