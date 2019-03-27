@@ -627,7 +627,7 @@ GameObject:
   - component: {fileID: 359579192}
   - component: {fileID: 359579191}
   m_Layer: 0
-  m_Name: Tool
+  m_Name: DecalTool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -642,15 +642,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 359579190}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2980c9fdf513ba41a03891ff99f7d94, type: 3}
+  m_Script: {fileID: 11500000, guid: d5c9ba8ca1bee9b42ac51baf56e9a3d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Prefab: []
-  m_Offset: 0.009
-  m_LayerMask:
+  m_Floor: []
+  m_GridXFloor: 2
+  m_GridZFloor: 2
+  m_HeightFloor: 0
+  m_FloorPrefab: {fileID: 0}
+  m_FloorInstance: {fileID: 0}
+  m_SelectedBrush: 0
+  m_BrushName: []
+  m_DecalGameObject: {fileID: 0}
+  m_DecalBrushes: []
+  m_DecalOffset: 0.009
+  m_DecalLayerMask:
     serializedVersion: 2
     m_Bits: 65535
-  m_Distance: 50
+  m_DecalDistance: 50
 --- !u!4 &359579192
 Transform:
   m_ObjectHideFlags: 0
