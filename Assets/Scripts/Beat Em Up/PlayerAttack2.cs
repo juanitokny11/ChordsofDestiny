@@ -166,7 +166,6 @@ public class PlayerAttack2 : MonoBehaviour
             {
                 player_Anim.Block();
                 guardCollider.enabled = true;
-                player_Move.enabled = false;
                 blockActivated = true;
             } 
         }
@@ -177,7 +176,6 @@ public class PlayerAttack2 : MonoBehaviour
             {
                 player_Anim.ResetBlock();
                 guardCollider.enabled = false;
-                player_Move.enabled = true;
                 blockActivated = false;
                 current_Combo_State = ComboState.NONE;
                 //attackList.RemoveAllList();

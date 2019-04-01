@@ -13,24 +13,15 @@ public class CharacterAnimation : MonoBehaviour
     }
     private void OnAnimatorMove()
     {
-        stateInfo = anim.GetCurrentAnimatorStateInfo(0);
-        if (!stateInfo.IsTag("Run") && !is_Groupie)
-        {
-            anim.applyRootMotion = false;
-        }
-        else
-        {
-            anim.applyRootMotion = true;
-        }
         if (is_Groupie)
         {
-            if (!stateInfo.IsTag("Atack"))
+            if (stateInfo.IsName("Atack") || stateInfo.IsName("atack2"))
             {
-                anim.applyRootMotion = false;
+                anim.applyRootMotion = true;
             }
             else
             {
-                anim.applyRootMotion = true;
+                anim.applyRootMotion = false;
             }
         }
     }

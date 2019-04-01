@@ -65,7 +65,7 @@ AnimatorController:
     m_Controller: {fileID: 0}
   - m_Name: Runspeed
     m_Type: 1
-    m_DefaultFloat: 8
+    m_DefaultFloat: 6
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
@@ -362,20 +362,17 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: ResetJump
-    m_EventTreshold: 0
+  m_Conditions: []
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102841240978792924}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
-  m_TransitionOffset: 0
-  m_ExitTime: 0.6938776
-  m_HasExitTime: 0
+  m_TransitionDuration: 0.5906667
+  m_TransitionOffset: 0.09
+  m_ExitTime: 1.1
+  m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -1367,7 +1364,7 @@ AnimatorStateMachine:
     m_Position: {x: -708, y: 312, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102841240978792924}
-    m_Position: {x: -732, y: 168, z: 0}
+    m_Position: {x: -612, y: 216, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102238343433083092}
     m_Position: {x: -1056, y: 216, z: 0}

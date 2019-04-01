@@ -47,7 +47,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   radius: 0.52
-  damage: 2
+  damage: 3
   healthUI: {fileID: 0}
   healthScript: {fileID: 529679432936595976}
   enemyAnim: {fileID: 0}
@@ -1019,6 +1019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83605d11662c4a3408e233ee9a87fe11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  is_Groupie: 0
 --- !u!114 &529679432936595976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1031,7 +1032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c91eba892efdd41889830f661e5570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 15
+  health: 30
   solo: 0
   zone: {fileID: 0}
   canDoSolo: 0
@@ -1867,11 +1868,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4283709844786453959, guid: 66757cdabce719645be5a5c604cd3dfd,
-        type: 3}
-      propertyPath: m_FillAmount
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 2311136683670372375, guid: 66757cdabce719645be5a5c604cd3dfd,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1903,6 +1899,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5687177121213940549}
     - target: {fileID: 673760465119936705, guid: 66757cdabce719645be5a5c604cd3dfd,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4283709844786453959, guid: 66757cdabce719645be5a5c604cd3dfd,
         type: 3}
       propertyPath: m_FillAmount
       value: 0.5

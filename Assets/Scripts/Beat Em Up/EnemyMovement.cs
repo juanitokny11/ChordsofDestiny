@@ -42,7 +42,7 @@ public class EnemyMovement : MonoBehaviour
     }
     void Update()
     {
-        default_Attack_Time = Random.Range(4.0f, 7.0f);
+        default_Attack_Time = Random.Range(3.0f, 6.0f);
         if (healthScript.characterDied)
         {
             this.enabled = false;

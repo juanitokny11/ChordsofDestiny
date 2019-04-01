@@ -48,8 +48,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   radius: 0.8
-  damage: 2
+  damage: 3
+  healthUI: {fileID: 0}
   healthScript: {fileID: 452187335}
+  enemyAnim: {fileID: 0}
   is_Player: 0
   is_Enemy: 1
   hit_Fx_Prefab: {fileID: 0}
@@ -213,6 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83605d11662c4a3408e233ee9a87fe11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  is_Groupie: 0
 --- !u!114 &452187335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,8 +228,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c91eba892efdd41889830f661e5570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 30
+  solo: 0
   zone: {fileID: 0}
+  canDoSolo: 0
   characterDied: 0
   inAir: 0
   is_Player: 0
@@ -1621,33 +1626,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1539574775729584, guid: 303c9a61fe9fd4845b7866e88b4417f6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1086468283897898, guid: 303c9a61fe9fd4845b7866e88b4417f6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224505607706676612, guid: 303c9a61fe9fd4845b7866e88b4417f6,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 176.7998
-      objectReference: {fileID: 0}
-    - target: {fileID: 1395639011449946, guid: 303c9a61fe9fd4845b7866e88b4417f6, type: 3}
-      propertyPath: m_TagString
-      value: HealthUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 114663066236026558, guid: 303c9a61fe9fd4845b7866e88b4417f6,
-        type: 3}
-      propertyPath: m_FillAmount
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114663066236026558, guid: 303c9a61fe9fd4845b7866e88b4417f6,
-        type: 3}
-      propertyPath: m_FillOrigin
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 224431768197788830, guid: 303c9a61fe9fd4845b7866e88b4417f6,
         type: 3}
       propertyPath: m_LocalRotation.y
@@ -1673,6 +1651,23 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 1542
       objectReference: {fileID: 0}
+    - target: {fileID: 224505607706676612, guid: 303c9a61fe9fd4845b7866e88b4417f6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 176.7998
+      objectReference: {fileID: 0}
+    - target: {fileID: 1086468283897898, guid: 303c9a61fe9fd4845b7866e88b4417f6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539574775729584, guid: 303c9a61fe9fd4845b7866e88b4417f6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1395639011449946, guid: 303c9a61fe9fd4845b7866e88b4417f6, type: 3}
+      propertyPath: m_TagString
+      value: HealthUI
+      objectReference: {fileID: 0}
     - target: {fileID: 1932027755429194, guid: 303c9a61fe9fd4845b7866e88b4417f6, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1693,6 +1688,16 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 114557879981348290, guid: 303c9a61fe9fd4845b7866e88b4417f6,
+        type: 3}
+      propertyPath: m_FillOrigin
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114663066236026558, guid: 303c9a61fe9fd4845b7866e88b4417f6,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114663066236026558, guid: 303c9a61fe9fd4845b7866e88b4417f6,
         type: 3}
       propertyPath: m_FillOrigin
       value: 1

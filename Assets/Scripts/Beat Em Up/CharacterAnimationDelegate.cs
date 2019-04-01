@@ -60,6 +60,14 @@ public class CharacterAnimationDelegate : MonoBehaviour
         if (groupie_Attack_Point.activeInHierarchy)
             groupie_Attack_Point.SetActive(false);
     }
+    void PlayerDisableMovement()
+    {
+        player_Move.enabled = false;
+    }
+    void PlayerEnableMovement()
+    {
+        player_Move.enabled = true;
+    }
     void In_Air()
     {
         player_Move.inAir = true;
@@ -133,6 +141,7 @@ public class CharacterAnimationDelegate : MonoBehaviour
     {
         groupieBody.isKinematic = false;
     }
+   
     void CharacterDied()
     {
         groupiecol.enabled = false;
