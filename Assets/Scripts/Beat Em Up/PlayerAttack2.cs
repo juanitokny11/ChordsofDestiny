@@ -178,7 +178,6 @@ public class PlayerAttack2 : MonoBehaviour
                 guardCollider.enabled = false;
                 blockActivated = false;
                 current_Combo_State = ComboState.NONE;
-                //attackList.RemoveAllList();
             }
         }
     }

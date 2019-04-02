@@ -24,6 +24,7 @@ public class BeatEmupManager : MonoBehaviour
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
+        Cursor.visible = false;
     }
     void Update()
     {
