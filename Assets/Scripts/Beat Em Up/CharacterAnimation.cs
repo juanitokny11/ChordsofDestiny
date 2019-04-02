@@ -136,4 +136,45 @@ public class CharacterAnimation : MonoBehaviour
     {
         anim.SetTrigger("StandUp");
     }
+    //Boss Amin
+    public void Walk1arm(bool walk1arm)
+    {
+        anim.SetBool("Walk1arm", walk1arm);
+    }
+    public void Walk2arm(bool walk2arm)
+    {
+        anim.SetBool("Walk2arms", walk2arm);
+    }
+    public void Attack1arm(int attack)
+    {
+        if (attack == 0)
+            anim.SetTrigger("Attack_1arm");
+        if (attack == 1)
+            anim.SetTrigger("Attack2_1arm");
+    }
+    public void Attack2arms(int attack)
+    {
+        if (attack == 0)
+            anim.SetTrigger("Attack_2arms");
+        if (attack == 1)
+            anim.SetTrigger("Attack2_2arms");
+    }
+    public void Hit1arm(int hit)
+    {
+        if (hit == 0)
+            anim.SetTrigger("Hit_1arm");
+        if (hit == 1)
+            anim.SetTrigger("Hit2_1arm");
+    }
+    public void Hit2arms(int hit)
+    {
+        if (hit == 0)
+            anim.SetTrigger("Hit_2arms");
+        if (hit == 1)
+            anim.SetTrigger("Hit2_2arms");
+    }
+    public void RomperEspada()
+    {
+        anim.SetTrigger("ChangeFase");
+    }
 }
