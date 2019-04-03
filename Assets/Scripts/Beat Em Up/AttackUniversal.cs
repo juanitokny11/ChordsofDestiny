@@ -10,7 +10,7 @@ public class AttackUniversal : MonoBehaviour
     public HealthUI healthUI;
     public HealthScript healthScript;
     public CharacterAnimation enemyAnim;
-    public bool is_Player, is_Enemy;
+    public bool is_Player, is_Enemy,is_Boss;
     public GameObject hit_Fx_Prefab;
     private void Start()
     {
@@ -65,7 +65,8 @@ public class AttackUniversal : MonoBehaviour
                     healthScript.solo += damage;
                     healthUI.DisplaySolo(healthScript.solo / 2);
                     hit[0].GetComponent<HealthScript>().ApplyDamage(damage, false);
-                    hit[0].GetComponent<BoxCollider>().enabled=true;
+                    if(is_Enemy)
+                        hit[0].GetComponent<BoxCollider>().enabled=true;
                 }
             }
             if (is_Enemy)
@@ -78,6 +79,12 @@ public class AttackUniversal : MonoBehaviour
                 {
                     hit[0].GetComponentInParent<HealthScript>().ApplyDamage(damage, false);
                 }
+                damage = 2;
+            }
+            if (is_Boss)
+            {
+                hit[0].GetComponentInParent<HealthScript>().ApplyDamage(damage, false);
+
                 damage = 2;
             }
             gameObject.SetActive(false);

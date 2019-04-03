@@ -26,7 +26,10 @@ public class HealthScript : MonoBehaviour
         else if (!is_Player)
             enemy_Health_UI = GetComponent<EnemyHealthUI>();
         if (is_Boss)
+        {
             bossIA = GetComponent<BossIA>();
+            characterDied = false;
+        }  
     }
     private void Update()
     {
@@ -100,13 +103,11 @@ public class HealthScript : MonoBehaviour
             {
                 bossIA.fase = 2;
             }
-            if (bossIA.fase == 1)
+            if(enemy_Health_UI.HealthBar.fillAmount% bossIA.porcentajeInvocar == 0)
             {
-                if(enemy_Health_UI.HealthBar.fillAmount% bossIA.porcentajeInvocar == 0)
-                {
-                    bossIA.SetInvoke();
-                }
+                bossIA.SetInvoke();
             }
+
         }
     }
 }

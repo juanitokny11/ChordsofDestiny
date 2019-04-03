@@ -27,11 +27,13 @@ public class BossIA : MonoBehaviour
     void Start()
     {
         healthScript=GetComponent<HealthScript>();
+        myBody = GetComponent<Rigidbody>();
         enemyAnim = GetComponent<CharacterAnimation>();
         playerTarget = GameObject.FindGameObjectWithTag("Player").transform;
         current_Boss_State = Estados.Default;
         fase = 1;
         porcentajeAtaque = 40;
+        porcentajeInvocar = 15;
     }
     void Update()
     {
@@ -55,6 +57,7 @@ public class BossIA : MonoBehaviour
         if (current_Attack_Time > default_Attack_Time)
         {
             random = Random.Range(1, 101);
+
             if (random >= porcentajeAtaque)
             {
                 if (fase == 1)
@@ -76,11 +79,11 @@ public class BossIA : MonoBehaviour
             attackPlayer = false;
             followPlayer = true;
         }
-        current_Boss_State = Estados.Default;
     }
     void DefaultState()
     {
-        if (!followPlayer || healthScript.characterDied || !BeatEmupManager.instance.godmode)
+
+        if (!followPlayer || healthScript.characterDied )
         {
             speed = 0;
             return;
@@ -136,16 +139,23 @@ public class BossIA : MonoBehaviour
     public void Death()
     {
         this.enabled = false;
-
     }
     void SetAttack()
     {
         current_Boss_State = Estados.Attack;
+        if (fase == 2)
+            porcentajeAtaque = 50;
         Attack();
     }
     public void SetInvoke()
     {
         current_Boss_State = Estados.Invoke;
+        if (fase == 2)
+            porcentajeInvocar = 10;
         Invoke();
+    }
+    public void SetDefault()
+    {
+        current_Boss_State = Estados.Default;
     }
 }
