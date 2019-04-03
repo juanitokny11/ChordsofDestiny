@@ -5,13 +5,13 @@ using UnityEngine;
 public class BossIA : MonoBehaviour
 {
     public enum Estados { Attack,Invoke,Default,Death}
-    public List<Estados> boss_State;
     public Estados current_Boss_State;
     public GameObject[] enemiesTospawn;
     public Transform[] positionTospawn;
     public int random;
     public int fase ;
-    public int porcentajeataque;
+    public int porcentajeAtaque;
+    public int porcentajeInvocar;
     public bool followPlayer, attackPlayer;
     public Transform playerTarget;
     private Rigidbody myBody;
@@ -31,7 +31,7 @@ public class BossIA : MonoBehaviour
         playerTarget = GameObject.FindGameObjectWithTag("Player").transform;
         current_Boss_State = Estados.Default;
         fase = 1;
-        porcentajeataque = 40;
+        porcentajeAtaque = 40;
     }
     void Update()
     {
@@ -55,7 +55,7 @@ public class BossIA : MonoBehaviour
         if (current_Attack_Time > default_Attack_Time)
         {
             random = Random.Range(1, 101);
-            if (random >= porcentajeataque)
+            if (random >= porcentajeAtaque)
             {
                 if (fase == 1)
                     enemyAnim.Attack2arms(2);
@@ -133,17 +133,17 @@ public class BossIA : MonoBehaviour
 
         current_Boss_State = Estados.Default;
     }
-    void Death()
+    public void Death()
     {
         this.enabled = false;
-        enemyAnim.Death();
+
     }
     void SetAttack()
     {
         current_Boss_State = Estados.Attack;
         Attack();
     }
-    void SetInvoke()
+    public void SetInvoke()
     {
         current_Boss_State = Estados.Invoke;
         Invoke();

@@ -10,12 +10,13 @@ public class HealthScript : MonoBehaviour
     private CharacterAnimation animationScript;
     private EnemyMovement enemyMovement;
     private HealthUI health_UI;
+    private BossIA bossIA;
     private EnemyHealthUI enemy_Health_UI;
     public bool canDoSolo = false;
     public bool characterDied;
     public bool inAir=false;
 
-    public bool is_Player;
+    public bool is_Player,is_Boss;
     private void Awake()
     {
         animationScript = GetComponent<CharacterAnimation>();
@@ -24,7 +25,8 @@ public class HealthScript : MonoBehaviour
             health_UI = GetComponent<HealthUI>();
         else if (!is_Player)
             enemy_Health_UI = GetComponent<EnemyHealthUI>();
-
+        if (is_Boss)
+            bossIA = GetComponent<BossIA>();
     }
     private void Update()
     {
@@ -59,14 +61,18 @@ public class HealthScript : MonoBehaviour
                 GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyMovement>().enabled = false;
                 animationScript.Death();
             }
-            else
+            else if(!is_Boss && !is_Player)
             {
                zone.enemiescounter--;
+            }
+            else if (is_Boss)
+            {
+                bossIA.Death();
             }
             characterDied = true;
             return;
         }
-        if (!is_Player)
+        if (!is_Boss && !is_Player)
         {
             if (knockDown)
             {
@@ -80,6 +86,27 @@ public class HealthScript : MonoBehaviour
                     animationScript.Hit(Random.Range(0, 3));
             }
 
+        }
+        if (is_Boss)
+        {
+            if (!knockDown)
+            {
+                if(bossIA.fase==1)
+                    animationScript.Hit1arm(Random.Range(0, 3));
+                else
+                    animationScript.Hit2arms(Random.Range(0, 3));
+            }
+            if (enemy_Health_UI.HealthBar.fillAmount >= 50)
+            {
+                bossIA.fase = 2;
+            }
+            if (bossIA.fase == 1)
+            {
+                if(enemy_Health_UI.HealthBar.fillAmount% bossIA.porcentajeInvocar == 0)
+                {
+                    bossIA.SetInvoke();
+                }
+            }
         }
     }
 }

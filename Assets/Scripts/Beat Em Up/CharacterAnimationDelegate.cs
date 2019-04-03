@@ -5,6 +5,8 @@ using UnityEngine;
 public class CharacterAnimationDelegate : MonoBehaviour
 {
     public GameObject guitar_Attack_Point;
+    public GameObject Boss_Attack_Point1;
+    public GameObject Boss_Attack_Point2;
     public GameObject groupie_Attack_Point;
     public SkinnedMeshRenderer[] fan;
     public SkinnedMeshRenderer bate;
@@ -60,6 +62,27 @@ public class CharacterAnimationDelegate : MonoBehaviour
         if (groupie_Attack_Point.activeInHierarchy)
             groupie_Attack_Point.SetActive(false);
     }
+    void Boss_2armsAttack_Point_ON()
+    {
+        Boss_Attack_Point1.SetActive(true);
+        Boss_Attack_Point2.SetActive(true);
+    }
+    void Boss_2armsAttack_Point_OFF()
+    {
+        if (Boss_Attack_Point1.activeInHierarchy)
+            Boss_Attack_Point1.SetActive(false);
+        if (Boss_Attack_Point2.activeInHierarchy)
+            Boss_Attack_Point2.SetActive(false);
+    }
+    void Boss_1armAttack_Point_ON()
+    {
+        Boss_Attack_Point1.SetActive(true);
+    }
+    void Boss_1armAttack_Point_OFF()
+    {
+        if (Boss_Attack_Point1.activeInHierarchy)
+            Boss_Attack_Point1.SetActive(false);
+    }
     void PlayerDisableMovement()
     {
         player_Move.enabled = false;
@@ -75,10 +98,6 @@ public class CharacterAnimationDelegate : MonoBehaviour
     void Not_In_Air()
     {
         player_Move.inAir = false;
-    }
-    void Tag_EnemyDamage()
-    {
-        groupie_Attack_Point.tag = "EnemyDamage";
     }
     void Tag_Fuerte()
     {
