@@ -80,38 +80,6 @@ public class PlayerAttackList : MonoBehaviour
                 Attack = false;
             }
         }
-        else if(attacks[0] == PlayerAttack2.ComboState.AIRCOMBO2)
-        {
-            if (Attack)
-            {
-                player_anim.AirCombo2();
-                Attack = false;
-            }
-        }
-        else if(attacks[0] == PlayerAttack2.ComboState.AIRCOMBO3)
-        {
-            if (Attack)
-            {
-                player_anim.AirCombo3();
-                Attack = false;
-            }
-        }
-        else if(attacks[0] == PlayerAttack2.ComboState.AIRCOMBO4)
-        {
-            if (Attack)
-            {
-                player_anim.AirCombo4();
-                Attack = false;
-            }
-        }
-        else if(attacks[0] == PlayerAttack2.ComboState.AIRCOMBO5)
-        {
-            if (Attack)
-            {
-                player_anim.AirCombo5();
-                Attack = false;
-            }
-        }
     }
     private void CanAttack()
     {

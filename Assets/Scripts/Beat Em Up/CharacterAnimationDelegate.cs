@@ -10,7 +10,8 @@ public class CharacterAnimationDelegate : MonoBehaviour
     public GameObject groupie_Attack_Point;
     public SkinnedMeshRenderer[] fan;
     public SkinnedMeshRenderer bate;
-    public MeshRenderer[] espadas;
+    public MeshRenderer espada;
+    public GameObject espadaanimada;
     public SkinnedMeshRenderer groupie;
     public CapsuleCollider groupiecol;
     public EnemyMovement groupieEnemy;
@@ -40,7 +41,7 @@ public class CharacterAnimationDelegate : MonoBehaviour
         else if (is_Boss)
         {
             groupie = GetComponentInChildren<SkinnedMeshRenderer>();
-            espadas = GetComponentsInChildren<MeshRenderer>();
+            espada = GetComponentInChildren<MeshRenderer>();
             bossIA = GetComponent<BossIA>();
         }
         else
@@ -187,7 +188,12 @@ public class CharacterAnimationDelegate : MonoBehaviour
         InvokeRepeating("Blink", 0f, 0.05f);
         Invoke("DestroyGameobject", 4.0f);
     }
-     void Blink()
+    public void EnableEspadaAnim()
+    {
+        espadaanimada.gameObject.transform.parent = null;
+        espadaanimada.GetComponent<Animator>().enabled = true;
+    }
+    void Blink()
     {
         if (Time.fixedTime % .5 < .2)
         {
@@ -198,8 +204,8 @@ public class CharacterAnimationDelegate : MonoBehaviour
             }
             if (is_Boss)
             {
-                espadas[1].enabled = false;
-                espadas[0].enabled = false;
+                espada.enabled = false;
+                //espadas[0].enabled = false;
             }
         }
         else
@@ -211,8 +217,8 @@ public class CharacterAnimationDelegate : MonoBehaviour
             }
             if (is_Boss)
             {
-                espadas[1].enabled = true;
-                espadas[0].enabled = true;
+                espada.enabled = true;
+                //espadas[0].enabled = true;
             }
         }
     }

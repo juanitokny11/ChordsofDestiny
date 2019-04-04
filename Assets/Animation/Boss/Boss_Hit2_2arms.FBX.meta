@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6b2e4add35e3a0f4d8ee1cff7051505c
+guid: c8fac86d8f89e0945a428c7d925e67b8
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -78,9 +78,10 @@ ModelImporter:
     100144: Base HumanSpine4
     100146: //RootNode
     100148: Boss_low
-    100150: Teclado_espada001
-    100152: "\xA1\xA1\xD7\xFD\xD7\xFB"
-    100154: "\xD7\xFE\xD7\xFC"
+    100150: Teclado_espada
+    100152: Teclado_espada001
+    100154: "\xA1\xA1\xD7\xFD\xD7\xFB"
+    100156: "\xD7\xFE\xD7\xFC"
     400000: Base Human
     400002: Base HumanHead
     400004: Base HumanLArm1
@@ -156,16 +157,20 @@ ModelImporter:
     400144: Base HumanSpine4
     400146: //RootNode
     400148: Boss_low
-    400150: Teclado_espada001
-    400152: "\xA1\xA1\xD7\xFD\xD7\xFB"
-    400154: "\xD7\xFE\xD7\xFC"
+    400150: Teclado_espada
+    400152: Teclado_espada001
+    400154: "\xA1\xA1\xD7\xFD\xD7\xFB"
+    400156: "\xD7\xFE\xD7\xFC"
     2100000: lambert2
     2100002: lambert1
-    2300000: Teclado_espada001
-    3300000: Teclado_espada001
+    2300000: Teclado_espada
+    2300002: Teclado_espada001
+    3300000: Teclado_espada
+    3300002: Teclado_espada001
     4300000: Boss_low
-    4300002: Teclado_espada001
-    7400000: Invoke_1Arm
+    4300002: Teclado_espada
+    4300004: Teclado_espada001
+    7400000: Hit2_2Arms
     9500000: //RootNode
     13700000: Boss_low
   externalObjects: {}
@@ -197,10 +202,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Invoke_1Arm
+      name: Hit2_2Arms
       takeName: Take 001
       firstFrame: 0
-      lastFrame: 50
+      lastFrame: 15
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -219,21 +224,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 0
-        functionName: NodamageforEnemy
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.9924749
-        functionName: SetInvoke
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

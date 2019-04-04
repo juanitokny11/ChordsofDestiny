@@ -73,25 +73,9 @@ public class CharacterAnimation : MonoBehaviour
     {
         anim.SetTrigger("AirCombo1");
     }
-    public void AirCombo2()
-    {
-        anim.SetTrigger("AirCombo2");
-    }
-    public void AirCombo3()
-    {
-        anim.SetTrigger("AirCombo3");
-    }
-    public void AirCombo4()
-    {
-        anim.SetTrigger("AirCombo4");
-    }
-    public void AirCombo5()
-    {
-        anim.SetTrigger("AirCombo5");
-    }
     public void Solo()
     {
-        anim.SetTrigger("");
+        anim.SetTrigger("Solo");
     }
     public void Block()
     {
@@ -177,4 +161,5 @@ public class CharacterAnimation : MonoBehaviour
     {
         anim.SetTrigger("ChangeFase");
     }
+
 }

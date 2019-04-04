@@ -23,7 +23,7 @@ public class PlayerAttack2 : MonoBehaviour
         SOLO
     }
     public bool blockActivated = false;
-    public GameObject Solocol;
+    public SphereCollider Solocol;
     public HealthScript healthScript;
     public HealthUI healthUI;
     public PlayerAttackList attackList;
@@ -49,8 +49,8 @@ public class PlayerAttack2 : MonoBehaviour
     }
     void Start()
     {
-        Solocol = GameObject.FindGameObjectWithTag("Solo");
-        Solocol.SetActive(false);
+        Solocol = GameObject.FindGameObjectWithTag("Solo").GetComponent<SphereCollider>();
+        Solocol.GetComponent<SphereCollider>().enabled = false;
         guardCollider.enabled = false;
         current_Combo_Timer = default_Combo_Timer;
         current_Combo_State = ComboState.NONE;
@@ -150,13 +150,9 @@ public class PlayerAttack2 : MonoBehaviour
             {
                 current_Combo_State = ComboState.SOLO;
                 player_Anim.Solo();
-                //Solocol.SetActive(true);
-                //soloefect.SetActive(true);
-                //soloefectanim.Play("soloanim", -1, 0);
+                
                 healthScript.solo = 0f;
                 healthUI.SoloBar.fillAmount = healthScript.solo / 100;
-                Invoke("DesActivarColisiones", 0.1f);
-                Invoke("ActivarColisiones", 2f);
             }
         }
         if (Input.GetAxisRaw("Evadir") == 1 && !blockActivated)
@@ -204,13 +200,17 @@ public class PlayerAttack2 : MonoBehaviour
         this.gameObject.layer = 8;
         //soloefect.SetActive(false);
         current_Combo_State = ComboState.NONE;
-        Solocol.SetActive(false);
-
+        Solocol.GetComponent<SphereCollider>().enabled = false;
     }
     private void DesActivarColisiones()
     {
         this.gameObject.layer = 1;
-        Solocol.SetActive(true);
+    }
+    private void ActiveSoloCol()
+    {
+        Solocol.GetComponent<SphereCollider>().enabled = true;
+        //soloefect.SetActive(true);
+        //soloefectanim.Play("soloanim", -1, 0);
     }
 }
 
