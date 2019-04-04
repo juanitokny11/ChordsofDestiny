@@ -10,32 +10,43 @@ public class CharacterAnimationDelegate : MonoBehaviour
     public GameObject groupie_Attack_Point;
     public SkinnedMeshRenderer[] fan;
     public SkinnedMeshRenderer bate;
+    public MeshRenderer[] espadas;
     public SkinnedMeshRenderer groupie;
     public CapsuleCollider groupiecol;
     public EnemyMovement groupieEnemy;
+    public BossIA bossIA;
     public PlayerMovementBeat player_Move;
     public Rigidbody groupieBody;
     public float standupTimer = 2.0f;
     private CharacterAnimation animationScript;
     private EnemyMovement enemy_Movement;
     private ShakeCamera shakeCamera;
-    public bool isGroupie;
-    public bool isFan;
+    public bool isGroupie,is_Boss,isFan;
+
     private void Awake()
     {
         if (isGroupie)
+        { 
             groupie = GetComponentInChildren<SkinnedMeshRenderer>();
+            groupieEnemy = GetComponent<EnemyMovement>();
+        }
         else if (isFan)
         {
             fan = GetComponentsInChildren<SkinnedMeshRenderer>();
             bate = fan[0];
             groupie= fan[1];
+            groupieEnemy = GetComponent<EnemyMovement>();
+        }
+        else if (is_Boss)
+        {
+            groupie = GetComponentInChildren<SkinnedMeshRenderer>();
+            espadas = GetComponentsInChildren<MeshRenderer>();
+            bossIA = GetComponent<BossIA>();
         }
         else
         {
             player_Move = GetComponent<PlayerMovementBeat>();
         }
-        groupieEnemy = GetComponent<EnemyMovement>();
         groupieBody = GetComponent<Rigidbody>();
         groupiecol = GetComponent<CapsuleCollider>();
         animationScript = GetComponent<CharacterAnimation>();
@@ -165,7 +176,10 @@ public class CharacterAnimationDelegate : MonoBehaviour
     {
         groupiecol.enabled = false;
         groupieBody.useGravity = false;
-        groupieEnemy.enabled = false;
+        if (!is_Boss)
+            groupieEnemy.enabled = false;
+        else
+            bossIA.enabled = false;
         Invoke("DeleteGameobject", 2.0f);
     }
     void DeleteGameobject()
@@ -182,6 +196,11 @@ public class CharacterAnimationDelegate : MonoBehaviour
             {
                 bate.enabled = false;
             }
+            if (is_Boss)
+            {
+                espadas[1].enabled = false;
+                espadas[0].enabled = false;
+            }
         }
         else
         {
@@ -189,6 +208,11 @@ public class CharacterAnimationDelegate : MonoBehaviour
             if (isFan)
             {
                 bate.enabled = true;
+            }
+            if (is_Boss)
+            {
+                espadas[1].enabled = true;
+                espadas[0].enabled = true;
             }
         }
     }

@@ -95,13 +95,9 @@ public class HealthScript : MonoBehaviour
             if (!knockDown)
             {
                 if(bossIA.fase==1)
-                    animationScript.Hit1arm(Random.Range(0, 3));
-                else
                     animationScript.Hit2arms(Random.Range(0, 3));
-            }
-            if (enemy_Health_UI.HealthBar.fillAmount >= 50)
-            {
-                bossIA.fase = 2;
+                else
+                    animationScript.Hit1arm(Random.Range(0, 3));
             }
             if(enemy_Health_UI.HealthBar.fillAmount% bossIA.porcentajeInvocar == 0)
             {

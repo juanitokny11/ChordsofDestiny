@@ -23,10 +23,12 @@ public class BossIA : MonoBehaviour
     private float default_Attack_Time;
     private CharacterAnimation enemyAnim;
     private HealthScript healthScript;
+    private EnemyHealthUI enemyHealth;
 
     void Start()
     {
         healthScript=GetComponent<HealthScript>();
+        enemyHealth = GetComponent<EnemyHealthUI>();
         myBody = GetComponent<Rigidbody>();
         enemyAnim = GetComponent<CharacterAnimation>();
         playerTarget = GameObject.FindGameObjectWithTag("Player").transform;
@@ -37,6 +39,10 @@ public class BossIA : MonoBehaviour
     }
     void Update()
     {
+        if (enemyHealth.HealthBar.fillAmount <= 0.5)
+        {
+            enemyAnim.RomperEspada();
+        }
         switch (current_Boss_State)
         {
             case Estados.Default:
@@ -133,8 +139,7 @@ public class BossIA : MonoBehaviour
             Instantiate(enemiesTospawn[Random.Range(3, 4)], positionTospawn[Random.Range(0, 1)].position, Quaternion.identity);
         else
             Instantiate(enemiesTospawn[Random.Range(4, 5)], positionTospawn[Random.Range(0, 1)].position, Quaternion.identity);
-
-        current_Boss_State = Estados.Default;
+        
     }
     public void Death()
     {
@@ -157,5 +162,11 @@ public class BossIA : MonoBehaviour
     public void SetDefault()
     {
         current_Boss_State = Estados.Default;
+    }
+    public void ChangeFase()
+    {
+        fase = 2;
+        porcentajeAtaque = 50;
+        porcentajeInvocar = 10;
     }
 }

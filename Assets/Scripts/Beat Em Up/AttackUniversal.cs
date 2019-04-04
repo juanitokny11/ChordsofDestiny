@@ -16,6 +16,7 @@ public class AttackUniversal : MonoBehaviour
     {
         enemyAnim = GetComponentInParent<CharacterAnimation>();
         healthUI = GetComponentInParent<HealthUI>();
+        healthScript = GetComponentInParent<HealthScript>();
     }
     void Update()
     {
@@ -42,15 +43,19 @@ public class AttackUniversal : MonoBehaviour
                     damage = 4;
                     healthScript.solo += damage;
                     healthUI.DisplaySolo(healthScript.solo/2);
-                    hit[0].GetComponent<BoxCollider>().enabled = true;
+                    if(is_Enemy && !is_Boss)
+                        hit[0].GetComponent<BoxCollider>().enabled = true;
                 }
                   else if (gameObject.CompareTag("Levantar"))
                 {
                     damage = 4;
                     healthUI.DisplaySolo(healthScript.solo / 2);
                     hit[0].GetComponent<HealthScript>().ApplyDamage(damage, true);
-                    healthScript.inAir = true;
-                    hit[0].GetComponent<BoxCollider>().enabled = true;
+                    if (is_Enemy && !is_Boss)
+                    {
+                        healthScript.inAir = true;
+                        hit[0].GetComponent<BoxCollider>().enabled = true;
+                    }
                 }
                 else
                 {
@@ -65,27 +70,29 @@ public class AttackUniversal : MonoBehaviour
                     healthScript.solo += damage;
                     healthUI.DisplaySolo(healthScript.solo / 2);
                     hit[0].GetComponent<HealthScript>().ApplyDamage(damage, false);
-                    if(is_Enemy)
+                    if(is_Enemy && !is_Boss)
                         hit[0].GetComponent<BoxCollider>().enabled=true;
                 }
             }
             if (is_Enemy)
             {
-                if (hit[0].gameObject.CompareTag("Defense"))
-                {
-                    enemyAnim.Block();
+                if (!is_Boss)
+                { 
+                    if (hit[0].gameObject.CompareTag("Defense"))
+                    {
+                        enemyAnim.Block();
+                    }
+                    else
+                    {
+                        hit[0].GetComponentInParent<HealthScript>().ApplyDamage(damage, false);
+                    }
+                    damage = 2;
                 }
-                else
-                {
-                    hit[0].GetComponentInParent<HealthScript>().ApplyDamage(damage, false);
-                }
-                damage = 2;
             }
             if (is_Boss)
             {
                 hit[0].GetComponentInParent<HealthScript>().ApplyDamage(damage, false);
-
-                damage = 2;
+                //damage = 5;
             }
             gameObject.SetActive(false);
         }
