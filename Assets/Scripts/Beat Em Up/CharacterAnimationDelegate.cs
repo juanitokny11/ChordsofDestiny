@@ -41,7 +41,7 @@ public class CharacterAnimationDelegate : MonoBehaviour
         else if (is_Boss)
         {
             groupie = GetComponentInChildren<SkinnedMeshRenderer>();
-            espada = GetComponentInChildren<MeshRenderer>();
+            //espada = GetComponentInChildren<MeshRenderer>();
             bossIA = GetComponent<BossIA>();
         }
         else

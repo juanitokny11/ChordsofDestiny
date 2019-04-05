@@ -81,7 +81,7 @@ public class PlayerAttackList : MonoBehaviour
             }
         }
     }
-    private void CanAttack()
+    public void CanAttack()
     {
         Attack = true;
         attacks.RemoveAt(0);

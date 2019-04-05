@@ -19,8 +19,6 @@ public class BossIA : MonoBehaviour
     public float attack_Distance = 1.0f;
     public float chase_Player_After_Attack = 1f;
     public float speed = 5.0f;
-    private float current_Attack_Time;
-    private float default_Attack_Time;
     private CharacterAnimation enemyAnim;
     private HealthScript healthScript;
     private EnemyHealthUI enemyHealth;
@@ -39,10 +37,6 @@ public class BossIA : MonoBehaviour
     }
     void Update()
     {
-        if (enemyHealth.HealthBar.fillAmount <= 0.5)
-        {
-            enemyAnim.RomperEspada();
-        }
         switch (current_Boss_State)
         {
             case Estados.Default:
@@ -57,38 +51,28 @@ public class BossIA : MonoBehaviour
     }
     void Attack()
     {
-        if (!attackPlayer || healthScript.characterDied == true)
-            return;
-        current_Attack_Time += Time.deltaTime;
-        if (current_Attack_Time > default_Attack_Time)
+        if (enemyHealth.HealthBar.fillAmount <= 0.5)
         {
-            random = Random.Range(1, 101);
-
-            if (random >= porcentajeAtaque)
-            {
-                if (fase == 1)
-                    enemyAnim.Attack2arms(2);
-                else if (fase == 2)
-                    enemyAnim.Attack1arm(2);
-            }
-            else
-            {
-                if (fase == 1)
-                    enemyAnim.Attack2arms(1);
-                else if (fase == 2)
-                    enemyAnim.Attack2arms(1);
-            }
-            current_Attack_Time = 0;
+            enemyAnim.RomperEspada();
         }
-        if (Vector3.Distance(transform.position, playerTarget.position) > attack_Distance + chase_Player_After_Attack)
+        random = Random.Range(1, 101);
+        if (random >= porcentajeAtaque)
         {
-            attackPlayer = false;
-            followPlayer = true;
+            if (fase == 1)
+                enemyAnim.Attack2arms(0);
+            else
+                enemyAnim.Attack1arm(0);    
+        }
+        else if(random < porcentajeAtaque)
+        {
+            if (fase == 1)
+                enemyAnim.Attack2arms(1);
+           else
+                enemyAnim.Attack1arm(1);
         }
     }
     void DefaultState()
     {
-
         if (!followPlayer || healthScript.characterDied )
         {
             speed = 0;
@@ -102,8 +86,8 @@ public class BossIA : MonoBehaviour
             {
                 if (fase == 1)
                     enemyAnim.Walk2arm(true);
-                else if (fase == 2)
-                    enemyAnim.Walk1arm(true);
+                else
+                    enemyAnim.Walk1arm(true);     
             }
             followPlayer = true;
             attackPlayer = false;
@@ -115,7 +99,7 @@ public class BossIA : MonoBehaviour
                 myBody.velocity = Vector3.zero;
                 if (fase == 1)
                     enemyAnim.Walk2arm(false);
-                else if (fase == 2)
+               else
                     enemyAnim.Walk1arm(false);
                 //followPlayer = false;
                 attackPlayer = false;
@@ -126,7 +110,7 @@ public class BossIA : MonoBehaviour
             myBody.velocity = Vector3.zero;
             if (fase == 1)
                 enemyAnim.Walk2arm(false);
-            else if (fase == 2)
+            else
                 enemyAnim.Walk1arm(false);
             //followPlayer = true;
             attackPlayer = true;
@@ -148,15 +132,11 @@ public class BossIA : MonoBehaviour
     void SetAttack()
     {
         current_Boss_State = Estados.Attack;
-        if (fase == 2)
-            porcentajeAtaque = 50;
         Attack();
     }
     public void SetInvoke()
     {
         current_Boss_State = Estados.Invoke;
-        if (fase == 2)
-            porcentajeInvocar = 10;
         Invoke();
     }
     public void SetDefault()
@@ -168,5 +148,7 @@ public class BossIA : MonoBehaviour
         fase = 2;
         porcentajeAtaque = 50;
         porcentajeInvocar = 10;
+        SetDefault();
+
     }
 }

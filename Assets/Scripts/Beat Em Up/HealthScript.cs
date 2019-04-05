@@ -12,9 +12,11 @@ public class HealthScript : MonoBehaviour
     private HealthUI health_UI;
     private BossIA bossIA;
     private EnemyHealthUI enemy_Health_UI;
+    public PlayerAttackList playerAttack_List;
     public bool canDoSolo = false;
     public bool characterDied;
     public bool inAir=false;
+    public int hitCounter;
 
     public bool is_Player,is_Boss;
     private void Awake()
@@ -22,7 +24,10 @@ public class HealthScript : MonoBehaviour
         animationScript = GetComponent<CharacterAnimation>();
         enemyMovement = GetComponent<EnemyMovement>();
         if (is_Player)
+        {
             health_UI = GetComponent<HealthUI>();
+            playerAttack_List = GetComponent<PlayerAttackList>();
+        }
         else if (!is_Player)
             enemy_Health_UI = GetComponent<EnemyHealthUI>();
         if (is_Boss)
@@ -33,7 +38,7 @@ public class HealthScript : MonoBehaviour
     }
     private void Update()
     {
-        if (solo >= 100)
+        if (solo >= 200)
         {
             if (is_Player)
             {
@@ -53,9 +58,19 @@ public class HealthScript : MonoBehaviour
         if (is_Player)
         { 
             health_UI.DisplayHealth(health);
+            if (!knockDown)
+            {
+                if (Random.Range(0, 3) > 1)
+                {
+                    animationScript.Hit(Random.Range(0, 3));
+                    playerAttack_List.CanAttack();
+                }
+                    
+            }
         }
         else if(!is_Player)
             enemy_Health_UI.DisplayHealth(health);
+        
         if (health <= 0)
         {
             animationScript.Death();
@@ -86,6 +101,7 @@ public class HealthScript : MonoBehaviour
             }
             else if (!knockDown)
             {
+                if (Random.Range(0, 3) > 1)
                     animationScript.Hit(Random.Range(0, 3));
             }
 
@@ -94,14 +110,23 @@ public class HealthScript : MonoBehaviour
         {
             if (!knockDown)
             {
-                if(bossIA.fase==1)
-                    animationScript.Hit2arms(Random.Range(0, 3));
-                else
-                    animationScript.Hit1arm(Random.Range(0, 3));
+                if (Random.Range(0, 3) > 1) {
+                    if (bossIA.fase == 1)
+                    {
+                        animationScript.Hit2arms(Random.Range(0, 3));
+                        hitCounter++;
+                    }
+                    else
+                    {
+                        animationScript.Hit1arm(Random.Range(0, 3));
+                        hitCounter++;
+                    }
+                }
             }
-            if(enemy_Health_UI.HealthBar.fillAmount% bossIA.porcentajeInvocar == 0)
+            if(hitCounter>=bossIA.porcentajeInvocar)
             {
                 bossIA.SetInvoke();
+                hitCounter = 0;
             }
 
         }
