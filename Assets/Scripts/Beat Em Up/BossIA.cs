@@ -123,7 +123,6 @@ public class BossIA : MonoBehaviour
             Instantiate(enemiesTospawn[Random.Range(3, 4)], positionTospawn[Random.Range(0, 1)].position, Quaternion.identity);
         else
             Instantiate(enemiesTospawn[Random.Range(4, 5)], positionTospawn[Random.Range(0, 1)].position, Quaternion.identity);
-        
     }
     public void Death()
     {
@@ -149,6 +148,5 @@ public class BossIA : MonoBehaviour
         porcentajeAtaque = 50;
         porcentajeInvocar = 10;
         SetDefault();
-
     }
 }

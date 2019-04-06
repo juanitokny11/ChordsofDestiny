@@ -10,6 +10,7 @@ public class AttackUniversal : MonoBehaviour
     public HealthUI healthUI;
     public HealthScript healthScript;
     public CharacterAnimation enemyAnim;
+    public BossIA bossIA;
     public bool is_Player, is_Enemy,is_Boss;
     public GameObject hit_Fx_Prefab;
     private void Start()
@@ -17,6 +18,8 @@ public class AttackUniversal : MonoBehaviour
         enemyAnim = GetComponentInParent<CharacterAnimation>();
         healthUI = GetComponentInParent<HealthUI>();
         healthScript = GetComponentInParent<HealthScript>();
+        if (is_Boss)
+            bossIA = GetComponentInParent<BossIA>();
     }
     void Update()
     {
@@ -88,11 +91,16 @@ public class AttackUniversal : MonoBehaviour
                     }
                     damage = 2;
                 }
-            }
-            if (is_Boss)
-            {
-                hit[0].GetComponentInParent<HealthScript>().ApplyDamage(damage, false);
-                //damage = 5;
+                if (is_Boss)
+                {
+                    if (hit[0].gameObject.CompareTag("Defense"))
+                    {
+                        enemyAnim.Block();
+                    }
+                    else
+                        hit[0].GetComponentInParent<HealthScript>().ApplyDamage(damage, false);
+                    damage = 4;
+                }
             }
             gameObject.SetActive(false);
         }

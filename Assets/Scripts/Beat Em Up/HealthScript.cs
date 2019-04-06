@@ -65,7 +65,6 @@ public class HealthScript : MonoBehaviour
                     animationScript.Hit(Random.Range(0, 3));
                     playerAttack_List.CanAttack();
                 }
-                    
             }
         }
         else if(!is_Player)
@@ -76,7 +75,10 @@ public class HealthScript : MonoBehaviour
             animationScript.Death();
             if (is_Player)
             {
-                GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyMovement>().enabled = false;
+                if(!is_Boss)
+                    GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyMovement>().enabled = false;
+                else if(is_Boss)
+                    GameObject.FindGameObjectWithTag("Enemy").GetComponent<BossIA>().enabled = false;
                 animationScript.Death();
             }
             else if(!is_Boss && !is_Player)
@@ -110,16 +112,15 @@ public class HealthScript : MonoBehaviour
         {
             if (!knockDown)
             {
+                hitCounter++;
                 if (Random.Range(0, 3) > 1) {
                     if (bossIA.fase == 1)
                     {
-                        animationScript.Hit2arms(Random.Range(0, 3));
-                        hitCounter++;
+                        animationScript.Hit2arms(Random.Range(0, 3));    
                     }
                     else
                     {
                         animationScript.Hit1arm(Random.Range(0, 3));
-                        hitCounter++;
                     }
                 }
             }
