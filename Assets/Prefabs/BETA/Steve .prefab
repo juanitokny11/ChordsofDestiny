@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8939311919185665388}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &7295175928704558466
 SphereCollider:
@@ -1734,7 +1734,6 @@ Transform:
   m_Children:
   - {fileID: 8939311918114366519}
   - {fileID: 8939311917559612115}
-  - {fileID: 8939311918806736638}
   m_Father: {fileID: 8939311919185665388}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -65.45412, y: -3.1332064, z: 94.39156}
@@ -6562,12 +6561,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8939311918806736639}
-  m_LocalRotation: {x: 0.46719664, y: -0.5307799, z: -0.5307799, w: 0.46719667}
-  m_LocalPosition: {x: 0.03124241, y: -0.006957531, z: -1.0499134}
+  m_LocalRotation: {x: -0, y: -0, z: -0.000000014901161, w: 1}
+  m_LocalPosition: {x: 0, y: 0.74000007, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8939311918793403839}
-  m_Father: {fileID: 8939311918716989364}
+  m_Father: {fileID: 8939311919185665388}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8939311918830430931
@@ -6879,7 +6878,7 @@ Transform:
   m_LocalScale: {x: 0.06481823, y: 0.064818226, z: 0.06481823}
   m_Children: []
   m_Father: {fileID: 8939311919185665388}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8939311918985489738
 MonoBehaviour:
@@ -7014,8 +7013,10 @@ MonoBehaviour:
   healthUI: {fileID: 0}
   healthScript: {fileID: 4554496321350749296}
   enemyAnim: {fileID: 0}
+  bossIA: {fileID: 0}
   is_Player: 1
   is_Enemy: 0
+  is_Boss: 0
   hit_Fx_Prefab: {fileID: 0}
 --- !u!1 &8939311919083758573
 GameObject:
@@ -7148,6 +7149,7 @@ Transform:
   m_Children:
   - {fileID: 8939311918716989364}
   - {fileID: 8939311917866010813}
+  - {fileID: 8939311918806736638}
   - {fileID: 8939311918985489739}
   - {fileID: 7838194074370216321}
   m_Father: {fileID: 0}
@@ -7231,19 +7233,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33471cb3bee3ec540b34e8f50b174270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clips: {fileID: 0}
   guitar_Attack_Point: {fileID: 8939311919082907250}
   Boss_Attack_Point1: {fileID: 0}
   Boss_Attack_Point2: {fileID: 0}
   groupie_Attack_Point: {fileID: 0}
   fan: []
   bate: {fileID: 0}
+  espada: {fileID: 0}
+  espadaanimada: {fileID: 0}
   groupie: {fileID: 0}
   groupiecol: {fileID: 0}
   groupieEnemy: {fileID: 0}
+  bossIA: {fileID: 0}
   player_Move: {fileID: 0}
   groupieBody: {fileID: 0}
   standupTimer: 2
   isGroupie: 0
+  is_Boss: 0
   isFan: 0
 --- !u!114 &3422790589632528814
 MonoBehaviour:
@@ -7298,9 +7305,11 @@ MonoBehaviour:
   health: 100
   solo: 0
   zone: {fileID: 0}
+  playerAttack_List: {fileID: 0}
   canDoSolo: 0
   characterDied: 0
   inAir: 0
+  hitCounter: 0
   is_Player: 1
   is_Boss: 0
 --- !u!114 &2033245223399755795

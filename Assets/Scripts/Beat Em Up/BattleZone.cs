@@ -1,15 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BattleZone : MonoBehaviour
 {
     private BoxCollider colider;
-    public GameObject camera;
+    public new GameObject camera;
     public GameObject UI;
     //public GameObject cd;
     //public GameObject cdpoint;
-    //public AudioSource musica;
+    public Image goImage;
+    public AudioSource musica;
     public List<GameObject> enemies;
     /*public Animator[] pivotesz1;
     public Animator[] pivotesz2;
@@ -33,12 +35,12 @@ public class BattleZone : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            //UI.SetActive(true);
+            UI.SetActive(true);
             enemies[2].SetActive(true);
             enemies[3].SetActive(true);
             camera.GetComponent<ShakeCamera>().lockCamera = true;
             colider.enabled = false;
-            //musica.Play();
+            musica.Play();
             /* if (id == 1)
              {
                  for (int i = 0; i < pivotesz1.Length- 1; i++)
@@ -116,9 +118,10 @@ public class BattleZone : MonoBehaviour
         if (enemiescounter <= 0)
         {
             //this.gameObject.SetActive(false);
-            //UI.SetActive(false);
             Invoke("UnlockCamera", 1f);
-            //musica.Stop();
+            musica.Stop();
+            SetGo();
+            Invoke("stopGo", 5f);
             /*if (id == 4){
                 Instantiate(cd, cdpoint.transform.position, Quaternion.identity, null);
             }*/
@@ -128,5 +131,26 @@ public class BattleZone : MonoBehaviour
     {
         camera.GetComponent<ShakeCamera>().lockCamera = false;
         camera.GetComponent<ShakeCamera>().enemiesdied = true;
+    }
+    void SetGo()
+    {
+        InvokeRepeating("Blink", 0f, 0.05f);
+    }
+    void Blink()
+    {
+        if (Time.fixedTime % .5 < .2)
+        {
+            goImage.enabled = false;
+        }
+        else
+        {
+            goImage.enabled = true;
+            
+        }
+    }
+    void stopGo()
+    {
+        CancelInvoke("Blink");
+        UI.SetActive(false);
     }
 }

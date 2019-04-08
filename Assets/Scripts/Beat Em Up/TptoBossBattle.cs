@@ -5,12 +5,14 @@ using UnityEngine;
 public class TptoBossBattle : MonoBehaviour
 {
     public Transform tppoint;
+    public ShakeCamera camera;
     public GameObject musicBoss;
     public GameObject musicGameplay;
     public bool changeMusic=false;
     public void Start()
     {
-        musicGameplay.GetComponent<AudioSource>().Play();
+        //musicGameplay.GetComponent<AudioSource>().Play();
+        camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ShakeCamera>();
     }
     private void Update()
     {
@@ -25,6 +27,7 @@ public class TptoBossBattle : MonoBehaviour
         if (other.tag == "Player")
         {
             other.gameObject.transform.position = tppoint.position;
+            camera.lockCamera = false;
             changeMusic = true;
         }
     }

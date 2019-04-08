@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class CharacterAnimationDelegate : MonoBehaviour
 {
+    public SoundPlayer clips;
+    public ParticleSystem jumpefect;
     public GameObject guitar_Attack_Point;
     public GameObject Boss_Attack_Point1;
     public GameObject Boss_Attack_Point2;
@@ -47,6 +50,8 @@ public class CharacterAnimationDelegate : MonoBehaviour
         else
         {
             player_Move = GetComponent<PlayerMovementBeat>();
+            jumpefect = GetComponentInChildren<ParticleSystem>();
+            clips = GetComponentInChildren<SoundPlayer>();
         }
         groupieBody = GetComponent<Rigidbody>();
         groupiecol = GetComponent<CapsuleCollider>();
@@ -225,5 +230,10 @@ public class CharacterAnimationDelegate : MonoBehaviour
     void DestroyGameobject()
     {
         Destroy(gameObject);
+    }
+    public void JumpSound()
+    {
+        clips.Play(4, 1);
+        jumpefect.Play();
     }
 }

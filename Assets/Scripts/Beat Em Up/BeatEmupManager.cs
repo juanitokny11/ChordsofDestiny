@@ -35,7 +35,7 @@ public class BeatEmupManager : MonoBehaviour
         if (godmode == true)
         {
             RecogerNotas();
-            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetAxisRaw("Pause") != 0)
+            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Pause"))
             {
                 Pausa();
             }

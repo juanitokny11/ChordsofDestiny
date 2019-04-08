@@ -133,7 +133,7 @@ public class PlayerAttack2 : MonoBehaviour
                 }
             
         }
-        if (Input.GetKeyDown(KeyCode.D) || Input.GetAxisRaw("Evadir") == 1 && Input.GetAxisRaw("Disparar") == 1)
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetAxisRaw("Solo") == 1 && Input.GetAxisRaw("Disparar") == 1)
         {
             if ( !player_Move.inAir && healthScript.canDoSolo==true)
             {
