@@ -27,6 +27,7 @@ public class PlayerAttack2 : MonoBehaviour
     public HealthScript healthScript;
     public HealthUI healthUI;
     public PlayerAttackList attackList;
+    public CapsuleCollider mycol;
     public BoxCollider guardCollider;
     public CharacterAnimation player_Anim;
     private PlayerMovementBeat player_Move;
@@ -40,6 +41,7 @@ public class PlayerAttack2 : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        mycol = GetComponentInChildren<CapsuleCollider>();
         attackList = GetComponent<PlayerAttackList>();
         guardCollider =GameObject.FindGameObjectWithTag("Defense").GetComponent<BoxCollider>();
         player_Anim = GetComponent<CharacterAnimation>();
@@ -139,7 +141,6 @@ public class PlayerAttack2 : MonoBehaviour
             {
                 current_Combo_State = ComboState.SOLO;
                 player_Anim.Solo();
-                
                 healthScript.solo = 0f;
                 healthUI.SoloBar.fillAmount = healthScript.solo / 100;
             }
@@ -188,18 +189,20 @@ public class PlayerAttack2 : MonoBehaviour
     {
         this.gameObject.layer = 8;
         //soloefect.SetActive(false);
+        mycol.enabled = true;
         current_Combo_State = ComboState.NONE;
-        Solocol.GetComponent<SphereCollider>().enabled = false;
+        Solocol.GetComponent<AttackUniversal>().enabled = false;
     }
     private void DesActivarColisiones()
     {
-        this.gameObject.layer = 1;
+        this.gameObject.layer = 0;
+        mycol.enabled = false;
     }
     private void ActiveSoloCol()
     {
-        Solocol.GetComponent<SphereCollider>().enabled = true;
+        Solocol.GetComponent<AttackUniversal>().enabled = true;
         //soloefect.SetActive(true);
-        //soloefectanim.Play("soloanim", -1, 0);
+        //soloefectanim.Play(-1, 0);
     }
 }
 

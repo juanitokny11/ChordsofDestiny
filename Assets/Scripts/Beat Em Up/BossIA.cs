@@ -19,16 +19,26 @@ public class BossIA : MonoBehaviour
     public float attack_Distance = 1.0f;
     public float chase_Player_After_Attack = 1f;
     public float speed = 5.0f;
+    private CapsuleCollider capsuleCollider;
     private CharacterAnimation enemyAnim;
     private HealthScript healthScript;
+    public BoxCollider mainCamera_col;
+    public BoxCollider mainCamera_col2;
+    public BoxCollider mainCamera_backgroundcol;
     private EnemyHealthUI enemyHealth;
+
 
     void Start()
     {
-        healthScript=GetComponent<HealthScript>();
+
+        capsuleCollider = this.GetComponent<CapsuleCollider>();
+        healthScript =GetComponent<HealthScript>();
         enemyHealth = GetComponent<EnemyHealthUI>();
         myBody = GetComponent<Rigidbody>();
         enemyAnim = GetComponent<CharacterAnimation>();
+        mainCamera_backgroundcol = GameObject.Find("Colider2").GetComponent<BoxCollider>();
+        mainCamera_col = GameObject.Find("Col1").GetComponent<BoxCollider>();
+        mainCamera_col2 = GameObject.Find("Col2").GetComponent<BoxCollider>();
         playerTarget = GameObject.FindGameObjectWithTag("Player").transform;
         current_Boss_State = Estados.Default;
         fase = 1;
@@ -148,5 +158,14 @@ public class BossIA : MonoBehaviour
         porcentajeAtaque = 50;
         porcentajeInvocar = 10;
         SetDefault();
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == 12)
+        {
+            Physics.IgnoreCollision(mainCamera_col, capsuleCollider);
+            Physics.IgnoreCollision(mainCamera_col2, capsuleCollider);
+            Physics.IgnoreCollision(mainCamera_backgroundcol, capsuleCollider);
+        }
     }
 }

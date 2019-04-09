@@ -10,6 +10,7 @@ public class HealthScript : MonoBehaviour
     private CharacterAnimation animationScript;
     private EnemyMovement enemyMovement;
     private HealthUI health_UI;
+    public GameObject healthBar;
     private BossIA bossIA;
     private EnemyHealthUI enemy_Health_UI;
     public PlayerAttackList playerAttack_List;
@@ -26,6 +27,7 @@ public class HealthScript : MonoBehaviour
         if (is_Player)
         {
             health_UI = GetComponent<HealthUI>();
+            healthBar.SetActive(false);
             playerAttack_List = GetComponent<PlayerAttackList>();
         }
         else if (!is_Player)
@@ -63,6 +65,7 @@ public class HealthScript : MonoBehaviour
                 if (Random.Range(0, 3) > 1)
                 {
                     animationScript.Hit(Random.Range(0, 3));
+                    playerAttack_List.RemoveAllList();
                     playerAttack_List.CanAttack();
                 }
             }

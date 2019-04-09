@@ -25,7 +25,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Awake()
     {
-        capsuleCollider = this.GetComponent<CapsuleCollider>();
+        capsuleCollider = GetComponent<CapsuleCollider>();
         mainCamera_col = GameObject.Find("Col1").GetComponent<BoxCollider>();
         mainCamera_col2 = GameObject.Find("Col2").GetComponent<BoxCollider>();
         enemyAnim = GetComponent<CharacterAnimation>();
