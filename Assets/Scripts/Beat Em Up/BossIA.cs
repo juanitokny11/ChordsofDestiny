@@ -43,7 +43,7 @@ public class BossIA : MonoBehaviour
         current_Boss_State = Estados.Default;
         fase = 1;
         porcentajeAtaque = 40;
-        porcentajeInvocar = 15;
+        porcentajeInvocar = 8;
     }
     void Update()
     {
@@ -156,7 +156,7 @@ public class BossIA : MonoBehaviour
     {
         fase = 2;
         porcentajeAtaque = 50;
-        porcentajeInvocar = 10;
+        porcentajeInvocar = 4;
         SetDefault();
     }
     void OnCollisionEnter(Collision collision)

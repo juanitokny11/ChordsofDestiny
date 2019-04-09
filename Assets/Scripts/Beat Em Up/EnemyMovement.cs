@@ -9,7 +9,7 @@ public class EnemyMovement : MonoBehaviour
     public GameObject enemyLife;
     public BoxCollider col;
     private Rigidbody myBody;
-    public float speed = 5.0f;
+    public float speed = 10.0f;
     public BoxCollider mainCamera_col;
     public BoxCollider mainCamera_col2;
     private Transform playerTarget;
@@ -70,6 +70,7 @@ public class EnemyMovement : MonoBehaviour
         }
         if (Vector3.Distance(transform.position, playerTarget.position) < chaseDistance && Vector3.Distance(transform.position, playerTarget.position) > attack_Distance)
         {
+            speed = 4.8f;
             transform.LookAt(playerTarget);
             myBody.velocity = transform.forward * speed;
             if (myBody.velocity.sqrMagnitude != 0)

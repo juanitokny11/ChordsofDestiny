@@ -67,7 +67,7 @@ public class PlayerAttack2 : MonoBehaviour
        
         if (Input.GetButtonDown("AtaqueDebil"))
         {
-            if (current_Combo_State == ComboState.DEBIL3 || current_Combo_State == ComboState.FUERTE2 || current_Combo_State == ComboState.FUERTE3 || current_Combo_State == ComboState.GUARD || current_Combo_State == ComboState.SOLO || current_Combo_State == ComboState.AIRCOMBO5)
+            if (attacks.Contains(ComboState.DEBIL3)||current_Combo_State == ComboState.DEBIL3 || current_Combo_State == ComboState.FUERTE2 || current_Combo_State == ComboState.FUERTE3 || current_Combo_State == ComboState.GUARD || current_Combo_State == ComboState.SOLO || current_Combo_State == ComboState.AIRCOMBO5)
                 return;
             if (current_Combo_State == ComboState.FUERTE)
                 current_Combo_State = ComboState.DEBIL;
@@ -110,7 +110,7 @@ public class PlayerAttack2 : MonoBehaviour
         }
         if (Input.GetButtonDown("AtaqueFuerte"))
         {
-            if (current_Combo_State == ComboState.FUERTE3 || current_Combo_State == ComboState.DEBIL3 || current_Combo_State == ComboState.GUARD || current_Combo_State == ComboState.SOLO)
+            if (attacks.Contains(ComboState.FUERTE3)||current_Combo_State == ComboState.FUERTE3 || current_Combo_State == ComboState.DEBIL3 || current_Combo_State == ComboState.GUARD || current_Combo_State == ComboState.SOLO)
                 return;
             if (current_Combo_State == ComboState.NONE)
                 current_Combo_State = ComboState.FUERTE;

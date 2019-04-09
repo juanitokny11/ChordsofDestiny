@@ -161,5 +161,13 @@ public class CharacterAnimation : MonoBehaviour
     {
         anim.SetTrigger("ChangeFase");
     }
+    public void Invoke1arm()
+    {
+        anim.SetTrigger("Invoke_1arm");
+    }
+    public void Invoke2arms()
+    {
+        anim.SetTrigger("Invoke_2arms");
+    }
 
 }

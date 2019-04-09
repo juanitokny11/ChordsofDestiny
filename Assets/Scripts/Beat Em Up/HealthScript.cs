@@ -27,7 +27,7 @@ public class HealthScript : MonoBehaviour
         if (is_Player)
         {
             health_UI = GetComponent<HealthUI>();
-            healthBar.SetActive(false);
+            //healthBar.SetActive(false);
             playerAttack_List = GetComponent<PlayerAttackList>();
         }
         else if (!is_Player)
@@ -129,8 +129,14 @@ public class HealthScript : MonoBehaviour
             }
             if(hitCounter>=bossIA.porcentajeInvocar)
             {
-                bossIA.SetInvoke();
-                hitCounter = 0;
+                if (bossIA.fase == 1)
+                {
+                    animationScript.Invoke2arms();
+                }
+                else
+                {
+                    animationScript.Invoke1arm();
+                }
             }
 
         }

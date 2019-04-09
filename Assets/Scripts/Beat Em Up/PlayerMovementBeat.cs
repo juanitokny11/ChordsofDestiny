@@ -28,9 +28,9 @@ public class PlayerMovementBeat : MonoBehaviour
     void Update()
     {
         RotatePlayer();
-        if(Input.GetAxisRaw("Run") == 0)
+        if(!Input.GetButtonDown("Run"))
             AnimatePlayerWalk();
-        else if(Input.GetAxisRaw("Run") != 0)
+        else if(Input.GetButtonDown("Run"))
             AnimatePlayerRun();
         if (BeatEmupManager.instance.godmode == true)
             AnimatePlayerJump();
@@ -58,14 +58,13 @@ public class PlayerMovementBeat : MonoBehaviour
             }
             if (Input.GetAxisRaw("Horizontal") > 0 )
             {
-                newPosition.x += animator.GetFloat("Walkspeed") * Time.deltaTime;
                 actualrot = Quaternion.Euler(0, 0, 0);
                 lockrotation = false;
             }
             else if (Input.GetAxisRaw("Horizontal") < 0)
             {
                 actualrot = Quaternion.Euler(0,180,0);
-                newPosition.x -= animator.GetFloat("Walkspeed") * Time.deltaTime;
+                //newPosition.x -= animator.GetFloat("Walkspeed") * Time.deltaTime;
                 lockrotation = true;
             } 
             else if (Input.GetAxisRaw("Horizontal") == 0)
@@ -109,17 +108,19 @@ public class PlayerMovementBeat : MonoBehaviour
     }
     void AnimatePlayerRun()
     {
-        if (Input.GetAxisRaw("Horizontal") != 0 && Input.GetAxisRaw("Run") != 0 || Input.GetAxisRaw("Vertical") != 0 && Input.GetAxisRaw("Run") != 0)
+        run_Speed = 10f;
+        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0 )
             player_Anim.Run(true);
         else
             player_Anim.Run(false);
     }
     void AnimatePlayerWalk()
     {
+        run_Speed = 5f;
         if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0 )
-            player_Anim.Walk(true);
+           player_Anim.Walk(true);
         else
-            player_Anim.Walk(false);
+           player_Anim.Walk(false);
     }
     void AnimatePlayerJump()
     {
