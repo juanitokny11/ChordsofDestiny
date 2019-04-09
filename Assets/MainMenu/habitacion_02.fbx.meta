@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b668bbb05952a5945acea668edc9f32b
+guid: 7d6b35aaae1d1e7438898a896e9d8d57
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -21,7 +21,7 @@ ModelImporter:
     100030: habitacion
     100032: //RootNode
     100034: Jukebox
-    100036: Logo_pared
+    100036: Logo
     100038: mesa
     100040: Perchero
     100042: Poster_01
@@ -53,7 +53,7 @@ ModelImporter:
     400030: habitacion
     400032: //RootNode
     400034: Jukebox
-    400036: Logo_pared
+    400036: Logo
     400038: mesa
     400040: Perchero
     400042: Poster_01
@@ -76,8 +76,8 @@ ModelImporter:
     2100012: Ropa1
     2100014: Percha_corcho
     2100016: Paredes
-    2100018: logo_pared
-    2100020: Puerta1
+    2100018: Puerta1
+    2100020: logo_pared
     2300000: Bota
     2300002: Bota2
     2300004: Cable
@@ -95,7 +95,7 @@ ModelImporter:
     2300028: Corcho
     2300030: habitacion
     2300032: Jukebox
-    2300034: Logo_pared
+    2300034: Logo
     2300036: mesa
     2300038: Perchero
     2300040: Poster_01
@@ -121,7 +121,7 @@ ModelImporter:
     3300028: Corcho
     3300030: habitacion
     3300032: Jukebox
-    3300034: Logo_pared
+    3300034: Logo
     3300036: mesa
     3300038: Perchero
     3300040: Poster_01
@@ -153,10 +153,65 @@ ModelImporter:
     4300040: Corcho
     4300042: habitacion
     4300044: cenicero
-    4300046: Logo_pared
-    4300048: Perchero
-    4300050: Puerta
-  externalObjects: {}
+    4300046: Perchero
+    4300048: Puerta
+    4300050: Logo
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Paredes
+    second: {fileID: 2100000, guid: d8277eb40bd52a0489f7fbe64f563889, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Percha_corcho
+    second: {fileID: 2100000, guid: 894cd25bbd3e4014282b04f31d5b7ca8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Posters1
+    second: {fileID: 2100000, guid: 85cb80264c61e584eb1be559766329ce, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Puerta1
+    second: {fileID: 2100000, guid: 4ac784b893797cf409d7522a6c958a7b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ropa1
+    second: {fileID: 2100000, guid: 0d0397c8445ef2e479ad7611e466f62a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ventilador
+    second: {fileID: 2100000, guid: f006208d89bdb2f45a0eded8f09c59d5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cajonera1
+    second: {fileID: 2100000, guid: e718c43dfb230394ab175bb3f28fbdbe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: jukebox
+    second: {fileID: 2100000, guid: 6b37a7339c05834418bd51e4b010a5c5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: logo_pared
+    second: {fileID: 2100000, guid: 743c21033c4e1044abfcae679042b297, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mesa_cenicero
+    second: {fileID: 2100000, guid: 7d4108cc6cbdcfd4985a0eec712dcf2d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ventana
+    second: {fileID: 2100000, guid: 50695453c28a5b045bc1f3c1ec0b17e8, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -196,7 +251,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
