@@ -157,6 +157,14 @@ public class CharacterAnimation : MonoBehaviour
         if (hit == 1)
             anim.SetTrigger("Hit2_2arms");
     }
+    public void Jump1Arm()
+    {
+        anim.SetTrigger("");
+    }
+    public void Jump2Arms()
+    {
+        anim.SetTrigger("");
+    }
     public void RomperEspada()
     {
         anim.SetTrigger("ChangeFase");

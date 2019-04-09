@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossIA : MonoBehaviour
 {
-    public enum Estados { Attack,Invoke,Default,Death}
+    public enum Estados { Attack,Invoke,Default,Death,Waiting}
     public Estados current_Boss_State;
     public GameObject[] enemiesTospawn;
     public Transform[] positionTospawn;
@@ -130,9 +130,18 @@ public class BossIA : MonoBehaviour
     void Invoke()
     {
         if (fase == 1)
-            Instantiate(enemiesTospawn[Random.Range(3, 4)], positionTospawn[Random.Range(0, 1)].position, Quaternion.identity);
+        {
+            Instantiate(enemiesTospawn[Random.Range(0, 4)], positionTospawn[Random.Range(0, 1)].position, Quaternion.identity);
+        }
         else
-            Instantiate(enemiesTospawn[Random.Range(4, 5)], positionTospawn[Random.Range(0, 1)].position, Quaternion.identity);
+        {
+            Instantiate(enemiesTospawn[Random.Range(0, 4)], positionTospawn[Random.Range(0, 1)].position, Quaternion.identity);
+        }
+        if (fase == 1)
+            enemyAnim.Jump2Arms();
+        else
+            enemyAnim.Jump1Arm();
+
     }
     public void Death()
     {
