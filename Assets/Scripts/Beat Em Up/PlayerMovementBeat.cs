@@ -32,8 +32,8 @@ public class PlayerMovementBeat : MonoBehaviour
             AnimatePlayerWalk();
         else if(Input.GetButtonDown("Run"))
             AnimatePlayerRun();
-        if (BeatEmupManager.instance.godmode == true)
-            AnimatePlayerJump();
+        /*if (BeatEmupManager.instance.godmode == true)
+            AnimatePlayerJump();*/
         //AnimateResetJump();
     }
     void FixedUpdate()
