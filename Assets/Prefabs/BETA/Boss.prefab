@@ -26,8 +26,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 267527694}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.6069934}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2.607}
+  m_LocalScale: {x: 1.28, y: 1.28, z: 1.28}
   m_Children:
   - {fileID: 1093995677}
   - {fileID: 1776092951}
@@ -38,7 +38,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 390, y: -961}
+  m_AnchoredPosition: {x: 445, y: -953.17}
   m_SizeDelta: {x: 195.8, y: 18.300003}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &267527697
@@ -105,7 +105,7 @@ RectTransform:
   m_GameObject: {fileID: 517838262}
   m_LocalRotation: {x: -0, y: -1.1641532e-10, z: -5.820766e-11, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.00004577637}
-  m_LocalScale: {x: 1.14, y: 3.36, z: 1.0000001}
+  m_LocalScale: {x: 1, y: 1, z: 1.0000001}
   m_Children: []
   m_Father: {fileID: 267527695}
   m_RootOrder: 2
@@ -197,12 +197,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colisionLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
   radius: 0.4
-  damage: 4
+  damage: 3
   healthUI: {fileID: 0}
   healthScript: {fileID: 0}
   enemyAnim: {fileID: 0}
+  bossIA: {fileID: 0}
   is_Player: 0
   is_Enemy: 1
   is_Boss: 1
@@ -470,8 +471,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   current_Boss_State: 0
-  enemiesTospawn: []
-  positionTospawn: []
+  enemiesTospawn:
+  - {fileID: 4495394842458842751, guid: 4d97cb1edb1ab7a46907c64c34c60691, type: 3}
+  - {fileID: 1563660872938979978, guid: 6faa2ed7105ee11409305d53fa85d8e3, type: 3}
+  - {fileID: 1204672476334061397, guid: ee2f03cfc3132874e9b96c33ee451691, type: 3}
+  - {fileID: 6100000920416964422, guid: 5338e77f6b3a9c9408566648dca95182, type: 3}
+  positionTospawn:
+  - {fileID: 0}
+  - {fileID: 0}
   random: 0
   fase: 0
   porcentajeAtaque: 0
@@ -483,6 +490,9 @@ MonoBehaviour:
   attack_Distance: 4
   chase_Player_After_Attack: 1
   speed: 5
+  mainCamera_col: {fileID: 0}
+  mainCamera_col2: {fileID: 0}
+  mainCamera_backgroundcol: {fileID: 0}
 --- !u!114 &988149406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -511,9 +521,12 @@ MonoBehaviour:
   health: 100
   solo: 0
   zone: {fileID: 0}
+  healthBar: {fileID: 0}
+  playerAttack_List: {fileID: 0}
   canDoSolo: 0
   characterDied: 0
   inAir: 0
+  hitCounter: 0
   is_Player: 0
   is_Boss: 1
 --- !u!114 &988149404
@@ -528,13 +541,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33471cb3bee3ec540b34e8f50b174270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clips: {fileID: 0}
+  jumpefect: {fileID: 0}
   guitar_Attack_Point: {fileID: 0}
   Boss_Attack_Point1: {fileID: 1438397107}
   Boss_Attack_Point2: {fileID: 522945370}
   groupie_Attack_Point: {fileID: 0}
   fan: []
   bate: {fileID: 0}
-  espadas: []
+  espada: {fileID: 1459618842818546059}
+  espadaanimada: {fileID: 4843713033998774898}
   groupie: {fileID: 0}
   groupiecol: {fileID: 0}
   groupieEnemy: {fileID: 0}
@@ -585,7 +601,7 @@ RectTransform:
   m_GameObject: {fileID: 1093995676}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.14, y: 3.37, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 267527695}
   m_RootOrder: 0
@@ -659,14 +675,14 @@ RectTransform:
   m_GameObject: {fileID: 1368963830}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.67586, y: 0.67586, z: 0.67586}
   m_Children: []
   m_Father: {fileID: 267527695}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -56.1}
+  m_AnchoredPosition: {x: 0, y: -39.6}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1368963833
@@ -839,10 +855,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   radius: 0.4
-  damage: 4
+  damage: 3
   healthUI: {fileID: 0}
   healthScript: {fileID: 0}
   enemyAnim: {fileID: 0}
+  bossIA: {fileID: 0}
   is_Player: 0
   is_Enemy: 1
   is_Boss: 1
@@ -874,7 +891,7 @@ RectTransform:
   m_GameObject: {fileID: 1776092950}
   m_LocalRotation: {x: -0, y: -3.4924597e-10, z: -1.1641532e-10, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.14, y: 3.26, z: 1.0000001}
+  m_LocalScale: {x: 1, y: 1, z: 1.0000001}
   m_Children: []
   m_Father: {fileID: 267527695}
   m_RootOrder: 1
@@ -3552,13 +3569,9 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1.0000284
       objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: a4cbeba19c3b09347aca3cbf83f89bbc, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: a4cbeba19c3b09347aca3cbf83f89bbc, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: a4cbeba19c3b09347aca3cbf83f89bbc, type: 3}
       propertyPath: m_Controller
@@ -3566,6 +3579,12 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 0f4b8fa6e9f00cc459105e00d529abc4, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4cbeba19c3b09347aca3cbf83f89bbc, type: 3}
+--- !u!1 &4843713033998774898 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100004, guid: a4cbeba19c3b09347aca3cbf83f89bbc,
+    type: 3}
+  m_PrefabInstance: {fileID: 4843713033998742742}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4843713033998610002 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400004, guid: a4cbeba19c3b09347aca3cbf83f89bbc,
