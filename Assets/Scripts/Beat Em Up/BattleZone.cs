@@ -12,7 +12,7 @@ public class BattleZone : MonoBehaviour
     //public GameObject cdpoint;
     public Image goImage;
     public AudioSource musica;
-    public List<GameObject> enemies;
+    public List<EnemyMovement> enemies;
     /*public Animator[] pivotesz1;
     public Animator[] pivotesz2;
     public Animator[] pivotesz3;
@@ -36,8 +36,8 @@ public class BattleZone : MonoBehaviour
         if (other.tag == "Player")
         {
             UI.SetActive(true);
-            enemies[2].SetActive(true);
-            enemies[3].SetActive(true);
+            enemies[1].gameObject.SetActive(true);
+            enemies[2].gameObject.SetActive(true);
             camera.GetComponent<ShakeCamera>().lockCamera = true;
             colider.enabled = false;
             musica.Play();
@@ -115,16 +115,14 @@ public class BattleZone : MonoBehaviour
     }
     void Update()
     {
+        if(enemies[0])
         if (enemiescounter <= 0)
         {
             //this.gameObject.SetActive(false);
             Invoke("UnlockCamera", 1f);
             musica.Stop();
             SetGo();
-            Invoke("stopGo", 5f);
-            /*if (id == 4){
-                Instantiate(cd, cdpoint.transform.position, Quaternion.identity, null);
-            }*/
+            Invoke("StopGo", 5f);
         }
     }
     void UnlockCamera()
@@ -147,7 +145,7 @@ public class BattleZone : MonoBehaviour
             goImage.enabled = true;
         }
     }
-    void stopGo()
+    void StopGo()
     {
         CancelInvoke("Blink");
         UI.SetActive(false);

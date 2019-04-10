@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.TextCore;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -9,6 +11,10 @@ public class EnemyMovement : MonoBehaviour
     public GameObject enemyLife;
     public BoxCollider col;
     private Rigidbody myBody;
+    public List<string> groupieNames;
+    public List<string> fanNames;
+    public Text gname;
+    public bool isGroupie;
     public float speed = 10.0f;
     public BoxCollider mainCamera_col;
     public BoxCollider mainCamera_col2;
@@ -25,6 +31,8 @@ public class EnemyMovement : MonoBehaviour
 
     void Awake()
     {
+        Names();
+        gname = GetComponentInChildren<Text>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         mainCamera_col = GameObject.Find("Col1").GetComponent<BoxCollider>();
         mainCamera_col2 = GameObject.Find("Col2").GetComponent<BoxCollider>();
@@ -35,10 +43,37 @@ public class EnemyMovement : MonoBehaviour
         healthScript = GetComponent<HealthScript>();
         playerTarget = GameObject.FindWithTag("Player").transform;
     }
+    public void Names()
+    {
+        groupieNames.Add("Amelia");
+        groupieNames.Add("Chloe");
+        groupieNames.Add("Myra");
+        groupieNames.Add("Hannah");
+        groupieNames.Add("Selina");
+        groupieNames.Add("Charlotte");
+        groupieNames.Add("Angy");
+        groupieNames.Add("Sophia");
+        groupieNames.Add("Magnolia");
+        groupieNames.Add("Ruth");
+        fanNames.Add("Charles");
+        fanNames.Add("Henry");
+        fanNames.Add("Gideon");
+        fanNames.Add("Edmund");
+        fanNames.Add("Austin");
+        fanNames.Add("James");
+        fanNames.Add("Noah");
+        fanNames.Add("Dan");
+        fanNames.Add("Titus");
+        fanNames.Add("Vincent");
+    }
     private void Start()
     {
         followPlayer = true;
         current_Attack_Time = default_Attack_Time;
+        if (!isGroupie)
+            gname.text = fanNames[Random.Range(0, fanNames.Count)];
+        else if (isGroupie)
+            gname.text = groupieNames[Random.Range(0, groupieNames.Count)];
     }
     void Update()
     {
@@ -48,14 +83,14 @@ public class EnemyMovement : MonoBehaviour
             this.enabled = false;
         }
         Attack();
-        if (col.enabled == true)
+        /*if (col.enabled == true)
         {
             enemyLife.SetActive(true);
         }
         else
         {
             enemyLife.SetActive(false);
-        }
+        }*/
     }
     void FixedUpdate()
     {

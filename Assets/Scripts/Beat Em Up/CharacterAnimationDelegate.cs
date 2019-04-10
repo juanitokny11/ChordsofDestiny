@@ -39,7 +39,6 @@ public class CharacterAnimationDelegate : MonoBehaviour
         {
             fan = GetComponentsInChildren<SkinnedMeshRenderer>();
             bate = fan[0];
-            groupie= fan[1];
             groupieEnemy = GetComponent<EnemyMovement>();
         }
         else if (is_Boss)

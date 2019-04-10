@@ -9,7 +9,7 @@ public class HealthUI : MonoBehaviour
     public Image SoloBar;
     void Awake()
     {
-        HealthBar = GameObject.FindGameObjectWithTag("HealthUI").GetComponent<Image>();
+        HealthBar = GameObject.FindGameObjectWithTag("PlayerHealth").GetComponent<Image>();
         SoloBar = GameObject.FindGameObjectWithTag("SoloBar").GetComponent<Image>();
     }
     public void DisplayHealth(float value)
