@@ -145,7 +145,6 @@ public class BattleZone : MonoBehaviour
         else
         {
             goImage.enabled = true;
-            
         }
     }
     void stopGo()

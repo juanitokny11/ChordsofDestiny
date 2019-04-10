@@ -14,6 +14,7 @@ public class CharacterAnimationDelegate : MonoBehaviour
     public SkinnedMeshRenderer[] fan;
     public SkinnedMeshRenderer bate;
     public MeshRenderer espada;
+    public CapsuleCollider mycol;
     public GameObject espadaanimada;
     public SkinnedMeshRenderer groupie;
     public CapsuleCollider groupiecol;
@@ -156,10 +157,12 @@ public class CharacterAnimationDelegate : MonoBehaviour
     void NodamageforEnemy()
     {
         transform.gameObject.layer = 0;
+        groupiecol.enabled = false;
     }
     void DamageforEnemy()
     {
         transform.gameObject.layer = 11;
+        groupiecol.enabled = true;
     }
     void DamageforPlayer()
     {
@@ -210,7 +213,6 @@ public class CharacterAnimationDelegate : MonoBehaviour
             if (is_Boss)
             {
                 espada.enabled = false;
-                //espadas[0].enabled = false;
             }
         }
         else
@@ -223,7 +225,6 @@ public class CharacterAnimationDelegate : MonoBehaviour
             if (is_Boss)
             {
                 espada.enabled = true;
-                //espadas[0].enabled = true;
             }
         }
     }

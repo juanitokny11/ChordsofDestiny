@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7838194074370216321}
   - component: {fileID: 7295175928704558466}
+  - component: {fileID: 737032198}
   m_Layer: 8
   m_Name: SoloColider
   m_TagString: Solo
@@ -25,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5388633113527815788}
   m_LocalRotation: {x: -0.46719664, y: 0.5307799, z: 0.5307799, w: 0.4671967}
-  m_LocalPosition: {x: -0.0029363106, y: 1.7899135, z: 0.0318728}
+  m_LocalPosition: {x: -0.0029363106, y: -0, z: 0.0318728}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8939311919185665388}
@@ -40,10 +41,35 @@ SphereCollider:
   m_GameObject: {fileID: 5388633113527815788}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Radius: 3.7471895
-  m_Center: {x: 0, y: 0, z: -2}
+  m_Radius: 5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &737032198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5388633113527815788}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b502ca8614f3e1e458271b420c4f4ac0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colisionLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  radius: 6.5
+  damage: 8
+  healthUI: {fileID: 0}
+  healthScript: {fileID: 0}
+  enemyAnim: {fileID: 0}
+  bossIA: {fileID: 0}
+  is_Player: 1
+  is_Enemy: 0
+  is_Boss: 0
+  hit_Fx_Prefab: {fileID: 0}
 --- !u!1 &7681250173831088831
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,9 +733,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8939311917634563692}
-  m_LocalRotation: {x: 0.623004, y: -0.034594145, z: 0.09322404, w: -0.77587277}
-  m_LocalPosition: {x: -0.182, y: 0.06, z: 0.104}
-  m_LocalScale: {x: 1.8868563, y: 1.8868527, z: 1.8868556}
+  m_LocalRotation: {x: 0.62300396, y: -0.034594093, z: 0.09322405, w: -0.7758728}
+  m_LocalPosition: {x: -0.18200004, y: 0.059999168, z: 0.104000494}
+  m_LocalScale: {x: 1.8868604, y: 1.8868604, z: 1.8868676}
   m_Children:
   - {fileID: 8939311919082907253}
   m_Father: {fileID: 8939311917505240303}
@@ -7234,6 +7260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clips: {fileID: 0}
+  jumpefect: {fileID: 0}
   guitar_Attack_Point: {fileID: 8939311919082907250}
   Boss_Attack_Point1: {fileID: 0}
   Boss_Attack_Point2: {fileID: 0}
@@ -7267,9 +7294,11 @@ MonoBehaviour:
   attacks: 
   blockActivated: 0
   Solocol: {fileID: 0}
+  Guitar: {fileID: 8939311917634563695}
   healthScript: {fileID: 0}
   healthUI: {fileID: 0}
   attackList: {fileID: 0}
+  mycol: {fileID: 0}
   guardCollider: {fileID: 0}
   player_Anim: {fileID: 0}
   is_Player: 1
@@ -7303,8 +7332,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  solo: 0
+  solo: 200
   zone: {fileID: 0}
+  healthBar: {fileID: 0}
   playerAttack_List: {fileID: 0}
   canDoSolo: 0
   characterDied: 0

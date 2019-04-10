@@ -30,8 +30,7 @@ public class BossIA : MonoBehaviour
 
     void Start()
     {
-
-        capsuleCollider = this.GetComponent<CapsuleCollider>();
+        capsuleCollider = GetComponent<CapsuleCollider>();
         healthScript =GetComponent<HealthScript>();
         enemyHealth = GetComponent<EnemyHealthUI>();
         myBody = GetComponent<Rigidbody>();
@@ -54,6 +53,9 @@ public class BossIA : MonoBehaviour
                 break;
             case Estados.Death:
                 Death();
+                break;
+            case Estados.Waiting:
+                Wait();
                 break;
             default:
                 break;
@@ -127,6 +129,13 @@ public class BossIA : MonoBehaviour
             SetAttack();
         }
     }
+    public void Wait()
+    {
+
+       
+
+
+    }
     void Invoke()
     {
         if (fase == 1)
@@ -137,11 +146,11 @@ public class BossIA : MonoBehaviour
         {
             Instantiate(enemiesTospawn[Random.Range(0, 4)], positionTospawn[Random.Range(0, 1)].position, Quaternion.identity);
         }
-        if (fase == 1)
-            enemyAnim.Jump2Arms();
+       /* if (fase == 1)
+            enemyAnim.Jump2Armsup();
         else
-            enemyAnim.Jump1Arm();
-
+            enemyAnim.Jump1Armup();*/
+        current_Boss_State = Estados.Waiting;
     }
     public void Death()
     {

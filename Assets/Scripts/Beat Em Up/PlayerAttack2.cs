@@ -24,6 +24,9 @@ public class PlayerAttack2 : MonoBehaviour
     }
     public bool blockActivated = false;
     public SphereCollider Solocol;
+    public Transform Guitar;
+    private Vector3 currentGuitarpose;
+    private Quaternion currentGuitarRotation;
     public HealthScript healthScript;
     public HealthUI healthUI;
     public PlayerAttackList attackList;
@@ -51,6 +54,7 @@ public class PlayerAttack2 : MonoBehaviour
     }
     void Start()
     {
+        Guitar.localPosition = new Vector3(-0.118f, 0.014f, 0.083f);
         Solocol = GameObject.FindGameObjectWithTag("Solo").GetComponent<SphereCollider>();
         Solocol.GetComponent<SphereCollider>().enabled = false;
         guardCollider.enabled = false;
@@ -140,6 +144,10 @@ public class PlayerAttack2 : MonoBehaviour
             if ( !player_Move.inAir && healthScript.canDoSolo==true)
             {
                 current_Combo_State = ComboState.SOLO;
+                currentGuitarpose = new Vector3(-0.2145597f, 0.1555082f, 1.084099f);
+                currentGuitarRotation = Quaternion.Euler(-68.8f, -437.132f, -103.051f);
+                Guitar.localPosition = currentGuitarpose;
+                Guitar.localRotation = currentGuitarRotation;
                 player_Anim.Solo();
                 healthScript.solo = 0f;
                 healthUI.SoloBar.fillAmount = healthScript.solo / 100;
@@ -166,6 +174,11 @@ public class PlayerAttack2 : MonoBehaviour
                 current_Combo_State = ComboState.NONE;
             }
         }
+    }
+    public void ResetGuitarPose()
+    {
+        Guitar.localPosition = new Vector3(-0.118f, 0.014f, 0.083f);
+        Guitar.localRotation = Quaternion.Euler(-61.589f, -631.912f, -92.93501f);
     }
     void ResetComboState()
     {
@@ -201,8 +214,6 @@ public class PlayerAttack2 : MonoBehaviour
     private void ActiveSoloCol()
     {
         Solocol.GetComponent<AttackUniversal>().enabled = true;
-        //soloefect.SetActive(true);
-        //soloefectanim.Play(-1, 0);
     }
 }
 
