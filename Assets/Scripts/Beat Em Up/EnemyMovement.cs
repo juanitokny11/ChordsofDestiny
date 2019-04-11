@@ -71,9 +71,15 @@ public class EnemyMovement : MonoBehaviour
         followPlayer = true;
         current_Attack_Time = default_Attack_Time;
         if (!isGroupie)
+        {
             gname.text = fanNames[Random.Range(0, fanNames.Count)];
+            speed = 6f;
+        }
         else if (isGroupie)
+        {
             gname.text = groupieNames[Random.Range(0, groupieNames.Count)];
+            speed = 4.8f;
+        } 
     }
     void Update()
     {
