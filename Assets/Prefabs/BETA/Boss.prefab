@@ -380,7 +380,7 @@ GameObject:
   - component: {fileID: 988149405}
   - component: {fileID: 988149404}
   - component: {fileID: 988149403}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Boss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -472,10 +472,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   current_Boss_State: 0
   enemiesTospawn:
-  - {fileID: 4495394842458842751, guid: 4d97cb1edb1ab7a46907c64c34c60691, type: 3}
+  - {fileID: 8017991134479369548, guid: 72c03d8cbb5d91041a47013e371eab82, type: 3}
   - {fileID: 1563660872938979978, guid: 6faa2ed7105ee11409305d53fa85d8e3, type: 3}
   - {fileID: 1204672476334061397, guid: ee2f03cfc3132874e9b96c33ee451691, type: 3}
   - {fileID: 6100000920416964422, guid: 5338e77f6b3a9c9408566648dca95182, type: 3}
+  - {fileID: 8972260133928361627, guid: 80da2cb8c7f68ed4a8b509fe01ff6f99, type: 3}
+  - {fileID: 6469188384448549091, guid: 021d1f00ffbebf44f823597f83a31100, type: 3}
   positionTospawn:
   - {fileID: 0}
   - {fileID: 0}
@@ -490,9 +492,14 @@ MonoBehaviour:
   attack_Distance: 4
   chase_Player_After_Attack: 1
   speed: 5
+  Jump: 0
+  ResetJump: 0
+  waitingPlace: {fileID: 0}
   mainCamera_col: {fileID: 0}
   mainCamera_col2: {fileID: 0}
   mainCamera_backgroundcol: {fileID: 0}
+  ResetPosition: {fileID: 0}
+  BossZone: {fileID: 0}
 --- !u!114 &988149406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -547,9 +554,10 @@ MonoBehaviour:
   Boss_Attack_Point1: {fileID: 1438397107}
   Boss_Attack_Point2: {fileID: 522945370}
   groupie_Attack_Point: {fileID: 0}
-  fan: []
+  fan: {fileID: 0}
   bate: {fileID: 0}
   espada: {fileID: 1459618842818546059}
+  mycol: {fileID: 0}
   espadaanimada: {fileID: 4843713033998774898}
   groupie: {fileID: 0}
   groupiecol: {fileID: 0}
@@ -3513,10 +3521,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 551941664522167578}
     m_Modifications:
-    - target: {fileID: 100004, guid: a4cbeba19c3b09347aca3cbf83f89bbc, type: 3}
-      propertyPath: m_Name
-      value: RomperEspadaSola
-      objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: a4cbeba19c3b09347aca3cbf83f89bbc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.6539087
@@ -3568,6 +3572,10 @@ PrefabInstance:
     - target: {fileID: 400004, guid: a4cbeba19c3b09347aca3cbf83f89bbc, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.0000284
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: a4cbeba19c3b09347aca3cbf83f89bbc, type: 3}
+      propertyPath: m_Name
+      value: RomperEspadaSola
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: a4cbeba19c3b09347aca3cbf83f89bbc, type: 3}
       propertyPath: m_Enabled

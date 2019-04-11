@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class BossIA : MonoBehaviour
 {
-    public enum Estados { Attack,Invoke,Default,Death,Waiting}
+    public enum Estados { Attack, Invoke, Default, Death, Waiting }
     public Estados current_Boss_State;
     public GameObject[] enemiesTospawn;
     public Transform[] positionTospawn;
     public int random;
-    public int fase ;
+    public int fase;
     public int porcentajeAtaque;
     public int porcentajeInvocar;
     public bool followPlayer, attackPlayer;
@@ -31,11 +31,12 @@ public class BossIA : MonoBehaviour
     private EnemyHealthUI enemyHealth;
     public Transform ResetPosition;
     public BattleZone BossZone;
+    public bool outside;
 
     void Start()
     {
         capsuleCollider = GetComponent<CapsuleCollider>();
-        healthScript =GetComponent<HealthScript>();
+        healthScript = GetComponent<HealthScript>();
         enemyHealth = GetComponent<EnemyHealthUI>();
         myBody = GetComponent<Rigidbody>();
         enemyAnim = GetComponent<CharacterAnimation>();
@@ -50,24 +51,58 @@ public class BossIA : MonoBehaviour
     }
     void Update()
     {
-        if (Jump == true)
+        if (!outside)
         {
-            Up();
-            if (transform.position.y >= 9f)
+            if (Jump == true)
             {
-                StopJumpUp();
-                transform.position = waitingPlace.position;
+                Up();
+                if (transform.position.y >= 9f)
+                {
+                    transform.position = waitingPlace.position;
+                    StopJumpUp();
+                }
+            }
+            if (ResetJump == true)
+            {
+                if (fase == 1)
+                    enemyAnim.ResetJump2Arms();
+                else
+                    enemyAnim.ResetJump1Arm();
+                Down();
+                if (transform.position.y <= -0.06041813f)
+                {
+                    outside = true;
+                    StopJumpDown();
+                }  
             }
         }
-        if (ResetJump == true)
+        else if (outside)
         {
-            Down();
-            if (transform.position.y <= -0.06041813f)
+            if (Jump == true)
             {
-                StopJumpDown();
+                Up();
+                
+                if (transform.position.y >= 9f)
+                {
+                    transform.position = ResetPosition.position;
+                    StopJumpUp();
+                }
+            }
+            if (ResetJump == true)
+            {
+                if (fase == 1)
+                    enemyAnim.ResetJump2Arms();
+                else
+                    enemyAnim.ResetJump1Arm();
+                Down();
+                if (transform.position.y <= -0.06041813f)
+                {
+                    outside = false;
+                    StopJumpDown();
+                } 
             }
         }
-           
+
         switch (current_Boss_State)
         {
             case Estados.Default:
@@ -95,19 +130,19 @@ public class BossIA : MonoBehaviour
             if (fase == 1)
                 enemyAnim.Attack2arms(0);
             else
-                enemyAnim.Attack1arm(0);    
+                enemyAnim.Attack1arm(0);
         }
-        else if(random < porcentajeAtaque)
+        else if (random < porcentajeAtaque)
         {
             if (fase == 1)
                 enemyAnim.Attack2arms(1);
-           else
+            else
                 enemyAnim.Attack1arm(1);
         }
     }
     void DefaultState()
     {
-        if (!followPlayer || healthScript.characterDied )
+        if (!followPlayer || healthScript.characterDied)
         {
             speed = 0;
             return;
@@ -121,7 +156,7 @@ public class BossIA : MonoBehaviour
                 if (fase == 1)
                     enemyAnim.Walk2arm(true);
                 else
-                    enemyAnim.Walk1arm(true);     
+                    enemyAnim.Walk1arm(true);
             }
             followPlayer = true;
             attackPlayer = false;
@@ -133,7 +168,7 @@ public class BossIA : MonoBehaviour
                 myBody.velocity = Vector3.zero;
                 if (fase == 1)
                     enemyAnim.Walk2arm(false);
-               else
+                else
                     enemyAnim.Walk1arm(false);
                 //followPlayer = false;
                 attackPlayer = false;
@@ -155,15 +190,8 @@ public class BossIA : MonoBehaviour
     {
         if (BossZone.enemiescounter >= 0)
         {
-            if (fase == 1)
-                enemyAnim.ResetJump2Arms();
-            else
-                enemyAnim.ResetJump1Arm();
-            
-            if (fase == 1)
-                enemyAnim.Jump2Arms();
-            else
-                enemyAnim.Jump1Arm();
+            outside = false;
+            SetDefault();
         }
     }
     void Invoke()
@@ -183,15 +211,15 @@ public class BossIA : MonoBehaviour
             Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[Random.Range(0, 1)].position, Quaternion.identity);
         }
         if (fase == 1)
-           enemyAnim.Jump2Arms();
-       else
-           enemyAnim.Jump1Arm();
+            enemyAnim.Jump2Arms();
+        else
+            enemyAnim.Jump1Arm();
         //ResetPosition = transform.position;
         if (fase == 1)
             enemyAnim.ResetJump2Arms();
         else
             enemyAnim.ResetJump1Arm();
-        current_Boss_State = Estados.Waiting;
+        SetWaiting();
     }
     public void Death()
     {
@@ -204,6 +232,7 @@ public class BossIA : MonoBehaviour
     }
     public void SetInvoke()
     {
+        outside = true;
         current_Boss_State = Estados.Invoke;
         Invoke();
     }
@@ -211,6 +240,13 @@ public class BossIA : MonoBehaviour
     {
         current_Boss_State = Estados.Default;
     }
+    public void SetWaiting()
+    {
+        outside = false;
+        current_Boss_State = Estados.Waiting;
+        Wait();
+    }
+
     public void ChangeFase()
     {
         fase = 2;
@@ -242,7 +278,7 @@ public class BossIA : MonoBehaviour
     }
     IEnumerator UpInTheAir()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y+1.0f, transform.position.z);
+        transform.position = new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z);
         yield return new WaitForEndOfFrame();
     }
     private void JumpUp()
@@ -252,6 +288,7 @@ public class BossIA : MonoBehaviour
     private void StopJumpUp()
     {
         Jump = false;
+        ResetJump = true;
     }
     private void JumpDown()
     {
