@@ -142,6 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42c992a1e72890f40bfa0019deeeb6e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam_Anim: {fileID: 788439824}
 --- !u!224 &2204933
 RectTransform:
   m_ObjectHideFlags: 0
@@ -638,7 +639,7 @@ MonoBehaviour:
   title: {fileID: 0}
   musica: {fileID: 0}
   fademusica: {fileID: 0}
-  reproductor: {fileID: 0}
+  reproductor: {fileID: 368322409}
   extras: 0
 --- !u!4 &142483636
 Transform:
@@ -826,6 +827,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MusicPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 7737828682834294363, guid: 5fe50378ca2f85e47ac33b72dbbfe2f4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7737828682834294359, guid: 5fe50378ca2f85e47ac33b72dbbfe2f4,
         type: 3}
@@ -1824,7 +1830,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 142483635}
+      - m_Target: {fileID: 2204932}
         m_MethodName: Extras
         m_Mode: 1
         m_Arguments:

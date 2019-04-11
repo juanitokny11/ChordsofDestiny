@@ -9,9 +9,11 @@ public class PlayerMovementBeat : MonoBehaviour
     private Rigidbody myBody;
     public bool inAir = false;
     public bool comboAereo = false;
-    public float run_Speed = 8.0f;
-    public float z_Speed = 3.0f;
+    public float run_Speed;
+    public float z_Speed;
     public bool lockrotation;
+    public bool walk=false;
+    public bool running=false;
     Quaternion actualrot;
     Vector3 newPosition;
     private float rotation_Y = -90.0f;
@@ -28,12 +30,22 @@ public class PlayerMovementBeat : MonoBehaviour
     void Update()
     {
         RotatePlayer();
-        if(!Input.GetButtonDown("Run"))
-            AnimatePlayerWalk();
-        else if(Input.GetButtonDown("Run"))
-            AnimatePlayerRun();
-        /*if (BeatEmupManager.instance.godmode == true)
-            AnimatePlayerJump();*/
+        AnimatePlayerRun();
+        AnimatePlayerWalk();
+        if (walk == true && running == false)
+            run_Speed = 5;
+        else if (running == true)
+            run_Speed = 10f;
+        if (Input.GetButtonDown("Run"))
+        {
+            running = true; 
+        }
+        if (Input.GetButtonUp("Run"))
+        {
+            running = false;
+        }
+        if (BeatEmupManager.instance.godmode == true)
+            AnimatePlayerJump();
         //AnimateResetJump();
     }
     void FixedUpdate()
@@ -46,29 +58,24 @@ public class PlayerMovementBeat : MonoBehaviour
         if (animator)
         {
             Vector3 newPosition = transform.position;
-            if (Input.GetAxisRaw("Jump") !=0 )
-            {
-                if (BeatEmupManager.instance.godmode == false)
-                    newPosition.y += animator.GetFloat("Jumpspeed") * Time.deltaTime;
-            }
-            if (Input.GetAxisRaw("Submit") != 0)
-            {
-                if (BeatEmupManager.instance.godmode == false)
-                    myBody.useGravity = true;
-            }
+            if (BeatEmupManager.instance.godmode == false)
+                myBody.useGravity = true;
             if (Input.GetAxisRaw("Horizontal") > 0 )
             {
                 actualrot = Quaternion.Euler(0, 0, 0);
+                walk = true;
                 lockrotation = false;
             }
             else if (Input.GetAxisRaw("Horizontal") < 0)
             {
                 actualrot = Quaternion.Euler(0,180,0);
+                walk = true;
                 //newPosition.x -= animator.GetFloat("Walkspeed") * Time.deltaTime;
                 lockrotation = true;
             } 
             else if (Input.GetAxisRaw("Horizontal") == 0)
             {
+                walk = false;
                 if (lockrotation == true )
                 {
                     transform.rotation = Quaternion.Euler(0, 180, 0);
@@ -96,8 +103,8 @@ public class PlayerMovementBeat : MonoBehaviour
     void DetectMovement()
     {
         myBody.velocity = new Vector3(Input.GetAxisRaw("Horizontal") * (-run_Speed), myBody.velocity.y, Input.GetAxisRaw("Vertical")* (-z_Speed) );
-        //if (Input.GetAxisRaw("Jump") != 0)
-            //myBody.velocity =new Vector3( myBody.velocity.x, Input.GetAxisRaw("Jump") * newPosition.y, myBody.velocity.z);
+        if (Input.GetAxisRaw("Jump") != 0)
+            myBody.velocity =new Vector3( myBody.velocity.x, Input.GetAxisRaw("Jump") * newPosition.y, myBody.velocity.z);
     }
     void RotatePlayer()
     {
@@ -108,18 +115,16 @@ public class PlayerMovementBeat : MonoBehaviour
     }
     void AnimatePlayerRun()
     {
-        run_Speed = 10f;
-        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0 )
+        if (walk == true && running ==true)
             player_Anim.Run(true);
-        else
+        else if (walk == true && running == false)
             player_Anim.Run(false);
     }
     void AnimatePlayerWalk()
     {
-        run_Speed = 5f;
-        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0 )
+        if (walk==true && running==false)
            player_Anim.Walk(true);
-        else
+        else if(walk==false && running == false)
            player_Anim.Walk(false);
     }
     void AnimatePlayerJump()

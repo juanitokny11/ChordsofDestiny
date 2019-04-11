@@ -5,7 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour {
 
-   
+    public Animator cam_Anim;
+    public void Start()
+    {
+        Cursor.visible = true;
+    }
     public void PlayGame()
     {
         SceneManager.LoadScene("Gameplay");
@@ -16,30 +20,33 @@ public class MenuManager : MonoBehaviour {
     }
     public void EndGame()
     {
-
         Application.Quit();
     }
-
-    public void Controles()
-    {
-        SceneManager.LoadScene("Controles");
-        Cursor.visible = true;
-        Time.timeScale=1;
-    }
-
-    
     public void Options()
     {
-        SceneManager.LoadScene("options");
+        cam_Anim.SetTrigger("Options");
         Cursor.visible = true;
     }
-
+    public void Extras()
+    {
+        cam_Anim.SetTrigger("Extras");
+        Cursor.visible = true;
+    }
+    public void Options_to_Menu()
+    {
+        cam_Anim.SetTrigger("Options_to_menu");
+        Cursor.visible = true;
+    }
+    public void Extra_to_Menu()
+    {
+        Cursor.visible = true;
+        cam_Anim.SetTrigger("Extras_to_options");
+    }
     public void Creditos()
     {
         SceneManager.LoadScene("Credits");
          Cursor.visible = true;
         Time.timeScale = 1;
-
     }
 
     public void Title(){

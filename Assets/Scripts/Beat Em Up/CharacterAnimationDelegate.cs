@@ -10,8 +10,8 @@ public class CharacterAnimationDelegate : MonoBehaviour
     public GameObject guitar_Attack_Point;
     public GameObject Boss_Attack_Point1;
     public GameObject Boss_Attack_Point2;
-    public GameObject groupie_Attack_Point;
-    public SkinnedMeshRenderer[] fan;
+    public AttackUniversal groupie_Attack_Point;
+    public SkinnedMeshRenderer fan;
     public SkinnedMeshRenderer bate;
     public MeshRenderer espada;
     public CapsuleCollider mycol;
@@ -34,12 +34,14 @@ public class CharacterAnimationDelegate : MonoBehaviour
         { 
             groupie = GetComponentInChildren<SkinnedMeshRenderer>();
             groupieEnemy = GetComponent<EnemyMovement>();
+            groupie_Attack_Point = GetComponentInChildren<AttackUniversal>();
         }
         else if (isFan)
         {
-            fan = GetComponentsInChildren<SkinnedMeshRenderer>();
-            bate = fan[0];
+            groupie = GetComponentInChildren<SkinnedMeshRenderer>();
+            bate = fan;
             groupieEnemy = GetComponent<EnemyMovement>();
+            groupie_Attack_Point = GetComponentInChildren<AttackUniversal>();
         }
         else if (is_Boss)
         {
@@ -53,6 +55,7 @@ public class CharacterAnimationDelegate : MonoBehaviour
             jumpefect = GetComponentInChildren<ParticleSystem>();
             clips = GetComponentInChildren<SoundPlayer>();
         }
+        
         groupieBody = GetComponent<Rigidbody>();
         groupiecol = GetComponent<CapsuleCollider>();
         animationScript = GetComponent<CharacterAnimation>();
@@ -72,12 +75,12 @@ public class CharacterAnimationDelegate : MonoBehaviour
     }
     void Groupie_Attack_Point_ON()
     {
-        groupie_Attack_Point.SetActive(true);
+        groupie_Attack_Point.gameObject.SetActive(true);
     }
     void Groupie_Attack_Point_OFF()
     {
-        if (groupie_Attack_Point.activeInHierarchy)
-            groupie_Attack_Point.SetActive(false);
+        if (groupie_Attack_Point.gameObject.activeInHierarchy)
+            groupie_Attack_Point.gameObject.SetActive(false);
     }
     void Boss_2armsAttack_Point_ON()
     {
@@ -205,10 +208,6 @@ public class CharacterAnimationDelegate : MonoBehaviour
         if (Time.fixedTime % .5 < .2)
         {
             groupie.enabled = false;
-             if (isFan)
-            {
-                bate.enabled = false;
-            }
             if (is_Boss)
             {
                 espada.enabled = false;
@@ -217,10 +216,6 @@ public class CharacterAnimationDelegate : MonoBehaviour
         else
         {
             groupie.enabled = true;
-            if (isFan)
-            {
-                bate.enabled = true;
-            }
             if (is_Boss)
             {
                 espada.enabled = true;
