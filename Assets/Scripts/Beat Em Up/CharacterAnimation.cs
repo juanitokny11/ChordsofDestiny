@@ -159,11 +159,19 @@ public class CharacterAnimation : MonoBehaviour
     }
     public void Jump1Arm()
     {
-        anim.SetTrigger("");
+        anim.SetTrigger("Jump_2arms");
+    }
+    public void ResetJump2Arms()
+    {
+        anim.SetTrigger("ResetJump_2arms");
+    }
+    public void ResetJump1Arm()
+    {
+        anim.SetTrigger("ResetJump_1arm");
     }
     public void Jump2Arms()
     {
-        anim.SetTrigger("");
+        anim.SetTrigger("Jump_2arms");
     }
     public void RomperEspada()
     {

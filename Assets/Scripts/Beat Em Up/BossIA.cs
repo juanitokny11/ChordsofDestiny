@@ -19,6 +19,9 @@ public class BossIA : MonoBehaviour
     public float attack_Distance = 1.0f;
     public float chase_Player_After_Attack = 1f;
     public float speed = 5.0f;
+    public bool Jump = false;
+    public bool ResetJump = false;
+    public Transform waitingPlace;
     private CapsuleCollider capsuleCollider;
     private CharacterAnimation enemyAnim;
     private HealthScript healthScript;
@@ -26,7 +29,8 @@ public class BossIA : MonoBehaviour
     public BoxCollider mainCamera_col2;
     public BoxCollider mainCamera_backgroundcol;
     private EnemyHealthUI enemyHealth;
-
+    public Transform ResetPosition;
+    public BattleZone BossZone;
 
     void Start()
     {
@@ -46,6 +50,24 @@ public class BossIA : MonoBehaviour
     }
     void Update()
     {
+        if (Jump == true)
+        {
+            Up();
+            if (transform.position.y >= 9f)
+            {
+                StopJumpUp();
+                transform.position = waitingPlace.position;
+            }
+        }
+        if (ResetJump == true)
+        {
+            Down();
+            if (transform.position.y <= -0.06041813f)
+            {
+                StopJumpDown();
+            }
+        }
+           
         switch (current_Boss_State)
         {
             case Estados.Default:
@@ -131,25 +153,44 @@ public class BossIA : MonoBehaviour
     }
     public void Wait()
     {
-
-       
-
-
+        if (BossZone.enemiescounter >= 0)
+        {
+            if (fase == 1)
+                enemyAnim.ResetJump2Arms();
+            else
+                enemyAnim.ResetJump1Arm();
+            
+            if (fase == 1)
+                enemyAnim.Jump2Arms();
+            else
+                enemyAnim.Jump1Arm();
+        }
     }
     void Invoke()
     {
+        for (int i = 0; i < enemiesTospawn.Length; i++)
+        {
+            enemiesTospawn[i].GetComponent<HealthScript>().zone = BossZone;
+            BossZone.enemiescounter++;
+        }
         if (fase == 1)
         {
-            Instantiate(enemiesTospawn[Random.Range(0, 4)], positionTospawn[Random.Range(0, 1)].position, Quaternion.identity);
+            Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[Random.Range(0, 1)].position, Quaternion.identity);
+            BossZone.enemies.Add(Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[Random.Range(0, 1)].position, Quaternion.identity).GetComponent<EnemyMovement>());
         }
         else
         {
-            Instantiate(enemiesTospawn[Random.Range(0, 4)], positionTospawn[Random.Range(0, 1)].position, Quaternion.identity);
+            Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[Random.Range(0, 1)].position, Quaternion.identity);
         }
-       /* if (fase == 1)
-            enemyAnim.Jump2Armsup();
+        if (fase == 1)
+           enemyAnim.Jump2Arms();
+       else
+           enemyAnim.Jump1Arm();
+        //ResetPosition = transform.position;
+        if (fase == 1)
+            enemyAnim.ResetJump2Arms();
         else
-            enemyAnim.Jump1Armup();*/
+            enemyAnim.ResetJump1Arm();
         current_Boss_State = Estados.Waiting;
     }
     public void Death()
@@ -185,5 +226,39 @@ public class BossIA : MonoBehaviour
             Physics.IgnoreCollision(mainCamera_col2, capsuleCollider);
             Physics.IgnoreCollision(mainCamera_backgroundcol, capsuleCollider);
         }
+    }
+    private void Down()
+    {
+        StartCoroutine(DownInTheAir());
+    }
+    private void Up()
+    {
+        StartCoroutine(UpInTheAir());
+    }
+    IEnumerator DownInTheAir()
+    {
+        transform.position = new Vector3(transform.position.x, transform.position.y - 1.0f, transform.position.z);
+        yield return new WaitForEndOfFrame();
+    }
+    IEnumerator UpInTheAir()
+    {
+        transform.position = new Vector3(transform.position.x, transform.position.y+1.0f, transform.position.z);
+        yield return new WaitForEndOfFrame();
+    }
+    private void JumpUp()
+    {
+        Jump = true;
+    }
+    private void StopJumpUp()
+    {
+        Jump = false;
+    }
+    private void JumpDown()
+    {
+        ResetJump = true;
+    }
+    private void StopJumpDown()
+    {
+        ResetJump = false;
     }
 }

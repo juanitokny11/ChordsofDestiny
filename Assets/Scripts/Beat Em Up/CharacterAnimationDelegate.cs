@@ -159,12 +159,12 @@ public class CharacterAnimationDelegate : MonoBehaviour
     void NodamageforEnemy()
     {
         transform.gameObject.layer = 0;
-        groupiecol.enabled = false;
+        //groupiecol.enabled = false;
     }
     void DamageforEnemy()
     {
         transform.gameObject.layer = 11;
-        groupiecol.enabled = true;
+        //groupiecol.enabled = true;
     }
     void DamageforPlayer()
     {
