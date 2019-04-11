@@ -44,6 +44,7 @@ public class PlayerMovementBeat : MonoBehaviour
         }
         if (Input.GetButtonUp("Run"))
         {
+            caminarS.Stop();
             running = false;
         }
         if (BeatEmupManager.instance.godmode == true)
@@ -78,6 +79,7 @@ public class PlayerMovementBeat : MonoBehaviour
             else if (Input.GetAxisRaw("Horizontal") == 0)
             {
                 walk = false;
+                caminarS.Stop();
                 if (lockrotation == true )
                 {
                     transform.rotation = Quaternion.Euler(0, 180, 0);
@@ -133,6 +135,7 @@ public class PlayerMovementBeat : MonoBehaviour
            player_Anim.Walk(true);
         else if(walk==false && running == false)
            player_Anim.Walk(false);
+         
     }
     void AnimatePlayerJump()
     {
