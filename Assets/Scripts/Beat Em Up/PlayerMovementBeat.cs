@@ -9,6 +9,8 @@ public class PlayerMovementBeat : MonoBehaviour
     private Rigidbody myBody;
     public bool inAir = false;
     public bool comboAereo = false;
+
+    public AudioSource caminarS;
     public float run_Speed;
     public float z_Speed;
     public bool lockrotation;
@@ -99,6 +101,11 @@ public class PlayerMovementBeat : MonoBehaviour
             }
             transform.position = newPosition;
         }
+    }
+
+    void caminar()
+    {
+        caminarS.Play();
     }
     void DetectMovement()
     {
