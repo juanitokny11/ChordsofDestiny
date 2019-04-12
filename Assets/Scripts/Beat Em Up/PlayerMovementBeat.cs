@@ -18,6 +18,7 @@ public class PlayerMovementBeat : MonoBehaviour
     public bool running=false;
     Quaternion actualrot;
     Vector3 newPosition;
+    float counter;
     private float rotation_Y = -90.0f;
     public float rotation_Speed = 15f;
     private void Awake()
@@ -40,13 +41,15 @@ public class PlayerMovementBeat : MonoBehaviour
             run_Speed = 10f;
         if (Input.GetButtonDown("Run"))
         {
-            running = true; 
+            running = true;
         }
-        if (Input.GetButtonUp("Run"))
+        if (Input.GetButtonUp("Run") || counter>=5f)
         {
             caminarS.Stop();
             running = false;
+            counter = 0;
         }
+            
         if (BeatEmupManager.instance.godmode == true)
             AnimatePlayerJump();
         //AnimateResetJump();
@@ -63,6 +66,10 @@ public class PlayerMovementBeat : MonoBehaviour
             Vector3 newPosition = transform.position;
             if (BeatEmupManager.instance.godmode == false)
                 myBody.useGravity = true;
+            if (Input.GetAxisRaw("Vertical") > 0)
+                walk = true;
+            else if (Input.GetAxisRaw("Vertical") < 0)
+                walk = true;
             if (Input.GetAxisRaw("Horizontal") > 0 )
             {
                 actualrot = Quaternion.Euler(0, 0, 0);
@@ -76,20 +83,12 @@ public class PlayerMovementBeat : MonoBehaviour
                 //newPosition.x -= animator.GetFloat("Walkspeed") * Time.deltaTime;
                 lockrotation = true;
             } 
-            else if (Input.GetAxisRaw("Horizontal") == 0)
+            else if (Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical")==0)
             {
                 walk = false;
+                if (running==true)
+                    counter++;
                 caminarS.Stop();
-                if (lockrotation == true )
-                {
-                    transform.rotation = Quaternion.Euler(0, 180, 0);
-                    transform.rotation = actualrot;
-                }
-                else
-                {
-                    transform.rotation = Quaternion.Euler(0, 0, 0);
-                    transform.rotation = actualrot;
-                }
             }
             if (lockrotation == true )
             {
@@ -118,9 +117,17 @@ public class PlayerMovementBeat : MonoBehaviour
     void RotatePlayer()
     {
         if (Input.GetAxisRaw("Horizontal") > 0)
-            transform.rotation = Quaternion.Euler(0f,-Mathf.Abs(rotation_Y),0f);
+            transform.rotation = Quaternion.Euler(0f, -Mathf.Abs(rotation_Y), 0f);
         else if (Input.GetAxisRaw("Horizontal") < 0)
-            transform.rotation = Quaternion.Euler(0f,Mathf.Abs(rotation_Y), 0f);
+            transform.rotation = Quaternion.Euler(0f, Mathf.Abs(rotation_Y), 0f);
+        else if (Input.GetAxisRaw("Horizontal") == 0)
+        {
+            if (Input.GetButtonDown("Run") && myBody.velocity.sqrMagnitude > 0)
+            {
+                running = true;
+            }
+        }
+           
     }
     void AnimatePlayerRun()
     {
