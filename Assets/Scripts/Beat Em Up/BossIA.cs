@@ -44,7 +44,7 @@ public class BossIA : MonoBehaviour
         mainCamera_col = GameObject.Find("Col1").GetComponent<BoxCollider>();
         mainCamera_col2 = GameObject.Find("Col2").GetComponent<BoxCollider>();
         playerTarget = GameObject.FindGameObjectWithTag("Player").transform;
-        current_Boss_State = Estados.Default;
+        current_Boss_State = Estados.Invoke;
         fase = 1;
         porcentajeAtaque = 40;
         porcentajeInvocar = 8;
@@ -188,7 +188,7 @@ public class BossIA : MonoBehaviour
     }
     public void Wait()
     {
-        if (BossZone.enemiescounter >= 0)
+        if (BossZone.enemiescounter >= 1)
         {
             outside = false;
             SetDefault();
@@ -203,7 +203,7 @@ public class BossIA : MonoBehaviour
         }
         if (fase == 1)
         {
-            Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[Random.Range(0, 1)].position, Quaternion.identity);
+            Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[Random.Range(0, 2)].position, Quaternion.identity);
             BossZone.enemies.Add(Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[Random.Range(0, 1)].position, Quaternion.identity).GetComponent<EnemyMovement>());
         }
         else
@@ -251,7 +251,7 @@ public class BossIA : MonoBehaviour
     {
         fase = 2;
         porcentajeAtaque = 50;
-        porcentajeInvocar = 4;
+        porcentajeInvocar = 6;
         SetDefault();
     }
     void OnCollisionEnter(Collision collision)

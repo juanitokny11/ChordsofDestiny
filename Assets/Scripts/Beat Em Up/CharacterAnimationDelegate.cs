@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class CharacterAnimationDelegate : MonoBehaviour
 {
@@ -35,13 +36,15 @@ public class CharacterAnimationDelegate : MonoBehaviour
             groupie = GetComponentInChildren<SkinnedMeshRenderer>();
             groupieEnemy = GetComponent<EnemyMovement>();
             groupie_Attack_Point = GetComponentInChildren<AttackUniversal>();
+            groupie_Attack_Point.gameObject.SetActive(false);
         }
         else if (isFan)
         {
             groupie = GetComponentInChildren<SkinnedMeshRenderer>();
-            bate = fan;
+            bate = groupie;
             groupieEnemy = GetComponent<EnemyMovement>();
             groupie_Attack_Point = GetComponentInChildren<AttackUniversal>();
+            groupie_Attack_Point.gameObject.SetActive(false);
         }
         else if (is_Boss)
         {
@@ -225,10 +228,16 @@ public class CharacterAnimationDelegate : MonoBehaviour
     void DestroyGameobject()
     {
         Destroy(gameObject);
+        if (is_Boss)
+            SceneManager.LoadScene("Victory");
     }
     public void JumpSound()
     {
         clips.Play(4, 1);
         jumpefect.Play();
+    }
+    public void Lost()
+    {
+        SceneManager.LoadScene("GameOver");
     }
 }

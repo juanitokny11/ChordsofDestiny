@@ -61,18 +61,18 @@ public class BeatEmupManager : MonoBehaviour
         {
             Time.timeScale = 1;
             closePause.Play();
-            pauseMenuPrincial.SetBool("Pausa", true);
+            //pauseMenuPrincial.SetBool("Pausa", true);
             Cursor.visible = false;
             //music.mute = false; 
-            notas.SetActive(false);
+            //notas.SetActive(false);
             Invoke("TakeoFFMenu", 0.2f);
             pause = true;
         }
         else if (pause)
         {
             openPause.Play();
-            pauseMenuPrincial.SetBool("Pausa", false);
-            notas.SetActive(true);
+            //pauseMenuPrincial.SetBool("Pausa", false);
+            //notas.SetActive(true);
             Cursor.visible = true;
             //music.mute = true;
             Invoke("TakeONMenu", 0.2f);

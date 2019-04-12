@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 9040151066885394916}
   m_Layer: 11
   m_Name: barra vida
-  m_TagString: Untagged
+  m_TagString: HealthUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -551,7 +551,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8016316008492277778
 RectTransform:
   m_ObjectHideFlags: 0
@@ -559,7 +559,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5832105288717956400}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
@@ -573,7 +573,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -13.251996, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!223 &405452999691379105
@@ -583,7 +583,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5832105288717956400}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -684,6 +684,7 @@ MonoBehaviour:
     m_Bits: 256
   radius: 0.52
   damage: 3
+  enemy: {fileID: 0}
   healthUI: {fileID: 0}
   healthScript: {fileID: 0}
   enemyAnim: {fileID: 0}
@@ -1698,7 +1699,7 @@ MonoBehaviour:
   guitar_Attack_Point: {fileID: 0}
   Boss_Attack_Point1: {fileID: 0}
   Boss_Attack_Point2: {fileID: 0}
-  groupie_Attack_Point: {fileID: 0}
+  groupie_Attack_Point: {fileID: 5253838558330496518}
   fan: {fileID: 0}
   bate: {fileID: 0}
   espada: {fileID: 0}
@@ -1767,6 +1768,7 @@ MonoBehaviour:
   groupieNames: []
   fanNames: []
   gname: {fileID: 0}
+  gimage: {fileID: 0}
   isGroupie: 0
   speed: 3
   mainCamera_col: {fileID: 0}

@@ -8,12 +8,13 @@ public class EnemyMovement : MonoBehaviour
 {
     private CharacterAnimation enemyAnim;
     private HealthScript healthScript;
-    public GameObject enemyLife;
+    public Canvas enemyLife;
     public BoxCollider col;
     private Rigidbody myBody;
     public List<string> groupieNames;
     public List<string> fanNames;
     public Text gname;
+    public Image gimage;
     public bool isGroupie;
     public float speed = 10.0f;
     public BoxCollider mainCamera_col;
@@ -32,6 +33,8 @@ public class EnemyMovement : MonoBehaviour
     void Awake()
     {
         Names();
+        enemyLife = GetComponentInChildren<Canvas>().GetComponent<Canvas>();
+        gimage = GetComponentInChildren<Image>();
         gname = GetComponentInChildren<Text>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         mainCamera_col = GameObject.Find("Col1").GetComponent<BoxCollider>();
@@ -68,6 +71,8 @@ public class EnemyMovement : MonoBehaviour
     }
     private void Start()
     {
+        gimage.enabled = false;
+        gname.enabled = false;
         followPlayer = true;
         current_Attack_Time = default_Attack_Time;
         if (!isGroupie)
@@ -89,14 +94,6 @@ public class EnemyMovement : MonoBehaviour
             this.enabled = false;
         }
         Attack();
-        /*if (col.enabled == true)
-        {
-            enemyLife.SetActive(true);
-        }
-        else
-        {
-            enemyLife.SetActive(false);
-        }*/
     }
     void FixedUpdate()
     {

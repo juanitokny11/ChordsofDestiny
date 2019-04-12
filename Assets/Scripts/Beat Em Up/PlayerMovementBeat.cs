@@ -36,7 +36,7 @@ public class PlayerMovementBeat : MonoBehaviour
         AnimatePlayerWalk();
         if (walk == true && running == false)
             run_Speed = 5;
-        else if (running == true)
+        else if (walk == true && running == true)
             run_Speed = 10f;
         if (Input.GetButtonDown("Run"))
         {
@@ -126,7 +126,7 @@ public class PlayerMovementBeat : MonoBehaviour
     {
         if (walk == true && running ==true)
             player_Anim.Run(true);
-        else if (walk == true && running == false)
+        else if (running == false)
             player_Anim.Run(false);
     }
     void AnimatePlayerWalk()

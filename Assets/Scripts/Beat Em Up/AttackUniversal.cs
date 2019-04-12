@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AttackUniversal : MonoBehaviour
 {
     public LayerMask colisionLayer;
     public float radius = 1f;
     public float damage = 2f;
+    public EnemyMovement enemy;
     public HealthUI healthUI;
     public HealthScript healthScript;
     public CharacterAnimation enemyAnim;
@@ -15,6 +17,7 @@ public class AttackUniversal : MonoBehaviour
     public GameObject hit_Fx_Prefab;
     private void Start()
     {
+        enemy = GetComponentInParent<EnemyMovement>();
         enemyAnim = GetComponentInParent<CharacterAnimation>();
         healthUI = GetComponentInParent<HealthUI>();
         healthScript = GetComponentInParent<HealthScript>();
@@ -88,6 +91,9 @@ public class AttackUniversal : MonoBehaviour
                     else
                     {
                         hit[0].GetComponentInParent<HealthScript>().ApplyDamage(damage, false);
+                        hit[0].GetComponentInParent<EnemyMovement>().enemyLife.enabled=true;
+                        if(!hit[0])
+                            GetComponentInParent<EnemyMovement>().enemyLife.enabled = false;
                     }
                     damage = 2;
                 }

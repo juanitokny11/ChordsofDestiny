@@ -8,8 +8,8 @@ public class BattleZone : MonoBehaviour
     private BoxCollider colider;
     public new GameObject camera;
     public GameObject UI;
-    //public GameObject cd;
-    //public GameObject cdpoint;
+    public Text[] namesEnemies;
+    public Image[] lifeBars;
     public Image goImage;
     public AudioSource musica;
     public List<EnemyMovement> enemies;
@@ -34,7 +34,7 @@ public class BattleZone : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
-        {
+        { 
             UI.SetActive(true);
             enemies[1].gameObject.SetActive(true);
             enemies[2].gameObject.SetActive(true);

@@ -82,7 +82,6 @@ public class HealthScript : MonoBehaviour
                     GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyMovement>().enabled = false;
                 else if(is_Boss)
                     GameObject.FindGameObjectWithTag("Enemy").GetComponent<BossIA>().enabled = false;
-                animationScript.Death();
             }
             else if(!is_Boss && !is_Player)
             {
