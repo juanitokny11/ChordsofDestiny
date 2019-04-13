@@ -11,6 +11,7 @@ public class PlayerMovementBeat : MonoBehaviour
     public bool comboAereo = false;
 
     public AudioSource caminarS;
+    public AudioSource soloS;
     public float run_Speed;
     public float z_Speed;
     public bool lockrotation;
@@ -107,6 +108,11 @@ public class PlayerMovementBeat : MonoBehaviour
     void caminar()
     {
         caminarS.Play();
+    }
+
+    void Ssolo()
+    {
+        soloS.Play();
     }
     void DetectMovement()
     {
