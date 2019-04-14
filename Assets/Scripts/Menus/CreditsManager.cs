@@ -14,7 +14,7 @@ public class CreditsManager : MonoBehaviour {
 
     public void Title()
     {
-        SceneManager.LoadScene("MainM");
+        SceneManager.LoadScene("New Scene");
         Cursor.visible = true;
     }
 

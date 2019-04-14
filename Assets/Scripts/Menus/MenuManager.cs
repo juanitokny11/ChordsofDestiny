@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour {
 
     public Animator cam_Anim;
+    public MenuAnim menuAnim;
     public void Start()
     {
         Cursor.visible = true;
@@ -26,21 +27,25 @@ public class MenuManager : MonoBehaviour {
     {
         cam_Anim.SetTrigger("Options");
         Cursor.visible = true;
+        menuAnim.Anim = true;
     }
     public void Extras()
     {
         cam_Anim.SetTrigger("Extras");
         Cursor.visible = true;
+        menuAnim.Anim = true;
     }
     public void Options_to_Menu()
     {
         cam_Anim.SetTrigger("Options_to_menu");
         Cursor.visible = true;
+         menuAnim.Anim = false;
     }
     public void Extra_to_Menu()
     {
         Cursor.visible = true;
-        cam_Anim.SetTrigger("Extras_to_options");
+        cam_Anim.SetTrigger("Extra_to_menu");
+        menuAnim.Anim = false;
     }
     public void Creditos()
     {
@@ -69,6 +74,7 @@ public class MenuManager : MonoBehaviour {
         {
             Title();
             Cursor.visible = true;
+            cam_Anim.SetTrigger("Extras");
         }
         else
         {
