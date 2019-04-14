@@ -33,31 +33,6 @@ public class OptionsManager : MonoBehaviour {
 		resolutionDropdown.value=currentResolutionIndex;
 		resolutionDropdown.RefreshShownValue();
 	}
-    public void Update()
-    {
-        if (currentcontrol == 0)
-        {
-            controls[0].SetActive(true);
-            controls[1].SetActive(false);
-            controls[2].SetActive(false);
-            texto.text = "Teclado y Ratón";
-        }
-        if (currentcontrol == 1)
-        {
-            controls[0].SetActive(false);
-            controls[1].SetActive(true);
-            controls[2].SetActive(false);
-            texto.text = "Xbox";
-        }
-        if (currentcontrol == 2)
-        {
-            controls[0].SetActive(false);
-            controls[1].SetActive(false);
-            controls[2].SetActive(true);
-            texto.text = "Ps4";
-        }
-
-    }
     public void SetResolution(int resolutionIndex)
     {
 		Resolution resolution =resolutions[resolutionIndex];

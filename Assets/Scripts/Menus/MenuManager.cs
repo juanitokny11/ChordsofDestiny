@@ -18,6 +18,7 @@ public class MenuManager : MonoBehaviour {
         Cursor.visible = false;
         MyGameSettings.getInstance().gameStarted = true;
         MyGameSettings.getInstance().logoPlayed = true;
+        menuAnim.firstTime = true;
     }
     public void EndGame()
     {
@@ -27,18 +28,15 @@ public class MenuManager : MonoBehaviour {
     {
         cam_Anim.SetTrigger("Options");
         Cursor.visible = true;
+        menuAnim.firstTime = true;
         menuAnim.Anim = true;
-    }
-    public void OptionsInGame()
-    {
-        
-        Cursor.visible = true;
     }
     public void Extras()
     {
         cam_Anim.SetTrigger("Extras");
         Cursor.visible = true;
         menuAnim.Anim = true;
+        menuAnim.firstTime = true;
     }
     public void Options_to_Menu()
     {
@@ -56,10 +54,12 @@ public class MenuManager : MonoBehaviour {
     {
         SceneManager.LoadScene("Credits");
          Cursor.visible = true;
+        menuAnim.firstTime = true;
         Time.timeScale = 1;
     }
     public void Title(){
         SceneManager.LoadScene("NewScene");
+        menuAnim.firstTime = true;
         Cursor.visible = true;
         Time.timeScale=1;
         MyGameSettings.getInstance().gameStarted = true;

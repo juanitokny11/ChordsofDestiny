@@ -12,6 +12,7 @@ public class LogoManager : MonoBehaviour
     public GameObject menu;
     public GameObject title;
     public GameObject Optionsmenu;
+    public OptionsManager options;
     public AudioSource musica;
     public AudioSource musicaoptions;
     public GameObject fademusica;
@@ -50,6 +51,27 @@ public class LogoManager : MonoBehaviour
             MainMenu();
             Cursor.visible = true;
             MyGameSettings.getInstance().logoPlayed = true;
+        }
+        if (options.currentcontrol == 0)
+        {
+            options.controls[0].SetActive(true);
+            options.controls[1].SetActive(false);
+            options.controls[2].SetActive(false);
+            options.texto.text = "Teclado y Ratón";
+        }
+        if (options.currentcontrol == 1)
+        {
+            options.controls[0].SetActive(false);
+            options.controls[1].SetActive(true);
+            options.controls[2].SetActive(false);
+            options.texto.text = "Xbox";
+        }
+        if (options.currentcontrol == 2)
+        {
+            options.controls[0].SetActive(false);
+            options.controls[1].SetActive(false);
+            options.controls[2].SetActive(true);
+            options.texto.text = "Ps4";
         }
     }
     // Update is called once per frame
