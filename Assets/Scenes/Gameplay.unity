@@ -1537,6 +1537,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Groupie
       objectReference: {fileID: 0}
+    - target: {fileID: 1563660872938979978, guid: 6faa2ed7105ee11409305d53fa85d8e3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1563660872938979979, guid: 6faa2ed7105ee11409305d53fa85d8e3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1872,7 +1877,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &538773478
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4919,9 +4924,18 @@ PrefabInstance:
       propertyPath: BossZone
       value: 
       objectReference: {fileID: 528943667}
+    - target: {fileID: 507275759069458316, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba,
+        type: 3}
+      propertyPath: current_Boss_State
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 988149407, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba, type: 3}
       propertyPath: m_UseGravity
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 517838262, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba, type: 3}
+      propertyPath: m_TagString
+      value: HealthUI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba, type: 3}
@@ -8821,6 +8835,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8450566864804388302, guid: 5fdeca13977414f40a36febc6c9fe731,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.47058827
+      objectReference: {fileID: 0}
+    - target: {fileID: 8450566864804388302, guid: 5fdeca13977414f40a36febc6c9fe731,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.054901965
+      objectReference: {fileID: 0}
+    - target: {fileID: 8450566864804388302, guid: 5fdeca13977414f40a36febc6c9fe731,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.0627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 8450566864804388302, guid: 5fdeca13977414f40a36febc6c9fe731,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8450607322607377058, guid: 5fdeca13977414f40a36febc6c9fe731,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.4039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 8450607322607377058, guid: 5fdeca13977414f40a36febc6c9fe731,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.04705883
+      objectReference: {fileID: 0}
+    - target: {fileID: 8450607322607377058, guid: 5fdeca13977414f40a36febc6c9fe731,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.0627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 8450607322607377058, guid: 5fdeca13977414f40a36febc6c9fe731,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1835485601274820758, guid: 5fdeca13977414f40a36febc6c9fe731, type: 3}

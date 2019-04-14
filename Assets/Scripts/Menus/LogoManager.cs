@@ -10,7 +10,6 @@ public class LogoManager : MonoBehaviour
     public VideoPlayer video;
     public GameObject titleText;
     public GameObject menu;
-    public GameObject fondomenu;
     public GameObject title;
     public AudioSource musica;
     public GameObject fademusica;
@@ -55,7 +54,6 @@ public class LogoManager : MonoBehaviour
     {
         title.SetActive(false);
         titleText.SetActive(false);
-        fondomenu.SetActive(true);
         menu.SetActive(true);
     }
     public void Extras()

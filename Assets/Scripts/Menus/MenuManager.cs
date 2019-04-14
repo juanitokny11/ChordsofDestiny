@@ -48,9 +48,8 @@ public class MenuManager : MonoBehaviour {
          Cursor.visible = true;
         Time.timeScale = 1;
     }
-
     public void Title(){
-        SceneManager.LoadScene("MainM");
+        SceneManager.LoadScene("NewScene");
         Cursor.visible = true;
         Time.timeScale=1;
         MyGameSettings.getInstance().gameStarted = true;
@@ -69,6 +68,7 @@ public class MenuManager : MonoBehaviour {
         if (MyGameSettings.getInstance().gameStarted == false)
         {
             Title();
+            Cursor.visible = true;
         }
         else
         {
