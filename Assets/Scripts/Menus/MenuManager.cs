@@ -29,6 +29,11 @@ public class MenuManager : MonoBehaviour {
         Cursor.visible = true;
         menuAnim.Anim = true;
     }
+    public void OptionsInGame()
+    {
+        
+        Cursor.visible = true;
+    }
     public void Extras()
     {
         cam_Anim.SetTrigger("Extras");
@@ -70,17 +75,8 @@ public class MenuManager : MonoBehaviour {
     }
     public void ChangeScene()
     {
-        if (MyGameSettings.getInstance().gameStarted == false)
-        {
-            Title();
-            Cursor.visible = true;
-            cam_Anim.SetTrigger("Extras");
-        }
-        else
-        {
             SceneManager.LoadScene("Gameplay");
             Time.timeScale = 1;
             Cursor.visible = false;
-        }
     }
 }
