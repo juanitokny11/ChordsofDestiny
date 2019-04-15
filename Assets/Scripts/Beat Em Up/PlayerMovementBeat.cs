@@ -16,7 +16,7 @@ public class PlayerMovementBeat : MonoBehaviour
     public float z_Speed;
     public bool lockrotation;
     public bool walk=false;
-    public bool running=false;
+    public bool running;
     Quaternion actualrot;
     Vector3 newPosition;
     float counter;
@@ -36,7 +36,7 @@ public class PlayerMovementBeat : MonoBehaviour
         RotatePlayer();
         AnimatePlayerRun();
         AnimatePlayerWalk();
-        if (walk == true && running == false)
+       if (walk == true && running == false)
             run_Speed = 5;
         else if (walk == true && running == true)
             run_Speed = 10f;
@@ -44,13 +44,12 @@ public class PlayerMovementBeat : MonoBehaviour
         {
             running = true;
         }
-        if (Input.GetButtonUp("Run") || counter>=5f)
+        if (Input.GetButtonUp("Run"))
         {
             caminarS.Stop();
             running = false;
             counter = 0;
         }
-            
         if (BeatEmupManager.instance.godmode == true)
             AnimatePlayerJump();
         //AnimateResetJump();
@@ -84,11 +83,10 @@ public class PlayerMovementBeat : MonoBehaviour
                 //newPosition.x -= animator.GetFloat("Walkspeed") * Time.deltaTime;
                 lockrotation = true;
             } 
-            else if (Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical")==0)
+            else if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical")==0)
             {
                 walk = false;
-                if (running==true)
-                    counter++;
+                player_Anim.Run(false);
                 caminarS.Stop();
             }
             if (lockrotation == true )
@@ -104,12 +102,10 @@ public class PlayerMovementBeat : MonoBehaviour
             transform.position = newPosition;
         }
     }
-
     void caminar()
     {
         caminarS.Play();
     }
-
     void Ssolo()
     {
         soloS.Play();
@@ -126,14 +122,6 @@ public class PlayerMovementBeat : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, -Mathf.Abs(rotation_Y), 0f);
         else if (Input.GetAxisRaw("Horizontal") < 0)
             transform.rotation = Quaternion.Euler(0f, Mathf.Abs(rotation_Y), 0f);
-        else if (Input.GetAxisRaw("Horizontal") == 0)
-        {
-            if (Input.GetButtonDown("Run") && myBody.velocity.sqrMagnitude > 0)
-            {
-                running = true;
-            }
-        }
-           
     }
     void AnimatePlayerRun()
     {
@@ -146,9 +134,8 @@ public class PlayerMovementBeat : MonoBehaviour
     {
         if (walk==true && running==false)
            player_Anim.Walk(true);
-        else if(walk==false && running == false)
+        else if(walk==false)
            player_Anim.Walk(false);
-         
     }
     void AnimatePlayerJump()
     {
@@ -160,11 +147,7 @@ public class PlayerMovementBeat : MonoBehaviour
     }
     void AnimateResetJump()
     {
-        if (comboAereo)
-        {
-           
-        }
-        else if (!comboAereo)
+         if (!comboAereo)
         {
             player_Anim.ResetJump();
             inAir = false;

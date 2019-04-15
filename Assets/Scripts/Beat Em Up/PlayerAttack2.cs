@@ -175,11 +175,6 @@ public class PlayerAttack2 : MonoBehaviour
             }
         }
     }
-    public void ResetGuitarPose()
-    {
-        Guitar.localPosition = new Vector3(-0.118f, 0.014f, 0.083f);
-        Guitar.localRotation = Quaternion.Euler(-61.589f, -631.912f, -92.93501f);
-    }
     void ResetComboState()
     {
         if (activateTimerToReset)
@@ -202,9 +197,12 @@ public class PlayerAttack2 : MonoBehaviour
     {
         this.gameObject.layer = 8;
         //soloefect.SetActive(false);
+        Guitar.localPosition = new Vector3(-0.118f, 0.014f, 0.083f);
+        Guitar.localRotation = Quaternion.Euler(-61.589f, -631.912f, -92.93501f);
         mycol.enabled = true;
         current_Combo_State = ComboState.NONE;
         Solocol.GetComponent<AttackUniversal>().enabled = false;
+        Debug.Log("activar colisiones");
     }
     private void DesActivarColisiones()
     {
@@ -213,6 +211,7 @@ public class PlayerAttack2 : MonoBehaviour
     }
     private void ActiveSoloCol()
     {
+        Debug.Log("colider solo");
         Solocol.GetComponent<AttackUniversal>().enabled = true;
     }
 }
