@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthScript : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class HealthScript : MonoBehaviour
     private PlayerMovementBeat player_Move;
     private PlayerAttack2 player_Attack;
     private HealthUI health_UI;
+    public Text numhits;
+    public GameObject hits;
     public GameObject healthBar;
     private BossIA bossIA;
     private EnemyHealthUI enemy_Health_UI;
@@ -20,6 +23,7 @@ public class HealthScript : MonoBehaviour
     public bool characterDied;
     public bool inAir=false;
     public int hitCounter;
+    public int hitsCount;
 
     public bool is_Player,is_Boss;
     public void Start()
@@ -37,7 +41,9 @@ public class HealthScript : MonoBehaviour
             playerAttack_List = GetComponent<PlayerAttackList>();
         }
         else if (!is_Player)
+        {
             enemy_Health_UI = GetComponent<EnemyHealthUI>();
+        }
         if (is_Boss)
         {
             bossIA = GetComponent<BossIA>();
@@ -46,6 +52,20 @@ public class HealthScript : MonoBehaviour
     }
     private void Update()
     {
+        if (is_Player)
+        {
+            numhits.text = hitsCount.ToString();
+            if (hitsCount > 0)
+            {
+                hits.SetActive(true);
+                numhits.text = hitsCount.ToString();
+            }
+            else if (hitsCount == 0)
+            {
+                hits.SetActive(false);
+                numhits.text = 00.ToString();
+            }
+        }
         if (solo >= 200)
         {
             if (is_Player)
@@ -58,7 +78,7 @@ public class HealthScript : MonoBehaviour
             canDoSolo = false;
         }
     }
-    public void ApplyDamage(float damage,bool knockDown)
+    public void ApplyDamage(float damage,bool knockDown,bool defense)
     {
         if (characterDied)
             return;
@@ -66,11 +86,11 @@ public class HealthScript : MonoBehaviour
         if (is_Player)
         { 
             health_UI.DisplayHealth(health);
-            if (!knockDown)
+            if (!knockDown && !defense)
             {
                 if (Random.Range(0, 3) > 1)
                 {
-                    //animationScript.Hit(Random.Range(0, 3));
+                    animationScript.Hit(Random.Range(0, 3));
                     playerAttack_List.RemoveAllList();
                     playerAttack_List.CanAttack();
                 }
@@ -84,7 +104,8 @@ public class HealthScript : MonoBehaviour
             animationScript.Death();
             if (is_Player)
             {
-                if(!is_Boss)
+               
+                if (!is_Boss)
                     GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyMovement>().enabled = false;
                 else if(is_Boss)
                     GameObject.FindGameObjectWithTag("Enemy").GetComponent<BossIA>().enabled = false;
@@ -138,10 +159,12 @@ public class HealthScript : MonoBehaviour
                 if (bossIA.fase == 1)
                 {
                     animationScript.Invoke2arms();
+                    hitCounter = 0;
                 }
                 else
                 {
                     animationScript.Invoke1arm();
+                    hitCounter = 0;
                 }
             }
 

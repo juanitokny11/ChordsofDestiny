@@ -33,7 +33,7 @@ public class EnemyMovement : MonoBehaviour
     void Awake()
     {
         Names();
-        enemyLife = GetComponentInChildren<Canvas>().GetComponent<Canvas>();
+        enemyLife = GetComponentInChildren<Canvas>();
         gimage = GetComponentInChildren<Image>();
         gname = GetComponentInChildren<Text>();
         capsuleCollider = GetComponent<CapsuleCollider>();

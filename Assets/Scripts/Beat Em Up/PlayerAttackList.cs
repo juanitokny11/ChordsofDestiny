@@ -11,6 +11,7 @@ public class PlayerAttackList : MonoBehaviour
   
     void Start()
     {
+
         attacks = GetComponent<PlayerAttack2>().attacks;
         player_anim = GetComponent<CharacterAnimation>();
         anim = GetComponent<Animator>();

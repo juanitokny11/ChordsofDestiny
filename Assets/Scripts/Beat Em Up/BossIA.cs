@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossIA : MonoBehaviour
 {
-    public enum Estados { Attack, Invoke, Default, Death, Waiting }
+    public enum Estados { Attack, Invoke, Default, Death }
     public Estados current_Boss_State;
     public GameObject[] enemiesTospawn;
     public Transform[] positionTospawn;
@@ -32,6 +32,7 @@ public class BossIA : MonoBehaviour
     public Transform ResetPosition;
     public BattleZone BossZone;
     public bool outside;
+    public GameObject invokeEnemy;
 
     void Start()
     {
@@ -102,10 +103,10 @@ public class BossIA : MonoBehaviour
                 {
                     outside = false;
                     StopJumpDown();
+
                 } 
             }
         }
-
         switch (current_Boss_State)
         {
             case Estados.Default:
@@ -113,9 +114,6 @@ public class BossIA : MonoBehaviour
                 break;
             case Estados.Death:
                 Death();
-                break;
-            case Estados.Waiting:
-                Wait();
                 break;
             default:
                 break;
@@ -189,37 +187,26 @@ public class BossIA : MonoBehaviour
             SetAttack();
         }
     }
-    public void Wait()
-    {
-        if (BossZone.enemiescounter >= 1)
-        {
-            outside = false;
-            SetDefault();
-        }
-    }
     void Invoke()
     {
         if (fase == 1)
         {
-            Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[Random.Range(0, 2)].position, Quaternion.identity);
+            invokeEnemy=Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[Random.Range(0, 2)].position, Quaternion.identity);
+            invokeEnemy.GetComponent<HealthScript>().zone = BossZone;
             BossZone.enemiescounter++;
+            enemyAnim.Jump2Arms();
+            enemyAnim.ResetJump2Arms();
+            Invoke("OUTSIDE", 0.7f);
             //BossZone.enemies.Add(Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[Random.Range(0, 1)].position, Quaternion.identity).GetComponent<EnemyMovement>());
         }
         else
         {
             Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[Random.Range(0, 1)].position, Quaternion.identity);
             BossZone.enemiescounter++;
-        }
-        if (fase == 1)
-            enemyAnim.Jump2Arms();
-        else
             enemyAnim.Jump1Arm();
-        //ResetPosition = transform.position;
-        if (fase == 1)
-            enemyAnim.ResetJump2Arms();
-        else
             enemyAnim.ResetJump1Arm();
-        SetWaiting();
+            Invoke("OUTSIDE", 0.7f);
+        }  
     }
     public void Death()
     {
@@ -232,7 +219,6 @@ public class BossIA : MonoBehaviour
     }
     public void SetInvoke()
     {
-        outside = true;
         current_Boss_State = Estados.Invoke;
         Invoke();
     }
@@ -240,19 +226,13 @@ public class BossIA : MonoBehaviour
     {
         current_Boss_State = Estados.Default;
     }
-    public void SetWaiting()
-    {
-        outside = false;
-        current_Boss_State = Estados.Waiting;
-        Wait();
-    }
 
     public void ChangeFase()
     {
         fase = 2;
         porcentajeAtaque = 50;
         porcentajeInvocar = 6;
-        SetDefault();
+        //SetDefault();
     }
     void OnCollisionEnter(Collision collision)
     {
@@ -297,5 +277,9 @@ public class BossIA : MonoBehaviour
     private void StopJumpDown()
     {
         ResetJump = false;
+    }
+    private void OUTSIDE()
+    {
+        outside = !outside;
     }
 }

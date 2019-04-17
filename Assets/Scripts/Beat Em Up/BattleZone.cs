@@ -8,6 +8,7 @@ public class BattleZone : MonoBehaviour
     private BoxCollider colider;
     public new GameObject camera;
     public GameObject UI;
+    public GameObject go;
     public Text[] namesEnemies;
     public Image[] lifeBars;
     public Image goImage;
@@ -149,5 +150,6 @@ public class BattleZone : MonoBehaviour
     {
         CancelInvoke("Blink");
         UI.SetActive(false);
+        goImage.enabled = false;
     }
 }

@@ -12,8 +12,12 @@ public class LifeControler : MonoBehaviour
         enemieslife2 = GameObject.FindGameObjectsWithTag("HealthUI");
         for (int i = 0; i < enemieslife2.Length; i++)
         {
-            enemiesLifes.Add(enemieslife2[i]);
-            enemiesLifes[i].SetActive(false);
+            if (enemiesLifes[i] != null)
+            {
+                enemiesLifes.Add(enemieslife2[i]);
+                enemiesLifes[i].SetActive(false);
+            }
         } 
     }
+
 }
