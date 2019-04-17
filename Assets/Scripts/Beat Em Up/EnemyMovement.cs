@@ -71,6 +71,7 @@ public class EnemyMovement : MonoBehaviour
     }
     private void Start()
     {
+        this.enabled = true;
         gimage.enabled = false;
         gname.enabled = false;
         followPlayer = true;
@@ -88,6 +89,8 @@ public class EnemyMovement : MonoBehaviour
     }
     void Update()
     {
+        if (playerTarget.GetComponent<PlayerMovementBeat>().is_Dead)
+            this.enabled = false;
         default_Attack_Time = Random.Range(3.0f, 6.0f);
         if (healthScript.characterDied)
         {

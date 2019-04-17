@@ -79,16 +79,19 @@ public class CharacterAnimationDelegate : MonoBehaviour
     void Groupie_Attack_Point_ON()
     {
         groupie_Attack_Point.gameObject.SetActive(true);
+        groupieBody.isKinematic = true;
     }
     void Groupie_Attack_Point_OFF()
     {
         if (groupie_Attack_Point.gameObject.activeInHierarchy)
             groupie_Attack_Point.gameObject.SetActive(false);
+        groupieBody.isKinematic = false;
     }
     void Boss_2armsAttack_Point_ON()
     {
         Boss_Attack_Point1.SetActive(true);
         Boss_Attack_Point2.SetActive(true);
+        groupieBody.isKinematic = true;
     }
     void Boss_2armsAttack_Point_OFF()
     {
@@ -96,15 +99,18 @@ public class CharacterAnimationDelegate : MonoBehaviour
             Boss_Attack_Point1.SetActive(false);
         if (Boss_Attack_Point2.activeInHierarchy)
             Boss_Attack_Point2.SetActive(false);
+        groupieBody.isKinematic = false;
     }
     void Boss_1armAttack_Point_ON()
     {
         Boss_Attack_Point1.SetActive(true);
+        groupieBody.isKinematic = true;
     }
     void Boss_1armAttack_Point_OFF()
     {
         if (Boss_Attack_Point1.activeInHierarchy)
             Boss_Attack_Point1.SetActive(false);
+        groupieBody.isKinematic = false;
     }
     void PlayerDisableMovement()
     {

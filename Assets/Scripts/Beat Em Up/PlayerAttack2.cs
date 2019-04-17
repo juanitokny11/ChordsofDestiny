@@ -202,7 +202,6 @@ public class PlayerAttack2 : MonoBehaviour
         mycol.enabled = true;
         current_Combo_State = ComboState.NONE;
         Solocol.GetComponent<AttackUniversal>().enabled = false;
-        Debug.Log("activar colisiones");
     }
     private void DesActivarColisiones()
     {
@@ -211,7 +210,6 @@ public class PlayerAttack2 : MonoBehaviour
     }
     private void ActiveSoloCol()
     {
-        Debug.Log("colider solo");
         Solocol.GetComponent<AttackUniversal>().enabled = true;
     }
 }

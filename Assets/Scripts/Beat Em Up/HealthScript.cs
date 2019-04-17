@@ -70,7 +70,7 @@ public class HealthScript : MonoBehaviour
             {
                 if (Random.Range(0, 3) > 1)
                 {
-                    animationScript.Hit(Random.Range(0, 3));
+                    //animationScript.Hit(Random.Range(0, 3));
                     playerAttack_List.RemoveAllList();
                     playerAttack_List.CanAttack();
                 }

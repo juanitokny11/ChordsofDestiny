@@ -35,6 +35,7 @@ public class BossIA : MonoBehaviour
 
     void Start()
     {
+        this.enabled = true;
         capsuleCollider = GetComponent<CapsuleCollider>();
         healthScript = GetComponent<HealthScript>();
         enemyHealth = GetComponent<EnemyHealthUI>();
@@ -51,6 +52,8 @@ public class BossIA : MonoBehaviour
     }
     void Update()
     {
+        if (playerTarget.GetComponent<PlayerMovementBeat>().is_Dead)
+            this.enabled = false;
         if (!outside)
         {
             if (Jump == true)

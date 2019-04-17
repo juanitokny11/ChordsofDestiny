@@ -15,6 +15,7 @@ public class AttackUniversal : MonoBehaviour
     public BossIA bossIA;
     public bool is_Player, is_Enemy,is_Boss;
     public GameObject hit_Fx_Prefab;
+    public GameObject block_Fx_Prefab;
     private void Start()
     {
         enemy = GetComponentInParent<EnemyMovement>();
@@ -86,7 +87,22 @@ public class AttackUniversal : MonoBehaviour
                 { 
                     if (hit[0].gameObject.CompareTag("Defense"))
                     {
+                        Quaternion blockFX_Rot = new Quaternion();
+                        Vector3 blockFx_Pos = hit[0].transform.position;
+                        blockFx_Pos.y += 4f;
+                       if (hit[0].transform.forward.x > 0)
+                        {
+                            blockFx_Pos.x += 2f;
+                            blockFX_Rot = Quaternion.Euler(-45, 90, 0);
+                        }
+                        else if (hit[0].transform.forward.x < 0)
+                        {
+                            blockFx_Pos.x -= 2f;
+                            blockFX_Rot = Quaternion.Euler(-45, -90, 0);
+                        }
+                            
                         enemyAnim.Block();
+                        Instantiate(block_Fx_Prefab, blockFx_Pos, blockFX_Rot);
                     }
                     else
                     {
