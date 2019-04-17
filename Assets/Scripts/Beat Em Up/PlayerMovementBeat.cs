@@ -9,7 +9,6 @@ public class PlayerMovementBeat : MonoBehaviour
     private Rigidbody myBody;
     public bool inAir = false;
     public bool comboAereo = false;
-
     public AudioSource caminarS;
     public AudioSource soloS;
     public float run_Speed;
@@ -17,6 +16,7 @@ public class PlayerMovementBeat : MonoBehaviour
     public bool lockrotation;
     public bool walk=false;
     public bool running;
+    public bool is_Dead=false;
     Quaternion actualrot;
     Vector3 newPosition;
     float counter;
@@ -34,21 +34,24 @@ public class PlayerMovementBeat : MonoBehaviour
     void Update()
     {
         RotatePlayer();
-        AnimatePlayerRun();
-        AnimatePlayerWalk();
-       if (walk == true && running == false)
-            run_Speed = 5;
-        else if (walk == true && running == true)
-            run_Speed = 10f;
-        if (Input.GetButtonDown("Run"))
+        if (!is_Dead)
         {
-            running = true;
-        }
-        if (Input.GetButtonUp("Run"))
-        {
-            caminarS.Stop();
-            running = false;
-            counter = 0;
+            AnimatePlayerRun();
+            AnimatePlayerWalk();
+            if (walk == true && running == false)
+                run_Speed = 5;
+            else if (walk == true && running == true)
+                run_Speed = 10f;
+            if (Input.GetButtonDown("Run"))
+            {
+                running = true;
+            }
+            if (Input.GetButtonUp("Run"))
+            {
+                caminarS.Stop();
+                running = false;
+                counter = 0;
+            }
         }
         if (BeatEmupManager.instance.godmode == true)
             AnimatePlayerJump();
@@ -61,45 +64,49 @@ public class PlayerMovementBeat : MonoBehaviour
     void OnAnimatorMove()
     {
         Animator animator = GetComponent<Animator>();
-        if (animator)
+        if (!is_Dead)
         {
-            Vector3 newPosition = transform.position;
-            if (BeatEmupManager.instance.godmode == false)
-                myBody.useGravity = true;
-            if (Input.GetAxisRaw("Vertical") > 0)
-                walk = true;
-            else if (Input.GetAxisRaw("Vertical") < 0)
-                walk = true;
-            if (Input.GetAxisRaw("Horizontal") > 0 )
+            if (animator)
             {
-                actualrot = Quaternion.Euler(0, 0, 0);
-                walk = true;
-                lockrotation = false;
+                Vector3 newPosition = transform.position;
+                if (BeatEmupManager.instance.godmode == false)
+                    myBody.useGravity = true;
+                if (Input.GetAxisRaw("Vertical") > 0)
+                    walk = true;
+                else if (Input.GetAxisRaw("Vertical") < 0)
+                    walk = true;
+                if (Input.GetAxisRaw("Horizontal") > 0)
+                {
+                    actualrot = Quaternion.Euler(0, 0, 0);
+                    walk = true;
+                    lockrotation = false;
+                }
+                else if (Input.GetAxisRaw("Horizontal") < 0)
+                {
+                    actualrot = Quaternion.Euler(0, 180, 0);
+                    walk = true;
+                    //newPosition.x -= animator.GetFloat("Walkspeed") * Time.deltaTime;
+                    lockrotation = true;
+                }
+                else if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)
+                {
+                    walk = false;
+                    player_Anim.Run(false);
+                    caminarS.Stop();
+                }
+                if (lockrotation == true)
+                {
+                    transform.rotation = Quaternion.Euler(0, 180, 0);
+                    transform.rotation = actualrot;
+                }
+                else
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
+                    transform.rotation = actualrot;
+                }
+                transform.position = newPosition;
             }
-            else if (Input.GetAxisRaw("Horizontal") < 0)
-            {
-                actualrot = Quaternion.Euler(0,180,0);
-                walk = true;
-                //newPosition.x -= animator.GetFloat("Walkspeed") * Time.deltaTime;
-                lockrotation = true;
-            } 
-            else if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical")==0)
-            {
-                walk = false;
-                player_Anim.Run(false);
-                caminarS.Stop();
-            }
-            if (lockrotation == true )
-            {
-                transform.rotation = Quaternion.Euler(0, 180, 0);
-                transform.rotation = actualrot;
-            }
-            else
-            {
-                transform.rotation = Quaternion.Euler(0, 0, 0);
-                transform.rotation = actualrot;
-            }
-            transform.position = newPosition;
+       
         }
     }
     void caminar()
@@ -112,9 +119,12 @@ public class PlayerMovementBeat : MonoBehaviour
     }
     void DetectMovement()
     {
-        myBody.velocity = new Vector3(Input.GetAxisRaw("Horizontal") * (-run_Speed), myBody.velocity.y, Input.GetAxisRaw("Vertical")* (-z_Speed) );
-        if (Input.GetAxisRaw("Jump") != 0)
-            myBody.velocity =new Vector3( myBody.velocity.x, Input.GetAxisRaw("Jump") * newPosition.y, myBody.velocity.z);
+        if (!is_Dead)
+        {
+            myBody.velocity = new Vector3(Input.GetAxisRaw("Horizontal") * (-run_Speed), myBody.velocity.y, Input.GetAxisRaw("Vertical") * (-z_Speed));
+            if (Input.GetAxisRaw("Jump") != 0)
+                myBody.velocity = new Vector3(myBody.velocity.x, Input.GetAxisRaw("Jump") * newPosition.y, myBody.velocity.z);
+        }
     }
     void RotatePlayer()
     {

@@ -200,6 +200,7 @@ MonoBehaviour:
     m_Bits: 0
   radius: 0.4
   damage: 3
+  enemy: {fileID: 0}
   healthUI: {fileID: 0}
   healthScript: {fileID: 0}
   enemyAnim: {fileID: 0}
@@ -500,6 +501,7 @@ MonoBehaviour:
   mainCamera_backgroundcol: {fileID: 0}
   ResetPosition: {fileID: 0}
   BossZone: {fileID: 0}
+  outside: 0
 --- !u!114 &988149406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -864,6 +866,7 @@ MonoBehaviour:
     m_Bits: 256
   radius: 0.4
   damage: 3
+  enemy: {fileID: 0}
   healthUI: {fileID: 0}
   healthScript: {fileID: 0}
   enemyAnim: {fileID: 0}
@@ -964,7 +967,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1871696313
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1002,9 +1005,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: -1
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &1871696315
 MonoBehaviour:
@@ -3521,6 +3524,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 551941664522167578}
     m_Modifications:
+    - target: {fileID: 100004, guid: a4cbeba19c3b09347aca3cbf83f89bbc, type: 3}
+      propertyPath: m_Name
+      value: RomperEspadaSola
+      objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: a4cbeba19c3b09347aca3cbf83f89bbc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.6539087
@@ -3572,10 +3579,6 @@ PrefabInstance:
     - target: {fileID: 400004, guid: a4cbeba19c3b09347aca3cbf83f89bbc, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.0000284
-      objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: a4cbeba19c3b09347aca3cbf83f89bbc, type: 3}
-      propertyPath: m_Name
-      value: RomperEspadaSola
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: a4cbeba19c3b09347aca3cbf83f89bbc, type: 3}
       propertyPath: m_Enabled

@@ -6,6 +6,7 @@ public class TptoBossBattle : MonoBehaviour
 {
     public Transform tppoint;
     public ShakeCamera camera;
+    public Canvas BossLife;
     public GameObject musicBoss;
     public GameObject musicGameplay;
     public bool changeMusic=false;
@@ -20,6 +21,8 @@ public class TptoBossBattle : MonoBehaviour
         {
             musicGameplay.GetComponent<AudioSource>().enabled = false;
             Invoke("ActivateBossMusic", 1f);
+            BossLife.enabled = true;
+            camera.GetComponent<Camera>().fieldOfView = 55;
         }
     }
     private void OnTriggerEnter(Collider other)

@@ -91,9 +91,6 @@ public class AttackUniversal : MonoBehaviour
                     else
                     {
                         hit[0].GetComponentInParent<HealthScript>().ApplyDamage(damage, false);
-                        hit[0].GetComponentInParent<EnemyMovement>().enemyLife.enabled=true;
-                        if(!hit[0])
-                            GetComponentInParent<EnemyMovement>().enemyLife.enabled = false;
                     }
                     damage = 2;
                 }

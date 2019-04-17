@@ -44,7 +44,7 @@ public class BossIA : MonoBehaviour
         mainCamera_col = GameObject.Find("Col1").GetComponent<BoxCollider>();
         mainCamera_col2 = GameObject.Find("Col2").GetComponent<BoxCollider>();
         playerTarget = GameObject.FindGameObjectWithTag("Player").transform;
-        current_Boss_State = Estados.Invoke;
+        current_Boss_State = Estados.Default;
         fase = 1;
         porcentajeAtaque = 40;
         porcentajeInvocar = 8;
@@ -196,19 +196,16 @@ public class BossIA : MonoBehaviour
     }
     void Invoke()
     {
-        for (int i = 0; i < enemiesTospawn.Length; i++)
-        {
-            enemiesTospawn[i].GetComponent<HealthScript>().zone = BossZone;
-            BossZone.enemiescounter++;
-        }
         if (fase == 1)
         {
             Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[Random.Range(0, 2)].position, Quaternion.identity);
-            BossZone.enemies.Add(Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[Random.Range(0, 1)].position, Quaternion.identity).GetComponent<EnemyMovement>());
+            BossZone.enemiescounter++;
+            //BossZone.enemies.Add(Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[Random.Range(0, 1)].position, Quaternion.identity).GetComponent<EnemyMovement>());
         }
         else
         {
             Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[Random.Range(0, 1)].position, Quaternion.identity);
+            BossZone.enemiescounter++;
         }
         if (fase == 1)
             enemyAnim.Jump2Arms();

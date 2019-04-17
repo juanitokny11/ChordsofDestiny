@@ -9,6 +9,8 @@ public class HealthScript : MonoBehaviour
     public BattleZone zone;
     private CharacterAnimation animationScript;
     private EnemyMovement enemyMovement;
+    private PlayerMovementBeat player_Move;
+    private PlayerAttack2 player_Attack;
     private HealthUI health_UI;
     public GameObject healthBar;
     private BossIA bossIA;
@@ -20,14 +22,18 @@ public class HealthScript : MonoBehaviour
     public int hitCounter;
 
     public bool is_Player,is_Boss;
-    private void Awake()
+    public void Start()
     {
         animationScript = GetComponent<CharacterAnimation>();
         enemyMovement = GetComponent<EnemyMovement>();
         if (is_Player)
         {
             health_UI = GetComponent<HealthUI>();
-            //healthBar.SetActive(false);
+            player_Move = GetComponent<PlayerMovementBeat>();
+            player_Attack = GetComponent<PlayerAttack2>();
+            player_Move.enabled = true;
+            player_Attack.enabled = true;
+            healthBar.SetActive(false);
             playerAttack_List = GetComponent<PlayerAttackList>();
         }
         else if (!is_Player)
@@ -36,7 +42,7 @@ public class HealthScript : MonoBehaviour
         {
             bossIA = GetComponent<BossIA>();
             characterDied = false;
-        }  
+        }
     }
     private void Update()
     {
@@ -82,6 +88,8 @@ public class HealthScript : MonoBehaviour
                     GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyMovement>().enabled = false;
                 else if(is_Boss)
                     GameObject.FindGameObjectWithTag("Enemy").GetComponent<BossIA>().enabled = false;
+                player_Move.is_Dead = true;
+                player_Attack.enabled = false;
             }
             else if(!is_Boss && !is_Player)
             {
