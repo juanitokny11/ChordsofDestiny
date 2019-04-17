@@ -16,6 +16,7 @@ public class AttackUniversal : MonoBehaviour
     public bool is_Player, is_Enemy,is_Boss;
     public GameObject hit_Fx_Prefab;
     public GameObject block_Fx_Prefab;
+    public GameObject block2_Fx_Prefab;
     private void Start()
     {
         enemy = GetComponentInParent<EnemyMovement>();
@@ -100,7 +101,6 @@ public class AttackUniversal : MonoBehaviour
                             blockFx_Pos.x -= 2f;
                             blockFX_Rot = Quaternion.Euler(-45, -90, 0);
                         }
-                            
                         enemyAnim.Block();
                         Instantiate(block_Fx_Prefab, blockFx_Pos, blockFX_Rot);
                     }

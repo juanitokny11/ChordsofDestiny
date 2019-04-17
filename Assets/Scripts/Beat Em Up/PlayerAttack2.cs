@@ -34,6 +34,8 @@ public class PlayerAttack2 : MonoBehaviour
     public BoxCollider guardCollider;
     public CharacterAnimation player_Anim;
     private PlayerMovementBeat player_Move;
+    public GameObject block_Fx;
+    public GameObject shield;
     private bool activateTimerToReset;
     public bool is_Player;
     private float default_Combo_Timer = 0.95f;
@@ -158,6 +160,10 @@ public class PlayerAttack2 : MonoBehaviour
             current_Combo_State = ComboState.GUARD;
             if (current_Combo_State == ComboState.GUARD)
             {
+                if(player_Move.lockrotation)
+                    shield=Instantiate(block_Fx, transform.position - new Vector3(+0.5f,0,0), Quaternion.Euler(0,180,0));
+                else if(!player_Move.lockrotation)
+                     shield = Instantiate(block_Fx, transform.position - new Vector3(-1f, 0, 0), Quaternion.identity);
                 player_Anim.Block();
                 guardCollider.enabled = true;
                 blockActivated = true;
@@ -168,6 +174,7 @@ public class PlayerAttack2 : MonoBehaviour
             current_Combo_State = ComboState.GUARD;
             if (current_Combo_State == ComboState.GUARD)
             {
+                Destroy(shield);
                 player_Anim.ResetBlock();
                 guardCollider.enabled = false;
                 blockActivated = false;
