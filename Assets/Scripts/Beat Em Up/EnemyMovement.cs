@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.TextCore;
+using TMPro;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class EnemyMovement : MonoBehaviour
     private Rigidbody myBody;
     public List<string> groupieNames;
     public List<string> fanNames;
-    public Text gname;
+    public TextMeshProUGUI gname;
     public Image gimage;
     public bool isGroupie;
     public float speed = 10.0f;
@@ -35,7 +36,7 @@ public class EnemyMovement : MonoBehaviour
         Names();
         enemyLife = GetComponentInChildren<Canvas>();
         gimage = GetComponentInChildren<Image>();
-        gname = GetComponentInChildren<Text>();
+        gname = GetComponentInChildren<TextMeshProUGUI>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         mainCamera_col = GameObject.Find("Col1").GetComponent<BoxCollider>();
         mainCamera_col2 = GameObject.Find("Col2").GetComponent<BoxCollider>();
@@ -72,8 +73,6 @@ public class EnemyMovement : MonoBehaviour
     private void Start()
     {
         this.enabled = true;
-        gimage.enabled = false;
-        gname.enabled = false;
         followPlayer = true;
         current_Attack_Time = default_Attack_Time;
         if (!isGroupie)

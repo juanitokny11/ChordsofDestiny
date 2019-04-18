@@ -79,13 +79,11 @@ public class CharacterAnimationDelegate : MonoBehaviour
     void Groupie_Attack_Point_ON()
     {
         groupie_Attack_Point.gameObject.SetActive(true);
-        groupieBody.isKinematic = true;
     }
     void Groupie_Attack_Point_OFF()
     {
         if (groupie_Attack_Point.gameObject.activeInHierarchy)
             groupie_Attack_Point.gameObject.SetActive(false);
-        groupieBody.isKinematic = false;
     }
     void Boss_2armsAttack_Point_ON()
     {

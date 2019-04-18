@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HealthScript : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class HealthScript : MonoBehaviour
     private PlayerMovementBeat player_Move;
     private PlayerAttack2 player_Attack;
     private HealthUI health_UI;
-    public Text numhits;
+    public TextMeshProUGUI numhits;
     public GameObject hits;
     public GameObject healthBar;
     private BossIA bossIA;
