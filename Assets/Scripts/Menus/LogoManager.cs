@@ -18,8 +18,13 @@ public class LogoManager : MonoBehaviour
     public GameObject fademusica;
     public GameObject fademusicaOptions;
     public GameObject reproductor;
+    public MenuAnim optionsAnim;
     public bool extras=true;
     bool logo = false;
+    private void Awake()
+    {
+        //menu.SetActive(false);
+    }
     void Start()
     {
         Cursor.visible = false;
@@ -79,7 +84,7 @@ public class LogoManager : MonoBehaviour
     {
         title.SetActive(false);
         titleText.SetActive(false);
-        menu.SetActive(true);
+        menu.GetComponent<Canvas>().enabled = true;
     }
     public void Options()
     {
@@ -91,7 +96,9 @@ public class LogoManager : MonoBehaviour
     }
     public void ReturnOptions()
     {
-        Optionsmenu.SetActive(false);
+        Invoke("InvokeOptionsBack", 20.0f * Time.deltaTime);
+        optionsAnim.firstTime = true;
+        optionsAnim.Anim = false;
         fademusicaOptions.SetActive(false);
         musica.enabled = true;
         musicaoptions.enabled = false;
@@ -117,5 +124,11 @@ public class LogoManager : MonoBehaviour
     public void InvokeOptions()
     {
         Optionsmenu.SetActive(true);
+        optionsAnim.firstTime = true;
+        optionsAnim.Anim = true;
+    }
+    public void InvokeOptionsBack()
+    {
+        Optionsmenu.SetActive(false);
     }
 }

@@ -34,24 +34,9 @@ public class BeatEmupManager : MonoBehaviour
         }
         if (godmode == true)
         {
-            RecogerNotas();
             if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Pause"))
             {
                 Pausa();
-            }
-        }
-    }
-    public void RecogerNotas()
-    {
-        if (notacogida == true)
-        {
-            notas.SetActive(true);
-            counternotas = counternotas + Time.deltaTime;
-            if (counternotas >= 4)
-            {
-                counternotas = 0;
-                notacogida = false;
-                notas.SetActive(false);
             }
         }
     }

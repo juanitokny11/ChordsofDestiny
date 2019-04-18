@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 
 public class MyGameSettings : MonoBehaviour {
@@ -15,15 +16,26 @@ public class MyGameSettings : MonoBehaviour {
 	public float effectsVol=0.5f;
     public bool gameStarted=false;
     public bool logoPlayed=false;
-   
+    public MenuAnim menuAnim;
+
     void Awake (){
 		if (instance == null) {
 			instance = this;
 
             DontDestroyOnLoad (this);
 		}
-	}
-	public static MyGameSettings getInstance(){
+        Scene MainMenu = SceneManager.GetActiveScene();
+        string scenename = MainMenu.name;
+        menuAnim = GameObject.FindGameObjectWithTag("MenuAnim").GetComponentInChildren<MenuAnim>();
+    }
+    private void Update()
+    {
+        Scene MainMenu = SceneManager.GetActiveScene();
+        string scenename = MainMenu.name;
+        if (scenename == "New Scene")
+        menuAnim = GameObject.FindGameObjectWithTag("MenuAnim").GetComponentInChildren<MenuAnim>();
+    }
+    public static MyGameSettings getInstance(){
 		return instance;
 	}
 

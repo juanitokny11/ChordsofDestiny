@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour {
 
     public Animator cam_Anim;
-    public MenuAnim menuAnim;
+    
     public void Start()
     {
         Cursor.visible = true;
@@ -18,7 +18,7 @@ public class MenuManager : MonoBehaviour {
         Cursor.visible = false;
         MyGameSettings.getInstance().gameStarted = true;
         MyGameSettings.getInstance().logoPlayed = true;
-        menuAnim.firstTime = true;
+        MyGameSettings.getInstance().menuAnim.firstTime = true;
     }
     public void EndGame()
     {
@@ -28,41 +28,40 @@ public class MenuManager : MonoBehaviour {
     {
         cam_Anim.SetTrigger("Options");
         Cursor.visible = true;
-        menuAnim.firstTime = true;
-        menuAnim.Anim = true;
+        MyGameSettings.getInstance().menuAnim.firstTime = true;
+        MyGameSettings.getInstance().menuAnim.Anim = true;
     }
     public void Extras()
     {
         cam_Anim.SetTrigger("Extras");
         Cursor.visible = true;
-        menuAnim.Anim = true;
-        menuAnim.firstTime = true;
+        MyGameSettings.getInstance().menuAnim.Anim = true;
+        MyGameSettings.getInstance().menuAnim.firstTime = true;
     }
     public void Options_to_Menu()
     {
         cam_Anim.SetTrigger("Options_to_menu");
         Cursor.visible = true;
-         menuAnim.Anim = false;
+        MyGameSettings.getInstance().menuAnim.Anim = false;
     }
     public void Extra_to_Menu()
     {
         Cursor.visible = true;
         cam_Anim.SetTrigger("Extra_to_menu");
-        menuAnim.Anim = false;
+        MyGameSettings.getInstance().menuAnim.Anim = false;
     }
     public void Creditos()
     {
         SceneManager.LoadScene("Credits");
          Cursor.visible = true;
-        menuAnim.firstTime = true;
+        MyGameSettings.getInstance().menuAnim.firstTime = true;
         Time.timeScale = 1;
     }
     public void Title(){
-        SceneManager.LoadScene("NewScene");
-        menuAnim.firstTime = true;
+        SceneManager.LoadScene("New Scene");
+        MyGameSettings.getInstance().menuAnim.firstTime = true;
         Cursor.visible = true;
         Time.timeScale=1;
-        MyGameSettings.getInstance().gameStarted = true;
         MyGameSettings.getInstance().logoPlayed = true;
     }
 	public void Victory(){
