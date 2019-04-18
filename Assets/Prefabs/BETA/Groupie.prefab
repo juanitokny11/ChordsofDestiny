@@ -58,11 +58,11 @@ MonoBehaviour:
   is_Player: 0
   is_Enemy: 1
   is_Boss: 0
-  hit_Fx_Prefab: {fileID: 0}
+  hit_Fx_Prefab: {fileID: 1681464086413353203, guid: 98d99c1a18cf34d46aae4e9065bd69fb,
+    type: 3}
   block_Fx_Prefab: {fileID: 585274430744957696, guid: 3084707a993e92b45972970e6f1c1659,
     type: 3}
-  block2_Fx_Prefab: {fileID: 3654280498780979507, guid: 8cf8a029c41ef68439cb57169bdede25,
-    type: 3}
+  block2_Fx_Prefab: {fileID: 0}
 --- !u!1 &281255932481188969
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,6 +309,7 @@ MonoBehaviour:
   fanNames: []
   gname: {fileID: 0}
   gimage: {fileID: 0}
+  score: 25
   isGroupie: 1
   speed: 5
   mainCamera_col: {fileID: 0}
@@ -344,9 +345,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c91eba892efdd41889830f661e5570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 15
+  health: 30
   solo: 0
   zone: {fileID: 0}
+  gameManager: {fileID: 0}
   numhits: {fileID: 0}
   hits: {fileID: 0}
   healthBar: {fileID: 0}

@@ -16,6 +16,7 @@ public class EnemyMovement : MonoBehaviour
     public List<string> fanNames;
     public TextMeshProUGUI gname;
     public Image gimage;
+    public int score;
     public bool isGroupie;
     public float speed = 10.0f;
     public BoxCollider mainCamera_col;

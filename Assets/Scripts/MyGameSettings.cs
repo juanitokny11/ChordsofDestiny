@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 
 public class MyGameSettings : MonoBehaviour {
@@ -17,6 +18,7 @@ public class MyGameSettings : MonoBehaviour {
     public bool gameStarted=false;
     public bool logoPlayed=false;
     public MenuAnim menuAnim;
+    public int score;
 
     void Awake (){
 		if (instance == null) {
@@ -24,6 +26,7 @@ public class MyGameSettings : MonoBehaviour {
 
             DontDestroyOnLoad (this);
 		}
+        score = 0;
         Scene MainMenu = SceneManager.GetActiveScene();
         string scenename = MainMenu.name;
         menuAnim = GameObject.FindGameObjectWithTag("MenuAnim").GetComponentInChildren<MenuAnim>();

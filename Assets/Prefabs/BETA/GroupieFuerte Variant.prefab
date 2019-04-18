@@ -16,11 +16,16 @@ PrefabInstance:
         type: 3}
       propertyPath: enemyLife
       value: 
-      objectReference: {fileID: 4690263357751636095}
+      objectReference: {fileID: 0}
     - target: {fileID: 7521556622779265915, guid: 6faa2ed7105ee11409305d53fa85d8e3,
         type: 3}
       propertyPath: attack_Distance
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7521556622779265915, guid: 6faa2ed7105ee11409305d53fa85d8e3,
+        type: 3}
+      propertyPath: score
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 1563660872938979979, guid: 6faa2ed7105ee11409305d53fa85d8e3,
         type: 3}
@@ -98,7 +103,7 @@ PrefabInstance:
         type: 3}
       propertyPath: HealthBar
       value: 
-      objectReference: {fileID: 4648821683971953961}
+      objectReference: {fileID: 0}
     - target: {fileID: 1395640943196673, guid: 6faa2ed7105ee11409305d53fa85d8e3, type: 3}
       propertyPath: m_TagString
       value: HealthUI
@@ -248,11 +253,6 @@ PrefabInstance:
       propertyPath: m_RootBone
       value: 
       objectReference: {fileID: 6100000921142147463}
-    - target: {fileID: 114276559521456881, guid: 6faa2ed7105ee11409305d53fa85d8e3,
-        type: 3}
-      propertyPath: imag
-      value: 
-      objectReference: {fileID: 4651317833020142205}
     - target: {fileID: 1695840076, guid: 6faa2ed7105ee11409305d53fa85d8e3, type: 3}
       propertyPath: damage
       value: 4
@@ -261,6 +261,21 @@ PrefabInstance:
       propertyPath: healthScript
       value: 
       objectReference: {fileID: 4689570762322155787}
+    - target: {fileID: 114276559521456881, guid: 6faa2ed7105ee11409305d53fa85d8e3,
+        type: 3}
+      propertyPath: imag
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2873580615859007715, guid: 6faa2ed7105ee11409305d53fa85d8e3,
+        type: 3}
+      propertyPath: m_textInfo.textComponent
+      value: 
+      objectReference: {fileID: 7419031242421550383}
+    - target: {fileID: 6937361674893121374, guid: 6faa2ed7105ee11409305d53fa85d8e3,
+        type: 3}
+      propertyPath: imag
+      value: 
+      objectReference: {fileID: 2340111064957215188}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6faa2ed7105ee11409305d53fa85d8e3, type: 3}
 --- !u!114 &4689570762322155787 stripped
@@ -431,15 +446,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4689570762497379788}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &4690263357751636095 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1014228247379379, guid: 6faa2ed7105ee11409305d53fa85d8e3,
-    type: 3}
-  m_PrefabInstance: {fileID: 4689570762497379788}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4648821683971953961 stripped
+--- !u!114 &2340111064957215188 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114663068301973733, guid: 6faa2ed7105ee11409305d53fa85d8e3,
+  m_CorrespondingSourceObject: {fileID: 7020282093364751384, guid: 6faa2ed7105ee11409305d53fa85d8e3,
     type: 3}
   m_PrefabInstance: {fileID: 4689570762497379788}
   m_PrefabAsset: {fileID: 0}
@@ -449,15 +458,15 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4651317833020142205 stripped
+--- !u!114 &7419031242421550383 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114981634384347057, guid: 6faa2ed7105ee11409305d53fa85d8e3,
+  m_CorrespondingSourceObject: {fileID: 2873580615859007715, guid: 6faa2ed7105ee11409305d53fa85d8e3,
     type: 3}
   m_PrefabInstance: {fileID: 4689570762497379788}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

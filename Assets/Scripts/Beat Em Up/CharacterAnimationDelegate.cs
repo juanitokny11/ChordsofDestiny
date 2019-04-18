@@ -27,6 +27,7 @@ public class CharacterAnimationDelegate : MonoBehaviour
     private CharacterAnimation animationScript;
     private EnemyMovement enemy_Movement;
     private ShakeCamera shakeCamera;
+    public GameObject particleHacha;
     public bool isGroupie,is_Boss,isFan;
 
     private void Awake()
@@ -244,4 +245,13 @@ public class CharacterAnimationDelegate : MonoBehaviour
     {
         SceneManager.LoadScene("GameOver");
     }
+    public void ParticleHachaOn()
+    {
+        particleHacha.SetActive(true);
+    }
+    public void ParticleHachaOff()
+    {
+        particleHacha.SetActive(false);
+    }
+
 }

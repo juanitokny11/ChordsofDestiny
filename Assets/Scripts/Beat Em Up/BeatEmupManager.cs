@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class BeatEmupManager : MonoBehaviour
 {
     public static BeatEmupManager instance;
     public GameObject Player;
     public bool notacogida;
+    public TextMeshProUGUI score;
     public float counternotas;
     public GameObject notas;
     public AudioSource openPause;
@@ -15,6 +17,7 @@ public class BeatEmupManager : MonoBehaviour
     public RectTransform pausaMenu;
     public Animator pauseMenuPrincial;
     public bool pause = false;
+    public int numScore;
 
     void Awake()
     {
@@ -28,12 +31,14 @@ public class BeatEmupManager : MonoBehaviour
     }
     void Update()
     {
+        score.text = numScore.ToString();
         if (Input.GetKeyDown(KeyCode.F10))
         {
             GodMode();
         }
         if (godmode == true)
         {
+
             if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Pause"))
             {
                 Pausa();

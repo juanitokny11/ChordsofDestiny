@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 517838264}
   m_Layer: 0
   m_Name: vida
-  m_TagString: Untagged
+  m_TagString: HealthUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -205,10 +205,15 @@ MonoBehaviour:
   healthScript: {fileID: 0}
   enemyAnim: {fileID: 0}
   bossIA: {fileID: 0}
+  playerHealth: {fileID: 0}
   is_Player: 0
   is_Enemy: 1
   is_Boss: 1
-  hit_Fx_Prefab: {fileID: 0}
+  hit_Fx_Prefab: {fileID: 1681464086413353203, guid: 98d99c1a18cf34d46aae4e9065bd69fb,
+    type: 3}
+  block_Fx_Prefab: {fileID: 585274430744957696, guid: 3084707a993e92b45972970e6f1c1659,
+    type: 3}
+  block2_Fx_Prefab: {fileID: 0}
 --- !u!1 &988149400
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,7 +388,7 @@ GameObject:
   - component: {fileID: 988149403}
   m_Layer: 11
   m_Name: Boss
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -454,7 +459,7 @@ Rigidbody:
   m_Mass: 3
   m_Drag: 0
   m_AngularDrag: 0
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
@@ -471,7 +476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edbf079eae0b1b24cbb289c4cff14148, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  current_Boss_State: 0
+  current_Boss_State: 2
   enemiesTospawn:
   - {fileID: 8017991134479369548, guid: 72c03d8cbb5d91041a47013e371eab82, type: 3}
   - {fileID: 1563660872938979978, guid: 6faa2ed7105ee11409305d53fa85d8e3, type: 3}
@@ -501,7 +506,11 @@ MonoBehaviour:
   mainCamera_backgroundcol: {fileID: 0}
   ResetPosition: {fileID: 0}
   BossZone: {fileID: 0}
+  gameManager: {fileID: 0}
+  scoref1: 500
+  scoref2: 1000
   outside: 0
+  invokeEnemy: {fileID: 0}
 --- !u!114 &988149406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -530,12 +539,16 @@ MonoBehaviour:
   health: 100
   solo: 0
   zone: {fileID: 0}
+  gameManager: {fileID: 0}
+  numhits: {fileID: 0}
+  hits: {fileID: 0}
   healthBar: {fileID: 0}
   playerAttack_List: {fileID: 0}
   canDoSolo: 0
   characterDied: 0
   inAir: 0
   hitCounter: 0
+  hitsCount: 0
   is_Player: 0
   is_Boss: 1
 --- !u!114 &988149404
@@ -800,11 +813,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -871,10 +884,15 @@ MonoBehaviour:
   healthScript: {fileID: 0}
   enemyAnim: {fileID: 0}
   bossIA: {fileID: 0}
+  playerHealth: {fileID: 0}
   is_Player: 0
   is_Enemy: 1
   is_Boss: 1
-  hit_Fx_Prefab: {fileID: 0}
+  hit_Fx_Prefab: {fileID: 1681464086413353203, guid: 98d99c1a18cf34d46aae4e9065bd69fb,
+    type: 3}
+  block_Fx_Prefab: {fileID: 585274430744957696, guid: 3084707a993e92b45972970e6f1c1659,
+    type: 3}
+  block2_Fx_Prefab: {fileID: 0}
 --- !u!1 &1776092950
 GameObject:
   m_ObjectHideFlags: 0
@@ -967,7 +985,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1871696313
 RectTransform:
   m_ObjectHideFlags: 0
@@ -995,7 +1013,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1871696312}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -1007,7 +1025,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: -1
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &1871696315
 MonoBehaviour:

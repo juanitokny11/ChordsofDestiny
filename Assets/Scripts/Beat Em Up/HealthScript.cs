@@ -14,6 +14,7 @@ public class HealthScript : MonoBehaviour
     private PlayerMovementBeat player_Move;
     private PlayerAttack2 player_Attack;
     private HealthUI health_UI;
+    public BeatEmupManager gameManager;
     public TextMeshProUGUI numhits;
     public GameObject hits;
     public GameObject healthBar;
@@ -29,6 +30,7 @@ public class HealthScript : MonoBehaviour
     public bool is_Player,is_Boss;
     public void Start()
     {
+        gameManager = FindObjectOfType<BeatEmupManager>();
         animationScript = GetComponent<CharacterAnimation>();
         enemyMovement = GetComponent<EnemyMovement>();
         if (is_Player)
@@ -116,10 +118,12 @@ public class HealthScript : MonoBehaviour
             else if(!is_Boss && !is_Player)
             {
                zone.enemiescounter--;
+               gameManager.numScore += enemyMovement.score;
             }
             else if (is_Boss)
             {
                 bossIA.Death();
+                gameManager.numScore += bossIA.scoref2 ;
             }
             characterDied = true;
             return;

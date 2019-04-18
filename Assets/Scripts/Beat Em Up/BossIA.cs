@@ -31,11 +31,15 @@ public class BossIA : MonoBehaviour
     private EnemyHealthUI enemyHealth;
     public Transform ResetPosition;
     public BattleZone BossZone;
+    public BeatEmupManager gameManager;
+    public int scoref1=500;
+    public int scoref2=1000;
     public bool outside;
     public GameObject invokeEnemy;
 
     void Start()
     {
+        gameManager = FindObjectOfType<BeatEmupManager>();
         this.enabled = true;
         capsuleCollider = GetComponent<CapsuleCollider>();
         healthScript = GetComponent<HealthScript>();
@@ -232,6 +236,7 @@ public class BossIA : MonoBehaviour
         fase = 2;
         porcentajeAtaque = 50;
         porcentajeInvocar = 6;
+        gameManager.numScore += scoref1;
         //SetDefault();
     }
     void OnCollisionEnter(Collision collision)
