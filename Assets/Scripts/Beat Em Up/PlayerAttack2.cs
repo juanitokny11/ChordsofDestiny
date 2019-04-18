@@ -160,10 +160,18 @@ public class PlayerAttack2 : MonoBehaviour
             current_Combo_State = ComboState.GUARD;
             if (current_Combo_State == ComboState.GUARD)
             {
-                if(player_Move.lockrotation)
-                    shield=Instantiate(block_Fx, transform.position - new Vector3(+0.5f,0,0), Quaternion.Euler(0,180,0));
-                else if(!player_Move.lockrotation)
-                     shield = Instantiate(block_Fx, transform.position - new Vector3(-1f, 0, 0), Quaternion.identity);
+                if (player_Move.lockrotation)
+                {
+                    shield = Instantiate(block_Fx, transform.position - new Vector3(+0.2f, 1.0f, 0), Quaternion.Euler(0, 180, 0));
+                    shield.GetComponentInChildren<ParticleSystem>().Play();
+                    shield.GetComponentInChildren<Transform>().Rotate(new Vector3(0, 0, 0));
+                }
+                else if (!player_Move.lockrotation)
+                {
+                    shield = Instantiate(block_Fx, transform.position - new Vector3(-0.2f, 0, 0), Quaternion.Euler(0, 180, 0));
+                    shield.GetComponentInChildren<ParticleSystem>().Play();
+                    shield.GetComponentInChildren<Transform>().Rotate(new Vector3(0, 180, 0));
+                }
                 player_Anim.Block();
                 guardCollider.enabled = true;
                 blockActivated = true;

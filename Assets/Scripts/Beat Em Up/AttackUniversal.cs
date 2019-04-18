@@ -41,12 +41,12 @@ public class AttackUniversal : MonoBehaviour
             if (is_Player)
             {
                 Vector3 hitFx_Pos = hit[0].transform.position;
-                hitFx_Pos.y += 1.3f;
+                hitFx_Pos.y += 3f;
                 if (hit[0].transform.forward.x > 0)
                     hitFx_Pos.x += 0.3f;
                 else if (hit[0].transform.forward.x < 0)
                     hitFx_Pos.x -= 0.3f;
-                //Instantiate(hit_Fx_Prefab, hitFx_Pos, Quaternion.identity);
+                Instantiate(hit_Fx_Prefab, hitFx_Pos, Quaternion.identity);
                 if (gameObject.CompareTag("Tirar"))
                 {
                     healthScript.inAir = false;
@@ -114,6 +114,20 @@ public class AttackUniversal : MonoBehaviour
                     }
                     else
                     {
+                        Quaternion hitFFX_Rot = new Quaternion();
+                        Vector3 hitFx_Pos = hit[0].transform.position;
+                        hitFx_Pos.y += 1f;
+                        if (hit[0].transform.forward.x > 0)
+                        {
+                            hitFx_Pos.x += 0.3f;
+                            hitFFX_Rot = Quaternion.Euler(0,0,0);
+                        }
+                        else if (hit[0].transform.forward.x < 0)
+                        {
+                            hitFx_Pos.x -= 0.3f;
+                            hitFFX_Rot = Quaternion.Euler(0, 180, 0);
+                        }
+                        Instantiate(hit_Fx_Prefab, hitFx_Pos, hitFFX_Rot);
                         hit[0].GetComponentInParent<HealthScript>().ApplyDamage(damage, false,false);
                         playerHealth.hitsCount = 0;
                     }
@@ -143,6 +157,20 @@ public class AttackUniversal : MonoBehaviour
                     }
                     else
                     {
+                        Quaternion hitFFX_Rot = new Quaternion();
+                        Vector3 hitFx_Pos = hit[0].transform.position;
+                        hitFx_Pos.y += 1f;
+                        if (hit[0].transform.forward.x > 0)
+                        {
+                            hitFx_Pos.x += 0.3f;
+                            hitFFX_Rot = Quaternion.Euler(0, 0, 0);
+                        }
+                        else if (hit[0].transform.forward.x < 0)
+                        {
+                            hitFx_Pos.x -= 0.3f;
+                            hitFFX_Rot = Quaternion.Euler(0, 180, 0);
+                        }
+                        Instantiate(hit_Fx_Prefab, hitFx_Pos, hitFFX_Rot);
                         hit[0].GetComponentInParent<HealthScript>().ApplyDamage(damage, false,false);
                         playerHealth.hitsCount = 0;
                     }
