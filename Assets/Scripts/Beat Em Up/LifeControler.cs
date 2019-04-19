@@ -5,10 +5,14 @@ using UnityEngine;
 public class LifeControler : MonoBehaviour
 {
     public List<GameObject> enemiesLifes;
-    public List<AttackUniversal> enemiesAttack;
+    public AttackUniversal playerAttack;
 
-    public void ShowDamagedUI()
+    public void ShowDamagedUI(GameObject enemylife)
     {
-        //enemiesAttack[0].hit[0].gameObject.
+        enemylife = playerAttack.hit[0].gameObject.GetComponent<EnemyMovement>().enemyLife;
+        /*if(enemylife!=currentLife)
+            enemylife = currentLife;*/
+        enemylife.SetActive(true);
+        Debug.Log(enemylife);
     }
 }

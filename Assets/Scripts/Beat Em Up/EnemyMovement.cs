@@ -11,7 +11,7 @@ public class EnemyMovement : MonoBehaviour
     private HealthScript healthScript;
     public GameObject enemyLife;
     public BoxCollider col;
-    private LifeControler enemyUI;
+    public LifeControler enemyUI;
     private Rigidbody myBody;
     public List<string> groupieNames;
     public List<string> fanNames;
@@ -77,7 +77,8 @@ public class EnemyMovement : MonoBehaviour
     private void Start()
     {
         enemyUI.enemiesLifes.Add(enemyLife);
-        enemyUI.enemiesAttack.Add(attackColider);
+        enemyLife.SetActive(false);
+        //enemyUI.enemiesAttack.Add(attackColider);
         this.enabled = true;
         followPlayer = true;
         current_Attack_Time = default_Attack_Time;

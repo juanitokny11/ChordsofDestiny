@@ -54,6 +54,7 @@ MonoBehaviour:
   healthScript: {fileID: 452187335}
   enemyAnim: {fileID: 0}
   bossIA: {fileID: 0}
+  lifeControler: {fileID: 0}
   playerHealth: {fileID: 0}
   is_Player: 0
   is_Enemy: 1
@@ -63,6 +64,7 @@ MonoBehaviour:
   block_Fx_Prefab: {fileID: 585274430744957696, guid: 3084707a993e92b45972970e6f1c1659,
     type: 3}
   block2_Fx_Prefab: {fileID: 0}
+  hit: []
   counterhits: 0
 --- !u!1 &281255932481188969
 GameObject:
@@ -90,8 +92,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 281255932481188969}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -63.96863}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 600678211596621975}
@@ -104,7 +106,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -1.9373016, y: -0.00549036}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!223 &2018955698594355735
@@ -114,7 +116,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 281255932481188969}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -306,10 +308,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyLife: {fileID: 281255932481188969}
   col: {fileID: 0}
+  enemyUI: {fileID: 0}
   groupieNames: []
   fanNames: []
   gname: {fileID: 0}
   gimage: {fileID: 0}
+  attackColider: {fileID: 0}
   score: 25
   isGroupie: 1
   speed: 5
@@ -350,6 +354,7 @@ MonoBehaviour:
   solo: 0
   zone: {fileID: 0}
   attack: {fileID: 0}
+  score: {fileID: 0}
   gameManager: {fileID: 0}
   numhits: {fileID: 0}
   hits: {fileID: 0}
@@ -2311,11 +2316,11 @@ MonoBehaviour:
     lineCount: 0
     pageCount: 0
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:

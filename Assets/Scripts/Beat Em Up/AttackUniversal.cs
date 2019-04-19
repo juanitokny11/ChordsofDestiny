@@ -13,8 +13,9 @@ public class AttackUniversal : MonoBehaviour
     public HealthScript healthScript;
     public CharacterAnimation enemyAnim;
     public BossIA bossIA;
+    public LifeControler lifeControler;
     public HealthScript playerHealth;
-    public bool is_Player, is_Enemy,is_Boss;
+    public bool is_Player, is_Enemy, is_Boss;
     public GameObject hit_Fx_Prefab;
     public GameObject block_Fx_Prefab;
     public GameObject block2_Fx_Prefab;
@@ -22,6 +23,7 @@ public class AttackUniversal : MonoBehaviour
     public float counterhits = 0f;
     private void Start()
     {
+        lifeControler = GameObject.FindObjectOfType<LifeControler>();
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthScript>();
         enemy = GetComponentInParent<EnemyMovement>();
         enemyAnim = GetComponentInParent<CharacterAnimation>();
@@ -36,7 +38,7 @@ public class AttackUniversal : MonoBehaviour
     }
     void DetectColision()
     {
-         hit = Physics.OverlapSphere(transform.position,radius,colisionLayer);
+        hit = Physics.OverlapSphere(transform.position, radius, colisionLayer);
 
         if (hit.Length > 0)
         {
@@ -56,21 +58,25 @@ public class AttackUniversal : MonoBehaviour
                     healthScript.hitsCount++;
                     counterhits = 0;
                     healthScript.solo += damage;
-                    healthUI.DisplaySolo(healthScript.solo/2);
-                    if(is_Enemy && !is_Boss)
+                    healthUI.DisplaySolo(healthScript.solo / 2);
+                    if (is_Enemy && !is_Boss)
+                    {
                         hit[0].GetComponent<BoxCollider>().enabled = true;
+                        lifeControler.ShowDamagedUI(hit[0].GetComponent<EnemyMovement>().enemyLife);
+                    }
                 }
-                  else if (gameObject.CompareTag("Levantar"))
+                else if (gameObject.CompareTag("Levantar"))
                 {
                     damage = 4;
                     healthScript.hitsCount++;
                     counterhits = 0;
                     healthUI.DisplaySolo(healthScript.solo / 2);
-                    hit[0].GetComponent<HealthScript>().ApplyDamage(damage, true,false);
+                    hit[0].GetComponent<HealthScript>().ApplyDamage(damage, true, false);
                     if (is_Enemy && !is_Boss)
                     {
                         healthScript.inAir = true;
                         hit[0].GetComponent<BoxCollider>().enabled = true;
+                        lifeControler.ShowDamagedUI(hit[0].GetComponent<EnemyMovement>().enemyLife);
                     }
                 }
                 else
@@ -89,101 +95,104 @@ public class AttackUniversal : MonoBehaviour
                     }
                     healthScript.solo += damage;
                     healthUI.DisplaySolo(healthScript.solo / 2);
-                    hit[0].GetComponent<HealthScript>().ApplyDamage(damage, false,false);
-                    if(is_Enemy && !is_Boss)
-                        hit[0].GetComponent<BoxCollider>().enabled=true;
-                }
-            }
-            if (is_Enemy)
-            {
-                if (!is_Boss)
-                { 
-                    if (hit[0].gameObject.CompareTag("Defense"))
+                    hit[0].GetComponent<HealthScript>().ApplyDamage(damage, false, false);
+                    if (is_Enemy && !is_Boss)
                     {
-                        Quaternion blockFX_Rot = new Quaternion();
-                        Vector3 blockFx_Pos = hit[0].transform.position;
-                        blockFx_Pos.y += 4f;
-                       if (hit[0].transform.forward.x > 0)
-                        {
-                            blockFx_Pos.x += 2f;
-                            blockFX_Rot = Quaternion.Euler(-45, 90, 0);
-                        }
-                        else if (hit[0].transform.forward.x < 0)
-                        {
-                            blockFx_Pos.x -= 2f;
-                            blockFX_Rot = Quaternion.Euler(-45, -90, 0);
-                        }
-                        enemyAnim.Block();
-                        Instantiate(block_Fx_Prefab, blockFx_Pos, blockFX_Rot);
-                        damage = 0;
-                        hit[0].GetComponentInParent<HealthScript>().ApplyDamage(damage, false, true);
+                        hit[0].GetComponent<BoxCollider>().enabled = true;
+                        lifeControler.ShowDamagedUI(hit[0].GetComponent<EnemyMovement>().enemyLife);
                     }
-                    else
-                    {
-                        Quaternion hitFFX_Rot = new Quaternion();
-                        Vector3 hitFx_Pos = hit[0].transform.position;
-                        hitFx_Pos.y += 1f;
-                        if (hit[0].transform.forward.x > 0)
-                        {
-                            hitFx_Pos.x += 0.3f;
-                            hitFFX_Rot = Quaternion.Euler(0,0,0);
-                        }
-                        else if (hit[0].transform.forward.x < 0)
-                        {
-                            hitFx_Pos.x -= 0.3f;
-                            hitFFX_Rot = Quaternion.Euler(0, 180, 0);
-                        }
-                        Instantiate(hit_Fx_Prefab, hitFx_Pos, hitFFX_Rot);
-                        hit[0].GetComponentInParent<HealthScript>().ApplyDamage(damage, false,false);
-                        playerHealth.hitsCount = 0;
-                    }
-                    damage = 2;
                 }
-                if (is_Boss)
+                if (is_Enemy)
                 {
-                    if (hit[0].gameObject.CompareTag("Defense"))
+                    if (!is_Boss)
                     {
-                        Quaternion blockFX_Rot = new Quaternion();
-                        Vector3 blockFx_Pos = hit[0].transform.position;
-                        blockFx_Pos.y += 4f;
-                        if (hit[0].transform.forward.x > 0)
+                        if (hit[0].gameObject.CompareTag("Defense"))
                         {
-                            blockFx_Pos.x += 2f;
-                            blockFX_Rot = Quaternion.Euler(-45, 90, 0);
+                            Quaternion blockFX_Rot = new Quaternion();
+                            Vector3 blockFx_Pos = hit[0].transform.position;
+                            blockFx_Pos.y += 4f;
+                            if (hit[0].transform.forward.x > 0)
+                            {
+                                blockFx_Pos.x += 2f;
+                                blockFX_Rot = Quaternion.Euler(-45, 90, 0);
+                            }
+                            else if (hit[0].transform.forward.x < 0)
+                            {
+                                blockFx_Pos.x -= 2f;
+                                blockFX_Rot = Quaternion.Euler(-45, -90, 0);
+                            }
+                            enemyAnim.Block();
+                            Instantiate(block_Fx_Prefab, blockFx_Pos, blockFX_Rot);
+                            damage = 0;
+                            hit[0].GetComponentInParent<HealthScript>().ApplyDamage(damage, false, true);
                         }
-                        else if (hit[0].transform.forward.x < 0)
+                        else
                         {
-                            blockFx_Pos.x -= 2f;
-                            blockFX_Rot = Quaternion.Euler(-45, -90, 0);
+                            Quaternion hitFFX_Rot = new Quaternion();
+                            hitFx_Pos = hit[0].transform.position;
+                            hitFx_Pos.y += 1f;
+                            if (hit[0].transform.forward.x > 0)
+                            {
+                                hitFx_Pos.x += 0.3f;
+                                hitFFX_Rot = Quaternion.Euler(0, 0, 0);
+                            }
+                            else if (hit[0].transform.forward.x < 0)
+                            {
+                                hitFx_Pos.x -= 0.3f;
+                                hitFFX_Rot = Quaternion.Euler(0, 180, 0);
+                            }
+                            Instantiate(hit_Fx_Prefab, hitFx_Pos, hitFFX_Rot);
+                            hit[0].GetComponentInParent<HealthScript>().ApplyDamage(damage, false, false);
+                            playerHealth.hitsCount = 0;
                         }
-                        enemyAnim.Block();
-                        Instantiate(block_Fx_Prefab, blockFx_Pos, blockFX_Rot);
-                        damage = 0;
-                       hit[0].GetComponentInParent<HealthScript>().ApplyDamage(damage, false, true);
+                        damage = 2;
                     }
-                    else
+                    if (is_Boss)
                     {
-                        Quaternion hitFFX_Rot = new Quaternion();
-                        Vector3 hitFx_Pos = hit[0].transform.position;
-                        hitFx_Pos.y += 1f;
-                        if (hit[0].transform.forward.x > 0)
+                        if (hit[0].gameObject.CompareTag("Defense"))
                         {
-                            hitFx_Pos.x += 0.3f;
-                            hitFFX_Rot = Quaternion.Euler(0, 0, 0);
+                            Quaternion blockFX_Rot = new Quaternion();
+                            Vector3 blockFx_Pos = hit[0].transform.position;
+                            blockFx_Pos.y += 4f;
+                            if (hit[0].transform.forward.x > 0)
+                            {
+                                blockFx_Pos.x += 2f;
+                                blockFX_Rot = Quaternion.Euler(-45, 90, 0);
+                            }
+                            else if (hit[0].transform.forward.x < 0)
+                            {
+                                blockFx_Pos.x -= 2f;
+                                blockFX_Rot = Quaternion.Euler(-45, -90, 0);
+                            }
+                            enemyAnim.Block();
+                            Instantiate(block_Fx_Prefab, blockFx_Pos, blockFX_Rot);
+                            damage = 0;
+                            hit[0].GetComponentInParent<HealthScript>().ApplyDamage(damage, false, true);
                         }
-                        else if (hit[0].transform.forward.x < 0)
+                        else
                         {
-                            hitFx_Pos.x -= 0.3f;
-                            hitFFX_Rot = Quaternion.Euler(0, 180, 0);
+                            Quaternion hitFFX_Rot = new Quaternion();
+                            hitFx_Pos = hit[0].transform.position;
+                            hitFx_Pos.y += 1f;
+                            if (hit[0].transform.forward.x > 0)
+                            {
+                                hitFx_Pos.x += 0.3f;
+                                hitFFX_Rot = Quaternion.Euler(0, 0, 0);
+                            }
+                            else if (hit[0].transform.forward.x < 0)
+                            {
+                                hitFx_Pos.x -= 0.3f;
+                                hitFFX_Rot = Quaternion.Euler(0, 180, 0);
+                            }
+                            Instantiate(hit_Fx_Prefab, hitFx_Pos, hitFFX_Rot);
+                            hit[0].GetComponentInParent<HealthScript>().ApplyDamage(damage, false, false);
+                            playerHealth.hitsCount = 0;
                         }
-                        Instantiate(hit_Fx_Prefab, hitFx_Pos, hitFFX_Rot);
-                        hit[0].GetComponentInParent<HealthScript>().ApplyDamage(damage, false,false);
-                        playerHealth.hitsCount = 0;
+                        damage = 4;
                     }
-                    damage = 4;
                 }
+                gameObject.SetActive(false);
             }
-            gameObject.SetActive(false);
         }
     }
     private void OnDrawGizmos()
@@ -192,3 +201,4 @@ public class AttackUniversal : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, radius);
     }
 }
+
