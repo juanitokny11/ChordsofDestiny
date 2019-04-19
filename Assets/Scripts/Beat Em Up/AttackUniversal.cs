@@ -18,6 +18,8 @@ public class AttackUniversal : MonoBehaviour
     public GameObject hit_Fx_Prefab;
     public GameObject block_Fx_Prefab;
     public GameObject block2_Fx_Prefab;
+    public Collider[] hit;
+    public float counterhits = 0f;
     private void Start()
     {
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthScript>();
@@ -34,7 +36,7 @@ public class AttackUniversal : MonoBehaviour
     }
     void DetectColision()
     {
-        Collider[] hit = Physics.OverlapSphere(transform.position,radius,colisionLayer);
+         hit = Physics.OverlapSphere(transform.position,radius,colisionLayer);
 
         if (hit.Length > 0)
         {
@@ -52,6 +54,7 @@ public class AttackUniversal : MonoBehaviour
                     healthScript.inAir = false;
                     damage = 4;
                     healthScript.hitsCount++;
+                    counterhits = 0;
                     healthScript.solo += damage;
                     healthUI.DisplaySolo(healthScript.solo/2);
                     if(is_Enemy && !is_Boss)
@@ -61,6 +64,7 @@ public class AttackUniversal : MonoBehaviour
                 {
                     damage = 4;
                     healthScript.hitsCount++;
+                    counterhits = 0;
                     healthUI.DisplaySolo(healthScript.solo / 2);
                     hit[0].GetComponent<HealthScript>().ApplyDamage(damage, true,false);
                     if (is_Enemy && !is_Boss)
@@ -75,11 +79,13 @@ public class AttackUniversal : MonoBehaviour
                     {
                         damage = 4;
                         healthScript.hitsCount++;
+                        counterhits = 0;
                     }
                     else if (gameObject.CompareTag("ligero"))
                     {
                         damage = 3;
                         healthScript.hitsCount++;
+                        counterhits = 0;
                     }
                     healthScript.solo += damage;
                     healthUI.DisplaySolo(healthScript.solo / 2);

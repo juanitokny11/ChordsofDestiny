@@ -63,6 +63,7 @@ MonoBehaviour:
   block_Fx_Prefab: {fileID: 585274430744957696, guid: 3084707a993e92b45972970e6f1c1659,
     type: 3}
   block2_Fx_Prefab: {fileID: 0}
+  counterhits: 0
 --- !u!1 &281255932481188969
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,7 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6126feaad4cfe794f851753ef07168a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyLife: {fileID: 0}
+  enemyLife: {fileID: 281255932481188969}
   col: {fileID: 0}
   groupieNames: []
   fanNames: []
@@ -348,6 +349,7 @@ MonoBehaviour:
   health: 30
   solo: 0
   zone: {fileID: 0}
+  attack: {fileID: 0}
   gameManager: {fileID: 0}
   numhits: {fileID: 0}
   hits: {fileID: 0}
@@ -390,6 +392,7 @@ MonoBehaviour:
   player_Move: {fileID: 0}
   groupieBody: {fileID: 0}
   standupTimer: 2
+  particleHacha: {fileID: 0}
   isGroupie: 1
   is_Boss: 0
   isFan: 0

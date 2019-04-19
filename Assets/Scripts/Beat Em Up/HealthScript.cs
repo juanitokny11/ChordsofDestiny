@@ -9,10 +9,12 @@ public class HealthScript : MonoBehaviour
     public float health = 100f;
     public float solo = 0f;
     public BattleZone zone;
+    public AttackUniversal attack;
     private CharacterAnimation animationScript;
     private EnemyMovement enemyMovement;
     private PlayerMovementBeat player_Move;
     private PlayerAttack2 player_Attack;
+    public GameObject score;
     private HealthUI health_UI;
     public BeatEmupManager gameManager;
     public TextMeshProUGUI numhits;
@@ -35,6 +37,8 @@ public class HealthScript : MonoBehaviour
         enemyMovement = GetComponent<EnemyMovement>();
         if (is_Player)
         {
+            //attack = GetComponentInChildren<AttackUniversal>();
+            score.SetActive(false);
             health_UI = GetComponent<HealthUI>();
             player_Move = GetComponent<PlayerMovementBeat>();
             player_Attack = GetComponent<PlayerAttack2>();
@@ -67,6 +71,12 @@ public class HealthScript : MonoBehaviour
             {
                 hits.SetActive(false);
                 numhits.text = 00.ToString();
+            }
+            if (hitsCount != 0)
+            {
+                attack.counterhits += Time.deltaTime;
+                if (attack.counterhits >= 3f)
+                    hitsCount = 0;
             }
         }
         if (solo >= 200)
