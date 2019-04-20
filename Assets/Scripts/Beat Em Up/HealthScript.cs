@@ -30,9 +30,10 @@ public class HealthScript : MonoBehaviour
     public int hitCounter;
     public int hitsCount;
 
-    public bool is_Player,is_Boss;
+    public bool is_Player,is_Boss,is_Enemy;
     public void Start()
     {
+        characterDied = false;
         gameManager = FindObjectOfType<BeatEmupManager>();
         animationScript = GetComponent<CharacterAnimation>();
         enemyMovement = GetComponent<EnemyMovement>();
@@ -49,7 +50,7 @@ public class HealthScript : MonoBehaviour
             healthBar.SetActive(false);
             playerAttack_List = GetComponent<PlayerAttackList>();
         }
-        else if (!is_Player)
+        else if (is_Enemy)
         {
             enemy_Health_UI = GetComponent<EnemyHealthUI>();
         }
@@ -101,7 +102,7 @@ public class HealthScript : MonoBehaviour
         if (is_Player)
         { 
             health_UI.DisplayHealth(health);
-            if (!knockDown && !defense)
+            if (!knockDown & !defense)
             {
                 if (Random.Range(0, 3) > 1)
                 {
@@ -111,7 +112,7 @@ public class HealthScript : MonoBehaviour
                 }
             }
         }
-        else if(!is_Player)
+        else if(is_Enemy)
             enemy_Health_UI.DisplayHealth(health);
         
         if (health <= 0)
@@ -127,7 +128,7 @@ public class HealthScript : MonoBehaviour
                 player_Move.is_Dead = true;
                 player_Attack.enabled = false;
             }
-            else if(!is_Boss && !is_Player)
+            else if(is_Enemy)
             {
                zone.enemiescounter--;
                gameManager.numScore += enemyMovement.score;
@@ -141,7 +142,7 @@ public class HealthScript : MonoBehaviour
             characterDied = true;
             return;
         }
-        if (!is_Boss && !is_Player)
+        if (is_Enemy)
         {
             if (knockDown)
             {
