@@ -77,7 +77,7 @@ public class EnemyMovement : MonoBehaviour
     private void Start()
     {
         enemyUI.enemiesLifes.Add(enemyLife);
-        enemyLife.SetActive(false);
+        //enemyLife.SetActive(false);
         //enemyUI.enemiesAttack.Add(attackColider);
         this.enabled = true;
         followPlayer = true;

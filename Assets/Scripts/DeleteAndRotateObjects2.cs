@@ -7,10 +7,12 @@ public class DeleteAndRotateObjects2: MonoBehaviour {
     private GameObject player;
     private float CoinSpeed = 20.0f;
     private Transform playerTransform;
+    public bool is_Key = false;
+    public ChangeCamera changeCamera;
 
     void Start()
     {
-
+        changeCamera = GameObject.FindObjectOfType<ChangeCamera>();
         player = GameObject.FindGameObjectWithTag("Player");
         playerTransform = player.GetComponent<Transform>();
         //transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
@@ -33,7 +35,13 @@ public class DeleteAndRotateObjects2: MonoBehaviour {
     }
 
     void Explode() {
-		
+
+        if (is_Key)
+        {
+            changeCamera.bosscam.enabled = true;
+            changeCamera.gameplaycam.enabled=false;
+        }
+            
 		Destroy(gameObject);
 	}
     public void CoinsPowerup()

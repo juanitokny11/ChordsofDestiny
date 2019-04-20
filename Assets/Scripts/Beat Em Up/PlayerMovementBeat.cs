@@ -20,7 +20,7 @@ public class PlayerMovementBeat : MonoBehaviour
     Quaternion actualrot;
     Vector3 newPosition;
     float counter;
-    private float rotation_Y = -90.0f;
+    public float rotation_Y = -90.0f;
     public float rotation_Speed = 15f;
     private void Awake()
     {
@@ -160,7 +160,6 @@ public class PlayerMovementBeat : MonoBehaviour
          if (!comboAereo)
         {
             player_Anim.ResetJump();
-            inAir = false;
         }
     }
     void ComboAereoRealizado()

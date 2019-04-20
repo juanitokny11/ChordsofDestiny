@@ -34,8 +34,10 @@ public class BossIA : MonoBehaviour
     public BeatEmupManager gameManager;
     public int scoref1=500;
     public int scoref2=1000;
-    public bool outside;
+    public bool outside=true;
     public GameObject invokeEnemy;
+    public GameObject llave;
+    public Transform llavePos;
 
     void Start()
     {
@@ -152,6 +154,7 @@ public class BossIA : MonoBehaviour
             speed = 0;
             return;
         }
+        //if(BossZone.enemiescounter !=0)
         if (Vector3.Distance(transform.position, playerTarget.position) < chaseDistance && Vector3.Distance(transform.position, playerTarget.position) > attack_Distance)
         {
             transform.LookAt(playerTarget);
@@ -190,6 +193,13 @@ public class BossIA : MonoBehaviour
             attackPlayer = true;
             SetAttack();
         }
+        if (BossZone.enemiescounter < 1)
+        {
+            gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+            enemyAnim.Jump2Arms();
+            enemyAnim.ResetJump2Arms();
+            Invoke("OUTSIDE", 0.7f);
+        }
     }
     void Invoke()
     {
@@ -197,7 +207,7 @@ public class BossIA : MonoBehaviour
         {
             invokeEnemy=Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[Random.Range(0, 2)].position, Quaternion.identity);
             invokeEnemy.GetComponent<HealthScript>().zone = BossZone;
-            BossZone.enemiescounter++;
+            BossZone.enemiescounter = BossZone.enemies.Count;
             enemyAnim.Jump2Arms();
             enemyAnim.ResetJump2Arms();
             Invoke("OUTSIDE", 0.7f);
@@ -206,7 +216,7 @@ public class BossIA : MonoBehaviour
         else
         {
             Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[Random.Range(0, 1)].position, Quaternion.identity);
-            BossZone.enemiescounter++;
+            BossZone.enemiescounter = BossZone.enemies.Count;
             enemyAnim.Jump1Arm();
             enemyAnim.ResetJump1Arm();
             Invoke("OUTSIDE", 0.7f);
@@ -214,6 +224,8 @@ public class BossIA : MonoBehaviour
     }
     public void Death()
     {
+        if (GetComponent<HealthScript>().health <= 0)
+            Instantiate(llave, llavePos.position, Quaternion.identity);
         this.enabled = false;
     }
     void SetAttack()

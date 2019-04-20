@@ -8,6 +8,7 @@ public class CharacterAnimationDelegate : MonoBehaviour
 {
     public SoundPlayer clips;
     public ParticleSystem jumpefect;
+    public GameObject guitar_Attack_Mesh;
     public GameObject guitar_Attack_Point;
     public GameObject Boss_Attack_Point1;
     public GameObject Boss_Attack_Point2;
@@ -71,11 +72,13 @@ public class CharacterAnimationDelegate : MonoBehaviour
     void Guitar_Attack_Point_ON()
     {
         guitar_Attack_Point.SetActive(true);
+        guitar_Attack_Mesh.GetComponent<MeshCollider>().enabled = true;
     }
     void Guitar_Attack_Point_OFF()
     {
         if (guitar_Attack_Point.activeInHierarchy)
             guitar_Attack_Point.SetActive(false);
+        guitar_Attack_Mesh.GetComponent<MeshCollider>().enabled = false;
     }
     void Groupie_Attack_Point_ON()
     {

@@ -120,13 +120,12 @@ public class PlayerAttack2 : MonoBehaviour
                 return;
             if (current_Combo_State == ComboState.NONE)
                 current_Combo_State = ComboState.FUERTE;
-            else if (current_Combo_State == ComboState.FUERTE || current_Combo_State == ComboState.FUERTE2 && !player_Move.inAir) 
+            else if (current_Combo_State == ComboState.FUERTE || current_Combo_State == ComboState.FUERTE2) 
                 current_Combo_State++;
             else if (current_Combo_State == ComboState.DEBIL || current_Combo_State == ComboState.DEBIL2 && !player_Move.inAir)
                 current_Combo_State = ComboState.FUERTE2;
             activateTimerToReset = true;
             current_Combo_Timer = default_Combo_Timer;
-            
                 if (current_Combo_State == ComboState.FUERTE)
                 {
                     AddToTheList(ComboState.FUERTE);
@@ -139,7 +138,6 @@ public class PlayerAttack2 : MonoBehaviour
                 {
                     AddToTheList(ComboState.FUERTE3);
                 }
-            
         }
         if (Input.GetKeyDown(KeyCode.D) || Input.GetAxisRaw("Solo") == 1 && Input.GetAxisRaw("Disparar") == 1)
         {
@@ -157,36 +155,51 @@ public class PlayerAttack2 : MonoBehaviour
         }
         if (Input.GetAxisRaw("Evadir") == 1 && !blockActivated)
         {
+
             current_Combo_State = ComboState.GUARD;
-            if (current_Combo_State == ComboState.GUARD)
+            if (!player_Move.inAir)
             {
-                if (player_Move.lockrotation)
+                if (current_Combo_State == ComboState.GUARD)
                 {
-                    shield = Instantiate(block_Fx, transform.position - new Vector3(+0.2f, 1.0f, 0), Quaternion.Euler(0, 180, 0));
-                    shield.GetComponentInChildren<ParticleSystem>().Play();
-                    shield.GetComponentInChildren<Transform>().Rotate(new Vector3(0, 0, 0));
+                    /*if (player_Move.lockrotation)
+                    {
+                        shield = Instantiate(block_Fx, transform.position - new Vector3(+0.2f, 1.0f, 0), Quaternion.Euler(0, 180, 0));
+                        shield.GetComponentInChildren<ParticleSystem>().Play();
+                        shield.GetComponentInChildren<Transform>().Rotate(new Vector3(0, 0, 0));
+                    }
+                    else if (!player_Move.lockrotation)
+                    {
+                        shield = Instantiate(block_Fx, transform.position - new Vector3(-0.2f, 0, 0), Quaternion.Euler(0, 180, 0));
+                        shield.GetComponentInChildren<ParticleSystem>().Play();
+                        shield.GetComponentInChildren<Transform>().Rotate(new Vector3(0, 180, 0));
+                    }*/
+                    player_Anim.Block();
+                    guardCollider.enabled = true;
+                    blockActivated = true;
                 }
-                else if (!player_Move.lockrotation)
-                {
-                    shield = Instantiate(block_Fx, transform.position - new Vector3(-0.2f, 0, 0), Quaternion.Euler(0, 180, 0));
-                    shield.GetComponentInChildren<ParticleSystem>().Play();
-                    shield.GetComponentInChildren<Transform>().Rotate(new Vector3(0, 180, 0));
-                }
-                player_Anim.Block();
-                guardCollider.enabled = true;
-                blockActivated = true;
-            } 
+            }
+            else if (player_Move.inAir)
+            {
+
+            }
         }
         else if ( Input.GetAxisRaw("Evadir") == 0 && blockActivated)
         {
             current_Combo_State = ComboState.GUARD;
-            if (current_Combo_State == ComboState.GUARD)
+            if (!player_Move.inAir)
             {
-                Destroy(shield);
-                player_Anim.ResetBlock();
-                guardCollider.enabled = false;
-                blockActivated = false;
-                current_Combo_State = ComboState.NONE;
+                if (current_Combo_State == ComboState.GUARD)
+                {
+                    //Destroy(shield);
+                    player_Anim.ResetBlock();
+                    guardCollider.enabled = false;
+                    blockActivated = false;
+                    current_Combo_State = ComboState.NONE;
+                }
+            }
+            else if (player_Move.inAir)
+            {
+
             }
         }
     }

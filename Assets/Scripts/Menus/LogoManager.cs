@@ -90,9 +90,9 @@ public class LogoManager : MonoBehaviour
     {
         Invoke("InvokeOptions", 130.0f * Time.deltaTime);
         fademusicaOptions.SetActive(true);
-        musica.enabled = false;
+        //musica.enabled = false;
         musicaoptions.enabled = true;
-        musicaoptions.Play();
+        //musicaoptions.Play();
     }
     public void ReturnOptions()
     {

@@ -62,7 +62,7 @@ public class AttackUniversal : MonoBehaviour
                     if (is_Enemy && !is_Boss)
                     {
                         hit[0].GetComponent<BoxCollider>().enabled = true;
-                        lifeControler.ShowDamagedUI(hit[0].GetComponent<EnemyMovement>().enemyLife);
+                        lifeControler.ShowDamagedUI();
                     }
                 }
                 else if (gameObject.CompareTag("Levantar"))
@@ -76,7 +76,7 @@ public class AttackUniversal : MonoBehaviour
                     {
                         healthScript.inAir = true;
                         hit[0].GetComponent<BoxCollider>().enabled = true;
-                        lifeControler.ShowDamagedUI(hit[0].GetComponent<EnemyMovement>().enemyLife);
+                        lifeControler.ShowDamagedUI();
                     }
                 }
                 else
@@ -99,7 +99,7 @@ public class AttackUniversal : MonoBehaviour
                     if (is_Enemy && !is_Boss)
                     {
                         hit[0].GetComponent<BoxCollider>().enabled = true;
-                        lifeControler.ShowDamagedUI(hit[0].GetComponent<EnemyMovement>().enemyLife);
+                        lifeControler.ShowDamagedUI();
                     }
                 }
                 if (is_Enemy)
