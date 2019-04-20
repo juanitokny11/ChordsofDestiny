@@ -313,6 +313,7 @@ MonoBehaviour:
   fanNames: []
   gname: {fileID: 0}
   gimage: {fileID: 0}
+  attackColider: {fileID: 0}
   score: 25
   isGroupie: 1
   speed: 5
@@ -352,12 +353,12 @@ MonoBehaviour:
   health: 30
   solo: 0
   zone: {fileID: 0}
-  attack: {fileID: 1695840076}
+  attack: {fileID: 0}
   score: {fileID: 0}
   gameManager: {fileID: 0}
   numhits: {fileID: 0}
   hits: {fileID: 0}
-  healthBar: {fileID: 8490747728354137687}
+  healthBar: {fileID: 0}
   playerAttack_List: {fileID: 0}
   canDoSolo: 0
   characterDied: 0
@@ -366,7 +367,6 @@ MonoBehaviour:
   hitsCount: 0
   is_Player: 0
   is_Boss: 0
-  is_Enemy: 1
 --- !u!114 &1391237060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,7 +381,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clips: {fileID: 0}
   jumpefect: {fileID: 0}
-  guitar_Attack_Mesh: {fileID: 0}
   guitar_Attack_Point: {fileID: 0}
   Boss_Attack_Point1: {fileID: 0}
   Boss_Attack_Point2: {fileID: 0}
@@ -414,7 +413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7cb6f8f31c325646884d018d28eb270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthBar: {fileID: 4320288055826320340}
+  HealthBar: {fileID: 0}
 --- !u!65 &1972783370
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -424,7 +423,7 @@ BoxCollider:
   m_GameObject: {fileID: 1563660872938979978}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.6498915, y: 1.7222122, z: 0.61088413}
   m_Center: {x: -0.0061645345, y: 0.87473226, z: 0.057144918}
@@ -1736,7 +1735,7 @@ GameObject:
   - component: {fileID: 994855526949762764}
   m_Layer: 11
   m_Name: barra vida
-  m_TagString: Untagged
+  m_TagString: HealthUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2458,7 +2457,7 @@ GameObject:
   - component: {fileID: 1709151845913205966}
   m_Layer: 11
   m_Name: vida abajo
-  m_TagString: Untagged
+  m_TagString: HealthUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2692,7 +2691,7 @@ GameObject:
   - component: {fileID: 4320288055826320340}
   m_Layer: 11
   m_Name: vida
-  m_TagString: HealthUI
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

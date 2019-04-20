@@ -18,11 +18,12 @@ public class AttackUniversal : MonoBehaviour
     public bool is_Player, is_Enemy, is_Boss;
     public GameObject hit_Fx_Prefab;
     public GameObject block_Fx_Prefab;
+    public GameObject block2_Fx_Prefab;
     public Collider[] hit;
     public float counterhits = 0f;
     private void Start()
     {
-        //lifeControler = GameObject.FindObjectOfType<LifeControler>();
+        lifeControler = GameObject.FindObjectOfType<LifeControler>();
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthScript>();
         enemy = GetComponentInParent<EnemyMovement>();
         enemyAnim = GetComponentInParent<CharacterAnimation>();
@@ -38,6 +39,7 @@ public class AttackUniversal : MonoBehaviour
     void DetectColision()
     {
         hit = Physics.OverlapSphere(transform.position, radius, colisionLayer);
+
         if (hit.Length > 0)
         {
             if (is_Player)
@@ -57,10 +59,10 @@ public class AttackUniversal : MonoBehaviour
                     counterhits = 0;
                     healthScript.solo += damage;
                     healthUI.DisplaySolo(healthScript.solo / 2);
-                    hit[0].GetComponent<HealthScript>().ApplyDamage(damage, false, false);
                     if (is_Enemy && !is_Boss)
                     {
                         hit[0].GetComponent<BoxCollider>().enabled = true;
+                        lifeControler.ShowDamagedUI();
                     }
                 }
                 else if (gameObject.CompareTag("Levantar"))
@@ -74,6 +76,7 @@ public class AttackUniversal : MonoBehaviour
                     {
                         healthScript.inAir = true;
                         hit[0].GetComponent<BoxCollider>().enabled = true;
+                        lifeControler.ShowDamagedUI();
                     }
                 }
                 else
@@ -96,6 +99,7 @@ public class AttackUniversal : MonoBehaviour
                     if (is_Enemy && !is_Boss)
                     {
                         hit[0].GetComponent<BoxCollider>().enabled = true;
+                        lifeControler.ShowDamagedUI();
                     }
                 }
                 if (is_Enemy)

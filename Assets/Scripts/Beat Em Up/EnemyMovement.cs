@@ -17,6 +17,7 @@ public class EnemyMovement : MonoBehaviour
     public List<string> fanNames;
     public TextMeshProUGUI gname;
     public Image gimage;
+    public AttackUniversal attackColider;
     public int score;
     public bool isGroupie;
     public float speed = 10.0f;
@@ -36,6 +37,7 @@ public class EnemyMovement : MonoBehaviour
     void Awake()
     {
         Names();
+        attackColider = GetComponentInChildren<AttackUniversal>();
         enemyUI = GameObject.FindObjectOfType<LifeControler>();
         gimage = GetComponentInChildren<Image>();
         gname = GetComponentInChildren<TextMeshProUGUI>();
@@ -76,6 +78,7 @@ public class EnemyMovement : MonoBehaviour
     {
         enemyUI.enemiesLifes.Add(enemyLife);
         //enemyLife.SetActive(false);
+        //enemyUI.enemiesAttack.Add(attackColider);
         this.enabled = true;
         followPlayer = true;
         current_Attack_Time = default_Attack_Time;

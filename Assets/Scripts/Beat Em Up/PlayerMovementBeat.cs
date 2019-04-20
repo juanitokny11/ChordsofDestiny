@@ -14,7 +14,7 @@ public class PlayerMovementBeat : MonoBehaviour
     public float run_Speed;
     public float z_Speed;
     public bool lockrotation;
-    public bool move=true;
+    public bool move;
     public bool walk=false;
     public bool running;
     public bool is_Dead=false;
@@ -31,10 +31,6 @@ public class PlayerMovementBeat : MonoBehaviour
         player_Anim = GetComponent<CharacterAnimation>();
         actualrot = transform.rotation;
         newPosition = transform.position;
-    }
-    public void Start()
-    {
-        move = true;
     }
     void Update()
     {
