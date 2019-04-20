@@ -157,6 +157,14 @@ public class PlayerAttack2 : MonoBehaviour
         {
 
             current_Combo_State = ComboState.GUARD;
+            if (player_Move.walk)
+            {
+                if (player_Move.lockrotation == true)
+                    transform.rotation = Quaternion.Euler(0, -180, 0);
+                else if (player_Move.lockrotation == false)
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
+           
             if (!player_Move.inAir)
             {
                 if (current_Combo_State == ComboState.GUARD)
@@ -186,6 +194,13 @@ public class PlayerAttack2 : MonoBehaviour
         else if ( Input.GetAxisRaw("Evadir") == 0 && blockActivated)
         {
             current_Combo_State = ComboState.GUARD;
+            if (player_Move.walk)
+            {
+                if (player_Move.lockrotation == true)
+                    transform.rotation = Quaternion.Euler(0, -180, 0);
+                else if (player_Move.lockrotation == false)
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
             if (!player_Move.inAir)
             {
                 if (current_Combo_State == ComboState.GUARD)

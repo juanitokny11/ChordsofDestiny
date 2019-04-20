@@ -14,13 +14,14 @@ public class PlayerMovementBeat : MonoBehaviour
     public float run_Speed;
     public float z_Speed;
     public bool lockrotation;
+    public bool move;
     public bool walk=false;
     public bool running;
     public bool is_Dead=false;
     Quaternion actualrot;
     Vector3 newPosition;
     float counter;
-    public float rotation_Y = -90.0f;
+    private float rotation_Y = -90.0f;
     public float rotation_Speed = 15f;
     private void Awake()
     {
@@ -59,6 +60,7 @@ public class PlayerMovementBeat : MonoBehaviour
     }
     void FixedUpdate()
     {
+        if(move)
         DetectMovement();
     }
     void OnAnimatorMove()
@@ -160,10 +162,19 @@ public class PlayerMovementBeat : MonoBehaviour
          if (!comboAereo)
         {
             player_Anim.ResetJump();
+            inAir = false;
         }
     }
     void ComboAereoRealizado()
     {
         comboAereo = false;
+    }
+    void NotMove()
+    {
+        move = false;
+    }
+    void Move()
+    {
+        move = true;
     }
 }
