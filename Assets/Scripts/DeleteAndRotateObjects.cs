@@ -7,10 +7,12 @@ public class DeleteAndRotateObjects:MonoBehaviour {
     private GameObject player;
     private float CoinSpeed = 20.0f;
     private Transform playerTransform;
+    public bool is_Key = false;
+    public ChangeCamera changeCamera;
 
     void Start()
     {
-
+        changeCamera = GameObject.FindObjectOfType<ChangeCamera>();
         player = GameObject.FindGameObjectWithTag("Player");
         playerTransform = player.GetComponent<Transform>();
         //transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
@@ -20,6 +22,7 @@ public class DeleteAndRotateObjects:MonoBehaviour {
     {
         if (other.tag == "Player")
         {
+
             Explode();
         }
     }
@@ -33,12 +36,19 @@ public class DeleteAndRotateObjects:MonoBehaviour {
     }
 
     void Explode() {
-		
-		Destroy(gameObject);
+
+
+        if (is_Key)
+        {
+            changeCamera.bosscam.enabled = true;
+            changeCamera.gameplaycam.enabled = false;
+        }
+
+        Destroy(gameObject);
 	}
     public void CoinsPowerup()
     {
-        float distance = Vector3.Distance(playerTransform.position, transform.position);
+        /*float distance = Vector3.Distance(playerTransform.position, transform.position);
         //  float distance = playerTransform.position.y - transform.position.y;
 
         float maxDistance = 7.0f;
@@ -46,6 +56,6 @@ public class DeleteAndRotateObjects:MonoBehaviour {
         if (distance < maxDistance)
         {
             transform.position = Vector3.MoveTowards(transform.position, playerTransform.position, CoinSpeed * Time.deltaTime);
-        }
+        }*/
     }
 }

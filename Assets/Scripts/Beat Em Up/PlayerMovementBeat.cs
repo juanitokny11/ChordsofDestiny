@@ -14,6 +14,7 @@ public class PlayerMovementBeat : MonoBehaviour
     public float run_Speed;
     public float z_Speed;
     public bool lockrotation;
+    public bool move=true;
     public bool walk=false;
     public bool running;
     public bool is_Dead=false;
@@ -30,6 +31,10 @@ public class PlayerMovementBeat : MonoBehaviour
         player_Anim = GetComponent<CharacterAnimation>();
         actualrot = transform.rotation;
         newPosition = transform.position;
+    }
+    public void Start()
+    {
+        move = true;
     }
     void Update()
     {
@@ -59,6 +64,7 @@ public class PlayerMovementBeat : MonoBehaviour
     }
     void FixedUpdate()
     {
+        if(move)
         DetectMovement();
     }
     void OnAnimatorMove()
@@ -166,5 +172,13 @@ public class PlayerMovementBeat : MonoBehaviour
     void ComboAereoRealizado()
     {
         comboAereo = false;
+    }
+    void NotMove()
+    {
+        move = false;
+    }
+    void Move()
+    {
+        move = true;
     }
 }

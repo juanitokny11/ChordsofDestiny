@@ -8,11 +8,12 @@ public class BattleZone : MonoBehaviour
     private BoxCollider colider;
     public new GameObject camera;
     public GameObject UI;
-    public GameObject go;
+    public GameObject score;
     public Text[] namesEnemies;
     public Image[] lifeBars;
     public Image goImage;
     public AudioSource musica;
+    public BossIA boss;
     public List<EnemyMovement> enemies;
     /*public Animator[] pivotesz1;
     public Animator[] pivotesz2;
@@ -37,11 +38,17 @@ public class BattleZone : MonoBehaviour
         if (other.tag == "Player")
         { 
             UI.SetActive(true);
+            score.SetActive(true);
+            GetComponent<BoxCollider>().enabled = false;
             enemies[1].gameObject.SetActive(true);
             enemies[2].gameObject.SetActive(true);
-            camera.GetComponent<ShakeCamera>().lockCamera = true;
+            if(id!=4)
+                camera.GetComponent<ShakeCamera>().lockCamera = true;
             colider.enabled = false;
-            musica.Play();
+            if(BeatEmupManager.instance.pause == false)
+                musica.Play();
+            else if (BeatEmupManager.instance.pause == true)
+                musica.Stop();
             /* if (id == 1)
              {
                  for (int i = 0; i < pivotesz1.Length- 1; i++)
@@ -116,14 +123,20 @@ public class BattleZone : MonoBehaviour
     }
     void Update()
     {
-        if(enemies[0])
+        if (BeatEmupManager.instance.pause == false)
+            musica.Play();
+        else if (BeatEmupManager.instance.pause == true)
+            musica.Stop();
         if (enemiescounter <= 0)
         {
             //this.gameObject.SetActive(false);
-            Invoke("UnlockCamera", 1f);
-            musica.Stop();
-            SetGo();
-            Invoke("StopGo", 5f);
+            if(id != 4)
+            {
+                Invoke("UnlockCamera", 1f);
+                musica.Stop();
+                SetGo();
+                Invoke("StopGo", 3f);
+            }
         }
     }
     void UnlockCamera()
@@ -133,7 +146,7 @@ public class BattleZone : MonoBehaviour
     }
     void SetGo()
     {
-        InvokeRepeating("Blink", 0f, 0.05f);
+        InvokeRepeating("Blink", 0.1f, 0.1f);
     }
     void Blink()
     {
@@ -150,6 +163,8 @@ public class BattleZone : MonoBehaviour
     {
         CancelInvoke("Blink");
         UI.SetActive(false);
+        score.SetActive(false);
         goImage.enabled = false;
+
     }
 }

@@ -9,8 +9,9 @@ public class EnemyMovement : MonoBehaviour
 {
     private CharacterAnimation enemyAnim;
     private HealthScript healthScript;
-    public Canvas enemyLife;
+    public GameObject enemyLife;
     public BoxCollider col;
+    public LifeControler enemyUI;
     private Rigidbody myBody;
     public List<string> groupieNames;
     public List<string> fanNames;
@@ -35,7 +36,7 @@ public class EnemyMovement : MonoBehaviour
     void Awake()
     {
         Names();
-        enemyLife = GetComponentInChildren<Canvas>();
+        enemyUI = GameObject.FindObjectOfType<LifeControler>();
         gimage = GetComponentInChildren<Image>();
         gname = GetComponentInChildren<TextMeshProUGUI>();
         capsuleCollider = GetComponent<CapsuleCollider>();
@@ -73,6 +74,8 @@ public class EnemyMovement : MonoBehaviour
     }
     private void Start()
     {
+        enemyUI.enemiesLifes.Add(enemyLife);
+        //enemyLife.SetActive(false);
         this.enabled = true;
         followPlayer = true;
         current_Attack_Time = default_Attack_Time;
@@ -89,6 +92,14 @@ public class EnemyMovement : MonoBehaviour
     }
     void Update()
     {
+        if (col.enabled)
+        {
+            enemyLife.SetActive(true);
+        }
+        else if (!col.enabled)
+        {
+            enemyLife.SetActive(false);
+        }
         if (playerTarget.GetComponent<PlayerMovementBeat>().is_Dead)
             this.enabled = false;
         default_Attack_Time = Random.Range(3.0f, 6.0f);

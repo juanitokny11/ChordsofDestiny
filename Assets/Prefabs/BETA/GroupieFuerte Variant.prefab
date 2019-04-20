@@ -16,7 +16,7 @@ PrefabInstance:
         type: 3}
       propertyPath: enemyLife
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4824352478851365285}
     - target: {fileID: 7521556622779265915, guid: 6faa2ed7105ee11409305d53fa85d8e3,
         type: 3}
       propertyPath: attack_Distance
@@ -86,11 +86,6 @@ PrefabInstance:
       propertyPath: health
       value: 40
       objectReference: {fileID: 0}
-    - target: {fileID: 224646031874939149, guid: 6faa2ed7105ee11409305d53fa85d8e3,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 452187334, guid: 6faa2ed7105ee11409305d53fa85d8e3, type: 3}
       propertyPath: is_Groupie
       value: 1
@@ -103,15 +98,6 @@ PrefabInstance:
         type: 3}
       propertyPath: HealthBar
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1395640943196673, guid: 6faa2ed7105ee11409305d53fa85d8e3, type: 3}
-      propertyPath: m_TagString
-      value: HealthUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 2774504301213444949, guid: 6faa2ed7105ee11409305d53fa85d8e3,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1563660874057412209, guid: 6faa2ed7105ee11409305d53fa85d8e3,
         type: 3}
@@ -253,6 +239,16 @@ PrefabInstance:
       propertyPath: m_RootBone
       value: 
       objectReference: {fileID: 6100000921142147463}
+    - target: {fileID: 2873580615859007715, guid: 6faa2ed7105ee11409305d53fa85d8e3,
+        type: 3}
+      propertyPath: m_textInfo.textComponent
+      value: 
+      objectReference: {fileID: 7419031242421550383}
+    - target: {fileID: 6937361674893121374, guid: 6faa2ed7105ee11409305d53fa85d8e3,
+        type: 3}
+      propertyPath: imag
+      value: 
+      objectReference: {fileID: 2340111064957215188}
     - target: {fileID: 1695840076, guid: 6faa2ed7105ee11409305d53fa85d8e3, type: 3}
       propertyPath: damage
       value: 4
@@ -266,16 +262,20 @@ PrefabInstance:
       propertyPath: imag
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 2873580615859007715, guid: 6faa2ed7105ee11409305d53fa85d8e3,
+    - target: {fileID: 224646031874939149, guid: 6faa2ed7105ee11409305d53fa85d8e3,
         type: 3}
-      propertyPath: m_textInfo.textComponent
-      value: 
-      objectReference: {fileID: 7419031242421550383}
-    - target: {fileID: 6937361674893121374, guid: 6faa2ed7105ee11409305d53fa85d8e3,
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1395640943196673, guid: 6faa2ed7105ee11409305d53fa85d8e3, type: 3}
+      propertyPath: m_TagString
+      value: HealthUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774504301213444949, guid: 6faa2ed7105ee11409305d53fa85d8e3,
         type: 3}
-      propertyPath: imag
-      value: 
-      objectReference: {fileID: 2340111064957215188}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6faa2ed7105ee11409305d53fa85d8e3, type: 3}
 --- !u!114 &4689570762322155787 stripped
@@ -443,6 +443,12 @@ Transform:
 --- !u!4 &6100000920398803694 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1563660872966733602, guid: 6faa2ed7105ee11409305d53fa85d8e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 4689570762497379788}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4824352478851365285 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 281255932481188969, guid: 6faa2ed7105ee11409305d53fa85d8e3,
     type: 3}
   m_PrefabInstance: {fileID: 4689570762497379788}
   m_PrefabAsset: {fileID: 0}

@@ -54,6 +54,7 @@ MonoBehaviour:
   healthScript: {fileID: 452187335}
   enemyAnim: {fileID: 0}
   bossIA: {fileID: 0}
+  lifeControler: {fileID: 0}
   playerHealth: {fileID: 0}
   is_Player: 0
   is_Enemy: 1
@@ -63,6 +64,8 @@ MonoBehaviour:
   block_Fx_Prefab: {fileID: 585274430744957696, guid: 3084707a993e92b45972970e6f1c1659,
     type: 3}
   block2_Fx_Prefab: {fileID: 0}
+  hit: []
+  counterhits: 0
 --- !u!1 &281255932481188969
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,8 +92,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 281255932481188969}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -63.96863}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 600678211596621975}
@@ -103,7 +106,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -1.9373016, y: -0.00549036}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!223 &2018955698594355735
@@ -113,7 +116,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 281255932481188969}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -303,8 +306,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6126feaad4cfe794f851753ef07168a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyLife: {fileID: 0}
+  enemyLife: {fileID: 281255932481188969}
   col: {fileID: 0}
+  enemyUI: {fileID: 0}
   groupieNames: []
   fanNames: []
   gname: {fileID: 0}
@@ -348,10 +352,12 @@ MonoBehaviour:
   health: 30
   solo: 0
   zone: {fileID: 0}
+  attack: {fileID: 1695840076}
+  score: {fileID: 0}
   gameManager: {fileID: 0}
   numhits: {fileID: 0}
   hits: {fileID: 0}
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 8490747728354137687}
   playerAttack_List: {fileID: 0}
   canDoSolo: 0
   characterDied: 0
@@ -360,6 +366,7 @@ MonoBehaviour:
   hitsCount: 0
   is_Player: 0
   is_Boss: 0
+  is_Enemy: 1
 --- !u!114 &1391237060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,6 +381,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clips: {fileID: 0}
   jumpefect: {fileID: 0}
+  guitar_Attack_Mesh: {fileID: 0}
   guitar_Attack_Point: {fileID: 0}
   Boss_Attack_Point1: {fileID: 0}
   Boss_Attack_Point2: {fileID: 0}
@@ -390,6 +398,7 @@ MonoBehaviour:
   player_Move: {fileID: 0}
   groupieBody: {fileID: 0}
   standupTimer: 2
+  particleHacha: {fileID: 0}
   isGroupie: 1
   is_Boss: 0
   isFan: 0
@@ -405,7 +414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7cb6f8f31c325646884d018d28eb270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthBar: {fileID: 0}
+  HealthBar: {fileID: 4320288055826320340}
 --- !u!65 &1972783370
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -415,7 +424,7 @@ BoxCollider:
   m_GameObject: {fileID: 1563660872938979978}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.6498915, y: 1.7222122, z: 0.61088413}
   m_Center: {x: -0.0061645345, y: 0.87473226, z: 0.057144918}
@@ -1727,7 +1736,7 @@ GameObject:
   - component: {fileID: 994855526949762764}
   m_Layer: 11
   m_Name: barra vida
-  m_TagString: HealthUI
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2308,11 +2317,11 @@ MonoBehaviour:
     lineCount: 0
     pageCount: 0
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -2449,7 +2458,7 @@ GameObject:
   - component: {fileID: 1709151845913205966}
   m_Layer: 11
   m_Name: vida abajo
-  m_TagString: HealthUI
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2683,7 +2692,7 @@ GameObject:
   - component: {fileID: 4320288055826320340}
   m_Layer: 11
   m_Name: vida
-  m_TagString: Untagged
+  m_TagString: HealthUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

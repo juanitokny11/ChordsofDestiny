@@ -11,6 +11,8 @@ public class BeatEmupManager : MonoBehaviour
     public TextMeshProUGUI score;
     public float counternotas;
     public GameObject notas;
+    public AudioSource music;
+    public AudioSource musicGameplay;
     public AudioSource openPause;
     public AudioSource closePause;
     public bool godmode = true;
@@ -53,7 +55,6 @@ public class BeatEmupManager : MonoBehaviour
             closePause.Play();
             //pauseMenuPrincial.SetBool("Pausa", true);
             Cursor.visible = false;
-            //music.mute = false; 
             //notas.SetActive(false);
             Invoke("TakeoFFMenu", 0.2f);
             pause = true;
@@ -64,19 +65,19 @@ public class BeatEmupManager : MonoBehaviour
             //pauseMenuPrincial.SetBool("Pausa", false);
             //notas.SetActive(true);
             Cursor.visible = true;
-            //music.mute = true;
             Invoke("TakeONMenu", 0.2f);
-            pause = false;
+            pause = false; 
         }
     }
     private void TakeoFFMenu()
     {
         pausaMenu.gameObject.SetActive(false);
+        music.Stop();
     }
     private void TakeONMenu()
     {
         pausaMenu.gameObject.SetActive(true);
-        Invoke("Time0", 0.4f);
+        music.Play();
     }
     public void Time0()
     {

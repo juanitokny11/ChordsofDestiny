@@ -24,6 +24,12 @@ public class TptoBossBattle : MonoBehaviour
             BossLife.enabled = true;
             camera.GetComponent<Camera>().fieldOfView = 55;
         }
+        if (BeatEmupManager.instance.pause == true)
+        {
+            musicBoss.GetComponent<AudioSource>().mute = false;
+        }
+        else if(BeatEmupManager.instance.pause == false)
+            musicBoss.GetComponent<AudioSource>().mute = true;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -36,6 +42,6 @@ public class TptoBossBattle : MonoBehaviour
     }
     void ActivateBossMusic()
     {
-        musicBoss.SetActive(true);
+        musicBoss.GetComponent<AudioSource>().Play();
     }
 }
