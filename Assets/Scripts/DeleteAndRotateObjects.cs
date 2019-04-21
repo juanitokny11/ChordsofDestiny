@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class DeleteAndRotateObjects:MonoBehaviour {
 
@@ -9,12 +10,14 @@ public class DeleteAndRotateObjects:MonoBehaviour {
     private Transform playerTransform;
     public bool is_Key = false;
     public ChangeCamera changeCamera;
+    public GameObject Puerta;
 
     void Start()
     {
         changeCamera = GameObject.FindObjectOfType<ChangeCamera>();
         player = GameObject.FindGameObjectWithTag("Player");
         playerTransform = player.GetComponent<Transform>();
+        Puerta = GameObject.FindGameObjectWithTag("Salida");
         //transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
     }
 
@@ -42,6 +45,7 @@ public class DeleteAndRotateObjects:MonoBehaviour {
         {
             changeCamera.bosscam.enabled = true;
             changeCamera.gameplaycam.enabled = false;
+            Puerta.GetComponent<Animator>().SetTrigger("Abrir");
         }
 
         Destroy(gameObject);
@@ -57,5 +61,9 @@ public class DeleteAndRotateObjects:MonoBehaviour {
         {
             transform.position = Vector3.MoveTowards(transform.position, playerTransform.position, CoinSpeed * Time.deltaTime);
         }*/
+    }
+    public void EndGame()
+    {
+        SceneManager.LoadScene("Victory");
     }
 }
