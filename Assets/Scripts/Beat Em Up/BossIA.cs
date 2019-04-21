@@ -136,14 +136,14 @@ public class BossIA : MonoBehaviour
         {
             if (fase == 1)
                 enemyAnim.Attack2arms(0);
-            else
+            else if (fase == 2)
                 enemyAnim.Attack1arm(0);
         }
         else if (random < porcentajeAtaque)
         {
             if (fase == 1)
                 enemyAnim.Attack2arms(1);
-            else
+            else if (fase == 2)
                 enemyAnim.Attack1arm(1);
         }
     }
@@ -163,7 +163,7 @@ public class BossIA : MonoBehaviour
             {
                 if (fase == 1)
                     enemyAnim.Walk2arm(true);
-                else
+                else if (fase == 2)
                     enemyAnim.Walk1arm(true);
             }
             followPlayer = true;
@@ -176,7 +176,7 @@ public class BossIA : MonoBehaviour
                 myBody.velocity = Vector3.zero;
                 if (fase == 1)
                     enemyAnim.Walk2arm(false);
-                else
+                else if (fase == 2)
                     enemyAnim.Walk1arm(false);
                 //followPlayer = false;
                 attackPlayer = false;
@@ -187,7 +187,7 @@ public class BossIA : MonoBehaviour
             myBody.velocity = Vector3.zero;
             if (fase == 1)
                 enemyAnim.Walk2arm(false);
-            else
+            else if (fase == 2)
                 enemyAnim.Walk1arm(false);
             //followPlayer = true;
             attackPlayer = true;
@@ -213,7 +213,7 @@ public class BossIA : MonoBehaviour
             Invoke("OUTSIDE", 0.7f);
             //BossZone.enemies.Add(Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[Random.Range(0, 1)].position, Quaternion.identity).GetComponent<EnemyMovement>());
         }
-        else
+        else if (fase == 2)
         {
             Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[Random.Range(0, 1)].position, Quaternion.identity);
             BossZone.enemiescounter = BossZone.enemies.Count;
@@ -249,7 +249,7 @@ public class BossIA : MonoBehaviour
         porcentajeAtaque = 50;
         porcentajeInvocar = 6;
         gameManager.numScore += scoref1;
-        //SetDefault();
+        SetDefault();
     }
     void OnCollisionEnter(Collision collision)
     {
