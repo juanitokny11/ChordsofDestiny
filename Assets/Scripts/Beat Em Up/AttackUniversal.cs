@@ -62,7 +62,7 @@ public class AttackUniversal : MonoBehaviour
                     if (is_Enemy && !is_Boss)
                     {
                         hit[0].GetComponent<BoxCollider>().enabled = true;
-                        //lifeControler.ShowDamagedUI(ene);
+                        //li;
                     }
                 }
                 else if (gameObject.CompareTag("Levantar"))

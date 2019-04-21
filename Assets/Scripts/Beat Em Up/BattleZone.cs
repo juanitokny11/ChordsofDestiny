@@ -36,23 +36,24 @@ public class BattleZone : MonoBehaviour
             //colider.enabled = false;
             if(BeatEmupManager.instance.pause == true)
                 musica.Play();
-            else if (BeatEmupManager.instance.pause == false)
-                musica.Stop();
         }
     }
     void Update()
     {
-       /* if (BeatEmupManager.instance.pause == true)
-             musica.Play();
-         else if (BeatEmupManager.instance.pause == false)
-             musica.Stop();*/
-        if (enemiescounter <= 0)
+        if (BeatEmupManager.instance.pause == true)
+            musica.mute=false;
+        if (BeatEmupManager.instance.pause == false)
+            musica.mute=true;
+        if (id != 5)
         {
-            Invoke("UnlockCamera", 1f);
-            musica.Stop();
-            SetGo();
-            Invoke("StopGo", 3f);
-            Invoke("Destroy", 4f);
+            if (enemiescounter <= 0)
+            {
+                Invoke("UnlockCamera", 1f);
+                musica.Stop();
+                SetGo();
+                Invoke("StopGo", 3f);
+                Invoke("Destroy", 4f);
+            }
         }
     }
     void UnlockCamera()
