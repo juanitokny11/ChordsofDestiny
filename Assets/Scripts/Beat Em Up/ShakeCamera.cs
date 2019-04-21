@@ -10,7 +10,7 @@ public class ShakeCamera : MonoBehaviour
     public bool enemiesdied = false;
     public BoxCollider col1;
     public BoxCollider col2;
-    public bool lockCamera=false;
+    public bool lockCamera;
     private bool shoultShake;
     private float initialDuration;
     private Vector3 startPosition;
@@ -21,7 +21,7 @@ public class ShakeCamera : MonoBehaviour
         offset = transform.position - player.transform.position;
         startPosition = transform.localPosition;
         initialDuration = duration;
-       
+        lockCamera = false;
     }
     void Update()
     {
@@ -80,5 +80,6 @@ public class ShakeCamera : MonoBehaviour
     public void EnemiesDied()
     {
         enemiesdied = false;
+        enemiesdied = true;
     }
 }

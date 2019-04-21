@@ -58,6 +58,10 @@ public class PlayerMovementBeat : MonoBehaviour
             AnimatePlayerJump();
         //AnimateResetJump();
     }
+    public void Start()
+    {
+        move = true;
+    }
     void FixedUpdate()
     {
         if(move)

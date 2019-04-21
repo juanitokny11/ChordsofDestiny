@@ -7,8 +7,8 @@ public class LifeControler : MonoBehaviour
     public List<GameObject> enemiesLifes;
     public AttackUniversal playerAttack;
 
-    public void ShowDamagedUI()
+    public void ShowDamagedUI(GameObject EnemyLife)
     {
-        //enemiesLifes[].
+        EnemyLife.SetActive(true);
     }
 }

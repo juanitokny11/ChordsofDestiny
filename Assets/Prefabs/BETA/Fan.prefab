@@ -770,6 +770,7 @@ MonoBehaviour:
   healthScript: {fileID: 0}
   enemyAnim: {fileID: 0}
   bossIA: {fileID: 0}
+  lifeControler: {fileID: 0}
   playerHealth: {fileID: 0}
   is_Player: 0
   is_Enemy: 1
@@ -779,6 +780,7 @@ MonoBehaviour:
   block_Fx_Prefab: {fileID: 585274430744957696, guid: 3084707a993e92b45972970e6f1c1659,
     type: 3}
   block2_Fx_Prefab: {fileID: 0}
+  hit: []
   counterhits: 0
 --- !u!1 &6780298339870937526
 GameObject:
@@ -1670,7 +1672,7 @@ GameObject:
   - component: {fileID: 8017991134479369555}
   m_Layer: 11
   m_Name: Fan
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1769,6 +1771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthBar: {fileID: 0}
+  is_Boss: 0
 --- !u!114 &8017991134479369552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1783,6 +1786,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clips: {fileID: 0}
   jumpefect: {fileID: 0}
+  guitar_Attack_Mesh: {fileID: 0}
   guitar_Attack_Point: {fileID: 0}
   Boss_Attack_Point1: {fileID: 0}
   Boss_Attack_Point2: {fileID: 0}
@@ -1819,6 +1823,7 @@ MonoBehaviour:
   solo: 0
   zone: {fileID: 0}
   attack: {fileID: 0}
+  score: {fileID: 0}
   gameManager: {fileID: 0}
   numhits: {fileID: 0}
   hits: {fileID: 0}
@@ -1831,6 +1836,7 @@ MonoBehaviour:
   hitsCount: 0
   is_Player: 0
   is_Boss: 0
+  is_Enemy: 1
 --- !u!114 &8017991134479369554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1858,10 +1864,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyLife: {fileID: 5832105288717956400}
   col: {fileID: 0}
+  enemyUI: {fileID: 0}
   groupieNames: []
   fanNames: []
   gname: {fileID: 0}
   gimage: {fileID: 0}
+  attackColider: {fileID: 0}
   score: 25
   isGroupie: 0
   speed: 3

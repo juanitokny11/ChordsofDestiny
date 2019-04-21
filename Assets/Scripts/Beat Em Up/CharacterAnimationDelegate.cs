@@ -72,13 +72,13 @@ public class CharacterAnimationDelegate : MonoBehaviour
     void Guitar_Attack_Point_ON()
     {
         guitar_Attack_Point.SetActive(true);
-        guitar_Attack_Mesh.GetComponent<MeshCollider>().enabled = true;
+        //guitar_Attack_Mesh.GetComponent<MeshCollider>().enabled = true;
     }
     void Guitar_Attack_Point_OFF()
     {
         if (guitar_Attack_Point.activeInHierarchy)
             guitar_Attack_Point.SetActive(false);
-        guitar_Attack_Mesh.GetComponent<MeshCollider>().enabled = false;
+        //guitar_Attack_Mesh.GetComponent<MeshCollider>().enabled = false;
     }
     void Groupie_Attack_Point_ON()
     {

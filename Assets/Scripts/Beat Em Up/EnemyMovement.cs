@@ -95,14 +95,14 @@ public class EnemyMovement : MonoBehaviour
     }
     void Update()
     {
-        if (col.enabled)
+        /*if (col.enabled)
         {
             enemyLife.SetActive(true);
         }
         else if (!col.enabled)
         {
             enemyLife.SetActive(false);
-        }
+        }*/
         if (playerTarget.GetComponent<PlayerMovementBeat>().is_Dead)
             this.enabled = false;
         default_Attack_Time = Random.Range(3.0f, 6.0f);
