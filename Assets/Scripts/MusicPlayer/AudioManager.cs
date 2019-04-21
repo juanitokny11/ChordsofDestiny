@@ -36,6 +36,10 @@ public class AudioManager : MonoBehaviour
             Pantalla.sprite = group[2];
         else if (groupId == 3)
             Pantalla.sprite = group[3];
+        else if (groupId == 4)
+            Pantalla.sprite = group[4];
+        else if (groupId == 5)
+            Pantalla.sprite = group[5];
         if (groupId > group.Length-1)
             groupId = 0;
         if (groupId < 0)
@@ -58,7 +62,7 @@ public class AudioManager : MonoBehaviour
         else if (!playing)
         {
             StopCoroutine("WaitForMusicEnd");
-            source.Stop();
+            source.Pause(); ;
         }
     }
     IEnumerator WaitForMusicEnd()
