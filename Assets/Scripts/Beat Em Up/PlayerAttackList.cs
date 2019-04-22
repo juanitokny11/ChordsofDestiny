@@ -21,8 +21,13 @@ public class PlayerAttackList : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (attacks.Count>0)
+        if (attacks.Count > 0)
+        {
             DoAttacks();
+            player_Move.move = false;
+        }
+        else if (attacks.Count <= 0)
+            player_Move.move = true;
     }
     void DoAttacks()
     {
@@ -31,7 +36,6 @@ public class PlayerAttackList : MonoBehaviour
             if (Attack)
             {
                 player_anim.Debil();
-                player_Move.move = false;
                 Attack = false;
             }
         }
@@ -40,7 +44,6 @@ public class PlayerAttackList : MonoBehaviour
             if (Attack)
             {
                 player_anim.Debil2();
-                player_Move.move = false;
                 Attack = false;
             }
         }
@@ -49,7 +52,6 @@ public class PlayerAttackList : MonoBehaviour
             if (Attack)
             {
                 player_anim.Debil3();
-                player_Move.move = false;
                 Attack = false;
             }
         }
@@ -58,7 +60,6 @@ public class PlayerAttackList : MonoBehaviour
             if (Attack)
             {
                 player_anim.Fuerte();
-                player_Move.move = false;
                 Attack = false;
             }
         }
@@ -67,7 +68,6 @@ public class PlayerAttackList : MonoBehaviour
             if (Attack)
             {
                 player_anim.Fuerte2();
-                player_Move.move = false;
                 Attack = false;
             }
         }
@@ -76,7 +76,6 @@ public class PlayerAttackList : MonoBehaviour
             if (Attack)
             {
                 player_anim.Fuerte3();
-                player_Move.move = false;
                 Attack = false;
             }
         }
@@ -85,7 +84,6 @@ public class PlayerAttackList : MonoBehaviour
             if (Attack)
             {
                 player_anim.AirCombo1();
-                player_Move.move = false;
                 Attack = false;
             }
         }
@@ -93,7 +91,6 @@ public class PlayerAttackList : MonoBehaviour
     public void CanAttack()
     {
         Attack = true;
-        player_Move.move = true;
         attacks.RemoveAt(0);
     }
     public void RemoveAllList()
