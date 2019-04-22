@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 517838264}
   m_Layer: 0
   m_Name: vida
-  m_TagString: HealthUI
+  m_TagString: BossHealth
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colisionLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   radius: 0.4
   damage: 3
   enemy: {fileID: 0}
@@ -205,15 +205,18 @@ MonoBehaviour:
   healthScript: {fileID: 0}
   enemyAnim: {fileID: 0}
   bossIA: {fileID: 0}
+  lifeControler: {fileID: 0}
   playerHealth: {fileID: 0}
   is_Player: 0
-  is_Enemy: 1
+  is_Enemy: 0
   is_Boss: 1
   hit_Fx_Prefab: {fileID: 1681464086413353203, guid: 98d99c1a18cf34d46aae4e9065bd69fb,
     type: 3}
   block_Fx_Prefab: {fileID: 585274430744957696, guid: 3084707a993e92b45972970e6f1c1659,
     type: 3}
   block2_Fx_Prefab: {fileID: 0}
+  hit: []
+  counterhits: 0
 --- !u!1 &988149400
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,6 +514,8 @@ MonoBehaviour:
   scoref2: 1000
   outside: 0
   invokeEnemy: {fileID: 0}
+  llave: {fileID: 731018130, guid: 1115564116e15ac43830b68f9bc058e9, type: 3}
+  llavePos: {fileID: 0}
 --- !u!114 &988149406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -539,6 +544,8 @@ MonoBehaviour:
   health: 100
   solo: 0
   zone: {fileID: 0}
+  attack: {fileID: 0}
+  score: {fileID: 0}
   gameManager: {fileID: 0}
   numhits: {fileID: 0}
   hits: {fileID: 0}
@@ -551,6 +558,7 @@ MonoBehaviour:
   hitsCount: 0
   is_Player: 0
   is_Boss: 1
+  is_Enemy: 0
 --- !u!114 &988149404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -565,6 +573,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clips: {fileID: 0}
   jumpefect: {fileID: 0}
+  guitar_Attack_Mesh: {fileID: 0}
   guitar_Attack_Point: {fileID: 0}
   Boss_Attack_Point1: {fileID: 1438397107}
   Boss_Attack_Point2: {fileID: 522945370}
@@ -581,6 +590,7 @@ MonoBehaviour:
   player_Move: {fileID: 0}
   groupieBody: {fileID: 0}
   standupTimer: 2
+  particleHacha: {fileID: 0}
   isGroupie: 0
   is_Boss: 1
   isFan: 0
@@ -597,6 +607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthBar: {fileID: 517838264}
+  is_Boss: 1
 --- !u!1 &1093995676
 GameObject:
   m_ObjectHideFlags: 0
@@ -884,15 +895,18 @@ MonoBehaviour:
   healthScript: {fileID: 0}
   enemyAnim: {fileID: 0}
   bossIA: {fileID: 0}
+  lifeControler: {fileID: 0}
   playerHealth: {fileID: 0}
   is_Player: 0
-  is_Enemy: 1
+  is_Enemy: 0
   is_Boss: 1
   hit_Fx_Prefab: {fileID: 1681464086413353203, guid: 98d99c1a18cf34d46aae4e9065bd69fb,
     type: 3}
   block_Fx_Prefab: {fileID: 585274430744957696, guid: 3084707a993e92b45972970e6f1c1659,
     type: 3}
   block2_Fx_Prefab: {fileID: 0}
+  hit: []
+  counterhits: 0
 --- !u!1 &1776092950
 GameObject:
   m_ObjectHideFlags: 0

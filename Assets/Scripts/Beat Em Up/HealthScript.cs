@@ -57,7 +57,7 @@ public class HealthScript : MonoBehaviour
         if (is_Boss)
         {
             bossIA = GetComponent<BossIA>();
-            characterDied = false;
+            enemy_Health_UI = GetComponent<EnemyHealthUI>();
         }
     }
     private void Update()
@@ -114,7 +114,9 @@ public class HealthScript : MonoBehaviour
         }
         else if(is_Enemy)
             enemy_Health_UI.DisplayHealth(health);
-        
+        else if (is_Boss)
+            enemy_Health_UI.DisplayHealth(health);
+
         if (health <= 0)
         {
             animationScript.Death();

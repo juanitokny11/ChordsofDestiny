@@ -599,10 +599,6 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1695840076, guid: 6faa2ed7105ee11409305d53fa85d8e3, type: 3}
-      propertyPath: playerAttack
-      value: 
-      objectReference: {fileID: 1669311613}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6faa2ed7105ee11409305d53fa85d8e3, type: 3}
 --- !u!4 &34969199 stripped
@@ -6974,6 +6970,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
+--- !u!114 &480384604 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8972260133928361604, guid: 80da2cb8c7f68ed4a8b509fe01ff6f99,
+    type: 3}
+  m_PrefabInstance: {fileID: 2146223473}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6126feaad4cfe794f851753ef07168a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &501324648
 GameObject:
   m_ObjectHideFlags: 0
@@ -16216,6 +16224,18 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &1132814722 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7521556622779265915, guid: 6faa2ed7105ee11409305d53fa85d8e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 34969198}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6126feaad4cfe794f851753ef07168a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1136803412 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4378958706945237188, guid: d811e522eaf006447ae5e0418441079f,
@@ -21944,6 +21964,10 @@ PrefabInstance:
       propertyPath: colisionLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
+    - target: {fileID: 517838262, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba, type: 3}
+      propertyPath: m_TagString
+      value: BossHealth
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba, type: 3}
 --- !u!1 &1500065661
@@ -23717,6 +23741,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1626981753}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1630020178 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7882717298276877988, guid: ee2f03cfc3132874e9b96c33ee451691,
+    type: 3}
+  m_PrefabInstance: {fileID: 1466949390}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6126feaad4cfe794f851753ef07168a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1630805570 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1030121393881297046, guid: bb2373d5f16669144970f85ef6422443,
@@ -25703,9 +25739,9 @@ MonoBehaviour:
   musica: {fileID: 1160529369}
   boss: {fileID: 0}
   enemies:
-  - {fileID: 242312495}
-  - {fileID: 64801948}
-  - {fileID: 2020481860}
+  - {fileID: 1132814722}
+  - {fileID: 1630020178}
+  - {fileID: 480384604}
   id: 4
   enemiescounter: 3
 --- !u!65 &1832376177
