@@ -102,103 +102,104 @@ public class AttackUniversal : MonoBehaviour
                         //lifeControler.ShowDamagedUI();
                     }
                 }
-                if (is_Enemy)
+            }
+            if (is_Enemy)
+            {
+                Vector3 hitFx_Pos = hit[0].transform.position;
+                if (!is_Boss)
                 {
-                    if (!is_Boss)
+                    if (hit[0].gameObject.CompareTag("Defense"))
                     {
-                        if (hit[0].gameObject.CompareTag("Defense"))
+                        Quaternion blockFX_Rot = new Quaternion();
+                        Vector3 blockFx_Pos = hit[0].transform.position;
+                        blockFx_Pos.y += 4f;
+                        if (hit[0].transform.forward.x > 0)
                         {
-                            Quaternion blockFX_Rot = new Quaternion();
-                            Vector3 blockFx_Pos = hit[0].transform.position;
-                            blockFx_Pos.y += 4f;
-                            if (hit[0].transform.forward.x > 0)
-                            {
-                                blockFx_Pos.x += 2f;
-                                blockFX_Rot = Quaternion.Euler(-45, 90, 0);
-                            }
-                            else if (hit[0].transform.forward.x < 0)
-                            {
-                                blockFx_Pos.x -= 2f;
-                                blockFX_Rot = Quaternion.Euler(-45, -90, 0);
-                            }
-                            enemyAnim.Block();
-                            Instantiate(block_Fx_Prefab, blockFx_Pos, blockFX_Rot);
-                            damage = 0;
-                            hit[0].GetComponentInParent<HealthScript>().ApplyDamage(damage, false, true);
+                            blockFx_Pos.x += 2f;
+                            blockFX_Rot = Quaternion.Euler(-45, 90, 0);
                         }
-                        else
+                        else if (hit[0].transform.forward.x < 0)
                         {
-                            Quaternion hitFFX_Rot = new Quaternion();
-                            hitFx_Pos = hit[0].transform.position;
-                            hitFx_Pos.y += 1f;
-                            if (hit[0].transform.forward.x > 0)
-                            {
-                                hitFx_Pos.x += 0.3f;
-                                hitFFX_Rot = Quaternion.Euler(0, 0, 0);
-                            }
-                            else if (hit[0].transform.forward.x < 0)
-                            {
-                                hitFx_Pos.x -= 0.3f;
-                                hitFFX_Rot = Quaternion.Euler(0, 180, 0);
-                            }
-                            Instantiate(hit_Fx_Prefab, hitFx_Pos, hitFFX_Rot);
-                            hit[0].GetComponentInParent<HealthScript>().ApplyDamage(damage, false, false);
-                            playerHealth.hitsCount = 0;
+                            blockFx_Pos.x -= 2f;
+                            blockFX_Rot = Quaternion.Euler(-45, -90, 0);
                         }
-                        damage = 2;
+                        enemyAnim.Block();
+                        Instantiate(block_Fx_Prefab, blockFx_Pos, blockFX_Rot);
+                        damage = 0;
+                        hit[0].GetComponentInParent<HealthScript>().ApplyDamage(damage, false, true);
                     }
-                    if (is_Boss)
+                    else
                     {
-                        if (hit[0].gameObject.CompareTag("Defense"))
+                        Quaternion hitFFX_Rot = new Quaternion();
+                        hitFx_Pos = hit[0].transform.position;
+                        hitFx_Pos.y += 1f;
+                        if (hit[0].transform.forward.x > 0)
                         {
-                            Quaternion blockFX_Rot = new Quaternion();
-                            Vector3 blockFx_Pos = hit[0].transform.position;
-                            blockFx_Pos.y += 4f;
-                            if (hit[0].transform.forward.x > 0)
-                            {
-                                blockFx_Pos.x += 2f;
-                                blockFX_Rot = Quaternion.Euler(-45, 90, 0);
-                            }
-                            else if (hit[0].transform.forward.x < 0)
-                            {
-                                blockFx_Pos.x -= 2f;
-                                blockFX_Rot = Quaternion.Euler(-45, -90, 0);
-                            }
-                            enemyAnim.Block();
-                            Instantiate(block_Fx_Prefab, blockFx_Pos, blockFX_Rot);
-                            damage = 0;
-                            hit[0].GetComponentInParent<HealthScript>().ApplyDamage(damage, false, true);
+                            hitFx_Pos.x += 0.3f;
+                            hitFFX_Rot = Quaternion.Euler(0, 0, 0);
                         }
-                        else
+                        else if (hit[0].transform.forward.x < 0)
                         {
-                            Quaternion hitFFX_Rot = new Quaternion();
-                            hitFx_Pos = hit[0].transform.position;
-                            hitFx_Pos.y += 1f;
-                            if (hit[0].transform.forward.x > 0)
-                            {
-                                hitFx_Pos.x += 0.3f;
-                                hitFFX_Rot = Quaternion.Euler(0, 0, 0);
-                            }
-                            else if (hit[0].transform.forward.x < 0)
-                            {
-                                hitFx_Pos.x -= 0.3f;
-                                hitFFX_Rot = Quaternion.Euler(0, 180, 0);
-                            }
-                            Instantiate(hit_Fx_Prefab, hitFx_Pos, hitFFX_Rot);
-                            hit[0].GetComponentInParent<HealthScript>().ApplyDamage(damage, false, false);
-                            playerHealth.hitsCount = 0;
+                            hitFx_Pos.x -= 0.3f;
+                            hitFFX_Rot = Quaternion.Euler(0, 180, 0);
                         }
+                        Instantiate(hit_Fx_Prefab, hitFx_Pos, hitFFX_Rot);
+                        hit[0].GetComponentInParent<HealthScript>().ApplyDamage(damage, false, false);
+                        playerHealth.hitsCount = 0;
+                    }
+                    damage = 2;
+                }
+                if (is_Boss)
+                {
+                    if (hit[0].gameObject.CompareTag("Defense"))
+                    {
+                        Quaternion blockFX_Rot = new Quaternion();
+                        Vector3 blockFx_Pos = hit[0].transform.position;
+                        blockFx_Pos.y += 4f;
+                        if (hit[0].transform.forward.x > 0)
+                        {
+                            blockFx_Pos.x += 2f;
+                            blockFX_Rot = Quaternion.Euler(-45, 90, 0);
+                        }
+                        else if (hit[0].transform.forward.x < 0)
+                        {
+                            blockFx_Pos.x -= 2f;
+                            blockFX_Rot = Quaternion.Euler(-45, -90, 0);
+                        }
+                        enemyAnim.Block();
+                        Instantiate(block_Fx_Prefab, blockFx_Pos, blockFX_Rot);
+                        damage = 0;
+                        hit[0].GetComponentInParent<HealthScript>().ApplyDamage(damage, false, true);
+                    }
+                    else
+                    {
+                        Quaternion hitFFX_Rot = new Quaternion();
+                        hitFx_Pos = hit[0].transform.position;
+                        hitFx_Pos.y += 1f;
+                        if (hit[0].transform.forward.x > 0)
+                        {
+                            hitFx_Pos.x += 0.3f;
+                            hitFFX_Rot = Quaternion.Euler(0, 0, 0);
+                        }
+                        else if (hit[0].transform.forward.x < 0)
+                        {
+                            hitFx_Pos.x -= 0.3f;
+                            hitFFX_Rot = Quaternion.Euler(0, 180, 0);
+                        }
+                        Instantiate(hit_Fx_Prefab, hitFx_Pos, hitFFX_Rot);
+                        hit[0].GetComponentInParent<HealthScript>().ApplyDamage(damage, false, false);
+                        playerHealth.hitsCount = 0;
+                    }
                         damage = 4;
                     }
                 }
                 gameObject.SetActive(false);
             }
         }
-    }
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, radius);
-    }
+private void OnDrawGizmos()
+{
+    Gizmos.color = Color.red;
+    Gizmos.DrawWireSphere(transform.position, radius);
+}
 }
 
