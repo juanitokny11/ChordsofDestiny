@@ -126,6 +126,8 @@ public class PlayerAttack2 : MonoBehaviour
                 current_Combo_State = ComboState.FUERTE2;
             activateTimerToReset = true;
             current_Combo_Timer = default_Combo_Timer;
+            if (!player_Move.inAir)
+            {
                 if (current_Combo_State == ComboState.FUERTE)
                 {
                     AddToTheList(ComboState.FUERTE);
@@ -138,6 +140,7 @@ public class PlayerAttack2 : MonoBehaviour
                 {
                     AddToTheList(ComboState.FUERTE3);
                 }
+            }
         }
         if (Input.GetKeyDown(KeyCode.D) || Input.GetAxisRaw("Solo") == 1 && Input.GetAxisRaw("Disparar") == 1)
         {

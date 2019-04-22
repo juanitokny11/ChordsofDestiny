@@ -5,13 +5,14 @@ using UnityEngine;
 public class PlayerAttackList : MonoBehaviour
 {
     public List<PlayerAttack2.ComboState> attacks;
+    public PlayerMovementBeat player_Move;
     public CharacterAnimation player_anim;
     public Animator anim;
     public bool Attack = true;
   
     void Start()
     {
-
+        player_Move = GetComponent<PlayerMovementBeat>();
         attacks = GetComponent<PlayerAttack2>().attacks;
         player_anim = GetComponent<CharacterAnimation>();
         anim = GetComponent<Animator>();
@@ -30,6 +31,7 @@ public class PlayerAttackList : MonoBehaviour
             if (Attack)
             {
                 player_anim.Debil();
+                player_Move.move = false;
                 Attack = false;
             }
         }
@@ -38,6 +40,7 @@ public class PlayerAttackList : MonoBehaviour
             if (Attack)
             {
                 player_anim.Debil2();
+                player_Move.move = false;
                 Attack = false;
             }
         }
@@ -46,6 +49,7 @@ public class PlayerAttackList : MonoBehaviour
             if (Attack)
             {
                 player_anim.Debil3();
+                player_Move.move = false;
                 Attack = false;
             }
         }
@@ -54,6 +58,7 @@ public class PlayerAttackList : MonoBehaviour
             if (Attack)
             {
                 player_anim.Fuerte();
+                player_Move.move = false;
                 Attack = false;
             }
         }
@@ -62,6 +67,7 @@ public class PlayerAttackList : MonoBehaviour
             if (Attack)
             {
                 player_anim.Fuerte2();
+                player_Move.move = false;
                 Attack = false;
             }
         }
@@ -70,6 +76,7 @@ public class PlayerAttackList : MonoBehaviour
             if (Attack)
             {
                 player_anim.Fuerte3();
+                player_Move.move = false;
                 Attack = false;
             }
         }
@@ -78,6 +85,7 @@ public class PlayerAttackList : MonoBehaviour
             if (Attack)
             {
                 player_anim.AirCombo1();
+                player_Move.move = false;
                 Attack = false;
             }
         }
@@ -85,6 +93,7 @@ public class PlayerAttackList : MonoBehaviour
     public void CanAttack()
     {
         Attack = true;
+        player_Move.move = true;
         attacks.RemoveAt(0);
     }
     public void RemoveAllList()

@@ -59,9 +59,11 @@ public class MenuManager : MonoBehaviour {
     }
     public void Title(){
         SceneManager.LoadScene("New Scene");
-        MyGameSettings.getInstance().menuAnim.firstTime = true;
         Cursor.visible = true;
         Time.timeScale=1;
+        MyGameSettings.getInstance().menuAnim.firstTime = true;
+        MyGameSettings.getInstance().menuAnim.Anim = true;
+        MyGameSettings.getInstance().gameStarted = true;
         MyGameSettings.getInstance().logoPlayed = true;
     }
 	public void Victory(){

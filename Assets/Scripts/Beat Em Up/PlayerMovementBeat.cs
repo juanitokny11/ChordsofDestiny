@@ -11,6 +11,7 @@ public class PlayerMovementBeat : MonoBehaviour
     public bool comboAereo = false;
     public AudioSource caminarS;
     public AudioSource soloS;
+    public PlayerAttack2 playerAttack;
     public float run_Speed;
     public float z_Speed;
     public bool lockrotation;
@@ -31,6 +32,7 @@ public class PlayerMovementBeat : MonoBehaviour
         player_Anim = GetComponent<CharacterAnimation>();
         actualrot = transform.rotation;
         newPosition = transform.position;
+        playerAttack = GetComponent<PlayerAttack2>();
     }
     void Update()
     {
@@ -155,10 +157,11 @@ public class PlayerMovementBeat : MonoBehaviour
     }
     void AnimatePlayerJump()
     {
-        if (Input.GetAxisRaw("Jump") != 0)
+        if (Input.GetAxisRaw("Jump") != 0 && inAir==false)
         { 
             player_Anim.Jump();
             inAir = true;
+            playerAttack.blockActivated = false;
         }
     }
     void AnimateResetJump()
@@ -166,7 +169,6 @@ public class PlayerMovementBeat : MonoBehaviour
          if (!comboAereo)
         {
             player_Anim.ResetJump();
-            inAir = false;
         }
     }
     void ComboAereoRealizado()
