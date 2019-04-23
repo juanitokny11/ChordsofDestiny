@@ -59,11 +59,8 @@ public class AttackUniversal : MonoBehaviour
                     counterhits = 0;
                     healthScript.solo += damage;
                     healthUI.DisplaySolo(healthScript.solo / 2);
-                    if (is_Enemy && !is_Boss)
-                    {
                         hit[0].GetComponent<BoxCollider>().enabled = true;
-                        //li;
-                    }
+                        lifeControler.ShowDamagedUI(hit[0].gameObject.GetComponent<HealthScript>().health,hit[0].gameObject.GetComponent<EnemyMovement>().gname.ToString());
                 }
                 else if (gameObject.CompareTag("Levantar"))
                 {
@@ -72,12 +69,9 @@ public class AttackUniversal : MonoBehaviour
                     counterhits = 0;
                     healthUI.DisplaySolo(healthScript.solo / 2);
                     hit[0].GetComponent<HealthScript>().ApplyDamage(damage, true, false);
-                    if (is_Enemy && !is_Boss)
-                    {
                         healthScript.inAir = true;
                         hit[0].GetComponent<BoxCollider>().enabled = true;
-                        //lifeControler.ShowDamagedUI();
-                    }
+                        lifeControler.ShowDamagedUI(hit[0].gameObject.GetComponent<HealthScript>().health, hit[0].gameObject.GetComponent<EnemyMovement>().gname.ToString());
                 }
                 else
                 {
@@ -96,11 +90,9 @@ public class AttackUniversal : MonoBehaviour
                     healthScript.solo += damage;
                     healthUI.DisplaySolo(healthScript.solo / 2);
                     hit[0].GetComponent<HealthScript>().ApplyDamage(damage, false, false);
-                    if (is_Enemy && !is_Boss)
-                    {
-                        hit[0].GetComponent<BoxCollider>().enabled = true;
-                        //lifeControler.ShowDamagedUI();
-                    }
+                    Debug.Log("Hola");
+                    //hit[0].GetComponent<BoxCollider>().enabled = true;
+                    lifeControler.ShowDamagedUI(hit[0].gameObject.GetComponent<HealthScript>().health, hit[0].gameObject.GetComponent<EnemyMovement>().gname.ToString());
                 }
             }
             if (is_Enemy)

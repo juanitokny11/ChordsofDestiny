@@ -22,7 +22,7 @@ public class HealthScript : MonoBehaviour
     public GameObject hits;
     public GameObject healthBar;
     private BossIA bossIA;
-    private EnemyHealthUI enemy_Health_UI;
+    private LifeControler enemy_Health_UI;
     public PlayerAttackList playerAttack_List;
     public bool canDoSolo = false;
     public bool characterDied;
@@ -52,12 +52,12 @@ public class HealthScript : MonoBehaviour
         }
         else if (is_Enemy)
         {
-            enemy_Health_UI = GetComponent<EnemyHealthUI>();
+            enemy_Health_UI = GameObject.FindObjectOfType<LifeControler>();
         }
         if (is_Boss)
         {
             bossIA = GetComponent<BossIA>();
-            enemy_Health_UI = GetComponent<EnemyHealthUI>();
+            enemy_Health_UI = GameObject.FindObjectOfType<LifeControler>();
         }
     }
     private void Update()
@@ -134,7 +134,7 @@ public class HealthScript : MonoBehaviour
             {
                zone.enemiescounter--;
                gameManager.numScore += enemyMovement.score;
-               enemyUI.enemiesLifes.Remove(enemyMovement.enemyLife);
+               //enemyUI.enemiesLifes.Remove(enemyMovement.enemyLife);
             }
             else if (is_Boss)
             {

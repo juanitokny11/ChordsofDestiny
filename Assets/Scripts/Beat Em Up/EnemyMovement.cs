@@ -15,7 +15,7 @@ public class EnemyMovement : MonoBehaviour
     private Rigidbody myBody;
     public List<string> groupieNames;
     public List<string> fanNames;
-    public TextMeshProUGUI gname;
+    public string gname;
     public Image gimage;
     public AttackUniversal attackColider;
     public int score;
@@ -40,7 +40,7 @@ public class EnemyMovement : MonoBehaviour
         attackColider = GetComponentInChildren<AttackUniversal>();
         enemyUI = GameObject.FindObjectOfType<LifeControler>();
         gimage = GetComponentInChildren<Image>();
-        gname = GetComponentInChildren<TextMeshProUGUI>();
+        //gname = GetComponentInChildren<TextMeshProUGUI>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         mainCamera_col = GameObject.Find("Col1").GetComponent<BoxCollider>();
         mainCamera_col2 = GameObject.Find("Col2").GetComponent<BoxCollider>();
@@ -76,20 +76,17 @@ public class EnemyMovement : MonoBehaviour
     }
     private void Start()
     {
-        enemyUI.enemiesLifes.Add(enemyLife);
-        //enemyLife.SetActive(false);
-        //enemyUI.enemiesAttack.Add(attackColider);
         this.enabled = true;
         followPlayer = true;
         current_Attack_Time = default_Attack_Time;
         if (!isGroupie)
         {
-            gname.text = fanNames[Random.Range(0, fanNames.Count)];
+            gname= fanNames[Random.Range(0, fanNames.Count)];
             speed = 6f;
         }
         else if (isGroupie)
         {
-            gname.text = groupieNames[Random.Range(0, groupieNames.Count)];
+            gname= groupieNames[Random.Range(0, groupieNames.Count)];
             speed = 4.8f;
         } 
     }

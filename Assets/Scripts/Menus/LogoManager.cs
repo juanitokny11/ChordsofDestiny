@@ -14,7 +14,7 @@ public class LogoManager : MonoBehaviour
     public GameObject Optionsmenu;
     public OptionsManager options;
     public AudioSource musica;
-    public AudioSource musicaoptions;
+    //public AudioSource musicaoptions;
     public GameObject fademusica;
     public GameObject fademusicaOptions;
     public GameObject reproductor;
@@ -89,9 +89,9 @@ public class LogoManager : MonoBehaviour
     public void Options()
     {
         Invoke("InvokeOptions", 130.0f * Time.deltaTime);
-        fademusicaOptions.SetActive(true);
+        //fademusicaOptions.SetActive(true);
         //musica.enabled = false;
-        musicaoptions.enabled = true;
+       // musicaoptions.enabled = true;
         //musicaoptions.Play();
     }
     public void ReturnOptions()
@@ -101,7 +101,7 @@ public class LogoManager : MonoBehaviour
         optionsAnim.Anim = false;
         fademusicaOptions.SetActive(false);
         musica.enabled = true;
-        musicaoptions.enabled = false;
+        //musicaoptions.enabled = false;
     }
     public void Extras()
     {

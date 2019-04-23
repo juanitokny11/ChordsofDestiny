@@ -53,7 +53,7 @@ public class EnemyBehaviour : MonoBehaviour
         boss=FindObjectOfType<BossBehaviour>();
         nearNode = true;
         SetIdle();
-        met = GameObject.FindGameObjectWithTag("metronomo");
+        //met = GameObject.FindGameObjectWithTag("metronomo");
        /* ataque= new ParticleSystem[ataque.Length];
         ataque = FindObjectsOfType<ParticleSystem>();*/
 	}
