@@ -36,6 +36,8 @@ public class BossIA : MonoBehaviour
     public int scoref2=1000;
     public bool outside=true;
     public GameObject invokeEnemy;
+    public GameObject invokeEnemy2;
+    public GameObject invokeEnemy3;
     public GameObject llave;
     public Transform llavePos;
 
@@ -206,17 +208,19 @@ public class BossIA : MonoBehaviour
         if (fase == 1)
         {
             invokeEnemy=Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[Random.Range(0, 2)].position, Quaternion.identity);
+            invokeEnemy2 = Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[Random.Range(0, 2)].position, Quaternion.identity);
             invokeEnemy.GetComponent<HealthScript>().zone = BossZone;
-            BossZone.enemiescounter = BossZone.enemies.Count;
+            BossZone.enemiescounter += 2;
             enemyAnim.Jump2Arms();
             enemyAnim.ResetJump2Arms();
-            Invoke("OUTSIDE", 0.7f);
-            //BossZone.enemies.Add(Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[Random.Range(0, 1)].position, Quaternion.identity).GetComponent<EnemyMovement>());
+            Invoke("OUTSIDE", 0.7f); 
         }
         else if (fase == 2)
         {
-            Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[Random.Range(0, 1)].position, Quaternion.identity);
-            BossZone.enemiescounter = BossZone.enemies.Count;
+            invokeEnemy = Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[Random.Range(0, 2)].position, Quaternion.identity);
+            invokeEnemy2 = Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[Random.Range(0, 2)].position, Quaternion.identity);
+            invokeEnemy3 = Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[Random.Range(0, 2)].position, Quaternion.identity);
+            BossZone.enemiescounter += 3;
             enemyAnim.Jump1Arm();
             enemyAnim.ResetJump1Arm();
             Invoke("OUTSIDE", 0.7f);

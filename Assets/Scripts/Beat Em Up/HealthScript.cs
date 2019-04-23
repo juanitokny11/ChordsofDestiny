@@ -14,6 +14,7 @@ public class HealthScript : MonoBehaviour
     private EnemyMovement enemyMovement;
     private PlayerMovementBeat player_Move;
     private PlayerAttack2 player_Attack;
+    public EnemyHealthUI healthUI;
     public GameObject score;
     private HealthUI health_UI;
     private LifeControler enemyUI;
@@ -21,7 +22,7 @@ public class HealthScript : MonoBehaviour
     public TextMeshProUGUI numhits;
     public GameObject hits;
     public GameObject healthBar;
-    private BossIA bossIA;
+    public BossIA bossIA;
     private LifeControler enemy_Health_UI;
     public PlayerAttackList playerAttack_List;
     public bool canDoSolo = false;
@@ -56,8 +57,8 @@ public class HealthScript : MonoBehaviour
         }
         if (is_Boss)
         {
-            bossIA = GetComponent<BossIA>();
-            enemy_Health_UI = GameObject.FindObjectOfType<LifeControler>();
+            // bossIA = GetComponent<BossIA>();
+            healthUI = GetComponent<EnemyHealthUI>();
         }
     }
     private void Update()
@@ -104,19 +105,18 @@ public class HealthScript : MonoBehaviour
             health_UI.DisplayHealth(health);
             if (!knockDown & !defense)
             {
-                if (Random.Range(0, 3) > 1)
+                /*if (Random.Range(0, 3) > 1)
                 {
                     animationScript.Hit(Random.Range(0, 3));
                     playerAttack_List.RemoveAllList();
                     playerAttack_List.CanAttack();
-                }
+                }*/
             }
         }
         else if(is_Enemy)
             enemy_Health_UI.DisplayHealth(health);
         else if (is_Boss)
-            enemy_Health_UI.DisplayHealth(health);
-
+            healthUI.DisplayHealth(health);
         if (health <= 0)
         {
             animationScript.Death();

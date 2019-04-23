@@ -9,6 +9,7 @@ public class BattleZone : MonoBehaviour
     public new GameObject camera;
     public GameObject UI;
     public GameObject score;
+    public GameObject EnemyUI;
    // public Text[] namesEnemies;
     //public Image[] lifeBars;
     public Image goImage;
@@ -48,11 +49,19 @@ public class BattleZone : MonoBehaviour
         {
             if (enemiescounter <= 0)
             {
+                EnemyUI.SetActive(false);
                 Invoke("UnlockCamera", 1f);
                 musica.Stop();
                 SetGo();
                 Invoke("StopGo", 3f);
                 Invoke("Destroy", 4f);
+            }
+        }
+         if (id == 5)
+        {
+            if (enemiescounter == 1)
+            {
+                EnemyUI.SetActive(false);
             }
         }
     }

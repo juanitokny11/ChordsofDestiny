@@ -14,5 +14,12 @@ public class EnemyHealthUI : MonoBehaviour
         else
             HealthBar = GameObject.FindGameObjectWithTag("BossHealth").GetComponent<Image>();
     }
-    
+    public void DisplayHealth(float value)
+    {
+        value /= 100;
+        if (value < 0)
+            value = 0;
+        else
+            HealthBar.fillAmount = value;
+    }
 }
