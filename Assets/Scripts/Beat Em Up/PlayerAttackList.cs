@@ -21,12 +21,13 @@ public class PlayerAttackList : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Attack == false)
+            player_Move.move = false;
         if (attacks.Count > 0)
         {
             DoAttacks();
-            player_Move.move = false;
         }
-        else if (attacks.Count <= 0)
+        if (attacks.Count <= 0 && Attack==true)
             player_Move.move = true;
     }
     void DoAttacks()

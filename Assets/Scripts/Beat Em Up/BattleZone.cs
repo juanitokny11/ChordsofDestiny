@@ -59,7 +59,7 @@ public class BattleZone : MonoBehaviour
         }
          if (id == 5)
         {
-            if (enemiescounter == 1)
+            if (enemiescounter <= 1)
             {
                 EnemyUI.SetActive(false);
             }

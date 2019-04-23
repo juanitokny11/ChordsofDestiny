@@ -197,9 +197,17 @@ public class BossIA : MonoBehaviour
         }
         if (BossZone.enemiescounter < 1)
         {
-            gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-            enemyAnim.Jump2Arms();
-            enemyAnim.ResetJump2Arms();
+            //gameObject.transform.rotation = loo
+            if (fase == 1)
+            {
+                enemyAnim.Jump2Arms();
+                enemyAnim.ResetJump2Arms();
+            }
+            else if(fase == 2)
+            {
+                enemyAnim.Jump1Arm();
+                enemyAnim.ResetJump1Arm();
+            }
             Invoke("OUTSIDE", 0.7f);
         }
     }

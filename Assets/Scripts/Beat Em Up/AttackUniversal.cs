@@ -143,9 +143,11 @@ public class AttackUniversal : MonoBehaviour
                     }
                     damage = 2;
                 }
+            }
                 if (is_Boss)
                 {
-                    if (hit[0].gameObject.CompareTag("Defense"))
+                Vector3 hitFx_Pos = hit[0].transform.position;
+                if (hit[0].gameObject.CompareTag("Defense"))
                     {
                         Quaternion blockFX_Rot = new Quaternion();
                         Vector3 blockFx_Pos = hit[0].transform.position;
@@ -185,7 +187,7 @@ public class AttackUniversal : MonoBehaviour
                         playerHealth.hitsCount = 0;
                     }
                         damage = 4;
-                    }
+                    
                 }
                 gameObject.SetActive(false);
             }

@@ -33,7 +33,7 @@ public class PlayerAttack2 : MonoBehaviour
     public CapsuleCollider mycol;
     public BoxCollider guardCollider;
     public CharacterAnimation player_Anim;
-    private PlayerMovementBeat player_Move;
+    public PlayerMovementBeat player_Move;
     public GameObject block_Fx;
     public GameObject shield;
     private bool activateTimerToReset;
@@ -147,6 +147,7 @@ public class PlayerAttack2 : MonoBehaviour
             if ( !player_Move.inAir && healthScript.canDoSolo==true)
             {
                 current_Combo_State = ComboState.SOLO;
+                //player_Move.move = false;
                 currentGuitarpose = new Vector3(-0.2145597f, 0.1555082f, 1.084099f);
                 currentGuitarRotation = Quaternion.Euler(-68.8f, -437.132f, -103.051f);
                 Guitar.localPosition = currentGuitarpose;
@@ -184,6 +185,7 @@ public class PlayerAttack2 : MonoBehaviour
                         shield.GetComponentInChildren<ParticleSystem>().Play();
                         shield.GetComponentInChildren<Transform>().Rotate(new Vector3(0, 180, 0));
                     }*/
+                    player_Move.move = false;
                     player_Anim.Block();
                     guardCollider.enabled = true;
                     blockActivated = true;
@@ -229,7 +231,6 @@ public class PlayerAttack2 : MonoBehaviour
             if (current_Combo_Timer <= 0f)
             {
                 current_Combo_State = ComboState.NONE;
-
                 activateTimerToReset = false;
                 current_Combo_Timer = default_Combo_Timer;
             }
@@ -242,10 +243,12 @@ public class PlayerAttack2 : MonoBehaviour
     private void ActivarColisiones()
     {
         this.gameObject.layer = 8;
+        
         //soloefect.SetActive(false);
         Guitar.localPosition = new Vector3(-0.118f, 0.014f, 0.083f);
         Guitar.localRotation = Quaternion.Euler(-61.589f, -631.912f, -92.93501f);
         mycol.enabled = true;
+        player_Move.move = true;
         current_Combo_State = ComboState.NONE;
         Solocol.GetComponent<AttackUniversal>().enabled = false;
     }
@@ -253,6 +256,7 @@ public class PlayerAttack2 : MonoBehaviour
     {
         this.gameObject.layer = 0;
         mycol.enabled = false;
+        player_Move.move = false;
     }
     private void ActiveSoloCol()
     {

@@ -11,6 +11,7 @@ public class PlayerMovementBeat : MonoBehaviour
     public bool comboAereo = false;
     public AudioSource caminarS;
     public AudioSource soloS;
+    public PlayerAttackList attackList;
     public PlayerAttack2 playerAttack;
     public float run_Speed;
     public float z_Speed;
@@ -26,6 +27,7 @@ public class PlayerMovementBeat : MonoBehaviour
     public float rotation_Speed = 15f;
     private void Awake()
     {
+        attackList = GetComponent<PlayerAttackList>();
         anim = GetComponent<Animator>();
         transform.rotation = Quaternion.Euler(0, 0, 0);
         myBody = GetComponent<Rigidbody>();
@@ -175,12 +177,14 @@ public class PlayerMovementBeat : MonoBehaviour
     {
         comboAereo = false;
     }
-    void NotMove()
+    public void NotMove()
     {
         move = false;
+        attackList.Attack = false;
     }
-    void Move()
+    public void Move()
     {
         move = true;
+        attackList.Attack = true;
     }
 }
