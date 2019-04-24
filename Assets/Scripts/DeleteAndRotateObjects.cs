@@ -44,7 +44,7 @@ public class DeleteAndRotateObjects:MonoBehaviour {
             changeCamera.bosscam.enabled = true;
             changeCamera.gameplaycam.enabled = false;
             Puerta.GetComponent<Animator>().SetTrigger("Abrir");
-            Invoke("EndGame",2f);
+            Invoke("EndGame",2.5f);
         }
 	}
     public void CoinsPowerup()
