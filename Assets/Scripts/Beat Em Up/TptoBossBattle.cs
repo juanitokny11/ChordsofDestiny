@@ -6,6 +6,7 @@ public class TptoBossBattle : MonoBehaviour
 {
     public Transform tppoint;
     public ShakeCamera camera;
+    public BattleZone BossZone;
     public Canvas BossLife;
     public GameObject musicBoss;
     public GameObject musicGameplay;
@@ -39,6 +40,7 @@ public class TptoBossBattle : MonoBehaviour
             other.gameObject.transform.position = tppoint.position;
             camera.lockCamera = false;
             changeMusic = true;
+            BossZone.bossZone = true;
         }
     }
     void ActivateBossMusic()

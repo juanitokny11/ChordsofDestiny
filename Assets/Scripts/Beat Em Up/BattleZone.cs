@@ -10,6 +10,8 @@ public class BattleZone : MonoBehaviour
     public GameObject UI;
     public GameObject score;
     public GameObject EnemyUI;
+    public HealthScript Player;
+    public bool bossZone;
    // public Text[] namesEnemies;
     //public Image[] lifeBars;
     public Image goImage;
@@ -23,6 +25,7 @@ public class BattleZone : MonoBehaviour
         //colider = GetComponent<BoxCollider>();
         camera = GameObject.FindGameObjectWithTag("MainCamera");
         enemiescounter = enemies.Count;
+        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthScript>();
     }
     void OnTriggerEnter(Collider other)
     {
@@ -45,7 +48,7 @@ public class BattleZone : MonoBehaviour
             musica.mute=false;
         if (BeatEmupManager.instance.pause == false)
             musica.mute=true;
-        if (id != 5)
+        if (!bossZone)
         {
             if (enemiescounter <= 0)
             {
@@ -57,7 +60,7 @@ public class BattleZone : MonoBehaviour
                 Invoke("Destroy", 4f);
             }
         }
-         if (id == 5)
+        else if (bossZone)
         {
             if (enemiescounter <= 1)
             {
@@ -88,6 +91,8 @@ public class BattleZone : MonoBehaviour
     void StopGo()
     {
         CancelInvoke("Blink");
+        UI.GetComponent<Image>().fillAmount = UI.GetComponent<Image>().fillAmount + 0.1f;
+        Player.health = Player.health + 10;
         UI.SetActive(false);
         score.SetActive(false);
         goImage.enabled = false;

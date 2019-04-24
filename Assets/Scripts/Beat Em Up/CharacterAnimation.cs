@@ -120,6 +120,10 @@ public class CharacterAnimation : MonoBehaviour
     {
         anim.SetTrigger("StandUp");
     }
+    public void SoloHit()
+    {
+        anim.SetTrigger("SoloHit");
+    }
     //Boss Amin
     public void Walk1arm(bool walk1arm)
     {
