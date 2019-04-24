@@ -34,12 +34,16 @@ public class BattleZone : MonoBehaviour
             UI.SetActive(true);
             score.SetActive(true);
             GetComponent<BoxCollider>().enabled = false;
-            enemies[1].gameObject.SetActive(true);
-            enemies[2].gameObject.SetActive(true);
-            camera.GetComponent<ShakeCamera>().lockCamera = true;
-            //colider.enabled = false;
-            if(BeatEmupManager.instance.pause == true)
+            if (!bossZone)
+            {
+                enemies[1].gameObject.SetActive(true);
+                enemies[2].gameObject.SetActive(true);
+                camera.GetComponent<ShakeCamera>().lockCamera = true;
+            }
+            if (BeatEmupManager.instance.pause == true)
+            {
                 musica.Play();
+            }
         }
     }
     void Update()
@@ -54,7 +58,7 @@ public class BattleZone : MonoBehaviour
             {
                 EnemyUI.SetActive(false);
                 Invoke("UnlockCamera", 1f);
-                musica.Stop();
+                musica.Pause();
                 SetGo();
                 Invoke("StopGo", 3f);
                 Invoke("Destroy", 4f);
@@ -71,7 +75,9 @@ public class BattleZone : MonoBehaviour
     void UnlockCamera()
     {
         camera.GetComponent<ShakeCamera>().lockCamera = false;
-       // camera.GetComponent<ShakeCamera>().enemiesdied = true;
+        UI.GetComponent<Image>().fillAmount = UI.GetComponent<Image>().fillAmount + 0.1f;
+        Player.health = Player.health + 10;
+        // camera.GetComponent<ShakeCamera>().enemiesdied = true;
     }
     void SetGo()
     {
@@ -91,8 +97,6 @@ public class BattleZone : MonoBehaviour
     void StopGo()
     {
         CancelInvoke("Blink");
-        UI.GetComponent<Image>().fillAmount = UI.GetComponent<Image>().fillAmount + 0.1f;
-        Player.health = Player.health + 10;
         UI.SetActive(false);
         score.SetActive(false);
         goImage.enabled = false;
