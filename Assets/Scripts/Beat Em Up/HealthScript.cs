@@ -67,21 +67,18 @@ public class HealthScript : MonoBehaviour
         if (is_Player)
         {
             numhits.text = hitsCount.ToString();
-            if (hitsCount > 0)
+            if (hitsCount != 0)
             {
                 hits.SetActive(true);
                 numhits.text = hitsCount.ToString();
+                attack.counterhits += Time.deltaTime;
+                if (attack.counterhits >= 5f)
+                    hitsCount = 0;
             }
             else if (hitsCount == 0)
             {
                 hits.SetActive(false);
                 numhits.text = 00.ToString();
-            }
-            if (hitsCount != 0)
-            {
-                attack.counterhits += Time.deltaTime;
-                if (attack.counterhits >= 5f)
-                    hitsCount = 0;
             }
         }
         if (solo >= 200)
