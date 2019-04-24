@@ -10350,6 +10350,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 628881175}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &633145579 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3676889872562162483, guid: 32d3847095fd90f41bc2db0671913dc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 8939311918030938153}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &634976034
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37976,7 +37982,7 @@ PrefabInstance:
     - target: {fileID: 4554496321350749296, guid: 32d3847095fd90f41bc2db0671913dc6,
         type: 3}
       propertyPath: solo
-      value: 0
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8939311919185665385, guid: 32d3847095fd90f41bc2db0671913dc6,
         type: 3}
@@ -37988,6 +37994,10 @@ PrefabInstance:
       propertyPath: soloS
       value: 
       objectReference: {fileID: 1994545464}
+    - target: {fileID: 482292428, guid: 32d3847095fd90f41bc2db0671913dc6, type: 3}
+      propertyPath: soloParticle
+      value: 
+      objectReference: {fileID: 633145579}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32d3847095fd90f41bc2db0671913dc6, type: 3}
 --- !u!1001 &9054620511873806690
