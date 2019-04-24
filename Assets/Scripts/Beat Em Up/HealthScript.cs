@@ -79,7 +79,7 @@ public class HealthScript : MonoBehaviour
             if (hitsCount != 0)
             {
                 attack.counterhits += Time.deltaTime;
-                if (attack.counterhits >= 3f)
+                if (attack.counterhits >= 5f)
                     hitsCount = 0;
             }
         }
