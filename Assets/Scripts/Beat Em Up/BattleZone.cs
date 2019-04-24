@@ -11,6 +11,7 @@ public class BattleZone : MonoBehaviour
     public GameObject score;
     public GameObject EnemyUI;
     public HealthScript Player;
+    public BoxCollider enemyBlocker;
     public bool bossZone;
    // public Text[] namesEnemies;
     //public Image[] lifeBars;
@@ -39,6 +40,7 @@ public class BattleZone : MonoBehaviour
                 enemies[1].gameObject.SetActive(true);
                 enemies[2].gameObject.SetActive(true);
                 camera.GetComponent<ShakeCamera>().lockCamera = true;
+                enemyBlocker.enabled = false;
             }
             if (Player.health < 100)
             {
