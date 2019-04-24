@@ -8,6 +8,7 @@ public class CharacterAnimationDelegate : MonoBehaviour
 {
     public SoundPlayer clips;
     public ParticleSystem jumpefect;
+    public ParticleSystem soloParticle;
     public GameObject guitar_Attack_Mesh;
     public GameObject guitar_Attack_Point;
     public GameObject Boss_Attack_Point1;
@@ -254,5 +255,12 @@ public class CharacterAnimationDelegate : MonoBehaviour
     {
         particleHacha.SetActive(false);
     }
-
+    public void ParticleSoloOn()
+    {
+        soloParticle.Play();
+    }
+    public void ParticleSoloOff()
+    {
+        soloParticle.Stop();
+    }
 }
