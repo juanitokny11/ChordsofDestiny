@@ -22,6 +22,7 @@ public class AttackUniversal : MonoBehaviour
     public GameObject block2_Fx_Prefab;
     public Collider[] hit;
     public float counterhits = 0f;
+    public AudioSource block1;
     private void Start()
     {
         lifeControler = GameObject.FindObjectOfType<LifeControler>();
@@ -105,11 +106,13 @@ public class AttackUniversal : MonoBehaviour
                 {
                     if (hit[0].gameObject.CompareTag("Defense"))
                     {
+                        block1.Play();
                         Quaternion blockFX_Rot = new Quaternion();
                         Vector3 blockFx_Pos = hit[0].transform.position;
                         blockFx_Pos.y += 4f;
                         if (hit[0].transform.forward.x > 0)
                         {
+                          
                             blockFx_Pos.x += 2f;
                             blockFX_Rot = Quaternion.Euler(-45, 90, 0);
                         }
@@ -150,7 +153,8 @@ public class AttackUniversal : MonoBehaviour
                 Vector3 hitFx_Pos = hit[0].transform.position;
                 if (hit[0].gameObject.CompareTag("Defense"))
                     {
-                        Quaternion blockFX_Rot = new Quaternion();
+                         block1.Play();
+                         Quaternion blockFX_Rot = new Quaternion();
                         Vector3 blockFx_Pos = hit[0].transform.position;
                         blockFx_Pos.y += 4f;
                         if (hit[0].transform.forward.x > 0)
