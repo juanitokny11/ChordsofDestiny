@@ -20,7 +20,8 @@ public class PlayerAttack2 : MonoBehaviour
         AIRCOMBO3,
         AIRCOMBO4,
         AIRCOMBO5,
-        SOLO
+        SOLO,
+        JUMP
     }
     public bool blockActivated = false;
     public SphereCollider Solocol;
@@ -67,10 +68,14 @@ public class PlayerAttack2 : MonoBehaviour
     {
         ComboAttacks();
         ResetComboState();
+        if (current_Combo_State == ComboState.JUMP)
+        {
+            attackList.RemoveAllList();
+            attackList.Attack = true;
+        }  
     }
     void ComboAttacks()
     {
-       
         if (Input.GetButtonDown("AtaqueDebil"))
         {
             if (attacks.Contains(ComboState.DEBIL3)||current_Combo_State == ComboState.DEBIL3 || current_Combo_State == ComboState.FUERTE2 || current_Combo_State == ComboState.FUERTE3 || current_Combo_State == ComboState.GUARD || current_Combo_State == ComboState.SOLO || current_Combo_State == ComboState.AIRCOMBO5)
@@ -141,7 +146,12 @@ public class PlayerAttack2 : MonoBehaviour
                     AddToTheList(ComboState.FUERTE3);
                 }
             }
-        }
+            else if (player_Move.inAir)
+            {
+                current_Combo_State = ComboState.JUMP;
+                
+            }
+            }
         if (Input.GetKeyDown(KeyCode.D) || Input.GetAxisRaw("Solo") == 1 && Input.GetAxisRaw("Disparar") == 1)
         {
             if ( !player_Move.inAir && healthScript.canDoSolo==true)
@@ -193,7 +203,7 @@ public class PlayerAttack2 : MonoBehaviour
             }
             else if (player_Move.inAir)
             {
-
+                current_Combo_State = ComboState.JUMP;
             }
         }
         else if ( Input.GetAxisRaw("Evadir") == 0 && blockActivated)
@@ -219,11 +229,12 @@ public class PlayerAttack2 : MonoBehaviour
             }
             else if (player_Move.inAir)
             {
-
+                attackList.RemoveAllList();
+                ResetComboState();
             }
         }
     }
-    void ResetComboState()
+    public void ResetComboState()
     {
         if (activateTimerToReset)
         {

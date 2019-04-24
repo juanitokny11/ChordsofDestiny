@@ -41,6 +41,7 @@ public class BossIA : MonoBehaviour
     public GameObject llave;
     public Transform llavePos;
     public bool invoke = false;
+    public ParticleSystem brokenArm;
 
     void Start()
     {
@@ -271,6 +272,7 @@ public class BossIA : MonoBehaviour
         porcentajeAtaque = 50;
         porcentajeInvocar = 200;
         gameManager.numScore += scoref1;
+        brokenArm.Play();
         SetDefault();
     }
     void OnCollisionEnter(Collision collision)

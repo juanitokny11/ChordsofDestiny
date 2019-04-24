@@ -39,6 +39,10 @@ public class PlayerMovementBeat : MonoBehaviour
     void Update()
     {
         RotatePlayer();
+        if (playerAttack.current_Combo_State == PlayerAttack2.ComboState.NONE)
+        {
+            move = true;
+        }
         if (!is_Dead)
         {
             AnimatePlayerRun();
@@ -135,7 +139,9 @@ public class PlayerMovementBeat : MonoBehaviour
         {
             myBody.velocity = new Vector3(Input.GetAxisRaw("Horizontal") * (-run_Speed), myBody.velocity.y, Input.GetAxisRaw("Vertical") * (-z_Speed));
             if (Input.GetAxisRaw("Jump") != 0)
+            {
                 myBody.velocity = new Vector3(myBody.velocity.x, Input.GetAxisRaw("Jump") * newPosition.y, myBody.velocity.z);
+            }    
         }
     }
     void RotatePlayer()
@@ -162,7 +168,8 @@ public class PlayerMovementBeat : MonoBehaviour
     void AnimatePlayerJump()
     {
         if (Input.GetAxisRaw("Jump") != 0 && inAir==false)
-        { 
+        {
+            playerAttack.current_Combo_State = PlayerAttack2.ComboState.JUMP;
             player_Anim.Jump();
             inAir = true;
             playerAttack.blockActivated = false;
