@@ -23,7 +23,7 @@ public class TptoBossBattle : MonoBehaviour
             //ActivateBossMusic();
             if(BossLife!=null)
             BossLife.enabled = true;
-            camera.GetComponent<Camera>().fieldOfView = 55;
+            camera.GetComponent<Camera>().fieldOfView = 47;
         }
         /*if (BeatEmupManager.instance.pause == true)
         {
