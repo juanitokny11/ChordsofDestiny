@@ -40,6 +40,11 @@ public class BattleZone : MonoBehaviour
                 enemies[2].gameObject.SetActive(true);
                 camera.GetComponent<ShakeCamera>().lockCamera = true;
             }
+            if (Player.health < 100)
+            {
+                UI.GetComponent<Image>().fillAmount = Player.health + 10/100;
+                Player.health = Player.health + 10;
+            }
             if (BeatEmupManager.instance.pause == true)
             {
                 musica.Play();
@@ -75,8 +80,6 @@ public class BattleZone : MonoBehaviour
     void UnlockCamera()
     {
         camera.GetComponent<ShakeCamera>().lockCamera = false;
-        UI.GetComponent<Image>().fillAmount = UI.GetComponent<Image>().fillAmount + 0.1f;
-        Player.health = Player.health + 10;
         // camera.GetComponent<ShakeCamera>().enemiesdied = true;
     }
     void SetGo()

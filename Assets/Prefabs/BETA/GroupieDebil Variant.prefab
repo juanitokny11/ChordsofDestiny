@@ -12,15 +12,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: GroupieDebil Variant
       objectReference: {fileID: 0}
-    - target: {fileID: 7521556622779265915, guid: 6faa2ed7105ee11409305d53fa85d8e3,
-        type: 3}
-      propertyPath: enemyLife
+    - target: {fileID: 452187335, guid: 6faa2ed7105ee11409305d53fa85d8e3, type: 3}
+      propertyPath: zone
       value: 
-      objectReference: {fileID: 496485284127654326}
-    - target: {fileID: 7521556622779265915, guid: 6faa2ed7105ee11409305d53fa85d8e3,
-        type: 3}
-      propertyPath: score
-      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 452187335, guid: 6faa2ed7105ee11409305d53fa85d8e3, type: 3}
+      propertyPath: health
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1563660872938979979, guid: 6faa2ed7105ee11409305d53fa85d8e3,
         type: 3}
@@ -77,18 +75,28 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 452187335, guid: 6faa2ed7105ee11409305d53fa85d8e3, type: 3}
-      propertyPath: zone
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 452187335, guid: 6faa2ed7105ee11409305d53fa85d8e3, type: 3}
-      propertyPath: health
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 6945980595191655478, guid: 6faa2ed7105ee11409305d53fa85d8e3,
+    - target: {fileID: 2873580615859007715, guid: 6faa2ed7105ee11409305d53fa85d8e3,
         type: 3}
-      propertyPath: HealthBar
+      propertyPath: m_textInfo.textComponent
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1695840076, guid: 6faa2ed7105ee11409305d53fa85d8e3, type: 3}
+      propertyPath: damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1695840076, guid: 6faa2ed7105ee11409305d53fa85d8e3, type: 3}
+      propertyPath: healthScript
+      value: 
+      objectReference: {fileID: 361667288548745496}
+    - target: {fileID: 7521556622779265915, guid: 6faa2ed7105ee11409305d53fa85d8e3,
+        type: 3}
+      propertyPath: enemyLife
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7521556622779265915, guid: 6faa2ed7105ee11409305d53fa85d8e3,
+        type: 3}
+      propertyPath: score
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1563660874057412209, guid: 6faa2ed7105ee11409305d53fa85d8e3,
         type: 3}
@@ -230,33 +238,25 @@ PrefabInstance:
       propertyPath: m_RootBone
       value: 
       objectReference: {fileID: 1204672477627482516}
-    - target: {fileID: 2873580615859007715, guid: 6faa2ed7105ee11409305d53fa85d8e3,
+    - target: {fileID: 6945980595191655478, guid: 6faa2ed7105ee11409305d53fa85d8e3,
         type: 3}
-      propertyPath: m_textInfo.textComponent
+      propertyPath: HealthBar
       value: 
-      objectReference: {fileID: 2514666809951061308}
+      objectReference: {fileID: 0}
     - target: {fileID: 6937361674893121374, guid: 6faa2ed7105ee11409305d53fa85d8e3,
         type: 3}
       propertyPath: imag
       value: 
-      objectReference: {fileID: 7235572824254634439}
-    - target: {fileID: 1695840076, guid: 6faa2ed7105ee11409305d53fa85d8e3, type: 3}
-      propertyPath: damage
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1695840076, guid: 6faa2ed7105ee11409305d53fa85d8e3, type: 3}
-      propertyPath: healthScript
-      value: 
-      objectReference: {fileID: 361667288548745496}
-    - target: {fileID: 223032424248569081, guid: 6faa2ed7105ee11409305d53fa85d8e3,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114276559521456881, guid: 6faa2ed7105ee11409305d53fa85d8e3,
         type: 3}
       propertyPath: imag
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 223032424248569081, guid: 6faa2ed7105ee11409305d53fa85d8e3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6faa2ed7105ee11409305d53fa85d8e3, type: 3}
@@ -428,33 +428,3 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 361667288436340191}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &496485284127654326 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 281255932481188969, guid: 6faa2ed7105ee11409305d53fa85d8e3,
-    type: 3}
-  m_PrefabInstance: {fileID: 361667288436340191}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7235572824254634439 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7020282093364751384, guid: 6faa2ed7105ee11409305d53fa85d8e3,
-    type: 3}
-  m_PrefabInstance: {fileID: 361667288436340191}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2514666809951061308 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2873580615859007715, guid: 6faa2ed7105ee11409305d53fa85d8e3,
-    type: 3}
-  m_PrefabInstance: {fileID: 361667288436340191}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

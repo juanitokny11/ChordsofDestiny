@@ -30,6 +30,7 @@ public class HealthScript : MonoBehaviour
     public bool inAir=false;
     public int hitCounter;
     public int hitsCount;
+    public bool oneTime;
 
     public bool is_Player,is_Boss,is_Enemy;
     public void Start()

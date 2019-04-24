@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class AttackUniversal : MonoBehaviour
 {
@@ -39,7 +40,7 @@ public class AttackUniversal : MonoBehaviour
     void DetectColision()
     {
         hit = Physics.OverlapSphere(transform.position, radius, colisionLayer);
-
+       
         if (hit.Length > 0)
         {
             if (is_Player)
@@ -141,7 +142,7 @@ public class AttackUniversal : MonoBehaviour
                         hit[0].GetComponentInParent<HealthScript>().ApplyDamage(damage, false, false);
                         playerHealth.hitsCount = 0;
                     }
-                    damage = 2;
+                    //damage = 2;
                 }
             }
                 if (is_Boss)
@@ -186,7 +187,7 @@ public class AttackUniversal : MonoBehaviour
                         hit[0].GetComponentInParent<HealthScript>().ApplyDamage(damage, false, false);
                         playerHealth.hitsCount = 0;
                     }
-                        damage = 4;
+                        damage = 3;
                     
                 }
                 gameObject.SetActive(false);
