@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 731018133}
   - component: {fileID: 731018132}
   - component: {fileID: 731018131}
-  - component: {fileID: 4241220927053627882}
+  - component: {fileID: 7936908525032407697}
   m_Layer: 0
   m_Name: TarjetaBoss
   m_TagString: Tarjeta
@@ -94,17 +94,17 @@ MonoBehaviour:
   CoinRotateSpeed: 5
   is_Key: 1
   changeCamera: {fileID: 0}
---- !u!64 &4241220927053627882
-MeshCollider:
+  Puerta: {fileID: 0}
+--- !u!65 &7936908525032407697
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 731018130}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300000, guid: f245a2f58f0686c429a4bf3ac75eb814, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.01, y: 0.01, z: 0.009999999}
+  m_Center: {x: 0, y: 0, z: 0}

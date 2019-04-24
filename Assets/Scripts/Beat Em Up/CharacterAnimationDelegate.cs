@@ -236,8 +236,6 @@ public class CharacterAnimationDelegate : MonoBehaviour
     void DestroyGameobject()
     {
         Destroy(gameObject);
-        if (is_Boss)
-            SceneManager.LoadScene("Victory");
     }
     public void JumpSound()
     {

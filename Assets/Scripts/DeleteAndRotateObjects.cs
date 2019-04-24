@@ -21,11 +21,10 @@ public class DeleteAndRotateObjects:MonoBehaviour {
         //transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        if (other.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
-
             Explode();
         }
     }
@@ -40,15 +39,13 @@ public class DeleteAndRotateObjects:MonoBehaviour {
 
     void Explode() {
 
-
         if (is_Key)
         {
             changeCamera.bosscam.enabled = true;
             changeCamera.gameplaycam.enabled = false;
             Puerta.GetComponent<Animator>().SetTrigger("Abrir");
+            Invoke("EndGame",2f);
         }
-
-        Destroy(gameObject);
 	}
     public void CoinsPowerup()
     {
@@ -64,6 +61,7 @@ public class DeleteAndRotateObjects:MonoBehaviour {
     }
     public void EndGame()
     {
+        Destroy(gameObject);
         SceneManager.LoadScene("Victory");
     }
 }

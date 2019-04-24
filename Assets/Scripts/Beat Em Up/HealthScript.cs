@@ -134,7 +134,6 @@ public class HealthScript : MonoBehaviour
             {
                zone.enemiescounter--;
                gameManager.numScore += enemyMovement.score;
-               //enemyUI.enemiesLifes.Remove(enemyMovement.enemyLife);
             }
             else if (is_Boss)
             {

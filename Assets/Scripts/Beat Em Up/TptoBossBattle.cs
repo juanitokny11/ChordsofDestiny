@@ -21,6 +21,7 @@ public class TptoBossBattle : MonoBehaviour
         {
             musicGameplay.GetComponent<AudioSource>().enabled = false;
             Invoke("ActivateBossMusic", 1f);
+            if(BossLife!=null)
             BossLife.enabled = true;
             camera.GetComponent<Camera>().fieldOfView = 55;
         }

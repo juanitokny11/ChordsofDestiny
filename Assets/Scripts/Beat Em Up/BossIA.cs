@@ -40,6 +40,7 @@ public class BossIA : MonoBehaviour
     public GameObject invokeEnemy3;
     public GameObject llave;
     public Transform llavePos;
+    public bool invoke = false;
 
     void Start()
     {
@@ -57,7 +58,7 @@ public class BossIA : MonoBehaviour
         current_Boss_State = Estados.Default;
         fase = 1;
         porcentajeAtaque = 40;
-        porcentajeInvocar = 8;
+        porcentajeInvocar = 6;
     }
     void Update()
     {
@@ -111,7 +112,6 @@ public class BossIA : MonoBehaviour
                 {
                     outside = false;
                     StopJumpDown();
-
                 } 
             }
         }
@@ -129,7 +129,7 @@ public class BossIA : MonoBehaviour
     }
     void Attack()
     {
-        if (enemyHealth.HealthBar.fillAmount <= 0.5)
+        if (enemyHealth.HealthBar.fillAmount <= 0.35)
         {
             enemyAnim.RomperEspada();
         }
@@ -155,6 +155,10 @@ public class BossIA : MonoBehaviour
         {
             speed = 0;
             return;
+        }
+        if (enemyHealth.HealthBar.fillAmount <= 0.35)
+        {
+            enemyAnim.RomperEspada();
         }
         //if(BossZone.enemiescounter !=0)
         if (Vector3.Distance(transform.position, playerTarget.position) < chaseDistance && Vector3.Distance(transform.position, playerTarget.position) > attack_Distance)
@@ -195,49 +199,55 @@ public class BossIA : MonoBehaviour
             attackPlayer = true;
             SetAttack();
         }
-        if (BossZone.enemiescounter < 1)
+        if (BossZone.enemiescounter == 1  &&  invoke ==true)
         {
-            //gameObject.transform.rotation = loo
             if (fase == 1)
             {
                 enemyAnim.Jump2Arms();
-                enemyAnim.ResetJump2Arms();
+                Inside();
+                //enemyAnim.ResetJump2Arms();
             }
             else if(fase == 2)
             {
                 enemyAnim.Jump1Arm();
-                enemyAnim.ResetJump1Arm();
+                //enemyAnim.ResetJump1Arm();
             }
-            Invoke("OUTSIDE", 0.7f);
+            
         }
     }
     void Invoke()
     {
         if (fase == 1)
         {
-            invokeEnemy=Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[Random.Range(0, 2)].position, Quaternion.identity);
-            invokeEnemy2 = Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[Random.Range(0, 2)].position, Quaternion.identity);
+            invokeEnemy=Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[0].position, Quaternion.identity);
+            invokeEnemy2 = Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[1].position, Quaternion.identity);
             invokeEnemy.GetComponent<HealthScript>().zone = BossZone;
+            invokeEnemy2.GetComponent<HealthScript>().zone = BossZone;
             BossZone.enemiescounter += 2;
             enemyAnim.Jump2Arms();
-            enemyAnim.ResetJump2Arms();
-            Invoke("OUTSIDE", 0.7f); 
+            //enemyAnim.ResetJump2Arms();
+            Invoke("OUTSIDE", 0.7f);
+            //invoke = true;
         }
         else if (fase == 2)
         {
-            invokeEnemy = Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[Random.Range(0, 2)].position, Quaternion.identity);
-            invokeEnemy2 = Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[Random.Range(0, 2)].position, Quaternion.identity);
-            invokeEnemy3 = Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[Random.Range(0, 2)].position, Quaternion.identity);
-            BossZone.enemiescounter += 3;
             enemyAnim.Jump1Arm();
-            enemyAnim.ResetJump1Arm();
+            //enemyAnim.ResetJump1Arm();
+            invokeEnemy = Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[0].position, Quaternion.identity);
+            invokeEnemy2 = Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[0].position, Quaternion.identity);
+            invokeEnemy3 = Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[1].position, Quaternion.identity);
+            invokeEnemy.GetComponent<HealthScript>().zone = BossZone;
+            invokeEnemy2.GetComponent<HealthScript>().zone = BossZone;
+            invokeEnemy3.GetComponent<HealthScript>().zone = BossZone;
+            BossZone.enemiescounter += 3;
             Invoke("OUTSIDE", 0.7f);
-        }  
+            //invoke = true;
+        }
+        //invoke = true;
     }
     public void Death()
     {
-        if (GetComponent<HealthScript>().health <= 0)
-            Instantiate(llave, llavePos.position, Quaternion.identity);
+       Instantiate(llave, llavePos.position, Quaternion.identity);
         this.enabled = false;
     }
     void SetAttack()
@@ -259,7 +269,7 @@ public class BossIA : MonoBehaviour
     {
         fase = 2;
         porcentajeAtaque = 50;
-        porcentajeInvocar = 6;
+        porcentajeInvocar = 200;
         gameManager.numScore += scoref1;
         SetDefault();
     }
@@ -309,6 +319,12 @@ public class BossIA : MonoBehaviour
     }
     private void OUTSIDE()
     {
-        outside = !outside;
+        outside = true;
+        invoke = true;
+    }
+    private void Inside()
+    {
+        outside = false;
+        invoke = false;
     }
 }

@@ -71,7 +71,7 @@ public class AttackUniversal : MonoBehaviour
                     healthUI.DisplaySolo(healthScript.solo / 2);
                     hit[0].GetComponent<HealthScript>().ApplyDamage(damage, true, false);
                     healthScript.inAir = true;
-                    hit[0].GetComponent<BoxCollider>().enabled = true;
+                    //hit[0].GetComponent<BoxCollider>().enabled = true;
                     if (hit[0].gameObject.tag == "Enemy")
                         lifeControler.ShowDamagedUI(hit[0].gameObject.GetComponent<HealthScript>().health, hit[0].gameObject.GetComponent<EnemyMovement>().gname.ToString());
                 }
