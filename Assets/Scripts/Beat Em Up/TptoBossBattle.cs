@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class TptoBossBattle : MonoBehaviour
 {
@@ -44,6 +45,7 @@ public class TptoBossBattle : MonoBehaviour
     }
     void ActivateBossMusic()
     {
+        musicBoss.DOFade(0.4f, 5f);
         musicBoss.Play();
     }
 }

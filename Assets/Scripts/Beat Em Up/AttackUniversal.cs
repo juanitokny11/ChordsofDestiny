@@ -23,6 +23,8 @@ public class AttackUniversal : MonoBehaviour
     public Collider[] hit;
     public float counterhits = 0f;
     public AudioSource block1;
+    public List<AudioSource> audios;
+    public int random;
     private void Start()
     {
         lifeControler = GameObject.FindObjectOfType<LifeControler>();
@@ -37,6 +39,7 @@ public class AttackUniversal : MonoBehaviour
     void Update()
     {
         DetectColision();
+        random = Random.Range(0, 3);
     }
     void DetectColision()
     {
@@ -90,7 +93,7 @@ public class AttackUniversal : MonoBehaviour
                         damage = 3;
                         healthScript.hitsCount++;
                         counterhits = 0;
-                        healthScript.audios.Play(Random.Range(0, 3), 1);
+                        audios[random].Play();
                     }
                     healthScript.solo += damage;
                     healthUI.DisplaySolo(healthScript.solo / 2);
