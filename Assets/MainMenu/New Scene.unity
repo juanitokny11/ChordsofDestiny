@@ -143,8 +143,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam_Anim: {fileID: 788439824}
-  LogoManager: {fileID: 0}
-  menuAnim: {fileID: 0}
+  logoManager: {fileID: 142483635}
+  menuAnim: {fileID: 1928405694}
+  is_MainMenu: 1
+  firsttime: 0
+  cinematicaInicial: {fileID: 1448334778}
 --- !u!224 &2204933
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1653,18 +1656,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logoVideo: {fileID: 580426100}
-  cinematicaInicial: {fileID: 1448334778}
   titleText: {fileID: 1270901607}
   menu: {fileID: 112114315}
   title: {fileID: 311684608}
   Optionsmenu: {fileID: 510244472}
   options: {fileID: 2005121988}
+  menuManager: {fileID: 2204932}
   musica: {fileID: 1591552721}
   fademusica: {fileID: 188837098}
   fademusicaOptions: {fileID: 1993184519}
   reproductor: {fileID: 1216916280}
   optionsAnim: {fileID: 2091310908}
   extras: 0
+  cinematica: 0
 --- !u!4 &142483636
 Transform:
   m_ObjectHideFlags: 0

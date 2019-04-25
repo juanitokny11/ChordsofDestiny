@@ -8,12 +8,12 @@ using UnityEngine.SceneManagement;
 public class LogoManager : MonoBehaviour
 {
     public VideoPlayer logoVideo;
-    public VideoPlayer cinematicaInicial;
     public GameObject titleText;
     public GameObject menu;
     public GameObject title;
     public GameObject Optionsmenu;
     public OptionsManager options;
+    public MenuManager menuManager;
     public AudioSource musica;
     //public AudioSource musicaoptions;
     public GameObject fademusica;
@@ -22,7 +22,7 @@ public class LogoManager : MonoBehaviour
     public MenuAnim optionsAnim;
     public bool extras=true;
     bool logo = false;
-    bool cinematica = false;
+    public bool cinematica = false;
     private void Awake()
     {
         //menu.SetActive(false);
@@ -31,17 +31,16 @@ public class LogoManager : MonoBehaviour
     {
         Cursor.visible = false;
         logoVideo.loopPointReached += EndVideo;
-        if (MyGameSettings.getInstance().logoPlayed == true && MyGameSettings.getInstance().cinematicaPlayed==true)
+        if (MyGameSettings.getInstance().logoPlayed == true)
         {
             logoVideo.gameObject.SetActive(false);
-            cinematicaInicial.gameObject.SetActive(false);
             MainMenu();
             musica.volume = 0.3f;
             Cursor.visible = true;
             //fademusica.SetActive(true);
             musica.Play();
             logo = true;
-
+            cinematica = true;
         }
     }
     private void EndVideo(VideoPlayer source)
@@ -54,25 +53,26 @@ public class LogoManager : MonoBehaviour
         logo = true;
         
     }
-    private void EndCinematica(VideoPlayer source)
-    {
-        cinematicaInicial.gameObject.SetActive(false);
-        Invoke("CinematicaTrue", 1.0f);
-        SceneManager.LoadScene("Gameplay");
-        Time.timeScale = 1;
-        Cursor.visible = false;
-        MyGameSettings.getInstance().gameStarted = true;
-        MyGameSettings.getInstance().logoPlayed = true;
-        MyGameSettings.getInstance().menuAnim.firstTime = true;
-    }
+    
     private void Update()
     {
-        cinematicaInicial.loopPointReached += EndCinematica;
-        if (Input.GetKeyDown(KeyCode.Return) && logo==true  || Input.GetAxisRaw("AtaqueDebil") != 0 && logo == true)
+        
+        if (Input.GetKeyDown(KeyCode.Return) && logo && !cinematica || Input.GetAxisRaw("AtaqueDebil") != 0 && logo && !cinematica)
         {
             MainMenu();
             Cursor.visible = true;
             MyGameSettings.getInstance().logoPlayed = true;
+        }
+        if (Input.GetKeyDown(KeyCode.Return) && logo && cinematica|| Input.GetAxisRaw("AtaqueDebil") != 0 && logo && cinematica)
+        {
+            menuManager.cinematicaInicial.Pause();
+            //Invoke("CinematicaTrue", 1.0f);
+            SceneManager.LoadScene("Gameplay");
+            Time.timeScale = 1;
+            Cursor.visible = false;
+            MyGameSettings.getInstance().gameStarted = true;
+            MyGameSettings.getInstance().logoPlayed = true;
+            MyGameSettings.getInstance().menuAnim.firstTime = true;
         }
         if (options.currentcontrol == 0)
         {
