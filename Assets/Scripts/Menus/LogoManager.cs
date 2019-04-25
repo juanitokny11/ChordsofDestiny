@@ -51,9 +51,7 @@ public class LogoManager : MonoBehaviour
         fademusica.SetActive(true);
         musica.Play();
         logo = true;
-        
     }
-    
     private void Update()
     {
         
