@@ -90,6 +90,7 @@ public class AttackUniversal : MonoBehaviour
                         damage = 3;
                         healthScript.hitsCount++;
                         counterhits = 0;
+                        healthScript.audios.Play(Random.Range(0, 3), 1);
                     }
                     healthScript.solo += damage;
                     healthUI.DisplaySolo(healthScript.solo / 2);

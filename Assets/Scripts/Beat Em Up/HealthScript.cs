@@ -31,6 +31,7 @@ public class HealthScript : MonoBehaviour
     public int hitCounter;
     public int hitsCount;
     public bool oneTime;
+    public SoundPlayer audios;
 
     public bool is_Player,is_Boss,is_Enemy;
     public void Start()
@@ -42,6 +43,7 @@ public class HealthScript : MonoBehaviour
         enemyUI = GameObject.FindObjectOfType<LifeControler>();
         if (is_Player)
         {
+            audios = GameObject.FindObjectOfType<SoundPlayer>();
             //attack = GetComponentInChildren<AttackUniversal>();
             score.SetActive(false);
             health_UI = GetComponent<HealthUI>();
