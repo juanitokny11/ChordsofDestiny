@@ -248,7 +248,6 @@ public class BossIA : MonoBehaviour
     }
     public void Death()
     {
-       Instantiate(llave, llavePos.position, Quaternion.identity);
         this.enabled = false;
     }
     void SetAttack()
@@ -328,5 +327,9 @@ public class BossIA : MonoBehaviour
     {
         outside = false;
         invoke = false;
+    }
+    public void InstantiateTarjeta()
+    {
+        Instantiate(llave, llavePos.position, Quaternion.identity);
     }
 }
