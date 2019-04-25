@@ -90,14 +90,6 @@ public class EnemyMovement : MonoBehaviour
     }
     void Update()
     {
-        /*if (col.enabled)
-        {
-            enemyLife.SetActive(true);
-        }
-        else if (!col.enabled)
-        {
-            enemyLife.SetActive(false);
-        }*/
         if (playerTarget.GetComponent<PlayerMovementBeat>().is_Dead)
             this.enabled = false;
         default_Attack_Time = Random.Range(3.0f, 6.0f);
@@ -113,7 +105,7 @@ public class EnemyMovement : MonoBehaviour
     }
     void FollowTarget()
     {
-        if (!followPlayer || healthScript.characterDied  || !BeatEmupManager.instance.godmode)
+        if (!followPlayer || healthScript.characterDied  || !BeatEmupManager.instance.godmode|| !BeatEmupManager.instance.pause)
         {
             speed = 0;
             return;
@@ -156,7 +148,7 @@ public class EnemyMovement : MonoBehaviour
     }
     void Attack()
     {
-        if (!attackPlayer || healthScript.characterDied == true)
+        if (!attackPlayer || healthScript.characterDied == true || !BeatEmupManager.instance.pause)
             return;
         current_Attack_Time += Time.deltaTime;
         if (current_Attack_Time > default_Attack_Time)

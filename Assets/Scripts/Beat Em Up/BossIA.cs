@@ -130,6 +130,8 @@ public class BossIA : MonoBehaviour
     }
     void Attack()
     {
+        if (!BeatEmupManager.instance.pause)
+            return;
         if (enemyHealth.HealthBar.fillAmount <= 0.35)
         {
             enemyAnim.RomperEspada();
@@ -152,7 +154,7 @@ public class BossIA : MonoBehaviour
     }
     void DefaultState()
     {
-        if (!followPlayer || healthScript.characterDied)
+        if (!followPlayer || healthScript.characterDied || !BeatEmupManager.instance.pause )
         {
             speed = 0;
             return;
@@ -218,6 +220,8 @@ public class BossIA : MonoBehaviour
     }
     void Invoke()
     {
+        if (!BeatEmupManager.instance.pause)
+            return;
         if (fase == 1)
         {
             invokeEnemy=Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[0].position, Quaternion.identity);
@@ -248,7 +252,6 @@ public class BossIA : MonoBehaviour
     }
     public void Death()
     {
-       Instantiate(llave, llavePos.position, Quaternion.identity);
         this.enabled = false;
     }
     void SetAttack()
@@ -328,5 +331,9 @@ public class BossIA : MonoBehaviour
     {
         outside = false;
         invoke = false;
+    }
+    public void InstantiateTarjeta()
+    {
+        Instantiate(llave, llavePos.position, Quaternion.identity);
     }
 }

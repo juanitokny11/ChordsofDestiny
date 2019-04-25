@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class BattleZone : MonoBehaviour
 {
@@ -49,6 +50,7 @@ public class BattleZone : MonoBehaviour
             }
             if (BeatEmupManager.instance.pause == true)
             {
+                musica.DOFade(0.4f, 5f);
                 musica.Play();
             }
         }
@@ -65,6 +67,7 @@ public class BattleZone : MonoBehaviour
             {
                 EnemyUI.SetActive(false);
                 Invoke("UnlockCamera", 1f);
+                musica.DOFade(0.4f, 5f);
                 musica.Pause();
                 SetGo();
                 Invoke("StopGo", 3f);

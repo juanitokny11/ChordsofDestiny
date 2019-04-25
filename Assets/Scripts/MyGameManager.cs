@@ -112,7 +112,6 @@ public class MyGameManager : MonoBehaviour
             }
             if (pause == true)
             {
-                
                 if (Input.GetMouseButtonDown(0) || Input.GetAxisRaw("AtaqueDebil") != 0)
                 {
                     pers.SetBool("Debil", true);
@@ -130,7 +129,6 @@ public class MyGameManager : MonoBehaviour
                     arma.transform.tag = "pesado";
                     Invoke("ResetTag", 1);
                     audios.Play(3, 1);
-                   
                 }
                 if (Input.GetMouseButtonDown(2) || Input.GetAxisRaw("Evadir") != 0 && Input.GetAxisRaw("Disparar") != 0)
                 {

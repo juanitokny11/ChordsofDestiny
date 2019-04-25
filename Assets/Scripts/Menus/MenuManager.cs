@@ -2,23 +2,57 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 
 public class MenuManager : MonoBehaviour {
 
     public Animator cam_Anim;
-    
+    public LogoManager logoManager;
+    public MenuAnim menuAnim;
+    public bool is_MainMenu = false;
+    public VideoPlayer cinematicaInicial;
+
     public void Start()
     {
-        Cursor.visible = true;
+        if (is_MainMenu)
+        {
+            Cursor.visible = true;
+            cinematicaInicial.gameObject.SetActive(false);
+        } 
     }
-    public void PlayGame()
+    IEnumerator waitForMovieEnd()
     {
-        SceneManager.LoadScene("Gameplay");
-        Time.timeScale=1;
+
+        while (cinematicaInicial.isPlaying) // while the movie is playing
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        // after movie is not playing / has stopped.
+        onMovieEnded();
+    }
+
+    void onMovieEnded()
+    {
+        cinematicaInicial.Pause();
+        Time.timeScale = 1;
         Cursor.visible = false;
         MyGameSettings.getInstance().gameStarted = true;
         MyGameSettings.getInstance().logoPlayed = true;
         MyGameSettings.getInstance().menuAnim.firstTime = true;
+        SceneManager.LoadScene("Gameplay");
+    }
+    public void PlayGame()
+    {
+        cinematicaInicial.gameObject.SetActive(true);
+        cinematicaInicial.Play();
+        StartCoroutine("waitForMovieEnd");
+        logoManager.cinematica = true;
+        MyGameSettings.getInstance().menuAnim.Anim = true;
+        MyGameSettings.getInstance().menuAnim.firstTime = true;
+    }
+    private void EndCinematica(VideoPlayer source)
+    {
+        
     }
     public void EndGame()
     {
@@ -61,6 +95,7 @@ public class MenuManager : MonoBehaviour {
         SceneManager.LoadScene("New Scene");
         Cursor.visible = true;
         Time.timeScale=1;
+        //cinematicaInicial.gameObject.SetActive(false);
         MyGameSettings.getInstance().menuAnim.firstTime = true;
         MyGameSettings.getInstance().menuAnim.Anim = true;
         MyGameSettings.getInstance().gameStarted = true;

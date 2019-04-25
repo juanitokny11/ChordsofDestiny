@@ -7,12 +7,13 @@ using UnityEngine.SceneManagement;
 
 public class LogoManager : MonoBehaviour
 {
-    public VideoPlayer video;
+    public VideoPlayer logoVideo;
     public GameObject titleText;
     public GameObject menu;
     public GameObject title;
     public GameObject Optionsmenu;
     public OptionsManager options;
+    public MenuManager menuManager;
     public AudioSource musica;
     //public AudioSource musicaoptions;
     public GameObject fademusica;
@@ -21,6 +22,7 @@ public class LogoManager : MonoBehaviour
     public MenuAnim optionsAnim;
     public bool extras=true;
     bool logo = false;
+    public bool cinematica = false;
     private void Awake()
     {
         //menu.SetActive(false);
@@ -28,21 +30,22 @@ public class LogoManager : MonoBehaviour
     void Start()
     {
         Cursor.visible = false;
-        video.loopPointReached += EndVideo;
+        logoVideo.loopPointReached += EndVideo;
         if (MyGameSettings.getInstance().logoPlayed == true)
         {
-            video.gameObject.SetActive(false);
+            logoVideo.gameObject.SetActive(false);
             MainMenu();
             musica.volume = 0.3f;
             Cursor.visible = true;
             //fademusica.SetActive(true);
             musica.Play();
             logo = true;
+            cinematica = true;
         }
     }
     private void EndVideo(VideoPlayer source)
     {
-        video.gameObject.SetActive(false);
+        logoVideo.gameObject.SetActive(false);
         title.SetActive(true);
         titleText.SetActive(true);
         fademusica.SetActive(true);
@@ -51,11 +54,23 @@ public class LogoManager : MonoBehaviour
     }
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Return) && logo==true || Input.GetAxisRaw("AtaqueDebil") != 0 && logo == true)
+        
+        if (Input.GetKeyDown(KeyCode.Return) && logo && !cinematica || Input.GetAxisRaw("AtaqueDebil") != 0 && logo && !cinematica)
         {
             MainMenu();
             Cursor.visible = true;
             MyGameSettings.getInstance().logoPlayed = true;
+        }
+        if (Input.GetKeyDown(KeyCode.Return) && logo && cinematica|| Input.GetAxisRaw("AtaqueDebil") != 0 && logo && cinematica)
+        {
+            menuManager.cinematicaInicial.Pause();
+            //Invoke("CinematicaTrue", 1.0f);
+            SceneManager.LoadScene("Gameplay");
+            Time.timeScale = 1;
+            Cursor.visible = false;
+            MyGameSettings.getInstance().gameStarted = true;
+            MyGameSettings.getInstance().logoPlayed = true;
+            MyGameSettings.getInstance().menuAnim.firstTime = true;
         }
         if (options.currentcontrol == 0)
         {
@@ -78,6 +93,10 @@ public class LogoManager : MonoBehaviour
             options.controls[2].SetActive(true);
             options.texto.text = "Ps4";
         }
+    }
+    void CinematicaTrue()
+    {
+        cinematica = true;
     }
     // Update is called once per frame
     private void MainMenu()
