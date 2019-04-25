@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class LogoManager : MonoBehaviour
 {
-    public VideoPlayer video;
+    public VideoPlayer logoVideo;
+    public VideoPlayer cinematicaInicial;
     public GameObject titleText;
     public GameObject menu;
     public GameObject title;
@@ -21,6 +22,7 @@ public class LogoManager : MonoBehaviour
     public MenuAnim optionsAnim;
     public bool extras=true;
     bool logo = false;
+    bool cinematica = false;
     private void Awake()
     {
         //menu.SetActive(false);
@@ -28,30 +30,57 @@ public class LogoManager : MonoBehaviour
     void Start()
     {
         Cursor.visible = false;
-        video.loopPointReached += EndVideo;
-        if (MyGameSettings.getInstance().logoPlayed == true)
+        logoVideo.loopPointReached += EndCinematica;
+        if (MyGameSettings.getInstance().logoPlayed == true && MyGameSettings.getInstance().cinematicaPlayed==true)
         {
-            video.gameObject.SetActive(false);
+            logoVideo.gameObject.SetActive(false);
+            cinematicaInicial.gameObject.SetActive(false);
             MainMenu();
             musica.volume = 0.3f;
             Cursor.visible = true;
             //fademusica.SetActive(true);
             musica.Play();
             logo = true;
+            cinematica = true;
         }
     }
     private void EndVideo(VideoPlayer source)
     {
-        video.gameObject.SetActive(false);
+        //logoVideo.gameObject.SetActive(false);
+        cinematicaInicial.gameObject.SetActive(false);
         title.SetActive(true);
         titleText.SetActive(true);
         fademusica.SetActive(true);
         musica.Play();
+        cinematica = true;
+    }
+    private void EndCinematica(VideoPlayer source)
+    {
+        logoVideo.gameObject.SetActive(false);
+        cinematicaInicial.gameObject.SetActive(true);
+        //logoVideo.gameObject.SetActive(false);
+        //title.SetActive(true);
+        //titleText.SetActive(true);
+        //fademusica.SetActive(true);
+        //musica.Play();
         logo = true;
     }
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Return) && logo==true || Input.GetAxisRaw("AtaqueDebil") != 0 && logo == true)
+        cinematicaInicial.loopPointReached += EndVideo;
+        if (Input.GetKeyDown(KeyCode.Return) && logo == true  || Input.GetAxisRaw("AtaqueDebil") != 0 && logo == true )
+        {
+            cinematicaInicial.gameObject.SetActive(false);
+            title.SetActive(true);
+            titleText.SetActive(true);
+            fademusica.SetActive(true);
+            musica.Play();
+            Cursor.visible = true;
+            MyGameSettings.getInstance().logoPlayed = true;
+            MyGameSettings.getInstance().cinematicaPlayed = true;
+            Invoke("CinematicaTrue", 1.0f);
+        }
+        if (Input.GetKeyDown(KeyCode.Return) && logo==true && cinematica==true || Input.GetAxisRaw("AtaqueDebil") != 0 && logo == true && cinematica==true)
         {
             MainMenu();
             Cursor.visible = true;
@@ -78,6 +107,10 @@ public class LogoManager : MonoBehaviour
             options.controls[2].SetActive(true);
             options.texto.text = "Ps4";
         }
+    }
+    void CinematicaTrue()
+    {
+        cinematica = true;
     }
     // Update is called once per frame
     private void MainMenu()
