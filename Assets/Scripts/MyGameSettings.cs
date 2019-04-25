@@ -17,6 +17,7 @@ public class MyGameSettings : MonoBehaviour {
 	public float effectsVol=0.5f;
     public bool gameStarted=false;
     public bool logoPlayed=false;
+    public bool cinematicaPlayed = false;
     public MenuAnim menuAnim;
     public int score;
 
