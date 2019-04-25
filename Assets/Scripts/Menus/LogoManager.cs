@@ -30,7 +30,7 @@ public class LogoManager : MonoBehaviour
     void Start()
     {
         Cursor.visible = false;
-        logoVideo.loopPointReached += EndCinematica;
+        logoVideo.loopPointReached += EndVideo;
         if (MyGameSettings.getInstance().logoPlayed == true && MyGameSettings.getInstance().cinematicaPlayed==true)
         {
             logoVideo.gameObject.SetActive(false);
@@ -41,46 +41,34 @@ public class LogoManager : MonoBehaviour
             //fademusica.SetActive(true);
             musica.Play();
             logo = true;
-            cinematica = true;
+
         }
     }
     private void EndVideo(VideoPlayer source)
     {
-        //logoVideo.gameObject.SetActive(false);
-        cinematicaInicial.gameObject.SetActive(false);
+        logoVideo.gameObject.SetActive(false);
         title.SetActive(true);
         titleText.SetActive(true);
         fademusica.SetActive(true);
         musica.Play();
-        cinematica = true;
+        logo = true;
+        
     }
     private void EndCinematica(VideoPlayer source)
     {
-        logoVideo.gameObject.SetActive(false);
-        cinematicaInicial.gameObject.SetActive(true);
-        //logoVideo.gameObject.SetActive(false);
-        //title.SetActive(true);
-        //titleText.SetActive(true);
-        //fademusica.SetActive(true);
-        //musica.Play();
-        logo = true;
+        cinematicaInicial.gameObject.SetActive(false);
+        Invoke("CinematicaTrue", 1.0f);
+        SceneManager.LoadScene("Gameplay");
+        Time.timeScale = 1;
+        Cursor.visible = false;
+        MyGameSettings.getInstance().gameStarted = true;
+        MyGameSettings.getInstance().logoPlayed = true;
+        MyGameSettings.getInstance().menuAnim.firstTime = true;
     }
     private void Update()
     {
-        cinematicaInicial.loopPointReached += EndVideo;
-        if (Input.GetKeyDown(KeyCode.Return) && logo == true  || Input.GetAxisRaw("AtaqueDebil") != 0 && logo == true )
-        {
-            cinematicaInicial.gameObject.SetActive(false);
-            title.SetActive(true);
-            titleText.SetActive(true);
-            fademusica.SetActive(true);
-            musica.Play();
-            Cursor.visible = true;
-            MyGameSettings.getInstance().logoPlayed = true;
-            MyGameSettings.getInstance().cinematicaPlayed = true;
-            Invoke("CinematicaTrue", 1.0f);
-        }
-        if (Input.GetKeyDown(KeyCode.Return) && logo==true && cinematica==true || Input.GetAxisRaw("AtaqueDebil") != 0 && logo == true && cinematica==true)
+        cinematicaInicial.loopPointReached += EndCinematica;
+        if (Input.GetKeyDown(KeyCode.Return) && logo==true  || Input.GetAxisRaw("AtaqueDebil") != 0 && logo == true)
         {
             MainMenu();
             Cursor.visible = true;

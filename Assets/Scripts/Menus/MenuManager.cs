@@ -6,18 +6,19 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour {
 
     public Animator cam_Anim;
+    public LogoManager LogoManager;
+    public MenuAnim menuAnim;
     
     public void Start()
     {
         Cursor.visible = true;
+        //LogoManager = GameObject.FindObjectOfType<LogoManager>();
     }
     public void PlayGame()
     {
-        SceneManager.LoadScene("Gameplay");
-        Time.timeScale=1;
-        Cursor.visible = false;
-        MyGameSettings.getInstance().gameStarted = true;
-        MyGameSettings.getInstance().logoPlayed = true;
+        LogoManager.cinematicaInicial.gameObject.SetActive(true);
+        LogoManager.cinematicaInicial.Play();
+        MyGameSettings.getInstance().menuAnim.Anim = true;
         MyGameSettings.getInstance().menuAnim.firstTime = true;
     }
     public void EndGame()
