@@ -72,7 +72,7 @@ public class TptoBossBattle : MonoBehaviour
     }
     void ActivateBossMusic()
     {
-        musicBoss.DOFade(0.4f, 5f);
+        musicBoss.DOFade(0.7f, 2f);
         musicBoss.Play();
     }
 }

@@ -20,6 +20,7 @@ public class CharacterAnimationDelegate : MonoBehaviour
     public CapsuleCollider mycol;
     public GameObject espadaanimada;
     public SkinnedMeshRenderer groupie;
+    public PlayerAttack2 playerAttack;
     public CapsuleCollider groupiecol;
     public EnemyMovement groupieEnemy;
     public BossIA bossIA;
@@ -57,6 +58,7 @@ public class CharacterAnimationDelegate : MonoBehaviour
         }
         else
         {
+            playerAttack = GetComponent<PlayerAttack2>();
             player_Move = GetComponent<PlayerMovementBeat>();
             jumpefect = GetComponentInChildren<ParticleSystem>();
             clips = GetComponentInChildren<SoundPlayer>();
@@ -242,6 +244,7 @@ public class CharacterAnimationDelegate : MonoBehaviour
     {
         clips.Play(4, 1);
         jumpefect.Play();
+        playerAttack.current_Combo_State = PlayerAttack2.ComboState.NONE;
     }
     public void Lost()
     {

@@ -23,10 +23,7 @@ public class AttackUniversal : MonoBehaviour
     public Collider[] hit;
     public float counterhits = 0f;
     public AudioSource block1;
-    public List<AudioSource> audios;
-    public int random;
-    public int random2;
-
+    
     private void Start()
     {
         lifeControler = GameObject.FindObjectOfType<LifeControler>();
@@ -41,8 +38,7 @@ public class AttackUniversal : MonoBehaviour
     void Update()
     {
         DetectColision();
-        random = Random.Range(0, 3);
-        random2 = Random.Range(3,6);
+        
     }
     void DetectColision()
     {
@@ -90,14 +86,12 @@ public class AttackUniversal : MonoBehaviour
                         damage = 4;
                         healthScript.hitsCount++;
                         counterhits = 0;
-                        audios[random2].Play();
                     }
                     else if (gameObject.CompareTag("ligero"))
                     {
                         damage = 3;
                         healthScript.hitsCount++;
                         counterhits = 0;
-                        audios[random].Play();
                     }
                     healthScript.solo += damage;
                     healthUI.DisplaySolo(healthScript.solo / 2);

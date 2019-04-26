@@ -50,7 +50,7 @@ public class BattleZone : MonoBehaviour
             }
             if (BeatEmupManager.instance.pause == true)
             {
-                musica.DOFade(0.4f, 5f);
+                musica.DOFade(0.17f, 2f);
                 musica.Play();
             }
         }
