@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 
 public class BeatEmupManager : MonoBehaviour
 {
@@ -30,6 +31,11 @@ public class BeatEmupManager : MonoBehaviour
     {
         Player = GameObject.FindGameObjectWithTag("Player");
         Cursor.visible = false;
+        if (BeatEmupManager.instance.pause == true)
+        {
+            musicGameplay.DOFade(0.17f, 2f);
+            musicGameplay.Play();
+        }
     }
     void Update()
     {
@@ -55,6 +61,7 @@ public class BeatEmupManager : MonoBehaviour
             closePause.Play();
             //pauseMenuPrincial.SetBool("Pausa", true);
             Cursor.visible = false;
+            musicGameplay.mute = false;
             //notas.SetActive(false);
             Invoke("TakeoFFMenu", 0.2f);
             pause = true;
@@ -64,6 +71,7 @@ public class BeatEmupManager : MonoBehaviour
             openPause.Play();
             //pauseMenuPrincial.SetBool("Pausa", false);
             //notas.SetActive(true);
+            musicGameplay.mute = true;
             Cursor.visible = true;
             Invoke("TakeONMenu", 0.2f);
             pause = false; 

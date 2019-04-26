@@ -48,11 +48,6 @@ public class BattleZone : MonoBehaviour
                 UI.GetComponent<Image>().fillAmount = Player.health + 10/100;
                 Player.health = Player.health + 10;
             }
-            if (BeatEmupManager.instance.pause == true)
-            {
-                musica.DOFade(0.17f, 2f);
-                musica.Play();
-            }
         }
     }
     void Update()

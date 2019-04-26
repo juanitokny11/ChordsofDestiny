@@ -62,6 +62,7 @@ public class DeleteAndRotateObjects:MonoBehaviour {
     public void EndGame()
     {
         Destroy(gameObject);
+        Cursor.visible = true;
         SceneManager.LoadScene("Victory");
     }
 }

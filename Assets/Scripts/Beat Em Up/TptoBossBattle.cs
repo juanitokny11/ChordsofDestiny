@@ -26,7 +26,7 @@ public class TptoBossBattle : MonoBehaviour
         cinematicaBoss.loopPointReached += onMovieEnded;
         if (changeMusic == true)
         {
-            //musicGameplay.GetComponent<AudioSource>().enabled = false;
+            BeatEmupManager.instance.musicGameplay.Stop();
             //ActivateBossMusic();
             if(BossLife!=null)
             BossLife.enabled = true;
