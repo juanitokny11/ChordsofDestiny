@@ -10,7 +10,7 @@ public class LogoManager : MonoBehaviour
     public VideoPlayer logoVideo;
     public GameObject titleText;
     public GameObject menu;
-    public GameObject title;
+    public VideoPlayer title;
     public GameObject Optionsmenu;
     public OptionsManager options;
     public MenuManager menuManager;
@@ -25,6 +25,8 @@ public class LogoManager : MonoBehaviour
     public bool cinematica = false;
     private void Awake()
     {
+        logoVideo.Prepare();
+        title.Prepare();
         //menu.SetActive(false);
     }
     void Start()
@@ -46,7 +48,7 @@ public class LogoManager : MonoBehaviour
     private void EndVideo(VideoPlayer source)
     {
         logoVideo.gameObject.SetActive(false);
-        title.SetActive(true);
+        title.gameObject.SetActive(true);
         titleText.SetActive(true);
         fademusica.SetActive(true);
         musica.Play();
@@ -101,7 +103,7 @@ public class LogoManager : MonoBehaviour
     // Update is called once per frame
     private void MainMenu()
     {
-        title.SetActive(false);
+        title.gameObject.SetActive(false);
         titleText.SetActive(false);
         menu.GetComponent<Canvas>().enabled = true;
     }

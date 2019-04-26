@@ -17,6 +17,7 @@ public class TptoBossBattle : MonoBehaviour
     public bool changeMusic=false;
     public void Start()
     {
+        cinematicaBoss.Prepare();
         camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ShakeCamera>();
         Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementBeat>();
     }

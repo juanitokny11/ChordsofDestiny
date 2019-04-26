@@ -18,6 +18,7 @@ public class MenuManager : MonoBehaviour {
         {
             Cursor.visible = true;
             cinematicaInicial.gameObject.SetActive(false);
+            cinematicaInicial.Prepare();
         } 
     }
     IEnumerator waitForMovieEnd()
