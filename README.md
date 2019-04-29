@@ -5,7 +5,7 @@ Inserte logo
 
 En el año 2037 Jimmy John es nombrado del rey del rock.
 
-	Año 2047, una noche entran en la mansión de Jimmy John, previniendo al peligro que sabía que se enfrentaba encerró a su hijo en el sótano para protegerlo. 
+Año 2047, una noche entran en la mansión de Jimmy John, previniendo al peligro que sabía que se enfrentaba encerró a su hijo en el sótano para protegerlo. 
 Esa noche asesinaron a Jimmy John dejando a Steve, su hijo, solo.
 
 Año 2055 todo el mundo había cambiado radicalmente desde aquel día, el músico más popular del momento se presentó a gobernador que acabó transformándose en dictador. Decidió cambiar toda la distribución. Hizo construir una estructura con forma de anillo con nueve subniveles, clasificó a la población por género de música. Cada rey de un estilo de música se designó como presidente de la facción del género que le representaba.
