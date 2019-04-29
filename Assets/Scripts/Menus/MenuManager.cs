@@ -51,10 +51,6 @@ public class MenuManager : MonoBehaviour {
         MyGameSettings.getInstance().menuAnim.Anim = true;
         MyGameSettings.getInstance().menuAnim.firstTime = true;
     }
-    private void EndCinematica(VideoPlayer source)
-    {
-        
-    }
     public void EndGame()
     {
         Application.Quit();

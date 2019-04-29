@@ -7,7 +7,7 @@ using DG.Tweening;
 public class BattleZone : MonoBehaviour
 {
     //private BoxCollider colider;
-    public new GameObject camera;
+    public ShakeCamera camera;
     public GameObject UI;
     public GameObject score;
     public GameObject EnemyUI;
@@ -25,7 +25,7 @@ public class BattleZone : MonoBehaviour
     private void Start()
     {
         //colider = GetComponent<BoxCollider>();
-        camera = GameObject.FindGameObjectWithTag("MainCamera");
+        camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ShakeCamera>();
         enemiescounter = enemies.Count;
         Player = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthScript>();
     }
@@ -79,7 +79,8 @@ public class BattleZone : MonoBehaviour
     }
     void UnlockCamera()
     {
-        camera.GetComponent<ShakeCamera>().lockCamera = false;
+        camera.ToUnlock();
+        Invoke("UnlockCam",2f);
         // camera.GetComponent<ShakeCamera>().enemiesdied = true;
     }
     void SetGo()
@@ -107,5 +108,9 @@ public class BattleZone : MonoBehaviour
     private void Destroy()
     {
         Destroy(gameObject);
+    }
+    private void UnlockedCam()
+    {
+        camera.lockCamera = false;
     }
 }

@@ -33,6 +33,7 @@ public class BeatEmupManager : MonoBehaviour
         Cursor.visible = false;
         if (BeatEmupManager.instance.pause == true)
         {
+            //ESTO ES PARA CAMBIAR EL VOLUMEN DE LA MUSICA DE GAMEPLAY
             musicGameplay.DOFade(0.17f, 2f);
             musicGameplay.Play();
         }

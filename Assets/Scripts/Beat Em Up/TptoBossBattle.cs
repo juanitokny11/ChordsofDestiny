@@ -73,6 +73,7 @@ public class TptoBossBattle : MonoBehaviour
     }
     void ActivateBossMusic()
     {
+        //ESTO CONTROLA EL VOLUMEN DE LA MUSICA DEL BOSS
         musicBoss.DOFade(0.7f, 2f);
         musicBoss.Play();
     }

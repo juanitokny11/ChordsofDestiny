@@ -29,8 +29,8 @@ public class ShakeCamera : MonoBehaviour
             Unlock();
         else if (lockCamera)
             Lock();
-        else if (!lockCamera && enemiesdied)
-            ToUnlock();
+        /*else if (lockCamera && enemiesdied)
+            ToUnlock();*/
         Shake();
     }
     public void Shake()
@@ -50,7 +50,7 @@ public class ShakeCamera : MonoBehaviour
         }
     }
     public void Unlock()
-    {
+    { 
         transform.position = new Vector3(player.transform.position.x + offset.x, transform.position.y, transform.position.z);
         col1.enabled = false;
         col2.enabled = false;
@@ -63,8 +63,7 @@ public class ShakeCamera : MonoBehaviour
     }
     public void ToUnlock()
     {
-        transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x + offset.x, transform.position.y, transform.position.z), 0.5f);
-        Invoke("EnemiesDied", 1.5f);
+        transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x + offset.x, transform.position.y, transform.position.z), 1f);
     }
     public bool ShouldShake
     {
