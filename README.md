@@ -1,5 +1,5 @@
 # ChordsofDestiny
-Inserte logo
+![](https://github.com/juanitokny11/ChordsofDestiny/commit/50a736c6a6ca44c115263bd734b413e5af43608f)
 
 ## Sinopsis
 
