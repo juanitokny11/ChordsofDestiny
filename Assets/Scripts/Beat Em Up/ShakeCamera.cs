@@ -16,6 +16,9 @@ public class ShakeCamera : MonoBehaviour
     private Vector3 startPosition;
     public GameObject player;       //Public variable to store a reference to the player game object
     private Vector3 offset;         //Private variable to store the offset distance between the player and camera
+
+    private float timeCounter = 0;
+    public float smoothTime = 1.0f;
     void Start()
     {
         offset = transform.position - player.transform.position;
@@ -29,8 +32,8 @@ public class ShakeCamera : MonoBehaviour
             Unlock();
         else if (lockCamera)
             Lock();
-        /*else if (lockCamera && enemiesdied)
-            ToUnlock();*/
+        else if (!lockCamera && enemiesdied)
+            ToUnlock();
         Shake();
     }
     public void Shake()
@@ -63,7 +66,14 @@ public class ShakeCamera : MonoBehaviour
     }
     public void ToUnlock()
     {
-        transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x + offset.x, transform.position.y, transform.position.z), 1f);
+        transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x + offset.x, transform.position.y, transform.position.z), timeCounter);
+
+        timeCounter += Time.deltaTime * smoothTime;
+        if(timeCounter >= 1.0f)
+        {
+            timeCounter = 0;
+            EnemiesDied();
+        }
     }
     public bool ShouldShake
     {

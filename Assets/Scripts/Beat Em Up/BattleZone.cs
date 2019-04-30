@@ -79,9 +79,10 @@ public class BattleZone : MonoBehaviour
     }
     void UnlockCamera()
     {
-        camera.ToUnlock();
-        Invoke("UnlockCam",2f);
-        // camera.GetComponent<ShakeCamera>().enemiesdied = true;
+        //camera.ToUnlock();
+        //Invoke("UnlockCam",2f);
+        camera.enemiesdied = true;
+        camera.lockCamera = false;
     }
     void SetGo()
     {
@@ -108,9 +109,5 @@ public class BattleZone : MonoBehaviour
     private void Destroy()
     {
         Destroy(gameObject);
-    }
-    private void UnlockedCam()
-    {
-        camera.lockCamera = false;
     }
 }

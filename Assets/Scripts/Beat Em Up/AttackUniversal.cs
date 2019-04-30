@@ -21,6 +21,7 @@ public class AttackUniversal : MonoBehaviour
     public GameObject block_Fx_Prefab;
     public GameObject block2_Fx_Prefab;
     public Collider[] hit;
+    public SkinnedMeshRenderer rend;
     public float counterhits = 0f;
     public AudioSource block1;
     
@@ -63,7 +64,12 @@ public class AttackUniversal : MonoBehaviour
                     counterhits = 0;
                     healthScript.solo += damage;
                     healthUI.DisplaySolo(healthScript.solo / 2);
-                    //hit[0].GetComponent<BoxCollider>().enabled = true;
+                    rend = hit[0].GetComponentInChildren<SkinnedMeshRenderer>();
+                    MaterialPropertyBlock block = new MaterialPropertyBlock();
+                    rend.GetPropertyBlock(block);
+                    block.SetColor("_Color", Color.red);
+                    rend.SetPropertyBlock(block);
+                    Invoke("ReturnColor", 0.15f);
                     if (hit[0].gameObject.tag == "Enemy")
                         lifeControler.ShowDamagedUI(hit[0].gameObject.GetComponent<HealthScript>().health,hit[0].gameObject.GetComponent<EnemyMovement>().gname.ToString());
                 }
@@ -76,6 +82,12 @@ public class AttackUniversal : MonoBehaviour
                     hit[0].GetComponent<HealthScript>().ApplyDamage(damage, true, false);
                     healthScript.inAir = true;
                     //hit[0].GetComponent<BoxCollider>().enabled = true;
+                    rend = hit[0].GetComponentInChildren<SkinnedMeshRenderer>();
+                    MaterialPropertyBlock block = new MaterialPropertyBlock();
+                    rend.GetPropertyBlock(block);
+                    block.SetColor("_Color", Color.red);
+                    rend.SetPropertyBlock(block);
+                    Invoke("ReturnColor", 0.15f);
                     if (hit[0].gameObject.tag == "Enemy")
                         lifeControler.ShowDamagedUI(hit[0].gameObject.GetComponent<HealthScript>().health, hit[0].gameObject.GetComponent<EnemyMovement>().gname.ToString());
                 }
@@ -97,7 +109,13 @@ public class AttackUniversal : MonoBehaviour
                     healthUI.DisplaySolo(healthScript.solo / 2);
                     hit[0].GetComponent<HealthScript>().ApplyDamage(damage, false, false);
                     //hit[0].GetComponent<BoxCollider>().enabled = true;
-                    if(hit[0].gameObject.tag=="Enemy")
+                    rend = hit[0].GetComponentInChildren<SkinnedMeshRenderer>();
+                    MaterialPropertyBlock block = new MaterialPropertyBlock();
+                    rend.GetPropertyBlock(block);
+                    block.SetColor("_Color", Color.red);
+                    rend.SetPropertyBlock(block);
+                    Invoke("ReturnColor", 0.15f);
+                    if (hit[0].gameObject.tag=="Enemy")
                         lifeControler.ShowDamagedUI(hit[0].gameObject.GetComponent<HealthScript>().health, hit[0].gameObject.GetComponent<EnemyMovement>().gname.ToString());
                 }
             }
@@ -199,10 +217,17 @@ public class AttackUniversal : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
-private void OnDrawGizmos()
-{
+    private void OnDrawGizmos()
+    {
     Gizmos.color = Color.red;
     Gizmos.DrawWireSphere(transform.position, radius);
-}
+    }
+    private void ReturnColor()
+    {
+        MaterialPropertyBlock block = new MaterialPropertyBlock();
+        rend.GetPropertyBlock(block);
+        block.Clear();
+        rend.SetPropertyBlock(block);
+    }
 }
 

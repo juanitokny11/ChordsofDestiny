@@ -19,6 +19,7 @@ public class PlayerMovementBeat : MonoBehaviour
     public bool move;
     public bool walk=false;
     public bool running;
+    public bool canRotate = true;
     public bool is_Dead=false;
     Quaternion actualrot;
     Vector3 newPosition;
@@ -93,14 +94,16 @@ public class PlayerMovementBeat : MonoBehaviour
                 {
                     actualrot = Quaternion.Euler(0, 0, 0);
                     walk = true;
-                    lockrotation = false;
+                    if(canRotate)
+                        lockrotation = false;
                 }
                 else if (Input.GetAxisRaw("Horizontal") < 0)
                 {
                     actualrot = Quaternion.Euler(0, 180, 0);
                     walk = true;
                     //newPosition.x -= animator.GetFloat("Walkspeed") * Time.deltaTime;
-                    lockrotation = true;
+                    if (canRotate)
+                        lockrotation = true;
                 }
                 else if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)
                 {
@@ -108,15 +111,18 @@ public class PlayerMovementBeat : MonoBehaviour
                     player_Anim.Run(false);
                     caminarS.Stop();
                 }
-                if (lockrotation == true)
+                if (canRotate)
                 {
-                    transform.rotation = Quaternion.Euler(0, 180, 0);
-                    transform.rotation = actualrot;
-                }
-                else
-                {
-                    transform.rotation = Quaternion.Euler(0, 0, 0);
-                    transform.rotation = actualrot;
+                    if (lockrotation == true)
+                    {
+                        transform.rotation = Quaternion.Euler(0, 180, 0);
+                        transform.rotation = actualrot;
+                    }
+                    else if (!lockrotation)
+                    {
+                        transform.rotation = Quaternion.Euler(0, 0, 0);
+                        transform.rotation = actualrot;
+                    }
                 }
                 transform.position = newPosition;
             }
@@ -146,10 +152,13 @@ public class PlayerMovementBeat : MonoBehaviour
     }
     void RotatePlayer()
     {
-        if (Input.GetAxisRaw("Horizontal") > 0)
-            transform.rotation = Quaternion.Euler(0f, -Mathf.Abs(rotation_Y), 0f);
-        else if (Input.GetAxisRaw("Horizontal") < 0)
-            transform.rotation = Quaternion.Euler(0f, Mathf.Abs(rotation_Y), 0f);
+        if (canRotate)
+        {
+            if (Input.GetAxisRaw("Horizontal") > 0)
+                transform.rotation = Quaternion.Euler(0f, -Mathf.Abs(rotation_Y), 0f);
+            else if (Input.GetAxisRaw("Horizontal") < 0)
+                transform.rotation = Quaternion.Euler(0f, Mathf.Abs(rotation_Y), 0f);
+        }
     }
     void AnimatePlayerRun()
     {

@@ -195,6 +195,7 @@ public class PlayerAttack2 : MonoBehaviour
                         shield.GetComponentInChildren<ParticleSystem>().Play();
                         shield.GetComponentInChildren<Transform>().Rotate(new Vector3(0, 180, 0));
                     }*/
+                    player_Move.canRotate = false;
                     player_Move.move = false;
                     player_Anim.Block();
                     guardCollider.enabled = true;
@@ -222,6 +223,7 @@ public class PlayerAttack2 : MonoBehaviour
                 {
                     //Destroy(shield);
                     player_Anim.ResetBlock();
+                    
                     guardCollider.enabled = false;
                     blockActivated = false;
                     current_Combo_State = ComboState.NONE;
@@ -250,6 +252,11 @@ public class PlayerAttack2 : MonoBehaviour
     public void AddToTheList(ComboState state)
     {
         attacks.Add(state);
+    }
+    public void CanRotate()
+    {
+        player_Move.canRotate = true;
+        player_Move.move = true;
     }
     private void ActivarColisiones()
     {
