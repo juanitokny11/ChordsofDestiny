@@ -5,6 +5,7 @@ using UnityEngine;
 public class Sound : MonoBehaviour
 {
    public AudioSource salidabos;
+    public AudioSource fuerteaire;
    public  List<AudioSource> debilaire;
     public int random;
     public bool hit = false;
@@ -22,6 +23,12 @@ public class Sound : MonoBehaviour
    {
         if(!hit)
             debilaire[random].Play();
+   }
+
+void airefuerte()
+   {
+        
+            fuerteaire.Play();
    }
 
     void andargroupie()
