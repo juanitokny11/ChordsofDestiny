@@ -49,13 +49,16 @@ public class AttackUniversal : MonoBehaviour
         {
             if (is_Player)
             {
-                Vector3 hitFx_Pos = hit[0].transform.position;
-                hitFx_Pos.y += 3f;
-                if (hit[0].transform.forward.x > 0)
-                    hitFx_Pos.x += 0.3f;
-                else if (hit[0].transform.forward.x < 0)
-                    hitFx_Pos.x -= 0.3f;
-                Instantiate(hit_Fx_Prefab, hitFx_Pos, Quaternion.identity);
+                if (hit[0].gameObject.tag != "bidon")
+                {
+                    Vector3 hitFx_Pos = hit[0].transform.position;
+                    hitFx_Pos.y += 3f;
+                    if (hit[0].transform.forward.x > 0)
+                        hitFx_Pos.x += 0.3f;
+                    else if (hit[0].transform.forward.x < 0)
+                        hitFx_Pos.x -= 0.3f;
+                    Instantiate(hit_Fx_Prefab, hitFx_Pos, Quaternion.identity);
+                }
                 if (gameObject.CompareTag("Tirar"))
                 {
                     healthScript.inAir = false;
@@ -228,10 +231,27 @@ public class AttackUniversal : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
-    public void Explode()
-    {
 
-        Invoke("Destroy", 0.5f);
+    void Blink()
+    {
+        if (Time.fixedTime % .5 < .2)
+        {
+            hit[0].gameObject.SetActive(false);
+        }
+        else
+        {
+            hit[0].gameObject.SetActive(true);
+        }
+    }
+        public void Explode()
+    {
+        InvokeRepeating("Blink", 0.1f, 0.1f);
+        Invoke("StopBlink",3f);
+    }
+    public void StopBlink()
+    {
+        CancelInvoke("Blink");
+        Invoke("Destroy", 0.1f);
     }
     public void Destroy()
     {
