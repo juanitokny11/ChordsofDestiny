@@ -105,18 +105,29 @@ public class AttackUniversal : MonoBehaviour
                         healthScript.hitsCount++;
                         counterhits = 0;
                     }
-                    healthScript.solo += damage;
-                    healthUI.DisplaySolo(healthScript.solo / 2);
-                    hit[0].GetComponent<HealthScript>().ApplyDamage(damage, false, false);
-                    //hit[0].GetComponent<BoxCollider>().enabled = true;
-                    rend = hit[0].GetComponentInChildren<SkinnedMeshRenderer>();
-                    MaterialPropertyBlock block = new MaterialPropertyBlock();
-                    rend.GetPropertyBlock(block);
-                    block.SetColor("_Color", Color.red);
-                    rend.SetPropertyBlock(block);
-                    Invoke("ReturnColor", 0.15f);
-                    if (hit[0].gameObject.tag=="Enemy")
-                        lifeControler.ShowDamagedUI(hit[0].gameObject.GetComponent<HealthScript>().health, hit[0].gameObject.GetComponent<EnemyMovement>().gname.ToString());
+                    if (hit[0].gameObject.tag == "bidon")
+                    {
+                        hit[0].GetComponent<DeleteObjects>().vida--;
+                        if (hit[0].GetComponent<DeleteObjects>().vida <= 0)
+                        {
+                            Explode();
+                        }
+                    }
+                    else if (hit[0].gameObject.tag != "bidon")
+                    {
+                        healthScript.solo += damage;
+                        healthUI.DisplaySolo(healthScript.solo / 2);
+                        hit[0].GetComponent<HealthScript>().ApplyDamage(damage, false, false);
+                        //hit[0].GetComponent<BoxCollider>().enabled = true;
+                        rend = hit[0].GetComponentInChildren<SkinnedMeshRenderer>();
+                        MaterialPropertyBlock block = new MaterialPropertyBlock();
+                        rend.GetPropertyBlock(block);
+                        block.SetColor("_Color", Color.red);
+                        rend.SetPropertyBlock(block);
+                        Invoke("ReturnColor", 0.15f);
+                        if (hit[0].gameObject.tag == "Enemy")
+                            lifeControler.ShowDamagedUI(hit[0].gameObject.GetComponent<HealthScript>().health, hit[0].gameObject.GetComponent<EnemyMovement>().gname.ToString());
+                    }
                 }
             }
             if (is_Enemy)
@@ -217,6 +228,15 @@ public class AttackUniversal : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
+    public void Explode()
+    {
+
+        Invoke("Destroy", 0.5f);
+    }
+    public void Destroy()
+    {
+        Destroy(hit[0].gameObject);
+    }
     private void OnDrawGizmos()
     {
     Gizmos.color = Color.red;

@@ -13,6 +13,7 @@ public class BattleZone : MonoBehaviour
     public GameObject EnemyUI;
     public HealthScript Player;
     public BoxCollider enemyBlocker;
+    public AudioSource goSound;
     public bool bossZone;
    // public Text[] namesEnemies;
     //public Image[] lifeBars;
@@ -97,6 +98,7 @@ public class BattleZone : MonoBehaviour
         else
         {
             goImage.enabled = true;
+            goSound.Play();
         }
     }
     void StopGo()

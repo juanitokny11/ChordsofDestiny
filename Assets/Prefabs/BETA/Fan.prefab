@@ -191,6 +191,7 @@ MonoBehaviour:
     type: 3}
   block2_Fx_Prefab: {fileID: 0}
   hit: []
+  rend: {fileID: 0}
   counterhits: 0
   block1: {fileID: 4316930737681537861}
 --- !u!1 &8017991133832481613
@@ -779,6 +780,7 @@ MonoBehaviour:
   mycol: {fileID: 0}
   espadaanimada: {fileID: 0}
   groupie: {fileID: 0}
+  playerAttack: {fileID: 0}
   groupiecol: {fileID: 0}
   groupieEnemy: {fileID: 0}
   bossIA: {fileID: 0}
@@ -801,6 +803,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c91eba892efdd41889830f661e5570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 20
   health: 20
   solo: 0
   zone: {fileID: 0}
@@ -819,6 +822,7 @@ MonoBehaviour:
   hitCounter: 0
   hitsCount: 0
   oneTime: 0
+  audios: {fileID: 0}
   is_Player: 0
   is_Boss: 0
   is_Enemy: 1
@@ -854,7 +858,6 @@ MonoBehaviour:
   fanNames: []
   gname: 
   gimage: {fileID: 0}
-  attackColider: {fileID: 0}
   score: 15
   isGroupie: 0
   speed: 3

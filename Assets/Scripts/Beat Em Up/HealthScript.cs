@@ -6,7 +6,8 @@ using TMPro;
 
 public class HealthScript : MonoBehaviour
 {
-    public float health = 1f;
+    public float maxHealth;
+    public float health = 100f;
     public float solo = 0f;
     public BattleZone zone;
     public AttackUniversal attack;

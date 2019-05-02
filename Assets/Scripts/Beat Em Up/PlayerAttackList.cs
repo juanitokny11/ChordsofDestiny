@@ -23,8 +23,8 @@ public class PlayerAttackList : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        random = Random.Range(0, 3);
-        random2 = Random.Range(3, 6);
+        random = Random.Range(0, 6);
+        random2 = Random.Range(6, 9);
         if (Attack == false)
             player_Move.move = false;
         if (attacks.Count > 0)
