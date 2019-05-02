@@ -5,18 +5,23 @@ using UnityEngine;
 public class Sound : MonoBehaviour
 {
    public AudioSource salidabos;
-   public AudioSource debilaire1;
-
+   public  List<AudioSource> debilaire;
+    public int random;
+    public bool hit = false;
    public AudioSource walkgroupie;
- 
-   void door()
+    public void Update()
+    {
+        random = Random.Range(0,6);
+    }
+    void door()
    {
        salidabos.Play();
    }
 
     void airedebil()
    {
-       debilaire1.Play();
+        if(!hit)
+            debilaire[random].Play();
    }
 
     void andargroupie()

@@ -14480,7 +14480,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   salidabos: {fileID: 1510180746}
-  debilaire1: {fileID: 0}
+  debilaire: []
+  random: 0
+  hit: 0
+  walkgroupie: {fileID: 0}
 --- !u!1 &837254292
 GameObject:
   m_ObjectHideFlags: 0
@@ -44302,9 +44305,44 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8386676313400792835, guid: 32d3847095fd90f41bc2db0671913dc6,
         type: 3}
+      propertyPath: debilaire.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386676313400792835, guid: 32d3847095fd90f41bc2db0671913dc6,
+        type: 3}
       propertyPath: debilaire1
       value: 
       objectReference: {fileID: 768874429}
+    - target: {fileID: 8386676313400792835, guid: 32d3847095fd90f41bc2db0671913dc6,
+        type: 3}
+      propertyPath: debilaire.Array.data[0]
+      value: 
+      objectReference: {fileID: 768874429}
+    - target: {fileID: 8386676313400792835, guid: 32d3847095fd90f41bc2db0671913dc6,
+        type: 3}
+      propertyPath: debilaire.Array.data[1]
+      value: 
+      objectReference: {fileID: 949415989}
+    - target: {fileID: 8386676313400792835, guid: 32d3847095fd90f41bc2db0671913dc6,
+        type: 3}
+      propertyPath: debilaire.Array.data[2]
+      value: 
+      objectReference: {fileID: 699118251}
+    - target: {fileID: 8386676313400792835, guid: 32d3847095fd90f41bc2db0671913dc6,
+        type: 3}
+      propertyPath: debilaire.Array.data[3]
+      value: 
+      objectReference: {fileID: 1232204095}
+    - target: {fileID: 8386676313400792835, guid: 32d3847095fd90f41bc2db0671913dc6,
+        type: 3}
+      propertyPath: debilaire.Array.data[4]
+      value: 
+      objectReference: {fileID: 1175027442}
+    - target: {fileID: 8386676313400792835, guid: 32d3847095fd90f41bc2db0671913dc6,
+        type: 3}
+      propertyPath: debilaire.Array.data[5]
+      value: 
+      objectReference: {fileID: 89032321}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32d3847095fd90f41bc2db0671913dc6, type: 3}
 --- !u!1001 &9054620511873806690

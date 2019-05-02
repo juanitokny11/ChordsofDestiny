@@ -41,7 +41,7 @@ public class PlayerAttackList : MonoBehaviour
             if (Attack)
             {
                 player_anim.Debil();
-                audios[random].Play();
+                //audios[random].Play();
                 Attack = false;
             }
         }
@@ -50,7 +50,7 @@ public class PlayerAttackList : MonoBehaviour
             if (Attack)
             {
                 player_anim.Debil2();
-                audios[random].Play();
+                //audios[random].Play();
                 Attack = false;
             }
         }
@@ -59,7 +59,7 @@ public class PlayerAttackList : MonoBehaviour
             if (Attack)
             {
                 player_anim.Debil3();
-                audios[random].Play();
+                //audios[random].Play();
                 Attack = false;
             }
         }
@@ -68,7 +68,7 @@ public class PlayerAttackList : MonoBehaviour
             if (Attack)
             {
                 player_anim.Fuerte();
-                audios[random2].Play();
+                //audios[random2].Play();
                 Attack = false;
             }
         }
@@ -77,7 +77,7 @@ public class PlayerAttackList : MonoBehaviour
             if (Attack)
             {
                 player_anim.Fuerte2();
-                audios[random2].Play();
+                //audios[random2].Play();
                 Attack = false;
             }
         }
@@ -86,7 +86,7 @@ public class PlayerAttackList : MonoBehaviour
             if (Attack)
             {
                 player_anim.Fuerte3();
-                audios[random2].Play();
+                //audios[random2].Play();
                 Attack = false;
             }
         }
