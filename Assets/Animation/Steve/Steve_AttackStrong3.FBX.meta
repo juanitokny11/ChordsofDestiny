@@ -205,6 +205,21 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
+      - time: 0
+        functionName: ParticleHachaOn
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.012072436
+        functionName: airefuerte
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: f0b5d53f175e12e4d938966ac6a937d1,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.043726232
         functionName: Guitar_Attack_Point_ON
         data: 
@@ -226,15 +241,8 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.9980806
-        functionName: CanAttack
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0
-        functionName: ParticleHachaOn
+      - time: 0.28540292
+        functionName: Not_In_Air
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -247,8 +255,8 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.28540292
-        functionName: Not_In_Air
+      - time: 0.9980806
+        functionName: CanAttack
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
