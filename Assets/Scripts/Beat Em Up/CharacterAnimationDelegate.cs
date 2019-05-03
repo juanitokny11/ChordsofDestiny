@@ -196,7 +196,6 @@ public class CharacterAnimationDelegate : MonoBehaviour
     {
         groupieBody.isKinematic = false;
     }
-   
     void CharacterDied()
     {
         groupiecol.enabled = false;

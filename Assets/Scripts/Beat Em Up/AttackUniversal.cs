@@ -21,6 +21,7 @@ public class AttackUniversal : MonoBehaviour
     public GameObject block_Fx_Prefab;
     public GameObject block2_Fx_Prefab;
     public Collider[] hit;
+    public bool solo=false;
     public SkinnedMeshRenderer rend;
     public float counterhits = 0f;
     public AudioSource block1;
@@ -61,6 +62,7 @@ public class AttackUniversal : MonoBehaviour
                 }
                 if (gameObject.CompareTag("Tirar"))
                 {
+                    solo = false;
                     healthScript.inAir = false;
                     damage = 4;
                     healthScript.hitsCount++;
@@ -76,8 +78,31 @@ public class AttackUniversal : MonoBehaviour
                     if (hit[0].gameObject.tag == "Enemy")
                         lifeControler.ShowDamagedUI(hit[0].gameObject.GetComponent<HealthScript>().health,hit[0].gameObject.GetComponent<EnemyMovement>().gname.ToString());
                 }
+                else if (gameObject.CompareTag("Solo"))
+                {
+                    solo = true;
+                    damage =30;
+                    healthScript.hitsCount++;
+                    counterhits = 0;
+                    //healthUI.DisplaySolo(healthScript.solo / 2);
+                    for (int i = 0; i < hit.Length; i++)
+                    {
+                        hit[i].GetComponent<HealthScript>().ApplyDamage(damage, true, false);
+                    }
+                    //healthScript.inAir = true;
+                    //hit[0].GetComponent<BoxCollider>().enabled = true;
+                    rend = hit[0].GetComponentInChildren<SkinnedMeshRenderer>();
+                    MaterialPropertyBlock block = new MaterialPropertyBlock();
+                    rend.GetPropertyBlock(block);
+                    block.SetColor("_Color", Color.red);
+                    rend.SetPropertyBlock(block);
+                    Invoke("ReturnColor", 0.15f);
+                    if (hit[0].gameObject.tag == "Enemy")
+                        lifeControler.ShowDamagedUI(hit[0].gameObject.GetComponent<HealthScript>().health, hit[0].gameObject.GetComponent<EnemyMovement>().gname.ToString());
+                }
                 else if (gameObject.CompareTag("Levantar"))
                 {
+                    solo = false;
                     damage = 4;
                     healthScript.hitsCount++;
                     counterhits = 0;
@@ -118,6 +143,7 @@ public class AttackUniversal : MonoBehaviour
                     }
                     else if (hit[0].gameObject.tag != "bidon")
                     {
+                        solo = false;
                         healthScript.solo += damage;
                         healthUI.DisplaySolo(healthScript.solo / 2);
                         hit[0].GetComponent<HealthScript>().ApplyDamage(damage, false, false);

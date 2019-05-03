@@ -18,7 +18,7 @@ public class ShakeCamera : MonoBehaviour
     private Vector3 offset;         //Private variable to store the offset distance between the player and camera
 
     private float timeCounter = 0;
-    public float smoothTime = 1.0f;
+    public float smoothTime = 0.5f;
     void Start()
     {
         offset = transform.position - player.transform.position;

@@ -120,7 +120,6 @@ public class HealthScript : MonoBehaviour
             healthUI.DisplayHealth(health);
         if (health <= 0)
         {
-            animationScript.Death();
             if (is_Player)
             {
                 if (!is_Boss)
@@ -129,14 +128,19 @@ public class HealthScript : MonoBehaviour
                     GameObject.FindGameObjectWithTag("Enemy").GetComponent<BossIA>().enabled = false;
                 player_Move.is_Dead = true;
                 player_Attack.enabled = false;
+                animationScript.Death();
             }
             else if(is_Enemy)
             {
-               zone.enemiescounter--;
+                //if(!attack.solo)
+                animationScript.Death();
+                //else if(attacksolo) 
+                zone.enemiescounter--;
                gameManager.numScore += enemyMovement.score;
             }
             else if (is_Boss)
             {
+                animationScript.Death();
                 bossIA.Death();
                 gameManager.numScore += bossIA.scoref2 ;
             }
