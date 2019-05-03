@@ -10,8 +10,6 @@ public class PlayerAttackList : MonoBehaviour
     public Animator anim;
     public bool Attack = true;
     public List<AudioSource> audios;
-    public int random;
-    public int random2;
     void Start()
     {
         player_Move = GetComponent<PlayerMovementBeat>();
@@ -23,8 +21,6 @@ public class PlayerAttackList : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        random = Random.Range(0, 6);
-        random2 = Random.Range(6, 9);
         if (Attack == false)
             player_Move.move = false;
         if (attacks.Count > 0)

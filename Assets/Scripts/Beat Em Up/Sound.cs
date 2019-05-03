@@ -8,11 +8,13 @@ public class Sound : MonoBehaviour
     public List<AudioSource> fuerteaire;
    public  List<AudioSource> debilaire;
     public int random;
+    public int random2;
     public bool hit = false;
    public AudioSource walkgroupie;
     public void Update()
     {
         random = Random.Range(0,6);
+        random2 = Random.Range(0, 3);
     }
     void door()
    {
@@ -28,7 +30,7 @@ public class Sound : MonoBehaviour
 void airefuerte()
    {
          if(!hit)
-            fuerteaire[random].Play();
+            fuerteaire[random2].Play();
    }
 
     void andargroupie()
