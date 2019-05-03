@@ -10,6 +10,7 @@ public class TptoBossBattle : MonoBehaviour
     public VideoPlayer cinematicaBoss;
     public ShakeCamera camera;
     public PlayerMovementBeat Player;
+    public Animator player_Anim;
     public BattleZone BossZone;
     public Canvas BossLife;
     public AudioSource musicBoss;
@@ -20,14 +21,14 @@ public class TptoBossBattle : MonoBehaviour
         cinematicaBoss.Prepare();
         camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ShakeCamera>();
         Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementBeat>();
+        player_Anim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
     }
     private void Update()
     {
         cinematicaBoss.loopPointReached += onMovieEnded;
         if (changeMusic == true)
         {
-            BeatEmupManager.instance.musicGameplay.Stop();
-            //ActivateBossMusic();
+            
             if(BossLife!=null)
             BossLife.enabled = true;
             camera.GetComponent<Camera>().fieldOfView = 47;
@@ -57,6 +58,7 @@ public class TptoBossBattle : MonoBehaviour
         BossZone.bossZone = true;
         Player.enabled = true;
         cinematicaBoss.Pause();
+        ActivateBossMusic();
     }
  
     private void OnTriggerEnter(Collider other)
@@ -65,9 +67,14 @@ public class TptoBossBattle : MonoBehaviour
         {
             cinematicaBoss.gameObject.SetActive(true);
             cinematicaBoss.Play();
+            Player.running = false;
+            Player.walk = false;
+            player_Anim.SetBool("Walk", false);
+            player_Anim.SetBool("Run", false);
             other.gameObject.transform.position = tppoint.position;
             camera.lockCamera = false;
             Player.enabled = false;
+            BeatEmupManager.instance.musicGameplay.Stop();
             //changeMusic = true;
         }
     }
