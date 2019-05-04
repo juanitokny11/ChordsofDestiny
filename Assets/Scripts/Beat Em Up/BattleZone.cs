@@ -67,7 +67,7 @@ public class BattleZone : MonoBehaviour
                 //musica.Pause();
                 SetGo();
                 Invoke("StopGo", 3f);
-                Invoke("Destroy", 4f);
+                Invoke("Destroy", 3.1f);
             }
         }
         else if (bossZone)

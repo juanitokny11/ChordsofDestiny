@@ -128,19 +128,17 @@ public class HealthScript : MonoBehaviour
                     GameObject.FindGameObjectWithTag("Enemy").GetComponent<BossIA>().enabled = false;
                 player_Move.is_Dead = true;
                 player_Attack.enabled = false;
-                animationScript.Death();
+                animationScript.Death(0);
             }
             else if(is_Enemy)
             {
-                //if(!attack.solo)
-                animationScript.Death();
-                //else if(attacksolo) 
+                enemyMovement.Death();
                 zone.enemiescounter--;
                gameManager.numScore += enemyMovement.score;
             }
             else if (is_Boss)
             {
-                animationScript.Death();
+                animationScript.Death(0);
                 bossIA.Death();
                 gameManager.numScore += bossIA.scoref2 ;
             }
@@ -160,6 +158,8 @@ public class HealthScript : MonoBehaviour
             {
                 if (Random.Range(0, 3) > 1)
                     animationScript.Hit(Random.Range(0, 3));
+                if (Random.Range(0, 3) > 1)
+                    animationScript.Stuned();
             }
         }
         if (is_Boss)

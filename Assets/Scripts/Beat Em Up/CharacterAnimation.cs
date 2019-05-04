@@ -65,9 +65,12 @@ public class CharacterAnimation : MonoBehaviour
     {
         anim.SetTrigger("Debil3");
     }
-    public void Death()
+    public void Death(int death)
     {
+        if(death==0)
         anim.SetTrigger("Death");
+        if (death == 1)
+            anim.SetTrigger("SoloDeath");
     }
     public void AirCombo1()
     {
@@ -93,6 +96,10 @@ public class CharacterAnimation : MonoBehaviour
             anim.SetTrigger("Hit2");
     }
     //Enemy Animations
+    public void Stuned()
+    {
+        anim.SetTrigger("Stuned");
+    }
     public void EnemyAttack(int attack)
     {
         if (attack == 0)

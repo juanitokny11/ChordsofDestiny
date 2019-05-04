@@ -69,10 +69,10 @@ public class ShakeCamera : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x + offset.x, transform.position.y, transform.position.z), timeCounter);
 
         timeCounter += Time.deltaTime * smoothTime;
-        if(timeCounter >= 1.0f)
+        if(timeCounter >= 0.6f)
         {
-            timeCounter = 0;
             EnemiesDied();
+            timeCounter = 0;
         }
     }
     public bool ShouldShake
@@ -89,6 +89,6 @@ public class ShakeCamera : MonoBehaviour
     public void EnemiesDied()
     {
         enemiesdied = false;
-        enemiesdied = true;
+       // enemiesdied = true;
     }
 }

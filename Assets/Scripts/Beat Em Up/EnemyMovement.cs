@@ -14,10 +14,12 @@ public class EnemyMovement : MonoBehaviour
     public LifeControler enemyUI;
     private Rigidbody myBody;
     public List<string> groupieNames;
+    private CharacterAnimation animationScript;
     public List<string> fanNames;
     public string gname;
     public Image gimage;
     public int score;
+    public bool soloHit = false;
     public bool isGroupie;
     public float speed = 10.0f;
     public BoxCollider mainCamera_col;
@@ -36,6 +38,7 @@ public class EnemyMovement : MonoBehaviour
     void Awake()
     {
         Names();
+        animationScript = GetComponent<CharacterAnimation>();
         enemyUI = GameObject.FindObjectOfType<LifeControler>();
         gimage = GetComponentInChildren<Image>();
         //gname = GetComponentInChildren<TextMeshProUGUI>();
@@ -169,5 +172,12 @@ public class EnemyMovement : MonoBehaviour
             Physics.IgnoreCollision(mainCamera_col, capsuleCollider);
             Physics.IgnoreCollision(mainCamera_col2, capsuleCollider);
         }
+    }
+    public void Death()
+    {
+        if (!soloHit)
+            animationScript.Death(0);
+        if (soloHit)
+            animationScript.Death(1);
     }
 }

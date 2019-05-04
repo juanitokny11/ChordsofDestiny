@@ -87,6 +87,8 @@ public class AttackUniversal : MonoBehaviour
                     //healthUI.DisplaySolo(healthScript.solo / 2);
                     for (int i = 0; i < hit.Length; i++)
                     {
+                        if(hit[i].gameObject.tag=="Enemy")
+                            hit[i].GetComponent<EnemyMovement>().soloHit = true;
                         hit[i].GetComponent<HealthScript>().ApplyDamage(damage, true, false);
                     }
                     //healthScript.inAir = true;
