@@ -16,12 +16,8 @@ public class PlayerAttack2 : MonoBehaviour
         FUERTE3,
         GUARD,
         AIRCOMBO1,
-        AIRCOMBO2,
-        AIRCOMBO3,
-        AIRCOMBO4,
-        AIRCOMBO5,
         SOLO,
-        JUMP
+        JUMP,
     }
     public bool blockActivated = false;
     public SphereCollider Solocol;
@@ -78,7 +74,7 @@ public class PlayerAttack2 : MonoBehaviour
     {
         if (Input.GetButtonDown("AtaqueDebil"))
         {
-            if (attacks.Contains(ComboState.DEBIL3)||current_Combo_State == ComboState.DEBIL3 || current_Combo_State == ComboState.FUERTE2 || current_Combo_State == ComboState.FUERTE3 || current_Combo_State == ComboState.GUARD || current_Combo_State == ComboState.SOLO || current_Combo_State == ComboState.AIRCOMBO5)
+            if (attacks.Contains(ComboState.DEBIL3)||current_Combo_State == ComboState.DEBIL3 || current_Combo_State == ComboState.FUERTE2 || current_Combo_State == ComboState.FUERTE3 || current_Combo_State == ComboState.GUARD || current_Combo_State == ComboState.SOLO || current_Combo_State==ComboState.AIRCOMBO1)
                 return;
             if (current_Combo_State == ComboState.FUERTE)
                 current_Combo_State = ComboState.DEBIL;
@@ -107,8 +103,6 @@ public class PlayerAttack2 : MonoBehaviour
                 {
                     current_Combo_State = ComboState.AIRCOMBO1;
                 }
-                else if (current_Combo_State == ComboState.AIRCOMBO1 || current_Combo_State == ComboState.AIRCOMBO2 || current_Combo_State == ComboState.AIRCOMBO3 || current_Combo_State == ComboState.AIRCOMBO4 && player_Move.inAir)
-                    current_Combo_State++;
                 activateTimerToReset = true;
                 current_Combo_Timer = default_Combo_Timer;
                 player_Move.comboAereo = true;
@@ -226,13 +220,14 @@ public class PlayerAttack2 : MonoBehaviour
                     
                     guardCollider.enabled = false;
                     blockActivated = false;
+                    attackList.Attack = true;
+                    attackList.RemoveAllList();
                     current_Combo_State = ComboState.NONE;
                 }
             }
             else if (player_Move.inAir)
             {
-                attackList.RemoveAllList();
-                ResetComboState();
+                current_Combo_State = ComboState.JUMP;
             }
         }
     }
