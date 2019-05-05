@@ -401,6 +401,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1218505822360710658}
+  - component: {fileID: 1347838744}
+  - component: {fileID: 1347838743}
   m_Layer: 0
   m_Name: pua_low
   m_TagString: Untagged
@@ -431,6 +433,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 45.204002, z: 0}
+--- !u!65 &1347838744
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698599952242444577}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 13.501587, y: 34.19814, z: 0.47791}
+  m_Center: {x: -0.30398977, y: -1.1529964, z: -0.12089096}
+--- !u!114 &1347838743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698599952242444577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36491b9867840274688bd41ce004f4fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CoinRotateSpeed: 5
+  player: {fileID: 0}
+  UI: {fileID: 0}
+  random: 0
 --- !u!1 &7808865631850887232
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,7 +473,7 @@ GameObject:
   - component: {fileID: 2129971457985015372}
   - component: {fileID: 2297432342421867855}
   - component: {fileID: 7856890854345036793}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
