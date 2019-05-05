@@ -21,12 +21,12 @@ public class DeleteObjects: MonoBehaviour {
             }
         }
     }
-     public void Explode() {
-
+     public void Explode()
+    {
         Invoke("Destroy", 0.5f);
 	}
     public void Destroy()
     {
-        Destroy(gameObject);
+        Destroy(gameObject.transform.parent);
     }
 }

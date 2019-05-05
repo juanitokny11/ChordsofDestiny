@@ -44,11 +44,6 @@ public class BattleZone : MonoBehaviour
                 camera.GetComponent<ShakeCamera>().lockCamera = true;
                 enemyBlocker.enabled = false;
             }
-            if (Player.health < 100)
-            {
-                UI.GetComponent<Image>().fillAmount = Player.health + 10/100;
-                Player.health = Player.health + 10;
-            }
         }
     }
     void Update()

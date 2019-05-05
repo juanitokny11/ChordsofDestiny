@@ -20,6 +20,7 @@ public class AttackUniversal : MonoBehaviour
     public GameObject hit_Fx_Prefab;
     public GameObject block_Fx_Prefab;
     public GameObject block2_Fx_Prefab;
+    public GameObject pua;
     public Collider[] hit;
     public bool solo=false;
     public SkinnedMeshRenderer rend;
@@ -279,6 +280,7 @@ public class AttackUniversal : MonoBehaviour
     public void StopBlink()
     {
         CancelInvoke("Blink");
+        Instantiate(pua, hit[0].transform.position, Quaternion.identity);
         Invoke("Destroy", 0.1f);
     }
     public void Destroy()
