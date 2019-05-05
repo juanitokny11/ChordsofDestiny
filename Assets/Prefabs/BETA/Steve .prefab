@@ -1546,8 +1546,10 @@ MonoBehaviour:
   healthScript: {fileID: 0}
   enemyAnim: {fileID: 0}
   bossIA: {fileID: 0}
+  puaSpawn: {x: 0, y: 0, z: 0}
   lifeControler: {fileID: 0}
   playerHealth: {fileID: 0}
+  UI: {fileID: 0}
   is_Player: 1
   is_Enemy: 0
   is_Boss: 0
@@ -1555,7 +1557,10 @@ MonoBehaviour:
     type: 3}
   block_Fx_Prefab: {fileID: 0}
   block2_Fx_Prefab: {fileID: 0}
+  pua: {fileID: 0}
+  score: {fileID: 0}
   hit: []
+  gameManager: {fileID: 0}
   solo: 0
   rend: {fileID: 0}
   counterhits: 0
@@ -8510,7 +8515,7 @@ GameObject:
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8939311919082907253
 Transform:
   m_ObjectHideFlags: 0
@@ -8547,8 +8552,10 @@ MonoBehaviour:
   healthScript: {fileID: 4554496321350749296}
   enemyAnim: {fileID: 0}
   bossIA: {fileID: 0}
+  puaSpawn: {x: 0, y: 0, z: 0}
   lifeControler: {fileID: 0}
   playerHealth: {fileID: 0}
+  UI: {fileID: 0}
   is_Player: 1
   is_Enemy: 0
   is_Boss: 0
@@ -8556,7 +8563,10 @@ MonoBehaviour:
     type: 3}
   block_Fx_Prefab: {fileID: 0}
   block2_Fx_Prefab: {fileID: 0}
+  pua: {fileID: 698599952242444577, guid: 8580b4ef3c143294ab708c82967d1b63, type: 3}
+  score: {fileID: 0}
   hit: []
+  gameManager: {fileID: 0}
   solo: 0
   rend: {fileID: 0}
   counterhits: 0

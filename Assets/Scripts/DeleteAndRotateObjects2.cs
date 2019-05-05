@@ -9,6 +9,8 @@ public class DeleteAndRotateObjects2: MonoBehaviour {
     private float CoinSpeed = 20.0f;
     private Transform playerTransform;
     public Image UI;
+    public GameObject score;
+    public GameObject LifeBar;
     public int random;
     //public bool is_Key = false;
     //public ChangeCamera changeCamera;
@@ -16,6 +18,7 @@ public class DeleteAndRotateObjects2: MonoBehaviour {
     void Start()
     {
         //changeCamera = GameObject.FindObjectOfType<ChangeCamera>();
+        LifeBar = GameObject.FindGameObjectWithTag("UI");
         UI = GameObject.FindGameObjectWithTag("PlayerHealth").GetComponent<Image>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthScript>();
         playerTransform = player.GetComponent<Transform>();
@@ -44,7 +47,9 @@ public class DeleteAndRotateObjects2: MonoBehaviour {
         {
             player.health = player.health + random;
             UI.fillAmount = player.health / 100;
+            
             //Player.health = Player.health + 10;
+            //LifeBar.SetActive(false);
             Invoke("DestroyGameobject", 0.2f);
         }
 	}

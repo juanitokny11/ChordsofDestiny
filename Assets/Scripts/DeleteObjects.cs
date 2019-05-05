@@ -5,7 +5,7 @@ public class DeleteObjects: MonoBehaviour {
 
     public int vida = 2;
     private Vector3 inipos;
-
+  
     private void Start()
     {
         //notas = new GameObject[4];

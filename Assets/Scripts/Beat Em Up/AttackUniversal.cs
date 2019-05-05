@@ -14,14 +14,18 @@ public class AttackUniversal : MonoBehaviour
     public HealthScript healthScript;
     public CharacterAnimation enemyAnim;
     public BossIA bossIA;
+    public Vector3 puaSpawn;
     public LifeControler lifeControler;
     public HealthScript playerHealth;
+    public GameObject UI;
     public bool is_Player, is_Enemy, is_Boss;
     public GameObject hit_Fx_Prefab;
     public GameObject block_Fx_Prefab;
     public GameObject block2_Fx_Prefab;
     public GameObject pua;
+    public GameObject score;
     public Collider[] hit;
+    public BeatEmupManager gameManager;
     public bool solo=false;
     public SkinnedMeshRenderer rend;
     public float counterhits = 0f;
@@ -29,6 +33,8 @@ public class AttackUniversal : MonoBehaviour
     
     private void Start()
     {
+        gameManager = FindObjectOfType<BeatEmupManager>();
+        UI = GameObject.FindGameObjectWithTag("UI");
         lifeControler = GameObject.FindObjectOfType<LifeControler>();
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthScript>();
         enemy = GetComponentInParent<EnemyMovement>();
@@ -37,6 +43,7 @@ public class AttackUniversal : MonoBehaviour
         healthScript = GetComponentInParent<HealthScript>();
         if (is_Boss)
             bossIA = GetComponentInParent<BossIA>();
+        this.gameObject.SetActive(false);
     }
     void Update()
     {
@@ -139,6 +146,7 @@ public class AttackUniversal : MonoBehaviour
                     if (hit[0].gameObject.tag == "bidon")
                     {
                         hit[0].GetComponent<DeleteObjects>().vida--;
+                        puaSpawn = hit[0].transform.position;
                         if (hit[0].GetComponent<DeleteObjects>().vida <= 0)
                         {
                             Explode();
@@ -275,12 +283,19 @@ public class AttackUniversal : MonoBehaviour
         public void Explode()
     {
         InvokeRepeating("Blink", 0.1f, 0.1f);
+       gameManager.numScore += 5;
+        score.SetActive(true);
+        if (playerHealth.health <= 100)
+            Invoke("LifeOn", 2f);
         Invoke("StopBlink",3f);
     }
     public void StopBlink()
     {
         CancelInvoke("Blink");
-        Instantiate(pua, hit[0].transform.position, Quaternion.identity);
+        score.SetActive(false);
+        Instantiate(pua, puaSpawn, Quaternion.identity);
+        if (playerHealth.health <= 100)
+            Invoke("LifeOff", 2f);
         Invoke("Destroy", 0.1f);
     }
     public void Destroy()
@@ -298,6 +313,14 @@ public class AttackUniversal : MonoBehaviour
         rend.GetPropertyBlock(block);
         block.Clear();
         rend.SetPropertyBlock(block);
+    }
+    public void LifeOn()
+    {
+        UI.SetActive(true);
+    }
+    public void LifeOff()
+    {
+        UI.SetActive(false);
     }
 }
 
