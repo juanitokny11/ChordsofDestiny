@@ -31,7 +31,7 @@ public class ControlsBehavour : MonoBehaviour
             controles[0].SetActive(true);
             controles[1].SetActive(false);
             controles[2].SetActive(false);
-            text.text = "Keyboard";
+            text.text = "Teclado y Ratón";
         }
         else if(actualControler==1)
         {
