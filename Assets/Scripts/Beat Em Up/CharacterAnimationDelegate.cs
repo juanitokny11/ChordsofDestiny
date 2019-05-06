@@ -31,6 +31,8 @@ public class CharacterAnimationDelegate : MonoBehaviour
     private EnemyMovement enemy_Movement;
     private ShakeCamera shakeCamera;
     public GameObject particleHacha;
+    public GameObject particleEspada1;
+    public GameObject particleEspada2;
     public bool isGroupie,is_Boss,isFan;
 
     private void Awake()
@@ -256,6 +258,22 @@ public class CharacterAnimationDelegate : MonoBehaviour
     public void ParticleHachaOff()
     {
         particleHacha.SetActive(false);
+    }
+    public void ParticleEspada1On()
+    {
+        particleEspada1.SetActive(true);
+    }
+    public void ParticleEspada1Off()
+    {
+        particleEspada1.SetActive(false);
+    }
+    public void ParticleEspada2On()
+    {
+        particleEspada2.SetActive(true);
+    }
+    public void ParticleEspada2Off()
+    {
+        particleEspada2.SetActive(false);
     }
     public void ParticleSoloOn()
     {

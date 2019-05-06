@@ -47,11 +47,12 @@ public class DeleteAndRotateObjects2: MonoBehaviour {
         {
             player.health = player.health + random;
             UI.fillAmount = player.health / 100;
-            
+
             //Player.health = Player.health + 10;
             //LifeBar.SetActive(false);
-            Invoke("DestroyGameobject", 0.2f);
         }
+        Invoke("DestroyGameobject", 0.2f);
+     
 	}
     public void CoinsPowerup()
     {

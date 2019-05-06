@@ -13,7 +13,7 @@ public class OptionsManager : MonoBehaviour {
 
     void Start(){
         resolutions = Screen.resolutions;
-
+        
 		resolutionDropdown.ClearOptions();
 
 		List<string> options = new List<string>();
@@ -28,7 +28,6 @@ public class OptionsManager : MonoBehaviour {
 				currentResolutionIndex = i;
 			}
 		}
-
 		resolutionDropdown.AddOptions(options);
 		resolutionDropdown.value=currentResolutionIndex;
 		resolutionDropdown.RefreshShownValue();

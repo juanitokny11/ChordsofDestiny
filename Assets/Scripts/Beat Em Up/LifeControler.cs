@@ -8,11 +8,15 @@ public class LifeControler : MonoBehaviour
 {
     public GameObject enemyLifeObj;
     public Image enemyLife;
+    public Image enemyLifeDown;
+    public Image enemyLifeMark;
     public TextMeshProUGUI EnemyName;
+    public bool firstTime=true;
 
     public void Start()
     {
         enemyLifeObj.SetActive(false);
+        firstTime = true;
     }
     public void ShowDamagedUI(float life, string name)
     {
@@ -26,6 +30,15 @@ public class LifeControler : MonoBehaviour
         if (value < 0)
             value = 0;
         else
+        {
             enemyLife.fillAmount = value;
+        }
+        if (firstTime)
+        {
+            enemyLifeDown.fillAmount = value;
+            enemyLifeMark.fillAmount = value;
+            firstTime = false;
+        }
+
     }
 }
