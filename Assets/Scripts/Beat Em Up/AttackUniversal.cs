@@ -26,7 +26,7 @@ public class AttackUniversal : MonoBehaviour
     public GameObject score;
     public Collider[] hit;
     public BeatEmupManager gameManager;
-    public bool solo=false;
+    //public bool solo=false;
     public SkinnedMeshRenderer rend;
     public float counterhits = 0f;
     public AudioSource block1;
@@ -70,9 +70,10 @@ public class AttackUniversal : MonoBehaviour
                 }
                 if (gameObject.CompareTag("Tirar"))
                 {
-                    solo = false;
+                    //solo = false;
                     healthScript.inAir = false;
                     damage = 4;
+                    hit[0].GetComponent<EnemyMovement>().soloHit = false;
                     healthScript.hitsCount++;
                     counterhits = 0;
                     healthScript.solo += damage;
@@ -88,8 +89,9 @@ public class AttackUniversal : MonoBehaviour
                 }
                 else if (gameObject.CompareTag("Solo"))
                 {
-                    solo = true;
+                    //solo = true;
                     damage =30;
+                    hit[0].GetComponent<EnemyMovement>().soloHit = true;
                     healthScript.hitsCount++;
                     counterhits = 0;
                     //healthUI.DisplaySolo(healthScript.solo / 2);
@@ -112,9 +114,10 @@ public class AttackUniversal : MonoBehaviour
                 }
                 else if (gameObject.CompareTag("Levantar"))
                 {
-                    solo = false;
+                    //solo = false;
                     damage = 4;
                     healthScript.hitsCount++;
+                    hit[0].GetComponent<EnemyMovement>().soloHit = false;
                     counterhits = 0;
                     healthUI.DisplaySolo(healthScript.solo / 2);
                     hit[0].GetComponent<HealthScript>().ApplyDamage(damage, true, false);
@@ -154,7 +157,8 @@ public class AttackUniversal : MonoBehaviour
                     }
                     else if (hit[0].gameObject.tag != "bidon")
                     {
-                        solo = false;
+                        //solo = false;
+                        hit[0].GetComponent<EnemyMovement>().soloHit = false;
                         healthScript.solo += damage;
                         healthUI.DisplaySolo(healthScript.solo / 2);
                         hit[0].GetComponent<HealthScript>().ApplyDamage(damage, false, false);

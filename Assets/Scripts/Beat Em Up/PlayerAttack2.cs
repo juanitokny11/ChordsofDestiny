@@ -163,32 +163,11 @@ public class PlayerAttack2 : MonoBehaviour
         }
         if (Input.GetAxisRaw("Evadir") == 1 && !blockActivated)
         {
-
             current_Combo_State = ComboState.GUARD;
-            /*if (player_Move.walk)
-            {
-                if (player_Move.lockrotation == true)
-                    transform.rotation = Quaternion.Euler(0, -180, 0);
-                else if (player_Move.lockrotation == false)
-                    transform.rotation = Quaternion.Euler(0, 0, 0);
-            }*/
-           
             if (!player_Move.inAir)
             {
                 if (current_Combo_State == ComboState.GUARD)
                 {
-                    /*if (player_Move.lockrotation)
-                    {
-                        shield = Instantiate(block_Fx, transform.position - new Vector3(+0.2f, 1.0f, 0), Quaternion.Euler(0, 180, 0));
-                        shield.GetComponentInChildren<ParticleSystem>().Play();
-                        shield.GetComponentInChildren<Transform>().Rotate(new Vector3(0, 0, 0));
-                    }
-                    else if (!player_Move.lockrotation)
-                    {
-                        shield = Instantiate(block_Fx, transform.position - new Vector3(-0.2f, 0, 0), Quaternion.Euler(0, 180, 0));
-                        shield.GetComponentInChildren<ParticleSystem>().Play();
-                        shield.GetComponentInChildren<Transform>().Rotate(new Vector3(0, 180, 0));
-                    }*/
                     player_Move.canRotate = false;
                     player_Move.move = false;
                     player_Anim.Block();
@@ -217,7 +196,6 @@ public class PlayerAttack2 : MonoBehaviour
                 {
                     //Destroy(shield);
                     player_Anim.ResetBlock();
-                    
                     guardCollider.enabled = false;
                     blockActivated = false;
                     attackList.Attack = true;
@@ -256,14 +234,13 @@ public class PlayerAttack2 : MonoBehaviour
     private void ActivarColisiones()
     {
         this.gameObject.layer = 8;
-        
-        //soloefect.SetActive(false);
         Guitar.localPosition = new Vector3(-0.118f, 0.014f, 0.083f);
         Guitar.localRotation = Quaternion.Euler(-61.589f, -631.912f, -92.93501f);
         mycol.enabled = true;
         player_Move.move = true;
         current_Combo_State = ComboState.NONE;
         Solocol.GetComponent<AttackUniversal>().enabled = false;
+       //
     }
     private void DesActivarColisiones()
     {
@@ -274,6 +251,10 @@ public class PlayerAttack2 : MonoBehaviour
     private void ActiveSoloCol()
     {
         Solocol.GetComponent<AttackUniversal>().enabled = true;
+    }
+    private void ActivateSolo()
+    {
+        Solocol.gameObject.SetActive(true);
     }
 }
 
