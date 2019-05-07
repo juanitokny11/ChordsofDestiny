@@ -115,7 +115,7 @@ public class HealthScript : MonoBehaviour
             }
         }
         else if(is_Enemy)
-            enemy_Health_UI.DisplayHealth(health);
+            enemy_Health_UI.DisplayHealth(health,maxHealth);
         else if (is_Boss)
             healthUI.DisplayHealth(health);
         if (health <= 0)

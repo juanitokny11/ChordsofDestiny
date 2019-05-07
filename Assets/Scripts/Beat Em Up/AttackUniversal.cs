@@ -61,13 +61,20 @@ public class AttackUniversal : MonoBehaviour
             {
                 if (hit[0].gameObject.tag != "bidon")
                 {
+                    Quaternion hitFX_Rot = new Quaternion();
                     Vector3 hitFx_Pos = hit[0].transform.position;
                     hitFx_Pos.y += 3f;
                     if (hit[0].transform.forward.x > 0)
+                    {
                         hitFx_Pos.x += 0.3f;
+                        hitFX_Rot = Quaternion.Euler(0, 0, 0);
+                    }
                     else if (hit[0].transform.forward.x < 0)
+                    {
                         hitFx_Pos.x -= 0.3f;
-                    Instantiate(hit_Fx_Prefab, hitFx_Pos, Quaternion.identity);
+                        hitFX_Rot = Quaternion.Euler(0, 180, 0);
+                    }
+                    Instantiate(hit_Fx_Prefab, hitFx_Pos, hitFX_Rot);
                 }
                 if (gameObject.CompareTag("Tirar"))
                 {
@@ -86,7 +93,7 @@ public class AttackUniversal : MonoBehaviour
                     rend.SetPropertyBlock(block);
                     Invoke("ReturnColor", 0.15f);
                     if (hit[0].gameObject.tag == "Enemy")
-                        lifeControler.ShowDamagedUI(hit[0].gameObject.GetComponent<HealthScript>().health,hit[0].gameObject.GetComponent<EnemyMovement>().gname.ToString());
+                        lifeControler.ShowDamagedUI(hit[0].gameObject.GetComponent<HealthScript>().health,hit[0].gameObject.GetComponent<EnemyMovement>().gname.ToString(), hit[0].gameObject.GetComponent<HealthScript>().maxHealth);
                 }
                 else if (gameObject.CompareTag("Solo"))
                 {
@@ -111,7 +118,7 @@ public class AttackUniversal : MonoBehaviour
                     rend.SetPropertyBlock(block);
                     Invoke("ReturnColor", 0.15f);
                     if (hit[0].gameObject.tag == "Enemy")
-                        lifeControler.ShowDamagedUI(hit[0].gameObject.GetComponent<HealthScript>().health, hit[0].gameObject.GetComponent<EnemyMovement>().gname.ToString());
+                        lifeControler.ShowDamagedUI(hit[0].gameObject.GetComponent<HealthScript>().health, hit[0].gameObject.GetComponent<EnemyMovement>().gname.ToString(), hit[0].gameObject.GetComponent<HealthScript>().maxHealth);
                 }
                 else if (gameObject.CompareTag("Levantar"))
                 {
@@ -131,7 +138,7 @@ public class AttackUniversal : MonoBehaviour
                     rend.SetPropertyBlock(block);
                     Invoke("ReturnColor", 0.15f);
                     if (hit[0].gameObject.tag == "Enemy")
-                        lifeControler.ShowDamagedUI(hit[0].gameObject.GetComponent<HealthScript>().health, hit[0].gameObject.GetComponent<EnemyMovement>().gname.ToString());
+                        lifeControler.ShowDamagedUI(hit[0].gameObject.GetComponent<HealthScript>().health, hit[0].gameObject.GetComponent<EnemyMovement>().gname.ToString(), hit[0].gameObject.GetComponent<HealthScript>().maxHealth);
                 }
                 else
                 {
@@ -156,7 +163,7 @@ public class AttackUniversal : MonoBehaviour
                         if (hit[0].GetComponent<DeleteObjects>().vida <= 0)
                         {
                             anim.SetTrigger("Break");
-                            Invoke("Explode",0.1f);
+                            Invoke("Explode", Time.deltaTime* 18f);
                         }
                     }
                     else if (hit[0].gameObject.tag != "bidon")
@@ -174,7 +181,7 @@ public class AttackUniversal : MonoBehaviour
                         rend.SetPropertyBlock(block);
                         Invoke("ReturnColor", 0.15f);
                         if (hit[0].gameObject.tag == "Enemy")
-                            lifeControler.ShowDamagedUI(hit[0].gameObject.GetComponent<HealthScript>().health, hit[0].gameObject.GetComponent<EnemyMovement>().gname.ToString());
+                            lifeControler.ShowDamagedUI(hit[0].gameObject.GetComponent<HealthScript>().health, hit[0].gameObject.GetComponent<EnemyMovement>().gname.ToString(), hit[0].gameObject.GetComponent<HealthScript>().maxHealth);
                     }
                 }
             }
@@ -308,7 +315,7 @@ public class AttackUniversal : MonoBehaviour
     }
     public void Destroy()
     {
-        Destroy(hit[0].gameObject);
+        Destroy(hit[0].gameObject.transform.parent.gameObject);
     }
     private void OnDrawGizmos()
     {
