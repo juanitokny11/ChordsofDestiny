@@ -18,27 +18,19 @@ public class LifeControler : MonoBehaviour
         enemyLifeObj.SetActive(false);
         firstTime = true;
     }
-    public void ShowDamagedUI(float life, string name)
+    public void ShowDamagedUI(float life, string name,float maxLife)
     {
         enemyLifeObj.SetActive(true);
-        DisplayHealth(life);
+        DisplayHealth(life,maxLife);
         EnemyName.text = name.ToString();
     }
-    public void DisplayHealth(float value)
+    public void DisplayHealth(float value, float maxLife)
     {
-        value /= 100;
         if (value < 0)
             value = 0;
-        else
-        {
-            enemyLife.fillAmount = value;
-        }
-        if (firstTime)
-        {
-            enemyLifeDown.fillAmount = value;
-            enemyLifeMark.fillAmount = value;
-            firstTime = false;
-        }
+        enemyLife.fillAmount = value/30;
+        enemyLifeDown.fillAmount = maxLife / 30;
+        enemyLifeMark.fillAmount = maxLife / 30;
 
     }
 }
