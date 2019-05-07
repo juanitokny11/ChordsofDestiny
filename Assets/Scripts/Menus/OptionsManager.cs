@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class OptionsManager : MonoBehaviour {
 
 	Resolution[] resolutions;
-	public Dropdown resolutionDropdown;
+	public TMP_Dropdown resolutionDropdown;
     public int currentcontrol = 0;
     public GameObject[] controls;
     public Text texto;
