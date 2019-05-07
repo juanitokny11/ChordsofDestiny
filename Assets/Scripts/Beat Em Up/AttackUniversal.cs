@@ -9,6 +9,7 @@ public class AttackUniversal : MonoBehaviour
     public LayerMask colisionLayer;
     public float radius = 1f;
     public float damage = 2f;
+    private Animator anim;
     public EnemyMovement enemy;
     public HealthUI healthUI;
     public HealthScript healthScript;
@@ -149,10 +150,13 @@ public class AttackUniversal : MonoBehaviour
                     if (hit[0].gameObject.tag == "bidon")
                     {
                         hit[0].GetComponent<DeleteObjects>().vida--;
+                        anim = hit[0].GetComponentInParent<Animator>();
+                        hit[0].gameObject.SetActive(false);
                         puaSpawn = hit[0].transform.position;
                         if (hit[0].GetComponent<DeleteObjects>().vida <= 0)
                         {
-                            Explode();
+                            anim.SetTrigger("Break");
+                            Invoke("Explode",0.1f);
                         }
                     }
                     else if (hit[0].gameObject.tag != "bidon")
@@ -277,11 +281,11 @@ public class AttackUniversal : MonoBehaviour
     {
         if (Time.fixedTime % .5 < .2)
         {
-            hit[0].gameObject.SetActive(false);
+            hit[0].gameObject.transform.parent.gameObject.SetActive(false);
         }
         else
         {
-            hit[0].gameObject.SetActive(true);
+            hit[0].gameObject.transform.parent.gameObject.SetActive(true);
         }
     }
         public void Explode()
