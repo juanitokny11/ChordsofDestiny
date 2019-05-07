@@ -31,6 +31,7 @@ public class PlayerAttack2 : MonoBehaviour
     public BoxCollider guardCollider;
     public CharacterAnimation player_Anim;
     public PlayerMovementBeat player_Move;
+    public ParticleSystem notas;
     public GameObject block_Fx;
     public GameObject shield;
     private bool activateTimerToReset;
@@ -255,6 +256,10 @@ public class PlayerAttack2 : MonoBehaviour
     private void ActivateSolo()
     {
         Solocol.gameObject.SetActive(true);
+    }
+    public void NotasPlay()
+    {
+        notas.Play();
     }
 }
 
