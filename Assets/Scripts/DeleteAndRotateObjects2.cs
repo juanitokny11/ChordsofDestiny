@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class DeleteAndRotateObjects2: MonoBehaviour {
 
     public float CoinRotateSpeed = 5;
+    public ParticleSystem heal;
     public HealthScript player;
     private float CoinSpeed = 20.0f;
     private Transform playerTransform;
@@ -18,6 +19,7 @@ public class DeleteAndRotateObjects2: MonoBehaviour {
         LifeBar = GameObject.FindGameObjectWithTag("UI");
         UI = GameObject.FindGameObjectWithTag("PlayerHealth").GetComponent<Image>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthScript>();
+        heal = GameObject.Find("Heal").GetComponent<ParticleSystem>();
         playerTransform = player.GetComponent<Transform>();
         //transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
     }
@@ -47,6 +49,7 @@ public class DeleteAndRotateObjects2: MonoBehaviour {
             //Player.health = Player.health + 10;
             //LifeBar.SetActive(false);
         }
+        heal.Play();
         Invoke("DestroyGameobject", 0.2f);
      
 	}
