@@ -154,6 +154,7 @@ public class EnemyMovement : MonoBehaviour
         if (!attackPlayer || healthScript.characterDied == true || !BeatEmupManager.instance.pause)
             return;
         current_Attack_Time += Time.deltaTime;
+        transform.LookAt(playerTarget);
         if (current_Attack_Time > default_Attack_Time)
         {
             enemyAnim.EnemyAttack(Random.Range(0, 2));

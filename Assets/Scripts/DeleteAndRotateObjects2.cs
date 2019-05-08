@@ -10,20 +10,20 @@ public class DeleteAndRotateObjects2: MonoBehaviour {
     private float CoinSpeed = 20.0f;
     private Transform playerTransform;
     public Image UI;
-    public GameObject score;
     public GameObject LifeBar;
     public int random;
-
-    void Start()
+    private void Awake()
     {
-        LifeBar = GameObject.FindGameObjectWithTag("UI");
         UI = GameObject.FindGameObjectWithTag("PlayerHealth").GetComponent<Image>();
+        LifeBar = GameObject.FindGameObjectWithTag("UI");
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthScript>();
         heal = GameObject.Find("Heal").GetComponent<ParticleSystem>();
         playerTransform = player.GetComponent<Transform>();
+    }
+    void Start()
+    {
         //transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")

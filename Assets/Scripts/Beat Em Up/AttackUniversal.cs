@@ -35,7 +35,7 @@ public class AttackUniversal : MonoBehaviour
     private void Start()
     {
         gameManager = FindObjectOfType<BeatEmupManager>();
-        UI = GameObject.FindGameObjectWithTag("UI");
+        //UI = GameObject.FindGameObjectWithTag("UI");
         lifeControler = GameObject.FindObjectOfType<LifeControler>();
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthScript>();
         enemy = GetComponentInParent<EnemyMovement>();
