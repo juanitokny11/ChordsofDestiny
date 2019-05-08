@@ -13,6 +13,7 @@ public class TptoBossBattle : MonoBehaviour
     public Animator player_Anim;
     public BattleZone BossZone;
     public Canvas BossLife;
+    public bool cinematica=false;
     public AudioSource musicBoss;
     //public GameObject musicGameplay;
     public bool changeMusic=false;
@@ -26,9 +27,18 @@ public class TptoBossBattle : MonoBehaviour
     private void Update()
     {
         cinematicaBoss.loopPointReached += onMovieEnded;
-        if (changeMusic == true)
+        if (Input.GetKeyDown(KeyCode.Return) && cinematica || Input.GetAxisRaw("AtaqueDebil") != 0 && cinematica)
         {
-            
+            cinematicaBoss.gameObject.SetActive(false);
+            changeMusic = true;
+            cinematica = false;
+            BossZone.bossZone = true;
+            Player.enabled = true;
+            cinematicaBoss.Pause();
+            ActivateBossMusic();
+        }
+            if (changeMusic == true)
+        {
             if(BossLife!=null)
             BossLife.enabled = true;
             camera.GetComponent<Camera>().fieldOfView = 47;
@@ -55,6 +65,7 @@ public class TptoBossBattle : MonoBehaviour
     {
         cinematicaBoss.gameObject.SetActive(false);
         changeMusic = true;
+        cinematica = false;
         BossZone.bossZone = true;
         Player.enabled = true;
         cinematicaBoss.Pause();
@@ -67,6 +78,7 @@ public class TptoBossBattle : MonoBehaviour
         {
             cinematicaBoss.gameObject.SetActive(true);
             cinematicaBoss.Play();
+            cinematica = true;
             Player.running = false;
             Player.walk = false;
             player_Anim.SetBool("Walk", false);
