@@ -17,6 +17,18 @@ PrefabInstance:
       propertyPath: score
       value: 35
       objectReference: {fileID: 0}
+    - target: {fileID: 452187335, guid: 6faa2ed7105ee11409305d53fa85d8e3, type: 3}
+      propertyPath: health
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 452187335, guid: 6faa2ed7105ee11409305d53fa85d8e3, type: 3}
+      propertyPath: zone
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 452187335, guid: 6faa2ed7105ee11409305d53fa85d8e3, type: 3}
+      propertyPath: maxHealth
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 1563660872938979979, guid: 6faa2ed7105ee11409305d53fa85d8e3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -72,21 +84,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 452187335, guid: 6faa2ed7105ee11409305d53fa85d8e3, type: 3}
-      propertyPath: health
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 452187335, guid: 6faa2ed7105ee11409305d53fa85d8e3, type: 3}
-      propertyPath: zone
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 452187335, guid: 6faa2ed7105ee11409305d53fa85d8e3, type: 3}
-      propertyPath: maxHealth
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 1695840076, guid: 6faa2ed7105ee11409305d53fa85d8e3, type: 3}
       propertyPath: damage
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1695840076, guid: 6faa2ed7105ee11409305d53fa85d8e3, type: 3}
       propertyPath: healthScript
@@ -96,6 +96,11 @@ PrefabInstance:
       propertyPath: block1
       value: 
       objectReference: {fileID: 8678847011142059987}
+    - target: {fileID: 3401506645975715099, guid: 6faa2ed7105ee11409305d53fa85d8e3,
+        type: 3}
+      propertyPath: walkgroupie
+      value: 
+      objectReference: {fileID: 5228469336571446541}
     - target: {fileID: 1563660874057412209, guid: 6faa2ed7105ee11409305d53fa85d8e3,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -250,6 +255,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c91eba892efdd41889830f661e5570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &5228469336571446541 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 692414062669842625, guid: 6faa2ed7105ee11409305d53fa85d8e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 4689570762497379788}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6100000921142147463 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1563660874362483787, guid: 6faa2ed7105ee11409305d53fa85d8e3,

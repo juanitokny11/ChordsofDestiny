@@ -259,7 +259,14 @@ public class PlayerAttack2 : MonoBehaviour
     }
     public void NotasPlay()
     {
+        notas.gameObject.SetActive(true);
         notas.Play();
+        //notas.gameObject.transform.parent = null;
+    }
+    public void NotasStop()
+    {
+        notas.gameObject.SetActive(false);
+        notas.Stop();
     }
 }
 

@@ -48,14 +48,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   radius: 0.8
-  damage: 2
+  damage: 3
   enemy: {fileID: 0}
   healthUI: {fileID: 0}
   healthScript: {fileID: 452187335}
   enemyAnim: {fileID: 0}
   bossIA: {fileID: 0}
+  puaSpawn: {x: 0, y: 0, z: 0}
   lifeControler: {fileID: 0}
   playerHealth: {fileID: 0}
+  UI: {fileID: 0}
   is_Player: 0
   is_Enemy: 1
   is_Boss: 0
@@ -64,8 +66,10 @@ MonoBehaviour:
   block_Fx_Prefab: {fileID: 585274430744957696, guid: 3084707a993e92b45972970e6f1c1659,
     type: 3}
   block2_Fx_Prefab: {fileID: 0}
+  pua: {fileID: 0}
+  score: {fileID: 0}
   hit: []
-  solo: 0
+  gameManager: {fileID: 0}
   rend: {fileID: 0}
   counterhits: 0
   block1: {fileID: 4135930209627245087}
@@ -215,6 +219,7 @@ MonoBehaviour:
   gname: 
   gimage: {fileID: 0}
   score: 25
+  soloHit: 0
   isGroupie: 1
   speed: 5
   mainCamera_col: {fileID: 0}
@@ -307,6 +312,8 @@ MonoBehaviour:
   groupieBody: {fileID: 0}
   standupTimer: 2
   particleHacha: {fileID: 0}
+  particleEspada1: {fileID: 0}
+  particleEspada2: {fileID: 0}
   isGroupie: 1
   is_Boss: 0
   isFan: 0
