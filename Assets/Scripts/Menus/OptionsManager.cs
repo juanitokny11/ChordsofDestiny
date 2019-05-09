@@ -13,8 +13,10 @@ public class OptionsManager : MonoBehaviour {
     public Text texto;
 
     void Start(){
-        resolutions = Screen.resolutions;
-        
+		Resolution[] screenRes = Screen.resolutions;
+
+		resolutions = new Resolution[4];
+
 		resolutionDropdown.ClearOptions();
 
 		List<string> options = new List<string>();
