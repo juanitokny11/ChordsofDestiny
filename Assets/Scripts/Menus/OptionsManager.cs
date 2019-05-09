@@ -7,27 +7,30 @@ using TMPro;
 public class OptionsManager : MonoBehaviour {
 
 	Resolution[] resolutions;
-	public TMP_Dropdown resolutionDropdown;
+    Resolution[] screenRes;
+    List<string> options;
+    int currentResolutionIndex = 0;
+    public TMP_Dropdown resolutionDropdown;
     public int currentcontrol = 0;
     public GameObject[] controls;
     public Text texto;
 
     void Start(){
-		 resolutions = Screen.resolutions;
+        Screen.fullScreen = false;
+		Resolution[] screenRes = Screen.resolutions;
 
-		//resolutions = new Resolution[4];
+		resolutions = new Resolution[4];
 
 		resolutionDropdown.ClearOptions();
 
 		List<string> options = new List<string>();
-		int currentResolutionIndex=0;
-		for(int i= 0;i<resolutions.Length;i++){
+		for(int i= 0;i< screenRes.Length;i++){
 
-			string option = resolutions[i].width +"x"+ resolutions[i].height;
+			string option = screenRes[i].width +"x"+ screenRes[i].height;
 
 			options.Add(option);
 
-			if(resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height){
+			if(screenRes[i].width == Screen.currentResolution.width && screenRes[i].height == Screen.currentResolution.height){
 				currentResolutionIndex = i;
 			}
 		}
@@ -35,13 +38,20 @@ public class OptionsManager : MonoBehaviour {
 		resolutionDropdown.value=currentResolutionIndex;
 		resolutionDropdown.RefreshShownValue();
 	}
+    private void Update()
+    { 
+        resolutionDropdown.RefreshShownValue();
+        if (!Screen.fullScreen)
+            Screen.SetResolution(screenRes[currentResolutionIndex].width, screenRes[currentResolutionIndex].height, !Screen.fullScreen);
+        else
+            SetResolution(0);
+    }
     public void SetResolution(int resolutionIndex)
     {
-		Resolution resolution =resolutions[resolutionIndex];
-		Screen.SetResolution(resolution.width,resolution.height,Screen.fullScreen);		
-
-	}
-	 public void ChangeLevel(int qualityIndex)
+        Resolution resolution = Screen.currentResolution;
+        Screen.SetResolution(screenRes[currentResolutionIndex].width, screenRes[currentResolutionIndex].height, Screen.fullScreen);		
+    }
+    public void ChangeLevel(int qualityIndex)
     {
             QualitySettings.SetQualityLevel(qualityIndex);
 			//MyGameSettings.getInstance().drop.value=qualityIndex;
