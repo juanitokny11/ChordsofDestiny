@@ -13,9 +13,9 @@ public class OptionsManager : MonoBehaviour {
     public Text texto;
 
     void Start(){
-		Resolution[] screenRes = Screen.resolutions;
+		 resolutions = Screen.resolutions;
 
-		resolutions = new Resolution[4];
+		//resolutions = new Resolution[4];
 
 		resolutionDropdown.ClearOptions();
 
