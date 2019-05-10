@@ -40,11 +40,11 @@ public class OptionsManager : MonoBehaviour {
 	}
     private void Update()
     { 
-        resolutionDropdown.RefreshShownValue();
+/*         resolutionDropdown.RefreshShownValue();
         if (!Screen.fullScreen)
             Screen.SetResolution(screenRes[currentResolutionIndex].width, screenRes[currentResolutionIndex].height, !Screen.fullScreen);
         else
-            SetResolution(0);
+            SetResolution(0);*/
     }
     public void SetResolution(int resolutionIndex)
     {
