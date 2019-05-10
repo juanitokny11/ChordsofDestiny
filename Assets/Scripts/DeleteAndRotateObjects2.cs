@@ -6,6 +6,8 @@ public class DeleteAndRotateObjects2: MonoBehaviour {
 
     public float CoinRotateSpeed = 5;
     public ParticleSystem heal;
+
+    public AudioSource vida;
     public HealthScript player;
     private float CoinSpeed = 20.0f;
     private Transform playerTransform;
@@ -46,10 +48,12 @@ public class DeleteAndRotateObjects2: MonoBehaviour {
         {
             player.health = player.health + random;
             UI.fillAmount = player.health / 100;
+            heal.Play();
+            vida.PlayDelayed(0.4f);
             //Player.health = Player.health + 10;
             //LifeBar.SetActive(false);
         }
-        heal.Play();
+        
         Invoke("DestroyGameobject", 0.2f);
      
 	}
