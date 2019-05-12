@@ -26,6 +26,7 @@ public class AttackUniversal : MonoBehaviour
     public GameObject pua;
     public GameObject score;
     public Collider[] hit;
+    public Sound sound;
     public BeatEmupManager gameManager;
     //public bool solo=false;
     public SkinnedMeshRenderer rend;
@@ -35,6 +36,7 @@ public class AttackUniversal : MonoBehaviour
     private void Start()
     {
         gameManager = FindObjectOfType<BeatEmupManager>();
+        sound = GetComponentInParent<Sound>();
         //UI = GameObject.FindGameObjectWithTag("UI");
         lifeControler = GameObject.FindObjectOfType<LifeControler>();
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthScript>();
@@ -193,6 +195,7 @@ public class AttackUniversal : MonoBehaviour
                     if (hit[0].gameObject.CompareTag("Defense"))
                     {
                         block1.Play();
+                        sound.hit = false;
                         Quaternion blockFX_Rot = new Quaternion();
                         Vector3 blockFx_Pos = hit[0].transform.position;
                         blockFx_Pos.y += 4f;
@@ -214,6 +217,7 @@ public class AttackUniversal : MonoBehaviour
                     }
                     else
                     {
+                        sound.hit = true;
                         Quaternion hitFFX_Rot = new Quaternion();
                         hitFx_Pos = hit[0].transform.position;
                         hitFx_Pos.y += 1f;

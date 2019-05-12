@@ -7,6 +7,8 @@ public class Sound : MonoBehaviour
    public AudioSource salidabos;
     public List<AudioSource> fuerteaire;
    public  List<AudioSource> debilaire;
+    public List<AudioSource> groupieAire;
+    public List<AudioSource> groupieHit;
     public int random;
     public int random2;
     public bool hit = false;
@@ -27,7 +29,7 @@ public class Sound : MonoBehaviour
             debilaire[random].Play();
    }
 
-void airefuerte()
+    void airefuerte()
    {
          if(!hit)
             fuerteaire[random2].Play();
@@ -37,7 +39,28 @@ void airefuerte()
    {
        walkgroupie.pitch = Random.Range(0.7f,1.3f);
         walkgroupie.volume = Random.Range(0.15f,0.45f);
-       walkgroupie.Play();
-       
+       walkgroupie.Play(); 
    }
+    void AtaqueDebilGroupie()
+    {
+        if (!hit)
+        {
+            groupieAire[1].Play();
+        }
+        else if (hit)
+        {
+            groupieHit[1].Play();
+        }
+    }
+    void AtaqueFuerteGroupie()
+    {
+        if (!hit)
+        {
+            groupieAire[0].Play();
+        }
+        else if (hit)
+        {
+            groupieHit[0].Play();
+        }
+    }
 }
