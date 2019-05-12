@@ -16,6 +16,7 @@ public class OptionsManager : MonoBehaviour {
     public Text texto;
 
     void Start(){
+        Debug.Log(Application.persistentDataPath);
         Screen.fullScreen = false;
 		Resolution[] screenRes = Screen.resolutions;
 
@@ -49,7 +50,7 @@ public class OptionsManager : MonoBehaviour {
     public void SetResolution(int resolutionIndex)
     {
         Resolution resolution = Screen.currentResolution;
-        Screen.SetResolution(screenRes[currentResolutionIndex].width, screenRes[currentResolutionIndex].height, Screen.fullScreen);		
+        //Screen.SetResolution(screenRes[currentResolutionIndex].width, screenRes[currentResolutionIndex].height, Screen.fullScreen);		
     }
     public void ChangeLevel(int qualityIndex)
     {

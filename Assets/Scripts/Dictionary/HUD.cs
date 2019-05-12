@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HUD : MonoBehaviour
 {
- private TextLoader[] texts;
+ public TextLoader[] texts;
  public void Initialize()
     {
         texts = GetComponentsInChildren<TextLoader>();

@@ -27,6 +27,7 @@ public class LogoManager : MonoBehaviour
     {
         logoVideo.Prepare();
         title.Prepare();
+        
         //menu.SetActive(false);
     }
     void Start()
