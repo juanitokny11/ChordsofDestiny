@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class HUD : MonoBehaviour
 {
+    public GameObject options;
+    public GameObject audiomenu;
+    public GameObject controlsmenu;
  public TextLoader[] texts;
  public void Initialize()
     {
@@ -12,6 +15,7 @@ public class HUD : MonoBehaviour
         {
             texts[i].Initialize();
         }
+       
     }
     public void SetLanguage(int id)
     {
@@ -26,5 +30,8 @@ public class HUD : MonoBehaviour
             texts[i].Initialize();
         }
         LanguageManager.SaveLanguage();
+        options.SetActive(false);
+        audiomenu.SetActive(false);
+        controlsmenu.SetActive(false);
     }
 }

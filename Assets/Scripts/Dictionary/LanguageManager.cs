@@ -59,7 +59,7 @@ public static class LanguageManager
         try
         {
             langData.ConfigDict = new Dictionary<string, string>();
-
+            langData.ConfigDict.Clear();
             string fullText = LoadTextFromFile("TextData/ConfigText");
             string[] lines = ReadLinesFromString(fullText);
 

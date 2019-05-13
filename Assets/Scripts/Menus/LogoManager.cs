@@ -8,10 +8,10 @@ using UnityEngine.SceneManagement;
 public class LogoManager : MonoBehaviour
 {
     public VideoPlayer logoVideo;
-    public GameObject titleText;
+    public Canvas titleText;
     public GameObject menu;
     public VideoPlayer title;
-    public GameObject Optionsmenu;
+    public Canvas Optionsmenu;
     public OptionsManager options;
     public MenuManager menuManager;
     public AudioSource musica;
@@ -50,7 +50,7 @@ public class LogoManager : MonoBehaviour
     {
         logoVideo.gameObject.SetActive(false);
         title.gameObject.SetActive(true);
-        titleText.SetActive(true);
+        titleText.enabled=true;
         fademusica.SetActive(true);
         musica.Play();
         logo = true;
@@ -105,7 +105,7 @@ public class LogoManager : MonoBehaviour
     private void MainMenu()
     {
         title.gameObject.SetActive(false);
-        titleText.SetActive(false);
+        titleText.enabled = false;
         menu.GetComponent<Canvas>().enabled = true;
     }
     public void Options()
@@ -145,12 +145,12 @@ public class LogoManager : MonoBehaviour
     }
     public void InvokeOptions()
     {
-        Optionsmenu.SetActive(true);
+        Optionsmenu.enabled=true;
         optionsAnim.firstTime = true;
         optionsAnim.Anim = true;
     }
     public void InvokeOptionsBack()
     {
-        Optionsmenu.SetActive(false);
+        Optionsmenu.enabled=false;
     }
 }

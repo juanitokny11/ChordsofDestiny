@@ -8,6 +8,8 @@ public class MenuManager : MonoBehaviour {
 
     public Animator cam_Anim;
     public GameObject options;
+    public GameObject video;
+    public GameObject controles;
     public LogoManager logoManager;
     public MenuAnim menuAnim;
     public bool is_MainMenu = false;
@@ -17,7 +19,6 @@ public class MenuManager : MonoBehaviour {
     {
         if (is_MainMenu)
         {
-            options.gameObject.SetActive(false);
             Cursor.visible = true;
             cinematicaInicial.gameObject.SetActive(false);
             cinematicaInicial.Prepare();
