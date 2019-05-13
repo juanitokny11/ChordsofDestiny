@@ -251,6 +251,14 @@ public class CharacterAnimationDelegate : MonoBehaviour
     {
         SceneManager.LoadScene("GameOver");
     }
+    public void ChangeTime()
+    {
+        Time.timeScale = 0.5f;
+    }
+    public void ReturnTime()
+    {
+        Time.timeScale = 1;
+    }
     public void ParticleHachaOn()
     {
         particleHacha.SetActive(true);
