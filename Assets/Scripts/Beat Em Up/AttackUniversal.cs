@@ -83,7 +83,8 @@ public class AttackUniversal : MonoBehaviour
                     //solo = false;
                     healthScript.inAir = false;
                     damage = 4;
-                    hit[0].GetComponent<EnemyMovement>().soloHit = false;
+                    if (hit[0].tag == "Enemy")
+                        hit[0].GetComponent<EnemyMovement>().soloHit = false;
                     healthScript.hitsCount++;
                     counterhits = 0;
                     healthScript.solo += damage;
@@ -127,7 +128,8 @@ public class AttackUniversal : MonoBehaviour
                     //solo = false;
                     damage = 4;
                     healthScript.hitsCount++;
-                    hit[0].GetComponent<EnemyMovement>().soloHit = false;
+                    if (hit[0].tag == "Enemy")
+                        hit[0].GetComponent<EnemyMovement>().soloHit = false;
                     counterhits = 0;
                     healthUI.DisplaySolo(healthScript.solo / 2);
                     hit[0].GetComponent<HealthScript>().ApplyDamage(damage, true, false);
@@ -171,7 +173,8 @@ public class AttackUniversal : MonoBehaviour
                     else if (hit[0].gameObject.tag != "bidon")
                     {
                         //solo = false;
-                        hit[0].GetComponent<EnemyMovement>().soloHit = false;
+                        if(hit[0].tag=="Enemy")
+                            hit[0].GetComponent<EnemyMovement>().soloHit = false;
                         healthScript.solo += damage;
                         healthUI.DisplaySolo(healthScript.solo / 2);
                         hit[0].GetComponent<HealthScript>().ApplyDamage(damage, false, false);
