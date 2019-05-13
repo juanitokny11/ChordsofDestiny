@@ -195,7 +195,7 @@ public class AttackUniversal : MonoBehaviour
                     if (hit[0].gameObject.CompareTag("Defense"))
                     {
                         block1.Play();
-                        sound.hit = false;
+                        //sound.hit = false;
                         Quaternion blockFX_Rot = new Quaternion();
                         Vector3 blockFx_Pos = hit[0].transform.position;
                         blockFx_Pos.y += 4f;
@@ -217,7 +217,7 @@ public class AttackUniversal : MonoBehaviour
                     }
                     else
                     {
-                        sound.hit = true;
+                        //sound.hit = true;
                         Quaternion hitFFX_Rot = new Quaternion();
                         hitFx_Pos = hit[0].transform.position;
                         hitFx_Pos.y += 1f;
