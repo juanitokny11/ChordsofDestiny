@@ -253,7 +253,7 @@ public class CharacterAnimationDelegate : MonoBehaviour
     }
     public void ChangeTime()
     {
-        Time.timeScale = 0.5f;
+        Time.timeScale = 0.4f;
     }
     public void ReturnTime()
     {

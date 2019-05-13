@@ -145,14 +145,14 @@ ModelImporter:
       curves: []
       events:
       - time: 0
-        functionName: NodamageforEnemy
+        functionName: ChangeTime
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 1
-        functionName: DamageforEnemy
+      - time: 0
+        functionName: NodamageforEnemy
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -165,13 +165,6 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.9926471
-        functionName: EnableMovement
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
       - time: 0.014705882
         functionName: CharacterInFloor
         data: 
@@ -179,8 +172,29 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.054013737
+        functionName: ReturnTime
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.98039216
         functionName: CharacterUp
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9926471
+        functionName: EnableMovement
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 1
+        functionName: DamageforEnemy
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
