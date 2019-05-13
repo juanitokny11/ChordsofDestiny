@@ -13,6 +13,8 @@ public class Sound : MonoBehaviour
     public int random2;
     public bool hit = false;
    public AudioSource walkgroupie;
+    public AudioSource walkfan;
+
     public void Update()
     {
         random = Random.Range(0,6);
@@ -41,6 +43,14 @@ public class Sound : MonoBehaviour
         walkgroupie.volume = Random.Range(0.15f,0.45f);
        walkgroupie.Play(); 
    }
+
+ void andarfan()
+   {
+       walkfan.pitch = Random.Range(0.7f,1.3f);
+        walkfan.volume = Random.Range(0.15f,0.45f);
+       walkfan.Play(); 
+   }
+
     void AtaqueDebilGroupie()
     {
         if (!hit)
