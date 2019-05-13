@@ -17,7 +17,7 @@ public class BeatEmupManager : MonoBehaviour
     public AudioSource openPause;
     public AudioSource closePause;
     public bool godmode = true;
-    public RectTransform pausaMenu;
+    public Canvas pausaMenu;
     public RectTransform optionsMenu;
     public Animator pauseMenuPrincial;
     public bool pause = false;
@@ -81,13 +81,13 @@ public class BeatEmupManager : MonoBehaviour
     }
     private void TakeoFFMenu()
     {
-        pausaMenu.gameObject.SetActive(false);
+        pausaMenu.enabled = false;
         optionsMenu.gameObject.SetActive(false);
         music.Stop();
     }
     private void TakeONMenu()
     {
-        pausaMenu.gameObject.SetActive(true);
+        pausaMenu.enabled = true;
         music.Play();
     }
     public void Time0()
