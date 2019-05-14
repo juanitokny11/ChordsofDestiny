@@ -16,15 +16,18 @@ public class OptionsManager : MonoBehaviour {
     public Text texto;
 
     void Start(){
-        Debug.Log(Application.persistentDataPath);
+       // Debug.Log(Application.persistentDataPath);
         Screen.fullScreen = false;
 		Resolution[] screenRes = Screen.resolutions;
 
 		resolutions = new Resolution[4];
+        for (int i = 0; i < resolutions.Length; i++)
+        {
+            resolutions[i] = new Resolution();
+        }
+		//resolutionDropdown.ClearOptions();
 
-		resolutionDropdown.ClearOptions();
-
-		List<string> options = new List<string>();
+		/*List<string> options = new List<string>();
 		for(int i= 0;i< screenRes.Length;i++){
 
 			string option = screenRes[i].width +"x"+ screenRes[i].height;
@@ -37,7 +40,7 @@ public class OptionsManager : MonoBehaviour {
 		}
 		resolutionDropdown.AddOptions(options);
 		resolutionDropdown.value=currentResolutionIndex;
-		resolutionDropdown.RefreshShownValue();
+		resolutionDropdown.RefreshShownValue();*/
 	}
     private void Update()
     { 
@@ -47,10 +50,28 @@ public class OptionsManager : MonoBehaviour {
         else
             SetResolution(0);*/
     }
-    public void SetResolution(int resolutionIndex)
+    public void SetResolution()
     {
-        Resolution resolution = Screen.currentResolution;
-        //Screen.SetResolution(screenRes[currentResolutionIndex].width, screenRes[currentResolutionIndex].height, Screen.fullScreen);		
+        if(resolutionDropdown.value == 0)
+        {
+            Screen.SetResolution(720, 480, Screen.fullScreen);
+        }
+        if(resolutionDropdown.value == 1)
+        {
+            Screen.SetResolution(1024, 768, Screen.fullScreen);
+        }
+        if (resolutionDropdown.value == 2)
+        {
+            Screen.SetResolution(1280, 720, Screen.fullScreen);
+        }
+        if (resolutionDropdown.value == 3)
+        {
+            Screen.SetResolution(1920, 1080, Screen.fullScreen);
+        }
+       //currentResolutionIndex = 21;
+       /* Resolution resolution = Screen.currentResolution;
+        Screen.SetResolution(screenRes[currentResolutionIndex].width, screenRes[currentResolutionIndex].height, Screen.fullScreen);*/
+        Debug.Log(Screen.currentResolution);
     }
     public void ChangeLevel(int qualityIndex)
     {
