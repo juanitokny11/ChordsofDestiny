@@ -55,10 +55,14 @@ public class Sound : MonoBehaviour
     {
         if (!hit)
         {
+            groupieAire[1].pitch = Random.Range(0.95f,1.05f);
+            groupieAire[1].volume = Random.Range(0.90f,1.00f);
             groupieAire[1].Play();
         }
         else if (hit)
         {
+             groupieHit[1].pitch = Random.Range(0.95f,1.05f);
+            groupieHit[1].volume = Random.Range(0.90f,1.00f);
             groupieHit[1].Play();
         }
     }
@@ -66,10 +70,14 @@ public class Sound : MonoBehaviour
     {
         if (!hit)
         {
+             groupieAire[0].pitch = Random.Range(0.95f,1.05f);
+            groupieAire[0].volume = Random.Range(0.90f,1.00f);
             groupieAire[0].Play();
         }
         else if (hit)
         {
+             groupieHit[0].pitch = Random.Range(0.95f,1.05f);
+            groupieHit[0].volume = Random.Range(0.90f,1.00f);
             groupieHit[0].Play();
         }
     }
