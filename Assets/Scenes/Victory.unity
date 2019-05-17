@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -386,7 +386,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 51.3, y: 13.6}
+  m_SizeDelta: {x: 84.26, y: 13.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &650368842
 MonoBehaviour:
@@ -814,7 +814,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 47.3, y: 13.62}
+  m_SizeDelta: {x: 78.9, y: 13.62}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1077023882
 MonoBehaviour:
@@ -1028,6 +1028,7 @@ GameObject:
   - component: {fileID: 1797600860}
   - component: {fileID: 1797600859}
   - component: {fileID: 1797600858}
+  - component: {fileID: 1797600862}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1117,6 +1118,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1797600862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797600857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bc4b9b406d3d804cb3a455e0bdbfe4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  options: {fileID: 0}
+  audiomenu: {fileID: 0}
+  controlsmenu: {fileID: 0}
+  texts: []
 --- !u!1 &1810624515
 GameObject:
   m_ObjectHideFlags: 0
@@ -1413,6 +1430,7 @@ GameObject:
   - component: {fileID: 1879322283}
   - component: {fileID: 1879322285}
   - component: {fileID: 1879322284}
+  - component: {fileID: 1879322286}
   m_Layer: 5
   m_Name: TextMeshPro Text
   m_TagString: Untagged
@@ -1563,6 +1581,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1879322282}
   m_CullTransparentMesh: 0
+--- !u!114 &1879322286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879322282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a21075ba80431fb4eb81bb0a26aff714, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: VictoryTitle
 --- !u!1 &2061712505
 GameObject:
   m_ObjectHideFlags: 0
