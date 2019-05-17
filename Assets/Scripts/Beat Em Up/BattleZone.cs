@@ -39,8 +39,10 @@ public class BattleZone : MonoBehaviour
             GetComponent<BoxCollider>().enabled = false;
             if (!bossZone)
             {
-                enemies[1].gameObject.SetActive(true);
-                enemies[2].gameObject.SetActive(true);
+                if(enemies.Count>=2)
+                    enemies[1].gameObject.SetActive(true);
+                if (enemies.Count >= 3)
+                    enemies[2].gameObject.SetActive(true);
                 camera.GetComponent<ShakeCamera>().lockCamera = true;
                 enemyBlocker.enabled = false;
             }
