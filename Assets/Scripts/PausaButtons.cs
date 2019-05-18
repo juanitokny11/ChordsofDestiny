@@ -13,6 +13,12 @@ public class PausaButtons : MonoBehaviour
     public GameObject NoButton;
     public GameObject Yes2Button;
     public GameObject No2Button;
+    public GameObject OptionsText;
+    public Sprite OptionsimgEng;
+    public Sprite OptionsimgEsp;
+    public GameObject PauseText;
+    public Sprite PauseimgEng;
+    public Sprite PauseimgEsp;
     public Sprite ExitEng;
     public Sprite ExitEsp;
     public Sprite ExitPEng;
@@ -53,6 +59,9 @@ public class PausaButtons : MonoBehaviour
     {
         if (LanguageManager.langData.currentLanguage == LangData.Languages.English)
         {
+            OptionsText.GetComponent<Image>().sprite = OptionsimgEng;
+            PauseText.GetComponent<Image>().sprite = PauseimgEng;
+
             MenuButton.GetComponent<Image>().sprite = MenuPEng;
             MenuState.highlightedSprite = MenuEng;
             MenuState.pressedSprite = MenuEng;
@@ -120,6 +129,8 @@ public class PausaButtons : MonoBehaviour
         }
         else if (LanguageManager.langData.currentLanguage == LangData.Languages.Spanish)
         {
+            OptionsText.GetComponent<Image>().sprite = OptionsimgEsp;
+            PauseText.GetComponent<Image>().sprite = PauseimgEsp;
             MenuButton.GetComponent<Image>().sprite = MenuPEsp;
             MenuState.highlightedSprite = MenuEsp;
             MenuState.pressedSprite = MenuEsp;
