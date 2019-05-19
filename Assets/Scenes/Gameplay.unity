@@ -11763,6 +11763,7 @@ GameObject:
   - component: {fileID: 471163410}
   - component: {fileID: 471163412}
   - component: {fileID: 471163411}
+  - component: {fileID: 471163413}
   m_Layer: 5
   m_Name: Languages
   m_TagString: Untagged
@@ -11914,6 +11915,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 471163409}
   m_CullTransparentMesh: 0
+--- !u!114 &471163413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471163409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a21075ba80431fb4eb81bb0a26aff714, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Idi
 --- !u!1 &471725374
 GameObject:
   m_ObjectHideFlags: 0
@@ -17933,6 +17947,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1301628221}
         m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1095057080}
+        m_MethodName: ChageBackwardLanguaje
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -27279,6 +27304,7 @@ GameObject:
   - component: {fileID: 1095057076}
   - component: {fileID: 1095057078}
   - component: {fileID: 1095057077}
+  - component: {fileID: 1095057080}
   m_Layer: 5
   m_Name: Video
   m_TagString: Untagged
@@ -27369,6 +27395,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1095057080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095057075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67a16bc3a2627a24c89011bee94e48dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actualLanguaje: 0
+  text: {fileID: 1956174036}
 --- !u!1001 &1095949058
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36222,6 +36262,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1301628221}
         m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1095057080}
+        m_MethodName: ChageForwardLanguaje
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

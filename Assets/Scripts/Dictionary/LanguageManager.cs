@@ -15,12 +15,12 @@ public class LangData
     public Dictionary<string, string> ConfigDict;
     public LangData()
     {
-        SystemLanguage systemLang = Application.systemLanguage;
+        //SystemLanguage systemLang = Application.systemLanguage;
 
-        if (systemLang == SystemLanguage.Spanish) currentLanguage = Languages.Spanish;
-        else currentLanguage = Languages.English;
+        //if (systemLang == SystemLanguage.Spanish) currentLanguage = Languages.Spanish;
+        currentLanguage = Languages.English;
 
-        Debug.Log(systemLang + "  " + currentLanguage);
+        Debug.Log(currentLanguage);
         ConfigDict = new Dictionary<string, string>();
     }
 }
