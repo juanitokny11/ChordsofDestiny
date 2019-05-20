@@ -20,7 +20,7 @@ public class LangData
         //if (systemLang == SystemLanguage.Spanish) currentLanguage = Languages.Spanish;
         currentLanguage = Languages.English;
 
-        Debug.Log(currentLanguage);
+        //Debug.Log(currentLanguage);
         ConfigDict = new Dictionary<string, string>();
     }
 }
