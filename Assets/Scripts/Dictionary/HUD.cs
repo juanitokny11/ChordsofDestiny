@@ -7,15 +7,19 @@ public class HUD : MonoBehaviour
     public GameObject options;
     public GameObject audiomenu;
     public GameObject controlsmenu;
+    public int id;
  public TextLoader[] texts;
- public void Initialize()
+    public void Start()
+    {
+        id = 1;
+    }
+    public void Initialize()
     {
         texts = GetComponentsInChildren<TextLoader>();
         for (int i = 0; i < texts.Length; i++)
         {
             texts[i].Initialize();
         }
-       
     }
     public void SetLanguage(int id)
     {
@@ -29,9 +33,21 @@ public class HUD : MonoBehaviour
         {
             texts[i].Initialize();
         }
-        LanguageManager.SaveLanguage();
-        options.SetActive(false);
+        //LanguageManager.SaveLanguage();
+        /*options.SetActive(false);
         audiomenu.SetActive(false);
-        controlsmenu.SetActive(false);
+        controlsmenu.SetActive(false);*/
+    }
+    public void MoreLanguaje()
+    {
+        id++;
+        if (id > 1) id = 0;
+        SetLanguage(id);
+    }
+    public void LessLanguaje()
+    {
+        id--;
+        if (id < 0) id = 1;
+        SetLanguage(id);
     }
 }
