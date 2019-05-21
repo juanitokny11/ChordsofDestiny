@@ -5,6 +5,7 @@ public class DeleteObjects: MonoBehaviour {
 
     public int vida = 2;
     private Vector3 inipos;
+    public bool puaInstance;
 
     private void Start()
     {

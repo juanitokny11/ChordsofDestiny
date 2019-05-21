@@ -315,7 +315,8 @@ public class AttackUniversal : MonoBehaviour
     {
         CancelInvoke("Blink");
         score.SetActive(false);
-        Instantiate(pua, puaSpawn, Quaternion.identity);
+        if(hit[0].GetComponent<DeleteObjects>().puaInstance)
+            Instantiate(pua, puaSpawn, Quaternion.identity);
         if (playerHealth.health <= 100)
             Invoke("LifeOff", 2f);
         Invoke("Destroy", 0.1f);
