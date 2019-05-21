@@ -15,6 +15,10 @@ public class HUD : MonoBehaviour
     }
     public void Initialize()
     {
+        LanguageManager.langData.currentLanguage = LangData.Languages.English;
+        SetLanguage(1);
+        LanguageManager.SaveLanguage();
+        LanguageManager.LoadLanguage();
         texts = GetComponentsInChildren<TextLoader>();
         for (int i = 0; i < texts.Length; i++)
         {
@@ -28,6 +32,8 @@ public class HUD : MonoBehaviour
         LanguageManager.langData.currentLanguage = (LangData.Languages)id;
 
         LanguageManager.LoadConfigText();
+        LanguageManager.SaveLanguage();
+        LanguageManager.LoadLanguage();
 
         for (int i = 0; i < texts.Length; i++)
         {

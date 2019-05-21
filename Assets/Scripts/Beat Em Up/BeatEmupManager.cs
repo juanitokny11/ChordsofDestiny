@@ -16,6 +16,14 @@ public class BeatEmupManager : MonoBehaviour
     public AudioSource musicGameplay;
     public AudioSource openPause;
     public AudioSource closePause;
+    public Canvas optionsCanvas;
+    public Canvas confExit;
+    public Canvas confMenu;
+    public Canvas videoCanvas;
+    public Canvas audioCanvas;
+    public Canvas controlsCanvas;
+    public GameObject mainMenu;
+    public bool firstTime;
     public bool godmode = true;
     public Canvas pausaMenu;
     public RectTransform optionsMenu;
@@ -32,6 +40,7 @@ public class BeatEmupManager : MonoBehaviour
     {
         Player = GameObject.FindGameObjectWithTag("Player");
         Cursor.visible = false;
+        firstTime = true;
         if (BeatEmupManager.instance.pause == true)
         {
             //ESTO ES PARA CAMBIAR EL VOLUMEN DE LA MUSICA DE GAMEPLAY
@@ -61,9 +70,16 @@ public class BeatEmupManager : MonoBehaviour
         {
             Time.timeScale = 1;
             closePause.Play();
+            firstTime = true;
             //pauseMenuPrincial.SetBool("Pausa", true);
             Cursor.visible = false;
             musicGameplay.mute = false;
+            optionsCanvas.enabled = false;
+            confExit.enabled = false;
+            confMenu.enabled = false;
+            videoCanvas.enabled = false;
+            audioCanvas.enabled = false;
+            controlsCanvas.enabled = false;
             //notas.SetActive(false);
             Invoke("TakeoFFMenu", 0.2f);
             pause = true;
@@ -73,6 +89,11 @@ public class BeatEmupManager : MonoBehaviour
             openPause.Play();
             //pauseMenuPrincial.SetBool("Pausa", false);
             //notas.SetActive(true);
+            if (firstTime)
+            {
+                mainMenu.SetActive(true);
+                firstTime = false;
+            }
             musicGameplay.mute = true;
             Cursor.visible = true;
             Invoke("TakeONMenu", 0.2f);
@@ -82,12 +103,13 @@ public class BeatEmupManager : MonoBehaviour
     private void TakeoFFMenu()
     {
         pausaMenu.enabled = false;
-        optionsMenu.gameObject.SetActive(false);
+        //optionsMenu.gameObject.SetActive(false);
         music.Stop();
     }
     private void TakeONMenu()
     {
         pausaMenu.enabled = true;
+        //firstTime = true;
         music.Play();
     }
     public void Time0()

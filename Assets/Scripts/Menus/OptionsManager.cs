@@ -14,10 +14,13 @@ public class OptionsManager : MonoBehaviour {
     public int currentcontrol = 0;
     public GameObject[] controls;
     public Text texto;
-
+    private void Awake()
+    {
+        //LanguageManager.langData.currentLanguage = LangData.Languages.English;
+    }
     void Start(){
        // Debug.Log(Application.persistentDataPath);
-        Screen.fullScreen = false;
+        Screen.fullScreen = true;
 		Resolution[] screenRes = Screen.resolutions;
 
 		resolutions = new Resolution[4];

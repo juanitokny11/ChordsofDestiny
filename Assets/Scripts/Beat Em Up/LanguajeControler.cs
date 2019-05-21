@@ -16,10 +16,12 @@ public class LanguajeControler : MonoBehaviour
     }
     public void ChageForwardLanguaje()
     {
+        actualLanguaje = Languaje.SPANISH;
         LanguageManager.langData.currentLanguage = LangData.Languages.Spanish;
     }
     public void ChageBackwardLanguaje()
     {
+        actualLanguaje = Languaje.ENGLISH;
         LanguageManager.langData.currentLanguage = LangData.Languages.English;
     }
     public void ChangeLanguaje ()
@@ -27,7 +29,6 @@ public class LanguajeControler : MonoBehaviour
         if (LanguageManager.langData.currentLanguage == LangData.Languages.Spanish)
         {
             text.text = "Español";
-           
         }
         if (LanguageManager.langData.currentLanguage == LangData.Languages.English)
         {
