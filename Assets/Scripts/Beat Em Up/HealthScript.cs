@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class HealthScript : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class HealthScript : MonoBehaviour
     private PlayerAttack2 player_Attack;
     public EnemyHealthUI healthUI;
     public GameObject score;
+    public Image fadeImage;
     private HealthUI health_UI;
     private LifeControler enemyUI;
     public BeatEmupManager gameManager;
@@ -24,6 +26,7 @@ public class HealthScript : MonoBehaviour
     public GameObject hits;
     public GameObject healthBar;
     public BossIA bossIA;
+    public Color colorfade;
     private LifeControler enemy_Health_UI;
     public PlayerAttackList playerAttack_List;
     public bool canDoSolo = false;
@@ -104,15 +107,6 @@ public class HealthScript : MonoBehaviour
         if (is_Player)
         { 
             health_UI.DisplayHealth(health);
-            if (!knockDown & !defense)
-            {
-                /*if (Random.Range(0, 3) > 1)
-                {
-                    animationScript.Hit(Random.Range(0, 3));
-                    playerAttack_List.RemoveAllList();
-                    playerAttack_List.CanAttack();
-                }*/
-            }
         }
         else if(is_Enemy)
             enemy_Health_UI.DisplayHealth(health,maxHealth);
@@ -193,5 +187,10 @@ public class HealthScript : MonoBehaviour
             }
 
         }
+        
+    }
+    public void DoFadeToBlack()
+    {
+        //fadeImage.im
     }
 }
