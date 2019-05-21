@@ -18,6 +18,7 @@ public class PlayerMovementBeat : MonoBehaviour
     public float z_Speed;
     public bool lockrotation;
     public bool move;
+    public bool attack;
     public bool walk=false;
     public bool running;
     public bool canRotate = true;
@@ -45,13 +46,13 @@ public class PlayerMovementBeat : MonoBehaviour
 
         if (enableMovement)
         {
-            if(!walk)
+            if(!walk && !attack)
                 counter++;
                 if (counter == 500f)
                 {
                     player_Anim.PlayLongIdle();
                 }
-            else if (walk)
+            else if (walk || attack)
             {
                 counter = 0;
             }

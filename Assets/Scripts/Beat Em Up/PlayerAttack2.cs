@@ -78,8 +78,10 @@ public class PlayerAttack2 : MonoBehaviour
     }
     void ComboAttacks()
     {
+       
         if (Input.GetButtonDown("AtaqueDebil"))
         {
+            player_Move.attack = true;
             if (attacks.Contains(ComboState.DEBIL3)||current_Combo_State == ComboState.DEBIL3 || current_Combo_State == ComboState.FUERTE2 || current_Combo_State == ComboState.FUERTE3 || current_Combo_State == ComboState.GUARD || current_Combo_State == ComboState.SOLO || current_Combo_State==ComboState.AIRCOMBO1)
                 return;
             if (current_Combo_State == ComboState.FUERTE)
@@ -121,6 +123,7 @@ public class PlayerAttack2 : MonoBehaviour
         }
         if (Input.GetButtonDown("AtaqueFuerte"))
         {
+            player_Move.attack = true;
             if (attacks.Contains(ComboState.FUERTE3)||current_Combo_State == ComboState.FUERTE3 || current_Combo_State == ComboState.DEBIL3 || current_Combo_State == ComboState.GUARD || current_Combo_State == ComboState.SOLO)
                 return;
             if (current_Combo_State == ComboState.NONE)
@@ -154,6 +157,7 @@ public class PlayerAttack2 : MonoBehaviour
             }
         if (Input.GetKeyDown(KeyCode.D) || Input.GetAxisRaw("Solo") == 1 && Input.GetAxisRaw("Disparar") == 1)
         {
+            player_Move.attack = true;
             if ( !player_Move.inAir && healthScript.canDoSolo==true)
             {
                 current_Combo_State = ComboState.SOLO;
@@ -169,6 +173,7 @@ public class PlayerAttack2 : MonoBehaviour
         }
         if (Input.GetAxisRaw("Evadir") == 1 && !blockActivated)
         {
+            player_Move.attack = true;
             current_Combo_State = ComboState.GUARD;
             if (!player_Move.inAir)
             {
@@ -222,6 +227,7 @@ public class PlayerAttack2 : MonoBehaviour
             current_Combo_Timer -= Time.deltaTime;
             if (current_Combo_Timer <= 0f)
             {
+                player_Move.attack = false;
                 current_Combo_State = ComboState.NONE;
                 activateTimerToReset = false;
                 current_Combo_Timer = default_Combo_Timer;
@@ -264,14 +270,9 @@ public class PlayerAttack2 : MonoBehaviour
     }
     public void NotasPlay()
     {
-        notas.gameObject.SetActive(true);
+        //notas.gameObject.SetActive(true);
         notas.Play();
         //notas.gameObject.transform.parent = null;
-    }
-    public void NotasStop()
-    {
-        notas.gameObject.SetActive(false);
-        notas.Stop();
     }
 }
 

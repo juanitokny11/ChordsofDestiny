@@ -64,7 +64,7 @@ public class CharacterAnimationDelegate : MonoBehaviour
         {
             playerAttack = GetComponent<PlayerAttack2>();
             player_Move = GetComponent<PlayerMovementBeat>();
-            jumpefect = GetComponentInChildren<ParticleSystem>();
+            //jumpefect = GetComponentInChildren<ParticleSystem>();
             clips = GetComponentInChildren<SoundPlayer>();
         }
         
