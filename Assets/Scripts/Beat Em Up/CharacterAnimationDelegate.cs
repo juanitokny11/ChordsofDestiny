@@ -213,7 +213,8 @@ public class CharacterAnimationDelegate : MonoBehaviour
     void DeleteGameobject()
     {
         //InvokeRepeating("Blink", 0f, 0.05f);
-        animationScript.Disolve();
+        //animationScript.Disolve();
+        if(!is_Boss)
         Invoke("DestroyGameobject", 2.0f);
     }
     public void EnableEspadaAnim()

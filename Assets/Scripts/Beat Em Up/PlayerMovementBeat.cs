@@ -15,7 +15,6 @@ public class PlayerMovementBeat : MonoBehaviour
     public PlayerAttackList attackList;
     public PlayerAttack2 playerAttack;
     public float run_Speed;
-    public float Counter;
     public float z_Speed;
     public bool lockrotation;
     public bool move;
@@ -25,7 +24,7 @@ public class PlayerMovementBeat : MonoBehaviour
     public bool is_Dead=false;
     Quaternion actualrot;
     Vector3 newPosition;
-    float counter;
+    public float counter;
     private float rotation_Y = -90.0f;
     public float rotation_Speed = 15f;
     private void Awake()
@@ -46,12 +45,16 @@ public class PlayerMovementBeat : MonoBehaviour
 
         if (enableMovement)
         {
-           
+            if(!walk)
                 counter++;
                 if (counter == 500f)
                 {
                     player_Anim.PlayLongIdle();
                 }
+            else if (walk)
+            {
+                counter = 0;
+            }
 
             RotatePlayer();
             if (playerAttack.current_Combo_State == PlayerAttack2.ComboState.NONE)
