@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         LanguageManager.LoadLanguage();
-
+        Debug.Log(LanguageManager.langData.currentLanguage);
         hud = GameObject.FindObjectOfType<HUD>();
         LanguageManager.langData.currentLanguage = LangData.Languages.English;
         hud.Initialize();

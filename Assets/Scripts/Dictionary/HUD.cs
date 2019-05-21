@@ -7,16 +7,24 @@ public class HUD : MonoBehaviour
     public GameObject options;
     public GameObject audiomenu;
     public GameObject controlsmenu;
+    public bool firstTime;
     public int id;
  public TextLoader[] texts;
     public void Start()
     {
-        id = 1;
+        if (LanguageManager.langData.currentLanguage == LangData.Languages.English)
+            id = 1;
+        else if (LanguageManager.langData.currentLanguage == LangData.Languages.Spanish)
+            id = 0;
     }
     public void Initialize()
     {
-        LanguageManager.langData.currentLanguage = LangData.Languages.English;
-        SetLanguage(1);
+        if (firstTime)
+        {
+            LanguageManager.langData.currentLanguage = LangData.Languages.English;
+            SetLanguage(1);
+            firstTime = false;
+        }
         LanguageManager.SaveLanguage();
         LanguageManager.LoadLanguage();
         texts = GetComponentsInChildren<TextLoader>();
@@ -31,9 +39,9 @@ public class HUD : MonoBehaviour
 
         LanguageManager.langData.currentLanguage = (LangData.Languages)id;
 
-        LanguageManager.LoadConfigText();
         LanguageManager.SaveLanguage();
         LanguageManager.LoadLanguage();
+        LanguageManager.LoadConfigText();
 
         for (int i = 0; i < texts.Length; i++)
         {

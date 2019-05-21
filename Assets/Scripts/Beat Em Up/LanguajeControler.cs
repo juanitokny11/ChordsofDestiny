@@ -18,11 +18,15 @@ public class LanguajeControler : MonoBehaviour
     {
         actualLanguaje = Languaje.SPANISH;
         LanguageManager.langData.currentLanguage = LangData.Languages.Spanish;
+        LanguageManager.SaveLanguage();
+        LanguageManager.LoadLanguage();
     }
     public void ChageBackwardLanguaje()
     {
         actualLanguaje = Languaje.ENGLISH;
         LanguageManager.langData.currentLanguage = LangData.Languages.English;
+        LanguageManager.SaveLanguage();
+        LanguageManager.LoadLanguage();
     }
     public void ChangeLanguaje ()
     {
@@ -33,9 +37,6 @@ public class LanguajeControler : MonoBehaviour
         if (LanguageManager.langData.currentLanguage == LangData.Languages.English)
         {
             text.text = "English";
-            LanguageManager.langData.currentLanguage = LangData.Languages.English;
         }
-
     }
- 
 }
