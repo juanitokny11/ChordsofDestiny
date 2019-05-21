@@ -26,6 +26,7 @@ public class PlayerAttack2 : MonoBehaviour
     private Quaternion currentGuitarRotation;
     public HealthScript healthScript;
     public HealthUI healthUI;
+    public bool enableAttacks;
     public PlayerAttackList attackList;
     public CapsuleCollider mycol;
     public BoxCollider guardCollider;
@@ -44,6 +45,7 @@ public class PlayerAttack2 : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        enableAttacks = true;
         mycol = GetComponentInChildren<CapsuleCollider>();
         attackList = GetComponent<PlayerAttackList>();
         guardCollider =GameObject.FindGameObjectWithTag("Defense").GetComponent<BoxCollider>();
@@ -63,13 +65,16 @@ public class PlayerAttack2 : MonoBehaviour
     }
     void Update()
     {
-        ComboAttacks();
-        ResetComboState();
-        if (current_Combo_State == ComboState.JUMP)
+        if (enableAttacks)
         {
-            attackList.RemoveAllList();
-            attackList.Attack = true;
-        }  
+            ComboAttacks();
+            ResetComboState();
+            if (current_Combo_State == ComboState.JUMP)
+            {
+                attackList.RemoveAllList();
+                attackList.Attack = true;
+            }
+        }
     }
     void ComboAttacks()
     {

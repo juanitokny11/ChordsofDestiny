@@ -43,11 +43,21 @@ public class HUD : MonoBehaviour
         id++;
         if (id > 1) id = 0;
         SetLanguage(id);
+        UpdateTexts();
     }
     public void LessLanguaje()
     {
         id--;
         if (id < 0) id = 1;
         SetLanguage(id);
+        UpdateTexts();
+    }
+
+    public void UpdateTexts()
+    {
+        for (int i = 0; i < texts.Length; i++)
+        {
+            texts[i].Initialize();
+        }
     }
 }

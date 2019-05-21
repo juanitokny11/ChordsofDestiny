@@ -34,9 +34,4 @@ public class GameManager : MonoBehaviour
         LanguageManager.langData.currentLanguage = LangData.Languages.English;
         hud.Initialize();
     }
-    private void Update()
-    {
-        hud.Initialize();
-    }
 }
-

@@ -11,9 +11,11 @@ public class PlayerMovementBeat : MonoBehaviour
     public bool comboAereo = false;
     public AudioSource caminarS;
     public AudioSource soloS;
+    public bool enableMovement;
     public PlayerAttackList attackList;
     public PlayerAttack2 playerAttack;
     public float run_Speed;
+    public float Counter;
     public float z_Speed;
     public bool lockrotation;
     public bool move;
@@ -28,6 +30,8 @@ public class PlayerMovementBeat : MonoBehaviour
     public float rotation_Speed = 15f;
     private void Awake()
     {
+        enableMovement = true;
+        //canRotate = false;
         attackList = GetComponent<PlayerAttackList>();
         anim = GetComponent<Animator>();
         transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -39,33 +43,44 @@ public class PlayerMovementBeat : MonoBehaviour
     }
     void Update()
     {
-        RotatePlayer();
-        if (playerAttack.current_Combo_State == PlayerAttack2.ComboState.NONE)
+
+        if (enableMovement)
         {
-            move = true;
-        }
-        if (!is_Dead)
-        {
-            AnimatePlayerRun();
-            AnimatePlayerWalk();
-            if (walk == true && running == false)
-                run_Speed = 5;
-            else if (walk == true && running == true)
-                run_Speed = 10f;
-            if (Input.GetButtonDown("Run"))
+           
+                counter++;
+                if (counter == 500f)
+                {
+                    player_Anim.PlayLongIdle();
+                }
+
+            RotatePlayer();
+            if (playerAttack.current_Combo_State == PlayerAttack2.ComboState.NONE)
             {
-                running = true;
+                move = true;
             }
-            if (Input.GetButtonUp("Run"))
+            if (!is_Dead)
             {
-                caminarS.Stop();
-                running = false;
-                counter = 0;
+                AnimatePlayerRun();
+                AnimatePlayerWalk();
+                if (walk == true && running == false)
+                    run_Speed = 5;
+                else if (walk == true && running == true)
+                    run_Speed = 10f;
+                if (Input.GetButtonDown("Run"))
+                {
+                    running = true;
+                }
+                if (Input.GetButtonUp("Run"))
+                {
+                    caminarS.Stop();
+                    running = false;
+                    counter = 0;
+                }
             }
+            if (BeatEmupManager.instance.godmode == true)
+                AnimatePlayerJump();
+            //AnimateResetJump();
         }
-        if (BeatEmupManager.instance.godmode == true)
-            AnimatePlayerJump();
-        //AnimateResetJump();
     }
     public void Start()
     {
@@ -73,13 +88,21 @@ public class PlayerMovementBeat : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if(move)
-        DetectMovement();
+        
+        if (enableMovement)
+        {
+            if (move)
+                DetectMovement();
+        }
+    }
+    public void CounterReset()
+    {
+        counter = 0;
     }
     void OnAnimatorMove()
     {
         Animator animator = GetComponent<Animator>();
-        if (!is_Dead)
+        if (!is_Dead || enableMovement)
         {
             if (animator)
             {
@@ -126,7 +149,6 @@ public class PlayerMovementBeat : MonoBehaviour
                 }
                 transform.position = newPosition;
             }
-       
         }
     }
     void caminar()

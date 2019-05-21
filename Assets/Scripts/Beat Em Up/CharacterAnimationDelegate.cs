@@ -9,6 +9,7 @@ public class CharacterAnimationDelegate : MonoBehaviour
     public SoundPlayer clips;
     public ParticleSystem jumpefect;
     public ParticleSystem soloParticle;
+    public GameObject Hacha;
     public GameObject guitar_Attack_Mesh;
     public GameObject guitar_Attack_Point;
     public GameObject Boss_Attack_Point1;
@@ -34,6 +35,7 @@ public class CharacterAnimationDelegate : MonoBehaviour
     public GameObject particleEspada1;
     public GameObject particleEspada2;
     public bool isGroupie,is_Boss,isFan;
+    public GameObject crack;
 
     private void Awake()
     {
@@ -210,8 +212,9 @@ public class CharacterAnimationDelegate : MonoBehaviour
     }
     void DeleteGameobject()
     {
-        InvokeRepeating("Blink", 0f, 0.05f);
-        Invoke("DestroyGameobject", 4.0f);
+        //InvokeRepeating("Blink", 0f, 0.05f);
+        animationScript.Disolve();
+        Invoke("DestroyGameobject", 2.0f);
     }
     public void EnableEspadaAnim()
     {
@@ -290,5 +293,9 @@ public class CharacterAnimationDelegate : MonoBehaviour
     public void ParticleSoloOff()
     {
         soloParticle.Stop();
+    }
+    public void CrackFloor()
+    {
+        Instantiate(crack, Hacha.transform.position, Quaternion.identity, null);
     }
 }

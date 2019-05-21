@@ -96,6 +96,10 @@ public class CharacterAnimation : MonoBehaviour
             anim.SetTrigger("Hit2");
     }
     //Enemy Animations
+    public void Disolve()
+    {
+        anim.SetTrigger("Disolve");
+    }
     public void Stuned()
     {
         anim.SetTrigger("Stuned");
