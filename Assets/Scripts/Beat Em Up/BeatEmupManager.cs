@@ -24,6 +24,7 @@ public class BeatEmupManager : MonoBehaviour
     public Canvas controlsCanvas;
     public GameObject mainMenu;
     public bool firstTime;
+    public Transform Tppos;
     public bool godmode = true;
     public Canvas pausaMenu;
     public RectTransform optionsMenu;
@@ -54,6 +55,10 @@ public class BeatEmupManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F10))
         {
             GodMode();
+        }
+        if (Input.GetKeyDown(KeyCode.F8))
+        {
+            Player.transform.position = Tppos.position;
         }
         if (godmode == true)
         {

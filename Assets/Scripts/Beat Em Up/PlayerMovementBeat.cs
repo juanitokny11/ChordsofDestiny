@@ -19,6 +19,7 @@ public class PlayerMovementBeat : MonoBehaviour
     public bool lockrotation;
     public bool move;
     public bool attack;
+    public bool jump;
     public bool walk=false;
     public bool running;
     public bool canRotate = true;
@@ -52,7 +53,7 @@ public class PlayerMovementBeat : MonoBehaviour
                 {
                     player_Anim.PlayLongIdle();
                 }
-            else if (walk || attack)
+            else if (walk || attack || jump)
             {
                 counter = 0;
             }
@@ -202,12 +203,15 @@ public class PlayerMovementBeat : MonoBehaviour
     }
     void AnimatePlayerJump()
     {
-        if (Input.GetAxisRaw("Jump") != 0 && inAir==false)
+        if (jump)
         {
-            playerAttack.current_Combo_State = PlayerAttack2.ComboState.JUMP;
-            player_Anim.Jump();
-            inAir = true;
-            playerAttack.blockActivated = false;
+            if (Input.GetAxisRaw("Jump") != 0 && inAir == false)
+            {
+                playerAttack.current_Combo_State = PlayerAttack2.ComboState.JUMP;
+                player_Anim.Jump();
+                inAir = true;
+                playerAttack.blockActivated = false;
+            }
         }
     }
     void AnimateResetJump()

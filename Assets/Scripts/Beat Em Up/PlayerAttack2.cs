@@ -157,9 +157,11 @@ public class PlayerAttack2 : MonoBehaviour
             }
         if (Input.GetKeyDown(KeyCode.D) || Input.GetAxisRaw("Solo") == 1 && Input.GetAxisRaw("Disparar") == 1)
         {
-            player_Move.attack = true;
             if ( !player_Move.inAir && healthScript.canDoSolo==true)
             {
+                player_Move.attack = true;
+                player_Move.jump = false;
+                player_Move.canRotate = false;
                 current_Combo_State = ComboState.SOLO;
                 //player_Move.move = false;
                 currentGuitarpose = new Vector3(-0.2145597f, 0.1555082f, 1.084099f);
@@ -250,6 +252,9 @@ public class PlayerAttack2 : MonoBehaviour
         Guitar.localRotation = Quaternion.Euler(-61.589f, -631.912f, -92.93501f);
         mycol.enabled = true;
         player_Move.move = true;
+        player_Move.attack = true;
+        player_Move.canRotate = true;
+        player_Move.jump = true;
         current_Combo_State = ComboState.NONE;
         Solocol.GetComponent<AttackUniversal>().enabled = false;
        //
