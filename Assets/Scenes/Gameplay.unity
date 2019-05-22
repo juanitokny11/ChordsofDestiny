@@ -24649,8 +24649,9 @@ GameObject:
   - component: {fileID: 1118693566}
   - component: {fileID: 1118693568}
   - component: {fileID: 1118693567}
+  - component: {fileID: 1118693569}
   m_Layer: 10
-  m_Name: Image
+  m_Name: DieFade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24712,6 +24713,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1118693565}
   m_CullTransparentMesh: 0
+--- !u!114 &1118693569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1118693565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541eb9baa47c0184384a203b8ef9c4c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iniValue: {r: 0, g: 0, b: 0, a: 0}
+  endValue: {r: 0, g: 0, b: 0, a: 1}
+  play: 0
+  durationTime: 2
+  delayTime: 0
 --- !u!1 &1120375795
 GameObject:
   m_ObjectHideFlags: 0
@@ -56524,6 +56542,11 @@ PrefabInstance:
       propertyPath: fadeImage
       value: 
       objectReference: {fileID: 1118693567}
+    - target: {fileID: 4554496321350749296, guid: 32d3847095fd90f41bc2db0671913dc6,
+        type: 3}
+      propertyPath: fade
+      value: 
+      objectReference: {fileID: 1118693569}
     - target: {fileID: 8939311919185665385, guid: 32d3847095fd90f41bc2db0671913dc6,
         type: 3}
       propertyPath: caminarS

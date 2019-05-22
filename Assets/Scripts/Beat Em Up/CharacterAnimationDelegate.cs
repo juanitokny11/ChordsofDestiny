@@ -251,6 +251,10 @@ public class CharacterAnimationDelegate : MonoBehaviour
         jumpefect.Play();
         playerAttack.current_Combo_State = PlayerAttack2.ComboState.NONE;
     }
+    public void Died()
+    {
+        Invoke("Lost",1.0f);
+    }
     public void Lost()
     {
         SceneManager.LoadScene("GameOver");

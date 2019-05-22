@@ -18,7 +18,6 @@ public class HealthScript : MonoBehaviour
     private PlayerAttack2 player_Attack;
     public EnemyHealthUI healthUI;
     public GameObject score;
-    public Image fadeImage;
     private HealthUI health_UI;
     private LifeControler enemyUI;
     public BeatEmupManager gameManager;
@@ -26,7 +25,7 @@ public class HealthScript : MonoBehaviour
     public GameObject hits;
     public GameObject healthBar;
     public BossIA bossIA;
-    public Color colorfade;
+    public EaseColor fade;
     private LifeControler enemy_Health_UI;
     public PlayerAttackList playerAttack_List;
     public bool canDoSolo = false;
@@ -40,6 +39,7 @@ public class HealthScript : MonoBehaviour
     public bool is_Player,is_Boss,is_Enemy;
     public void Start()
     {
+        
         characterDied = false;
         gameManager = FindObjectOfType<BeatEmupManager>();
         animationScript = GetComponent<CharacterAnimation>();
@@ -47,6 +47,7 @@ public class HealthScript : MonoBehaviour
         enemyUI = GameObject.FindObjectOfType<LifeControler>();
         if (is_Player)
         {
+            fade.play = false;
             audios = GameObject.FindObjectOfType<SoundPlayer>();
             //attack = GetComponentInChildren<AttackUniversal>();
             score.SetActive(false);
@@ -185,12 +186,10 @@ public class HealthScript : MonoBehaviour
                     hitCounter = 0;
                 }
             }
-
         }
-        
     }
     public void DoFadeToBlack()
     {
-        //fadeImage.im
+        fade.play = true;
     }
 }
