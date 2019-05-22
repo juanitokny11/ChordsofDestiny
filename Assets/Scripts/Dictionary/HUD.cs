@@ -13,19 +13,18 @@ public class HUD : MonoBehaviour
     public void Start()
     {
         if (LanguageManager.langData.currentLanguage == LangData.Languages.English)
-            id = 1;
+            MyGameSettings.getInstance().id = 1;
         else if (LanguageManager.langData.currentLanguage == LangData.Languages.Spanish)
-            id = 0;
+            MyGameSettings.getInstance().id = 0;
     }
     public void Initialize()
     {
         if (firstTime)
         {
             LanguageManager.langData.currentLanguage = LangData.Languages.English;
-            SetLanguage(1);
+            SetLanguage(MyGameSettings.getInstance().id);
             firstTime = false;
         }
-        LanguageManager.SaveLanguage();
         LanguageManager.LoadLanguage();
         texts = GetComponentsInChildren<TextLoader>();
         for (int i = 0; i < texts.Length; i++)
@@ -54,16 +53,16 @@ public class HUD : MonoBehaviour
     }
     public void MoreLanguaje()
     {
-        id++;
-        if (id > 1) id = 0;
-        SetLanguage(id);
+        MyGameSettings.getInstance().id++;
+        if (MyGameSettings.getInstance().id > 1) MyGameSettings.getInstance().id = 0;
+        SetLanguage(MyGameSettings.getInstance().id);
         UpdateTexts();
     }
     public void LessLanguaje()
     {
-        id--;
-        if (id < 0) id = 1;
-        SetLanguage(id);
+        MyGameSettings.getInstance().id--;
+        if (MyGameSettings.getInstance().id < 0) MyGameSettings.getInstance().id = 1;
+        SetLanguage(MyGameSettings.getInstance().id);
         UpdateTexts();
     }
 

@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
 public class GameManager : MonoBehaviour
 {
     private HUD hud;
+    public bool actualize;
     void Start()
     {
         LanguageManager.LoadLanguage();
@@ -33,5 +34,14 @@ public class GameManager : MonoBehaviour
         hud = GameObject.FindObjectOfType<HUD>();
         LanguageManager.langData.currentLanguage = LangData.Languages.English;
         hud.Initialize();
+    }
+    private void Update()
+    {
+        if (MyGameSettings.getInstance().actualize)
+        {
+            hud.Initialize();
+            MyGameSettings.getInstance().actualize = false;
+        }
+           
     }
 }

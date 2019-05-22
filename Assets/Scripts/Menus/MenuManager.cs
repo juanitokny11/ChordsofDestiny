@@ -43,6 +43,7 @@ public class MenuManager : MonoBehaviour {
         MyGameSettings.getInstance().gameStarted = true;
         MyGameSettings.getInstance().logoPlayed = true;
         MyGameSettings.getInstance().menuAnim.firstTime = true;
+        MyGameSettings.getInstance().actualize = true;
         SceneManager.LoadScene("Gameplay");
     }
     public void PlayGame()
@@ -100,6 +101,7 @@ public class MenuManager : MonoBehaviour {
         MyGameSettings.getInstance().menuAnim.Anim = true;
         MyGameSettings.getInstance().gameStarted = true;
         MyGameSettings.getInstance().logoPlayed = true;
+        MyGameSettings.getInstance().actualize = true;
     }
 	public void Victory(){
 		SceneManager.LoadScene("Victoria");

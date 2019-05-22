@@ -19,18 +19,21 @@ public class MyGameSettings : MonoBehaviour {
     public bool logoPlayed=false;
     public bool cinematicaPlayed = false;
     public MenuAnim menuAnim;
+    public int id;
+    public bool actualize;
     public int score;
 
     void Awake (){
 		if (instance == null) {
 			instance = this;
-
             DontDestroyOnLoad (this);
 		}
+        id = 1;
         score = 0;
         Scene MainMenu = SceneManager.GetActiveScene();
         string scenename = MainMenu.name;
         menuAnim = GameObject.FindGameObjectWithTag("MenuAnim").GetComponentInChildren<MenuAnim>();
+        actualize = false;
     }
     private void Update()
     {
