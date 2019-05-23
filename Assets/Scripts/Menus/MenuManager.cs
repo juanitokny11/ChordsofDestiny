@@ -14,6 +14,9 @@ public class MenuManager : MonoBehaviour {
     public MenuAnim menuAnim;
     public bool is_MainMenu = false;
     public VideoPlayer cinematicaInicial;
+    public VideoClip VideoEng;
+    public VideoClip VideoEsp;
+
 
     public void Start()
     {
@@ -23,6 +26,17 @@ public class MenuManager : MonoBehaviour {
             cinematicaInicial.gameObject.SetActive(false);
             cinematicaInicial.Prepare();
         } 
+    }
+    public void Update()
+    {
+        if (LanguageManager.langData.currentLanguage == LangData.Languages.English)
+        {
+            cinematicaInicial.clip = VideoEng;
+        }
+        else if (LanguageManager.langData.currentLanguage == LangData.Languages.Spanish)
+        {
+            cinematicaInicial.clip = VideoEsp;
+        }
     }
     IEnumerator waitForMovieEnd()
     {
