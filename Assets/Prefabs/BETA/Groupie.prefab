@@ -152,6 +152,8 @@ GameObject:
   - component: {fileID: 410283864985739564}
   - component: {fileID: 2790595954151036086}
   - component: {fileID: 2850857673651193836}
+  - component: {fileID: 745948930415470065}
+  - component: {fileID: 5050926941877603328}
   - component: {fileID: 7521556622779265915}
   - component: {fileID: 452187334}
   - component: {fileID: 452187335}
@@ -237,6 +239,34 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &745948930415470065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563660872938979978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d333137632af83547be225695db2d2ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cullingObj: []
+  reference: {fileID: 0}
+  distances: []
+--- !u!114 &5050926941877603328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563660872938979978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b803630d58340b45a3a5e8f3922807d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rend: {fileID: 1563660874057412209}
 --- !u!114 &7521556622779265915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,6 +420,7 @@ MonoBehaviour:
   walkgroupie: {fileID: 692414062669842625}
   walkfan: {fileID: 0}
   DisolveGroupi: {fileID: 6259887641671851926}
+  DisolveFan: {fileID: 0}
 --- !u!65 &1972783370
 BoxCollider:
   m_ObjectHideFlags: 0
