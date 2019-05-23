@@ -41,10 +41,12 @@ public class BossIA : MonoBehaviour
     public GameObject llave;
     public Transform llavePos;
     public bool invoke = false;
+    public bool Chase;
     public ParticleSystem brokenArm;
 
     void Start()
     {
+        Chase = true;
         gameManager = FindObjectOfType<BeatEmupManager>();
         this.enabled = true;
         capsuleCollider = GetComponent<CapsuleCollider>();
@@ -73,6 +75,7 @@ public class BossIA : MonoBehaviour
                 if (transform.position.y >= 9f)
                 {
                     transform.position = waitingPlace.position;
+                    Chase = true;
                     StopJumpUp();
                 }
             }
@@ -99,6 +102,7 @@ public class BossIA : MonoBehaviour
                 if (transform.position.y >= 9f)
                 {
                     transform.position = ResetPosition.position;
+                    Chase = false;
                     StopJumpUp();
                 }
             }
@@ -163,60 +167,65 @@ public class BossIA : MonoBehaviour
         {
             enemyAnim.RomperEspada();
         }
-        //if(BossZone.enemiescounter !=0)
-        if (Vector3.Distance(transform.position, playerTarget.position) < chaseDistance && Vector3.Distance(transform.position, playerTarget.position) > attack_Distance)
+        if (Chase)
         {
-            transform.LookAt(playerTarget);
-            myBody.velocity = transform.forward * speed;
-            if (myBody.velocity.sqrMagnitude != 0)
+            if (Vector3.Distance(transform.position, playerTarget.position) < chaseDistance && Vector3.Distance(transform.position, playerTarget.position) > attack_Distance)
             {
-                if (fase == 1)
-                    enemyAnim.Walk2arm(true);
-                else if (fase == 2)
-                    enemyAnim.Walk1arm(true);
+                transform.LookAt(playerTarget);
+                myBody.velocity = transform.forward * speed;
+                if (myBody.velocity.sqrMagnitude != 0)
+                {
+                    if (fase == 1)
+                        enemyAnim.Walk2arm(true);
+                    else if (fase == 2)
+                        enemyAnim.Walk1arm(true);
+                }
+                followPlayer = true;
+                attackPlayer = false;
             }
-            followPlayer = true;
-            attackPlayer = false;
-        }
-        else if (Vector3.Distance(transform.position, playerTarget.position) > chaseDistance && Vector3.Distance(transform.position, playerTarget.position) > attack_Distance)
-        {
-            if (followPlayer == true)
+            else if (Vector3.Distance(transform.position, playerTarget.position) > chaseDistance && Vector3.Distance(transform.position, playerTarget.position) > attack_Distance)
+            {
+                if (followPlayer == true)
+                {
+                    myBody.velocity = Vector3.zero;
+                    if (fase == 1)
+                        enemyAnim.Walk2arm(false);
+                    else if (fase == 2)
+                        enemyAnim.Walk1arm(false);
+                    //followPlayer = false;
+                    attackPlayer = false;
+                }
+            }
+            else if (Vector3.Distance(transform.position, playerTarget.position) < attack_Distance && Vector3.Distance(transform.position, playerTarget.position) < chaseDistance)
             {
                 myBody.velocity = Vector3.zero;
                 if (fase == 1)
                     enemyAnim.Walk2arm(false);
                 else if (fase == 2)
                     enemyAnim.Walk1arm(false);
-                //followPlayer = false;
-                attackPlayer = false;
+                //followPlayer = true;
+                attackPlayer = true;
+                SetAttack();
             }
         }
-        else if (Vector3.Distance(transform.position, playerTarget.position) < attack_Distance && Vector3.Distance(transform.position, playerTarget.position) < chaseDistance)
-        {
-            myBody.velocity = Vector3.zero;
-            if (fase == 1)
-                enemyAnim.Walk2arm(false);
-            else if (fase == 2)
-                enemyAnim.Walk1arm(false);
-            //followPlayer = true;
-            attackPlayer = true;
-            SetAttack();
-        }
-        if (BossZone.enemiescounter == 1  &&  invoke ==true)
-        {
-            if (fase == 1)
+        if (BossZone.enemiescounter == 1 && invoke == true)
             {
-                enemyAnim.Jump2Arms();
-                Inside();
-                //enemyAnim.ResetJump2Arms();
+                if (fase == 1)
+                {
+                    enemyAnim.Jump2Arms();
+                    Inside();
+                    //enemyAnim.ResetJump2Arms();
+                }
+                else if (fase == 2)
+                {
+                    enemyAnim.Jump1Arm();
+                    //enemyAnim.ResetJump1Arm();
+                }
+
             }
-            else if(fase == 2)
-            {
-                enemyAnim.Jump1Arm();
-                //enemyAnim.ResetJump1Arm();
-            }
-            
-        }
+        
+        //if(BossZone.enemiescounter !=0)
+       
     }
     void Invoke()
     {
@@ -228,6 +237,8 @@ public class BossIA : MonoBehaviour
             invokeEnemy2 = Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[1].position, Quaternion.identity);
             invokeEnemy.GetComponent<HealthScript>().zone = BossZone;
             invokeEnemy2.GetComponent<HealthScript>().zone = BossZone;
+            invokeEnemy.GetComponent<EnemyMovement>().chaseDistance = 20f;
+            invokeEnemy2.GetComponent<EnemyMovement>().chaseDistance = 20f;
             BossZone.enemiescounter += 2;
             enemyAnim.Jump2Arms();
             //enemyAnim.ResetJump2Arms();

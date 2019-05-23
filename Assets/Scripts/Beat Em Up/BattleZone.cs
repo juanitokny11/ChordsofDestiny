@@ -7,7 +7,7 @@ using DG.Tweening;
 public class BattleZone : MonoBehaviour
 {
     //private BoxCollider colider;
-    public ShakeCamera camera;
+    public new ShakeCamera camera;
     public GameObject UI;
     public GameObject score;
     public GameObject EnemyUI;
@@ -26,7 +26,7 @@ public class BattleZone : MonoBehaviour
     private void Start()
     {
         //colider = GetComponent<BoxCollider>();
-        camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ShakeCamera>();
+        //camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ShakeCamera>();
         enemiescounter = enemies.Count;
         Player = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthScript>();
     }
@@ -35,6 +35,7 @@ public class BattleZone : MonoBehaviour
         if (other.tag == "Player")
         { 
             UI.SetActive(true);
+            enemyBlocker.enabled = false;
             score.SetActive(true);
             GetComponent<BoxCollider>().enabled = false;
             if (!bossZone)
@@ -44,7 +45,6 @@ public class BattleZone : MonoBehaviour
                 if (enemies.Count >= 3)
                     enemies[2].gameObject.SetActive(true);
                 camera.GetComponent<ShakeCamera>().lockCamera = true;
-                enemyBlocker.enabled = false;
             }
         }
     }

@@ -13,7 +13,7 @@ public class CameraLockControl2 : MonoBehaviour
     {
         boxcol = GetComponentInParent<BoxCollider>();
         capscol = GetComponent<CapsuleCollider>();
-        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ShakeCamera>();
+        //cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ShakeCamera>();
     }
 
     // Update is called once per frame

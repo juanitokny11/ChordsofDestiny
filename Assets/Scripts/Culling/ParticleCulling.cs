@@ -42,10 +42,9 @@ public class ParticleCulling : CullingGroupBase {
 	}
 	protected override void OnStateChanged(CullingGroupEvent sphere)
 	{
-        Debug.Log("OnStateChanged " + sphere.index);
+        //Debug.Log("OnStateChanged " + sphere.index);
         if (!sphere.isVisible)
         {
-
             particles[sphere.index].HasBecomeInvisible();
         }
 		if(sphere.isVisible) particles[sphere.index].HasBecomeVisible();

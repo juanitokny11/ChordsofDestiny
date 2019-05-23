@@ -10,7 +10,7 @@ public class ChangeCamera : MonoBehaviour
 
     void Start()
     {
-        gameplaycam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        //gameplaycam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         bosscam = GameObject.FindGameObjectWithTag("BossCam").GetComponent<Camera>();
     }
 }

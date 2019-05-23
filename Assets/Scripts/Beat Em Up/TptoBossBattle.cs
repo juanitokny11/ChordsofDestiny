@@ -17,16 +17,26 @@ public class TptoBossBattle : MonoBehaviour
     public AudioSource musicBoss;
     //public GameObject musicGameplay;
     public bool changeMusic=false;
+    public VideoClip VideoEng;
+    public VideoClip VideoEsp;
     public void Start()
     {
         cinematicaBoss.Prepare();
-        camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ShakeCamera>();
+        //camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ShakeCamera>();
         Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementBeat>();
         player_Anim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
     }
     private void Update()
     {
         cinematicaBoss.loopPointReached += onMovieEnded;
+        if (LanguageManager.langData.currentLanguage == LangData.Languages.English)
+        {
+            cinematicaBoss.clip = VideoEng;
+        }
+        else if (LanguageManager.langData.currentLanguage == LangData.Languages.Spanish)
+        {
+            cinematicaBoss.clip = VideoEsp;
+        }
         if (Input.GetKeyDown(KeyCode.Return) && cinematica || Input.GetAxisRaw("AtaqueDebil") != 0 && cinematica)
         {
             cinematicaBoss.gameObject.SetActive(false);

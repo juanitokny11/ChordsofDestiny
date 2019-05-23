@@ -29,13 +29,16 @@ public class MenuManager : MonoBehaviour {
     }
     public void Update()
     {
-        if (LanguageManager.langData.currentLanguage == LangData.Languages.English)
+        if (is_MainMenu)
         {
-            cinematicaInicial.clip = VideoEng;
-        }
-        else if (LanguageManager.langData.currentLanguage == LangData.Languages.Spanish)
-        {
-            cinematicaInicial.clip = VideoEsp;
+            if (LanguageManager.langData.currentLanguage == LangData.Languages.English)
+            {
+                cinematicaInicial.clip = VideoEng;
+            }
+            else if (LanguageManager.langData.currentLanguage == LangData.Languages.Spanish)
+            {
+                cinematicaInicial.clip = VideoEsp;
+            }
         }
     }
     IEnumerator waitForMovieEnd()
