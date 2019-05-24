@@ -18,7 +18,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4933186197223276
 Transform:
@@ -125,7 +125,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4195588843927962
 Transform:
@@ -223,14 +223,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4852843204109980}
-  - component: {fileID: 114611476684261758}
-  - component: {fileID: 65715155372967856}
   m_Layer: 0
   m_Name: boca_de_incendios
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4852843204109980
 Transform:
@@ -241,43 +239,10 @@ Transform:
   m_GameObject: {fileID: 1829225407671132}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -24.5, y: 1.02, z: -20.2}
-  m_LocalScale: {x: 0.33237928, y: 0.33237928, z: 0.33237928}
+  m_LocalScale: {x: 0.014043873, y: 0.014043873, z: 0.014043873}
   m_Children:
   - {fileID: 4195588843927962}
   - {fileID: 4933186197223276}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114611476684261758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1829225407671132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02a0d87d4896d514ea815304dda62430, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vida: 3
-  notas:
-  - {fileID: 1374882206520882, guid: 76c1991d43475864cb1bcff31f5b5731, type: 3}
-  - {fileID: 1033675225963266, guid: b7aa7c01209310e4e8e2884e8be6817c, type: 3}
-  - {fileID: 1522341174738042, guid: bf960a7fa6017814a8fd9abbd668ccf9, type: 3}
-  - {fileID: 1626247155447998, guid: 82f7792c310f4b14093cb612f48db22b, type: 3}
-  random: 0
-  spawn: 0
---- !u!65 &65715155372967856
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1829225407671132}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.7453115, y: 6.0818014, z: 2.9142885}
-  m_Center: {x: -0.10463879, y: 2.9339857, z: 0.27740633}
