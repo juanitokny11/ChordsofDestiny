@@ -65,12 +65,25 @@ public class MenuManager : MonoBehaviour {
     }
     public void PlayGame()
     {
-        cinematicaInicial.gameObject.SetActive(true);
-        cinematicaInicial.Play();
-        StartCoroutine("waitForMovieEnd");
-        logoManager.cinematica = true;
-        MyGameSettings.getInstance().menuAnim.Anim = true;
-        MyGameSettings.getInstance().menuAnim.firstTime = true;
+        if (is_MainMenu)
+        {
+            cinematicaInicial.gameObject.SetActive(true);
+            cinematicaInicial.Play();
+            StartCoroutine("waitForMovieEnd");
+            logoManager.cinematica = true;
+            MyGameSettings.getInstance().menuAnim.Anim = true;
+            MyGameSettings.getInstance().menuAnim.firstTime = true;
+        }
+        else
+        {
+            Time.timeScale = 1;
+            Cursor.visible = false;
+            MyGameSettings.getInstance().gameStarted = true;
+            MyGameSettings.getInstance().logoPlayed = true;
+            MyGameSettings.getInstance().menuAnim.firstTime = true;
+            MyGameSettings.getInstance().actualize = true;
+            SceneManager.LoadScene("Gameplay");
+        }
     }
     public void EndGame()
     {
@@ -105,8 +118,9 @@ public class MenuManager : MonoBehaviour {
     public void Creditos()
     {
         SceneManager.LoadScene("Credits");
-         Cursor.visible = true;
+        Cursor.visible = true;
         MyGameSettings.getInstance().menuAnim.firstTime = true;
+        MyGameSettings.getInstance().actualize = true;
         Time.timeScale = 1;
     }
     public void Title(){
@@ -123,6 +137,7 @@ public class MenuManager : MonoBehaviour {
 	public void Victory(){
 		SceneManager.LoadScene("Victoria");
         Cursor.visible = true;
+        MyGameSettings.getInstance().actualize = true;
     }
     public void Pause()
     {
