@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -149,6 +149,8 @@ MonoBehaviour:
   menuAnim: {fileID: 0}
   is_MainMenu: 0
   cinematicaInicial: {fileID: 0}
+  VideoEng: {fileID: 0}
+  VideoEsp: {fileID: 0}
 --- !u!4 &71293844
 Transform:
   m_ObjectHideFlags: 0
@@ -336,6 +338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04f6f6805ed880145bf67c82d9b138cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actualize: 0
 --- !u!4 &542106212
 Transform:
   m_ObjectHideFlags: 0
@@ -1133,6 +1136,8 @@ MonoBehaviour:
   options: {fileID: 0}
   audiomenu: {fileID: 0}
   controlsmenu: {fileID: 0}
+  firstTime: 0
+  id: 0
   texts: []
 --- !u!1 &1810624515
 GameObject:
