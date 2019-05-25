@@ -38,7 +38,7 @@ public class NpcCulling : CullingGroupBase {
             spheres.ToArray()[i].position = cullingObj[i].position;
             sphere.position = cullingObj[i].position;
             spheres[i] = sphere;
-            Debug.Log(sphere.position);
+            //Debug.Log(sphere.position);
             //spheres[i].position=cullingObj[i].position;
         }
 
@@ -52,7 +52,7 @@ public class NpcCulling : CullingGroupBase {
         else if (sphere.currentDistance <= distances[1]) npcs[sphere.index].Far();
         else if (sphere.currentDistance <= distances[2]) npcs[sphere.index].ToFar();
         else if (sphere.currentDistance > distances[2] ) npcs[sphere.index].MuchFar();
-        Debug.Log(sphere.currentDistance);
+        //Debug.Log(sphere.currentDistance);
     }
 
     public void RemoveNPC(NpcBevahavour npc,BoundingSphere sphere)
