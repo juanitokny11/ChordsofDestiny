@@ -11,8 +11,9 @@ public class Sound : MonoBehaviour
     public List<AudioSource> groupieHit;
     public List<AudioSource> fanAire;
     public List<AudioSource> fanHit;
-
      public List<AudioSource> Falling;
+    public AudioSource ataqueGirSound;
+    public PlayerAttackList attackList;
     public int random;
     public int random2;
     public bool HitLow;
@@ -43,9 +44,14 @@ public class Sound : MonoBehaviour
          if(!hit)
             fuerteaire[random2].Play();
    }
-    void ataquegiratorio()
+   public void ataquegiratorio()
     {
-
+        if (attackList.D3)
+        {
+            ataqueGirSound.pitch = Random.Range(0.7f, 1.3f);
+            ataqueGirSound.volume = Random.Range(0.15f, 0.42f);
+            ataqueGirSound.Play();
+        }
     }
     void andargroupie()
    {

@@ -8,6 +8,7 @@ public class PlayerAttackList : MonoBehaviour
     public PlayerMovementBeat player_Move;
     public CharacterAnimation player_anim;
     public Animator anim;
+    public bool D3 = false;
     public bool Attack = true;
     public List<AudioSource> audios;
     void Start()
@@ -56,6 +57,7 @@ public class PlayerAttackList : MonoBehaviour
             {
                 player_anim.Debil3();
                 //audios[random].Play();
+                D3 = true;
                 Attack = false;
             }
         }
@@ -98,6 +100,7 @@ public class PlayerAttackList : MonoBehaviour
     public void CanAttack()
     {
         Attack = true;
+        D3 = false;
         attacks.RemoveAt(0);
     }
     public void RemoveAllList()

@@ -155,6 +155,7 @@ public class AttackUniversal : MonoBehaviour
                     }
                     else if (gameObject.CompareTag("ligero"))
                     {
+                        sound.ataquegiratorio();
                         damage = 3;
                         healthScript.hitsCount++;
                         counterhits = 0;
