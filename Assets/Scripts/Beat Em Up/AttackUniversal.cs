@@ -9,6 +9,7 @@ public class AttackUniversal : MonoBehaviour
     public LayerMask colisionLayer;
     public float radius = 1f;
     public float damage = 2f;
+    public bool is_Groupie;
     private Animator anim;
     public EnemyMovement enemy;
     public HealthUI healthUI;
@@ -221,6 +222,17 @@ public class AttackUniversal : MonoBehaviour
                     else
                     {
                         //sound.hit = true;
+                        if (is_Groupie)
+                        {
+                            if (sound.HitLow)
+                            {
+                                sound.HitDebilGroupie();
+                            }
+                            else if (!sound.HitLow)
+                            {
+                                sound.HitFuerteGroupie();
+                            }
+                        }
                         Quaternion hitFFX_Rot = new Quaternion();
                         hitFx_Pos = hit[0].transform.position;
                         hitFx_Pos.y += 1f;
@@ -267,7 +279,7 @@ public class AttackUniversal : MonoBehaviour
                     }
                     else
                     {
-                        Quaternion hitFFX_Rot = new Quaternion();
+                    Quaternion hitFFX_Rot = new Quaternion();
                         hitFx_Pos = hit[0].transform.position;
                         hitFx_Pos.y += 1f;
                         if (hit[0].transform.forward.x > 0)
@@ -280,17 +292,15 @@ public class AttackUniversal : MonoBehaviour
                             hitFx_Pos.x -= 0.3f;
                             hitFFX_Rot = Quaternion.Euler(0, 180, 0);
                         }
-                        Instantiate(hit_Fx_Prefab, hitFx_Pos, hitFFX_Rot);
-                        hit[0].GetComponentInParent<HealthScript>().ApplyDamage(damage, false, false);
+                    Instantiate(hit_Fx_Prefab, hitFx_Pos, hitFFX_Rot);
+                    hit[0].GetComponentInParent<HealthScript>().ApplyDamage(damage, false, false);
                         playerHealth.hitsCount = 0;
                     }
                         damage = 3;
-                    
                 }
                 gameObject.SetActive(false);
             }
         }
-
     void Blink()
     {
         if (Time.fixedTime % .5 < .2)

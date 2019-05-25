@@ -30,7 +30,7 @@ public class CharacterAnimationDelegate : MonoBehaviour
     public float standupTimer = 2.0f;
     private CharacterAnimation animationScript;
     private EnemyMovement enemy_Movement;
-    private ShakeCamera shakeCamera;
+    public ShakeCamera shakeCamera;
     public GameObject particleHacha;
     public GameObject particleEspada1;
     public GameObject particleEspada2;
@@ -71,7 +71,7 @@ public class CharacterAnimationDelegate : MonoBehaviour
         groupieBody = GetComponent<Rigidbody>();
         groupiecol = GetComponent<CapsuleCollider>();
         animationScript = GetComponent<CharacterAnimation>();
-        shakeCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ShakeCamera>();
+        //shakeCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ShakeCamera>();
         if(gameObject.CompareTag("Enemy"))
             enemy_Movement = GetComponent<EnemyMovement>();
     }

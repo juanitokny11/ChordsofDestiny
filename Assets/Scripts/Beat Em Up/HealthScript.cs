@@ -153,7 +153,7 @@ public class HealthScript : MonoBehaviour
             {
                 if (Random.Range(0, 3) > 1)
                     animationScript.Hit(Random.Range(0, 3));
-                if (Random.Range(0, 5)< 1)
+                if (Random.Range(0, 10)< 1)
                     animationScript.Stuned();
             }
         }

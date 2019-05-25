@@ -176,6 +176,7 @@ public class PlayerAttack2 : MonoBehaviour
         if (Input.GetAxisRaw("Evadir") == 1 && !blockActivated)
         {
             player_Move.attack = true;
+            player_Move.move = false;
             current_Combo_State = ComboState.GUARD;
             if (!player_Move.inAir)
             {
@@ -202,6 +203,7 @@ public class PlayerAttack2 : MonoBehaviour
                     transform.rotation = Quaternion.Euler(0, -180, 0);
                 else if (player_Move.lockrotation == false)
                     transform.rotation = Quaternion.Euler(0, 0, 0);
+                player_Move.canRotate = true;
             }
             if (!player_Move.inAir)
             {
@@ -209,11 +211,12 @@ public class PlayerAttack2 : MonoBehaviour
                 {
                     //Destroy(shield);
                     player_Anim.ResetBlock();
+                    player_Move.move = false;
                     guardCollider.enabled = false;
                     blockActivated = false;
                     attackList.Attack = true;
                     attackList.RemoveAllList();
-                    current_Combo_State = ComboState.NONE;
+                    //current_Combo_State = ComboState.NONE;
                 }
             }
             else if (player_Move.inAir)

@@ -44,7 +44,6 @@ public class PlayerMovementBeat : MonoBehaviour
     }
     void Update()
     {
-
         if (enableMovement)
         {
             if(!walk && !attack)
@@ -122,6 +121,7 @@ public class PlayerMovementBeat : MonoBehaviour
                 {
                     actualrot = Quaternion.Euler(0, 0, 0);
                     walk = true;
+                    //canRotate = true;
                     if(canRotate)
                         lockrotation = false;
                 }
@@ -130,6 +130,7 @@ public class PlayerMovementBeat : MonoBehaviour
                     actualrot = Quaternion.Euler(0, 180, 0);
                     walk = true;
                     //newPosition.x -= animator.GetFloat("Walkspeed") * Time.deltaTime;
+                    //canRotate = true;
                     if (canRotate)
                         lockrotation = true;
                 }

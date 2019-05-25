@@ -6384,7 +6384,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1301628221}
         m_MethodName: Play
         m_Mode: 1
         m_Arguments:
@@ -14979,6 +14979,11 @@ PrefabInstance:
       propertyPath: reference
       value: 
       objectReference: {fileID: 1139394444}
+    - target: {fileID: 4835908537285671391, guid: ee2f03cfc3132874e9b96c33ee451691,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1107536834698629166, guid: ee2f03cfc3132874e9b96c33ee451691, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ee2f03cfc3132874e9b96c33ee451691, type: 3}
@@ -19540,6 +19545,7 @@ MonoBehaviour:
   Falling: []
   random: 0
   random2: 0
+  HitLow: 0
   hit: 0
   walkgroupie: {fileID: 0}
   walkfan: {fileID: 0}
@@ -35401,8 +35407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d333137632af83547be225695db2d2ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cullingObj:
-  - {fileID: 595209948}
+  cullingObj: []
   reference: {fileID: 1139394444}
   distances:
   - 5
@@ -42776,7 +42781,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1301628221}
         m_MethodName: Play
         m_Mode: 1
         m_Arguments:

@@ -12,6 +12,7 @@ public class Sound : MonoBehaviour
      public List<AudioSource> Falling;
     public int random;
     public int random2;
+    public bool HitLow;
     public bool hit = false;
    public AudioSource walkgroupie;
     public AudioSource walkfan;
@@ -63,20 +64,16 @@ void disolveFa()
 
     void AtaqueDebilGroupie()
     {
-        if (!hit)
-        {
-            groupieAire[1].pitch = Random.Range(0.95f,1.05f);
-            groupieAire[1].volume = Random.Range(0.90f,1.00f);
-            groupieAire[1].Play();
-        }
-        else if (hit)
-        {
-             groupieHit[1].pitch = Random.Range(0.95f,1.05f);
-            groupieHit[1].volume = Random.Range(0.90f,1.00f);
-            groupieHit[1].Play();
-        }
+        groupieAire[1].pitch = Random.Range(0.95f,1.05f);
+        groupieAire[1].volume = Random.Range(0.90f,1.00f);
+        groupieAire[1].Play();
     }
-
+    public void HitDebilGroupie()
+    {
+        groupieHit[1].pitch = Random.Range(0.95f, 1.05f);
+        groupieHit[1].volume = Random.Range(0.90f, 1.00f);
+        groupieHit[1].Play();
+    }
     void disolveGroupie()
    {
         DisolveGroupi.pitch = Random.Range(0.8f,1.3f);
@@ -86,25 +83,30 @@ void disolveFa()
 
     void AtaqueFuerteGroupie()
     {
-        if (!hit)
-        {
-             groupieAire[0].pitch = Random.Range(0.95f,1.05f);
-            groupieAire[0].volume = Random.Range(0.85f,0.95f);
-            groupieAire[0].Play();
-        }
-        else if (hit)
-        {
-             groupieHit[0].pitch = Random.Range(0.95f,1.05f);
-            groupieHit[0].volume = Random.Range(0.90f,1.00f);
-            groupieHit[0].Play();
-        }
+        groupieAire[0].pitch = Random.Range(0.95f,1.05f);
+        groupieAire[0].volume = Random.Range(0.85f,0.95f);
+        groupieAire[0].Play();
+    }
+    public void HitFuerteGroupie()
+    {
+        groupieHit[0].pitch = Random.Range(0.95f, 1.05f);
+        groupieHit[0].volume = Random.Range(0.90f, 1.00f);
+        groupieHit[0].Play();
     }
 
-     void fall()
+    void fall()
    {
         Falling[0].pitch = Random.Range(0.4f,1.05f);
         Falling[0].volume = Random.Range(0.92f,1.00f);
         Falling[0].Play(); 
    }
 
+    void HitFuerte()
+    {
+        HitLow = false;
+    }
+    void HitDebil()
+    {
+        HitLow = true;
+    }
 }

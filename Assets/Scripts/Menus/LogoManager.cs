@@ -12,6 +12,7 @@ public class LogoManager : MonoBehaviour
     public GameObject menu;
     public VideoPlayer title;
     public Canvas Optionsmenu;
+    public Canvas videomenu;
     public OptionsManager options;
     public MenuManager menuManager;
     public AudioSource musica;
@@ -146,6 +147,7 @@ public class LogoManager : MonoBehaviour
     public void InvokeOptions()
     {
         Optionsmenu.enabled=true;
+        videomenu.enabled = true;
         optionsAnim.firstTime = true;
         optionsAnim.Anim = true;
     }
