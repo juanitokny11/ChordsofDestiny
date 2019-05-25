@@ -178,6 +178,7 @@ public class PlayerAttack2 : MonoBehaviour
         }
         if (Input.GetAxisRaw("Evadir") == 1 && !blockActivated && canBlock)
         {
+            player_Move.run_Speed = 0;
             player_Move.attack = true;
             player_Move.move = false;
             current_Combo_State = ComboState.GUARD;
@@ -206,7 +207,7 @@ public class PlayerAttack2 : MonoBehaviour
                     transform.rotation = Quaternion.Euler(0, -180, 0);
                 else if (player_Move.lockrotation == false)
                     transform.rotation = Quaternion.Euler(0, 0, 0);
-                //player_Move.canRotate = true;
+                player_Move.canRotate = true;
             }
             if (!player_Move.inAir)
             {
@@ -217,7 +218,6 @@ public class PlayerAttack2 : MonoBehaviour
                     player_Move.move = false;
                     guardCollider.enabled = false;
                     blockActivated = false;
-
                     attackList.Attack = true;
                     attackList.RemoveAllList();
                     //current_Combo_State = ComboState.NONE;
@@ -295,6 +295,7 @@ public class PlayerAttack2 : MonoBehaviour
     public void ResetCombo()
     {
         current_Combo_State = ComboState.NONE;
+        player_Move.run_Speed = 0;
     }
 }
 
