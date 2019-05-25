@@ -15,6 +15,7 @@ public class AttackUniversal : MonoBehaviour
     public HealthUI healthUI;
     public HealthScript healthScript;
     public CharacterAnimation enemyAnim;
+    public PlayerAttackList attackList;
     public BossIA bossIA;
     public Vector3 puaSpawn;
     public LifeControler lifeControler;
@@ -81,6 +82,7 @@ public class AttackUniversal : MonoBehaviour
                 {
                     //solo = false;
                     healthScript.inAir = false;
+                    sound.ataquedesdealto();
                     damage = 4;
                     if (hit[0].tag == "Enemy")
                         hit[0].GetComponent<EnemyMovement>().soloHit = false;
@@ -127,6 +129,8 @@ public class AttackUniversal : MonoBehaviour
                     //solo = false;
                     damage = 4;
                     healthScript.hitsCount++;
+                    if (!attackList.F3)
+                            sound.GolpeHacha();
                     if (hit[0].tag == "Enemy")
                         hit[0].GetComponent<EnemyMovement>().soloHit = false;
                     counterhits = 0;
@@ -147,12 +151,16 @@ public class AttackUniversal : MonoBehaviour
                 {
                     if (gameObject.CompareTag("pesado"))
                     {
+                        if (!attackList.F3)
+                            sound.GolpeHacha();
                         damage = 4;
                         healthScript.hitsCount++;
                         counterhits = 0;
                     }
                     else if (gameObject.CompareTag("ligero"))
                     {
+                       if(!attackList.D3)
+                            sound.GolpeHacha();
                         sound.ataquegiratorio();
                         damage = 3;
                         healthScript.hitsCount++;

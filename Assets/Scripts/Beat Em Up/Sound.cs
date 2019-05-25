@@ -7,12 +7,15 @@ public class Sound : MonoBehaviour
    public AudioSource salidabos;
     public List<AudioSource> fuerteaire;
    public  List<AudioSource> debilaire;
+    public List<AudioSource> golpesHacha;
     public List<AudioSource> groupieAire;
     public List<AudioSource> groupieHit;
     public List<AudioSource> fanAire;
     public List<AudioSource> fanHit;
      public List<AudioSource> Falling;
     public AudioSource ataqueGirSound;
+    public AudioSource ataqueAltoSound;
+    public AudioSource golpeGirSound;
     public PlayerAttackList attackList;
     public int random;
     public int random2;
@@ -32,18 +35,41 @@ public class Sound : MonoBehaviour
    {
        salidabos.Play();
    }
-
     void airedebil()
    {
-        if(!hit)
+        if(!hit || !attackList.D3)
             debilaire[random].Play();
+        ataquegiratorio();
    }
 
     void airefuerte()
    {
-         if(!hit)
+         if(!hit || !attackList.F3)
             fuerteaire[random2].Play();
+        ataquedesdealto();
    }
+   public void GolpeHacha()
+    {
+        int random = Random.Range(0, 4);
+        golpesHacha[random].pitch = Random.Range(0.95f, 1.05f);
+        golpesHacha[random].volume = Random.Range(0.95f, 1.00f);
+        golpesHacha[random].Play();
+    }
+    public void GolpeGiratorio()
+    {
+        golpeGirSound.pitch = Random.Range(0.7f, 1.3f);
+        golpeGirSound.volume = Random.Range(0.15f, 0.42f);
+        golpeGirSound.Play();
+    }
+    public void ataquedesdealto()
+    {
+        if (attackList.F3)
+        {
+            ataqueAltoSound.pitch = Random.Range(0.7f, 1.3f);
+            ataqueAltoSound.volume = Random.Range(0.15f, 0.42f);
+            ataqueAltoSound.Play();
+        }
+    }
    public void ataquegiratorio()
     {
         if (attackList.D3)
