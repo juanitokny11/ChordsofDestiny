@@ -43,7 +43,10 @@ public class Sound : MonoBehaviour
          if(!hit)
             fuerteaire[random2].Play();
    }
+    void ataquegiratorio()
+    {
 
+    }
     void andargroupie()
    {
        walkgroupie.pitch = Random.Range(0.7f,1.3f);
@@ -58,17 +61,19 @@ public class Sound : MonoBehaviour
        walkfan.Play(); 
    }
 
-   void Ataqueairefan()
+ void Ataqueairefan()
     {
-        fanAire[1].pitch = Random.Range(0.95f,1.05f);
-        fanAire[1].volume = Random.Range(0.95f,1.00f);
-        fanAire[1].Play();
+        int random = Random.Range(0,4);
+        fanAire[random].pitch = Random.Range(0.95f,1.05f);
+        fanAire[random].volume = Random.Range(0.95f,1.00f);
+        fanAire[random].Play();
     }
     public void golpefan()
     {
-        fanHit[1].pitch = Random.Range(0.95f, 1.05f);
-        fanHit[1].volume = Random.Range(0.87f, 1.00f);
-        fanHit[1].Play();
+        int random = Random.Range(0,5);
+        fanHit[random].pitch = Random.Range(0.95f, 1.05f);
+        fanHit[random].volume = Random.Range(0.87f, 1.00f);
+        fanHit[random].Play();
     }
 
 void disolveFa()

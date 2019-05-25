@@ -233,6 +233,10 @@ public class AttackUniversal : MonoBehaviour
                                 sound.HitFuerteGroupie();
                             }
                         }
+                        else if (!is_Groupie)
+                        {
+                            sound.golpefan();
+                        }
                         Quaternion hitFFX_Rot = new Quaternion();
                         hitFx_Pos = hit[0].transform.position;
                         hitFx_Pos.y += 1f;
