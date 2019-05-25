@@ -103,7 +103,7 @@ void disolveFa()
      void fall()
    {
         Falling[0].pitch = Random.Range(0.4f,1.05f);
-        Falling[0].volume = Random.Range(0.90f,1.00f);
+        Falling[0].volume = Random.Range(0.92f,1.00f);
         Falling[0].Play(); 
    }
 
