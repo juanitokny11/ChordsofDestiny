@@ -10,6 +10,7 @@ public class CharacterAnimationDelegate : MonoBehaviour
     public ParticleSystem jumpefect;
     public ParticleSystem soloParticle;
     public GameObject Hacha;
+    public Transform crackPos;
     public GameObject guitar_Attack_Mesh;
     public GameObject guitar_Attack_Point;
     public GameObject Boss_Attack_Point1;
@@ -301,6 +302,6 @@ public class CharacterAnimationDelegate : MonoBehaviour
     }
     public void CrackFloor()
     {
-        Instantiate(crack, Hacha.transform.position, Quaternion.identity, null);
+        Instantiate(crack, crackPos.position, Quaternion.identity, null);
     }
 }
