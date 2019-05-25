@@ -9,6 +9,9 @@ public class Sound : MonoBehaviour
    public  List<AudioSource> debilaire;
     public List<AudioSource> groupieAire;
     public List<AudioSource> groupieHit;
+    public List<AudioSource> fanAire;
+    public List<AudioSource> fanHit;
+
      public List<AudioSource> Falling;
     public int random;
     public int random2;
@@ -55,6 +58,19 @@ public class Sound : MonoBehaviour
        walkfan.Play(); 
    }
 
+   void Ataqueairefan()
+    {
+        fanAire[1].pitch = Random.Range(0.95f,1.05f);
+        fanAire[1].volume = Random.Range(0.95f,1.00f);
+        fanAire[1].Play();
+    }
+    public void golpefan()
+    {
+        fanHit[1].pitch = Random.Range(0.95f, 1.05f);
+        fanHit[1].volume = Random.Range(0.87f, 1.00f);
+        fanHit[1].Play();
+    }
+
 void disolveFa()
    {
         DisolveFan.pitch = Random.Range(0.8f,1.3f);
@@ -72,7 +88,7 @@ void disolveFa()
     {
         groupieHit[1].pitch = Random.Range(0.95f, 1.05f);
         groupieHit[1].volume = Random.Range(0.90f, 1.00f);
-        groupieHit[1].Play();
+        groupieHit[1].PlayDelayed(0.15f);
     }
     void disolveGroupie()
    {
