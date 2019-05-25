@@ -39,7 +39,7 @@ public class PlayerAttack2 : MonoBehaviour
     public bool is_Player;
     private float default_Combo_Timer = 0.95f;
     private float current_Combo_Timer;
-
+    public bool canBlock=true;
     public ComboState current_Combo_State;
 
     // Start is called before the first frame update
@@ -65,8 +65,6 @@ public class PlayerAttack2 : MonoBehaviour
     }
     void Update()
     {
-        if (enableAttacks)
-        {
             ComboAttacks();
             ResetComboState();
             if (current_Combo_State == ComboState.JUMP)
@@ -74,7 +72,6 @@ public class PlayerAttack2 : MonoBehaviour
                 attackList.RemoveAllList();
                 attackList.Attack = true;
             }
-        }
     }
     void ComboAttacks()
     {
@@ -90,7 +87,8 @@ public class PlayerAttack2 : MonoBehaviour
                 current_Combo_State++;
                 activateTimerToReset = true;
                 current_Combo_Timer = default_Combo_Timer;
-                
+                if (enableAttacks)
+                {
                     if (current_Combo_State == ComboState.DEBIL && !player_Move.inAir)
                     {
                         AddToTheList(ComboState.DEBIL);
@@ -103,7 +101,7 @@ public class PlayerAttack2 : MonoBehaviour
                     {
                         AddToTheList(ComboState.DEBIL3);
                     }
-
+                }   
             }
             else if (player_Move.inAir )
             {
@@ -134,25 +132,28 @@ public class PlayerAttack2 : MonoBehaviour
                 current_Combo_State = ComboState.FUERTE2;
             activateTimerToReset = true;
             current_Combo_Timer = default_Combo_Timer;
-            if (!player_Move.inAir)
+            if (enableAttacks)
             {
-                if (current_Combo_State == ComboState.FUERTE)
+                if (!player_Move.inAir)
                 {
-                    AddToTheList(ComboState.FUERTE);
+                    if (current_Combo_State == ComboState.FUERTE)
+                    {
+                        AddToTheList(ComboState.FUERTE);
+                    }
+                    if (current_Combo_State == ComboState.FUERTE2)
+                    {
+                        AddToTheList(ComboState.FUERTE2);
+                    }
+                    if (current_Combo_State == ComboState.FUERTE3)
+                    {
+                        AddToTheList(ComboState.FUERTE3);
+                    }
                 }
-                if (current_Combo_State == ComboState.FUERTE2)
+                else if (player_Move.inAir)
                 {
-                    AddToTheList(ComboState.FUERTE2);
+                    current_Combo_State = ComboState.JUMP;
+
                 }
-                if (current_Combo_State == ComboState.FUERTE3)
-                {
-                    AddToTheList(ComboState.FUERTE3);
-                }
-            }
-            else if (player_Move.inAir)
-            {
-                current_Combo_State = ComboState.JUMP;
-                
             }
             }
         if (Input.GetKeyDown(KeyCode.D) || Input.GetAxisRaw("Solo") == 1 && Input.GetAxisRaw("Disparar") == 1)
@@ -162,6 +163,8 @@ public class PlayerAttack2 : MonoBehaviour
                 player_Move.attack = true;
                 player_Move.jump = false;
                 player_Move.canRotate = false;
+                canBlock = false;
+                enableAttacks = false;
                 current_Combo_State = ComboState.SOLO;
                 //player_Move.move = false;
                 currentGuitarpose = new Vector3(-0.2145597f, 0.1555082f, 1.084099f);
@@ -173,7 +176,7 @@ public class PlayerAttack2 : MonoBehaviour
                 healthUI.SoloBar.fillAmount = healthScript.solo / 100;
             }
         }
-        if (Input.GetAxisRaw("Evadir") == 1 && !blockActivated)
+        if (Input.GetAxisRaw("Evadir") == 1 && !blockActivated && canBlock)
         {
             player_Move.attack = true;
             player_Move.move = false;
@@ -203,7 +206,7 @@ public class PlayerAttack2 : MonoBehaviour
                     transform.rotation = Quaternion.Euler(0, -180, 0);
                 else if (player_Move.lockrotation == false)
                     transform.rotation = Quaternion.Euler(0, 0, 0);
-                player_Move.canRotate = true;
+                //player_Move.canRotate = true;
             }
             if (!player_Move.inAir)
             {
@@ -214,6 +217,7 @@ public class PlayerAttack2 : MonoBehaviour
                     player_Move.move = false;
                     guardCollider.enabled = false;
                     blockActivated = false;
+
                     attackList.Attack = true;
                     attackList.RemoveAllList();
                     //current_Combo_State = ComboState.NONE;
@@ -232,6 +236,11 @@ public class PlayerAttack2 : MonoBehaviour
             current_Combo_Timer -= Time.deltaTime;
             if (current_Combo_Timer <= 0f)
             {
+                mycol.enabled = true;
+                player_Move.move = true;
+                player_Move.attack = true;
+                player_Move.canRotate = true;
+                player_Move.jump = true;
                 player_Move.attack = false;
                 current_Combo_State = ComboState.NONE;
                 activateTimerToReset = false;
@@ -254,6 +263,7 @@ public class PlayerAttack2 : MonoBehaviour
         Guitar.localPosition = new Vector3(-0.118f, 0.014f, 0.083f);
         Guitar.localRotation = Quaternion.Euler(-61.589f, -631.912f, -92.93501f);
         mycol.enabled = true;
+        enableAttacks = true;
         player_Move.move = true;
         player_Move.attack = true;
         player_Move.canRotate = true;
@@ -281,6 +291,10 @@ public class PlayerAttack2 : MonoBehaviour
         //notas.gameObject.SetActive(true);
         notas.Play();
         //notas.gameObject.transform.parent = null;
+    }
+    public void ResetCombo()
+    {
+        current_Combo_State = ComboState.NONE;
     }
 }
 

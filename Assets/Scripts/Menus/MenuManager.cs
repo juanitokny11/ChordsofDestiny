@@ -80,7 +80,7 @@ public class MenuManager : MonoBehaviour {
             Cursor.visible = false;
             MyGameSettings.getInstance().gameStarted = true;
             MyGameSettings.getInstance().logoPlayed = true;
-            MyGameSettings.getInstance().menuAnim.firstTime = true;
+            //MyGameSettings.getInstance().menuAnim.firstTime = true;
             MyGameSettings.getInstance().actualize = true;
             SceneManager.LoadScene("Gameplay");
         }

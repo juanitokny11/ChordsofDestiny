@@ -52,12 +52,10 @@ public class AttackUniversal : MonoBehaviour
     void Update()
     {
         DetectColision();
-        
     }
     void DetectColision()
     {
         hit = Physics.OverlapSphere(transform.position, radius, colisionLayer);
-       
         if (hit.Length > 0)
         {
             if (is_Player)
