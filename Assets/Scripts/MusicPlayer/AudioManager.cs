@@ -14,17 +14,23 @@ public class AudioManager : MonoBehaviour
     public Text clipTittleTime;
     public Sprite[] group;
     public Image Pantalla;
+    public Image Play;
+    public Sprite playSprite;
+    public Sprite pauseSprite;
     private int minutes;
     private int seconds;
     private int playTime;
     private int fullLength;
-    private bool playing;
+    public bool playing;
     private int groupId;
+    public SpriteState playState = new SpriteState();
+    public SpriteState pauseState = new SpriteState();
 
     void Start()
     {
         source = GetComponent<AudioSource>();
         playing = false;
+        Play.GetComponent<Button>().spriteState = pauseState;
     }
     public void Update()
     {
@@ -42,12 +48,27 @@ public class AudioManager : MonoBehaviour
             groupId = 0;
         if (groupId < 0)
             groupId = group.Length - 1;
+        if (playing)
+        {
+            Play.GetComponent<Button>().spriteState = playState;
+            playState.pressedSprite = playSprite;
+            playState.highlightedSprite = pauseSprite;
+            playState.disabledSprite = playSprite;
+        }
+        if (!playing)
+        {
+            Play.GetComponent<Button>().spriteState = pauseState;
+            pauseState.pressedSprite = pauseSprite;
+            pauseState.highlightedSprite = playSprite;
+            pauseState.disabledSprite = pauseSprite;
+        }
+            
     }
     public void PlayMusic()
     {
         playing = !playing;
         if (playing)
-        { 
+        {
             if (source.isPlaying)
                 return;
             playing = true;
