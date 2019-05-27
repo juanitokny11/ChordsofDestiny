@@ -37,9 +37,11 @@ public class Sound : MonoBehaviour
    }
     void airedebil()
    {
-        if(!hit || !attackList.D3)
+        if(!attackList.D3)
             debilaire[random].Play();
         ataquegiratorio();
+        if (hit && attackList.D3)
+            GolpeGiratorio();
    }
 
     void airefuerte()
@@ -72,7 +74,7 @@ public class Sound : MonoBehaviour
     }
    public void ataquegiratorio()
     {
-        if (attackList.D3)
+        if (!hit && attackList.D3)
         {
             ataqueGirSound.pitch = Random.Range(0.85f, 1.3f);
             ataqueGirSound.volume = Random.Range(0.25f, 0.38f);

@@ -32,6 +32,7 @@ public class PlayerMovementBeat : MonoBehaviour
     private void Awake()
     {
         enableMovement = true;
+        jump = true;
         //canRotate = false;
         attackList = GetComponent<PlayerAttackList>();
         anim = GetComponent<Animator>();

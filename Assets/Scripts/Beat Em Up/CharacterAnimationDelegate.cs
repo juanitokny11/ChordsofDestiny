@@ -45,7 +45,7 @@ public class CharacterAnimationDelegate : MonoBehaviour
             groupie = GetComponentInChildren<SkinnedMeshRenderer>();
             groupieEnemy = GetComponent<EnemyMovement>();
             groupie_Attack_Point = GetComponentInChildren<AttackUniversal>();
-            groupie_Attack_Point.gameObject.SetActive(false);
+            //groupie_Attack_Point.gameObject.SetActive(false);
         }
         else if (isFan)
         {
@@ -53,7 +53,7 @@ public class CharacterAnimationDelegate : MonoBehaviour
             bate = groupie;
             groupieEnemy = GetComponent<EnemyMovement>();
             groupie_Attack_Point = GetComponentInChildren<AttackUniversal>();
-            groupie_Attack_Point.gameObject.SetActive(false);
+            //groupie_Attack_Point.gameObject.SetActive(false);
         }
         else if (is_Boss)
         {
@@ -76,7 +76,17 @@ public class CharacterAnimationDelegate : MonoBehaviour
         if(gameObject.CompareTag("Enemy"))
             enemy_Movement = GetComponent<EnemyMovement>();
     }
-
+    private void Start()
+    {
+        if (isGroupie)
+        {
+            groupie_Attack_Point.gameObject.SetActive(false);
+        }
+        else if (isFan)
+        {
+            groupie_Attack_Point.gameObject.SetActive(false);
+        }
+    }
     void Guitar_Attack_Point_ON()
     {
         guitar_Attack_Point.SetActive(true);

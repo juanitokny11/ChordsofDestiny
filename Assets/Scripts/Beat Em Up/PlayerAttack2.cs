@@ -180,7 +180,10 @@ public class PlayerAttack2 : MonoBehaviour
         {
             player_Move.run_Speed = 0;
             player_Move.attack = true;
+            player_Move.walk = false;
+            player_Move.running = false;
             player_Move.move = false;
+            player_Move.run_Speed = 0;
             current_Combo_State = ComboState.GUARD;
             if (!player_Move.inAir)
             {
@@ -267,6 +270,7 @@ public class PlayerAttack2 : MonoBehaviour
         player_Move.move = true;
         player_Move.attack = true;
         player_Move.canRotate = true;
+        canBlock = true;
         player_Move.jump = true;
         current_Combo_State = ComboState.NONE;
         Solocol.GetComponent<AttackUniversal>().enabled = false;

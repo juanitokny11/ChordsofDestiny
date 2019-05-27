@@ -103,6 +103,7 @@ public class AttackUniversal : MonoBehaviour
                 {
                     //solo = true;
                     damage =30;
+                    if(hit[0]!=null)
                     hit[0].GetComponent<EnemyMovement>().soloHit = true;
                     healthScript.hitsCount++;
                     counterhits = 0;
@@ -151,6 +152,7 @@ public class AttackUniversal : MonoBehaviour
                 {
                     if (gameObject.CompareTag("pesado"))
                     {
+                        sound.hit = true;
                         if (!attackList.F3)
                             sound.GolpeHacha();
                         damage = 4;
@@ -159,9 +161,16 @@ public class AttackUniversal : MonoBehaviour
                     }
                     else if (gameObject.CompareTag("ligero"))
                     {
+                       sound.hit = true;
                        if(!attackList.D3)
                             sound.GolpeHacha();
-                        sound.ataquegiratorio();
+                        for (int i = 0; i < hit.Length; i++)
+                        {
+                            if (hit[i].gameObject.tag == "Enemy" && sound.hit && attackList.D3)
+                            {
+                                sound.GolpeGiratorio();
+                            }
+                        }
                         damage = 3;
                         healthScript.hitsCount++;
                         counterhits = 0;
