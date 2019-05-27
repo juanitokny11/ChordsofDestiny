@@ -57,16 +57,16 @@ public class Sound : MonoBehaviour
     }
     public void GolpeGiratorio()
     {
-        golpeGirSound.pitch = Random.Range(0.7f, 1.3f);
-        golpeGirSound.volume = Random.Range(0.15f, 0.42f);
+        golpeGirSound.pitch = Random.Range(0.8f, 1.3f);
+        golpeGirSound.volume = Random.Range(0.25f, 0.42f);
         golpeGirSound.Play();
     }
     public void ataquedesdealto()
     {
         if (attackList.F3)
         {
-            ataqueAltoSound.pitch = Random.Range(0.7f, 1.3f);
-            ataqueAltoSound.volume = Random.Range(0.15f, 0.42f);
+            ataqueAltoSound.pitch = Random.Range(0.8f, 1.3f);
+            ataqueAltoSound.volume = Random.Range(0.25f, 0.42f);
             ataqueAltoSound.Play();
         }
     }
@@ -74,8 +74,8 @@ public class Sound : MonoBehaviour
     {
         if (attackList.D3)
         {
-            ataqueGirSound.pitch = Random.Range(0.7f, 1.3f);
-            ataqueGirSound.volume = Random.Range(0.15f, 0.42f);
+            ataqueGirSound.pitch = Random.Range(0.85f, 1.3f);
+            ataqueGirSound.volume = Random.Range(0.25f, 0.38f);
             ataqueGirSound.Play();
         }
     }
@@ -85,6 +85,8 @@ public class Sound : MonoBehaviour
         walkgroupie.volume = Random.Range(0.15f,0.42f);
        walkgroupie.Play(); 
    }
+
+    //audios fan
 
  void andarfan()
    {
@@ -114,7 +116,7 @@ void disolveFa()
         DisolveFan.volume = Random.Range(0.70f,0.85f);
         DisolveFan.Play(); 
    }
-
+    //audios groupie
     void AtaqueDebilGroupie()
     {
         groupieAire[1].pitch = Random.Range(0.95f,1.05f);
@@ -146,10 +148,10 @@ void disolveFa()
         groupieHit[0].volume = Random.Range(0.90f, 1.00f);
         groupieHit[0].Play();
     }
-
+    //audio comun fan y groupie
     void fall()
    {
-        Falling[0].pitch = Random.Range(0.4f,1.05f);
+        Falling[0].pitch = Random.Range(0.5f,1.05f);
         Falling[0].volume = Random.Range(0.92f,1.00f);
         Falling[0].Play(); 
    }

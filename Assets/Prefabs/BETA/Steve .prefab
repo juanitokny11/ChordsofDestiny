@@ -292,6 +292,7 @@ Transform:
   - {fileID: 1651283666}
   - {fileID: 748430144}
   - {fileID: 2118841291}
+  - {fileID: 2171672298158456664}
   m_Father: {fileID: 8939311919185665388}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -580,7 +581,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4415114936302291789}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &709297567
 AudioSource:
@@ -1636,7 +1637,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4415114936302291789}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1432401045
 AudioSource:
@@ -2322,7 +2323,7 @@ GameObject:
   - component: {fileID: 2171672298158456664}
   - component: {fileID: 4838587667793527915}
   m_Layer: 8
-  m_Name: AtaqueGirotario
+  m_Name: AireGirotario
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2335,12 +2336,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 803504019575901848}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 373.92694, y: -10.329582, z: -16.042206}
+  m_LocalScale: {x: 1.3299987, y: 1.33, z: 1.3299987}
   m_Children: []
-  m_Father: {fileID: 4415114936302291789}
-  m_RootOrder: 0
+  m_Father: {fileID: 472694769}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &4838587667793527915
 AudioSource:
@@ -2353,7 +2354,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243596507290468046, guid: 2e0442f16d0f9f94e878cc6b67301c55,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 39672a6109219fb45ad1006218691bf0, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4f80452feec97964ab30c741c386d56b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2506,6 +2507,7 @@ MonoBehaviour:
   healthUI: {fileID: 0}
   healthScript: {fileID: 0}
   enemyAnim: {fileID: 0}
+  attackList: {fileID: 0}
   bossIA: {fileID: 0}
   puaSpawn: {x: 0, y: 0, z: 0}
   lifeControler: {fileID: 0}
@@ -2597,7 +2599,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2171672298158456664}
   - {fileID: 1432401044}
   - {fileID: 709297566}
   m_Father: {fileID: 8939311919185665388}
@@ -9546,6 +9547,7 @@ MonoBehaviour:
   healthUI: {fileID: 0}
   healthScript: {fileID: 4554496321350749296}
   enemyAnim: {fileID: 0}
+  attackList: {fileID: 0}
   bossIA: {fileID: 0}
   puaSpawn: {x: 0, y: 0, z: 0}
   lifeControler: {fileID: 0}
@@ -9785,6 +9787,7 @@ MonoBehaviour:
   - {fileID: 1232204095}
   - {fileID: 1175027442}
   - {fileID: 89032321}
+  golpesHacha: []
   groupieAire: []
   groupieHit: []
   fanAire: []
@@ -9792,6 +9795,7 @@ MonoBehaviour:
   Falling: []
   ataqueGirSound: {fileID: 4838587667793527915}
   ataqueAltoSound: {fileID: 1432401045}
+  golpeGirSound: {fileID: 709297567}
   attackList: {fileID: 1642604618997778030}
   random: 0
   random2: 0
@@ -9925,16 +9929,6 @@ MonoBehaviour:
   F3: 0
   D3: 0
   Attack: 1
-  audios:
-  - {fileID: 768874429}
-  - {fileID: 949415989}
-  - {fileID: 699118251}
-  - {fileID: 1232204095}
-  - {fileID: 1175027442}
-  - {fileID: 89032321}
-  - {fileID: 1651283667}
-  - {fileID: 748430145}
-  - {fileID: 2118841292}
 --- !u!114 &4554496321350749296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10241,11 +10235,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8939311919185665388}
     m_Modifications:
-    - target: {fileID: 672622757104585123, guid: a56056e1d00c4244da69274d73b5c2a1,
-        type: 3}
-      propertyPath: m_Name
-      value: Solo
-      objectReference: {fileID: 0}
     - target: {fileID: 672622757104585124, guid: a56056e1d00c4244da69274d73b5c2a1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10301,6 +10290,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 672622757104585123, guid: a56056e1d00c4244da69274d73b5c2a1,
+        type: 3}
+      propertyPath: m_Name
+      value: Solo
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a56056e1d00c4244da69274d73b5c2a1, type: 3}
 --- !u!198 &3676889872562162483 stripped
@@ -10322,11 +10316,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8939311917634563695}
     m_Modifications:
-    - target: {fileID: 7092022646830002350, guid: 1d685a4427c84da4c8a1cfa984446eef,
-        type: 3}
-      propertyPath: m_Name
-      value: Notas
-      objectReference: {fileID: 0}
     - target: {fileID: 5698710853474121708, guid: 1d685a4427c84da4c8a1cfa984446eef,
         type: 3}
       propertyPath: playOnAwake
@@ -10386,6 +10375,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 62.292004
+      objectReference: {fileID: 0}
+    - target: {fileID: 7092022646830002350, guid: 1d685a4427c84da4c8a1cfa984446eef,
+        type: 3}
+      propertyPath: m_Name
+      value: Notas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d685a4427c84da4c8a1cfa984446eef, type: 3}

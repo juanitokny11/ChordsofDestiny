@@ -842,7 +842,8 @@ AudioSource:
   m_GameObject: {fileID: 3711733239045215422}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243596507290468046, guid: 2e0442f16d0f9f94e878cc6b67301c55,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: c82cdcb9c4700394488e862622866e6a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.8
@@ -1565,6 +1566,7 @@ MonoBehaviour:
   healthUI: {fileID: 0}
   healthScript: {fileID: 0}
   enemyAnim: {fileID: 0}
+  attackList: {fileID: 0}
   bossIA: {fileID: 0}
   puaSpawn: {x: 0, y: 0, z: 0}
   lifeControler: {fileID: 0}
@@ -2286,6 +2288,7 @@ MonoBehaviour:
   salidabos: {fileID: 0}
   fuerteaire: []
   debilaire: []
+  golpesHacha: []
   groupieAire: []
   groupieHit: []
   fanAire:
@@ -2302,6 +2305,10 @@ MonoBehaviour:
   - {fileID: 4443473408371435541}
   - {fileID: 61645132691660638}
   - {fileID: 8597832080055479536}
+  ataqueGirSound: {fileID: 0}
+  ataqueAltoSound: {fileID: 0}
+  golpeGirSound: {fileID: 0}
+  attackList: {fileID: 0}
   random: 0
   random2: 0
   HitLow: 0
