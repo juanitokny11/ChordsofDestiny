@@ -9,6 +9,7 @@ public class OptionsTitle : MonoBehaviour
     public Sprite OptionsimgEng;
     public Sprite OptionsimgEsp;
     public GameObject ñ;
+    public bool is_MainMenu;
 
     private void Update()
     {
@@ -18,13 +19,15 @@ public class OptionsTitle : MonoBehaviour
     {
         if (LanguageManager.langData.currentLanguage == LangData.Languages.English)
         {
-            OptionsText.GetComponent<Image>().sprite = OptionsimgEng;
+            if (is_MainMenu)
+                OptionsText.GetComponent<Image>().sprite = OptionsimgEng;
             ñ.GetComponent<Image>().enabled = false;
 
         }
         else if (LanguageManager.langData.currentLanguage == LangData.Languages.Spanish)
         {
-            OptionsText.GetComponent<Image>().sprite = OptionsimgEsp;
+            if (is_MainMenu)
+                OptionsText.GetComponent<Image>().sprite = OptionsimgEsp;
             ñ.GetComponent<Image>().enabled = true;
         }
     }

@@ -16,6 +16,7 @@ public class Sound : MonoBehaviour
     public AudioSource ataqueGirSound;
     public AudioSource ataqueAltoSound;
     public AudioSource golpeGirSound;
+    public AudioSource golpeAltoSound;
     public PlayerAttackList attackList;
     public int random;
     public int random2;
@@ -49,6 +50,8 @@ public class Sound : MonoBehaviour
          if(!hit || !attackList.F3)
             fuerteaire[random2].Play();
         ataquedesdealto();
+        if (hit && attackList.F3)
+            GolpeDesdeArriba();
    }
    public void GolpeHacha()
     {
@@ -62,6 +65,12 @@ public class Sound : MonoBehaviour
         golpeGirSound.pitch = Random.Range(0.8f, 1.3f);
         golpeGirSound.volume = Random.Range(0.25f, 0.42f);
         golpeGirSound.Play();
+    }
+    public void GolpeDesdeArriba()
+    {
+        golpeAltoSound.pitch = Random.Range(0.8f, 1.3f);
+        golpeAltoSound.volume = Random.Range(0.25f, 0.42f);
+        golpeAltoSound.Play();
     }
     public void ataquedesdealto()
     {
