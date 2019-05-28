@@ -43,19 +43,5 @@ public class CullingGroupBase : MonoBehaviour {
 		group.Dispose();//Descagar grupo de la memoria
 		group=null;//decir que el grupo esta vacio 
 	}
-	protected virtual void OnDrawGizmos()
-	{
-		if (!Application.isPlaying) return;// no dibujar las esferas hasta que se le de a play
-
-		Gizmos.color = Color.red;
-		
-		int len = cullingObj.Length;
 	
-		for(int i = 0; i< len; i++)
-		{
-			//Gizmos.DrawWireSphere(cullingObj[i].position,1.5f);
-			Gizmos.DrawWireSphere(spheres[i].position, spheres[i].radius);
-		}
-
-	}
 }
