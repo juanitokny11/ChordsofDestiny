@@ -34,17 +34,15 @@ public class NpcBevahavour : MonoBehaviour {
     {
        anim.enabled=false;
        //rend.enabled = false;
-
     }
     public void HasBecomeInvisible()
     {
-        //anim.enabled=false;
-        rend.enabled = false;
+        anim.enabled=false;
+        //rend.enabled = false;
     }
     public void HasBecomeVisible()
     {
-        //anim.enabled=true;
-        rend.enabled = true;
-
+        anim.enabled=true;
+        //rend.enabled = true;
     }
 }

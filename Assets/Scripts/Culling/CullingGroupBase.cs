@@ -21,7 +21,7 @@ public class CullingGroupBase : MonoBehaviour {
 		if (len>100) len=100;
 		for(int i = 0;i< len; i++)
 		{
-			spheres.Add (new BoundingSphere(cullingObj[i].position, 1.5f));// asignamos las esferas a los objectos que metamos en la array
+			spheres.Add(new BoundingSphere(cullingObj[i].position, 1.5f));// asignamos las esferas a los objectos que metamos en la array
 		}
 
 		group.SetBoundingSpheres(spheres.ToArray());// asignar las esferas a los objectos

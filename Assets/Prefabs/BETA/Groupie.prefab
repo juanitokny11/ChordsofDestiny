@@ -54,9 +54,9 @@ MonoBehaviour:
   healthUI: {fileID: 0}
   healthScript: {fileID: 452187335}
   enemyAnim: {fileID: 0}
+  attackList: {fileID: 0}
   bossIA: {fileID: 0}
   puaSpawn: {x: 0, y: 0, z: 0}
-  groupieHitLow: 0
   lifeControler: {fileID: 0}
   playerHealth: {fileID: 0}
   UI: {fileID: 0}
@@ -410,7 +410,6 @@ GameObject:
   - component: {fileID: 410283864985739564}
   - component: {fileID: 2790595954151036086}
   - component: {fileID: 2850857673651193836}
-  - component: {fileID: 745948930415470065}
   - component: {fileID: 5050926941877603328}
   - component: {fileID: 7521556622779265915}
   - component: {fileID: 452187334}
@@ -497,22 +496,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &745948930415470065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1563660872938979978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d333137632af83547be225695db2d2ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cullingObj: []
-  reference: {fileID: 0}
-  distances: []
-  npcs: []
 --- !u!114 &5050926941877603328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -603,6 +586,8 @@ MonoBehaviour:
   hitsCount: 0
   oneTime: 0
   audios: {fileID: 0}
+  npcCulling: {fileID: 0}
+  sphere: 0
   is_Player: 0
   is_Boss: 0
   is_Enemy: 1
@@ -622,6 +607,7 @@ MonoBehaviour:
   jumpefect: {fileID: 0}
   soloParticle: {fileID: 0}
   Hacha: {fileID: 0}
+  crackPos: {fileID: 0}
   guitar_Attack_Mesh: {fileID: 0}
   guitar_Attack_Point: {fileID: 0}
   Boss_Attack_Point1: {fileID: 0}
@@ -663,19 +649,28 @@ MonoBehaviour:
   salidabos: {fileID: 0}
   fuerteaire: []
   debilaire: []
+  golpesHacha: []
   groupieAire:
   - {fileID: 8423738045815063434}
   - {fileID: 8418685794361628900}
   groupieHit:
   - {fileID: 5120670186193862881}
   - {fileID: 2163792599020195610}
+  fanAire: []
+  fanHit: []
   Falling:
   - {fileID: 84579925388819430}
   - {fileID: 5182173127330819192}
   - {fileID: 6784932786300036284}
   - {fileID: 3686704080269800699}
+  ataqueGirSound: {fileID: 0}
+  ataqueAltoSound: {fileID: 0}
+  golpeGirSound: {fileID: 0}
+  golpeAltoSound: {fileID: 0}
+  attackList: {fileID: 0}
   random: 0
   random2: 0
+  HitLow: 0
   hit: 0
   walkgroupie: {fileID: 692414062669842625}
   walkfan: {fileID: 0}

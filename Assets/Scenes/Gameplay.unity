@@ -10740,7 +10740,7 @@ MonoBehaviour:
   - {fileID: 1914102802}
   - {fileID: 1449856231}
   id: 0
-  enemiescounter: 1
+  enemiescounter: 4
 --- !u!65 &476256476
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14386,6 +14386,16 @@ PrefabInstance:
       propertyPath: zone
       value: 
       objectReference: {fileID: 476256475}
+    - target: {fileID: 361667288548745496, guid: ee2f03cfc3132874e9b96c33ee451691,
+        type: 3}
+      propertyPath: sphere
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 361667288548745496, guid: ee2f03cfc3132874e9b96c33ee451691,
+        type: 3}
+      propertyPath: is_Boss
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 439941109674355922, guid: ee2f03cfc3132874e9b96c33ee451691,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -14899,6 +14909,11 @@ PrefabInstance:
     - target: {fileID: 4835908537285671391, guid: ee2f03cfc3132874e9b96c33ee451691,
         type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 361667289756262939, guid: ee2f03cfc3132874e9b96c33ee451691,
+        type: 3}
+      propertyPath: sphere
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
@@ -35373,6 +35388,7 @@ MonoBehaviour:
   - {fileID: 214471431}
   reference: {fileID: 1131427587}
   distances: []
+  particles: []
 --- !u!114 &1453684763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35385,7 +35401,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d333137632af83547be225695db2d2ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cullingObj: []
+  cullingObj:
+  - {fileID: 595209948}
   reference: {fileID: 1139394444}
   distances:
   - 5

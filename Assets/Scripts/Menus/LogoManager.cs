@@ -21,6 +21,7 @@ public class LogoManager : MonoBehaviour
     public GameObject fademusicaOptions;
     public GameObject reproductor;
     public MenuAnim optionsAnim;
+    public ParticleSystem niebla;
     public bool extras=true;
     bool logo = false;
     public bool cinematica = false;
@@ -28,7 +29,6 @@ public class LogoManager : MonoBehaviour
     {
         logoVideo.Prepare();
         title.Prepare();
-        
         //menu.SetActive(false);
     }
     void Start()
@@ -50,6 +50,7 @@ public class LogoManager : MonoBehaviour
     private void EndVideo(VideoPlayer source)
     {
         logoVideo.gameObject.SetActive(false);
+        niebla.Play();
         title.gameObject.SetActive(true);
         titleText.enabled=true;
         fademusica.SetActive(true);

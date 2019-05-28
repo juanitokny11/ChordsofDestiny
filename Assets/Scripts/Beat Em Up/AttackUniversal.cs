@@ -34,9 +34,11 @@ public class AttackUniversal : MonoBehaviour
     public SkinnedMeshRenderer rend;
     public float counterhits = 0f;
     public AudioSource block1;
+    private ParticleCulling particleCulling;
     
     private void Start()
     {
+        particleCulling = GameObject.FindObjectOfType<ParticleCulling>();
         gameManager = FindObjectOfType<BeatEmupManager>();
         sound = GetComponentInParent<Sound>();
         //UI = GameObject.FindGameObjectWithTag("UI");
@@ -332,8 +334,12 @@ public class AttackUniversal : MonoBehaviour
             hit[0].gameObject.transform.parent.gameObject.SetActive(true);
         }
     }
-        public void Explode()
+    public void Explode()
     {
+        /*for (int i = 0; i < particleCulling.particles.Count; i++)
+        {
+            particleCulling.RemoveParticle()
+        }*/
         InvokeRepeating("Blink", 0.1f, 0.1f);
        gameManager.numScore += 5;
         score.SetActive(true);

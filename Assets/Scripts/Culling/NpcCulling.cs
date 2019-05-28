@@ -9,35 +9,34 @@ public class NpcCulling : CullingGroupBase {
     private Animator[] anims;
 
     public List<NpcBevahavour> npcs;
+    private NpcCulling npcCulling;
 
-	protected override void Start()
+    protected override void Start()
 	{
 		/*for(int i=0; i > cullingObj.Length; i++){
 			cullingObj[i]= ;
 		}*/
 		base.Start();
-
-		npcs=new List<NpcBevahavour>();
-        int lon= cullingObj.Length;
+        npcCulling = GameObject.FindObjectOfType<NpcCulling>();
+        npcs =new List<NpcBevahavour>();
+        int lon = cullingObj.Length;
 		for(int i = 0; i< lon; i++)
 		{
-            //spheres[i].position = transform.position;
-            BoundingSphere sphere = spheres[i];
-            sphere.position = transform.position;
-            spheres[i] = sphere;
 			npcs.Add(cullingObj[i].GetComponent<NpcBevahavour>());
 		}
 		group.SetBoundingDistances(distances);
 		group.SetDistanceReferencePoint(reference);
 	}
 	void Update(){
-		int lon= cullingObj.Length;
+		int lon= spheres.Count;
 		for(int i = 0; i< lon; i++)
 		{
             BoundingSphere sphere = spheres[i];
-            spheres.ToArray()[i].position = cullingObj[i].position;
-            sphere.position = cullingObj[i].position;
+            //spheres[i].position = cullingObj[i].position;
+            if (cullingObj[i] != null) 
+                sphere.position = cullingObj[i].position;
             spheres[i] = sphere;
+            group.SetBoundingSpheres(spheres.ToArray());
             //Debug.Log(sphere.position);
             //spheres[i].position=cullingObj[i].position;
         }
@@ -45,22 +44,42 @@ public class NpcCulling : CullingGroupBase {
 	}
 	protected override void OnStateChanged(CullingGroupEvent sphere)
 	{
-        if (!sphere.isVisible) npcs[sphere.index].HasBecomeInvisible();
-        if (sphere.isVisible) npcs[sphere.index].HasBecomeVisible();
-        
-        if (sphere.currentDistance <= distances[0] ) npcs[sphere.index].Near();
-        else if (sphere.currentDistance <= distances[1]) npcs[sphere.index].Far();
-        else if (sphere.currentDistance <= distances[2]) npcs[sphere.index].ToFar();
-        else if (sphere.currentDistance > distances[2] ) npcs[sphere.index].MuchFar();
+       // Debug.Log("OnStateChanged: " + sphere.index + " Visible: " + sphere.isVisible);
+       if(npcs[sphere.index]!=null)
+        {
+            if (!sphere.isVisible) npcs[sphere.index].HasBecomeInvisible();
+            if (sphere.isVisible) npcs[sphere.index].HasBecomeVisible();
+        }
+
+        //if (sphere.currentDistance <= distances[0] ) npcs[sphere.index].Near();
+        //else if (sphere.currentDistance <= distances[1]) npcs[sphere.index].Far();
+        //else if (sphere.currentDistance <= distances[2]) npcs[sphere.index].ToFar();
+        //else if (sphere.currentDistance > distances[2] ) npcs[sphere.index].MuchFar();
         //Debug.Log(sphere.currentDistance);
     }
 
-    public void RemoveNPC(NpcBevahavour npc,BoundingSphere sphere)
+    public void RemoveNPC(NpcBevahavour npc)
     {
         //npcs.Remove(npc);
         int index = npcs.IndexOf(npc);
         npcs.RemoveAt(index);
-        spheres.Remove(sphere);
+        spheres.Remove(npcCulling.spheres[index]);
+        group.SetBoundingSpheres(spheres.ToArray());
     }
-	
+    protected virtual void OnDrawGizmos()
+    {
+        if (!Application.isPlaying) return;// no dibujar las esferas hasta que se le de a play
+
+        Gizmos.color = Color.red;
+
+        int len = npcs.Count;
+
+        for (int i = 0; i < len; i++)
+        {
+            //Gizmos.DrawWireSphere(cullingObj[i].position,1.5f);
+            Gizmos.DrawWireSphere(spheres[i].position, spheres[i].radius);
+        }
+
+    }
+
 }

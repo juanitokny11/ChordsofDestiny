@@ -37,6 +37,8 @@ public class CharacterAnimationDelegate : MonoBehaviour
     public GameObject particleEspada2;
     public bool isGroupie,is_Boss,isFan;
     public GameObject crack;
+    public NpcCulling npcCulling;
+    public bool sphere;
 
     private void Awake()
     {
@@ -46,6 +48,7 @@ public class CharacterAnimationDelegate : MonoBehaviour
             groupieEnemy = GetComponent<EnemyMovement>();
             groupie_Attack_Point = GetComponentInChildren<AttackUniversal>();
             //groupie_Attack_Point.gameObject.SetActive(false);
+            npcCulling = GameObject.FindObjectOfType<NpcCulling>();
         }
         else if (isFan)
         {
@@ -53,6 +56,7 @@ public class CharacterAnimationDelegate : MonoBehaviour
             bate = groupie;
             groupieEnemy = GetComponent<EnemyMovement>();
             groupie_Attack_Point = GetComponentInChildren<AttackUniversal>();
+            npcCulling = GameObject.FindObjectOfType<NpcCulling>();
             //groupie_Attack_Point.gameObject.SetActive(false);
         }
         else if (is_Boss)
@@ -219,6 +223,8 @@ public class CharacterAnimationDelegate : MonoBehaviour
             groupieEnemy.enabled = false;
         else
             bossIA.enabled = false;
+        if (sphere)
+            npcCulling.RemoveNPC(GetComponent<NpcBevahavour>());
         Invoke("DeleteGameobject", 2.0f);
     }
     void DeleteGameobject()

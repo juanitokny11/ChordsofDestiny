@@ -1735,6 +1735,7 @@ MonoBehaviour:
   fademusicaOptions: {fileID: 1993184519}
   reproductor: {fileID: 1216916280}
   optionsAnim: {fileID: 2091310908}
+  niebla: {fileID: 417121206}
   extras: 0
   cinematica: 0
 --- !u!4 &142483636
@@ -4015,6 +4016,11 @@ PrefabInstance:
       propertyPath: simulationSpeed
       value: 0.16
       objectReference: {fileID: 0}
+    - target: {fileID: 198748979371217952, guid: 352e27f1c137c8e43aa2e024a83aee20,
+        type: 3}
+      propertyPath: prewarm
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 352e27f1c137c8e43aa2e024a83aee20, type: 3}
 --- !u!1 &417121203 stripped
@@ -4035,6 +4041,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57e766146e4e9584e8563c3dbb0cb0fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!198 &417121206 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198748979371217952, guid: 352e27f1c137c8e43aa2e024a83aee20,
+    type: 3}
+  m_PrefabInstance: {fileID: 417121202}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &426007752
 GameObject:
   m_ObjectHideFlags: 0
