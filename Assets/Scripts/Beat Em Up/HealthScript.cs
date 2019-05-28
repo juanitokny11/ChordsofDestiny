@@ -35,9 +35,8 @@ public class HealthScript : MonoBehaviour
     public int hitsCount;
     public bool oneTime;
     public SoundPlayer audios;
-    
-
     public bool is_Player,is_Boss,is_Enemy;
+
     public void Start()
     {
         characterDied = false;

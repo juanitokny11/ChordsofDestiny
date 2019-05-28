@@ -95,6 +95,10 @@ public class CharacterAnimation : MonoBehaviour
         if (hit == 1)
             anim.SetTrigger("Hit2");
     }
+    public void Inicio()
+    {
+        anim.SetTrigger("Inicio");
+    }
     //Enemy Animations
     public void Disolve()
     {

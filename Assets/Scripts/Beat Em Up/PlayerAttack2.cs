@@ -35,6 +35,8 @@ public class PlayerAttack2 : MonoBehaviour
     public ParticleSystem notas;
     public GameObject block_Fx;
     public GameObject shield;
+    public bool doSolo;
+    public bool rot;
     private bool activateTimerToReset;
     public bool is_Player;
     private float default_Combo_Timer = 0.95f;
@@ -45,7 +47,8 @@ public class PlayerAttack2 : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        enableAttacks = true;
+        doSolo = false;
+        enableAttacks = false;
         mycol = GetComponentInChildren<CapsuleCollider>();
         attackList = GetComponent<PlayerAttackList>();
         guardCollider =GameObject.FindGameObjectWithTag("Defense").GetComponent<BoxCollider>();
@@ -56,6 +59,9 @@ public class PlayerAttack2 : MonoBehaviour
     }
     void Start()
     {
+        rot = false;
+        canBlock = false;
+        healthScript.canDoSolo = false;
         Guitar.localPosition = new Vector3(-0.118f, 0.014f, 0.083f);
         Solocol = GameObject.FindGameObjectWithTag("Solo").GetComponent<SphereCollider>();
         Solocol.GetComponent<SphereCollider>().enabled = false;
@@ -158,7 +164,7 @@ public class PlayerAttack2 : MonoBehaviour
             }
         if (Input.GetKeyDown(KeyCode.D) || Input.GetAxisRaw("Solo") == 1 && Input.GetAxisRaw("Disparar") == 1)
         {
-            if ( !player_Move.inAir && healthScript.canDoSolo==true)
+            if ( !player_Move.inAir && healthScript.canDoSolo && doSolo )
             {
                 player_Move.attack = true;
                 player_Move.jump = false;
@@ -210,6 +216,7 @@ public class PlayerAttack2 : MonoBehaviour
                     transform.rotation = Quaternion.Euler(0, -180, 0);
                 else if (player_Move.lockrotation == false)
                     transform.rotation = Quaternion.Euler(0, 0, 0);
+                if(rot)
                 player_Move.canRotate = true;
             }
             if (!player_Move.inAir)
@@ -242,6 +249,7 @@ public class PlayerAttack2 : MonoBehaviour
                 mycol.enabled = true;
                 player_Move.move = true;
                 player_Move.attack = true;
+                if(rot)
                 player_Move.canRotate = true;
                 player_Move.jump = true;
                 player_Move.attack = false;
@@ -300,6 +308,17 @@ public class PlayerAttack2 : MonoBehaviour
     {
         current_Combo_State = ComboState.NONE;
         player_Move.run_Speed = 0;
+    }
+    public void EnableControl()
+    {
+        rot = false;
+        doSolo = true;
+        canBlock = true;
+        enableAttacks = true;
+        healthScript.canDoSolo = true;
+        player_Move.enableMovement = true;
+        player_Move.jump = true;
+        player_Move.canRotate = true;
     }
 }
 

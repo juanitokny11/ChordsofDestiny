@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 17a0a27317356424382e5d4607e9e8d4
+guid: 46887e99aa43310439ba2cac100626f3
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -150,7 +150,7 @@ ModelImporter:
     3300000: Object001
     4300000: Bota4Der2
     4300002: Object001
-    7400000: idleGuitar2
+    7400000: Inicio
     9500000: //RootNode
     13700000: Bota4Der2
   externalObjects: {}
@@ -182,31 +182,31 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: idleGuitar2
+      name: Inicio
       takeName: Take 001
       firstFrame: 0
-      lastFrame: 199
+      lastFrame: 320
       wrapMode: 0
-      orientationOffsetY: 0
+      orientationOffsetY: -25
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 1
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 1
+      keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.7234042
-        functionName: CounterReset
+      - time: 1
+        functionName: EnableControl
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

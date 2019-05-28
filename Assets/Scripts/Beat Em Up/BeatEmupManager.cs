@@ -31,6 +31,7 @@ public class BeatEmupManager : MonoBehaviour
     public Animator pauseMenuPrincial;
     public bool pause = false;
     public int numScore;
+    public EaseColor startFade;
 
     void Awake()
     {
@@ -39,6 +40,7 @@ public class BeatEmupManager : MonoBehaviour
     }
     private void Start()
     {
+        startFade.play = true;
         Player = GameObject.FindGameObjectWithTag("Player");
         Cursor.visible = false;
         firstTime = true;
