@@ -31,9 +31,9 @@ public class PlayerMovementBeat : MonoBehaviour
     public float rotation_Speed = 15f;
     private void Awake()
     {
-        enableMovement = true;
-        jump = true;
-        //canRotate = false;
+        enableMovement = false;
+        jump = false;
+        canRotate = false;
         attackList = GetComponent<PlayerAttackList>();
         anim = GetComponent<Animator>();
         transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -90,6 +90,7 @@ public class PlayerMovementBeat : MonoBehaviour
     public void Start()
     {
         move = true;
+        player_Anim.Inicio();
     }
     void FixedUpdate()
     {

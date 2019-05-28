@@ -105,8 +105,8 @@ public class AttackUniversal : MonoBehaviour
                 {
                     //solo = true;
                     damage =30;
-                    if(hit[0]!=null)
-                    hit[0].GetComponent<EnemyMovement>().soloHit = true;
+                    if(hit[0].tag=="Enemy")
+                        hit[0].GetComponent<EnemyMovement>().soloHit = true;
                     healthScript.hitsCount++;
                     counterhits = 0;
                     //healthUI.DisplaySolo(healthScript.solo / 2);
