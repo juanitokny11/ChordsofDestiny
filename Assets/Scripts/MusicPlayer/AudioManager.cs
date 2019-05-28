@@ -50,6 +50,7 @@ public class AudioManager : MonoBehaviour
             groupId = group.Length - 1;
         if (playing)
         {
+            Play.GetComponent<Image>().sprite = pauseSprite;
             Play.GetComponent<Button>().spriteState = playState;
             playState.pressedSprite = playSprite;
             playState.highlightedSprite = pauseSprite;
@@ -57,6 +58,9 @@ public class AudioManager : MonoBehaviour
         }
         if (!playing)
         {
+            if (source.isPlaying)
+                source.Stop();
+            Play.GetComponent<Image>().sprite = playSprite;
             Play.GetComponent<Button>().spriteState = pauseState;
             pauseState.pressedSprite = pauseSprite;
             pauseState.highlightedSprite = playSprite;
@@ -130,8 +134,9 @@ public class AudioManager : MonoBehaviour
     }
     public void StopMusic()
     {
+        playing = false;
         StopCoroutine("WaitForMusicEnd");
-        source.Stop();
+        source.Stop();   
     }
     public void MuteMusic()
     {
