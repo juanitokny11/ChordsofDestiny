@@ -133,12 +133,12 @@ public class LogoManager : MonoBehaviour
         if (!extras)
         {
             reproductor.SetActive(false);
-            musica.mute = false;
+            musica.UnPause();
         }
         else if (extras)
         {
             Invoke("InvokeGramola", 130.0f * Time.deltaTime);
-            musica.mute = true;
+            musica.Pause();
         }
     }
     public void InvokeGramola()
