@@ -2061,6 +2061,7 @@ GameObject:
   - component: {fileID: 8017991134479369554}
   - component: {fileID: 8017991134479369555}
   - component: {fileID: 100499363360551828}
+  - component: {fileID: 5360239208051445077}
   m_Layer: 11
   m_Name: Fan
   m_TagString: Enemy
@@ -2193,6 +2194,8 @@ MonoBehaviour:
   is_Boss: 0
   isFan: 1
   crack: {fileID: 0}
+  npcCulling: {fileID: 0}
+  sphere: 0
 --- !u!114 &8017991134479369553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2308,6 +2311,7 @@ MonoBehaviour:
   ataqueGirSound: {fileID: 0}
   ataqueAltoSound: {fileID: 0}
   golpeGirSound: {fileID: 0}
+  golpeAltoSound: {fileID: 0}
   attackList: {fileID: 0}
   random: 0
   random2: 0
@@ -2317,6 +2321,19 @@ MonoBehaviour:
   walkfan: {fileID: 4307925293138945957}
   DisolveGroupi: {fileID: 0}
   DisolveFan: {fileID: 901657191214326604}
+--- !u!114 &5360239208051445077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8017991134479369548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b803630d58340b45a3a5e8f3922807d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rend: {fileID: 0}
 --- !u!1 &8017991134493730409
 GameObject:
   m_ObjectHideFlags: 0
