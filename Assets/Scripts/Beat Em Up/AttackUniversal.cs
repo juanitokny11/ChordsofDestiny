@@ -35,9 +35,12 @@ public class AttackUniversal : MonoBehaviour
     public float counterhits = 0f;
     public AudioSource block1;
     private ParticleCulling particleCulling;
-    
+    public bool firstHit = false;
+
+
     private void Start()
     {
+        firstHit = true;
         particleCulling = GameObject.FindObjectOfType<ParticleCulling>();
         gameManager = FindObjectOfType<BeatEmupManager>();
         sound = GetComponentInParent<Sound>();
@@ -179,7 +182,9 @@ public class AttackUniversal : MonoBehaviour
                     }
                     if (hit[0].gameObject.tag == "bidon")
                     {
+                        firstHit = false;
                         hit[0].GetComponent<DeleteObjects>().vida--;
+                        hit[0].GetComponent<MeshCollider>().enabled = false;
                         anim = hit[0].GetComponentInParent<Animator>();
                         hit[0].gameObject.SetActive(false);
                         puaSpawn = hit[0].transform.position;

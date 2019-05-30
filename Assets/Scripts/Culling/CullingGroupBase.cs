@@ -6,7 +6,7 @@ public class CullingGroupBase : MonoBehaviour {
 		protected CullingGroup group;
 		protected List<BoundingSphere> spheres;
 
-		public Transform[] cullingObj;
+		public List<Transform> cullingObj; //LIST
 		public Transform reference;
 		public float[] distances;
 	protected virtual void Start () 
@@ -17,8 +17,7 @@ public class CullingGroupBase : MonoBehaviour {
 
 		spheres= new List< BoundingSphere>();// creamos esferas para meter dentro objectos 
 
-		int len =cullingObj.Length;
-		if (len>100) len=100;
+		int len =cullingObj.Count;
 		for(int i = 0;i< len; i++)
 		{
 			spheres.Add(new BoundingSphere(cullingObj[i].position, 1.5f));// asignamos las esferas a los objectos que metamos en la array

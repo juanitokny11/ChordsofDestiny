@@ -7,22 +7,21 @@ public class ParticleCulling : CullingGroupBase {
 	//private MeshRenderer[] rend;
 
 	public  List<ParticlesBevahavour> particles;
-    private ParticleCulling particleCulling;
+   // private ParticleCulling particleCulling;
     protected override void Start()
 	{
-		/*for(int i=0; i > cullingObj.Length; i++){
-			cullingObj[i]= ;
-		}*/
-		base.Start();
-        particleCulling = GameObject.FindObjectOfType<ParticleCulling>();
-        //rend = new MeshRenderer[cullingObj.Length];
+        ParticlesBevahavour[] objs = FindObjectsOfType<ParticlesBevahavour>();
         particles = new List<ParticlesBevahavour>();
-		int lon= cullingObj.Length;
-		for(int i = 0; i< lon; i++)
-		{
-            //spheres[i].position=transform.position;
-            particles.Add(cullingObj[i].GetComponent<ParticlesBevahavour>());
-		}
+        cullingObj = new List<Transform>();
+        for (int i = 0; i < objs.Length; i++)
+        {
+            cullingObj.Add(objs[i].transform);
+            particles.Add(objs[i]);
+        }
+        base.Start();
+        //particleCulling = GameObject.FindObjectOfType<ParticleCulling>();
+        //rend = new MeshRenderer[cullingObj.Length];
+
 		group.SetBoundingDistances(distances);
 		group.SetDistanceReferencePoint(reference);
 	}
@@ -34,11 +33,11 @@ public class ParticleCulling : CullingGroupBase {
             if (cullingObj[i] != null)
                 sphere.position = cullingObj[i].position;
             spheres[i] = sphere;
-            group.SetBoundingSpheres(spheres.ToArray());
+           
             //spheres[i].position=cullingObj[i].position;
         }
-
-	}
+        group.SetBoundingSpheres(spheres.ToArray());
+    }
 	protected override void OnStateChanged(CullingGroupEvent sphere)
 	{
         if (particles[sphere.index] != null)
@@ -53,8 +52,17 @@ public class ParticleCulling : CullingGroupBase {
         //npcs.Remove(npc);
         int index = particles.IndexOf(particle);
         particles.RemoveAt(index);
-        spheres.Remove(particleCulling.spheres[index]);
-        group.SetBoundingSpheres(spheres.ToArray());
+        cullingObj.RemoveAt(index);
+
+        spheres = new List<BoundingSphere>();
+        int len = cullingObj.Count;
+        for (int i = 0; i < len; i++)
+        {
+            spheres.Add(new BoundingSphere(cullingObj[i].position, 1.5f));// asignamos las esferas a los objectos que metamos en la array
+        }
+        group.SetBoundingSpheres(spheres.ToArray());// asignar las esferas a los objectos
+
+        group.SetBoundingSphereCount(len);// asignamos el numero de esferas que vamos a usar
     }
     protected virtual void OnDrawGizmos()
     {
