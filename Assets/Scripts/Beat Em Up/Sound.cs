@@ -5,6 +5,7 @@ using UnityEngine;
 public class Sound : MonoBehaviour
 {
    public AudioSource salidabos;
+    public AudioSource luzsalida;
     public List<AudioSource> fuerteaire;
    public  List<AudioSource> debilaire;
     public List<AudioSource> golpesHacha;
@@ -36,6 +37,11 @@ public class Sound : MonoBehaviour
    {
        salidabos.Play();
    }
+
+    void doorbeep()
+    {
+        luzsalida.Play();
+    }
     void airedebil()
    {
         if(!attackList.D3)
