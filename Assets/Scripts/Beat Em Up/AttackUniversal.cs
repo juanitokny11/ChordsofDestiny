@@ -86,6 +86,9 @@ public class AttackUniversal : MonoBehaviour
                 if (gameObject.CompareTag("Tirar"))
                 {
                     //solo = false;
+                    sound.hit = true;
+                    if (attackList.F3)
+                        sound.GolpeDesdeArriba();
                     healthScript.inAir = false;
                     sound.ataquedesdealto();
                     damage = 4;
@@ -133,6 +136,9 @@ public class AttackUniversal : MonoBehaviour
                 else if (gameObject.CompareTag("Levantar"))
                 {
                     //solo = false;
+                    sound.hit = true;
+                    if (!attackList.F3)
+                        sound.GolpeHacha();
                     damage = 4;
                     healthScript.hitsCount++;
                     if (!attackList.F3)

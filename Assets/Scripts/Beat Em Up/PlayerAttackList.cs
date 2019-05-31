@@ -8,6 +8,7 @@ public class PlayerAttackList : MonoBehaviour
     public PlayerMovementBeat player_Move;
     public CharacterAnimation player_anim;
     public Animator anim;
+    public Sound sound;
     public bool F3 = false;
     public bool D3 = false;
     public bool Attack = true;
@@ -15,6 +16,7 @@ public class PlayerAttackList : MonoBehaviour
     //public List<AudioSource> audios;
     void Start()
     {
+        sound = GetComponent<Sound>();
         player_Move = GetComponent<PlayerMovementBeat>();
         attacks = GetComponent<PlayerAttack2>().attacks;
         player_anim = GetComponent<CharacterAnimation>();
@@ -112,6 +114,7 @@ public class PlayerAttackList : MonoBehaviour
         Attack = true;
         D3 = false;
         F3 = false;
+        sound.hit = false;
         attacks.RemoveAt(0);
         Invoke("Can_Move", 2f);
     }

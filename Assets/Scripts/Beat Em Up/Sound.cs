@@ -53,7 +53,7 @@ public class Sound : MonoBehaviour
 
     void airefuerte()
    {
-         if(!hit || !attackList.F3)
+         if(!attackList.F3)
             fuerteaire[random2].Play();
         ataquedesdealto();
         if (hit && attackList.F3)
