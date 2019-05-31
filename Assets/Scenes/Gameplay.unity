@@ -1219,7 +1219,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &65720339
 Transform:
   m_ObjectHideFlags: 0
@@ -15487,6 +15487,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rend: {fileID: 0}
+--- !u!1 &634355598 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2452563773638343980, guid: 303c9a61fe9fd4845b7866e88b4417f6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1400160312}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &634976034
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29117,7 +29123,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1400160312}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 634355598}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -46006,6 +46012,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d811e522eaf006447ae5e0418441079f, type: 3}
+--- !u!1 &1839607886 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1014226852502504, guid: 303c9a61fe9fd4845b7866e88b4417f6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1400160312}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1844336389
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55900,6 +55912,19 @@ PrefabInstance:
       propertyPath: puaInstance
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1766413168, guid: 340497af01acd6d42bbb74e1fe58fd11, type: 3}
+      propertyPath: pua
+      value: 
+      objectReference: {fileID: 698599952242444577, guid: 8580b4ef3c143294ab708c82967d1b63,
+        type: 3}
+    - target: {fileID: 1766413168, guid: 340497af01acd6d42bbb74e1fe58fd11, type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 1839607886}
+    - target: {fileID: 1766413168, guid: 340497af01acd6d42bbb74e1fe58fd11, type: 3}
+      propertyPath: score
+      value: 
+      objectReference: {fileID: 634355598}
     - target: {fileID: 5292908484039317972, guid: 340497af01acd6d42bbb74e1fe58fd11,
         type: 3}
       propertyPath: prewarm
@@ -55921,6 +55946,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 639668878337868962, guid: 340497af01acd6d42bbb74e1fe58fd11,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2137341944443101804, guid: 340497af01acd6d42bbb74e1fe58fd11,
         type: 3}
       propertyPath: m_Enabled
       value: 1

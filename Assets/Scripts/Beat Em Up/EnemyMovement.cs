@@ -131,12 +131,12 @@ public class EnemyMovement : MonoBehaviour
             {
                 myBody.velocity = Vector3.zero;
                 enemyAnim.Run(false);
-                counter += Time.deltaTime;
-                if (counter >= 25f)
+                //counter += Time.deltaTime;
+                /*if (counter >= 25f)
                 {
                     enemyAnim.PlayLongIdle();
                     counter = 0f;
-                }
+                }*/
                 //followPlayer = false;
                 attackPlayer = false;
             }

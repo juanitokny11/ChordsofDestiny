@@ -121,7 +121,7 @@ public class CharacterAnimation : MonoBehaviour
     }
     public void PlayLongIdle()
     {
-        anim.SetTrigger("LongIdle");
+        anim.SetTrigger("IdleLong");
     }
     public void KnockDown()
     {

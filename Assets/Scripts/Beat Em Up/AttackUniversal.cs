@@ -184,14 +184,15 @@ public class AttackUniversal : MonoBehaviour
                     {
                         firstHit = false;
                         hit[0].GetComponent<DeleteObjects>().vida--;
-                        hit[0].GetComponent<MeshCollider>().enabled = false;
+                        //hit[0].gameObject.layer = 0;
+                       //hit[0].GetComponent<MeshCollider>().enabled = false;
                         anim = hit[0].GetComponentInParent<Animator>();
-                        hit[0].gameObject.SetActive(false);
+                        hit[0].GetComponent<MeshRenderer>().enabled = false;
                         puaSpawn = hit[0].transform.position;
                         if (hit[0].GetComponent<DeleteObjects>().vida <= 0)
                         {
                             anim.SetTrigger("Break");
-                            Invoke("Explode", Time.deltaTime* 18f);
+                           
                         }
                     }
                     else if (hit[0].gameObject.tag != "bidon")
@@ -341,11 +342,7 @@ public class AttackUniversal : MonoBehaviour
     }
     public void Explode()
     {
-        /*for (int i = 0; i < particleCulling.particles.Count; i++)
-        {
-            particleCulling.RemoveParticle()
-        }*/
-        InvokeRepeating("Blink", 0.1f, 0.1f);
+       InvokeRepeating("Blink", 0.1f, 0.1f);
        gameManager.numScore += 5;
         score.SetActive(true);
         if (playerHealth.health <= 100)
