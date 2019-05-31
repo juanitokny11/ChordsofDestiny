@@ -45,7 +45,9 @@ public class PlayerMovementBeat : MonoBehaviour
     }
     void Update()
     {
-        if (enableMovement)
+        if (!is_Dead)
+        {
+            if (enableMovement)
         {
             if(!walk && !attack)
                 counter++;
@@ -63,8 +65,7 @@ public class PlayerMovementBeat : MonoBehaviour
             {
                 move = true;
             }
-            if (!is_Dead)
-            {
+            
                 AnimatePlayerRun();
                 AnimatePlayerWalk();
                 if (walk == true && running == false && Input.GetAxisRaw("Evadir") == 1 && playerAttack.blockActivated)

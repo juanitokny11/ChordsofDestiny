@@ -274,6 +274,7 @@ public class CharacterAnimationDelegate : MonoBehaviour
     }
     public void Lost()
     {
+        Cursor.visible = true;
         SceneManager.LoadScene("GameOver");
     }
     public void ChangeTime()

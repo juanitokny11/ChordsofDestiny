@@ -11537,7 +11537,7 @@ MonoBehaviour:
   score: {fileID: 1901219130}
   EnemyUI: {fileID: 697468903}
   Player: {fileID: 0}
-  enemyBlocker: {fileID: 0}
+  enemyBlocker: {fileID: 1909692129}
   goSound: {fileID: 0}
   bossZone: 0
   goImage: {fileID: 1216459603}
@@ -11558,8 +11558,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5717952, y: 1, z: 9.258431}
-  m_Center: {x: 0.28589773, y: -0.00000023841858, z: -0.7661824}
+  m_Size: {x: 1.5717952, y: 1, z: 16.526585}
+  m_Center: {x: 0.28589773, y: -0.00000023841858, z: 1.0157962}
 --- !u!114 &528943669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11644,6 +11644,7 @@ Transform:
   - {fileID: 853768185}
   - {fileID: 109218523}
   - {fileID: 1485708126}
+  - {fileID: 1909692128}
   m_Father: {fileID: 830854367}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13906,7 +13907,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 580426098}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 3.95}
+  m_LocalPosition: {x: 0, y: -0.02, z: 3.64}
   m_LocalScale: {x: 6.69, y: 3.66, z: 0.30885437}
   m_Children: []
   m_Father: {fileID: 1131427587}
@@ -24103,7 +24104,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 415560372}
         m_MethodName: SetEffectsLevel
         m_Mode: 1
         m_Arguments:
@@ -24292,7 +24293,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 415560372}
         m_MethodName: SetLevel
         m_Mode: 1
         m_Arguments:
@@ -33047,6 +33048,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2452563773638343980, guid: 303c9a61fe9fd4845b7866e88b4417f6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Score
+      objectReference: {fileID: 0}
     - target: {fileID: 5255471212577261566, guid: 303c9a61fe9fd4845b7866e88b4417f6,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -33203,11 +33209,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2452563773638343980, guid: 303c9a61fe9fd4845b7866e88b4417f6,
-        type: 3}
-      propertyPath: m_TagString
-      value: Score
       objectReference: {fileID: 0}
     - target: {fileID: 114234597462425400, guid: 303c9a61fe9fd4845b7866e88b4417f6,
         type: 3}
@@ -37027,6 +37028,22 @@ PrefabInstance:
     - target: {fileID: 1871696313, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 988149408, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 988149407, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 988149407, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 988149407, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba, type: 3}
@@ -47749,6 +47766,50 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1909591354}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1909692127
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1909692128}
+  - component: {fileID: 1909692129}
+  m_Layer: 0
+  m_Name: zonaboss
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1909692128
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909692127}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -55.3, y: 0, z: -2.67}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 533937498}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1909692129
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909692127}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 4.9097996, z: 9.771599}
+  m_Center: {x: 0, y: 1.9548998, z: -1.6169462}
 --- !u!114 &1914102802 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8972260133928361604, guid: 80da2cb8c7f68ed4a8b509fe01ff6f99,
@@ -52804,7 +52865,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 415560372}
         m_MethodName: SetMusicLevel
         m_Mode: 1
         m_Arguments:
@@ -53410,6 +53471,7 @@ GameObject:
   - component: {fileID: 2118416788}
   - component: {fileID: 2118416790}
   - component: {fileID: 2118416789}
+  - component: {fileID: 2118416792}
   m_Layer: 5
   m_Name: Sound
   m_TagString: Untagged
@@ -53499,6 +53561,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2118416792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118416787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0985a68fd8e4d684ca34d5a99b2e5a9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicSlider: {fileID: 2082871534}
+  generalSlider: {fileID: 1069175127}
+  FXSlider: {fileID: 1065863991}
 --- !u!1001 &2120454693
 PrefabInstance:
   m_ObjectHideFlags: 0

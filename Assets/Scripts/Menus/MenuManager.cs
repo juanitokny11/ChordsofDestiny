@@ -68,6 +68,7 @@ public class MenuManager : MonoBehaviour {
         if (is_MainMenu)
         {
             cinematicaInicial.gameObject.SetActive(true);
+            Cursor.visible = false;
             cinematicaInicial.Play();
             StartCoroutine("waitForMovieEnd");
             logoManager.cinematica = true;

@@ -111,7 +111,7 @@ public class PlayerAttack2 : MonoBehaviour
             }
             else if (player_Move.inAir )
             {
-                if (current_Combo_State == ComboState.NONE)
+                if (current_Combo_State == ComboState.JUMP)
                 {
                     current_Combo_State = ComboState.AIRCOMBO1;
                 }
@@ -155,13 +155,9 @@ public class PlayerAttack2 : MonoBehaviour
                         AddToTheList(ComboState.FUERTE3);
                     }
                 }
-                else if (player_Move.inAir)
-                {
-                    current_Combo_State = ComboState.JUMP;
-
-                }
+                
             }
-            }
+        }
         if (Input.GetKeyDown(KeyCode.D) || Input.GetAxisRaw("Solo") == 1 && Input.GetAxisRaw("Disparar") == 1)
         {
             if ( !player_Move.inAir && healthScript.canDoSolo && doSolo )

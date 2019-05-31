@@ -23,6 +23,7 @@ public class LogoManager : MonoBehaviour
     public MenuAnim optionsAnim;
     public ParticleSystem niebla;
     public bool extras=true;
+    public GameObject pantallanegra;
     bool logo = false;
     public bool cinematica = false;
     private void Awake()
@@ -50,12 +51,20 @@ public class LogoManager : MonoBehaviour
     private void EndVideo(VideoPlayer source)
     {
         logoVideo.gameObject.SetActive(false);
-        niebla.Play();
+        pantallanegra.GetComponent<MeshRenderer>().enabled = true;
         title.gameObject.SetActive(true);
-        titleText.enabled=true;
+        title.GetComponent<MeshRenderer>().enabled = false; 
+        Invoke("OffPantallaNegra",Time.deltaTime*25f);
+        niebla.Play();
         fademusica.SetActive(true);
         musica.Play();
         logo = true;
+    }
+    void OffPantallaNegra()
+    {
+        titleText.enabled = true;
+        pantallanegra.GetComponent<MeshRenderer>().enabled = false;
+        title.GetComponent<MeshRenderer>().enabled = true;
     }
     private void Update()
     {
