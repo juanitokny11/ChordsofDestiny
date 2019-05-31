@@ -11,6 +11,7 @@ public class PlayerAttackList : MonoBehaviour
     public bool F3 = false;
     public bool D3 = false;
     public bool Attack = true;
+    public bool canMove = true;
     //public List<AudioSource> audios;
     void Start()
     {
@@ -23,7 +24,7 @@ public class PlayerAttackList : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Attack == false)
+        if (canMove == false)
             player_Move.move = false;
         if (attacks.Count > 0)
         {
@@ -41,6 +42,7 @@ public class PlayerAttackList : MonoBehaviour
                 player_anim.Debil();
                 //audios[random].Play();
                 Attack = false;
+                canMove = false;
             }
         }
         else if (attacks[0] == PlayerAttack2.ComboState.DEBIL2)
@@ -50,6 +52,7 @@ public class PlayerAttackList : MonoBehaviour
                 player_anim.Debil2();
                 //audios[random].Play();
                 Attack = false;
+                canMove = false;
             }
         }
         else if (attacks[0] == PlayerAttack2.ComboState.DEBIL3)
@@ -60,6 +63,7 @@ public class PlayerAttackList : MonoBehaviour
                 //audios[random].Play();
                 D3 = true;
                 Attack = false;
+                canMove = false;
             }
         }
         else if (attacks[0] == PlayerAttack2.ComboState.FUERTE)
@@ -69,6 +73,7 @@ public class PlayerAttackList : MonoBehaviour
                 player_anim.Fuerte();
                 //audios[random2].Play();
                 Attack = false;
+                canMove = false;
             }
         }
         else if (attacks[0] == PlayerAttack2.ComboState.FUERTE2)
@@ -78,6 +83,7 @@ public class PlayerAttackList : MonoBehaviour
                 player_anim.Fuerte2();
                 //audios[random2].Play();
                 Attack = false;
+                canMove = false;
             }
         }
         else if (attacks[0] == PlayerAttack2.ComboState.FUERTE3)
@@ -88,6 +94,7 @@ public class PlayerAttackList : MonoBehaviour
                 F3 = true;
                 //audios[random2].Play();
                 Attack = false;
+                canMove = false;
             }
         }
         else if(attacks[0] == PlayerAttack2.ComboState.AIRCOMBO1)
@@ -96,6 +103,7 @@ public class PlayerAttackList : MonoBehaviour
             {
                 player_anim.AirCombo1();
                 Attack = false;
+                canMove = false;
             }
         }
     }
@@ -105,9 +113,14 @@ public class PlayerAttackList : MonoBehaviour
         D3 = false;
         F3 = false;
         attacks.RemoveAt(0);
+        Invoke("Can_Move", 2f);
     }
     public void RemoveAllList()
     {
         attacks.RemoveRange(0,attacks.Count);
+    }
+    public void Can_Move()
+    {
+        canMove = true;
     }
 }

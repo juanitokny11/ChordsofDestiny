@@ -205,6 +205,13 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
+      - time: 0
+        functionName: ParticleHachaOn
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.6167282
         functionName: Tag_Debil
         data: 
@@ -226,8 +233,8 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 1
-        functionName: Untag_Guitar
+      - time: 0.9851064
+        functionName: ParticleHachaOff
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -240,15 +247,8 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0
-        functionName: ParticleHachaOn
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.9851064
-        functionName: ParticleHachaOff
+      - time: 1
+        functionName: Untag_Guitar
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

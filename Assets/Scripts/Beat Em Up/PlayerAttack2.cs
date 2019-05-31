@@ -184,13 +184,16 @@ public class PlayerAttack2 : MonoBehaviour
         }
         if (Input.GetAxisRaw("Evadir") == 1 && !blockActivated && canBlock)
         {
-            player_Move.run_Speed = 0;
+            Debug.Log("BLOQUEO");
             player_Move.attack = true;
             player_Move.walk = false;
             player_Move.running = false;
-            player_Move.move = false;
-            player_Move.run_Speed = 0;
+            //player_Move.move = false;
             current_Combo_State = ComboState.GUARD;
+            if (player_Move.walk || player_Move.running)
+            {
+                player_Move.run_Speed = 0;
+            }
             if (!player_Move.inAir)
             {
                 if (current_Combo_State == ComboState.GUARD)
@@ -210,14 +213,13 @@ public class PlayerAttack2 : MonoBehaviour
         else if ( Input.GetAxisRaw("Evadir") == 0 && blockActivated)
         {
             current_Combo_State = ComboState.GUARD;
-            if (player_Move.walk)
+            if (player_Move.walk || player_Move.running)
             {
                 if (player_Move.lockrotation == true)
                     transform.rotation = Quaternion.Euler(0, -180, 0);
                 else if (player_Move.lockrotation == false)
                     transform.rotation = Quaternion.Euler(0, 0, 0);
-                if(rot)
-                player_Move.canRotate = true;
+                //player_Move.canRotate = true;
             }
             if (!player_Move.inAir)
             {
@@ -228,9 +230,10 @@ public class PlayerAttack2 : MonoBehaviour
                     player_Move.move = false;
                     guardCollider.enabled = false;
                     blockActivated = false;
+                    player_Move.canRotate = true;
                     attackList.Attack = true;
                     attackList.RemoveAllList();
-                    //current_Combo_State = ComboState.NONE;
+                    current_Combo_State = ComboState.NONE;
                 }
             }
             else if (player_Move.inAir)
@@ -249,7 +252,6 @@ public class PlayerAttack2 : MonoBehaviour
                 mycol.enabled = true;
                 player_Move.move = true;
                 player_Move.attack = true;
-                if(rot)
                 player_Move.canRotate = true;
                 player_Move.jump = true;
                 player_Move.attack = false;
@@ -307,7 +309,6 @@ public class PlayerAttack2 : MonoBehaviour
     public void ResetCombo()
     {
         current_Combo_State = ComboState.NONE;
-        player_Move.run_Speed = 0;
     }
     public void EnableControl()
     {

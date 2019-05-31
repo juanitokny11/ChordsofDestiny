@@ -67,7 +67,9 @@ public class PlayerMovementBeat : MonoBehaviour
             {
                 AnimatePlayerRun();
                 AnimatePlayerWalk();
-                if (walk == true && running == false)
+                if (walk == true && running == false && Input.GetAxisRaw("Evadir") == 1 && playerAttack.blockActivated)
+                    run_Speed = 0;
+                if (walk == true && running == false && Input.GetAxisRaw("Evadir") == 0 )
                     run_Speed = 5;
                 else if (walk == true && running == true)
                     run_Speed = 10f;
@@ -235,7 +237,11 @@ public class PlayerMovementBeat : MonoBehaviour
     }
     public void Move()
     {
-        move = true;
+        Invoke("CanMove",2f);
         attackList.Attack = true;
+    }
+    public void CanMove()
+    {
+        move = true;
     }
 }
