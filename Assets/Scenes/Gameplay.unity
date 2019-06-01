@@ -31799,6 +31799,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1752776702}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1355402388 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 32260406519261332, guid: 303c9a61fe9fd4845b7866e88b4417f6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1400160312}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1358169452
 GameObject:
   m_ObjectHideFlags: 0
@@ -33239,6 +33245,16 @@ PrefabInstance:
     - target: {fileID: 32260406519261332, guid: 303c9a61fe9fd4845b7866e88b4417f6,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4056076445758007905, guid: 303c9a61fe9fd4845b7866e88b4417f6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1761482115713080298, guid: 303c9a61fe9fd4845b7866e88b4417f6,
+        type: 3}
+      propertyPath: m_FillAmount
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -53523,7 +53539,6 @@ GameObject:
   - component: {fileID: 2118416788}
   - component: {fileID: 2118416790}
   - component: {fileID: 2118416789}
-  - component: {fileID: 2118416792}
   m_Layer: 5
   m_Name: Sound
   m_TagString: Untagged
@@ -53613,18 +53628,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &2118416792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2118416787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0985a68fd8e4d684ca34d5a99b2e5a9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2120454693
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57639,6 +57642,11 @@ PrefabInstance:
       propertyPath: fade
       value: 
       objectReference: {fileID: 1118693569}
+    - target: {fileID: 4554496321350749296, guid: 32d3847095fd90f41bc2db0671913dc6,
+        type: 3}
+      propertyPath: soloCharged
+      value: 
+      objectReference: {fileID: 1355402388}
     - target: {fileID: 8939311919185665385, guid: 32d3847095fd90f41bc2db0671913dc6,
         type: 3}
       propertyPath: caminarS

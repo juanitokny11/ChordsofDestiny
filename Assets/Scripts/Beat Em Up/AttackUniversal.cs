@@ -111,15 +111,22 @@ public class AttackUniversal : MonoBehaviour
                 {
                     //solo = true;
                     damage =30;
-                    if(hit[0].tag=="Enemy")
+                    /*if (hit[0].tag == "Enemy")
+                    {
                         hit[0].GetComponent<EnemyMovement>().soloHit = true;
+                        hit[0].GetComponent<EnemyMovement>().speed = 0f;
+                    }*/
                     healthScript.hitsCount++;
                     counterhits = 0;
                     //healthUI.DisplaySolo(healthScript.solo / 2);
                     for (int i = 0; i < hit.Length; i++)
                     {
-                        if(hit[i].gameObject.tag=="Enemy")
+                        if (hit[i].gameObject.tag == "Enemy")
+                        {
                             hit[i].GetComponent<EnemyMovement>().soloHit = true;
+                            hit[i].GetComponent<EnemyMovement>().speed = 0f;
+                            hit[i].GetComponent<EnemyMovement>().followPlayer = false;
+                        }
                         hit[i].GetComponent<HealthScript>().ApplyDamage(damage, true, false);
                     }
                     //healthScript.inAir = true;

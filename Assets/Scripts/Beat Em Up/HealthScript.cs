@@ -10,6 +10,7 @@ public class HealthScript : MonoBehaviour
     public float maxHealth;
     public float health = 100f;
     public float solo = 0f;
+    public GameObject soloCharged;
     public BattleZone zone;
     public AttackUniversal attack;
     private CharacterAnimation animationScript;
@@ -92,11 +93,16 @@ public class HealthScript : MonoBehaviour
             if (is_Player)
             {
                 canDoSolo = true;
+                soloCharged.SetActive(true);
             }
         }
         else
         {
-            canDoSolo = false;
+            if (is_Player)
+            {
+                canDoSolo = false;
+                soloCharged.SetActive(false);
+            }
         }
     }
     public void ApplyDamage(float damage,bool knockDown,bool defense)

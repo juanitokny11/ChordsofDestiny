@@ -97,14 +97,13 @@ public class EnemyMovement : MonoBehaviour
             this.enabled = false;
         default_Attack_Time = Random.Range(3.0f, 6.0f);
         if (healthScript.characterDied)
-        {
             this.enabled = false;
-        }
         Attack();
     }
     void FixedUpdate()
     {
-        FollowTarget();
+        if (!healthScript.characterDied)
+            FollowTarget();
     }
     void FollowTarget()
     {
@@ -117,6 +116,7 @@ public class EnemyMovement : MonoBehaviour
         {
             speed = 4.8f;
             transform.LookAt(playerTarget);
+            if(!soloHit)
             myBody.velocity = transform.forward * speed;
             if (myBody.velocity.sqrMagnitude != 0)
             {

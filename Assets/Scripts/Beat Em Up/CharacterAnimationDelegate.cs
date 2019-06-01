@@ -217,6 +217,8 @@ public class CharacterAnimationDelegate : MonoBehaviour
     }
     void CharacterDied()
     {
+        groupieEnemy.followPlayer = false;
+        groupieEnemy.speed = 0f;
         groupiecol.enabled = false;
         groupieBody.useGravity = false;
         if (!is_Boss)
@@ -226,6 +228,10 @@ public class CharacterAnimationDelegate : MonoBehaviour
         if (sphere)
             npcCulling.RemoveNPC(GetComponent<NpcBevahavour>());
         Invoke("DeleteGameobject", 2.0f);
+    }
+    void StopRigidBody()
+    {
+        groupieBody.isKinematic = true;
     }
     void DeleteGameobject()
     {

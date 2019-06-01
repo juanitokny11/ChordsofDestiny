@@ -181,7 +181,6 @@ public class PlayerAttack2 : MonoBehaviour
         }
         if (Input.GetAxisRaw("Evadir") == 1 && !blockActivated && canBlock)
         {
-            Debug.Log("BLOQUEO");
             player_Move.attack = true;
             player_Move.walk = false;
             player_Move.running = false;
