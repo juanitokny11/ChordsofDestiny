@@ -69,13 +69,13 @@ public class Sound : MonoBehaviour
     public void GolpeGiratorio()
     {
         golpeGirSound.pitch = Random.Range(0.8f, 1.3f);
-        golpeGirSound.volume = Random.Range(0.25f, 0.42f);
-        golpeGirSound.Play();
+        golpeGirSound.volume = Random.Range(0.45f, 0.6f);
+        golpeGirSound.PlayDelayed(0.27f);
     }
     public void GolpeDesdeArriba()
     {
-        golpeAltoSound.pitch = Random.Range(0.8f, 1.3f);
-        golpeAltoSound.volume = Random.Range(0.25f, 0.42f);
+        golpeAltoSound.pitch = Random.Range(0.8f, 1.2f);
+        golpeAltoSound.volume = Random.Range(0.45f, 0.6f);
         golpeAltoSound.Play();
     }
     public void ataquedesdealto()
@@ -83,7 +83,7 @@ public class Sound : MonoBehaviour
         if (attackList.F3)
         {
             ataqueAltoSound.pitch = Random.Range(0.8f, 1.3f);
-            ataqueAltoSound.volume = Random.Range(0.25f, 0.42f);
+            ataqueAltoSound.volume = Random.Range(0.45f, 0.6f);
             ataqueAltoSound.Play();
         }
     }
