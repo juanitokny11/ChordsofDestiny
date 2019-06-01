@@ -107,7 +107,7 @@ public class AttackUniversal : MonoBehaviour
                     if (hit[0].gameObject.tag == "Enemy")
                         lifeControler.ShowDamagedUI(hit[0].gameObject.GetComponent<HealthScript>().health,hit[0].gameObject.GetComponent<EnemyMovement>().gname.ToString(), hit[0].gameObject.GetComponent<HealthScript>().maxHealth);
                 }
-                else if (gameObject.CompareTag("Solo"))
+                else if (gameObject.CompareTag("Solo") && hit[0].gameObject.tag != "bidon")
                 {
                     //solo = true;
                     damage =30;

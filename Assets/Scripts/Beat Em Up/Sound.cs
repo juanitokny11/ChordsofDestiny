@@ -98,18 +98,24 @@ public class Sound : MonoBehaviour
     }
     void andargroupie()
    {
-       walkgroupie.pitch = Random.Range(0.7f,1.3f);
-        walkgroupie.volume = Random.Range(0.15f,0.42f);
-       walkgroupie.Play(); 
+        if (BeatEmupManager.instance.pause == true)
+        {
+            walkgroupie.pitch = Random.Range(0.7f, 1.3f);
+            walkgroupie.volume = Random.Range(0.15f, 0.42f);
+            walkgroupie.Play();
+        }
    }
 
     //audios fan
 
  void andarfan()
    {
-       walkfan.pitch = Random.Range(0.7f,1.3f);
-        walkfan.volume = Random.Range(0.15f,0.30f);
-       walkfan.Play(); 
+        if (BeatEmupManager.instance.pause == true)
+        {
+            walkfan.pitch = Random.Range(0.7f, 1.3f);
+            walkfan.volume = Random.Range(0.15f, 0.30f);
+            walkfan.Play();
+        }
    }
 
  void Ataqueairefan()

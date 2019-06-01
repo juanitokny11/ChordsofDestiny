@@ -164,9 +164,12 @@ public class PlayerMovementBeat : MonoBehaviour
     }
     void caminar()
     {
-        caminarS.pitch = Random.Range(0.7f,1.3f);
-        caminarS.volume = Random.Range(0.35f,0.5f);
-        caminarS.Play();
+        if (BeatEmupManager.instance.pause == true)
+        {
+            caminarS.pitch = Random.Range(0.7f, 1.3f);
+            caminarS.volume = Random.Range(0.35f, 0.5f);
+            caminarS.Play();
+        }
     }
     void Ssolo()
     {

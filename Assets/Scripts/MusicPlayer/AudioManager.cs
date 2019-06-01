@@ -100,8 +100,8 @@ public class AudioManager : MonoBehaviour
     }
     public void NextTrack()
     {
-        if (!playing)
-            return;
+        //if (!playing)
+           // return;
         currentTrack++;
         groupId++;
         if (currentTrack > musicList.Length - 1)
@@ -112,13 +112,13 @@ public class AudioManager : MonoBehaviour
         //show title
         ShowCurrentTitle();
         //ShowPlayTime();
-
-        StartCoroutine("WaitForMusicEnd");
+        if(playing)
+            StartCoroutine("WaitForMusicEnd");
     }
     public void PreviousTrack()
     {
-        if (!playing)
-            return;
+        //if (!playing)
+            //return;
         currentTrack--;
         groupId--;
         if (currentTrack < 0)
@@ -129,8 +129,8 @@ public class AudioManager : MonoBehaviour
         //show title
         ShowCurrentTitle();
         //ShowPlayTime();
-
-        StartCoroutine("WaitForMusicEnd");
+        if (playing)
+            StartCoroutine("WaitForMusicEnd");
     }
     public void StopMusic()
     {

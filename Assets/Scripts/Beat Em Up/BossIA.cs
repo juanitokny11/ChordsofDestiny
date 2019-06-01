@@ -115,6 +115,7 @@ public class BossIA : MonoBehaviour
                 Down();
                 if (transform.position.y <= -0.06041813f)
                 {
+                    transform.rotation = Quaternion.Euler(0, 90, 0);
                     outside = false;
                     StopJumpDown();
                 } 

@@ -167,6 +167,7 @@ public class PlayerAttack2 : MonoBehaviour
                 player_Move.canRotate = false;
                 canBlock = false;
                 enableAttacks = false;
+                player_Move.move = false;
                 current_Combo_State = ComboState.SOLO;
                 //player_Move.move = false;
                 currentGuitarpose = new Vector3(-0.2145597f, 0.1555082f, 1.084099f);
