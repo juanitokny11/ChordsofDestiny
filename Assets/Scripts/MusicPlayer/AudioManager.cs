@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using TMPro;
 
 [RequireComponent(typeof(AudioSource))]
 public class AudioManager : MonoBehaviour
@@ -10,7 +11,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip[] musicList;
     private int currentTrack;
     private AudioSource source;
-    public Text clipTittleText;
+    public TextMeshProUGUI clipTittleText;
     public Text clipTittleTime;
     public Sprite[] group;
     public Image Pantalla;
