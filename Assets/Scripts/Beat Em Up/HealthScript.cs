@@ -56,7 +56,7 @@ public class HealthScript : MonoBehaviour
             player_Attack = GetComponent<PlayerAttack2>();
             player_Move.enabled = true;
             player_Attack.enabled = true;
-            healthBar.SetActive(false);
+            //healthBar.SetActive(false);
             playerAttack_List = GetComponent<PlayerAttackList>();
         }
         else if (is_Enemy)

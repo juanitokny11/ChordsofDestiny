@@ -11,7 +11,7 @@ public class DestroyEfects : MonoBehaviour
     }
     void DestroyObject()
     {
-        GameObject.Destroy(this);
+        Destroy(this.gameObject);
     }
    
 }

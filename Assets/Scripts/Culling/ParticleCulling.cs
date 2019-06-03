@@ -47,7 +47,7 @@ public class ParticleCulling : CullingGroupBase {
             if (sphere.isVisible) particles[sphere.index].HasBecomeVisible();
         }
 	}
-    public void RemoveParticle(ParticlesBevahavour particle, BoundingSphere sphere)
+    public void RemoveParticle(ParticlesBevahavour particle)
     {
         //npcs.Remove(npc);
         int index = particles.IndexOf(particle);

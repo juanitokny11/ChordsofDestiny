@@ -217,12 +217,14 @@ public class CharacterAnimationDelegate : MonoBehaviour
     }
     void CharacterDied()
     {
-        groupieEnemy.followPlayer = false;
         groupieEnemy.speed = 0f;
         groupiecol.enabled = false;
         groupieBody.useGravity = false;
         if (!is_Boss)
+        {
+            groupieEnemy.followPlayer = false;
             groupieEnemy.enabled = false;
+        } 
         else
             bossIA.enabled = false;
         if (sphere)

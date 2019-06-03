@@ -42,6 +42,7 @@ public class BossIA : MonoBehaviour
     public Transform llavePos;
     public bool invoke = false;
     public bool Chase;
+    public GameObject espadaRota;
     public ParticleSystem brokenArm;
 
     void Start()
@@ -286,8 +287,15 @@ public class BossIA : MonoBehaviour
         fase = 2;
         porcentajeAtaque = 50;
         porcentajeInvocar = 200;
+        if(!playerTarget.GetComponent<PlayerMovementBeat>().lockrotation)
+        espadaRota.transform.rotation = Quaternion.Euler(0, 90, 0);
+        else if (playerTarget.GetComponent<PlayerMovementBeat>().lockrotation)
+            espadaRota.transform.rotation = Quaternion.Euler(0, -90, 0);
+
+        espadaRota.transform.position = new Vector3(espadaRota.transform.position.x, 0, espadaRota.transform.position.z);
         gameManager.numScore += scoref1;
         brokenArm.Play();
+        
         SetDefault();
     }
     void OnCollisionEnter(Collision collision)

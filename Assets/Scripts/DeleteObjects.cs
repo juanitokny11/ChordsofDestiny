@@ -7,15 +7,20 @@ public class DeleteObjects: MonoBehaviour {
     private Vector3 inipos;
     public bool puaInstance;
     public GameObject pua;
+    public ParticleSystem p1;
+    public ParticleSystem p2;
+    public ParticleSystem p3;
     Vector3 puaSpawn;
     public HealthScript playerHealth;
     public GameObject UI;
     public GameObject score;
     public BeatEmupManager gameManager;
+    public ParticleCulling particleCulling;
 
     private void Start()
     {
         gameManager = FindObjectOfType<BeatEmupManager>();
+        particleCulling = FindObjectOfType<ParticleCulling>();
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthScript>();
         inipos = transform.position;
         puaSpawn = inipos;
@@ -25,6 +30,12 @@ public class DeleteObjects: MonoBehaviour {
         if (vida <= 0)
         {
             Invoke("Explode", Time.deltaTime * 18f);
+            particleCulling.RemoveParticle(p1.GetComponent<ParticlesBevahavour>());
+            particleCulling.RemoveParticle(p2.GetComponent<ParticlesBevahavour>());
+            particleCulling.RemoveParticle(p3.GetComponent<ParticlesBevahavour>());
+            Destroy(p1);
+            Destroy(p2);
+            Destroy(p3);
         }
     }
     private void OnTriggerEnter(Collider other)

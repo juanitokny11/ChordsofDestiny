@@ -17,7 +17,6 @@ public class DeleteAndRotateObjects2: MonoBehaviour {
     private void Awake()
     {
         UI = GameObject.FindGameObjectWithTag("PlayerHealth").GetComponent<Image>();
-        LifeBar = GameObject.FindGameObjectWithTag("UI");
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthScript>();
         heal = GameObject.Find("Heal").GetComponent<ParticleSystem>();
         playerTransform = player.GetComponent<Transform>();
@@ -35,7 +34,6 @@ public class DeleteAndRotateObjects2: MonoBehaviour {
     }
     void Update()
     {
-        CoinsPowerup();
         random = Random.Range(10,30);
     }
     void FixedUpdate()
@@ -57,18 +55,6 @@ public class DeleteAndRotateObjects2: MonoBehaviour {
         Invoke("DestroyGameobject", 0.2f);
      
 	}
-    public void CoinsPowerup()
-    {
-       /* float distance = Vector3.Distance(playerTransform.position, transform.position);
-        //  float distance = playerTransform.position.y - transform.position.y;
-
-        float maxDistance = 5.0f;
-        // float maxDistance = 0.030f;
-        if (distance < maxDistance)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, playerTransform.position, CoinSpeed * Time.deltaTime);
-        }*/
-    }
     void DestroyGameobject()
     {
         Destroy(gameObject);
