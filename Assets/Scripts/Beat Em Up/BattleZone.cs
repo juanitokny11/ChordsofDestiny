@@ -33,8 +33,8 @@ public class BattleZone : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
-        { 
-            UI.SetActive(true);
+        {
+            UI.GetComponent<Canvas>().enabled = true;
             enemyBlocker.enabled = false;
             score.SetActive(true);
             GetComponent<BoxCollider>().enabled = false;
@@ -101,7 +101,7 @@ public class BattleZone : MonoBehaviour
     void StopGo()
     {
         CancelInvoke("Blink");
-        //UI.SetActive(false);
+        UI.GetComponent<Canvas>().enabled = false;
         score.SetActive(false);
         goImage.enabled = false;
     }

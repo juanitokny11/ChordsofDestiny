@@ -30,9 +30,12 @@ public class DeleteObjects: MonoBehaviour {
         if (vida <= 0)
         {
             Invoke("Explode", Time.deltaTime * 18f);
-            particleCulling.RemoveParticle(p1.GetComponent<ParticlesBevahavour>());
-            particleCulling.RemoveParticle(p2.GetComponent<ParticlesBevahavour>());
-            particleCulling.RemoveParticle(p3.GetComponent<ParticlesBevahavour>());
+            if(p1!=null)
+                 particleCulling.RemoveParticle(p1.GetComponent<ParticlesBevahavour>());
+            if (p2!= null)
+                particleCulling.RemoveParticle(p2.GetComponent<ParticlesBevahavour>());
+            if (p3 != null)
+                particleCulling.RemoveParticle(p3.GetComponent<ParticlesBevahavour>());
             Destroy(p1);
             Destroy(p2);
             Destroy(p3);

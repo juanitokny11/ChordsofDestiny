@@ -16,6 +16,9 @@ public class MenuManager : MonoBehaviour {
     public VideoPlayer cinematicaInicial;
     public VideoClip VideoEng;
     public VideoClip VideoEsp;
+    public Canvas skipcanvas;
+    public float counter=0;
+    public float countStart = 0;
 
 
     public void Start()
@@ -28,9 +31,15 @@ public class MenuManager : MonoBehaviour {
         } 
     }
     public void Update()
-    {
-        if (is_MainMenu)
+    {  
+            if (is_MainMenu)
         {
+            if (skipcanvas.enabled)
+                counter++;
+            if (counter >= 1500)
+            {
+                skipcanvas.enabled = false;
+            }
             if (LanguageManager.langData.currentLanguage == LangData.Languages.English)
             {
                 cinematicaInicial.clip = VideoEng;
@@ -46,6 +55,7 @@ public class MenuManager : MonoBehaviour {
 
         while (cinematicaInicial.isPlaying) // while the movie is playing
         {
+           
             yield return new WaitForEndOfFrame();
         }
         // after movie is not playing / has stopped.
@@ -70,6 +80,7 @@ public class MenuManager : MonoBehaviour {
             cinematicaInicial.gameObject.SetActive(true);
             Cursor.visible = false;
             cinematicaInicial.Play();
+            skipcanvas.enabled = true;
             StartCoroutine("waitForMovieEnd");
             logoManager.cinematica = true;
             MyGameSettings.getInstance().menuAnim.Anim = true;

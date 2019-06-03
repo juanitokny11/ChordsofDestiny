@@ -19,6 +19,9 @@ public class TptoBossBattle : MonoBehaviour
     public bool changeMusic=false;
     public VideoClip VideoEng;
     public VideoClip VideoEsp;
+    public Canvas skipcanvas;
+    public float counter = 0;
+    public float countStart = 0;
     public void Start()
     {
         cinematicaBoss.Prepare();
@@ -29,6 +32,12 @@ public class TptoBossBattle : MonoBehaviour
     private void Update()
     {
         cinematicaBoss.loopPointReached += onMovieEnded;
+        if (skipcanvas.enabled)
+            counter++;
+        if (counter >= 1500)
+        {
+            skipcanvas.enabled = false;
+        }
         if (LanguageManager.langData.currentLanguage == LangData.Languages.English)
         {
             cinematicaBoss.clip = VideoEng;
@@ -88,6 +97,7 @@ public class TptoBossBattle : MonoBehaviour
         {
             cinematicaBoss.gameObject.SetActive(true);
             cinematicaBoss.Play();
+            skipcanvas.enabled = true;
             cinematica = true;
             Player.running = false;
             Player.walk = false;
