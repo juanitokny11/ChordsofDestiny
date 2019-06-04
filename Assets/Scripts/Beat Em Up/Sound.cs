@@ -14,6 +14,8 @@ public class Sound : MonoBehaviour
     public List<AudioSource> fanAire;
     public List<AudioSource> fanHit;
      public List<AudioSource> Falling;
+      public List<AudioSource> Bossatack;
+      public AudioSource Bossmulti;
     public AudioSource ataqueGirSound;
     public AudioSource ataqueAltoSound;
     public AudioSource golpeGirSound;
@@ -139,6 +141,21 @@ void disolveFa()
         DisolveFan.volume = Random.Range(0.70f,0.85f);
         DisolveFan.Play(); 
    }
+//audios boss
+    void basicboss()
+    {
+        Bossatack[0].pitch = Random.Range(0.90f,1.05f);
+        Bossatack[0].volume = Random.Range(0.85f,0.95f);
+        Bossatack[0].Play();
+    }
+
+     void bossgira()
+    {
+        Bossmulti.pitch = Random.Range(0.90f,1.05f);
+        Bossmulti.volume = Random.Range(0.85f,0.95f);
+        Bossmulti.Play();
+    }
+
     //audios groupie
     void AtaqueDebilGroupie()
     {
