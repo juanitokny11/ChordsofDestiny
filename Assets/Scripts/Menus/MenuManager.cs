@@ -43,7 +43,6 @@ public class MenuManager : MonoBehaviour {
             if (enableCredits)
             {
                 Credits.loopPointReached += EndVideo;
-                skipcanvas.enabled = true;
             }
             if (enableCredits && Input.GetKeyDown(KeyCode.Return) || Input.GetAxisRaw("AtaqueDebil") != 0 && enableCredits)
             {
@@ -51,8 +50,7 @@ public class MenuManager : MonoBehaviour {
                 Cursor.visible = true;
                 ReturnCreditos();
                 logoManager.MainMenu();
-                endVideo = true;
-                skipcanvas.enabled = false;
+                endVideo = true;    
             }
             if (skipcanvas.enabled)
                 counter++;

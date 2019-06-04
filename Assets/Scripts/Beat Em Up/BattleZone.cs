@@ -20,6 +20,8 @@ public class BattleZone : MonoBehaviour
     public Image goImage;
     public AudioSource musica;
     public BossIA boss;
+    public GameObject pua;
+    public Transform puaPos;
     public List<EnemyMovement> enemies;
     public int id;
     public int enemiescounter;
@@ -65,6 +67,8 @@ public class BattleZone : MonoBehaviour
                 SetGo();
                 Invoke("StopGo", 3f);
                 Invoke("Destroy", 3.1f);
+                if (id == 5 || id == 7)
+                    Instantiate(pua,enemies[0].transform.position,Quaternion.identity);
             }
         }
         else if (bossZone)

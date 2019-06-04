@@ -7,6 +7,7 @@ public class DetectEnemy : MonoBehaviour
     public Vector3 halfSize;
     public Vector3 offset;
     public LayerMask enemyMask;
+    public GameObject boss;
 
     public bool TargetDetected { get; private set; }
 
@@ -19,7 +20,7 @@ public class DetectEnemy : MonoBehaviour
         {
             for (int i = 0; i < hits.Length; i++)
             {
-                if (hits[i].gameObject.CompareTag("Boss"))
+                if (hits[i].gameObject.CompareTag("Boss") && !boss.GetComponent<HealthScript>().characterDied)
                 {
                     TargetDetected = true;
                     break;

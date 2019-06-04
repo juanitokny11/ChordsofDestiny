@@ -15,6 +15,7 @@ public class HealthScript : MonoBehaviour
     public AttackUniversal attack;
     private CharacterAnimation animationScript;
     private EnemyMovement enemyMovement;
+    private NpcCulling npcCulling;
     private PlayerMovementBeat player_Move;
     private PlayerAttack2 player_Attack;
     public EnemyHealthUI healthUI;
@@ -40,6 +41,7 @@ public class HealthScript : MonoBehaviour
     public void Start()
     {
         characterDied = false;
+        npcCulling = FindObjectOfType<NpcCulling>();
         gameManager = FindObjectOfType<BeatEmupManager>();
         animationScript = GetComponent<CharacterAnimation>();
         enemyMovement = GetComponent<EnemyMovement>();
@@ -133,6 +135,7 @@ public class HealthScript : MonoBehaviour
             {
                 enemyMovement.Death();
                 zone.enemiescounter--;
+                npcCulling.RemoveNPC(GetComponent<NpcBevahavour>());
                gameManager.numScore += enemyMovement.score;
             }
             else if (is_Boss)

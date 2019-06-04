@@ -11,6 +11,7 @@ public class CharacterAnimationDelegate : MonoBehaviour
     public ParticleSystem soloParticle;
     public GameObject Hacha;
     public Transform crackPos;
+    public Canvas UI;
     public GameObject guitar_Attack_Mesh;
     public GameObject guitar_Attack_Point;
     public GameObject Boss_Attack_Point1;
@@ -217,16 +218,20 @@ public class CharacterAnimationDelegate : MonoBehaviour
     }
     void CharacterDied()
     {
-        groupieEnemy.speed = 0f;
         groupiecol.enabled = false;
         groupieBody.useGravity = false;
         if (!is_Boss)
         {
+            groupieEnemy.speed = 0f;
             groupieEnemy.followPlayer = false;
             groupieEnemy.enabled = false;
-        } 
+        }
         else
+        {
             bossIA.enabled = false;
+            UI.enabled = false;
+        }
+            
         if (sphere)
             npcCulling.RemoveNPC(GetComponent<NpcBevahavour>());
         Invoke("DeleteGameobject", 2.0f);

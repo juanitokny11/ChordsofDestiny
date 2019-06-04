@@ -239,8 +239,8 @@ public class BossIA : MonoBehaviour
             invokeEnemy2 = Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[1].position, Quaternion.identity);
             invokeEnemy.GetComponent<HealthScript>().zone = BossZone;
             invokeEnemy2.GetComponent<HealthScript>().zone = BossZone;
-            invokeEnemy.GetComponent<EnemyMovement>().chaseDistance = 20f;
-            invokeEnemy2.GetComponent<EnemyMovement>().chaseDistance = 20f;
+            invokeEnemy.GetComponent<EnemyMovement>().chaseDistance = 40f;
+            invokeEnemy2.GetComponent<EnemyMovement>().chaseDistance = 40f;
             BossZone.enemiescounter += 2;
             enemyAnim.Jump2Arms();
             //enemyAnim.ResetJump2Arms();
@@ -354,6 +354,6 @@ public class BossIA : MonoBehaviour
     }
     public void InstantiateTarjeta()
     {
-        Instantiate(llave, llavePos.position, Quaternion.identity);
+        Instantiate(llave, transform.position, Quaternion.identity);
     }
 }

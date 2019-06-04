@@ -17,6 +17,7 @@ public class DeleteAndRotateObjects2: MonoBehaviour {
         UI = GameObject.FindGameObjectWithTag("PlayerHealth").GetComponent<Image>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthScript>();
         heal = GameObject.Find("Heal").GetComponent<ParticleSystem>();
+        vida = GameObject.FindGameObjectWithTag("vida").GetComponent<AudioSource>();
     }
     void Start()
     {
@@ -49,7 +50,7 @@ public class DeleteAndRotateObjects2: MonoBehaviour {
             //LifeBar.SetActive(false);
         }
         
-        Invoke("DestroyGameobject", 0.2f);
+        Invoke("DestroyGameobject", 0.5f);
      
 	}
     void DestroyGameobject()

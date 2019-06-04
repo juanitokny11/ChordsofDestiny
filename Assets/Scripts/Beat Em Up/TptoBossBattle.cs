@@ -55,6 +55,7 @@ public class TptoBossBattle : MonoBehaviour
             Player.enabled = true;
             cinematicaBoss.Pause();
             ActivateBossMusic();
+            skipcanvas.gameObject.SetActive(false);
         }
             if (changeMusic == true)
         {
