@@ -65,10 +65,9 @@ public class BattleZone : MonoBehaviour
                 //musica.DOFade(0.4f, 5f);
                 //musica.Pause();
                 SetGo();
-                Invoke("StopGo", 3f);
-                Invoke("Destroy", 3.1f);
-                if (id == 5 || id == 7)
-                    Instantiate(pua,enemies[0].transform.position,Quaternion.identity);
+                Invoke("StopGo", 2.5f);
+                Invoke("Destroy", 2.8f);
+                //onTime = true;
             }
         }
         else if (bossZone)
@@ -85,6 +84,7 @@ public class BattleZone : MonoBehaviour
         //Invoke("UnlockCam",2f);
         camera.enemiesdied = true;
         camera.lockCamera = false;
+        
     }
     void SetGo()
     {
@@ -111,6 +111,10 @@ public class BattleZone : MonoBehaviour
     }
     private void Destroy()
     {
+        if (id == 5 || id == 7)
+        {
+            Instantiate(pua, enemies[0].transform.position, Quaternion.identity);
+        }
         Destroy(gameObject);
     }
 }
