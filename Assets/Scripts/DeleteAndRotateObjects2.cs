@@ -9,8 +9,6 @@ public class DeleteAndRotateObjects2: MonoBehaviour {
 
     public AudioSource vida;
     public HealthScript player;
-    private float CoinSpeed = 20.0f;
-    private Transform playerTransform;
     public Image UI;
     public GameObject LifeBar;
     public int random;
@@ -19,7 +17,6 @@ public class DeleteAndRotateObjects2: MonoBehaviour {
         UI = GameObject.FindGameObjectWithTag("PlayerHealth").GetComponent<Image>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthScript>();
         heal = GameObject.Find("Heal").GetComponent<ParticleSystem>();
-        playerTransform = player.GetComponent<Transform>();
     }
     void Start()
     {

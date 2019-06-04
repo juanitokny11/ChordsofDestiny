@@ -21,12 +21,14 @@ public class MenuManager : MonoBehaviour {
     public float countStart = 0;
     public VideoPlayer Credits;
     public AudioSource creditsMusic;
+    public bool enableCredits;
     public bool endVideo = false;
 
     public void Start()
     {
         if (is_MainMenu)
         {
+            enableCredits = false;
             endVideo = false;
             Credits.Prepare();
             Cursor.visible = true;
@@ -38,7 +40,20 @@ public class MenuManager : MonoBehaviour {
     {  
             if (is_MainMenu)
         {
-            Credits.loopPointReached += EndVideo;
+            if (enableCredits)
+            {
+                Credits.loopPointReached += EndVideo;
+                skipcanvas.enabled = true;
+            }
+            if (enableCredits && Input.GetKeyDown(KeyCode.Return) || Input.GetAxisRaw("AtaqueDebil") != 0 && enableCredits)
+            {
+                Credits.gameObject.SetActive(false);
+                Cursor.visible = true;
+                ReturnCreditos();
+                logoManager.MainMenu();
+                endVideo = true;
+                skipcanvas.enabled = false;
+            }
             if (skipcanvas.enabled)
                 counter++;
             if (counter >= 1500)
@@ -59,8 +74,10 @@ public class MenuManager : MonoBehaviour {
     {
         Credits.gameObject.SetActive(false);
         Cursor.visible = true;
+        ReturnCreditos();
         logoManager.MainMenu();
         endVideo = true;
+        skipcanvas.enabled = false;
         //logoManager.optionsAnim.firstTime = true;
     }
     IEnumerator waitForMovieEnd()
@@ -142,9 +159,19 @@ public class MenuManager : MonoBehaviour {
     }
     public void Creditos()
     { 
-        Credits.gameObject.SetActive(true);;
+        Credits.gameObject.SetActive(true);
+        enableCredits = true;
         Cursor.visible = false;
         MyGameSettings.getInstance().menuAnim.Anim = true;
+        MyGameSettings.getInstance().menuAnim.firstTime = true;
+        //Time.timeScale = 1;
+    }
+    public void ReturnCreditos()
+    {
+        Credits.gameObject.SetActive(false);
+        enableCredits = false;
+        Cursor.visible = true;
+        MyGameSettings.getInstance().menuAnim.Anim = false;
         MyGameSettings.getInstance().menuAnim.firstTime = true;
         //Time.timeScale = 1;
     }

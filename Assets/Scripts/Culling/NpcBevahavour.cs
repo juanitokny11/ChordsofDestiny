@@ -5,7 +5,6 @@ using UnityEngine;
 public class NpcBevahavour : MonoBehaviour {
 
 	// Use this for initialization
-	private float timecounter=0f;
     public SkinnedMeshRenderer rend;
     private Animator anim;
 

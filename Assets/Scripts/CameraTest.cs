@@ -28,7 +28,6 @@ public class CameraTest : MonoBehaviour
     [SerializeField] float smoothZoom = 2.0f;
     [SerializeField] float smoothLockEnemy = 5.0f;
     [SerializeField] float smoothChangeEnemy = 10.0f;
-    [SerializeField] float zoomSensitivity = 5.0f;
     [SerializeField] float rotSensitivity = 5.0f;
     [SerializeField] float vertSensitivity = 2.0f;
     Vector3 currentLockPos;

@@ -11,10 +11,8 @@ public class EnemyBehaviour : MonoBehaviour
     private NavMeshAgent agent;
     public Animator anim;
     //public SoundPlayer sound;
-    private CapsuleCollider colider;
     public BoxCollider attackcollider;
     public  MyGameManager manager;
-    private BossBehaviour boss;
     public GameObject met;
     //public ParticleSystem[] ataque;
 
@@ -48,9 +46,7 @@ public class EnemyBehaviour : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         anim =GetComponentInChildren<Animator>();
         //attackcollider = GetComponent<BoxCollider>();
-        colider = GetComponent<CapsuleCollider>();
        // sound = GetComponentInChildren<SoundPlayer>();
-        boss=FindObjectOfType<BossBehaviour>();
         nearNode = true;
         SetIdle();
         //met = GameObject.FindGameObjectWithTag("metronomo");

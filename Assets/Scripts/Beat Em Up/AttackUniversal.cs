@@ -34,14 +34,12 @@ public class AttackUniversal : MonoBehaviour
     public SkinnedMeshRenderer rend;
     public float counterhits = 0f;
     public AudioSource block1;
-    private ParticleCulling particleCulling;
     public bool firstHit = false;
 
 
     private void Start()
     {
         firstHit = true;
-        particleCulling = GameObject.FindObjectOfType<ParticleCulling>();
         gameManager = FindObjectOfType<BeatEmupManager>();
         sound = GetComponentInParent<Sound>();
         //UI = GameObject.FindGameObjectWithTag("UI");

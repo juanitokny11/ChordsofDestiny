@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerMovementBeat : MonoBehaviour
 {
+    private DetectEnemy detector;
     private CharacterAnimation player_Anim;
-    private Animator anim;
     private Rigidbody myBody;
     public bool inAir = false;
     public bool comboAereo = false;
@@ -16,7 +16,7 @@ public class PlayerMovementBeat : MonoBehaviour
     public PlayerAttack2 playerAttack;
     public float run_Speed;
     public float z_Speed;
-    public bool lockrotation;
+    public bool lockrotation; // left true right false
     public bool move;
     public bool attack;
     public bool jump;
@@ -31,11 +31,11 @@ public class PlayerMovementBeat : MonoBehaviour
     public float rotation_Speed = 15f;
     private void Awake()
     {
+        detector = GetComponent<DetectEnemy>();
         enableMovement = false;
         jump = false;
         canRotate = false;
         attackList = GetComponent<PlayerAttackList>();
-        anim = GetComponent<Animator>();
         transform.rotation = Quaternion.Euler(0, 0, 0);
         myBody = GetComponent<Rigidbody>();
         player_Anim = GetComponent<CharacterAnimation>();
@@ -68,9 +68,11 @@ public class PlayerMovementBeat : MonoBehaviour
             
                 AnimatePlayerRun();
                 AnimatePlayerWalk();
-                if (walk == true && running == false && Input.GetAxisRaw("Evadir") == 1 && playerAttack.blockActivated)
+
+                if (detector.TargetDetected) run_Speed = 0;
+                else if (walk == true && running == false && Input.GetAxisRaw("Evadir") == 1 && playerAttack.blockActivated)
                     run_Speed = 0;
-                if (walk == true && running == false && Input.GetAxisRaw("Evadir") == 0 )
+                else if (walk == true && running == false && Input.GetAxisRaw("Evadir") == 0 )
                     run_Speed = 5;
                 else if (walk == true && running == true)
                     run_Speed = 10f;
@@ -97,7 +99,9 @@ public class PlayerMovementBeat : MonoBehaviour
     }
     void FixedUpdate()
     {
+        detector.MyFixedUpdate();
         
+
         if (enableMovement)
         {
             if (move)
@@ -129,6 +133,8 @@ public class PlayerMovementBeat : MonoBehaviour
                     //canRotate = true;
                     if(canRotate)
                         lockrotation = false;
+
+                    detector.SetOrientation(lockrotation);
                 }
                 else if (Input.GetAxisRaw("Horizontal") < 0)
                 {
@@ -138,6 +144,8 @@ public class PlayerMovementBeat : MonoBehaviour
                     //canRotate = true;
                     if (canRotate)
                         lockrotation = true;
+
+                    detector.SetOrientation(lockrotation);
                 }
                 else if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)
                 {

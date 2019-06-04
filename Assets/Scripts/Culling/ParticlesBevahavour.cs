@@ -6,13 +6,9 @@ public class ParticlesBevahavour : MonoBehaviour {
 
 	// Use this for initialization
 
-	private float timecounter=0f;
-    private Renderer rend;
     private ParticleSystem particle;
 
 	void Start () {
-
-        rend = GetComponent<Renderer>();
         particle = GetComponent<ParticleSystem>();
         HasBecomeInvisible();
 	}

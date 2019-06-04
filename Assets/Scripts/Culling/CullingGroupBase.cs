@@ -37,10 +37,10 @@ public class CullingGroupBase : MonoBehaviour {
 		//cullingObj[sphere.index].gameObject.SetActive(sphere.isVisible);
 		//.index te dice en que posicion de la array es 
 	}
-	private void OnDestroy()
+	/*private void OnDestroy()
 	{
 		group.Dispose();//Descagar grupo de la memoria
 		group=null;//decir que el grupo esta vacio 
-	}
+	}*/
 	
 }

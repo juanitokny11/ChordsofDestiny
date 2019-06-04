@@ -55,7 +55,6 @@ namespace KGUtils
                     float l_Enter=0.0f;
                     if(l_Plane.Raycast(l_MouseRay, out l_Enter))
                     {
-                        Vector3 l_Hitpoint=l_MouseRay.GetPoint(l_Enter);
                         //l_KGLevelEditor.CreateFloor(l_Hitpoint, l_KGLevelEditor.m_FloorBrushes[l_KGLevelEditor.m_SelectedFloorBrush].m_FloorPrefabs[l_KGLevelEditor.m_SelectedFloorInBrush]);
                         Undo.RegisterCreatedObjectUndo(l_KGLevelEditor.m_FloorInstance, "Created Floor");
                     }
@@ -99,7 +98,6 @@ namespace KGUtils
                     {
                         if(l_Plane.Raycast(l_MouseRay, out l_Enter))
                         {
-                            Vector3 l_Hitpoint=l_MouseRay.GetPoint(l_Enter);
                             //l_KGLevelEditor.CreateWall(l_Hitpoint, l_KGLevelEditor.m_WallBrushes[l_KGLevelEditor.m_SelectedWallBrush].m_WallPrefabs[l_KGLevelEditor.m_SelectedWallInBrush]);
                             Undo.RegisterCreatedObjectUndo(l_KGLevelEditor.m_WallInstance, "Created Wall");
                      

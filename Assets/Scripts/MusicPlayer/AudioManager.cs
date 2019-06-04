@@ -21,7 +21,7 @@ public class AudioManager : MonoBehaviour
     private int minutes;
     private int seconds;
     private int playTime;
-    private int fullLength;
+    //private int fullLength;
     public bool playing;
     private int groupId;
     public SpriteState playState = new SpriteState();
@@ -146,7 +146,7 @@ public class AudioManager : MonoBehaviour
     void ShowCurrentTitle()
     {
         clipTittleText.text = source.clip.name;
-        fullLength = (int)source.clip.length;
+        //fullLength = (int)source.clip.length;
     }
    /* void ShowPlayTime()
     {

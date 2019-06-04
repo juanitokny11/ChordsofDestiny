@@ -11,7 +11,6 @@ public class BossBehaviour : MonoBehaviour
     public State state;
     public Spawner spawn;
     private NavMeshAgent agent;
-    private Animator anim;
     public GameObject [] spawners;
     public float counter = 0.0f;
      public float counterInvoke = 0.0f;
@@ -19,7 +18,7 @@ public class BossBehaviour : MonoBehaviour
     public float MaxHealth = 100;
 
     //public SoundPlayer sound;
-    private CapsuleCollider colider;
+    //private CapsuleCollider colider;
     private BoxCollider attackcollider;
     public  MyGameManager manager;
 
@@ -55,15 +54,13 @@ public class BossBehaviour : MonoBehaviour
     void Start ()
     {
         agent = GetComponent<NavMeshAgent>();
-        anim = GetComponentInChildren<Animator>();
         attackcollider = GetComponent<BoxCollider>();
-        colider = GetComponent<CapsuleCollider>();
+        //colider = GetComponent<CapsuleCollider>();
         life = MaxHealth;
         HealthBar.fillAmount = life / MaxHealth;
         nearNode = true;
         SetIdle();        
 	}
-	
 	// Update is called once per frame
 	void Update ()
     {   

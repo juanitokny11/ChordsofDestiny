@@ -43,7 +43,6 @@ namespace KGUtils
         public float m_HeightWall=0.0f;
         public Dictionary<Vector3, GameObject> m_WallElements;
         public List<CWallBrush> m_WallBrushes;
-        [HideInInspector]bool m_AutoRotation=true;
         [HideInInspector]public GameObject m_WallInstance=null;
         [HideInInspector]public List<string> m_WallName;
         [HideInInspector]public List<string> m_WallBrushName;

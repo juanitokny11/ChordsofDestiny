@@ -151,7 +151,6 @@ public class MyGameManager : MonoBehaviour
             inputAxis.x = Input.GetAxis("Horizontal");
             inputAxis.y = Input.GetAxis("Vertical");
             DesActivarColisiones();
-            Vector3 move = new Vector3(inputAxis.x,0,inputAxis.x);
             var forward = pers.transform.forward;
             var right = pers.transform.right;
             Vector3 desiredMoveDirection = forward * inputAxis.x + right * inputAxis.x;

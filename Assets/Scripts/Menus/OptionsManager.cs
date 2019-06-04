@@ -9,7 +9,6 @@ public class OptionsManager : MonoBehaviour {
 	Resolution[] resolutions;
     Resolution[] screenRes;
     List<string> options;
-    int currentResolutionIndex = 0;
     public TMP_Dropdown resolutionDropdown;
     public int currentcontrol = 0;
     public GameObject[] controls;

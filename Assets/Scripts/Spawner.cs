@@ -19,13 +19,10 @@ public class Spawner : MonoBehaviour {
     public int numSpawns;
     public int enemyCounter;
    
-
-    private BossBehaviour boss;
     private void Awake()
     {
         spawn = GameObject.FindGameObjectsWithTag("Spawn"); 
         //randomTarget = spawn[0]; 
-        boss=FindObjectOfType<BossBehaviour>();
         manager = FindObjectOfType<MyGameManager>();
     }
     void Start(){

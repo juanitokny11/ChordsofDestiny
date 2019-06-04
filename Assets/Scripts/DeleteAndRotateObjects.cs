@@ -6,9 +6,6 @@ using UnityEngine.Video;
 public class DeleteAndRotateObjects:MonoBehaviour {
 
     public float CoinRotateSpeed = 5;
-    private GameObject player;
-    private float CoinSpeed = 20.0f;
-    private Transform playerTransform;
     public bool is_Key = false;
     public ChangeCamera changeCamera;
     public GameObject Puerta;
@@ -18,8 +15,6 @@ public class DeleteAndRotateObjects:MonoBehaviour {
     {
         Creditos.Prepare();
         changeCamera = GameObject.FindObjectOfType<ChangeCamera>();
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerTransform = player.GetComponent<Transform>();
         Puerta = GameObject.FindGameObjectWithTag("Salida");
         //transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
     }
@@ -84,8 +79,7 @@ public class DeleteAndRotateObjects:MonoBehaviour {
     public void EndGame()
     {
         Destroy(gameObject);
-        Creditos.gameObject.SetActive(true);
-        Creditos.Play();
+        SceneManager.LoadScene("Victory");
         //Cursor.visible = true;
         //SceneManager.LoadScene("Victory");
     }

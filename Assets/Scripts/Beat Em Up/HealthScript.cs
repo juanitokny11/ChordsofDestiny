@@ -20,7 +20,6 @@ public class HealthScript : MonoBehaviour
     public EnemyHealthUI healthUI;
     public GameObject score;
     private HealthUI health_UI;
-    private LifeControler enemyUI;
     public BeatEmupManager gameManager;
     public TextMeshProUGUI numhits;
     public GameObject hits;
@@ -44,7 +43,6 @@ public class HealthScript : MonoBehaviour
         gameManager = FindObjectOfType<BeatEmupManager>();
         animationScript = GetComponent<CharacterAnimation>();
         enemyMovement = GetComponent<EnemyMovement>();
-        enemyUI = GameObject.FindObjectOfType<LifeControler>();
         if (is_Player)
         {
             fade.play = false;
