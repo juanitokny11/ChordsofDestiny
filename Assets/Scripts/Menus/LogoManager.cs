@@ -21,9 +21,11 @@ public class LogoManager : MonoBehaviour
     public GameObject fademusicaOptions;
     public GameObject reproductor;
     public MenuAnim optionsAnim;
+      public VideoPlayer Credits;
     public ParticleSystem niebla;
     public bool extras=true;
     public GameObject pantallanegra;
+    public AudioSource creditsMusic;
     bool logo = false;
     public bool cinematica = false;
     private void Awake()
@@ -113,11 +115,16 @@ public class LogoManager : MonoBehaviour
         cinematica = true;
     }
     // Update is called once per frame
-    private void MainMenu()
+    public void MainMenu()
     {
+        creditsMusic.Stop();
         title.gameObject.SetActive(false);
         titleText.enabled = false;
         menu.GetComponent<Canvas>().enabled = true;
+        if (menuManager.endVideo)
+        {
+            ReturnCreditos();
+        }
     }
     public void Options()
     {
@@ -149,6 +156,17 @@ public class LogoManager : MonoBehaviour
             Invoke("InvokeGramola", 130.0f * Time.deltaTime);
             musica.Pause();
         }
+    }
+    public void Creditos()
+    {
+        optionsAnim.Anim = true;
+        optionsAnim.firstTime = true;
+    }
+    public void ReturnCreditos()
+    {
+        optionsAnim.Anim = false;
+        optionsAnim.firstTime = true;
+        musica.UnPause();
     }
     public void InvokeGramola()
     {

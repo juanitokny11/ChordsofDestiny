@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 
 public class DeleteAndRotateObjects:MonoBehaviour {
 
@@ -11,14 +12,35 @@ public class DeleteAndRotateObjects:MonoBehaviour {
     public bool is_Key = false;
     public ChangeCamera changeCamera;
     public GameObject Puerta;
+    public VideoPlayer Creditos;
 
     void Start()
     {
+        Creditos.Prepare();
         changeCamera = GameObject.FindObjectOfType<ChangeCamera>();
         player = GameObject.FindGameObjectWithTag("Player");
         playerTransform = player.GetComponent<Transform>();
         Puerta = GameObject.FindGameObjectWithTag("Salida");
         //transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
+    }
+    IEnumerator waitForMovieEnd()
+    {
+
+        while (Creditos.isPlaying) // while the movie is playing
+        {
+
+            yield return new WaitForEndOfFrame();
+        }
+        // after movie is not playing / has stopped.
+        onMovieEnded();
+    }
+
+    void onMovieEnded()
+    {
+        Creditos.Pause();
+        Time.timeScale = 1;
+        Cursor.visible = false;
+        SceneManager.LoadScene("Victory");
     }
 
     private void OnCollisionEnter(Collision other)
@@ -62,7 +84,9 @@ public class DeleteAndRotateObjects:MonoBehaviour {
     public void EndGame()
     {
         Destroy(gameObject);
-        Cursor.visible = true;
-        SceneManager.LoadScene("Victory");
+        Creditos.gameObject.SetActive(true);
+        Creditos.Play();
+        //Cursor.visible = true;
+        //SceneManager.LoadScene("Victory");
     }
 }

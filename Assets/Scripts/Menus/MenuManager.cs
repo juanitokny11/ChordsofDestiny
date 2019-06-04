@@ -19,12 +19,16 @@ public class MenuManager : MonoBehaviour {
     public Canvas skipcanvas;
     public float counter=0;
     public float countStart = 0;
-
+    public VideoPlayer Credits;
+    public AudioSource creditsMusic;
+    public bool endVideo = false;
 
     public void Start()
     {
         if (is_MainMenu)
         {
+            endVideo = false;
+            Credits.Prepare();
             Cursor.visible = true;
             cinematicaInicial.gameObject.SetActive(false);
             cinematicaInicial.Prepare();
@@ -34,6 +38,7 @@ public class MenuManager : MonoBehaviour {
     {  
             if (is_MainMenu)
         {
+            Credits.loopPointReached += EndVideo;
             if (skipcanvas.enabled)
                 counter++;
             if (counter >= 1500)
@@ -49,6 +54,14 @@ public class MenuManager : MonoBehaviour {
                 cinematicaInicial.clip = VideoEsp;
             }
         }
+    }
+    private void EndVideo(VideoPlayer source)
+    {
+        Credits.gameObject.SetActive(false);
+        Cursor.visible = true;
+        logoManager.MainMenu();
+        endVideo = true;
+        //logoManager.optionsAnim.firstTime = true;
     }
     IEnumerator waitForMovieEnd()
     {
@@ -128,12 +141,12 @@ public class MenuManager : MonoBehaviour {
         MyGameSettings.getInstance().menuAnim.Anim = false;
     }
     public void Creditos()
-    {
-        SceneManager.LoadScene("Credits");
-        Cursor.visible = true;
+    { 
+        Credits.gameObject.SetActive(true);;
+        Cursor.visible = false;
+        MyGameSettings.getInstance().menuAnim.Anim = true;
         MyGameSettings.getInstance().menuAnim.firstTime = true;
-        MyGameSettings.getInstance().actualize = true;
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
     }
     public void Title(){
         SceneManager.LoadScene("New Scene");
