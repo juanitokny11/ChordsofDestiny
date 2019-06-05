@@ -27,6 +27,7 @@ public class Sound : MonoBehaviour
     public bool hit = false;
    public AudioSource walkgroupie;
     public AudioSource walkfan;
+    public AudioSource walkboss;
     public AudioSource DisolveGroupi;
     public AudioSource DisolveFan;
 
@@ -155,6 +156,15 @@ void disolveFa()
         Bossmulti.volume = Random.Range(0.85f,0.95f);
         Bossmulti.Play();
     }
+
+    void andarboss()
+   {
+       
+            walkboss.pitch = Random.Range(0.7f, 1.3f);
+            walkboss.volume = Random.Range(0.15f, 0.30f);
+            walkboss.Play();
+        
+   }
 
     //audios groupie
     void AtaqueDebilGroupie()
