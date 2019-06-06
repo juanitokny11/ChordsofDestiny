@@ -56,13 +56,13 @@ public class EnemyMovement : MonoBehaviour
     {
         groupieNames.Add("Amelia");
         groupieNames.Add("Chloe");
-        groupieNames.Add("Myra");
+        groupieNames.Add("Caroline");
         groupieNames.Add("Hannah");
         groupieNames.Add("Selina");
         groupieNames.Add("Charlotte");
         groupieNames.Add("Angy");
         groupieNames.Add("Sophia");
-        groupieNames.Add("Magnolia");
+        groupieNames.Add("Myra");
         groupieNames.Add("Ruth");
         fanNames.Add("Charles");
         fanNames.Add("Henry");
@@ -72,8 +72,9 @@ public class EnemyMovement : MonoBehaviour
         fanNames.Add("James");
         fanNames.Add("Noah");
         fanNames.Add("Dan");
-        fanNames.Add("Titus");
+        fanNames.Add("Edward");
         fanNames.Add("Vincent");
+        fanNames.Add("Clifford");
     }
     private void Start()
     {
