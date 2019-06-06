@@ -9,6 +9,7 @@ public class BattleZone : MonoBehaviour
     //private BoxCollider colider;
     public new ShakeCamera camera;
     public GameObject UI;
+    public GameObject UI2;
     public GameObject score;
     public GameObject EnemyUI;
     public HealthScript Player;
@@ -37,6 +38,7 @@ public class BattleZone : MonoBehaviour
         if (other.tag == "Player")
         {
             UI.GetComponent<Canvas>().enabled = true;
+            UI2.GetComponent<Canvas>().enabled = true;
             enemyBlocker.enabled = false;
             score.SetActive(true);
             GetComponent<BoxCollider>().enabled = false;
@@ -61,6 +63,7 @@ public class BattleZone : MonoBehaviour
             if (enemiescounter <= 0)
             {
                 EnemyUI.SetActive(false);
+                UI.GetComponent<Canvas>().enabled = false;
                 Invoke("UnlockCamera", 1f);
                 //musica.DOFade(0.4f, 5f);
                 //musica.Pause();
@@ -105,7 +108,7 @@ public class BattleZone : MonoBehaviour
     void StopGo()
     {
         CancelInvoke("Blink");
-        UI.GetComponent<Canvas>().enabled = false;
+        UI2.GetComponent<Canvas>().enabled = false;
         score.SetActive(false);
         goImage.enabled = false;
     }
