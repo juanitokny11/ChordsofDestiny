@@ -9,10 +9,13 @@ public class RadomPos : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(Random.Range(-260f,-290f),27.42f,Random.Range(-5f,-8f));
-        if (player.transform.position.x == transform.position.x && player.transform.position.z == transform.position.z)
+        transform.position = new Vector3(Random.Range(-260f,-300f),27.42f,Random.Range(-5f,-8f));
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == 8)
         {
-            transform.position = new Vector3(Random.Range(-260f, -290f), 27.42f, Random.Range(-5f, -8f));
+            transform.position = new Vector3(Random.Range(-260f, -300f), 27.42f, Random.Range(-5f, -8f));
         }
     }
 }

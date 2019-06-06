@@ -133,10 +133,10 @@ public class HealthScript : MonoBehaviour
             }
             else if(is_Enemy)
             {
+                gameManager.numScore += enemyMovement.score;
                 enemyMovement.Death();
                 zone.enemiescounter--;
                 npcCulling.RemoveNPC(GetComponent<NpcBevahavour>());
-               gameManager.numScore += enemyMovement.score;
             }
             else if (is_Boss)
             {

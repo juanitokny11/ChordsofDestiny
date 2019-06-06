@@ -102,9 +102,18 @@ public class BossIA : MonoBehaviour
                 
                 if (transform.position.y >= 9f)
                 {
-                    transform.position = ResetPosition.position;
-                    Chase = false;
-                    StopJumpUp();
+                    if(transform.position.x != playerTarget.transform.position.x)
+                    {
+                        transform.position = ResetPosition.position;
+                        Chase = false;
+                        StopJumpUp();
+                    }
+                    else if (transform.position.x == playerTarget.transform.position.x)
+                    {
+                        transform.position = new Vector3( ResetPosition.position.x+3f, ResetPosition.position.y, ResetPosition.position.z);
+                        Chase = false;
+                        StopJumpUp();
+                    }
                 }
             }
             if (ResetJump == true)
@@ -189,6 +198,7 @@ public class BossIA : MonoBehaviour
             {
                 if (followPlayer == true)
                 {
+                    transform.LookAt(playerTarget);
                     myBody.velocity = Vector3.zero;
                     if (fase == 1)
                         enemyAnim.Walk2arm(false);
@@ -223,11 +233,7 @@ public class BossIA : MonoBehaviour
                     enemyAnim.Jump1Arm();
                     //enemyAnim.ResetJump1Arm();
                 }
-
             }
-        
-        //if(BossZone.enemiescounter !=0)
-       
     }
     void Invoke()
     {
@@ -288,11 +294,10 @@ public class BossIA : MonoBehaviour
         porcentajeAtaque = 50;
         porcentajeInvocar = 200;
         if(!playerTarget.GetComponent<PlayerMovementBeat>().lockrotation)
-        espadaRota.transform.rotation = Quaternion.Euler(0, 90, 0);
+        espadaRota.transform.rotation = Quaternion.Euler(transform.rotation.x,transform.rotation.y, transform.rotation.z);
         else if (playerTarget.GetComponent<PlayerMovementBeat>().lockrotation)
-            espadaRota.transform.rotation = Quaternion.Euler(0, -90, 0);
-
-        espadaRota.transform.position = new Vector3(espadaRota.transform.position.x, 0, espadaRota.transform.position.z);
+            espadaRota.transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z);
+        //espadaRota.transform.position = new Vector3(espadaRota.transform.position.x, 0, espadaRota.transform.position.z);
         gameManager.numScore += scoref1;
         brokenArm.Play();
         

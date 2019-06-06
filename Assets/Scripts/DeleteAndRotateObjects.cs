@@ -9,9 +9,11 @@ public class DeleteAndRotateObjects:MonoBehaviour {
     public bool is_Key = false;
     public ChangeCamera changeCamera;
     public GameObject Puerta;
+    public GameObject bossUI;
 
     void Start()
     {
+        bossUI= GameObject.FindGameObjectWithTag("bossUI");
         changeCamera = GameObject.FindObjectOfType<ChangeCamera>();
         Puerta = GameObject.FindGameObjectWithTag("Salida");
         //transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
@@ -37,6 +39,7 @@ public class DeleteAndRotateObjects:MonoBehaviour {
 
         if (is_Key)
         {
+            bossUI.SetActive(false);
             changeCamera.bosscam.enabled = true;
             changeCamera.gameplaycam.enabled = false;
             Puerta.GetComponent<Animator>().SetTrigger("Abrir");

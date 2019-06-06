@@ -121,6 +121,9 @@ public class AttackUniversal : MonoBehaviour
                     {
                         if (hit[i].gameObject.tag == "Enemy")
                         {
+                            sound.hit = true;
+                            //if (!attackList.F3)
+                            sound.GolpeHacha();
                             hit[i].GetComponent<EnemyMovement>().soloHit = true;
                             hit[i].GetComponent<EnemyMovement>().speed = 0f;
                             hit[i].GetComponent<EnemyMovement>().followPlayer = false;
@@ -182,7 +185,7 @@ public class AttackUniversal : MonoBehaviour
                             sound.GolpeHacha();
                         for (int i = 0; i < hit.Length; i++)
                         {
-                            if (hit[i].gameObject.tag == "Enemy" && sound.hit && attackList.D3)
+                            if (hit[i].gameObject.tag == "Enemy" || hit[i].gameObject.tag == "Boss" && sound.hit && attackList.D3)
                             {
                                 sound.GolpeGiratorio();
                             }
