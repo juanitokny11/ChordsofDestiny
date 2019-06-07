@@ -148,14 +148,16 @@ void disolveFa()
 
  void invocboss()
     {
-        Bossinvoca[0].Play();
+        int random = Random.Range(0, 3);
+        Bossinvoca[random].Play();
     }
 
     void basicboss()
     {
-        Bossatack[0].pitch = Random.Range(0.90f,1.05f);
-        Bossatack[0].volume = Random.Range(0.85f,0.95f);
-        Bossatack[0].Play();
+        int random = Random.Range(0, 5);
+        Bossatack[random].pitch = Random.Range(0.90f,1.05f);
+        Bossatack[random].volume = Random.Range(0.85f,0.95f);
+        Bossatack[random].Play();
     }
 
      void bossgira()
