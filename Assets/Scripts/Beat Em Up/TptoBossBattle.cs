@@ -86,6 +86,7 @@ public class TptoBossBattle : MonoBehaviour
         cinematicaBoss.gameObject.SetActive(false);
         changeMusic = true;
         cinematica = false;
+        camera.lockCamera = false;
         BossZone.bossZone = true;
         Player.enabled = true;
         cinematicaBoss.Pause();
