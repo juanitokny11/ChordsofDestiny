@@ -26,7 +26,6 @@ public class AttackUniversal : MonoBehaviour
     public GameObject block_Fx_Prefab;
     public GameObject block2_Fx_Prefab;
     public GameObject pua;
-    public GameObject score;
     public Collider[] hit;
     public Sound sound;
     public BeatEmupManager gameManager;
@@ -352,29 +351,6 @@ public class AttackUniversal : MonoBehaviour
         {
             hit[0].gameObject.transform.parent.gameObject.SetActive(true);
         }
-    }
-    public void Explode()
-    {
-       InvokeRepeating("Blink", 0.1f, 0.1f);
-       gameManager.numScore += 5;
-        score.SetActive(true);
-        if (playerHealth.health <= 100)
-            Invoke("LifeOn", 2f);
-        Invoke("StopBlink",3f);
-    }
-    public void StopBlink()
-    {
-        CancelInvoke("Blink");
-        score.SetActive(false);
-        if (playerHealth.health <= 100)
-            Invoke("LifeOff", 2f);
-        Invoke("Destroy", 0.1f);
-    }
-    public void Destroy()
-    {
-        /*if (hit[0].GetComponent<DeleteObjects>().puaInstance)
-            Instantiate(pua, puaSpawn, Quaternion.identity);*/
-        Destroy(hit[0].gameObject.transform.parent.gameObject);
     }
     private void OnDrawGizmos()
     {

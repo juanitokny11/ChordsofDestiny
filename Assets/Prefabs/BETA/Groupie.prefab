@@ -69,13 +69,13 @@ MonoBehaviour:
     type: 3}
   block2_Fx_Prefab: {fileID: 0}
   pua: {fileID: 0}
-  score: {fileID: 0}
   hit: []
   sound: {fileID: 3401506645975715099}
   gameManager: {fileID: 0}
   rend: {fileID: 0}
   counterhits: 0
   block1: {fileID: 4135930209627245087}
+  firstHit: 0
 --- !u!1 &404061498922452765
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,7 +521,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6126feaad4cfe794f851753ef07168a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyLife: {fileID: 0}
   col: {fileID: 0}
   enemyUI: {fileID: 0}
   groupieNames: []
@@ -534,7 +533,7 @@ MonoBehaviour:
   speed: 5
   mainCamera_col: {fileID: 0}
   mainCamera_col2: {fileID: 0}
-  chaseDistance: 25
+  chaseDistance: 30
   attack_Distance: 3
   chase_Player_After_Attack: 1
   counter: 0
@@ -568,6 +567,7 @@ MonoBehaviour:
   maxHealth: 20
   health: 20
   solo: 0
+  soloCharged: {fileID: 0}
   zone: {fileID: 0}
   attack: {fileID: 0}
   healthUI: {fileID: 0}
@@ -586,8 +586,6 @@ MonoBehaviour:
   hitsCount: 0
   oneTime: 0
   audios: {fileID: 0}
-  npcCulling: {fileID: 0}
-  sphere: 0
   is_Player: 0
   is_Boss: 0
   is_Enemy: 1
@@ -608,6 +606,7 @@ MonoBehaviour:
   soloParticle: {fileID: 0}
   Hacha: {fileID: 0}
   crackPos: {fileID: 0}
+  UI: {fileID: 0}
   guitar_Attack_Mesh: {fileID: 0}
   guitar_Attack_Point: {fileID: 0}
   Boss_Attack_Point1: {fileID: 0}
@@ -634,6 +633,8 @@ MonoBehaviour:
   is_Boss: 0
   isFan: 0
   crack: {fileID: 0}
+  npcCulling: {fileID: 0}
+  sphere: 0
 --- !u!114 &3401506645975715099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -647,6 +648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   salidabos: {fileID: 0}
+  luzsalida: {fileID: 0}
   fuerteaire: []
   debilaire: []
   golpesHacha: []
@@ -663,6 +665,9 @@ MonoBehaviour:
   - {fileID: 5182173127330819192}
   - {fileID: 6784932786300036284}
   - {fileID: 3686704080269800699}
+  Bossatack: []
+  Bossinvoca: []
+  Bossmulti: {fileID: 0}
   ataqueGirSound: {fileID: 0}
   ataqueAltoSound: {fileID: 0}
   golpeGirSound: {fileID: 0}
@@ -674,6 +679,7 @@ MonoBehaviour:
   hit: 0
   walkgroupie: {fileID: 692414062669842625}
   walkfan: {fileID: 0}
+  walkboss: {fileID: 0}
   DisolveGroupi: {fileID: 6259887641671851926}
   DisolveFan: {fileID: 0}
 --- !u!65 &1972783370

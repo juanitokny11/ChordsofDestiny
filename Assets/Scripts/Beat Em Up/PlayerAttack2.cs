@@ -162,6 +162,15 @@ public class PlayerAttack2 : MonoBehaviour
         {
             if ( !player_Move.inAir && healthScript.canDoSolo && doSolo /*&& !player_Move.walk && !player_Move.running*/)
             {
+                if (player_Move.walk || player_Move.running)
+                {
+                    player_Move.run_Speed = 0;
+                    if (player_Move.lockrotation == true)
+                        transform.rotation = Quaternion.Euler(0, 0, 0);
+                    else if (player_Move.lockrotation == false)
+                        transform.rotation = Quaternion.Euler(0, 180, 0);
+                    //player_Move.canRotate = true;
+                }
                 player_Move.attack = true;
                 player_Move.jump = false;
                 player_Move.canRotate = false;
@@ -181,15 +190,20 @@ public class PlayerAttack2 : MonoBehaviour
         }
         if (Input.GetAxisRaw("Evadir") == 1 && !blockActivated && canBlock /* && !player_Move.walk && !player_Move.running*/)
         {
+            if (player_Move.walk || player_Move.running)
+            {
+                player_Move.run_Speed = 0;
+                if (player_Move.lockrotation == true)
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
+                else if (player_Move.lockrotation == false)
+                    transform.rotation = Quaternion.Euler(0, -180, 0);
+                //player_Move.canRotate = true;
+            }
             player_Move.attack = true;
             player_Move.walk = false;
             player_Move.running = false;
             //player_Move.move = false;
             current_Combo_State = ComboState.GUARD;
-            if (player_Move.walk || player_Move.running)
-            {
-                player_Move.run_Speed = 0;
-            }
             if (!player_Move.inAir)
             {
                 if (current_Combo_State == ComboState.GUARD)

@@ -218,20 +218,21 @@ public class CharacterAnimationDelegate : MonoBehaviour
     }
     void CharacterDied()
     {
-        groupiecol.enabled = false;
-        groupieBody.useGravity = false;
         if (!is_Boss)
         {
-            groupieEnemy.speed = 0f;
             groupieEnemy.followPlayer = false;
-            groupieEnemy.enabled = false;
+            groupieEnemy.attackPlayer = false;
+            groupieBody.isKinematic = true;
+            //groupieEnemy.Death();
+            //groupieEnemy.enabled = false;
         }
         else
         {
             bossIA.enabled = false;
-            UI.enabled = false;
+            //UI.enabled = false;
         }
-            
+        groupiecol.enabled = false;
+        groupieBody.useGravity = false;
         if (sphere)
             npcCulling.RemoveNPC(GetComponent<NpcBevahavour>());
         Invoke("DeleteGameobject", 2.0f);

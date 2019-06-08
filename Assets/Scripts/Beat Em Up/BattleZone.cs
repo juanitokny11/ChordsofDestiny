@@ -30,7 +30,8 @@ public class BattleZone : MonoBehaviour
     {
         //colider = GetComponent<BoxCollider>();
         //camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ShakeCamera>();
-        enemiescounter = enemies.Count;
+        if(!bossZone)
+            enemiescounter = enemies.Count;
         Player = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthScript>();
     }
     void OnTriggerEnter(Collider other)
@@ -78,6 +79,7 @@ public class BattleZone : MonoBehaviour
             if (enemiescounter <= 1)
             {
                 EnemyUI.SetActive(false);
+                enemiescounter = enemies.Count+1;
             }
         }
     }

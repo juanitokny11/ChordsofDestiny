@@ -10,10 +10,11 @@ public class DeleteObjects: MonoBehaviour {
     public ParticleSystem p1;
     public ParticleSystem p2;
     public ParticleSystem p3;
+    public Canvas scoreUI;
     Vector3 puaSpawn;
     public bool firsttime;
     public HealthScript playerHealth;
-    public GameObject UI;
+    public Canvas UI;
     public GameObject score;
     public BeatEmupManager gameManager;
     public ParticleCulling particleCulling;
@@ -32,7 +33,9 @@ public class DeleteObjects: MonoBehaviour {
         if (vida <= 0)
         {
             Invoke("Explode", Time.deltaTime * 18f);
-            if(p1!=null)
+            scoreUI.enabled = true;
+            score.SetActive(true);
+            if (p1!=null)
                  particleCulling.RemoveParticle(p1.GetComponent<ParticlesBevahavour>());
             if (p2!= null)
                 particleCulling.RemoveParticle(p2.GetComponent<ParticlesBevahavour>());
@@ -63,24 +66,28 @@ public class DeleteObjects: MonoBehaviour {
     }
     public void Explode()
     {
-        InvokeRepeating("Blink", 0.1f, 0.1f);
-        gameManager.numScore += 5;
-        score.SetActive(true);
-        if (playerHealth.health <= 100)
-            Invoke("LifeOn", 2f);
+        InvokeRepeating("Blink", 0.1f, 0.1f); 
+        /*if (playerHealth.health <= 100)
+            Invoke("LifeOn", 2f);*/
         Invoke("StopBlink", 3f);
     }
     public void StopBlink()
     {
         CancelInvoke("Blink");
         score.SetActive(false);
+        if(firsttime)
+        {
+            gameManager.numScore += 5;
+            firsttime = false;
+        }
         if (puaInstance && firsttime)
         {
             Instantiate(pua, puaSpawn, Quaternion.identity);
             firsttime = false;
         }
-        if (playerHealth.health <= 100)
-            Invoke("LifeOff", 2f);
+        /*if (playerHealth.health <= 100)
+            Invoke("LifeOff", 2f);*/
+        scoreUI.enabled = false;
         Invoke("Destroy", 0.1f);
     }
     public void Destroy()
@@ -89,10 +96,10 @@ public class DeleteObjects: MonoBehaviour {
     }
     public void LifeOn()
     {
-        UI.SetActive(true);
+        UI.enabled = true;
     }
     public void LifeOff()
     {
-        UI.SetActive(false);
+        UI.enabled = false;
     }
 }

@@ -58,6 +58,10 @@ public class PlayerMovementBeat : MonoBehaviour
             else if (walk || attack || jump)
             {
                 counter = 0;
+                if(lockrotation)
+                    transform.rotation = Quaternion.Euler(0,180,0);
+                if (!lockrotation)
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
             }
 
             RotatePlayer();

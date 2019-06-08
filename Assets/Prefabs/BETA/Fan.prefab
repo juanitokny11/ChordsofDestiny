@@ -1581,13 +1581,13 @@ MonoBehaviour:
     type: 3}
   block2_Fx_Prefab: {fileID: 0}
   pua: {fileID: 0}
-  score: {fileID: 0}
   hit: []
   sound: {fileID: 0}
   gameManager: {fileID: 0}
   rend: {fileID: 0}
   counterhits: 0
   block1: {fileID: 4316930737681537861}
+  firstHit: 0
 --- !u!1 &8017991133832481613
 GameObject:
   m_ObjectHideFlags: 0
@@ -2168,6 +2168,7 @@ MonoBehaviour:
   soloParticle: {fileID: 0}
   Hacha: {fileID: 0}
   crackPos: {fileID: 0}
+  UI: {fileID: 0}
   guitar_Attack_Mesh: {fileID: 0}
   guitar_Attack_Point: {fileID: 0}
   Boss_Attack_Point1: {fileID: 0}
@@ -2211,6 +2212,7 @@ MonoBehaviour:
   maxHealth: 20
   health: 20
   solo: 0
+  soloCharged: {fileID: 0}
   zone: {fileID: 0}
   attack: {fileID: 0}
   healthUI: {fileID: 0}
@@ -2257,7 +2259,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6126feaad4cfe794f851753ef07168a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyLife: {fileID: 0}
   col: {fileID: 0}
   enemyUI: {fileID: 0}
   groupieNames: []
@@ -2270,7 +2271,7 @@ MonoBehaviour:
   speed: 3
   mainCamera_col: {fileID: 0}
   mainCamera_col2: {fileID: 0}
-  chaseDistance: 25
+  chaseDistance: 30
   attack_Distance: 4
   chase_Player_After_Attack: 1
   counter: 0
@@ -2289,6 +2290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   salidabos: {fileID: 0}
+  luzsalida: {fileID: 0}
   fuerteaire: []
   debilaire: []
   golpesHacha: []
@@ -2308,6 +2310,9 @@ MonoBehaviour:
   - {fileID: 4443473408371435541}
   - {fileID: 61645132691660638}
   - {fileID: 8597832080055479536}
+  Bossatack: []
+  Bossinvoca: []
+  Bossmulti: {fileID: 0}
   ataqueGirSound: {fileID: 0}
   ataqueAltoSound: {fileID: 0}
   golpeGirSound: {fileID: 0}
@@ -2319,6 +2324,7 @@ MonoBehaviour:
   hit: 0
   walkgroupie: {fileID: 0}
   walkfan: {fileID: 4307925293138945957}
+  walkboss: {fileID: 0}
   DisolveGroupi: {fileID: 0}
   DisolveFan: {fileID: 901657191214326604}
 --- !u!114 &5360239208051445077

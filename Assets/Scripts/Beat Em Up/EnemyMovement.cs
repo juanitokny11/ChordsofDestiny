@@ -9,7 +9,6 @@ public class EnemyMovement : MonoBehaviour
 {
     private CharacterAnimation enemyAnim;
     private HealthScript healthScript;
-    public GameObject enemyLife;
     public BoxCollider col;
     public LifeControler enemyUI;
     private Rigidbody myBody;
