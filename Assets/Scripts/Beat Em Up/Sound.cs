@@ -6,6 +6,7 @@ public class Sound : MonoBehaviour
 {
    public AudioSource salidabos;
     public AudioSource luzsalida;
+    public AudioSource fin;
     public List<AudioSource> fuerteaire;
    public  List<AudioSource> debilaire;
     public List<AudioSource> golpesHacha;
@@ -46,6 +47,11 @@ public class Sound : MonoBehaviour
     void doorbeep()
     {
         luzsalida.Play();
+    }
+
+    void morir()
+    {
+        fin.Play();
     }
     void airedebil()
    {
