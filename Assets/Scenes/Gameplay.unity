@@ -1141,7 +1141,7 @@ GameObject:
   - component: {fileID: 67956481}
   m_Layer: 8
   m_Name: Coliderzonaboss
-  m_TagString: Untagged
+  m_TagString: steveColider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10601,14 +10601,14 @@ RectTransform:
   m_GameObject: {fileID: 446148816}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.19747649, y: 0.19747649, z: 0.19747649}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1295644917}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 333}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1919.9999, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &446148818
@@ -12393,7 +12393,7 @@ MonoBehaviour:
   enemyBlocker: {fileID: 1909692129}
   goSound: {fileID: 0}
   bossZone: 0
-  goImage: {fileID: 1216459603}
+  goImage: {fileID: 214972936}
   musica: {fileID: 2009397568}
   boss: {fileID: 0}
   pua: {fileID: 0}
@@ -12678,7 +12678,7 @@ MonoBehaviour:
   enemyBlocker: {fileID: 853768186}
   goSound: {fileID: 789807457}
   bossZone: 0
-  goImage: {fileID: 1216459603}
+  goImage: {fileID: 214972936}
   musica: {fileID: 1160529369}
   boss: {fileID: 0}
   pua: {fileID: 698599952242444577, guid: 8580b4ef3c143294ab708c82967d1b63, type: 3}
@@ -17459,7 +17459,7 @@ PrefabInstance:
     - target: {fileID: 1766413168, guid: 340497af01acd6d42bbb74e1fe58fd11, type: 3}
       propertyPath: score
       value: 
-      objectReference: {fileID: 634355598}
+      objectReference: {fileID: 1037187544}
     - target: {fileID: 1766413168, guid: 340497af01acd6d42bbb74e1fe58fd11, type: 3}
       propertyPath: p1
       value: 
@@ -22056,7 +22056,7 @@ MonoBehaviour:
   enemyBlocker: {fileID: 1485708127}
   goSound: {fileID: 789807457}
   bossZone: 0
-  goImage: {fileID: 1216459603}
+  goImage: {fileID: 214972936}
   musica: {fileID: 1160529369}
   boss: {fileID: 0}
   pua: {fileID: 698599952242444577, guid: 8580b4ef3c143294ab708c82967d1b63, type: 3}
@@ -23568,7 +23568,7 @@ MonoBehaviour:
   enemyBlocker: {fileID: 1419985831}
   goSound: {fileID: 789807457}
   bossZone: 0
-  goImage: {fileID: 1216459603}
+  goImage: {fileID: 214972936}
   musica: {fileID: 1160529369}
   boss: {fileID: 0}
   pua: {fileID: 0}
@@ -25004,14 +25004,14 @@ RectTransform:
   m_GameObject: {fileID: 1033069154}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.19747649, y: 0.19747649, z: 0.19747649}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1295644917}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 333}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1919.9999, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1033069156
@@ -25070,6 +25070,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1033069154}
   m_CullTransparentMesh: 0
+--- !u!1 &1037187544 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2452563773638343980, guid: 303c9a61fe9fd4845b7866e88b4417f6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1366203259}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1037802671
 GameObject:
   m_ObjectHideFlags: 0
@@ -27720,7 +27726,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1131427584}
   m_LocalRotation: {x: -0.000000006939691, y: 0.9995878, z: -0.028713018, w: -0.00000018712493}
-  m_LocalPosition: {x: 33.1, y: 7, z: 12}
+  m_LocalPosition: {x: 514.5, y: 7, z: 12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1264104551}
@@ -27847,6 +27853,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapaJ: {fileID: 446148816}
   mapaJ2: {fileID: 1033069154}
+  camanim: {fileID: 0}
 --- !u!4 &1136803412 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4378958706945237188, guid: d811e522eaf006447ae5e0418441079f,
@@ -29765,18 +29772,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1216143871}
   m_CullTransparentMesh: 0
---- !u!114 &1216459603 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1216459603, guid: 303c9a61fe9fd4845b7866e88b4417f6,
-    type: 3}
-  m_PrefabInstance: {fileID: 1400160312}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1221003624
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30076,7 +30071,7 @@ GameObject:
   - component: {fileID: 1227339478}
   m_Layer: 0
   m_Name: zona2
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31963,10 +31958,10 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -32000,7 +31995,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1366203259}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1037187544}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -33107,7 +33102,7 @@ MonoBehaviour:
   enemyBlocker: {fileID: 10706245}
   goSound: {fileID: 789807457}
   bossZone: 0
-  goImage: {fileID: 1216459603}
+  goImage: {fileID: 214972936}
   musica: {fileID: 1160529369}
   boss: {fileID: 0}
   pua: {fileID: 0}
@@ -44306,7 +44301,7 @@ MonoBehaviour:
   enemyBlocker: {fileID: 1227339478}
   goSound: {fileID: 789807457}
   bossZone: 0
-  goImage: {fileID: 1216459603}
+  goImage: {fileID: 214972936}
   musica: {fileID: 1160529369}
   boss: {fileID: 0}
   pua: {fileID: 0}
@@ -48523,7 +48518,7 @@ MonoBehaviour:
   enemyBlocker: {fileID: 109218524}
   goSound: {fileID: 789807457}
   bossZone: 0
-  goImage: {fileID: 1216459603}
+  goImage: {fileID: 214972936}
   musica: {fileID: 1160529369}
   boss: {fileID: 0}
   pua: {fileID: 0}
@@ -55020,7 +55015,7 @@ MonoBehaviour:
   enemyBlocker: {fileID: 1365365189}
   goSound: {fileID: 789807457}
   bossZone: 0
-  goImage: {fileID: 1216459603}
+  goImage: {fileID: 214972936}
   musica: {fileID: 1160529369}
   boss: {fileID: 0}
   pua: {fileID: 0}

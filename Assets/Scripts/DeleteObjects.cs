@@ -11,6 +11,7 @@ public class DeleteObjects: MonoBehaviour {
     public ParticleSystem p2;
     public ParticleSystem p3;
     Vector3 puaSpawn;
+    public bool firsttime;
     public HealthScript playerHealth;
     public GameObject UI;
     public GameObject score;
@@ -19,6 +20,7 @@ public class DeleteObjects: MonoBehaviour {
 
     private void Start()
     {
+        firsttime = true;
         gameManager = FindObjectOfType<BeatEmupManager>();
         particleCulling = FindObjectOfType<ParticleCulling>();
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthScript>();
@@ -46,7 +48,6 @@ public class DeleteObjects: MonoBehaviour {
         if (other.tag == "ligero" || other.tag =="pesado")
         {
             vida--;
-           
         }
     }
     void Blink()
@@ -73,8 +74,11 @@ public class DeleteObjects: MonoBehaviour {
     {
         CancelInvoke("Blink");
         score.SetActive(false);
-        if (puaInstance)
+        if (puaInstance && firsttime)
+        {
             Instantiate(pua, puaSpawn, Quaternion.identity);
+            firsttime = false;
+        }
         if (playerHealth.health <= 100)
             Invoke("LifeOff", 2f);
         Invoke("Destroy", 0.1f);

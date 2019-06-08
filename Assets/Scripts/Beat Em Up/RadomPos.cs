@@ -13,7 +13,7 @@ public class RadomPos : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 8)
+        if (other.tag == "steveColider")
         {
             transform.position = new Vector3(Random.Range(-260f, -300f), 27.42f, Random.Range(-5f, -8f));
         }

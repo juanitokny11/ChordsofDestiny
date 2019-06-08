@@ -206,7 +206,6 @@ public class AttackUniversal : MonoBehaviour
                         if (hit[0].GetComponent<DeleteObjects>().vida <= 0)
                         {
                             anim.SetTrigger("Break");
-                           
                         }
                     }
                     else if (hit[0].gameObject.tag != "bidon")
@@ -367,14 +366,14 @@ public class AttackUniversal : MonoBehaviour
     {
         CancelInvoke("Blink");
         score.SetActive(false);
-        if(hit[0].GetComponent<DeleteObjects>().puaInstance)
-            Instantiate(pua, puaSpawn, Quaternion.identity);
         if (playerHealth.health <= 100)
             Invoke("LifeOff", 2f);
         Invoke("Destroy", 0.1f);
     }
     public void Destroy()
     {
+        /*if (hit[0].GetComponent<DeleteObjects>().puaInstance)
+            Instantiate(pua, puaSpawn, Quaternion.identity);*/
         Destroy(hit[0].gameObject.transform.parent.gameObject);
     }
     private void OnDrawGizmos()

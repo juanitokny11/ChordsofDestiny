@@ -160,7 +160,7 @@ public class PlayerAttack2 : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.D) || Input.GetAxisRaw("Solo") == 1 && Input.GetAxisRaw("Disparar") == 1)
         {
-            if ( !player_Move.inAir && healthScript.canDoSolo && doSolo )
+            if ( !player_Move.inAir && healthScript.canDoSolo && doSolo && !player_Move.walk && !player_Move.running)
             {
                 player_Move.attack = true;
                 player_Move.jump = false;
@@ -179,7 +179,7 @@ public class PlayerAttack2 : MonoBehaviour
                 healthUI.SoloBar.fillAmount = healthScript.solo / 100;
             }
         }
-        if (Input.GetAxisRaw("Evadir") == 1 && !blockActivated && canBlock)
+        if (Input.GetAxisRaw("Evadir") == 1 && !blockActivated && canBlock && !player_Move.walk && !player_Move.running)
         {
             player_Move.attack = true;
             player_Move.walk = false;
@@ -316,6 +316,7 @@ public class PlayerAttack2 : MonoBehaviour
         player_Move.enableMovement = true;
         player_Move.jump = true;
         player_Move.canRotate = true;
+   
     }
 }
 

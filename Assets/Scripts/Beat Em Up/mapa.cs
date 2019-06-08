@@ -6,8 +6,11 @@ public class mapa : MonoBehaviour
 {
     public GameObject mapaJ;
     public GameObject mapaJ2;
-
-  
+    public Animator camanim;
+    private void Start()
+    {
+        camanim = GetComponent<Animator>();
+    }
     void encender()
     {
         mapaJ.SetActive (true);
@@ -18,5 +21,6 @@ public class mapa : MonoBehaviour
     {
         mapaJ.SetActive (false);
         mapaJ2.SetActive (false);
+        camanim.enabled = false;
     }
 }
