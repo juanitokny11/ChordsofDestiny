@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;
 
+
 public class MenuManager : MonoBehaviour {
 
     public Animator cam_Anim;
@@ -126,8 +127,10 @@ public class MenuManager : MonoBehaviour {
         }
     }
     public void EndGame()
-    {
-        Application.Quit();
+    { 
+       
+        System.Diagnostics.Process.GetCurrentProcess().Kill();
+        //Application.Quit();
     }
     public void Options()
     {
