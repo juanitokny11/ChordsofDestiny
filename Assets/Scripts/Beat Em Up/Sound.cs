@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Sound : MonoBehaviour
 {
    public AudioSource salidabos;
     public AudioSource luzsalida;
     public AudioSource fin;
+    public Image Frase;
+    public List<Sprite> frasesBoss;
     public List<AudioSource> fuerteaire;
    public  List<AudioSource> debilaire;
     public List<AudioSource> golpesHacha;
@@ -154,7 +157,8 @@ void disolveFa()
 
  void invocboss()
     {
-        int random = Random.Range(0, 3);
+        int random = Random.Range(0, 4);
+        frasesBoss[random]= Frase.sprite;
         Bossinvoca[random].Play();
     }
 
