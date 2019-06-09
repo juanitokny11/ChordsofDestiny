@@ -1171,8 +1171,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.0134258, y: 1, z: 1.7672397}
+  m_Center: {x: -0.15391873, y: 0, z: -0.023058482}
 --- !u!1001 &68196986
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22254,6 +22254,7 @@ MonoBehaviour:
   Frase: {fileID: 0}
   frasesBoss: []
   muertebos: {fileID: 0}
+  brazo: {fileID: 0}
   fuerteaire: []
   debilaire: []
   golpesHacha: []
@@ -30459,12 +30460,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: b6a4dd18f5c585144be248e06bae9a0c,
     type: 3}
   m_PrefabInstance: {fileID: 1214696999}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1194234865 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4843713033998774898, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba,
-    type: 3}
-  m_PrefabInstance: {fileID: 1491687906}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1199564258
 PrefabInstance:
@@ -40795,16 +40790,6 @@ PrefabInstance:
       propertyPath: llavePos
       value: 
       objectReference: {fileID: 1572832235}
-    - target: {fileID: 507275759069458316, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba,
-        type: 3}
-      propertyPath: espadaRota
-      value: 
-      objectReference: {fileID: 1194234865}
-    - target: {fileID: 507275759069458316, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba,
-        type: 3}
-      propertyPath: Chase
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3265112135575079709, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -40860,69 +40845,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1871696313, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 988149408, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 988149407, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba, type: 3}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
-    - target: {fileID: 988149407, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 988149407, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba, type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4843713033998774896, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 988149404, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba, type: 3}
       propertyPath: UI
       value: 
       objectReference: {fileID: 1839607890}
-    - target: {fileID: 1871696312, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba, type: 3}
-      propertyPath: m_TagString
-      value: bossUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 2367832772148556476, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba,
-        type: 3}
-      propertyPath: frasesBoss.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2367832772148556476, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba,
-        type: 3}
-      propertyPath: frasesBoss.Array.data[0]
-      value: 
-      objectReference: {fileID: 21300000, guid: 45b2b1b7522b4584d89afa954582751a,
-        type: 3}
-    - target: {fileID: 2367832772148556476, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba,
-        type: 3}
-      propertyPath: frasesBoss.Array.data[1]
-      value: 
-      objectReference: {fileID: 21300000, guid: 4e3c89cf954f7f34dad275b58a596169,
-        type: 3}
-    - target: {fileID: 2367832772148556476, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba,
-        type: 3}
-      propertyPath: frasesBoss.Array.data[2]
-      value: 
-      objectReference: {fileID: 21300000, guid: 0c51609342d2f3348b4e0c1b2baa95b7,
-        type: 3}
-    - target: {fileID: 2367832772148556476, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba,
-        type: 3}
-      propertyPath: Frase
-      value: 
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2034689652, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba, type: 3}
 --- !u!1001 &1495069265
 PrefabInstance:

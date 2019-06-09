@@ -70,10 +70,10 @@ public class BossIA : MonoBehaviour
     {
         if (playerTarget.GetComponent<PlayerMovementBeat>().is_Dead)
             this.enabled = false;
-        /*if (brokenArm.time <= .01f && fase==2)
+        if (brokenArm.time == .00f && fase==2)
         {
             sound.brazorot();
-        }*/
+        }
         if (!outside)
         {
             if (Jump == true)
