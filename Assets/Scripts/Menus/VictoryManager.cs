@@ -10,11 +10,19 @@ public class VictoryManager : MonoBehaviour
     public AudioSource creditosMusic;
     public Canvas victorycanvas;
     public AudioSource victoryMusic;
+    public Sprite fondoIngles;
+    public Sprite fondoEspañol;
+    public Image fondo;
+
     void Start()
     {
         Creditos.loopPointReached += EndVideo;
         Creditos.Prepare();
         creditosMusic.Play();
+        if (LanguageManager.langData.currentLanguage == LangData.Languages.English)
+            fondo.sprite = fondoIngles;
+        else if (LanguageManager.langData.currentLanguage == LangData.Languages.Spanish)
+            fondo.sprite = fondoEspañol;
         //transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
     }
     private void EndVideo(VideoPlayer source)
