@@ -360,6 +360,6 @@ public class BossIA : MonoBehaviour
     }
     public void InstantiateTarjeta()
     {
-        Instantiate(llave, transform.position + new Vector3(0,0.5f,0), Quaternion.identity);
+        Instantiate(llave, transform.position + new Vector3(0,2f,0), Quaternion.identity);
     }
 }
