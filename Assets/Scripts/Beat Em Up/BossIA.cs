@@ -72,7 +72,7 @@ public class BossIA : MonoBehaviour
             this.enabled = false;
         if (brokenArm.time == .00f && fase==2)
         {
-            sound.brazorot();
+            sound.Chispas();
         }
         if (!outside)
         {
@@ -307,7 +307,7 @@ public class BossIA : MonoBehaviour
         //espadaRota.transform.position = new Vector3(espadaRota.transform.position.x, 0, espadaRota.transform.position.z);
         gameManager.numScore += scoref1;
         brokenArm.Play();
-        sound.brazorot();
+        //sound.brazorot();
         SetDefault();
     }
     void OnCollisionEnter(Collision collision)
