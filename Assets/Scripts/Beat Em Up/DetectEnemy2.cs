@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DetectEnemy : MonoBehaviour
+public class DetectEnemy2 : MonoBehaviour
 {
     public Vector3 halfSize;
     public Vector3 offset;
@@ -31,8 +31,8 @@ public class DetectEnemy : MonoBehaviour
 
     public  void SetOrientation(bool left)
     {
-        if (left ) offset.x = 1;
-        else offset.x = -1;
+        /*if (left ) offset.z = 1;
+        else offset.z = -1;*/
     }
 
     private void OnDrawGizmos()

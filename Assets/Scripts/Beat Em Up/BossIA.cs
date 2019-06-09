@@ -147,6 +147,7 @@ public class BossIA : MonoBehaviour
     {
         if (!BeatEmupManager.instance.pause)
             return;
+        transform.LookAt(playerTarget);
         if (enemyHealth.HealthBar.fillAmount <= 0.35)
         {
             enemyAnim.RomperEspada();

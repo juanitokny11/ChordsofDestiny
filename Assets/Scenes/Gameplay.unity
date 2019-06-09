@@ -3110,7 +3110,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 45b2b1b7522b4584d89afa954582751a, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -28754,6 +28754,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8939311918030938153}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1139394458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1139394443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8eaf20103f7d1d4f8b2a5a2d968773c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  halfSize: {x: 0.96, y: 2, z: 1.03}
+  offset: {x: 0, y: 2, z: 0}
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  boss: {fileID: 17272254}
 --- !u!1 &1140640873
 GameObject:
   m_ObjectHideFlags: 0
@@ -61803,6 +61821,11 @@ PrefabInstance:
       propertyPath: soloS
       value: 
       objectReference: {fileID: 1994545464}
+    - target: {fileID: 8939311919185665385, guid: 32d3847095fd90f41bc2db0671913dc6,
+        type: 3}
+      propertyPath: z_Speed
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 482292428, guid: 32d3847095fd90f41bc2db0671913dc6, type: 3}
       propertyPath: shakeCamera
       value: 
@@ -61811,6 +61834,10 @@ PrefabInstance:
       propertyPath: boss
       value: 
       objectReference: {fileID: 17272254}
+    - target: {fileID: 1139394447, guid: 32d3847095fd90f41bc2db0671913dc6, type: 3}
+      propertyPath: halfSize.z
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 8939311918716989364, guid: 32d3847095fd90f41bc2db0671913dc6,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -62620,6 +62647,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -3.2164786
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939311917866010810, guid: 32d3847095fd90f41bc2db0671913dc6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32d3847095fd90f41bc2db0671913dc6, type: 3}

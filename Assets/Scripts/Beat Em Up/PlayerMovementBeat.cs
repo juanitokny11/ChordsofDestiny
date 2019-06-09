@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerMovementBeat : MonoBehaviour
 {
-    private DetectEnemy detector;
+    public DetectEnemy detector;
+    public DetectEnemy2 detectorz;
     private CharacterAnimation player_Anim;
     private Rigidbody myBody;
     public bool inAir = false;
@@ -32,6 +33,7 @@ public class PlayerMovementBeat : MonoBehaviour
     private void Awake()
     {
         detector = GetComponent<DetectEnemy>();
+        detectorz = GetComponent<DetectEnemy2>();
         enableMovement = false;
         jump = false;
         canRotate = false;
@@ -69,17 +71,28 @@ public class PlayerMovementBeat : MonoBehaviour
             {
                 move = true;
             }
-            
                 AnimatePlayerRun();
                 AnimatePlayerWalk();
-
-                if (detector.TargetDetected) run_Speed = 0;
+                if (detectorz.TargetDetected)
+                {
+                    z_Speed = 0;
+                }  
+                if (detector.TargetDetected)
+                {
+                    run_Speed = 0;
+                }
                 else if (walk == true && running == false && Input.GetAxisRaw("Evadir") == 1 && playerAttack.blockActivated)
                     run_Speed = 0;
-                else if (walk == true && running == false && Input.GetAxisRaw("Evadir") == 0 )
-                    run_Speed = 5;
+                else if (walk == true && running == false && Input.GetAxisRaw("Evadir") == 0)
+                {
+                    run_Speed = 5f;
+                    z_Speed = 3f;
+                } 
                 else if (walk == true && running == true)
+                {
                     run_Speed = 10f;
+                    z_Speed = 6f;
+                }
                 if (Input.GetButtonDown("Run"))
                 {
                     running = true;
@@ -104,8 +117,7 @@ public class PlayerMovementBeat : MonoBehaviour
     void FixedUpdate()
     {
         detector.MyFixedUpdate();
-        
-
+        detectorz.MyFixedUpdate();
         if (enableMovement)
         {
             if (move)
