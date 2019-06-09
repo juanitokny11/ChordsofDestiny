@@ -22,7 +22,7 @@ public class VictoryManager : MonoBehaviour
         if (LanguageManager.langData.currentLanguage == LangData.Languages.English)
             fondo.sprite = fondoIngles;
         else if (LanguageManager.langData.currentLanguage == LangData.Languages.Spanish)
-            fondo.sprite = fondoEspañol;
+            fondo.sprite=fondoEspañol;
         //transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
     }
     private void EndVideo(VideoPlayer source)
@@ -36,12 +36,9 @@ public class VictoryManager : MonoBehaviour
     {
         if (!creditosMusic.isPlaying)
         {
-            creditosMusic.Stop();
-            Invoke("PlayVictoryMusic", 0.2f);
+            creditosMusic.clip = victoryMusic.clip;
+            creditosMusic.Play();
+            creditosMusic.loop = true;
         }
-    }
-    private void PlayVictoryMusic()
-    {
-        victoryMusic.Play();
     }
 }
