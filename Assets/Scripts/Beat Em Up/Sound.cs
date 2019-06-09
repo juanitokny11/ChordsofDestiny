@@ -20,7 +20,8 @@ public class Sound : MonoBehaviour
     public List<AudioSource> fanHit;
      public List<AudioSource> Falling;
       public List<AudioSource> Bossatack;
-
+    public AudioSource musica;
+    public AudioSource bossmusica;
     public List<AudioSource> Bossinvoca;    
       public AudioSource Bossmulti;
     public AudioSource ataqueGirSound;
@@ -55,6 +56,8 @@ public class Sound : MonoBehaviour
 
     void morir()
     {
+        musica.Stop();
+        bossmusica.Stop();
         fin.Play();
     }
     void airedebil()

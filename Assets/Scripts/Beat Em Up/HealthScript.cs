@@ -27,8 +27,6 @@ public class HealthScript : MonoBehaviour
     public GameObject healthBar;
     public BossIA bossIA;
     public EaseColor fade;
-    public AudioSource musica;
-    public AudioSource musicaboss;
     private LifeControler enemy_Health_UI;
     public PlayerAttackList playerAttack_List;
     public bool canDoSolo = false;
@@ -129,8 +127,6 @@ public class HealthScript : MonoBehaviour
                 else if (is_Boss)
                     GameObject.FindGameObjectWithTag("Enemy").GetComponent<BossIA>().enabled = false;
                 player_Move.is_Dead = true;
-                musica.mute = true;
-                musicaboss.mute = true;
                 player_Attack.enabled = false;
                 player_Move.jump = false;
                 animationScript.Death(0);

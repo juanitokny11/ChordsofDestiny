@@ -16,7 +16,8 @@ public class ParticlesBevahavour : MonoBehaviour {
 	}
 	public void HasBecomeInvisible(){
         //anim.enabled=false;
-        particle.Pause();
+        if (particle != null)
+            particle.Pause();
         if (Bidon)
         {
             light.enabled = false;
@@ -26,7 +27,8 @@ public class ParticlesBevahavour : MonoBehaviour {
     }
 	public void HasBecomeVisible(){
         //anim.enabled=true;
-        particle.Play();
+        if(particle!=null)
+            particle.Play();
         if (Bidon)
         {
             light.enabled = true;

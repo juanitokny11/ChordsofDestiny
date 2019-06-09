@@ -22263,6 +22263,8 @@ MonoBehaviour:
   fanHit: []
   Falling: []
   Bossatack: []
+  musica: {fileID: 0}
+  bossmusica: {fileID: 0}
   Bossinvoca: []
   Bossmulti: {fileID: 0}
   ataqueGirSound: {fileID: 0}
@@ -38926,12 +38928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b833f17eedad0f4ca787ddde1cb3d30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cullingObj:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  cullingObj: []
   reference: {fileID: 1131427587}
   distances: []
   particles: []
@@ -40803,6 +40800,11 @@ PrefabInstance:
       propertyPath: espadaRota
       value: 
       objectReference: {fileID: 1194234865}
+    - target: {fileID: 507275759069458316, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba,
+        type: 3}
+      propertyPath: Chase
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3265112135575079709, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -62371,6 +62373,11 @@ PrefabInstance:
       propertyPath: musicaboss
       value: 
       objectReference: {fileID: 2009397568}
+    - target: {fileID: 4554496321350749296, guid: 32d3847095fd90f41bc2db0671913dc6,
+        type: 3}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8939311919185665385, guid: 32d3847095fd90f41bc2db0671913dc6,
         type: 3}
       propertyPath: caminarS
@@ -63213,6 +63220,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8386676313400792835, guid: 32d3847095fd90f41bc2db0671913dc6,
+        type: 3}
+      propertyPath: musica
+      value: 
+      objectReference: {fileID: 1160529369}
+    - target: {fileID: 8386676313400792835, guid: 32d3847095fd90f41bc2db0671913dc6,
+        type: 3}
+      propertyPath: bossmusica
+      value: 
+      objectReference: {fileID: 2009397568}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32d3847095fd90f41bc2db0671913dc6, type: 3}
 --- !u!1001 &9054620511873806690

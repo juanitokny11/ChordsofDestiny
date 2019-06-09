@@ -19,12 +19,18 @@ public class VictoryManager : MonoBehaviour
     }
     private void EndVideo(VideoPlayer source)
     {
-        creditosMusic.Stop();
-        Invoke("PlayVictoryMusic", 0.2f);
         Creditos.gameObject.SetActive(false);
         victorycanvas.enabled = true;
         Time.timeScale = 1;
         Cursor.visible = true;
+    }
+    private void Update()
+    {
+        if (!creditosMusic.isPlaying)
+        {
+            creditosMusic.Stop();
+            Invoke("PlayVictoryMusic", 0.2f);
+        }
     }
     private void PlayVictoryMusic()
     {
