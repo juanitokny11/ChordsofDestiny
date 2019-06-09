@@ -42,12 +42,14 @@ public class BossIA : MonoBehaviour
     public Transform llavePos;
     public bool invoke = false;
     public bool Chase;
+    public Sound sound;
     public GameObject espadaRota;
     public ParticleSystem brokenArm;
 
     void Start()
     {
         Chase = true;
+        sound = GetComponent<Sound>();
         gameManager = FindObjectOfType<BeatEmupManager>();
         this.enabled = true;
         capsuleCollider = GetComponent<CapsuleCollider>();
@@ -68,6 +70,10 @@ public class BossIA : MonoBehaviour
     {
         if (playerTarget.GetComponent<PlayerMovementBeat>().is_Dead)
             this.enabled = false;
+        /*if (brokenArm.time <= .01f && fase==2)
+        {
+            sound.brazorot();
+        }*/
         if (!outside)
         {
             if (Jump == true)
@@ -301,7 +307,7 @@ public class BossIA : MonoBehaviour
         //espadaRota.transform.position = new Vector3(espadaRota.transform.position.x, 0, espadaRota.transform.position.z);
         gameManager.numScore += scoref1;
         brokenArm.Play();
-        
+        sound.brazorot();
         SetDefault();
     }
     void OnCollisionEnter(Collision collision)

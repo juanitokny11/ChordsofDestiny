@@ -401,7 +401,6 @@ GameObject:
   - component: {fileID: 988149405}
   - component: {fileID: 988149404}
   - component: {fileID: 988149403}
-  - component: {fileID: 2034689652}
   m_Layer: 11
   m_Name: Boss
   m_TagString: Boss
@@ -482,7 +481,10 @@ MonoBehaviour:
   luzsalida: {fileID: 0}
   fin: {fileID: 0}
   Frase: {fileID: 0}
-  frasesBoss: []
+  frasesBoss:
+  - {fileID: 21300000, guid: 45b2b1b7522b4584d89afa954582751a, type: 3}
+  - {fileID: 21300000, guid: 4e3c89cf954f7f34dad275b58a596169, type: 3}
+  - {fileID: 21300000, guid: 0c51609342d2f3348b4e0c1b2baa95b7, type: 3}
   muertebos: {fileID: 5839864551651623886}
   brazo: {fileID: 3356238714983430697}
   fuerteaire: []
@@ -532,7 +534,7 @@ Rigidbody:
   m_Mass: 3
   m_Drag: 0
   m_AngularDrag: 0
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
@@ -590,7 +592,7 @@ MonoBehaviour:
   llavePos: {fileID: 0}
   invoke: 0
   Chase: 0
-  espadaRota: {fileID: 0}
+  espadaRota: {fileID: 4843713033998774898}
   brokenArm: {fileID: 5659585842600766171}
 --- !u!114 &988149406
 MonoBehaviour:
@@ -702,19 +704,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthBar: {fileID: 517838264}
   is_Boss: 1
---- !u!114 &2034689652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 988149402}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b803630d58340b45a3a5e8f3922807d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rend: {fileID: 0}
 --- !u!1 &1093995676
 GameObject:
   m_ObjectHideFlags: 0
@@ -1113,7 +1102,7 @@ GameObject:
   - component: {fileID: 1871696314}
   m_Layer: 0
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: bossUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5577,11 +5566,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: vfx_SwordTrail
       objectReference: {fileID: 0}
-    - target: {fileID: 3829601906780371152, guid: 323ece97080ad4e4b88f63a20ba26933,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3829601906780371153, guid: 323ece97080ad4e4b88f63a20ba26933,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5657,11 +5641,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: vfx_SwordTrail
       objectReference: {fileID: 0}
-    - target: {fileID: 3829601906780371152, guid: 323ece97080ad4e4b88f63a20ba26933,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3829601906780371153, guid: 323ece97080ad4e4b88f63a20ba26933,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5719,15 +5698,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 323ece97080ad4e4b88f63a20ba26933, type: 3}
---- !u!1 &3829601905959420619 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3829601906780371152, guid: 323ece97080ad4e4b88f63a20ba26933,
-    type: 3}
-  m_PrefabInstance: {fileID: 1460910619}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3829601905959420618 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3829601906780371153, guid: 323ece97080ad4e4b88f63a20ba26933,
+    type: 3}
+  m_PrefabInstance: {fileID: 1460910619}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3829601905959420619 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3829601906780371152, guid: 323ece97080ad4e4b88f63a20ba26933,
     type: 3}
   m_PrefabInstance: {fileID: 1460910619}
   m_PrefabAsset: {fileID: 0}
@@ -5885,15 +5864,15 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 0f4b8fa6e9f00cc459105e00d529abc4, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4cbeba19c3b09347aca3cbf83f89bbc, type: 3}
---- !u!1 &4843713033998774898 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100004, guid: a4cbeba19c3b09347aca3cbf83f89bbc,
-    type: 3}
-  m_PrefabInstance: {fileID: 4843713033998742742}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4843713033998610002 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400004, guid: a4cbeba19c3b09347aca3cbf83f89bbc,
+    type: 3}
+  m_PrefabInstance: {fileID: 4843713033998742742}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4843713033998774898 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100004, guid: a4cbeba19c3b09347aca3cbf83f89bbc,
     type: 3}
   m_PrefabInstance: {fileID: 4843713033998742742}
   m_PrefabAsset: {fileID: 0}

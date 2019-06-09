@@ -195,11 +195,11 @@ void disolveFa()
         
    }
 
-   void brazorot()
+   public void brazorot()
    {
-       
-            brazo.Play();      
-   }
+        brazo.pitch = Random.Range(0.8f, 1.1f);
+        brazo.Play();
+    }
 
     //audios groupie
     void AtaqueDebilGroupie()
