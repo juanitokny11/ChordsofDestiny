@@ -10,6 +10,7 @@ public class Sound : MonoBehaviour
     public AudioSource fin;
     public Image Frase;
     public List<Sprite> frasesBoss;
+     public AudioSource muertebos;
     public List<AudioSource> fuerteaire;
    public  List<AudioSource> debilaire;
     public List<AudioSource> golpesHacha;
@@ -154,6 +155,11 @@ void disolveFa()
         DisolveFan.Play(); 
    }
 //audios boss
+
+ void bosmuere()
+    {
+        muertebos.Play();
+    }
 
  void invocboss()
     {
