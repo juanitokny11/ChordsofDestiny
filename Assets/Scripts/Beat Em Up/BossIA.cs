@@ -220,7 +220,7 @@ public class BossIA : MonoBehaviour
                 SetAttack();
             }
         }
-        if (BossZone.enemiescounter == 1 && invoke == true)
+        if (BossZone.enemiescounter == 2 && invoke == true)
             {
                 if (fase == 1)
                 {

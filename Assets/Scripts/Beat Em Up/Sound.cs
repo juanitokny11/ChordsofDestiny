@@ -157,9 +157,14 @@ void disolveFa()
 
  void invocboss()
     {
-        int random = Random.Range(0, 4);
-        frasesBoss[random]= Frase.sprite;
+        int random = Random.Range(0, 3);
         Bossinvoca[random].Play();
+        if (Bossinvoca[0])
+           Frase.sprite= frasesBoss[0];
+        else if(Bossinvoca[1])
+            Frase.sprite = frasesBoss[1];
+        else if (Bossinvoca[2])
+            Frase.sprite = frasesBoss[2];
     }
 
     void basicboss()
