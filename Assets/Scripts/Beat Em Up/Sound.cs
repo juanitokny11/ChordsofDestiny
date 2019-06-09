@@ -11,6 +11,7 @@ public class Sound : MonoBehaviour
     public Image Frase;
     public List<Sprite> frasesBoss;
      public AudioSource muertebos;
+     public AudioSource brazo;
     public List<AudioSource> fuerteaire;
    public  List<AudioSource> debilaire;
     public List<AudioSource> golpesHacha;
@@ -195,9 +196,15 @@ void disolveFa()
    {
        
             walkboss.pitch = Random.Range(0.7f, 1.3f);
-            walkboss.volume = Random.Range(0.15f, 0.30f);
+            walkboss.volume = Random.Range(0.25f, 0.40f);
             walkboss.Play();
         
+   }
+
+   void brazorot()
+   {
+       
+            brazo.Play();      
    }
 
     //audios groupie
