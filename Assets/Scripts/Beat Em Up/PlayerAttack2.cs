@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class PlayerAttack2 : MonoBehaviour
 {
     public List<ComboState> attacks;
@@ -43,6 +43,7 @@ public class PlayerAttack2 : MonoBehaviour
     private float current_Combo_Timer;
     public bool canBlock=true;
     public bool moveTuto;
+    public Image tutoMove;
     public ComboState current_Combo_State;
 
     // Start is called before the first frame update
@@ -75,12 +76,12 @@ public class PlayerAttack2 : MonoBehaviour
     {
         if (moveTuto)
         {
-            // encender cartel movimiento
             Time.timeScale = 0;
+            tutoMove.gameObject.SetActive(true);
             if (Input.GetButton("Run") || Input.GetButton("Vertical") || Input.GetButton("Horizontal"))
             {
                 Debug.Log(Time.timeScale);
-                //apagar cartel movimiento
+                tutoMove.gameObject.SetActive(false);
                 Time.timeScale = 1;
                 moveTuto = false;
             }

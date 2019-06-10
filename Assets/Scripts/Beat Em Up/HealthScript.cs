@@ -35,6 +35,7 @@ public class HealthScript : MonoBehaviour
     public int hitCounter;
     public int hitsCount;
     public bool oneTime;
+    public Image tutosolo;
     public SoundPlayer audios;
     public bool firstSolo;
     public bool is_Player,is_Boss,is_Enemy;
