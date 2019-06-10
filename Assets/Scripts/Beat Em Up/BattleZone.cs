@@ -32,6 +32,7 @@ public class BattleZone : MonoBehaviour
     public bool tutoAtack;
     public bool tutoAtack2;
     public int id;
+    public float counter;
     public int enemiescounter;
     private void Start()
     {
@@ -76,7 +77,12 @@ public class BattleZone : MonoBehaviour
             if (!tutoAtack2)
             {
                 tutoDebil.gameObject.SetActive(true);
-                Time.timeScale = 0;
+                counter += Time.deltaTime;
+                if (counter >= 10)
+                {
+                    tutoAtack2 = true;
+                    counter = 0;
+                }
                 if (Input.GetAxisRaw("AtaqueDebil") != 0)
                 {
                     Time.timeScale = 1;
@@ -85,28 +91,38 @@ public class BattleZone : MonoBehaviour
             }
             else if (tutoAtack2)
             {
-                tutoDebil.gameObject.SetActive(false);
-                tutoFuerte.gameObject.SetActive(true);
-                Time.timeScale = 0;
-                if (Input.GetAxisRaw("AtaqueFuerte") != 0)
+                Invoke("Tuto1Off", 1f);
+                counter += Time.deltaTime;
+                if (counter >= 10)
                 {
-                    tutoFuerte.gameObject.SetActive(false);
-                    Time.timeScale = 1;
                     tutoAtack2 = false;
                     tutoAtack = false;
-                    attackList.RemoveAllList();
+                    Invoke("TutoOff", 1f);
+                    counter = 0;
+                }
+                if (Input.GetAxisRaw("AtaqueFuerte") != 0)
+                {
+                    tutoAtack2 = false;
+                    tutoAtack = false;
+                    Invoke("TutoOff",1f);
+                    Time.timeScale = 1;
                 }
             }
         }
             if (id == 1 && tutoBlock)
             {
                 imageblocktuto.gameObject.SetActive(true);
-                Time.timeScale = 0;
+            counter += Time.deltaTime;
+            if (counter >= 10)
+            {
+                tutoBlock = false;
+                Invoke("TutoBlock", 1f);
+                counter = 0;
+            }
                 if (Input.GetAxisRaw("Block") != 0)
                 {
-                    Time.timeScale = 1;
-                    imageblocktuto.gameObject.SetActive(false);
                     tutoBlock = false;
+                    Invoke("TutoBlock",1f);
                 }
             }
         if (BeatEmupManager.instance.pause == true)
@@ -136,6 +152,21 @@ public class BattleZone : MonoBehaviour
                 enemiescounter = enemies.Count+1;
             }
         }
+    }
+    void TutoBlock()
+    {
+        imageblocktuto.gameObject.SetActive(false);
+        
+    }
+    void Tuto1Off()
+    {
+        tutoDebil.gameObject.SetActive(false);
+        tutoFuerte.gameObject.SetActive(true);
+    }
+    void TutoOff()
+    {
+        tutoFuerte.gameObject.SetActive(false);
+        Debug.Log("apagate");
     }
     void UnlockCamera()
     {

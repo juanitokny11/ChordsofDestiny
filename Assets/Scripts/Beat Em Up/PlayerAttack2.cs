@@ -44,6 +44,7 @@ public class PlayerAttack2 : MonoBehaviour
     public bool canBlock=true;
     public bool moveTuto;
     public Image tutoMove;
+    public float counter;
     public ComboState current_Combo_State;
 
     // Start is called before the first frame update
@@ -76,13 +77,13 @@ public class PlayerAttack2 : MonoBehaviour
     {
         if (moveTuto)
         {
-            Time.timeScale = 0;
             tutoMove.gameObject.SetActive(true);
+            counter += Time.deltaTime;
+            if (counter >= 10)
+                Invoke("TutoMoveOff", 1f);
             if (Input.GetButton("Run") || Input.GetButton("Vertical") || Input.GetButton("Horizontal"))
             {
-                tutoMove.gameObject.SetActive(false);
-                Time.timeScale = 1;
-                moveTuto = false;
+                Invoke("TutoMoveOff",1f);
             }
         }
         ComboAttacks();
@@ -349,6 +350,11 @@ public class PlayerAttack2 : MonoBehaviour
     public void TutoMove()
     {
         moveTuto = true;
+    }
+    public void TutoMoveOff()
+    {
+        tutoMove.gameObject.SetActive(false);
+        moveTuto = false;
     }
 }
 

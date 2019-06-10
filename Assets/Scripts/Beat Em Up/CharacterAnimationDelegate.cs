@@ -333,6 +333,11 @@ public class CharacterAnimationDelegate : MonoBehaviour
     }
     public void CrackFloor()
     {
-        Instantiate(crack, crackPos.position, Quaternion.identity, null);
+        player_Move.run_Speed = 0;
+        if (player_Move.lockrotation == true)
+            transform.rotation = Quaternion.Euler(0, -180, 0);
+        else if (player_Move.lockrotation == false)
+          transform.rotation = Quaternion.Euler(0, 0, 0);
+    Instantiate(crack, crackPos.position, Quaternion.identity, null);
     }
 }

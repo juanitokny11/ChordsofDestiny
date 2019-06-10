@@ -38,6 +38,7 @@ public class HealthScript : MonoBehaviour
     public Image tutosolo;
     public SoundPlayer audios;
     public bool firstSolo;
+    public float counter;
     public bool is_Player,is_Boss,is_Enemy;
 
     public void Start()
@@ -97,11 +98,16 @@ public class HealthScript : MonoBehaviour
             {
                 canDoSolo = true;
                 soloCharged.SetActive(true);
-                if (firstSolo)
+                counter += Time.deltaTime;
+                if (counter >= 10)
+                {
+                    Invoke("TutoSolo", 1f);
+                    firstSolo = false;
+                }
+
+                    if (firstSolo)
                 {
                     tutosolo.gameObject.SetActive(true);
-                    Time.timeScale = 0;
-
                 }
             }
         }
@@ -112,13 +118,17 @@ public class HealthScript : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.D) || Input.GetAxisRaw("Solo") == 1 && Input.GetAxisRaw("Disparar") == 1)
                 {
                     Time.timeScale = 1;
-                    tutosolo.gameObject.SetActive(false);
+                    Invoke("TutoSolo", 1f);
                     firstSolo = false;
                 }
                 canDoSolo = false;
                 soloCharged.SetActive(false);
             }
         }
+    }
+    void TutoSolo()
+    {
+        tutosolo.gameObject.SetActive(false);
     }
     public void ApplyDamage(float damage,bool knockDown,bool defense)
     {
