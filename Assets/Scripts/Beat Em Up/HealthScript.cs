@@ -100,7 +100,7 @@ public class HealthScript : MonoBehaviour
                 {
                     // encender tuto solo
                     Time.timeScale = 0;
-                    if(Input.GetAxisRaw("AtaqueDebil") == 1)
+                    if(Input.GetKeyDown(KeyCode.D) || Input.GetAxisRaw("Solo") == 1 && Input.GetAxisRaw("Disparar") == 1)
                     {
                         Time.timeScale = 1;
                         //apagar tuto solo
