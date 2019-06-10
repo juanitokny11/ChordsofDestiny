@@ -23,6 +23,9 @@ public class BeatEmupManager : MonoBehaviour
     public Canvas videoCanvas;
     public Canvas audioCanvas;
     public Canvas controlsCanvas;
+    public Image tutosolo;
+    public Sprite tutosoloPc;
+    public Sprite tutosoloXbox;
     public Image tutoMove;
     public Sprite tutoMovePc;
     public Sprite tutoMoveXbox;
@@ -71,6 +74,7 @@ public class BeatEmupManager : MonoBehaviour
                 {
                     //Not empty, controller temp[i] is connected
                     tutoMove.sprite = tutoMoveXbox;
+                    tutosolo.sprite = tutosoloXbox;
                     Debug.Log("Controller " + i + " is connected using: " + temp[i]);
                 }
                 else
@@ -78,6 +82,7 @@ public class BeatEmupManager : MonoBehaviour
                     //If it is empty, controller i is disconnected
                     //where i indicates the controller number
                     tutoMove.sprite = tutoMovePc;
+                    tutosolo.sprite = tutosoloPc;
                     Debug.Log("Controller: " + i + " is disconnected.");
 
                 }

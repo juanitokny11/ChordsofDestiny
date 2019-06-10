@@ -99,14 +99,9 @@ public class HealthScript : MonoBehaviour
                 soloCharged.SetActive(true);
                 if (firstSolo)
                 {
-                    // encender tuto solo
+                    tutosolo.gameObject.SetActive(true);
                     Time.timeScale = 0;
-                    if(Input.GetKeyDown(KeyCode.D) || Input.GetAxisRaw("Solo") == 1 && Input.GetAxisRaw("Disparar") == 1)
-                    {
-                        Time.timeScale = 1;
-                        //apagar tuto solo
-                        firstSolo = false;
-                    }
+
                 }
             }
         }
@@ -114,6 +109,12 @@ public class HealthScript : MonoBehaviour
         {
             if (is_Player)
             {
+                if (Input.GetKeyDown(KeyCode.D) || Input.GetAxisRaw("Solo") == 1 && Input.GetAxisRaw("Disparar") == 1)
+                {
+                    Time.timeScale = 1;
+                    tutosolo.gameObject.SetActive(false);
+                    firstSolo = false;
+                }
                 canDoSolo = false;
                 soloCharged.SetActive(false);
             }

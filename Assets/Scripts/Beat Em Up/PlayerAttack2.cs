@@ -80,7 +80,6 @@ public class PlayerAttack2 : MonoBehaviour
             tutoMove.gameObject.SetActive(true);
             if (Input.GetButton("Run") || Input.GetButton("Vertical") || Input.GetButton("Horizontal"))
             {
-                Debug.Log(Time.timeScale);
                 tutoMove.gameObject.SetActive(false);
                 Time.timeScale = 1;
                 moveTuto = false;
