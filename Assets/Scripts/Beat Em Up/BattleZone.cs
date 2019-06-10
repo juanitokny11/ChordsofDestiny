@@ -24,7 +24,13 @@ public class BattleZone : MonoBehaviour
     public GameObject pua;
     public Transform puaPos;
     public List<EnemyMovement> enemies;
+    public Image tutoFuerte;
+    public Image tutoDebil;
+    public Image imageblocktuto;
+    public PlayerAttackList attackList;
+    public bool tutoBlock;
     public bool tutoAtack;
+    public bool tutoAtack2;
     public int id;
     public int enemiescounter;
     private void Start()
@@ -43,6 +49,10 @@ public class BattleZone : MonoBehaviour
             if (id == 0 )
             {
                 tutoAtack = true;
+            }
+            if (id == 1)
+            {
+                tutoBlock= true;
             }
             UI.GetComponent<Canvas>().enabled = true;
             UI2.GetComponent<Canvas>().enabled = true;
@@ -63,15 +73,42 @@ public class BattleZone : MonoBehaviour
     {
         if (id == 0 && tutoAtack)
         {
-            // encender tuto ataques
-            Time.timeScale = 0;
-            if (Input.GetAxisRaw("AtaqueDebil") != 0 || Input.GetAxisRaw("AtaqueFuerte") != 0)
+            if (!tutoAtack2)
             {
-                // àpagar tuto ataques
-                Time.timeScale = 1;
-                tutoAtack = false;
+                tutoDebil.gameObject.SetActive(true);
+                Time.timeScale = 0;
+                if (Input.GetAxisRaw("AtaqueDebil") != 0)
+                {
+                    Time.timeScale = 1;
+                    tutoAtack2 = true;
+                }
+            }
+            else if (tutoAtack2)
+            {
+                tutoDebil.gameObject.SetActive(false);
+                tutoFuerte.gameObject.SetActive(true);
+                Time.timeScale = 0;
+                if (Input.GetAxisRaw("AtaqueFuerte") != 0)
+                {
+                    tutoFuerte.gameObject.SetActive(false);
+                    Time.timeScale = 1;
+                    tutoAtack2 = false;
+                    tutoAtack = false;
+                    attackList.RemoveAllList();
+                }
             }
         }
+            if (id == 1 && tutoBlock)
+            {
+                imageblocktuto.gameObject.SetActive(true);
+                Time.timeScale = 0;
+                if (Input.GetAxisRaw("Evadir") != 0)
+                {
+                    Time.timeScale = 1;
+                    imageblocktuto.gameObject.SetActive(false);
+                    tutoBlock = false;
+                }
+            }
         if (BeatEmupManager.instance.pause == true)
             musica.mute=false;
         if (BeatEmupManager.instance.pause == false)
