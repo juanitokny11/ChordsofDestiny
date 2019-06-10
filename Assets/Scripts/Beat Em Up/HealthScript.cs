@@ -36,10 +36,12 @@ public class HealthScript : MonoBehaviour
     public int hitsCount;
     public bool oneTime;
     public SoundPlayer audios;
+    public bool firstSolo;
     public bool is_Player,is_Boss,is_Enemy;
 
     public void Start()
     {
+        firstSolo = true;
         characterDied = false;
         npcCulling = FindObjectOfType<NpcCulling>();
         gameManager = FindObjectOfType<BeatEmupManager>();
@@ -94,6 +96,17 @@ public class HealthScript : MonoBehaviour
             {
                 canDoSolo = true;
                 soloCharged.SetActive(true);
+                if (firstSolo)
+                {
+                    // encender tuto solo
+                    Time.timeScale = 0;
+                    if(Input.GetKeyDown(KeyCode.D) || Input.GetAxisRaw("Solo") == 1 && Input.GetAxisRaw("Disparar") == 1)
+                    {
+                        Time.timeScale = 1;
+                        //apagar tuto solo
+                        firstSolo = false;
+                    }
+                }
             }
         }
         else

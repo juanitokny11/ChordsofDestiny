@@ -42,11 +42,13 @@ public class PlayerAttack2 : MonoBehaviour
     private float default_Combo_Timer = 0.95f;
     private float current_Combo_Timer;
     public bool canBlock=true;
+    public bool moveTuto;
     public ComboState current_Combo_State;
 
     // Start is called before the first frame update
     void Awake()
     {
+        moveTuto = false;
         doSolo = false;
         enableAttacks = false;
         mycol = GetComponentInChildren<CapsuleCollider>();
@@ -71,7 +73,19 @@ public class PlayerAttack2 : MonoBehaviour
     }
     void Update()
     {
-            ComboAttacks();
+        if (moveTuto)
+        {
+            // encender cartel movimiento
+            Time.timeScale = 0;
+            if (Input.GetButton("Run") || Input.GetButton("Vertical") || Input.GetButton("Horizontal"))
+            {
+                Debug.Log(Time.timeScale);
+                //apagar cartel movimiento
+                Time.timeScale = 1;
+                moveTuto = false;
+            }
+        }
+        ComboAttacks();
             ResetComboState();
             if (current_Combo_State == ComboState.JUMP)
             {
@@ -330,7 +344,11 @@ public class PlayerAttack2 : MonoBehaviour
         player_Move.enableMovement = true;
         player_Move.jump = true;
         player_Move.canRotate = true;
-   
+        Invoke("TutoMove",1f);
+    }
+    public void TutoMove()
+    {
+        moveTuto = true;
     }
 }
 

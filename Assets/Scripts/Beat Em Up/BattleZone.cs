@@ -24,13 +24,15 @@ public class BattleZone : MonoBehaviour
     public GameObject pua;
     public Transform puaPos;
     public List<EnemyMovement> enemies;
+    public bool tutoAtack;
     public int id;
     public int enemiescounter;
     private void Start()
     {
+        tutoAtack = false;
         //colider = GetComponent<BoxCollider>();
         //camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ShakeCamera>();
-        if(!bossZone)
+        if (!bossZone)
             enemiescounter = enemies.Count;
         Player = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthScript>();
     }
@@ -38,6 +40,10 @@ public class BattleZone : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            if (id == 0 )
+            {
+                tutoAtack = true;
+            }
             UI.GetComponent<Canvas>().enabled = true;
             UI2.GetComponent<Canvas>().enabled = true;
             enemyBlocker.enabled = false;
@@ -55,6 +61,17 @@ public class BattleZone : MonoBehaviour
     }
     void Update()
     {
+        if (id == 0 && tutoAtack)
+        {
+            // encender tuto ataques
+            Time.timeScale = 0;
+            if (Input.GetAxisRaw("AtaqueDebil") != 0 || Input.GetAxisRaw("AtaqueFuerte") != 0)
+            {
+                // àpagar tuto ataques
+                Time.timeScale = 1;
+                tutoAtack = false;
+            }
+        }
         if (BeatEmupManager.instance.pause == true)
             musica.mute=false;
         if (BeatEmupManager.instance.pause == false)

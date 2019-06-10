@@ -88,7 +88,7 @@ public class AttackUniversal : MonoBehaviour
                         sound.GolpeDesdeArriba();
                     healthScript.inAir = false;
                     sound.ataquedesdealto();
-                    damage = 4;
+                    damage = 5;
                     if (hit[0].tag == "Enemy")
                         hit[0].GetComponent<EnemyMovement>().soloHit = false;
                     healthScript.hitsCount++;
@@ -146,7 +146,7 @@ public class AttackUniversal : MonoBehaviour
                     sound.hit = true;
                     if (!attackList.F3)
                         sound.GolpeHacha();
-                    damage = 4;
+                    damage = 5;
                     healthScript.hitsCount++;
                     if (!attackList.F3)
                             sound.GolpeHacha();
@@ -173,7 +173,7 @@ public class AttackUniversal : MonoBehaviour
                         sound.hit = true;
                         if (!attackList.F3)
                             sound.GolpeHacha();
-                        damage = 4;
+                        damage = 5;
                         healthScript.hitsCount++;
                         counterhits = 0;
                     }
@@ -189,7 +189,7 @@ public class AttackUniversal : MonoBehaviour
                                 sound.GolpeGiratorio();
                             }
                         }
-                        damage = 3;
+                        damage = 4;
                         healthScript.hitsCount++;
                         counterhits = 0;
                     }
