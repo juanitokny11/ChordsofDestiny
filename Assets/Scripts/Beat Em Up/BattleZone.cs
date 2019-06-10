@@ -102,7 +102,7 @@ public class BattleZone : MonoBehaviour
             {
                 imageblocktuto.gameObject.SetActive(true);
                 Time.timeScale = 0;
-                if (Input.GetAxisRaw("Evadir") != 0)
+                if (Input.GetAxisRaw("Block") != 0)
                 {
                     Time.timeScale = 1;
                     imageblocktuto.gameObject.SetActive(false);

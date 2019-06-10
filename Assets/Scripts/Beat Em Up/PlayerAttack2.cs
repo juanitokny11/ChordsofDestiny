@@ -202,7 +202,7 @@ public class PlayerAttack2 : MonoBehaviour
                 healthUI.SoloBar.fillAmount = healthScript.solo / 100;
             }
         }
-        if (Input.GetAxisRaw("Evadir") == 1 && !blockActivated && canBlock /* && !player_Move.walk && !player_Move.running*/)
+        if (Input.GetAxisRaw("Block") == 1 && !blockActivated && canBlock /* && !player_Move.walk && !player_Move.running*/)
         {
             if (player_Move.walk || player_Move.running)
             {
@@ -234,7 +234,7 @@ public class PlayerAttack2 : MonoBehaviour
                 current_Combo_State = ComboState.JUMP;
             }
         }
-        else if ( Input.GetAxisRaw("Evadir") == 0 && blockActivated)
+        else if ( Input.GetAxisRaw("Block") == 0 && blockActivated)
         {
             current_Combo_State = ComboState.GUARD;
             if (player_Move.walk || player_Move.running)
