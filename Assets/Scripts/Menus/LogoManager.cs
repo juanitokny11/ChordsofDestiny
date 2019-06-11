@@ -26,6 +26,7 @@ public class LogoManager : MonoBehaviour
     public bool extras=true;
     public GameObject pantallanegra;
     public AudioSource creditsMusic;
+    public AudioSource EnterStart;
     bool logo = false;
     public bool cinematica = false;
     private void Awake()
@@ -73,7 +74,9 @@ public class LogoManager : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Return) && logo && !cinematica || Input.GetAxisRaw("AtaqueDebil") != 0 && logo && !cinematica)
         {
-            MainMenu();
+            EnterStart.Play();
+            InvokeRepeating("ParpadeoTextMenu", 0.1f, 0.1f);
+            Invoke( "MainMenu",1.0f);
             Cursor.visible = true;
             MyGameSettings.getInstance().logoPlayed = true;
         }
@@ -115,8 +118,20 @@ public class LogoManager : MonoBehaviour
         cinematica = true;
     }
     // Update is called once per frame
+    public  void ParpadeoTextMenu()
+    {
+        if (Time.fixedTime % .5 < .2)
+        {
+            titleText.enabled = true;
+        }
+        else
+        {
+            titleText.enabled = false;
+        }
+    }
     public void MainMenu()
     {
+        CancelInvoke("ParpadeoTextMenu");
         creditsMusic.Stop();
         title.gameObject.SetActive(false);
         titleText.enabled = false;

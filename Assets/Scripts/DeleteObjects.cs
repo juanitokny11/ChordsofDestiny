@@ -55,7 +55,7 @@ public class DeleteObjects: MonoBehaviour {
     }
     void Blink()
     {
-        if (Time.fixedTime % .5 < .2)
+        if (Time.fixedTime % .4 < .2)
         {
            gameObject.transform.parent.gameObject.SetActive(false);
         }
@@ -67,9 +67,9 @@ public class DeleteObjects: MonoBehaviour {
     public void Explode()
     {
         InvokeRepeating("Blink", 0.1f, 0.1f); 
-        /*if (playerHealth.health <= 100)
-            Invoke("LifeOn", 2f);*/
-        Invoke("StopBlink", 3f);
+        if (playerHealth.health <= 100)
+            Invoke("LifeOn", 2f);
+        Invoke("StopBlink", 2f);
     }
     public void StopBlink()
     {
@@ -85,8 +85,8 @@ public class DeleteObjects: MonoBehaviour {
             Instantiate(pua, puaSpawn, Quaternion.identity);
             firsttime = false;
         }
-        /*if (playerHealth.health <= 100)
-            Invoke("LifeOff", 2f);*/
+        if (playerHealth.health <= 100)
+            Invoke("LifeOff", 2f);
         scoreUI.enabled = false;
         Invoke("Destroy", 0.1f);
     }
