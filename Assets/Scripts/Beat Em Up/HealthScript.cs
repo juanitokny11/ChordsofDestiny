@@ -30,6 +30,7 @@ public class HealthScript : MonoBehaviour
     private LifeControler enemy_Health_UI;
     public PlayerAttackList playerAttack_List;
     public bool canDoSolo = false;
+    public bool solotuto;
     public bool characterDied;
     public bool inAir=false;
     public int hitCounter;
@@ -43,6 +44,7 @@ public class HealthScript : MonoBehaviour
 
     public void Start()
     {
+        solotuto = true;
         firstSolo = true;
         characterDied = false;
         npcCulling = FindObjectOfType<NpcCulling>();
@@ -107,6 +109,7 @@ public class HealthScript : MonoBehaviour
 
                     if (firstSolo)
                 {
+                    solotuto = false;
                     tutosolo.gameObject.SetActive(true);
                 }
             }
@@ -115,7 +118,7 @@ public class HealthScript : MonoBehaviour
         {
             if (is_Player)
             {
-                if (Input.GetKeyDown(KeyCode.D) || Input.GetAxisRaw("Solo") == 1 && Input.GetAxisRaw("Disparar") == 1)
+                if (Input.GetKeyDown(KeyCode.D) && !solotuto || Input.GetAxisRaw("Solo") == 1 && Input.GetAxisRaw("Disparar") == 1 && !solotuto)
                 {
                     Time.timeScale = 1;
                     Invoke("TutoSolo", 1f);
