@@ -93,19 +93,26 @@ public class BattleZone : MonoBehaviour
             {
                 Invoke("Tuto1Off", 1.5f);
                 counter += Time.deltaTime;
-                if (counter >= 10)
+                if (counter >= 10 || enemiescounter<=0)
                 {
                     tutoAtack2 = false;
                     tutoAtack = false;
                     Invoke("TutoOff", 1.5f);
                     counter = 0;
                 }
-                if (Input.GetAxisRaw("AtaqueFuerte") != 0)
+                if (enemiescounter <= 0)
+                {
+                    tutoAtack2 = false;
+                    tutoAtack = false;
+                    Invoke("TutoOff", 1.5f);
+                    counter = 0;
+                }
+                    if (Input.GetAxisRaw("AtaqueFuerte") != 0)
                 {
                     tutoAtack2 = false;
                     tutoAtack = false;
                     Invoke("TutoOff",1.5f);
-                    Time.timeScale = 1;
+                    counter = 0;
                 }
             }
         }
@@ -134,7 +141,6 @@ public class BattleZone : MonoBehaviour
             if (enemiescounter <= 0)
             {
                 EnemyUI.SetActive(false);
-                UI.GetComponent<Canvas>().enabled = false;
                 Invoke("UnlockCamera", 1f);
                 //musica.DOFade(0.4f, 5f);
                 //musica.Pause();
@@ -166,7 +172,8 @@ public class BattleZone : MonoBehaviour
     void TutoOff()
     {
         tutoFuerte.gameObject.SetActive(false);
-        Debug.Log("apagate");
+        if(enemiescounter<=0)
+        Destroy(gameObject);
     }
     void UnlockCamera()
     {
@@ -174,7 +181,7 @@ public class BattleZone : MonoBehaviour
         //Invoke("UnlockCam",2f);
         camera.enemiesdied = true;
         camera.lockCamera = false;
-        
+        UI.GetComponent<Canvas>().enabled = false;
     }
     void SetGo()
     {

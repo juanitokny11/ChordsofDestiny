@@ -16,12 +16,14 @@ public class DeleteObjects: MonoBehaviour {
     public HealthScript playerHealth;
     public Canvas UI;
     public GameObject score;
+    public AudioSource fuego;
     public BeatEmupManager gameManager;
     public ParticleCulling particleCulling;
 
     private void Start()
     {
         firsttime = true;
+        fuego = GetComponent<AudioSource>();
         gameManager = FindObjectOfType<BeatEmupManager>();
         particleCulling = FindObjectOfType<ParticleCulling>();
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthScript>();
@@ -44,6 +46,11 @@ public class DeleteObjects: MonoBehaviour {
             Destroy(p1);
             Destroy(p2);
             Destroy(p3);
+        }
+        else
+        {
+            if(!BeatEmupManager.instance.pause)
+            fuego.Play();
         }
     }
     private void OnTriggerEnter(Collider other)

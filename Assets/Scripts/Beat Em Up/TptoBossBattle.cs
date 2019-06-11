@@ -13,6 +13,7 @@ public class TptoBossBattle : MonoBehaviour
     public Animator player_Anim;
     public BattleZone BossZone;
     public GameObject reverbZone;
+    public GameObject Pospo;
     public Canvas BossLife;
     public bool cinematica=false;
     public AudioSource musicBoss;
@@ -50,6 +51,7 @@ public class TptoBossBattle : MonoBehaviour
             cinematicaBoss.Pause();
             ActivateBossMusic();
             reverbZone.SetActive(true);
+            Pospo.SetActive(true);
         }
             if (changeMusic == true)
         {
@@ -102,6 +104,7 @@ public class TptoBossBattle : MonoBehaviour
             other.gameObject.transform.position = tppoint.position;
             camera.lockCamera = false;
             Player.enabled = false;
+            Pospo.SetActive(false);
             BeatEmupManager.instance.musicGameplay.Stop();
             //changeMusic = true;
         }

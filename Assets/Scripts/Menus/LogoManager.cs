@@ -27,12 +27,15 @@ public class LogoManager : MonoBehaviour
     public GameObject pantallanegra;
     public AudioSource creditsMusic;
     public AudioSource EnterStart;
+    public GameObject pospo;
+    public bool credits;
     bool logo = false;
     public bool cinematica = false;
     private void Awake()
     {
         logoVideo.Prepare();
         title.Prepare();
+        pospo.SetActive(false);
         //menu.SetActive(false);
     }
     void Start()
@@ -59,6 +62,7 @@ public class LogoManager : MonoBehaviour
         title.GetComponent<MeshRenderer>().enabled = false; 
         Invoke("OffPantallaNegra",Time.deltaTime*25f);
         niebla.Play();
+        pospo.SetActive(true);
         fademusica.SetActive(true);
         musica.Play();
         logo = true;
@@ -74,8 +78,11 @@ public class LogoManager : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Return) && logo && !cinematica || Input.GetAxisRaw("AtaqueDebil") != 0 && logo && !cinematica)
         {
-            EnterStart.Play();
-            InvokeRepeating("ParpadeoTextMenu", 0.1f, 0.1f);
+            if (!credits)
+            {
+                EnterStart.Play();
+                InvokeRepeating("ParpadeoTextMenu", 0.2f, 0.2f);
+            }
             Invoke( "MainMenu",1.0f);
             Cursor.visible = true;
             MyGameSettings.getInstance().logoPlayed = true;
@@ -174,6 +181,7 @@ public class LogoManager : MonoBehaviour
     }
     public void Creditos()
     {
+        credits = true;
         optionsAnim.Anim = true;
         optionsAnim.firstTime = true;
     }

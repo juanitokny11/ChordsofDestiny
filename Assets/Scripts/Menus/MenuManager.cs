@@ -20,6 +20,7 @@ public class MenuManager : MonoBehaviour {
     public Canvas skipcanvas;
     public float counter=0;
     public float countStart = 0;
+    public GameObject pospo;
     public VideoPlayer Credits;
     public AudioSource creditsMusic;
     public bool enableCredits;
@@ -72,6 +73,7 @@ public class MenuManager : MonoBehaviour {
     private void EndVideo(VideoPlayer source)
     {
         Credits.gameObject.SetActive(false);
+        pospo.SetActive(true);
         Cursor.visible = true;
         ReturnCreditos();
         logoManager.MainMenu();
@@ -106,6 +108,7 @@ public class MenuManager : MonoBehaviour {
     {
         if (is_MainMenu)
         {
+            pospo.SetActive(false);
             cinematicaInicial.gameObject.SetActive(true);
             Cursor.visible = false;
             cinematicaInicial.Play();
@@ -128,7 +131,6 @@ public class MenuManager : MonoBehaviour {
     }
     public void EndGame()
     { 
-       
         System.Diagnostics.Process.GetCurrentProcess().Kill();
         //Application.Quit();
     }
@@ -161,6 +163,7 @@ public class MenuManager : MonoBehaviour {
     public void Creditos()
     { 
         Credits.gameObject.SetActive(true);
+        pospo.SetActive(false);
         enableCredits = true;
         Cursor.visible = false;
         MyGameSettings.getInstance().menuAnim.Anim = true;
