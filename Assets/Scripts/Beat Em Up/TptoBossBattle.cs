@@ -12,6 +12,7 @@ public class TptoBossBattle : MonoBehaviour
     public PlayerMovementBeat Player;
     public Animator player_Anim;
     public BattleZone BossZone;
+    public GameObject reverbZone;
     public Canvas BossLife;
     public bool cinematica=false;
     public AudioSource musicBoss;
@@ -19,7 +20,6 @@ public class TptoBossBattle : MonoBehaviour
     public bool changeMusic=false;
     public VideoClip VideoEng;
     public VideoClip VideoEsp;
-    public Canvas skipcanvas;
     public float counter = 0;
     public float countStart = 0;
     public void Start()
@@ -32,12 +32,6 @@ public class TptoBossBattle : MonoBehaviour
     private void Update()
     {
         cinematicaBoss.loopPointReached += onMovieEnded;
-        if (skipcanvas.enabled)
-            counter++;
-        if (counter >= 1500)
-        {
-            skipcanvas.enabled = false;
-        }
         if (LanguageManager.langData.currentLanguage == LangData.Languages.English)
         {
             cinematicaBoss.clip = VideoEng;
@@ -55,7 +49,7 @@ public class TptoBossBattle : MonoBehaviour
             Player.enabled = true;
             cinematicaBoss.Pause();
             ActivateBossMusic();
-            skipcanvas.gameObject.SetActive(false);
+            reverbZone.SetActive(true);
         }
             if (changeMusic == true)
         {
@@ -91,6 +85,7 @@ public class TptoBossBattle : MonoBehaviour
         Player.enabled = true;
         cinematicaBoss.Pause();
         ActivateBossMusic();
+        reverbZone.SetActive(true);
     }
  
     private void OnTriggerEnter(Collider other)
@@ -99,7 +94,6 @@ public class TptoBossBattle : MonoBehaviour
         {
             cinematicaBoss.gameObject.SetActive(true);
             cinematicaBoss.Play();
-            skipcanvas.enabled = true;
             cinematica = true;
             Player.running = false;
             Player.walk = false;

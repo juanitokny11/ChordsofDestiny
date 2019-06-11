@@ -50,6 +50,7 @@ public class AttackUniversal : MonoBehaviour
         healthScript = GetComponentInParent<HealthScript>();
         if (is_Boss)
             bossIA = GetComponentInParent<BossIA>();
+        if(is_Player)
         this.gameObject.SetActive(false);
     }
     void Update()

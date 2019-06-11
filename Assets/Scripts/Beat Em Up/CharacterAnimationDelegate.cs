@@ -224,7 +224,7 @@ public class CharacterAnimationDelegate : MonoBehaviour
             groupieEnemy.attackPlayer = false;
             groupieBody.isKinematic = true;
             //groupieEnemy.Death();
-            //groupieEnemy.enabled = false;
+            groupieEnemy.enabled = false;
         }
         else
         {
