@@ -32,7 +32,7 @@ public class DeleteObjects: MonoBehaviour {
     {
         if (vida <= 0)
         {
-            Invoke("Explode", Time.deltaTime * 18f);
+            Invoke("Explode", Time.deltaTime * 15f);
             scoreUI.enabled = true;
             score.SetActive(true);
             if (p1!=null)

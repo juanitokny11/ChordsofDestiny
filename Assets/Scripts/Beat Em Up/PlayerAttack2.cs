@@ -83,7 +83,7 @@ public class PlayerAttack2 : MonoBehaviour
                 Invoke("TutoMoveOff", 1f);
             if (Input.GetButton("Run") || Input.GetButton("Vertical") || Input.GetButton("Horizontal"))
             {
-                Invoke("TutoMoveOff",1f);
+                Invoke("TutoMoveOff",1.5f);
             }
         }
         ComboAttacks();

@@ -103,7 +103,7 @@ public class HealthScript : MonoBehaviour
                 counter += Time.deltaTime;
                 if (counter >= 10)
                 {
-                    Invoke("TutoSolo", 1f);
+                    Invoke("TutoSolo", 1.5f);
                     firstSolo = false;
                 }
 
@@ -121,7 +121,7 @@ public class HealthScript : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.D) && !solotuto || Input.GetAxisRaw("Solo") == 1 && Input.GetAxisRaw("Disparar") == 1 && !solotuto)
                 {
                     Time.timeScale = 1;
-                    Invoke("TutoSolo", 1f);
+                    Invoke("TutoSolo", 1.5f);
                     firstSolo = false;
                 }
                 canDoSolo = false;

@@ -91,20 +91,20 @@ public class BattleZone : MonoBehaviour
             }
             else if (tutoAtack2)
             {
-                Invoke("Tuto1Off", 1f);
+                Invoke("Tuto1Off", 1.5f);
                 counter += Time.deltaTime;
                 if (counter >= 10)
                 {
                     tutoAtack2 = false;
                     tutoAtack = false;
-                    Invoke("TutoOff", 1f);
+                    Invoke("TutoOff", 1.5f);
                     counter = 0;
                 }
                 if (Input.GetAxisRaw("AtaqueFuerte") != 0)
                 {
                     tutoAtack2 = false;
                     tutoAtack = false;
-                    Invoke("TutoOff",1f);
+                    Invoke("TutoOff",1.5f);
                     Time.timeScale = 1;
                 }
             }
@@ -116,13 +116,13 @@ public class BattleZone : MonoBehaviour
             if (counter >= 10)
             {
                 tutoBlock = false;
-                Invoke("TutoBlock", 1f);
+                Invoke("TutoBlock", 1.5f);
                 counter = 0;
             }
                 if (Input.GetAxisRaw("Block") != 0)
                 {
                     tutoBlock = false;
-                    Invoke("TutoBlock",1f);
+                    Invoke("TutoBlock",1.5f);
                 }
             }
         if (BeatEmupManager.instance.pause == true)
