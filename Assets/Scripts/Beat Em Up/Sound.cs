@@ -11,6 +11,8 @@ public class Sound : MonoBehaviour
     public Image Frase;
     public List<Sprite> frasesBoss;
      public AudioSource muertebos;
+     public AudioSource saltoarrib;
+     public AudioSource saltoabaj;
     public AudioSource chispas;
      public AudioSource brazo;
     public List<AudioSource> fuerteaire;
@@ -160,6 +162,16 @@ void disolveFa()
         DisolveFan.Play(); 
    }
 //audios boss
+
+void saltodow()
+{
+    saltoabaj.Play();
+}
+
+void saltou()
+{
+    saltoarrib.Play();
+}
 
  void bosmuere()
     {
