@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 using DG.Tweening;
+using UnityEngine.Rendering.PostProcessing;
 
 public class TptoBossBattle : MonoBehaviour
 {
@@ -52,6 +53,7 @@ public class TptoBossBattle : MonoBehaviour
             ActivateBossMusic();
             reverbZone.SetActive(true);
             Pospo.SetActive(true);
+            camera.gameObject.GetComponent<PostProcessLayer>().enabled = true;
         }
             if (changeMusic == true)
         {
@@ -88,6 +90,7 @@ public class TptoBossBattle : MonoBehaviour
         cinematicaBoss.Pause();
         ActivateBossMusic();
         reverbZone.SetActive(true);
+        camera.gameObject.GetComponent<PostProcessLayer>().enabled = true;
     }
  
     private void OnTriggerEnter(Collider other)
@@ -103,6 +106,7 @@ public class TptoBossBattle : MonoBehaviour
             player_Anim.SetBool("Run", false);
             other.gameObject.transform.position = tppoint.position;
             camera.lockCamera = false;
+            camera.gameObject.GetComponent<PostProcessLayer>().enabled = false;
             Player.enabled = false;
             Pospo.SetActive(false);
             BeatEmupManager.instance.musicGameplay.Stop();

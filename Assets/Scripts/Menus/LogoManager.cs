@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering.PostProcessing;
 
 public class LogoManager : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class LogoManager : MonoBehaviour
     public AudioSource creditsMusic;
     public AudioSource EnterStart;
     public GameObject pospo;
+    public Camera camera;
     public bool credits;
     bool logo = false;
     public bool cinematica = false;
@@ -36,6 +38,7 @@ public class LogoManager : MonoBehaviour
         logoVideo.Prepare();
         title.Prepare();
         pospo.SetActive(false);
+        camera.gameObject.GetComponent<PostProcessLayer>().enabled = false;
         //menu.SetActive(false);
     }
     void Start()
@@ -63,6 +66,7 @@ public class LogoManager : MonoBehaviour
         Invoke("OffPantallaNegra",Time.deltaTime*25f);
         niebla.Play();
         pospo.SetActive(true);
+        camera.gameObject.GetComponent<PostProcessLayer>().enabled = true;
         fademusica.SetActive(true);
         musica.Play();
         logo = true;
@@ -83,6 +87,7 @@ public class LogoManager : MonoBehaviour
                 EnterStart.Play();
                 InvokeRepeating("ParpadeoTextMenu", 0.2f, 0.2f);
             }
+            camera.gameObject.GetComponent<PostProcessLayer>().enabled = true;
             Invoke( "MainMenu",1.0f);
             Cursor.visible = true;
             MyGameSettings.getInstance().logoPlayed = true;
@@ -90,6 +95,7 @@ public class LogoManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return) && logo && cinematica|| Input.GetAxisRaw("AtaqueDebil") != 0 && logo && cinematica)
         {
             menuManager.cinematicaInicial.Pause();
+            camera.gameObject.GetComponent<PostProcessLayer>().enabled = false;
             //Invoke("CinematicaTrue", 1.0f);
             SceneManager.LoadScene("Gameplay");
             Time.timeScale = 1;
@@ -127,7 +133,7 @@ public class LogoManager : MonoBehaviour
     // Update is called once per frame
     public  void ParpadeoTextMenu()
     {
-        if (Time.fixedTime % .5 < .2)
+        if (Time.fixedTime % .4 < .2)
         {
             titleText.enabled = true;
         }
@@ -139,6 +145,7 @@ public class LogoManager : MonoBehaviour
     public void MainMenu()
     {
         CancelInvoke("ParpadeoTextMenu");
+        camera.gameObject.GetComponent<PostProcessLayer>().enabled = true;
         creditsMusic.Stop();
         title.gameObject.SetActive(false);
         titleText.enabled = false;
@@ -181,6 +188,7 @@ public class LogoManager : MonoBehaviour
     }
     public void Creditos()
     {
+        camera.gameObject.GetComponent<PostProcessLayer>().enabled = false;
         credits = true;
         optionsAnim.Anim = true;
         optionsAnim.firstTime = true;

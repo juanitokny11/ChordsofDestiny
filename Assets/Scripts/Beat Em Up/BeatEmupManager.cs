@@ -112,7 +112,7 @@ public class BeatEmupManager : MonoBehaviour
         {
             Player.transform.position = Tppos.position;
         }
-        if (godmode == true)
+        if (godmode == true && Player.GetComponent<PlayerAttack2>().canPause)
         {
 
             if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Pause"))

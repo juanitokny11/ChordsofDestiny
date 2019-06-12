@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;
 
@@ -25,6 +26,7 @@ public class MenuManager : MonoBehaviour {
     public AudioSource creditsMusic;
     public bool enableCredits;
     public bool endVideo = false;
+    public Camera camera;
 
     public void Start()
     {
@@ -51,6 +53,8 @@ public class MenuManager : MonoBehaviour {
                 Credits.gameObject.SetActive(false);
                 Cursor.visible = true;
                 ReturnCreditos();
+                pospo.SetActive(true);
+                camera.gameObject.GetComponent<PostProcessLayer>().enabled = true;
                 logoManager.MainMenu();
                 endVideo = true;    
             }
@@ -74,6 +78,7 @@ public class MenuManager : MonoBehaviour {
     {
         Credits.gameObject.SetActive(false);
         pospo.SetActive(true);
+        camera.gameObject.GetComponent<PostProcessLayer>().enabled = true;
         Cursor.visible = true;
         ReturnCreditos();
         logoManager.MainMenu();
@@ -109,6 +114,7 @@ public class MenuManager : MonoBehaviour {
         if (is_MainMenu)
         {
             pospo.SetActive(false);
+            camera.gameObject.GetComponent<PostProcessLayer>().enabled = false;
             cinematicaInicial.gameObject.SetActive(true);
             Cursor.visible = false;
             cinematicaInicial.Play();
@@ -164,6 +170,7 @@ public class MenuManager : MonoBehaviour {
     { 
         Credits.gameObject.SetActive(true);
         pospo.SetActive(false);
+        camera.gameObject.GetComponent<PostProcessLayer>().enabled = false;
         enableCredits = true;
         Cursor.visible = false;
         MyGameSettings.getInstance().menuAnim.Anim = true;
