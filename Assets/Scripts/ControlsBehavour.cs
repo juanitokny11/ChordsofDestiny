@@ -27,14 +27,14 @@ public class ControlsBehavour : MonoBehaviour
     public void ChageForwardControler()
     {
         actualControler++;
-        if (actualControler > 2)
+        if (actualControler > 1)
             actualControler = 0;
     }
     public void ChageBackwardControler()
     {
         actualControler--;
         if (actualControler < 0)
-            actualControler = 2;
+            actualControler = 1;
     }
     public void ViewControlers()
     {
@@ -71,7 +71,7 @@ public class ControlsBehavour : MonoBehaviour
                 xboxImage[1].sprite = Xbox2Esp;
             }
         }
-        else if (actualControler == 2)
+        /*else if (actualControler == 2)
         {
             controles[0].SetActive(false);
             controles[1].SetActive(false);
@@ -89,6 +89,6 @@ public class ControlsBehavour : MonoBehaviour
                 ps4Image[1].sprite = ps42Esp;
 
             }
-        }
+        }*/
     }
 }
