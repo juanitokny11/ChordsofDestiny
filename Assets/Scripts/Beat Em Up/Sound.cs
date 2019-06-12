@@ -29,6 +29,11 @@ public class Sound : MonoBehaviour
     public List<AudioSource> Bossinvoca;    
       public AudioSource Bossmulti;
     public AudioSource ataqueGirSound;
+
+    public AudioSource aireinicio;
+    public AudioSource aireinici2;
+
+    public AudioSource fraseini;
     public AudioSource ataqueAltoSound;
     public AudioSource golpeGirSound;
     public AudioSource golpeAltoSound;
@@ -64,6 +69,21 @@ public class Sound : MonoBehaviour
         bossmusica.Stop();
         fin.Play();
     }
+
+     void aireini()
+   {
+       aireinicio.Play();
+   }    
+
+   void aireini2()
+   {
+       aireinici2.Play();
+   }    
+
+   void dothis()
+   {
+       fraseini.Play();
+   }  
     void airedebil()
    {
         if(!attackList.D3)
