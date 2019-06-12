@@ -19,6 +19,7 @@ public class PlayerAttack2 : MonoBehaviour
         SOLO,
         JUMP,
     }
+    public bool canPause;
     public bool blockActivated = false;
     public SphereCollider Solocol;
     public Transform Guitar;
@@ -50,6 +51,7 @@ public class PlayerAttack2 : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        canPause = false;
         moveTuto = false;
         doSolo = false;
         enableAttacks = false;
@@ -337,6 +339,11 @@ public class PlayerAttack2 : MonoBehaviour
     }
     public void EnableControl()
     {
+        Invoke("TurnOnControl",1f);
+        Invoke("TutoMove",1.1f);
+    }
+    public void TurnOnControl()
+    {
         rot = false;
         doSolo = true;
         canBlock = true;
@@ -345,11 +352,11 @@ public class PlayerAttack2 : MonoBehaviour
         player_Move.enableMovement = true;
         player_Move.jump = true;
         player_Move.canRotate = true;
-        Invoke("TutoMove",1f);
     }
     public void TutoMove()
     {
         moveTuto = true;
+        canPause = true;
     }
     public void TutoMoveOff()
     {
