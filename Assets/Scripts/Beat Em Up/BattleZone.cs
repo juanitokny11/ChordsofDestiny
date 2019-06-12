@@ -26,6 +26,7 @@ public class BattleZone : MonoBehaviour
     public List<EnemyMovement> enemies;
     public Image tutoFuerte;
     public Image tutoDebil;
+    public bool frase;
     public Image imageblocktuto;
     public PlayerAttackList attackList;
     public bool tutoBlock;
@@ -36,6 +37,7 @@ public class BattleZone : MonoBehaviour
     public int enemiescounter;
     private void Start()
     {
+        frase = true;
         tutoAtack = false;
         //colider = GetComponent<BoxCollider>();
         //camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ShakeCamera>();
@@ -72,6 +74,22 @@ public class BattleZone : MonoBehaviour
     }
     void Update()
     {
+        if (id == 6 && enemiescounter == 3 && frase)
+        {
+            Player.GetComponent<Sound>().cansadomorir();
+            frase = false;
+        }
+        if (id == 3 && enemiescounter == 2 && frase)
+        {
+            Player.GetComponent<Sound>().arrancarcabezas();
+            frase = false;
+        }
+        if (id == 3 && enemiescounter == 2 && frase)
+        {
+            Player.GetComponent<Sound>().arrancarcabezas();
+            frase = false;
+        }
+
         if (id == 0 && tutoAtack)
         {
             if (!tutoAtack2)
@@ -141,6 +159,7 @@ public class BattleZone : MonoBehaviour
             if (enemiescounter <= 0)
             {
                 EnemyUI.SetActive(false);
+                frase = true;
                 Invoke("UnlockCamera", 1f);
                 //musica.DOFade(0.4f, 5f);
                 //musica.Pause();

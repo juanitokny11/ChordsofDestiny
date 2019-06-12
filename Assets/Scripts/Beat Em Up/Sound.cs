@@ -9,7 +9,6 @@ public class Sound : MonoBehaviour
     public AudioSource luzsalida;
     public AudioSource fin;
     public Image Frase;
-    public List<Sprite> frasesBoss;
      public AudioSource muertebos;
      public AudioSource saltoarrib;
      public AudioSource saltoabaj;
@@ -32,7 +31,7 @@ public class Sound : MonoBehaviour
 
     public AudioSource aireinicio;
     public AudioSource aireinici2;
-
+    public List<AudioSource> frasesSteve;
     public AudioSource fraseini;
     public AudioSource ataqueAltoSound;
     public AudioSource golpeGirSound;
@@ -69,7 +68,6 @@ public class Sound : MonoBehaviour
         bossmusica.Stop();
         fin.Play();
     }
-
      void aireini()
    {
        aireinicio.Play();
@@ -83,7 +81,19 @@ public class Sound : MonoBehaviour
    void dothis()
    {
        fraseini.Play();
-   }  
+   }
+   public void cansadomorir()
+    {
+        frasesSteve[0].Play();
+    }
+    public void arrancarcabezas()
+    {
+        frasesSteve[1].Play();
+    }
+    public void patearculo()
+    {
+        frasesSteve[2].Play();
+    }
     void airedebil()
    {
         if(!attackList.D3)
