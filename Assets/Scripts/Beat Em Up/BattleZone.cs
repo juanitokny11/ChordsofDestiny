@@ -34,11 +34,13 @@ public class BattleZone : MonoBehaviour
     public bool tutoAtack2;
     public int id;
     public float counter;
+    public bool startBossZone;
     public int enemiescounter;
     private void Start()
     {
         frase = true;
         tutoAtack = false;
+        startBossZone = false;
         //colider = GetComponent<BoxCollider>();
         //camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ShakeCamera>();
         if (!bossZone)
@@ -69,6 +71,10 @@ public class BattleZone : MonoBehaviour
                 if (enemies.Count >= 3)
                     enemies[2].gameObject.SetActive(true);
                 camera.GetComponent<ShakeCamera>().lockCamera = true;
+            }
+            else if (bossZone)
+            {
+                startBossZone = true;
             }
         }
     }
@@ -170,7 +176,7 @@ public class BattleZone : MonoBehaviour
         }
         else if (bossZone)
         {
-            if (enemiescounter <= 2)
+            if (enemiescounter <= 2 && startBossZone)
             {
                 EnemyUI.SetActive(false);
                 enemiescounter = enemies.Count+1;

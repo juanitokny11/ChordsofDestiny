@@ -64562,7 +64562,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2133291839}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -303.13, y: 27.47, z: -9.4}
+  m_LocalPosition: {x: -303, y: 27.47, z: -6.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -67942,11 +67942,15 @@ PrefabInstance:
       objectReference: {fileID: 17272254}
     - target: {fileID: 1139394447, guid: 32d3847095fd90f41bc2db0671913dc6, type: 3}
       propertyPath: halfSize.x
-      value: 0.2
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 1139394447, guid: 32d3847095fd90f41bc2db0671913dc6, type: 3}
       propertyPath: halfSize.z
       value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1139394447, guid: 32d3847095fd90f41bc2db0671913dc6, type: 3}
+      propertyPath: enemyMask.m_Bits
+      value: 2049
       objectReference: {fileID: 0}
     - target: {fileID: 3422790589632528814, guid: 32d3847095fd90f41bc2db0671913dc6,
         type: 3}
@@ -67957,6 +67961,10 @@ PrefabInstance:
       propertyPath: boss
       value: 
       objectReference: {fileID: 17272254}
+    - target: {fileID: 1139394458, guid: 32d3847095fd90f41bc2db0671913dc6, type: 3}
+      propertyPath: enemyMask.m_Bits
+      value: 2049
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32d3847095fd90f41bc2db0671913dc6, type: 3}
 --- !u!1001 &9054620511873806690
