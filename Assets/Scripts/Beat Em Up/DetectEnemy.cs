@@ -8,6 +8,7 @@ public class DetectEnemy : MonoBehaviour
     public Vector3 offset;
     public LayerMask enemyMask;
     public GameObject boss;
+    public Collider[] hits;
 
     public bool TargetDetected { get; private set; }
 
@@ -15,7 +16,7 @@ public class DetectEnemy : MonoBehaviour
     {
         TargetDetected = false;
         
-        Collider[] hits = Physics.OverlapBox(transform.position + offset, halfSize, Quaternion.identity, enemyMask, QueryTriggerInteraction.Collide);
+        hits = Physics.OverlapBox(transform.position + offset, halfSize, Quaternion.identity, enemyMask, QueryTriggerInteraction.Collide);
         if(hits.Length > 0)
         {
             for (int i = 0; i < hits.Length; i++)

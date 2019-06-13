@@ -83,9 +83,18 @@ public class BossIA : MonoBehaviour
                 Up();
                 if (transform.position.y >= 9f)
                 {
-                    transform.position = waitingPlace.position;
-                    Chase = true;
-                    StopJumpUp();
+                    if (transform.position.x != playerTarget.transform.position.x)
+                    {
+                        transform.position = waitingPlace.position;
+                        Chase = true;
+                        StopJumpUp();
+                    } 
+                   else  if (transform.position.x == playerTarget.transform.position.x)
+                    {
+                        transform.position = new Vector3(ResetPosition.position.x -10f, ResetPosition.position.y, ResetPosition.position.z + 2f);
+                        Chase = true;
+                        StopJumpUp();
+                    }
                 }
             }
             if (ResetJump == true)
@@ -110,19 +119,10 @@ public class BossIA : MonoBehaviour
                 
                 if (transform.position.y >= 9f)
                 {
-                    if(transform.position.x != playerTarget.transform.position.x)
-                    {
                         transform.position = ResetPosition.position;
                         Chase = false;
                         jumpCounter++;
                         StopJumpUp();
-                    }
-                    else if (transform.position.x == playerTarget.transform.position.x)
-                    {
-                        transform.position = new Vector3( ResetPosition.position.x+5f, ResetPosition.position.y, ResetPosition.position.z+2f);
-                        Chase = false;
-                        StopJumpUp();
-                    }
                 }
             }
             if (ResetJump == true)
@@ -251,6 +251,7 @@ public class BossIA : MonoBehaviour
             return;
         if (fase == 1)
         {
+            myBody.isKinematic = true;
             invokeEnemy=Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[0].position, Quaternion.identity);
             invokeEnemy2 = Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[1].position, Quaternion.identity);
             invokeEnemy.GetComponent<HealthScript>().zone = BossZone;
@@ -265,6 +266,7 @@ public class BossIA : MonoBehaviour
         }
         else if (fase == 2)
         {
+            myBody.isKinematic = true;
             enemyAnim.Jump1Arm();
             //enemyAnim.ResetJump1Arm();
             invokeEnemy = Instantiate(enemiesTospawn[Random.Range(0, enemiesTospawn.Length)], positionTospawn[0].position, Quaternion.identity);
@@ -304,9 +306,9 @@ public class BossIA : MonoBehaviour
         porcentajeAtaque = 50;
         porcentajeInvocar = 200;
         if(!playerTarget.GetComponent<PlayerMovementBeat>().lockrotation)
-        espadaRota.transform.rotation = Quaternion.Euler(transform.rotation.x,transform.rotation.y, transform.rotation.z);
+        espadaRota.transform.rotation = Quaternion.Euler(transform.rotation.x,-90, transform.rotation.z);
         else if (playerTarget.GetComponent<PlayerMovementBeat>().lockrotation)
-            espadaRota.transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z);
+            espadaRota.transform.rotation = Quaternion.Euler(transform.rotation.x, 90, transform.rotation.z);
         //espadaRota.transform.position = new Vector3(espadaRota.transform.position.x, 0, espadaRota.transform.position.z);
         gameManager.numScore += scoref1;
         brokenArm.Play();
@@ -360,11 +362,13 @@ public class BossIA : MonoBehaviour
     private void OUTSIDE()
     {
         outside = true;
+        myBody.isKinematic = false;
         invoke = true;
     }
     private void Inside()
     {
         outside = false;
+        myBody.isKinematic = false;
         invoke = false;
     }
     public void InstantiateTarjeta()

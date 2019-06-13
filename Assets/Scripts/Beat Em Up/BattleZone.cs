@@ -170,7 +170,7 @@ public class BattleZone : MonoBehaviour
         }
         else if (bossZone)
         {
-            if (enemiescounter <= 1)
+            if (enemiescounter <= 2)
             {
                 EnemyUI.SetActive(false);
                 enemiescounter = enemies.Count+1;
