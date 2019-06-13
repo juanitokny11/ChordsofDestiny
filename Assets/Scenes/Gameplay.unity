@@ -58,7 +58,7 @@ LightmapSettings:
     serializedVersion: 10
     m_Resolution: 2
     m_BakeResolution: 40
-    m_AtlasSize: 512
+    m_AtlasSize: 128
     m_AO: 1
     m_AOMaxDistance: 1
     m_CompAOExponent: 2
@@ -75,7 +75,7 @@ LightmapSettings:
     m_BakeBackend: 1
     m_PVRSampling: 1
     m_PVRDirectSampleCount: 32
-    m_PVRSampleCount: 512
+    m_PVRSampleCount: 500
     m_PVRBounces: 2
     m_PVRFilterTypeDirect: 0
     m_PVRFilterTypeIndirect: 0
@@ -3322,7 +3322,12 @@ PrefabInstance:
     - target: {fileID: 6041077561812641108, guid: b8758fa8df306174f8561fced290a8f6,
         type: 3}
       propertyPath: m_Shadows.m_Type
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6041077561812641108, guid: b8758fa8df306174f8561fced290a8f6,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 850
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8758fa8df306174f8561fced290a8f6, type: 3}
@@ -18049,7 +18054,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 0.7471075, g: 0.8192238, b: 0.9716981, a: 1}
-  m_Intensity: 0.14
+  m_Intensity: 0.2
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -45226,6 +45231,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1139394443}
+    - target: {fileID: 5659585842600766171, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba, type: 3}
 --- !u!1001 &1495069265
