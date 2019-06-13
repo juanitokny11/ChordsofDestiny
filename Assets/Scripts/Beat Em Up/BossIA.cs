@@ -119,7 +119,7 @@ public class BossIA : MonoBehaviour
                     }
                     else if (transform.position.x == playerTarget.transform.position.x)
                     {
-                        transform.position = new Vector3( ResetPosition.position.x+3f, ResetPosition.position.y, ResetPosition.position.z);
+                        transform.position = new Vector3( ResetPosition.position.x+5f, ResetPosition.position.y, ResetPosition.position.z+2f);
                         Chase = false;
                         StopJumpUp();
                     }

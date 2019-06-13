@@ -85,17 +85,16 @@ public class DeleteObjects: MonoBehaviour {
         if(firsttime)
         {
             gameManager.numScore += 5;
-            firsttime = false;
-        }
-        if (puaInstance && firsttime)
-        {
-            Instantiate(pua, puaSpawn, Quaternion.identity);
+            if (puaInstance)
+            {
+                Instantiate(pua, puaSpawn, Quaternion.identity);
+            }
             firsttime = false;
         }
         if (playerHealth.health <= 100)
             Invoke("LifeOff", 2f);
         scoreUI.enabled = false;
-        Invoke("Destroy", 0.1f);
+        Invoke("Destroy", 0.5f);
     }
     public void Destroy()
     {
