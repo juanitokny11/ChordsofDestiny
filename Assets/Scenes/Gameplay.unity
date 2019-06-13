@@ -2711,7 +2711,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 0.84705883, a: 1}
-  m_Intensity: 800
+  m_Intensity: 850
   m_Range: 21.1
   m_SpotAngle: 54.4
   m_CookieSize: 10
@@ -2780,7 +2780,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 0.84705883, a: 1}
-  m_Intensity: 800
+  m_Intensity: 850
   m_Range: 21.1
   m_SpotAngle: 54.4
   m_CookieSize: 10
@@ -3318,16 +3318,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 6041077561812641108, guid: b8758fa8df306174f8561fced290a8f6,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6041077561812641108, guid: b8758fa8df306174f8561fced290a8f6,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 850
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8758fa8df306174f8561fced290a8f6, type: 3}
@@ -6467,7 +6457,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 0.84705883, a: 1}
-  m_Intensity: 800
+  m_Intensity: 850
   m_Range: 21.1
   m_SpotAngle: 54.4
   m_CookieSize: 10
@@ -13022,6 +13012,7 @@ MonoBehaviour:
   tutoAtack2: 0
   id: 0
   counter: 0
+  startBossZone: 0
   enemiescounter: 4
 --- !u!65 &476256476
 BoxCollider:
@@ -14049,6 +14040,7 @@ MonoBehaviour:
   tutoAtack2: 0
   id: 8
   counter: 0
+  startBossZone: 0
   enemiescounter: 1
 --- !u!65 &528943668
 BoxCollider:
@@ -14423,6 +14415,7 @@ MonoBehaviour:
   tutoAtack2: 0
   id: 5
   counter: 0
+  startBossZone: 0
   enemiescounter: 3
 --- !u!1001 &539459423
 PrefabInstance:
@@ -17050,6 +17043,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4835908537285671391, guid: ee2f03cfc3132874e9b96c33ee451691,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7882717298276877988, guid: ee2f03cfc3132874e9b96c33ee451691,
         type: 3}
       propertyPath: score
@@ -17069,11 +17067,6 @@ PrefabInstance:
         type: 3}
       propertyPath: is_Boss
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4835908537285671391, guid: ee2f03cfc3132874e9b96c33ee451691,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 361667289756262939, guid: ee2f03cfc3132874e9b96c33ee451691,
         type: 3}
@@ -18054,7 +18047,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 0.7471075, g: 0.8192238, b: 0.9716981, a: 1}
-  m_Intensity: 0.2
+  m_Intensity: 0.3
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -22475,7 +22468,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 0.84705883, a: 1}
-  m_Intensity: 800
+  m_Intensity: 850
   m_Range: 21.1
   m_SpotAngle: 54.4
   m_CookieSize: 10
@@ -23541,7 +23534,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 0.84705883, a: 1}
-  m_Intensity: 800
+  m_Intensity: 850
   m_Range: 21.1
   m_SpotAngle: 54.4
   m_CookieSize: 10
@@ -24823,6 +24816,7 @@ MonoBehaviour:
   tutoAtack2: 0
   id: 7
   counter: 0
+  startBossZone: 0
   enemiescounter: 3
 --- !u!65 &877615676
 BoxCollider:
@@ -25085,7 +25079,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 0.84705883, a: 1}
-  m_Intensity: 800
+  m_Intensity: 850
   m_Range: 21.1
   m_SpotAngle: 54.4
   m_CookieSize: 10
@@ -25705,7 +25699,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 0.84705883, a: 1}
-  m_Intensity: 800
+  m_Intensity: 850
   m_Range: 21.1
   m_SpotAngle: 54.4
   m_CookieSize: 10
@@ -27002,6 +26996,7 @@ MonoBehaviour:
   tutoAtack2: 0
   id: 2
   counter: 0
+  startBossZone: 0
   enemiescounter: 3
 --- !u!65 &954436695
 BoxCollider:
@@ -33122,7 +33117,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 0.84705883, a: 1}
-  m_Intensity: 800
+  m_Intensity: 850
   m_Range: 21.1
   m_SpotAngle: 54.4
   m_CookieSize: 10
@@ -38114,6 +38109,7 @@ MonoBehaviour:
   tutoAtack2: 0
   id: 3
   counter: 0
+  startBossZone: 0
   enemiescounter: 3
 --- !u!65 &1340467520
 BoxCollider:
@@ -49355,7 +49351,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 0.84705883, a: 1}
-  m_Intensity: 800
+  m_Intensity: 850
   m_Range: 21.1
   m_SpotAngle: 54.4
   m_CookieSize: 10
@@ -50295,6 +50291,7 @@ MonoBehaviour:
   tutoAtack2: 0
   id: 1
   counter: 0
+  startBossZone: 0
   enemiescounter: 3
 --- !u!65 &1683549949
 BoxCollider:
@@ -54952,6 +54949,7 @@ MonoBehaviour:
   tutoAtack2: 0
   id: 6
   counter: 0
+  startBossZone: 0
   enemiescounter: 3
 --- !u!65 &1832376177
 BoxCollider:
@@ -62152,6 +62150,7 @@ MonoBehaviour:
   tutoAtack2: 0
   id: 4
   counter: 0
+  startBossZone: 0
   enemiescounter: 3
 --- !u!65 &2027889591
 BoxCollider:
@@ -64253,7 +64252,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 0.84705883, a: 1}
-  m_Intensity: 800
+  m_Intensity: 850
   m_Range: 21.1
   m_SpotAngle: 54.4
   m_CookieSize: 10
