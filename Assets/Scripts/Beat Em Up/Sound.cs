@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Sound : MonoBehaviour
 {
+    public GameObject player;
    public AudioSource salidabos;
     public AudioSource luzsalida;
     public AudioSource fin;
@@ -28,7 +29,6 @@ public class Sound : MonoBehaviour
     public List<AudioSource> Bossinvoca;    
       public AudioSource Bossmulti;
     public AudioSource ataqueGirSound;
-
     public AudioSource aireinicio;
     public AudioSource aireinici2;
     public List<AudioSource> frasesSteve;
@@ -231,11 +231,12 @@ void saltou()
 
     void andarboss()
    {
-       
+       if(BeatEmupManager.instance.pause == true)
+        {
             walkboss.pitch = Random.Range(0.7f, 1.3f);
             walkboss.volume = Random.Range(0.25f, 0.40f);
             walkboss.Play();
-        
+        }
    }
 
    public void brazorot()
@@ -244,8 +245,11 @@ void saltou()
     }
     public void Chispas()
     {
-        chispas.pitch = Random.Range(0.8f, 1.1f);
-        chispas.Play();
+        if (player.GetComponent<HealthScript>().health >= 0 || BeatEmupManager.instance.pause == true)
+        {
+            chispas.pitch = Random.Range(0.8f, 1.1f);
+            chispas.Play();
+        }
     }
     //audios groupie
     void AtaqueDebilGroupie()

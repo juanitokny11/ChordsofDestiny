@@ -74,19 +74,19 @@ public class BattleZone : MonoBehaviour
     }
     void Update()
     {
-        if (id == 6 && enemiescounter == 3 && frase)
+        if (id == 6 && enemiescounter <= 3 && enemiescounter > 0 && frase)
         {
             Player.GetComponent<Sound>().cansadomorir();
             frase = false;
         }
-        if (id == 3 && enemiescounter == 2 && frase)
+        if (id == 3 && enemiescounter <= 2 && enemiescounter > 0 && frase)
         {
             Player.GetComponent<Sound>().arrancarcabezas();
             frase = false;
         }
-        if (id == 3 && enemiescounter == 2 && frase)
+        if (bossZone &&boss.jumpCounter >=2 && frase)
         {
-            Player.GetComponent<Sound>().arrancarcabezas();
+            Player.GetComponent<Sound>().patearculo();
             frase = false;
         }
 
@@ -138,7 +138,7 @@ public class BattleZone : MonoBehaviour
             {
                 imageblocktuto.gameObject.SetActive(true);
             counter += Time.deltaTime;
-            if (counter >= 10)
+            if (counter >= 10 || enemiescounter <= 0)
             {
                 tutoBlock = false;
                 Invoke("TutoBlock", 1.5f);
@@ -159,7 +159,6 @@ public class BattleZone : MonoBehaviour
             if (enemiescounter <= 0)
             {
                 EnemyUI.SetActive(false);
-                frase = true;
                 Invoke("UnlockCamera", 1f);
                 //musica.DOFade(0.4f, 5f);
                 //musica.Pause();
@@ -231,6 +230,7 @@ public class BattleZone : MonoBehaviour
         {
             Instantiate(pua, enemies[0].transform.position, Quaternion.identity);
         }
+        frase = true;
         Destroy(gameObject);
     }
 }

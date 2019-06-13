@@ -477,18 +477,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0b5d53f175e12e4d938966ac6a937d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   salidabos: {fileID: 0}
   luzsalida: {fileID: 0}
   fin: {fileID: 0}
   Frase: {fileID: 0}
-  frasesBoss:
-  - {fileID: 21300000, guid: 45b2b1b7522b4584d89afa954582751a, type: 3}
-  - {fileID: 21300000, guid: 4e3c89cf954f7f34dad275b58a596169, type: 3}
-  - {fileID: 21300000, guid: 0c51609342d2f3348b4e0c1b2baa95b7, type: 3}
   muertebos: {fileID: 5839864551651623886}
   saltoarrib: {fileID: 4186480940631661357}
   saltoabaj: {fileID: 2198530951883792756}
-  chispas: {fileID: 0}
+  chispas: {fileID: 1848098096}
   brazo: {fileID: 3356238714983430697}
   fuerteaire: []
   debilaire: []
@@ -515,6 +512,7 @@ MonoBehaviour:
   ataqueGirSound: {fileID: 0}
   aireinicio: {fileID: 0}
   aireinici2: {fileID: 0}
+  frasesSteve: []
   fraseini: {fileID: 0}
   ataqueAltoSound: {fileID: 0}
   golpeGirSound: {fileID: 0}
@@ -599,6 +597,7 @@ MonoBehaviour:
   invoke: 0
   Chase: 0
   sound: {fileID: 0}
+  jumpCounter: 0
   espadaRota: {fileID: 4843713033998774898}
   brokenArm: {fileID: 5659585842600766171}
 --- !u!114 &988149406

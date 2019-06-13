@@ -707,6 +707,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1491687906}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &17272259 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 507275759069458316, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba,
+    type: 3}
+  m_PrefabInstance: {fileID: 1491687906}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17272254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edbf079eae0b1b24cbb289c4cff14148, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &17629945
 GameObject:
   m_ObjectHideFlags: 0
@@ -12997,6 +13009,7 @@ MonoBehaviour:
   - {fileID: 1914102802}
   tutoFuerte: {fileID: 70945311}
   tutoDebil: {fileID: 250237986}
+  frase: 0
   imageblocktuto: {fileID: 0}
   attackList: {fileID: 1139394445}
   tutoBlock: 0
@@ -14016,19 +14029,20 @@ MonoBehaviour:
   bossZone: 1
   goImage: {fileID: 214972936}
   musica: {fileID: 2009397568}
-  boss: {fileID: 0}
+  boss: {fileID: 17272259}
   pua: {fileID: 0}
   puaPos: {fileID: 0}
   enemies:
   - {fileID: 0}
   tutoFuerte: {fileID: 0}
   tutoDebil: {fileID: 0}
+  frase: 0
   imageblocktuto: {fileID: 0}
   attackList: {fileID: 0}
   tutoBlock: 0
   tutoAtack: 0
   tutoAtack2: 0
-  id: 5
+  id: 8
   counter: 0
   enemiescounter: 1
 --- !u!65 &528943668
@@ -14396,6 +14410,7 @@ MonoBehaviour:
   - {fileID: 2020481860}
   tutoFuerte: {fileID: 0}
   tutoDebil: {fileID: 0}
+  frase: 0
   imageblocktuto: {fileID: 0}
   attackList: {fileID: 0}
   tutoBlock: 0
@@ -17030,11 +17045,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4835908537285671391, guid: ee2f03cfc3132874e9b96c33ee451691,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7882717298276877988, guid: ee2f03cfc3132874e9b96c33ee451691,
         type: 3}
       propertyPath: score
@@ -17054,6 +17064,11 @@ PrefabInstance:
         type: 3}
       propertyPath: is_Boss
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835908537285671391, guid: ee2f03cfc3132874e9b96c33ee451691,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 361667289756262939, guid: ee2f03cfc3132874e9b96c33ee451691,
         type: 3}
@@ -19117,12 +19132,6 @@ Transform:
   m_Father: {fileID: 318132140}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &636555135 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 636555135, guid: 32d3847095fd90f41bc2db0671913dc6,
-    type: 3}
-  m_PrefabInstance: {fileID: 8939311918030938153}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &643539062
 GameObject:
   m_ObjectHideFlags: 0
@@ -23755,6 +23764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0b5d53f175e12e4d938966ac6a937d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   salidabos: {fileID: 1510180746}
   luzsalida: {fileID: 992061864}
   fin: {fileID: 0}
@@ -24800,6 +24810,7 @@ MonoBehaviour:
   - {fileID: 1221003625}
   tutoFuerte: {fileID: 0}
   tutoDebil: {fileID: 0}
+  frase: 0
   imageblocktuto: {fileID: 0}
   attackList: {fileID: 0}
   tutoBlock: 0
@@ -26978,6 +26989,7 @@ MonoBehaviour:
   - {fileID: 647354966}
   tutoFuerte: {fileID: 0}
   tutoDebil: {fileID: 0}
+  frase: 0
   imageblocktuto: {fileID: 0}
   attackList: {fileID: 0}
   tutoBlock: 0
@@ -38089,6 +38101,7 @@ MonoBehaviour:
   - {fileID: 191139476}
   tutoFuerte: {fileID: 0}
   tutoDebil: {fileID: 0}
+  frase: 0
   imageblocktuto: {fileID: 0}
   attackList: {fileID: 0}
   tutoBlock: 0
@@ -45210,9 +45223,9 @@ PrefabInstance:
       objectReference: {fileID: 1839607890}
     - target: {fileID: 2367832772148556476, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba,
         type: 3}
-      propertyPath: chispas
+      propertyPath: player
       value: 
-      objectReference: {fileID: 1848098096}
+      objectReference: {fileID: 1139394443}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba, type: 3}
 --- !u!1001 &1495069265
@@ -50264,6 +50277,7 @@ MonoBehaviour:
   - {fileID: 1903396143}
   tutoFuerte: {fileID: 0}
   tutoDebil: {fileID: 0}
+  frase: 0
   imageblocktuto: {fileID: 1202993826}
   attackList: {fileID: 0}
   tutoBlock: 0
@@ -54920,6 +54934,7 @@ MonoBehaviour:
   - {fileID: 197600109}
   tutoFuerte: {fileID: 0}
   tutoDebil: {fileID: 0}
+  frase: 0
   imageblocktuto: {fileID: 0}
   attackList: {fileID: 0}
   tutoBlock: 0
@@ -55521,12 +55536,6 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!82 &1848098096 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 1848098096, guid: 0ac1fdecc2994164a9ffc387f1f5b3ba,
-    type: 3}
-  m_PrefabInstance: {fileID: 1491687906}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1849562640
 GameObject:
   m_ObjectHideFlags: 0
@@ -62125,6 +62134,7 @@ MonoBehaviour:
   - {fileID: 1232390965}
   tutoFuerte: {fileID: 0}
   tutoDebil: {fileID: 0}
+  frase: 0
   imageblocktuto: {fileID: 0}
   attackList: {fileID: 0}
   tutoBlock: 0
@@ -62173,12 +62183,6 @@ Transform:
   m_Father: {fileID: 1687152341}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &2029613209 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2029613209, guid: 32d3847095fd90f41bc2db0671913dc6,
-    type: 3}
-  m_PrefabInstance: {fileID: 8939311918030938153}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2033379634
 GameObject:
   m_ObjectHideFlags: 0
@@ -65072,12 +65076,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 256734371}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &675355492788998008 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 675355492788998008, guid: 32d3847095fd90f41bc2db0671913dc6,
-    type: 3}
-  m_PrefabInstance: {fileID: 8939311918030938153}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &751397850465571275
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -67941,26 +67939,6 @@ PrefabInstance:
       propertyPath: boss
       value: 
       objectReference: {fileID: 17272254}
-    - target: {fileID: 8386676313400792835, guid: 32d3847095fd90f41bc2db0671913dc6,
-        type: 3}
-      propertyPath: frasesSteve.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8386676313400792835, guid: 32d3847095fd90f41bc2db0671913dc6,
-        type: 3}
-      propertyPath: frasesSteve.Array.data[0]
-      value: 
-      objectReference: {fileID: 2029613209}
-    - target: {fileID: 8386676313400792835, guid: 32d3847095fd90f41bc2db0671913dc6,
-        type: 3}
-      propertyPath: frasesSteve.Array.data[1]
-      value: 
-      objectReference: {fileID: 636555135}
-    - target: {fileID: 8386676313400792835, guid: 32d3847095fd90f41bc2db0671913dc6,
-        type: 3}
-      propertyPath: frasesSteve.Array.data[2]
-      value: 
-      objectReference: {fileID: 675355492788998008}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32d3847095fd90f41bc2db0671913dc6, type: 3}
 --- !u!1001 &9054620511873806690

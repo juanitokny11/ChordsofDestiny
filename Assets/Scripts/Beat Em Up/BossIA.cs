@@ -43,6 +43,7 @@ public class BossIA : MonoBehaviour
     public bool invoke = false;
     public bool Chase;
     public Sound sound;
+    public int jumpCounter=0;
     public GameObject espadaRota;
     public ParticleSystem brokenArm;
 
@@ -113,6 +114,7 @@ public class BossIA : MonoBehaviour
                     {
                         transform.position = ResetPosition.position;
                         Chase = false;
+                        jumpCounter++;
                         StopJumpUp();
                     }
                     else if (transform.position.x == playerTarget.transform.position.x)
