@@ -513,7 +513,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 5b346d22aef609c45a3bf97524ce6e64, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.6
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2367,7 +2367,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 2f39006b75ca53746920d7dbda7db5e5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.6
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3041,7 +3041,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 0b2a6cecac40cd549bd85c47890e7433, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.6
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -10658,6 +10658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0b5d53f175e12e4d938966ac6a937d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   salidabos: {fileID: 0}
   luzsalida: {fileID: 0}
   fin: {fileID: 2188776464053968195}
@@ -11198,11 +11199,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8939311919185665388}
     m_Modifications:
-    - target: {fileID: 672622757104585123, guid: a56056e1d00c4244da69274d73b5c2a1,
-        type: 3}
-      propertyPath: m_Name
-      value: Solo
-      objectReference: {fileID: 0}
     - target: {fileID: 672622757104585124, guid: a56056e1d00c4244da69274d73b5c2a1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11258,6 +11254,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 672622757104585123, guid: a56056e1d00c4244da69274d73b5c2a1,
+        type: 3}
+      propertyPath: m_Name
+      value: Solo
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a56056e1d00c4244da69274d73b5c2a1, type: 3}
 --- !u!198 &3676889872562162483 stripped
@@ -11279,11 +11280,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8939311917634563695}
     m_Modifications:
-    - target: {fileID: 7092022646830002350, guid: 1d685a4427c84da4c8a1cfa984446eef,
-        type: 3}
-      propertyPath: m_Name
-      value: Notas
-      objectReference: {fileID: 0}
     - target: {fileID: 5698710853474121708, guid: 1d685a4427c84da4c8a1cfa984446eef,
         type: 3}
       propertyPath: playOnAwake
@@ -11343,6 +11339,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 62.292004
+      objectReference: {fileID: 0}
+    - target: {fileID: 7092022646830002350, guid: 1d685a4427c84da4c8a1cfa984446eef,
+        type: 3}
+      propertyPath: m_Name
+      value: Notas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d685a4427c84da4c8a1cfa984446eef, type: 3}
