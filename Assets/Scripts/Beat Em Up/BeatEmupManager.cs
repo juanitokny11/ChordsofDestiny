@@ -41,6 +41,7 @@ public class BeatEmupManager : MonoBehaviour
     public GameObject mainMenu;
     public bool firstTime;
     public Transform Tppos;
+    public Canvas skipCanvas;
     public bool godmode = true;
     public int puaCounter=0;
     public Canvas pausaMenu;
@@ -112,11 +113,13 @@ public class BeatEmupManager : MonoBehaviour
         {
             Time.timeScale= 0;
             BeatEmupManager.instance.infopua.SetActive(true);
+            skipCanvas.enabled = true;
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetAxisRaw("Jump")!=0)
             {
                 BeatEmupManager.instance.infopua.SetActive(false);
                 seeinfopua = false;
                 Time.timeScale = 1;
+                skipCanvas.enabled = false;
             }
         }
         if (Input.GetKeyDown(KeyCode.F10))
