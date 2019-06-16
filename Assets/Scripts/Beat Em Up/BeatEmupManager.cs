@@ -42,7 +42,10 @@ public class BeatEmupManager : MonoBehaviour
     public bool firstTime;
     public Transform Tppos;
     public bool godmode = true;
+    public int puaCounter=0;
     public Canvas pausaMenu;
+    public GameObject infopua;
+    public bool seeinfopua;
     public RectTransform optionsMenu;
     public Animator pauseMenuPrincial;
     public bool pause = false;
@@ -56,6 +59,7 @@ public class BeatEmupManager : MonoBehaviour
     }
     private void Start()
     {
+        seeinfopua = false;
         startFade.play = true;
         Player = GameObject.FindGameObjectWithTag("Player");
         Cursor.visible = false;
@@ -104,6 +108,17 @@ public class BeatEmupManager : MonoBehaviour
             }
         }
         score.text = numScore.ToString();
+        if (seeinfopua)
+        {
+            Time.timeScale= 0;
+            BeatEmupManager.instance.infopua.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetAxisRaw("Jump")!=0)
+            {
+                BeatEmupManager.instance.infopua.SetActive(false);
+                seeinfopua = false;
+                Time.timeScale = 1;
+            }
+        }
         if (Input.GetKeyDown(KeyCode.F10))
         {
             GodMode();
