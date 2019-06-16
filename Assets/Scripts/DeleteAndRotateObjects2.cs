@@ -40,6 +40,11 @@ public class DeleteAndRotateObjects2: MonoBehaviour {
     }
 
     void Explode() {
+        if (BeatEmupManager.instance.puaCounter < 1)
+        {
+            BeatEmupManager.instance.seeinfopua = true;
+        }
+        BeatEmupManager.instance.puaCounter++;
         if (player.GetComponent<HealthScript>().health < 100)
         {
             player.health = player.health + random;
@@ -50,7 +55,7 @@ public class DeleteAndRotateObjects2: MonoBehaviour {
             //LifeBar.SetActive(false);
         }
         
-        Invoke("DestroyGameobject", 0.5f);
+        Invoke("DestroyGameobject", 0.2f);
      
 	}
     void DestroyGameobject()

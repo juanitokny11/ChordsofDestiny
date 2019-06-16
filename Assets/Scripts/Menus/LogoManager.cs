@@ -85,7 +85,7 @@ public class LogoManager : MonoBehaviour
             if (!credits)
             {
                 EnterStart.Play();
-                InvokeRepeating("ParpadeoTextMenu", 0.2f, 0.2f);
+                InvokeRepeating("ParpadeoTextMenu", 0.2f, 0.15f);
             }
             camera.gameObject.GetComponent<PostProcessLayer>().enabled = true;
             Invoke( "MainMenu",1.0f);
