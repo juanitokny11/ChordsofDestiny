@@ -36,6 +36,7 @@ public class DeleteObjects: MonoBehaviour {
         {
             Invoke("Explode", Time.deltaTime * 10f);
             scoreUI.enabled = true;
+            SpawnPua();
             score.SetActive(true);
             if (p1!=null)
                  particleCulling.RemoveParticle(p1.GetComponent<ParticlesBevahavour>());
@@ -82,15 +83,6 @@ public class DeleteObjects: MonoBehaviour {
     {
         CancelInvoke("Blink");
         score.SetActive(false);
-        if(firsttime)
-        {
-            gameManager.numScore += 5;
-            if (puaInstance)
-            {
-                Instantiate(pua, puaSpawn, Quaternion.identity);
-            }
-            firsttime = false;
-        }
         if (playerHealth.health <= 100)
             Invoke("LifeOff", 2f);
         scoreUI.enabled = false;
@@ -103,6 +95,18 @@ public class DeleteObjects: MonoBehaviour {
     public void LifeOn()
     {
         UI.enabled = true;
+    }
+    public void SpawnPua()
+    {
+        if (firsttime)
+        {
+            gameManager.numScore += 5;
+            if (puaInstance)
+            {
+                Instantiate(pua, puaSpawn, Quaternion.identity);
+            }
+            firsttime = false;
+        }
     }
     public void LifeOff()
     {
