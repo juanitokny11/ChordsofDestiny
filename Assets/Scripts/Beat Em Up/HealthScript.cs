@@ -27,6 +27,7 @@ public class HealthScript : MonoBehaviour
     public GameObject healthBar;
     public BossIA bossIA;
     public EaseColor fade;
+    public ParticleSystem soloParticle;
     private LifeControler enemy_Health_UI;
     public PlayerAttackList playerAttack_List;
     public bool canDoSolo = false;
@@ -98,6 +99,7 @@ public class HealthScript : MonoBehaviour
         {
             if (is_Player)
             {
+                soloParticle.Play();
                 canDoSolo = true;
                 soloCharged.SetActive(true);
                 counter += Time.deltaTime;
@@ -118,6 +120,7 @@ public class HealthScript : MonoBehaviour
         {
             if (is_Player)
             {
+                soloParticle.Stop();
                 if (Input.GetKeyDown(KeyCode.D) && !solotuto || Input.GetAxisRaw("Solo") == 1 && Input.GetAxisRaw("Disparar") == 1 && !solotuto)
                 {
                     Time.timeScale = 1;
