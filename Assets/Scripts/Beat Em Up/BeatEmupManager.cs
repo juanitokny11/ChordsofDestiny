@@ -38,6 +38,7 @@ public class BeatEmupManager : MonoBehaviour
     public Image tutoMove;
     public Sprite tutoMovePc;
     public Sprite tutoMoveXbox;
+    public Canvas UI;
     public GameObject mainMenu;
     public bool firstTime;
     public Transform Tppos;
@@ -120,6 +121,8 @@ public class BeatEmupManager : MonoBehaviour
                 seeinfopua = false;
                 Time.timeScale = 1;
                 skipCanvas.enabled = false;
+                Invoke("UIenabled",0.5f);
+                UI.enabled = false;
             }
         }
         if (Input.GetKeyDown(KeyCode.F10))
@@ -138,6 +141,10 @@ public class BeatEmupManager : MonoBehaviour
                 Pausa();
             }
         }
+    }
+    public void UIenabled()
+    {
+        UI.enabled = false;
     }
     public void Pausa()
     {

@@ -34,7 +34,7 @@ public class DeleteObjects: MonoBehaviour {
     {
         if (vida <= 0)
         {
-            Invoke("Explode", Time.deltaTime * 15f);
+            Invoke("Explode", Time.deltaTime * 10f);
             scoreUI.enabled = true;
             score.SetActive(true);
             if (p1!=null)
@@ -76,7 +76,7 @@ public class DeleteObjects: MonoBehaviour {
         InvokeRepeating("Blink", 0.1f, 0.1f); 
         if (playerHealth.health <= 100)
             Invoke("LifeOn", 2f);
-        Invoke("StopBlink", 2f);
+        Invoke("StopBlink", 1.5f);
     }
     public void StopBlink()
     {
