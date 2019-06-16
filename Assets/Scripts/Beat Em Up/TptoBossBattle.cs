@@ -16,6 +16,8 @@ public class TptoBossBattle : MonoBehaviour
     public GameObject reverbZone;
     public GameObject Pospo;
     public Canvas BossLife;
+    public Canvas ui;
+    public Canvas ui2;
     public bool cinematica=false;
     public AudioSource musicBoss;
     //public GameObject musicGameplay;
@@ -51,6 +53,8 @@ public class TptoBossBattle : MonoBehaviour
             Player.enabled = true;
             cinematicaBoss.Pause();
             ActivateBossMusic();
+            ui.enabled = true;
+            ui2.enabled = true;
             reverbZone.SetActive(true);
             Pospo.SetActive(true);
             camera.gameObject.GetComponent<PostProcessLayer>().enabled = true;
@@ -84,6 +88,8 @@ public class TptoBossBattle : MonoBehaviour
         cinematicaBoss.gameObject.SetActive(false);
         changeMusic = true;
         cinematica = false;
+        ui.enabled = true;
+        ui2.enabled = true;
         camera.lockCamera = false;
         BossZone.bossZone = true;
         Player.enabled = true;
@@ -101,6 +107,8 @@ public class TptoBossBattle : MonoBehaviour
             cinematicaBoss.Play();
             cinematica = true;
             Player.running = false;
+            ui.enabled = false;
+            ui2.enabled = false;
             Player.walk = false;
             player_Anim.SetBool("Walk", false);
             player_Anim.SetBool("Run", false);
