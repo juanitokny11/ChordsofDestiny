@@ -28,6 +28,7 @@ public class CameraLockControl : MonoBehaviour
             cam.lockCamera = true;
             capscol.enabled=true;
             boxcol.enabled = false;
+
         }
        /* if (other.tag == "Player")
         {

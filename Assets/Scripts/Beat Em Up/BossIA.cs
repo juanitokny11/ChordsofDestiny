@@ -21,7 +21,7 @@ public class BossIA : MonoBehaviour
     public float speed = 5.0f;
     public bool Jump = false;
     public bool ResetJump = false;
-    public Transform waitingPlace;
+    public Transform[] waitingPlace;
     private CapsuleCollider capsuleCollider;
     private CharacterAnimation enemyAnim;
     private HealthScript healthScript;
@@ -43,6 +43,8 @@ public class BossIA : MonoBehaviour
     public bool invoke = false;
     public bool Chase;
     public Sound sound;
+    public BoxCollider colider;
+    public BoxCollider colider2;
     public int jumpCounter=0;
     public GameObject espadaRota;
     public ParticleSystem brokenArm;
@@ -83,18 +85,12 @@ public class BossIA : MonoBehaviour
                 Up();
                 if (transform.position.y >= 9f)
                 {
-                    if (transform.position.x != playerTarget.transform.position.x)
-                    {
-                        transform.position = waitingPlace.position;
-                        Chase = true;
-                        StopJumpUp();
-                    } 
-                   else  if (transform.position.x == playerTarget.transform.position.x)
-                    {
-                        transform.position = new Vector3(ResetPosition.position.x -10f, ResetPosition.position.y, ResetPosition.position.z + 2f);
-                        Chase = true;
-                        StopJumpUp();
-                    }
+                    int random = Random.Range(0,5);
+                    transform.position = waitingPlace[random].position;
+                    colider.enabled = true;
+                    colider2.enabled = true;
+                    Chase = true;
+                    StopJumpUp();
                 }
             }
             if (ResetJump == true)
@@ -306,9 +302,9 @@ public class BossIA : MonoBehaviour
         porcentajeAtaque = 50;
         porcentajeInvocar = 200;
         if(!playerTarget.GetComponent<PlayerMovementBeat>().lockrotation)
-        espadaRota.transform.rotation = Quaternion.Euler(transform.rotation.x,-90, transform.rotation.z);
+        espadaRota.transform.rotation = Quaternion.Euler(transform.rotation.x,90, transform.rotation.z);
         else if (playerTarget.GetComponent<PlayerMovementBeat>().lockrotation)
-            espadaRota.transform.rotation = Quaternion.Euler(transform.rotation.x, 90, transform.rotation.z);
+            espadaRota.transform.rotation = Quaternion.Euler(transform.rotation.x, -90, transform.rotation.z);
         //espadaRota.transform.position = new Vector3(espadaRota.transform.position.x, 0, espadaRota.transform.position.z);
         gameManager.numScore += scoref1;
         brokenArm.Play();
@@ -374,5 +370,10 @@ public class BossIA : MonoBehaviour
     public void InstantiateTarjeta()
     {
         Instantiate(llave, transform.position + new Vector3(0,2f,0), Quaternion.identity);
+    }
+    public void ColiderNotEnabled()
+    {
+        colider.enabled = false;
+        colider2.enabled = false;
     }
 }

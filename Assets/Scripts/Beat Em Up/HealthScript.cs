@@ -40,6 +40,7 @@ public class HealthScript : MonoBehaviour
     public Image tutosolo;
     public SoundPlayer audios;
     public bool firstSolo;
+    public ShakeCamera camera;
     public float counter;
     public bool is_Player,is_Boss,is_Enemy;
 
@@ -199,6 +200,7 @@ public class HealthScript : MonoBehaviour
         {
             if (!knockDown)
             {
+                if(health>=35)
                 hitCounter++;
                 if (Random.Range(0, 3) > 1) {
                     if (bossIA.fase == 1)
