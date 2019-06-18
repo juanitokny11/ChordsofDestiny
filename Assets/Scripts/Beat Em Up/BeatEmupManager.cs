@@ -131,10 +131,12 @@ public class BeatEmupManager : MonoBehaviour
         {
             GodMode();
         }
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.F8))
         {
             Player.transform.position = Tppos.position;
         }
+#endif
         if (godmode == true && Player.GetComponent<PlayerAttack2>().canPause)
         {
 
