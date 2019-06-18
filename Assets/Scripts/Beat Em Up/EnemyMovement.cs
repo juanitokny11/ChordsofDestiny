@@ -20,6 +20,7 @@ public class EnemyMovement : MonoBehaviour
     public int score;
     public bool soloHit = false;
     public bool isGroupie;
+    public GameObject cadera;
     public float speed = 10.0f;
     public BoxCollider mainCamera_col;
     public BoxCollider mainCamera_col2;
