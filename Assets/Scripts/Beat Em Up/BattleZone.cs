@@ -196,8 +196,16 @@ public class BattleZone : MonoBehaviour
     void TutoOff()
     {
         tutoFuerte.gameObject.SetActive(false);
-        if(enemiescounter<=0)
-        Destroy(gameObject);
+        if (enemiescounter <= 0)
+        {
+             EnemyUI.SetActive(false);
+                Invoke("UnlockCamera", 1f);
+                //musica.DOFade(0.4f, 5f);
+                //musica.Pause();
+                SetGo();
+                Invoke("StopGo", 2.5f);
+                Invoke("Destroy", 2.8f);
+        }
     }
     void UnlockCamera()
     {

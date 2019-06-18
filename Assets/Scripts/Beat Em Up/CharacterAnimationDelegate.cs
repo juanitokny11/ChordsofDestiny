@@ -29,7 +29,7 @@ public class CharacterAnimationDelegate : MonoBehaviour
     public BossIA bossIA;
     public PlayerMovementBeat player_Move;
     public Rigidbody groupieBody;
-    public float standupTimer = 2.0f;
+    public float standupTimer = 0.5f;
     private CharacterAnimation animationScript;
     private EnemyMovement enemy_Movement;
     public ShakeCamera shakeCamera;
