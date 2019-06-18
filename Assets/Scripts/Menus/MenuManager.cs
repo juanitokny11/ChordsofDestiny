@@ -31,6 +31,11 @@ public class MenuManager : MonoBehaviour {
     {
         if (is_MainMenu)
         {
+            if (MyGameSettings.getInstance().effects)
+            {
+                pospo.SetActive(true);
+                camera.gameObject.GetComponent<PostProcessLayer>().enabled = true;
+            } 
             enableCredits = false;
             endVideo = false;
             Credits.Prepare();
@@ -93,8 +98,11 @@ public class MenuManager : MonoBehaviour {
     void onMovieEnded()
     {
         cinematicaInicial.Pause();
+        MyGameSettings.getInstance().effects = true;
         Time.timeScale = 1;
         Cursor.visible = false;
+        pospo.SetActive(true);
+        camera.gameObject.GetComponent<PostProcessLayer>().enabled = true;
         MyGameSettings.getInstance().gameStarted = true;
         MyGameSettings.getInstance().logoPlayed = true;
         MyGameSettings.getInstance().menuAnim.firstTime = true;
@@ -112,6 +120,7 @@ public class MenuManager : MonoBehaviour {
             cinematicaInicial.Play();
             StartCoroutine("waitForMovieEnd");
             logoManager.cinematica = true;
+            MyGameSettings.getInstance().effects = true;
             MyGameSettings.getInstance().menuAnim.Anim = true;
             MyGameSettings.getInstance().menuAnim.firstTime = true;
         }

@@ -20,6 +20,7 @@ public class MyGameSettings : MonoBehaviour {
     public bool cinematicaPlayed = false;
     public MenuAnim menuAnim;
     public int id;
+    public bool effects;
     public bool actualize;
     public int score;
 
@@ -30,6 +31,7 @@ public class MyGameSettings : MonoBehaviour {
 		}
         id = 1;
         score = 0;
+        effects = false;
         Scene MainMenu = SceneManager.GetActiveScene();
         string scenename = MainMenu.name;
         menuAnim = GameObject.FindGameObjectWithTag("MenuAnim").GetComponentInChildren<MenuAnim>();

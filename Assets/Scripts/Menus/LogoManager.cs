@@ -95,7 +95,9 @@ public class LogoManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return) && logo && cinematica|| Input.GetAxisRaw("AtaqueDebil") != 0 && logo && cinematica)
         {
             menuManager.cinematicaInicial.Pause();
-            camera.gameObject.GetComponent<PostProcessLayer>().enabled = false;
+            MyGameSettings.getInstance().effects = true;
+            camera.gameObject.GetComponent<PostProcessLayer>().enabled = true;
+            pospo.SetActive(true);
             //Invoke("CinematicaTrue", 1.0f);
             SceneManager.LoadScene("Gameplay");
             Time.timeScale = 1;
