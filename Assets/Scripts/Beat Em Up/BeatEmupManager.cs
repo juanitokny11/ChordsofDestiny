@@ -117,6 +117,7 @@ public class BeatEmupManager : MonoBehaviour
         score.text = numScore.ToString();
         if (seeinfopua)
         {
+            Player.gameObject.GetComponent<PlayerAttack2>().canPause = false;
             lifePlayer.enabled = false;
             infoPlayer.enabled = false;
             notSound = false;
@@ -133,6 +134,7 @@ public class BeatEmupManager : MonoBehaviour
                 Invoke("UIenabled",0.5f);
                 UI.enabled = false;
                 UI2.enabled = false;
+                Player.gameObject.GetComponent<PlayerAttack2>().canPause = true;
             }
         }
         if (Input.GetKeyDown(KeyCode.F10))

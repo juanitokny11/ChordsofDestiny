@@ -74,22 +74,22 @@ public class DeleteObjects: MonoBehaviour {
     }
     public void Explode()
     {
-        InvokeRepeating("Blink", 0.1f, 0.1f); 
-        if (playerHealth.health <= 100)
-            Invoke("LifeOn", 2f);
+        InvokeRepeating("Blink", 0.1f, 0.1f);
+        /*if (playerHealth.health <= 100)
+             Invoke("LifeOn", 2f);*/
         Invoke("StopBlink", 1.5f);
     }
     public void StopBlink()
     {
         CancelInvoke("Blink");
-        score.SetActive(false);
         if (playerHealth.health <= 100)
             Invoke("LifeOff", 2f);
-        scoreUI.enabled = false;
+     
         Invoke("Destroy", 0.5f);
     }
     public void Destroy()
     {
+        scoreUI.enabled = false;
         Destroy(gameObject.transform.parent.gameObject);
     }
     public void LifeOn()
@@ -111,5 +111,6 @@ public class DeleteObjects: MonoBehaviour {
     public void LifeOff()
     {
         UI.enabled = false;
+        scoreUI.enabled = false;
     }
 }

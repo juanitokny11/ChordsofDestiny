@@ -234,6 +234,7 @@ public class BattleZone : MonoBehaviour
     void StopGo()
     {
         CancelInvoke("Blink");
+        UI.GetComponent<Canvas>().enabled = false;
         UI2.GetComponent<Canvas>().enabled = false;
         score.SetActive(false);
         goImage.enabled = false;
