@@ -148,7 +148,7 @@ public class BossIA : MonoBehaviour
     {
         if (!BeatEmupManager.instance.pause)
             return;
-        if (fase == 2)
+        if (fase == 2 && BeatEmupManager.instance.pause)
         {
             sound.Chispas();
         }
@@ -180,7 +180,7 @@ public class BossIA : MonoBehaviour
             speed = 0;
             return;
         }
-        if (fase==2)
+        if (fase == 2 && BeatEmupManager.instance.pause)
         {
             sound.Chispas();
         }
@@ -249,7 +249,7 @@ public class BossIA : MonoBehaviour
     {
         if (!BeatEmupManager.instance.pause)
             return;
-        if (fase == 2)
+        if (fase == 2 && BeatEmupManager.instance.pause)
         {
             sound.Chispas();
         }

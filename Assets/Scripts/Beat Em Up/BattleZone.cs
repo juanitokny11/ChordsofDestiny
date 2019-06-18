@@ -243,7 +243,7 @@ public class BattleZone : MonoBehaviour
     {
         if (id == 5 || id == 7)
         {
-            Instantiate(pua, enemies[0].transform.position, Quaternion.identity);
+            Instantiate(pua,  new Vector3 (enemies[0].transform.position.x+2f, enemies[0].transform.position.y + 1.0f, enemies[0].transform.position.z), Quaternion.identity);
         }
         frase = true;
         Destroy(gameObject);
