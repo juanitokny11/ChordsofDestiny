@@ -41,6 +41,8 @@ public class HealthScript : MonoBehaviour
     public SoundPlayer audios;
     public bool firstSolo;
     public ShakeCamera camera;
+    public Canvas playerLife;
+    public Canvas playerInfo;
     public float counter;
     public bool is_Player,is_Boss,is_Enemy;
 
@@ -172,6 +174,8 @@ public class HealthScript : MonoBehaviour
             }
             else if (is_Boss)
             {
+                playerLife.enabled = false;
+                playerInfo.enabled = false;
                 animationScript.Death(0);
                 bossIA.Death();
                 gameManager.numScore += bossIA.scoref2 ;

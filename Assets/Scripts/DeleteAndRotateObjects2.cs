@@ -10,10 +10,12 @@ public class DeleteAndRotateObjects2: MonoBehaviour {
     public AudioSource vida;
     public HealthScript player;
     public Image UI;
+    public bool sound;
     public GameObject LifeBar;
     public int random;
     private void Awake()
     {
+        sound = false;
         UI = GameObject.FindGameObjectWithTag("PlayerHealth").GetComponent<Image>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthScript>();
         heal = GameObject.Find("Heal").GetComponent<ParticleSystem>();
@@ -28,11 +30,22 @@ public class DeleteAndRotateObjects2: MonoBehaviour {
         if (other.tag == "Player")
         {
             Explode();
+            sound = true; ;
         }
     }
     void Update()
     {
         random = Random.Range(10,30);
+        if (player.GetComponent<HealthScript>().health <100 && Time.timeScale == 1 && sound)
+        {
+            player.health = player.health + random;
+            UI.fillAmount = player.health / 100;
+            heal.Play();
+            sound = false;
+            vida.PlayDelayed(0.4f);
+            //Player.health = Player.health + 10;
+            //LifeBar.SetActive(false);
+        }
     }
     void FixedUpdate()
     {
@@ -45,16 +58,6 @@ public class DeleteAndRotateObjects2: MonoBehaviour {
             BeatEmupManager.instance.seeinfopua = true;
         }
         BeatEmupManager.instance.puaCounter++;
-        if (player.GetComponent<HealthScript>().health < 100)
-        {
-            player.health = player.health + random;
-            UI.fillAmount = player.health / 100;
-            heal.Play();
-            vida.PlayDelayed(0.4f);
-            //Player.health = Player.health + 10;
-            //LifeBar.SetActive(false);
-        }
-        
         Invoke("DestroyGameobject", 0.2f);
      
 	}

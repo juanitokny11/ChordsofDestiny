@@ -49,10 +49,13 @@ public class BeatEmupManager : MonoBehaviour
     public Canvas pausaMenu;
     public GameObject infopua;
     public bool seeinfopua;
+    public bool notSound;
     public RectTransform optionsMenu;
     public Animator pauseMenuPrincial;
     public bool pause = false;
     public int numScore;
+    public Canvas lifePlayer;
+    public Canvas infoPlayer;
     public EaseColor startFade;
 
     void Awake()
@@ -62,6 +65,7 @@ public class BeatEmupManager : MonoBehaviour
     }
     private void Start()
     {
+        notSound = false;
         seeinfopua = false;
         startFade.play = true;
         Player = GameObject.FindGameObjectWithTag("Player");
@@ -113,6 +117,9 @@ public class BeatEmupManager : MonoBehaviour
         score.text = numScore.ToString();
         if (seeinfopua)
         {
+            lifePlayer.enabled = false;
+            infoPlayer.enabled = false;
+            notSound = false;
             Time.timeScale= 0;
             BeatEmupManager.instance.infopua.SetActive(true);
             skipCanvas.enabled = true;
@@ -120,6 +127,7 @@ public class BeatEmupManager : MonoBehaviour
             {
                 BeatEmupManager.instance.infopua.SetActive(false);
                 seeinfopua = false;
+                notSound = true;
                 Time.timeScale = 1;
                 skipCanvas.enabled = false;
                 Invoke("UIenabled",0.5f);

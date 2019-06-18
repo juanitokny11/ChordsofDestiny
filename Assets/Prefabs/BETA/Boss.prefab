@@ -579,7 +579,11 @@ MonoBehaviour:
   speed: 5
   Jump: 0
   ResetJump: 0
-  waitingPlace: {fileID: 0}
+  waitingPlace:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   mainCamera_col: {fileID: 0}
   mainCamera_col2: {fileID: 0}
   mainCamera_backgroundcol: {fileID: 0}
@@ -597,9 +601,12 @@ MonoBehaviour:
   invoke: 0
   Chase: 0
   sound: {fileID: 0}
+  colider: {fileID: 0}
+  colider2: {fileID: 0}
   jumpCounter: 0
   espadaRota: {fileID: 4843713033998774898}
   brokenArm: {fileID: 5659585842600766171}
+  chispas: {fileID: 5659585842600766171}
 --- !u!114 &988149406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -639,6 +646,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   bossIA: {fileID: 507275759069458316}
   fade: {fileID: 0}
+  soloParticle: {fileID: 0}
   playerAttack_List: {fileID: 0}
   canDoSolo: 0
   solotuto: 0
@@ -650,6 +658,8 @@ MonoBehaviour:
   tutosolo: {fileID: 0}
   audios: {fileID: 0}
   firstSolo: 0
+  camera: {fileID: 0}
+  playerLife: {fileID: 0}
   counter: 0
   is_Player: 0
   is_Boss: 1

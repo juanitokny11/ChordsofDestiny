@@ -48,6 +48,7 @@ public class BossIA : MonoBehaviour
     public int jumpCounter=0;
     public GameObject espadaRota;
     public ParticleSystem brokenArm;
+    public ParticleSystem chispas;
 
     void Start()
     {
@@ -73,11 +74,6 @@ public class BossIA : MonoBehaviour
     {
         if (playerTarget.GetComponent<PlayerMovementBeat>().is_Dead)
             this.enabled = false;
-        if (brokenArm.time >= .1f && fase==2)
-        {
-            sound.Chispas();
-        }
-       
         if (!outside)
         {
             if (Jump == true)
@@ -152,6 +148,10 @@ public class BossIA : MonoBehaviour
     {
         if (!BeatEmupManager.instance.pause)
             return;
+        if (fase == 2)
+        {
+            sound.Chispas();
+        }
         transform.LookAt(playerTarget);
         if (enemyHealth.HealthBar.fillAmount <= 0.35)
         {
@@ -179,6 +179,10 @@ public class BossIA : MonoBehaviour
         {
             speed = 0;
             return;
+        }
+        if (fase==2)
+        {
+            sound.Chispas();
         }
         if (enemyHealth.HealthBar.fillAmount <= 0.35)
         {
@@ -245,6 +249,10 @@ public class BossIA : MonoBehaviour
     {
         if (!BeatEmupManager.instance.pause)
             return;
+        if (fase == 2)
+        {
+            sound.Chispas();
+        }
         if (fase == 1)
         {
             myBody.isKinematic = true;
@@ -301,13 +309,14 @@ public class BossIA : MonoBehaviour
         fase = 2;
         porcentajeAtaque = 50;
         porcentajeInvocar = 200;
-        if(!playerTarget.GetComponent<PlayerMovementBeat>().lockrotation)
+        if(transform.rotation.y<0)
         espadaRota.transform.rotation = Quaternion.Euler(transform.rotation.x,90, transform.rotation.z);
-        else if (playerTarget.GetComponent<PlayerMovementBeat>().lockrotation)
+        else if (transform.rotation.y >0)
             espadaRota.transform.rotation = Quaternion.Euler(transform.rotation.x, -90, transform.rotation.z);
         //espadaRota.transform.position = new Vector3(espadaRota.transform.position.x, 0, espadaRota.transform.position.z);
         gameManager.numScore += scoref1;
         brokenArm.Play();
+        sound.Chispas();
         //sound.brazorot();
         SetDefault();
     }

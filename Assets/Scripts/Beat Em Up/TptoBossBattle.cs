@@ -46,6 +46,7 @@ public class TptoBossBattle : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Return) && cinematica || Input.GetAxisRaw("AtaqueDebil") != 0 && cinematica)
         {
+            Player.gameObject.GetComponent<PlayerAttack2>().canPause = true;
             cinematicaBoss.gameObject.SetActive(false);
             changeMusic = true;
             cinematica = false;
@@ -85,6 +86,7 @@ public class TptoBossBattle : MonoBehaviour
 
     void onMovieEnded(VideoPlayer source)
     {
+        Player.gameObject.GetComponent<PlayerAttack2>().canPause = true;
         cinematicaBoss.gameObject.SetActive(false);
         changeMusic = true;
         cinematica = false;
@@ -103,6 +105,7 @@ public class TptoBossBattle : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            Player.gameObject.GetComponent<PlayerAttack2>().canPause = false;
             cinematicaBoss.gameObject.SetActive(true);
             cinematicaBoss.Play();
             cinematica = true;

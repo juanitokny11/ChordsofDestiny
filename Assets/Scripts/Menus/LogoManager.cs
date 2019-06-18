@@ -89,7 +89,7 @@ public class LogoManager : MonoBehaviour
             }
             camera.gameObject.GetComponent<PostProcessLayer>().enabled = true;
             Invoke( "MainMenu",0.5f);
-            Cursor.visible = true;
+            Cursor.visible = false;
             MyGameSettings.getInstance().logoPlayed = true;
         }
         if (Input.GetKeyDown(KeyCode.Return) && logo && cinematica|| Input.GetAxisRaw("AtaqueDebil") != 0 && logo && cinematica)
@@ -145,6 +145,7 @@ public class LogoManager : MonoBehaviour
     public void MainMenu()
     {
         CancelInvoke("ParpadeoTextMenu");
+        Cursor.visible = true;
         camera.gameObject.GetComponent<PostProcessLayer>().enabled = true;
         creditsMusic.Stop();
         title.gameObject.SetActive(false);
