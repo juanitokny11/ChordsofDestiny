@@ -48,6 +48,8 @@ public class BeatEmupManager : MonoBehaviour
     public int puaCounter=0;
     public Canvas pausaMenu;
     public GameObject infopua;
+    public Sprite infopuaENG;
+    public Sprite infopuaESP;
     public bool seeinfopua;
     public bool notSound;
     public RectTransform optionsMenu;
@@ -115,7 +117,16 @@ public class BeatEmupManager : MonoBehaviour
             }
         }
         score.text = numScore.ToString();
-        if (seeinfopua)
+        if(LanguageManager.langData.currentLanguage== LangData.Languages.English)
+        {
+            infopua.GetComponent<Image>().sprite = infopuaENG;
+        }
+        else if (LanguageManager.langData.currentLanguage == LangData.Languages.Spanish)
+        {
+            infopua.GetComponent<Image>().sprite = infopuaESP;
+        }
+
+            if (seeinfopua)
         {
             Player.gameObject.GetComponent<PlayerAttack2>().canPause = false;
             lifePlayer.enabled = false;
