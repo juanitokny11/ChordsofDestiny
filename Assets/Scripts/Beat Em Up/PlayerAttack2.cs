@@ -172,12 +172,11 @@ public class PlayerAttack2 : MonoBehaviour
                         AddToTheList(ComboState.FUERTE3);
                     }
                 }
-                
             }
         }
         if (Input.GetKeyDown(KeyCode.D) || Input.GetAxisRaw("Solo") == 1 && Input.GetAxisRaw("Disparar") == 1)
         {
-            if ( !player_Move.inAir && healthScript.canDoSolo && doSolo /*&& !player_Move.walk && !player_Move.running*/)
+            if (!player_Move.inAir && healthScript.canDoSolo && doSolo)
             {
                 if (player_Move.walk || player_Move.running)
                 {

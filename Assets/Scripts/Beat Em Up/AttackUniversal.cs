@@ -87,15 +87,17 @@ public class AttackUniversal : MonoBehaviour
                     sound.hit = true;
                     if (attackList.F3)
                         sound.GolpeDesdeArriba();
-                    healthScript.inAir = false;
                     sound.ataquedesdealto();
                     damage = 5;
                     if (hit[0].tag == "Enemy")
                         hit[0].GetComponent<EnemyMovement>().soloHit = false;
                     healthScript.hitsCount++;
                     counterhits = 0;
-                    healthScript.solo += damage;
+                    hit[0].GetComponent<HealthScript>().inAir = true;
                     healthUI.DisplaySolo(healthScript.solo / 2);
+                    hit[0].GetComponent<HealthScript>().ApplyDamage(damage, true, false);
+                    healthScript.inAir = false;
+                    //hit[0].GetComponent<BoxCollider>().enabled = true;
                     rend = hit[0].GetComponentInChildren<SkinnedMeshRenderer>();
                     MaterialPropertyBlock block = new MaterialPropertyBlock();
                     rend.GetPropertyBlock(block);
@@ -103,7 +105,7 @@ public class AttackUniversal : MonoBehaviour
                     rend.SetPropertyBlock(block);
                     Invoke("ReturnColor", 0.15f);
                     if (hit[0].gameObject.tag == "Enemy")
-                        lifeControler.ShowDamagedUI(hit[0].gameObject.GetComponent<HealthScript>().health,hit[0].gameObject.GetComponent<EnemyMovement>().gname.ToString(), hit[0].gameObject.GetComponent<HealthScript>().maxHealth);
+                        lifeControler.ShowDamagedUI(hit[0].gameObject.GetComponent<HealthScript>().health, hit[0].gameObject.GetComponent<EnemyMovement>().gname.ToString(), hit[0].gameObject.GetComponent<HealthScript>().maxHealth);
                 }
                 else if (gameObject.CompareTag("Solo") && hit[0].gameObject.tag != "bidon")
                 {
@@ -154,9 +156,10 @@ public class AttackUniversal : MonoBehaviour
                     if (hit[0].tag == "Enemy")
                         hit[0].GetComponent<EnemyMovement>().soloHit = false;
                     counterhits = 0;
+                    hit[0].GetComponent<HealthScript>().inAir = false;
                     healthUI.DisplaySolo(healthScript.solo / 2);
                     hit[0].GetComponent<HealthScript>().ApplyDamage(damage, true, false);
-                    healthScript.inAir = true;
+                    //healthScript.inAir = true;
                     //hit[0].GetComponent<BoxCollider>().enabled = true;
                     rend = hit[0].GetComponentInChildren<SkinnedMeshRenderer>();
                     MaterialPropertyBlock block = new MaterialPropertyBlock();

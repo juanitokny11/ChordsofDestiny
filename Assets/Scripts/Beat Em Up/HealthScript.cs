@@ -189,7 +189,7 @@ public class HealthScript : MonoBehaviour
             {
                 if (inAir)
                     animationScript.Tirar();
-                else
+                else if(!inAir)
                     animationScript.KnockDown();
             }
             else if (!knockDown)
