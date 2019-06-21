@@ -61,6 +61,7 @@ public class BeatEmupManager : MonoBehaviour
     public Sprite infopuaENG;
     public Sprite infopuaESP;
     public bool seeinfopua;
+    public bool mando;
     public bool notSound;
     public RectTransform optionsMenu;
     public Animator pauseMenuPrincial;
@@ -69,6 +70,7 @@ public class BeatEmupManager : MonoBehaviour
     public Canvas lifePlayer;
     public Canvas infoPlayer;
     public EaseColor startFade;
+    public string[] temp;
 
     void Awake()
     {
@@ -77,6 +79,7 @@ public class BeatEmupManager : MonoBehaviour
     }
     private void Start()
     {
+        mando = false;
         notSound = false;
         seeinfopua = false;
         startFade.play = true;
@@ -93,19 +96,18 @@ public class BeatEmupManager : MonoBehaviour
     void Update()
     {
         //Get Joystick Names
-        string[] temp = Input.GetJoystickNames();
+        temp = Input.GetJoystickNames();
 
         //Check whether array contains anything
-        if (temp.Length > 0)
-        {
             //Iterate over every element
             for (int i = 0; i < temp.Length; ++i)
             {
                 //Check if the string is empty or not
                 if (!string.IsNullOrEmpty(temp[i]))
                 {
-                    //Not empty, controller temp[i] is connected
-                    if(LanguageManager.langData.currentLanguage== LangData.Languages.English)
+                //Not empty, controller temp[i] is connected
+                mando = false;
+                    /*if(LanguageManager.langData.currentLanguage== LangData.Languages.English)
                     {
                         tutoMove.sprite = tutoMoveXbox;
                         tutodebil.sprite = tutodebilXbox;
@@ -120,14 +122,15 @@ public class BeatEmupManager : MonoBehaviour
                         tutofuerte.sprite = tutofuerteXboxESP;
                         tutoblock.sprite = tutoblockXboxESP;
                         tutosolo.sprite = tutosoloXboxESP;
-                    }
+                    }*/
                     Debug.Log("Controller " + i + " is connected using: " + temp[i]);
                 }
                 else
                 {
-                    //If it is empty, controller i is disconnected
-                    //where i indicates the controller number
-                    if (LanguageManager.langData.currentLanguage == LangData.Languages.English)
+                //If it is empty, controller i is disconnected
+                //where i indicates the controller number
+                mando = true;
+                    /*if (LanguageManager.langData.currentLanguage == LangData.Languages.English)
                     {
                         tutoMove.sprite = tutoMovePc;
                         tutodebil.sprite = tutodebilPc;
@@ -135,27 +138,58 @@ public class BeatEmupManager : MonoBehaviour
                         tutoblock.sprite = tutoblockPc;
                         tutosolo.sprite = tutosoloPc;
                     }
-                    else if (LanguageManager.langData.currentLanguage == LangData.Languages.Spanish)
+                     if (LanguageManager.langData.currentLanguage == LangData.Languages.Spanish)
                     {
                         tutoMove.sprite = tutoMovePcESP;
                         tutodebil.sprite = tutodebilPcESP;
                         tutofuerte.sprite = tutofuertePcESP;
                         tutoblock.sprite = tutoblockPcESP;
                         tutosolo.sprite = tutosoloPcESP;
-                    }
+                    }*/
                     Debug.Log("Controller: " + i + " is disconnected.");
 
                 }
             }
-        }
         score.text = numScore.ToString();
         if(LanguageManager.langData.currentLanguage== LangData.Languages.English)
         {
             infopua.GetComponent<Image>().sprite = infopuaENG;
+            if (!mando)
+            {
+                tutoMove.sprite = tutoMovePc;
+                tutodebil.sprite = tutodebilPc;
+                tutofuerte.sprite = tutofuertePc;
+                tutoblock.sprite = tutoblockPc;
+                tutosolo.sprite = tutosoloPc;
+            }
+            if (mando)
+            {
+                tutoMove.sprite = tutoMovePc;
+                tutodebil.sprite = tutodebilPc;
+                tutofuerte.sprite = tutofuertePc;
+                tutoblock.sprite = tutoblockPc;
+                tutosolo.sprite = tutosoloPc;
+            }
         }
         else if (LanguageManager.langData.currentLanguage == LangData.Languages.Spanish)
         {
             infopua.GetComponent<Image>().sprite = infopuaESP;
+            if (!mando)
+            {
+                tutoMove.sprite = tutoMovePcESP;
+                tutodebil.sprite = tutodebilPcESP;
+                tutofuerte.sprite = tutofuertePcESP;
+                tutoblock.sprite = tutoblockPcESP;
+                tutosolo.sprite = tutosoloPcESP;
+            }
+            if (mando)
+            {
+                tutoMove.sprite = tutoMovePcESP;
+                tutodebil.sprite = tutodebilPcESP;
+                tutofuerte.sprite = tutofuertePcESP;
+                tutoblock.sprite = tutoblockPcESP;
+                tutosolo.sprite = tutosoloPcESP;
+            }
         }
 
             if (seeinfopua)
