@@ -26,18 +26,28 @@ public class BeatEmupManager : MonoBehaviour
     public Image tutoblock;
     public Sprite tutoblockPc;
     public Sprite tutoblockXbox;
+    public Sprite tutoblockPcESP;
+    public Sprite tutoblockXboxESP;
     public Image tutodebil;
     public Sprite tutodebilPc;
     public Sprite tutodebilXbox;
+    public Sprite tutodebilPcESP;
+    public Sprite tutodebilXboxESP;
     public Image tutofuerte;
     public Sprite tutofuertePc;
     public Sprite tutofuerteXbox;
+    public Sprite tutofuertePcESP;
+    public Sprite tutofuerteXboxESP;
     public Image tutosolo;
     public Sprite tutosoloPc;
     public Sprite tutosoloXbox;
+    public Sprite tutosoloPcESP;
+    public Sprite tutosoloXboxESP;
     public Image tutoMove;
     public Sprite tutoMovePc;
     public Sprite tutoMoveXbox;
+    public Sprite tutoMovePcESP;
+    public Sprite tutoMoveXboxESP;
     public Canvas UI;
     public Canvas UI2;
     public GameObject mainMenu;
@@ -95,22 +105,44 @@ public class BeatEmupManager : MonoBehaviour
                 if (!string.IsNullOrEmpty(temp[i]))
                 {
                     //Not empty, controller temp[i] is connected
-                    tutoMove.sprite = tutoMoveXbox;
-                    tutodebil.sprite = tutodebilXbox;
-                    tutofuerte.sprite = tutofuerteXbox;
-                    tutoblock.sprite = tutoblockXbox;
-                    tutosolo.sprite = tutosoloXbox;
+                    if(LanguageManager.langData.currentLanguage== LangData.Languages.English)
+                    {
+                        tutoMove.sprite = tutoMoveXbox;
+                        tutodebil.sprite = tutodebilXbox;
+                        tutofuerte.sprite = tutofuerteXbox;
+                        tutoblock.sprite = tutoblockXbox;
+                        tutosolo.sprite = tutosoloXbox;
+                    }
+                    else if (LanguageManager.langData.currentLanguage == LangData.Languages.Spanish)
+                    {
+                        tutoMove.sprite = tutoMoveXboxESP;
+                        tutodebil.sprite = tutodebilXboxESP;
+                        tutofuerte.sprite = tutofuerteXboxESP;
+                        tutoblock.sprite = tutoblockXboxESP;
+                        tutosolo.sprite = tutosoloXboxESP;
+                    }
                     Debug.Log("Controller " + i + " is connected using: " + temp[i]);
                 }
                 else
                 {
                     //If it is empty, controller i is disconnected
                     //where i indicates the controller number
-                    tutoMove.sprite = tutoMovePc;
-                    tutodebil.sprite = tutodebilPc;
-                    tutofuerte.sprite = tutofuertePc;
-                    tutoblock.sprite = tutoblockPc;
-                    tutosolo.sprite = tutosoloPc;
+                    if (LanguageManager.langData.currentLanguage == LangData.Languages.English)
+                    {
+                        tutoMove.sprite = tutoMovePc;
+                        tutodebil.sprite = tutodebilPc;
+                        tutofuerte.sprite = tutofuertePc;
+                        tutoblock.sprite = tutoblockPc;
+                        tutosolo.sprite = tutosoloPc;
+                    }
+                    else if (LanguageManager.langData.currentLanguage == LangData.Languages.Spanish)
+                    {
+                        tutoMove.sprite = tutoMovePcESP;
+                        tutodebil.sprite = tutodebilPcESP;
+                        tutofuerte.sprite = tutofuertePcESP;
+                        tutoblock.sprite = tutoblockPcESP;
+                        tutosolo.sprite = tutosoloPcESP;
+                    }
                     Debug.Log("Controller: " + i + " is disconnected.");
 
                 }
