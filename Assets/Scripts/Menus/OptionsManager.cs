@@ -15,6 +15,7 @@ public class OptionsManager : MonoBehaviour {
     public Text texto;
     private void Awake()
     {
+        ChangeLevel(4);
         //LanguageManager.langData.currentLanguage = LangData.Languages.English;
     }
     void Start(){
