@@ -47,6 +47,8 @@ public class AudioManager : MonoBehaviour
             Pantalla.sprite = group[4];
         else if (groupId == 5)
             Pantalla.sprite = group[5];
+        else if (groupId == 6)
+            Pantalla.sprite = group[6];
         if (groupId > group.Length-1)
             groupId = 0;
         if (groupId < 0)
